@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initParticleBackground();
     initPromoLogic();
+    initFormHandler();
 });
 
 /**
@@ -179,3 +180,27 @@ window.toggleAccordion = function(element) {
     const item = element.parentElement;
     item.classList.toggle('active');
 };
+
+/**
+ * Gestion du formulaire de contact
+ * Affiche le popup de succès lors de l'envoi
+ */
+function initFormHandler() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', (e) => {
+        // On laisse FormSubmit gérer l'envoi
+        setTimeout(() => {
+            const successPopup = document.getElementById('successPopup');
+            if (successPopup) {
+                successPopup.classList.add('show');
+
+                // Cacher le popup après 4 secondes
+                setTimeout(() => {
+                    successPopup.classList.remove('show');
+                }, 4000);
+            }
+        }, 500);
+    });
+}

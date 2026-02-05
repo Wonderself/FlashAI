@@ -286,3 +286,43 @@ footer {
     filter: blur(100px);
     pointer-events: none;
 }
+
+/* Success Popup */
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
+    border: 2px solid #F900BF;
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 60px rgba(249, 0, 191, 0.3);
+    text-align: center;
+    max-width: 400px;
+}
+
+.success-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.success-popup h3 {
+    color: #00F5FF;
+    font-size: 1.8rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.success-popup p {
+    color: #a0a0a0;
+    font-size: 1rem;
+    line-height: 1.6;
+}

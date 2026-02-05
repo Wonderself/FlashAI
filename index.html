@@ -216,9 +216,9 @@
     </section>
 
     <section id="contact" class="py-24 px-4 md:px-6">
-        <div class="max-w-3xl mx-auto glass-card p-5 md:p-12 rounded-3xl md:rounded-[3rem] reveal border border-fuchsia-500/20">
+        <div class="max-w-3xl mx-auto glass-card p-5 md:p-12 rounded-3xl md:rounded-[3rem] reveal border-4 border-fuchsia-500">
             <h2 class="text-4xl font-display font-bold italic mb-8">Lancez votre projet.</h2>
-            <form class="space-y-6" action="https://formsubmit.co/flashsiteagency@gmail.com" method="POST">
+            <form class="space-y-6" action="https://formsubmit.co/flashsiteagency@gmail.com" method="POST" id="contactForm">
                 <div class="grid md:grid-cols-2 gap-6">
                     <input type="text" name="nomEntreprise" class="input-dark" placeholder="Nom complet / Entreprise" required>
                     <input type="text" name="metier" class="input-dark" placeholder="Métier (ex: Plombier)" required>
@@ -233,10 +233,17 @@
                 <textarea rows="4" name="message" class="input-dark" placeholder="Décrivez votre besoin..." required></textarea>
                 <input type="hidden" name="_subject" value="Nouvelle demande de contact - Flashsite Agency">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="false">
                 <button type="submit" class="btn btn-neon w-full py-5 text-xl font-black italic rounded-2xl tracking-widest uppercase">ENVOYEZ 🚀</button>
             </form>
         </div>
     </section>
+
+    <!-- Success Popup -->
+    <div id="successPopup" class="success-popup">
+        <h3>✅ Formulaire envoyé!</h3>
+        <p>Merci! Nous avons bien reçu votre demande. Nous vous répondrons rapidement à l'adresse email fournie.</p>
+    </div>
 
     <footer class="py-12 bg-black border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 text-center">
