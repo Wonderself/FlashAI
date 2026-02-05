@@ -183,14 +183,24 @@ window.toggleAccordion = function(element) {
 
 /**
  * Gestion du formulaire de contact
- * Affiche le popup de succès lors de l'envoi
+ * Envoie le mail SANS redirection et affiche simplement le popup
  */
 function initFormHandler() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
 
     contactForm.addEventListener('submit', (e) => {
-        setTimeout(() => {
+        e.preventDefault(); // Empêche la redirection
+
+        const formData = new FormData(contactForm);
+
+        // Envoie le formulaire à FormSubmit sans redirection
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(() => {
+            // Affiche le popup de succès
             const successPopup = document.getElementById('successPopup');
             if (successPopup) {
                 successPopup.classList.add('show');
@@ -200,6 +210,13 @@ function initFormHandler() {
                     successPopup.classList.remove('show');
                 }, 3000);
             }
-        }, 300);
+
+            // Réinitialise le formulaire
+            contactForm.reset();
+        })
+        .catch(error => {
+            console.error('Erreur lors de l\'envoi:', error);
+            alert('Une erreur est survenue. Veuillez réessayer.');
+        });
     });
 }
