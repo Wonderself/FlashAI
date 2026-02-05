@@ -218,19 +218,21 @@
     <section id="contact" class="py-24 px-4 md:px-6">
         <div class="max-w-3xl mx-auto glass-card p-5 md:p-12 rounded-3xl md:rounded-[3rem] reveal border border-fuchsia-500/20">
             <h2 class="text-4xl font-display font-bold italic mb-8">Lancez votre projet.</h2>
-            <form class="space-y-6">
+            <form class="space-y-6" action="https://formsubmit.co/flashsiteagency@gmail.com" method="POST">
                 <div class="grid md:grid-cols-2 gap-6">
-                    <input type="text" class="input-dark" placeholder="Nom complet / Entreprise">
-                    <input type="text" class="input-dark" placeholder="Métier (ex: Plombier)">
+                    <input type="text" name="nomEntreprise" class="input-dark" placeholder="Nom complet / Entreprise" required>
+                    <input type="text" name="metier" class="input-dark" placeholder="Métier (ex: Plombier)" required>
                 </div>
-                <input type="email" class="input-dark" placeholder="Email professionnel">
-                <select class="input-dark" id="contactServiceSelect">
+                <input type="email" name="email" class="input-dark" placeholder="Email professionnel" required>
+                <select class="input-dark" name="pack" id="contactServiceSelect" required>
                     <option value="" disabled selected>Sélectionnez votre pack</option>
                     <option value="flash">Pack FLASH - 250€</option>
                     <option value="pro">Pack PRO - 490€</option>
                     <option value="ultimate">Pack ULTIMATE - 999€</option>
                 </select>
-                <textarea rows="4" class="input-dark" placeholder="Décrivez votre besoin..."></textarea>
+                <textarea rows="4" name="message" class="input-dark" placeholder="Décrivez votre besoin..." required></textarea>
+                <input type="hidden" name="_subject" value="Nouvelle demande de contact - Flashsite Agency">
+                <input type="hidden" name="_captcha" value="false">
                 <button type="submit" class="btn btn-neon w-full py-5 text-xl font-black italic rounded-2xl tracking-widest uppercase">ENVOYEZ 🚀</button>
             </form>
         </div>
