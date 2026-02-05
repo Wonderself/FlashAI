@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashsite Agency | Sites Web & Devis IA pour Artisans</title>
+    <meta name="description" content="L'agence web dédiée aux artisans et PME du bâtiment. Sites ultra-rapides, SEO local et outil de devis IA. Offre de lancement -30% jusqu'au 28 février 2026.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-fuchsia: #F900BF;
+            --color-cyan: #00F5FF;
+            --color-dark-bg: #050505;
+        }
+        body { background-color: var(--color-dark-bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; }
+        .glass-card { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .glass-card:hover { border-color: var(--color-fuchsia); transform: translateY(-5px); }
+        .btn-neon { background: var(--color-fuchsia); color: white; font-weight: 800; box-shadow: 0 0 20px rgba(249, 0, 191, 0.3); transition: 0.3s; }
+        .btn-neon:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(249, 0, 191, 0.6); }
+        .btn-outline { border: 1px solid rgba(255, 255, 255, 0.2); color: white; transition: 0.3s; }
+        .btn-outline:hover { border-color: var(--color-fuchsia); background: rgba(249, 0, 191, 0.05); }
+        .text-neon { color: var(--color-fuchsia); }
+        .text-cyan { color: var(--color-cyan); }
+        .input-dark { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; padding: 1rem; border-radius: 12px; width: 100%; transition: 0.3s; }
+        .input-dark:focus { border-color: var(--color-fuchsia); outline: none; background: rgba(255, 255, 255, 0.06); }
+        select.input-dark option { background: #0a0a0a; color: #fff; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .accordion-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease-in-out; }
+        .accordion-item.active .accordion-content { max-height: 2000px; opacity: 1; margin-top: 1.5rem; }
+        .accordion-item.active .icon { transform: rotate(180deg); color: var(--color-fuchsia); }
+        .portfolio-item { position: relative; overflow: hidden; aspect-ratio: 16/10; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; opacity: 0; transition: 0.3s; }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        img { transition: 0.6s ease; }
+        .promo-badge { background: linear-gradient(90deg, var(--color-fuchsia), #ff52d9); color: white; font-weight: 900; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#hero" class="h-16 flex items-center">
+                <img src="assets/logo3.png" alt="Flashsite Logo" class="h-full w-auto">
+            </a>
+            <div class="hidden lg:flex items-center gap-8 font-display font-bold text-xs uppercase tracking-widest">
+                <a href="#portfolio" class="hover:text-neon transition-colors">Inspirations</a>
+                <a href="#devis-tool" class="text-cyan hover:brightness-125 transition-all">Outil Devis</a>
+                <a href="#pricing" class="hover:text-neon transition-colors">Offres</a>
+                <a href="#blog" class="hover:text-neon transition-colors">Expertise</a>
+                <a href="#contact" class="btn btn-outline py-2 px-6 rounded-full">Contact</a>
+            </div>
+            <button class="lg:hidden" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16" /></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 p-6 border-b border-white/10 space-y-4">
+            <a href="#portfolio" class="block text-lg">Inspirations</a>
+            <a href="#devis-tool" class="block text-lg text-cyan">Outil Devis</a>
+            <a href="#pricing" class="block text-lg">Nos Tarifs</a>
+            <a href="#blog" class="block text-lg">Expertise</a>
+            <a href="#contact" class="block text-lg text-neon">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="pt-48 pb-32 px-6">
+        <div class="max-w-7xl mx-auto text-center reveal">
+            <div class="inline-flex items-center gap-2 mb-8">
+                <span class="promo-badge">Offre spéciale de LANCEMENT DE L'AGENCE</span>
+                <span class="text-xs font-bold text-gray-500">- valable jusqu'au 28 février 2026</span>
+            </div>
+            <h1 class="text-5xl md:text-8xl font-display font-bold mb-8 leading-tight">
+                On ne fait pas de sites,<br>on signe vos <span class="text-neon italic">chantiers</span>.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                L'agence web spécialisée pour les <span class="text-white font-bold">artisans et entreprises de travaux</span>. 
+                Gagnez du temps, dominez votre secteur.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#pricing" class="btn btn-neon py-5 px-12 rounded-full text-lg">Profiter des -30%</a>
+                <a href="#portfolio" class="btn btn-outline py-5 px-12 rounded-full text-lg">Structures métiers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio 6 Slots -->
+    <section id="portfolio" class="py-32 bg-zinc-950/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl font-display font-bold italic mb-16 reveal">Inspirations Métiers</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Maçonnerie Pro</h3></div></div>
+                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Menuiserie Design</h3></div></div>
+                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Plomberie & Chauffage</h3></div></div>
+                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Électricité IA</h3></div></div>
+                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Peinture & Déco</h3></div></div>
+                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Espaces Verts</h3></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outil Devis -->
+    <section id="devis-tool" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-card p-12 rounded-[3rem] flex flex-col lg:flex-row items-center gap-16 border-2 border-cyan/20">
+                <div class="lg:w-1/2 reveal">
+                    <span class="text-white font-bold text-xs uppercase mb-4 block">Option Phare Artisans</span>
+                    <h2 class="text-4xl md:text-6xl font-display font-bold italic mb-8">Votre devis en <span class="text-cyan">5 minutes</span>.</h2>
+                    <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                        Fini les soirées sur Excel. Notre outil semi-automatisé vous permet de générer des <strong>PDF professionnels avec votre logo</strong> directement sur le chantier.
+                    </p>
+                    <div class="space-y-4 text-gray-300 mb-10">
+                        <p><strong>Outil boosté à l'IA :</strong> Complètement manipulable et personnalisable à 100% selon vos prestations.</p>
+                        <p><strong>Zéro mise en page :</strong> Pas de calculs, juste donner les infos en brouillon et tout est propre, prêt à envoyer et signer.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-neon px-8 py-4 rounded-xl">Je veux gagner du temps</a>
+                </div>
+                <div class="lg:w-1/2 reveal">
+                    <div class="glass-card p-4 rounded-2xl bg-black/60 aspect-video flex items-center justify-center border border-cyan/20">
+                        <span class="text-gray-600 italic font-mono">[Screenshot Logiciel Devis IA]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offres -->
+    <section id="pricing" class="py-32 px-6 bg-zinc-950/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-display font-bold italic mb-20 text-center reveal">Offres de Lancement</h2>
+            <p class="text-center text-cyan font-bold mb-12 reveal">⏰ Offre valable jusqu'au 28 février 2026 - Limité à 20 sites par mois</p>
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Pack FLASH -->
+                <div class="glass-card p-10 rounded-3xl reveal border-t-4 border-fuchsia-500/50 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2">Pack FLASH</h3>
+                    <div class="text-5xl font-display font-bold mb-4">250€ <span class="text-sm font-normal text-gray-500 italic">TTC*</span></div>
+                    <ul class="space-y-4 text-gray-400 mb-10 flex-grow">
+                        <li>✔ <strong>Design sur mesure</strong></li>
+                        <li>✔ Site vitrine 1 page (Landing)</li>
+                        <li>✔ Hébergement 2 ans OFFERT</li>
+                        <li>✔ Livraison ultra Rapide</li>
+                        <li>✔ SEO Local optimisé</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline w-full py-3 rounded-xl flex items-center justify-center">Commander</a>
+                </div>
+                <!-- Pack PRO -->
+                <div class="glass-card p-10 rounded-3xl reveal border-2 border-fuchsia-500 relative scale-105 bg-black flex flex-col">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-fuchsia-500 text-white px-4 py-1 rounded-full text-xs font-black uppercase">Plus Populaire</div>
+                    <h3 class="text-2xl font-bold mb-2">Pack PRO</h3>
+                    <div class="text-5xl font-display font-bold mb-4">490€ <span class="text-sm font-normal text-gray-500 italic">TTC*</span></div>
+                    <ul class="space-y-4 text-gray-400 mb-10 flex-grow">
+                        <li>✔ Tout du pack FLASH +</li>
+                        <li>✔ Site complet (jusqu'à 5 pages)</li>
+                        <li>✔ <span class="text-cyan font-bold italic">Espace admin pour tout changer vous-même</span></li>
+                        <li>✔ Articles pour le référencement</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-neon w-full py-4 rounded-xl flex items-center justify-center">Commander</a>
+                </div>
+                <!-- Pack ULTIMATE -->
+                <div class="glass-card p-10 rounded-3xl reveal border-t-4 border-cyan flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2">Pack ULTIMATE</h3>
+                    <div class="text-5xl font-display font-bold mb-4">999€ <span class="text-sm font-normal text-gray-500 italic">TTC*</span></div>
+                    <ul class="space-y-4 text-gray-400 mb-10 flex-grow">
+                        <li>✔ Tout du pack PRO +</li>
+                        <li>✔ <strong>Outil Devis en ligne inclus</strong></li>
+                        <li>✔ Articles générés automatiquement par IA</li>
+                        <li>✔ Référencement professionnel</li>
+                        <li>✔ Coaching Digital Artisan et PME</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline w-full py-3 rounded-xl flex items-center justify-center">Commander</a>
+                </div>
+            </div>
+            <p class="text-center mt-12 text-gray-600 text-[10px] italic">(*) TVA non applicable, art. 293 B du CGI. Emmanuel Smadja EI. 🔔 Les tarifs affichés sont les prix de lancement. À partir du 1er mars, retour aux tarifs standards.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-32">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-display font-bold italic mb-16 text-center reveal">Questions d'Artisans</h2>
+            <div class="space-y-4" id="faq-container">
+                <!-- Les 8 questions seront injectées ici par le script -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="py-32 px-6 bg-zinc-950/30">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-display font-bold italic mb-16 reveal text-center">Expertise Travaux</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="blog-grid">
+                <!-- Les 8 articles seront injectés ici par le script -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-3xl mx-auto glass-card p-12 rounded-[3rem] reveal border border-fuchsia-500/20">
+            <h2 class="text-4xl font-display font-bold italic mb-8">Lancez votre projet.</h2>
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" class="input-dark" placeholder="Nom complet / Entreprise">
+                    <input type="text" class="input-dark" placeholder="Métier (ex: Plombier)">
+                </div>
+                <input type="email" class="input-dark" placeholder="Email professionnel">
+                <select class="input-dark" id="contactServiceSelect">
+                    <option value="" disabled selected>Sélectionnez votre pack</option>
+                    <option value="flash">Pack FLASH - 250€</option>
+                    <option value="pro">Pack PRO - 490€</option>
+                    <option value="ultimate">Pack ULTIMATE - 999€</option>
+                </select>
+                <textarea rows="4" class="input-dark" placeholder="Décrivez votre besoin..."></textarea>
+                <button type="submit" class="btn btn-neon w-full py-5 text-xl font-black italic rounded-2xl tracking-widest">RÉCLAMER MES -30%</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <img src="assets/logo3.png" alt="Logo Footer" class="h-32 w-auto mx-auto mb-12 opacity-80 hover:opacity-100 transition-opacity">
+            <div class="flex flex-wrap justify-center gap-12 text-xs font-bold text-gray-500 uppercase tracking-widest mb-12">
+                <a href="mentions-legales.html" class="hover:text-neon transition-all">Mentions Légales</a>
+                <a href="cgu.html" class="hover:text-neon transition-all">CGU</a>
+                <a href="#hero" class="hover:text-neon transition-all">Haut de page ↑</a>
+            </div>
+            <p class="text-[10px] text-gray-700 italic">
+                Flashsite Agency - Emmanuel Smadja EI - 39 Rue de la Gare de Reuilly, 75012 Paris.<br>
+                TVA non applicable, art. 293 B du CGI. Site ultra-rapide par Flashsite.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ Generator
+            const faqData = [
+                { q: "Pourquoi un artisan du bâtiment a-t-il besoin d'un site web en 2026 ?", a: "Votre site web est votre nouvelle assurance crédibilité. En 2026, 95% des parcours d'achat commencent sur smartphone. Un artisan sans site web est un artisan invisible, point final. Même avec le bouche-à-oreille, vos clients potentiels vont taper votre nom sur Google pour vérifier votre sérieux, vos réalisations passées et vos avis. Posséder un site Flashsite Agency vous permet de contrôler cette première impression, de montrer des photos haute définition de vos chantiers et de rassurer sur votre solvabilité et votre professionnalisme. C'est l'outil qui transforme une simple curiosité en une demande de devis ferme. En dominant le web local, vous ne subissez plus le marché, vous le menez. Un site professionnel est le seul commercial qui travaille pour vous 24h/24, sans jamais se fatiguer, pour un coût dérisoire comparé à une publicité classique." },
+                { q: "Comment mon site va-t-il m'aider à signer plus de chantiers ?", a: "Le site n'est que la partie émergée de l'iceberg. Ce qui compte, c'est le SEO (Référencement Naturel) local que nous codons à l'intérieur. Nous faisons en sorte que vous apparaissiez en tête de liste sur Google Maps et dans les résultats organiques dès qu'un prospect tape 'plombier à [votre ville]'. Mais au-delà du trafic, c'est la conversion qui compte : nos designs sont pensés pour lever les doutes. Galeries avant/après ultra-rapides, preuves sociales, certifications assurances décennales mises en avant... tout est orchestré pour que le client ait le réflexe de vous appeler vous, et pas votre voisin. De plus, notre outil de devis IA vous permet de battre vos concurrents sur la réactivité, point crucial pour sécuriser une affaire avant que le client ne change d'avis." },
+                { q: "L'outil de devis IA est-il vraiment simple à utiliser ?", a: "Nous l'avons conçu pour être utilisé avec de gros doigts sur un écran de smartphone, directement dans la poussière d'un chantier. Pas besoin de maîtriser l'informatique. Vous dictez vos notes ou écrivez un brouillon rapide des postes de dépenses, et l'IA structure instantanément le document. Elle calcule les métrages, applique vos prix catalogue et met en page un PDF de luxe avec votre logo. C'est un gain de temps évalué à environ 2 heures par jour pour une entreprise individuelle. Vous récupérez vos soirées et vos week-ends, tout en renvoyant une image de structure ultra-moderne à vos clients. La personnalisation est totale : vous restez maître de chaque ligne, l'IA n'est que votre assistant personnel ultra-rapide." },
+                { q: "Suis-je vraiment propriétaire de mon site et de mon nom de domaine ?", a: "Oui, c'est l'un des piliers de Flashsite. Contrairement à beaucoup d'agences qui vous 'louent' un site avec des abonnements à vie, chez nous, le site vous appartient à 100% une fois payé. Vous n'êtes pas captif. Si demain vous voulez partir, vous emportez votre code, votre design et votre domaine. C'est un actif pour votre entreprise, une valeur que vous pouvez même revendre si vous cédez votre société. Nous nous occupons de la technique, mais les clés de la maison sont dans votre poche. La transparence est la base d'une relation de confiance durable avec nos artisans partenaires." },
+                { q: "Comment se passe la gestion de mes photos de réalisations ?", a: "Dès le Pack PRO, nous installons un espace d'administration (CMS) simplifié à l'extrême. Vous n'avez pas besoin de nous appeler pour changer une photo. Vous prenez votre smartphone, vous vous connectez à votre interface Flashsite, vous uploadez vos photos de chantiers terminés, et le site s'occupe de tout : redimensionnement automatique, optimisation pour le SEO et mise en page fluide. Votre galerie reste ainsi toujours à jour, montrant à vos futurs clients que votre entreprise est active et dynamique. Un site qui vit est un site qui rassure et qui convertit mieux." },
+                { q: "Le tarif est-il vraiment sans TVA ?", a: "En tant qu'Entrepreneur Individuel (EI), Flashsite Agency bénéficie du régime de la franchise en base de TVA (article 293 B du CGI). Cela signifie que nous ne facturons pas de TVA. Le prix que vous voyez (ex: 250€) est exactement ce que vous payez net. C'est un avantage financier direct pour vous, surtout si vous êtes vous-même en auto-entreprise ou si vous travaillez pour des particuliers. C'est net, clair et sans mauvaises surprises au moment du paiement. Nous privilégions la simplicité administrative pour nous concentrer sur la performance de vos outils digitaux." },
+                { q: "Que comprend le coaching digital pour les artisans ?", a: "Beaucoup d'artisans ont un super site mais ne savent pas comment l'utiliser pour croître. Dans notre Pack ULTIMATE, nous passons du temps avec vous pour vous apprendre les ficelles du métier numérique. Comment obtenir plus d'avis Google Maps ? Comment répondre aux prospects sur WhatsApp de manière professionnelle ? Comment analyser quelles pages de votre site attirent le plus de clients ? Nous faisons de vous un artisan 'augmenté', capable de piloter sa présence en ligne comme il pilote ses chantiers. C'est une formation concrète, sans jargon, axée à 100% sur votre rentabilité." },
+                { q: "Quelles sont les garanties de sécurité pour mon site ?", a: "La sécurité est encodée dans notre code. Contrairement à des sites WordPress remplis de plugins vulnérables, nos sites sont robustes et protégés par les derniers protocoles de sécurité. Certificat SSL (le petit cadenas) inclus, sauvegardes quotidiennes et protection contre les attaques par force brute. Votre outil de travail numérique est sécurisé comme vous sécurisez vos échafaudages. En cas d'incident majeur sur les serveurs, nous pouvons restaurer votre site en quelques minutes. Vous dormez tranquille, nous veillons sur votre vitrine numérique." }
+            ];
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.innerHTML = faqData.map(item => `
+                <div class="accordion-item glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex justify-between items-center"><h4 class="font-bold text-white text-sm md:text-base">${item.q}</h4><span class="icon text-fuchsia-500 font-bold transition-transform">↓</span></div>
+                    <div class="accordion-content text-gray-400 text-sm leading-relaxed"><p class="pt-6 border-t border-white/5 mt-4 italic">${item.a}</p></div>
+                </div>
+            `).join('');
+
+            // Blog Generator
+            const blogData = [
+                { id: 1, title: "SEO Local Artisan", desc: "📍 Dominez Google Maps dans votre secteur...", color: "fuchsia" },
+                { id: 2, title: "Vitesse & Conversion", desc: "🚀 Pourquoi la lenteur tue vos ventes...", color: "cyan" },
+                { id: 3, title: "L'Automatique Devis", desc: "📄 Gagnez 2h par jour sur vos PDF...", color: "fuchsia" },
+                { id: 4, title: "Image de Marque", desc: "💎 Votre uniforme numérique premium...", color: "cyan" },
+                { id: 5, title: "Mobile First", desc: "📱 Le client vous cherche dans sa poche...", color: "fuchsia" },
+                { id: 6, title: "Preuve Sociale", desc: "⭐ Vos avis clients valent de l'or...", color: "cyan" },
+                { id: 7, title: "Expertise Contenu", desc: "✍️ Le blog comme aimant à chantiers...", color: "fuchsia" },
+                { id: 8, title: "Sécurité Web", desc: "🔒 Protéger votre outil de travail...", color: "cyan" }
+            ];
+            const blogGrid = document.getElementById('blog-grid');
+            blogGrid.innerHTML = blogData.map(art => `
+                <a href="articles/article-${art.id}.html" class="glass-card p-8 rounded-3xl hover:border-${art.color} transition-all group block relative overflow-hidden">
+                    <h5 class="font-bold text-xl mb-3 text-${art.color}">${art.title}</h5>
+                    <p class="text-sm text-gray-500 mb-4 italic">${art.desc}</p>
+                    <span class="text-${art.color} font-black text-xs">LIRE L'ARTICLE →</span>
+                </a>
+            `).join('');
+
+            // Scroll Reveal Logic
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Particle Canvas (Simplified)
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            let particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: Math.random() - 0.5, vy: Math.random() - 0.5 });
+            }
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#F900BF';
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+
+        function toggleAccordion(element) {
+            const isOpen = element.classList.contains('active');
+            document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('active'));
+            if (!isOpen) element.classList.add('active');
+        }
+    </script>
+</body>
+</html>

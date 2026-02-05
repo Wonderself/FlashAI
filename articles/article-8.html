@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & META TAGS -->
+    <title>Sécurité & Maintenance : Protégez votre outil de travail | Flashsite Agency</title>
+    <meta name="description" content="Découvrez pourquoi la sécurité et la maintenance d'un site web sont vitales pour un artisan. Évitez les piratages et garantissez une disponibilité 24h/24.">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Sécurité Web : Ne laissez pas votre business à la merci des hackers | Flashsite Agency">
+    <meta property="og:description" content="Un site en panne est un chantier perdu. Découvrez nos solutions de maintenance haute sécurité.">
+    <meta property="og:image" content="../assets/logo3.png">
+
+    <!-- Styles & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="selection:bg-fuchsia-500 selection:text-white">
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Unified Header -->
+    <header class="main-header fixed top-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-3 group logo-container">
+                <div class="logo-frame p-1">
+                    <img src="../assets/logo3.png" alt="Flashsite Logo" class="h-10 w-auto logo">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tighter hidden sm:block">FLASHSITE <span class="text-neon">AGENCY</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="../index.html#portfolio" class="text-sm font-medium hover:text-neon transition-colors">Inspirations</a>
+                <a href="../index.html#services" class="text-sm font-medium hover:text-neon transition-colors">Services</a>
+                <a href="../index.html#devis-tool" class="text-sm font-medium text-cyan hover:brightness-125 transition-all">Outil Devis</a>
+                <a href="../index.html#contact" class="btn btn-outline py-2 px-5 text-sm">Contact</a>
+            </div>
+
+            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 p-6 space-y-4 text-center">
+            <a href="../index.html#portfolio" class="block text-lg">Inspirations</a>
+            <a href="../index.html#services" class="block text-lg">Services</a>
+            <a href="../index.html#devis-tool" class="block text-lg text-cyan">Outil Devis</a>
+            <a href="../index.html#contact" class="block text-lg text-neon">Contact</a>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto">
+            <div class="mb-12 reveal">
+                <div class="inline-flex items-center gap-2 mb-6">
+                    <span class="promo-badge">Sécurité Pro</span>
+                    <span class="text-xs font-bold text-fuchsia-400">MAINTENANCE & SÉRÉNITÉ</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 italic text-gradient leading-tight">
+                    Un site en panne, c'est un chantier qui vous échappe.
+                </h1>
+                <p class="text-xl text-gray-400 italic border-l-4 border-fuchsia-500 pl-6">
+                    Pourquoi la maintenance technique est l'assurance tous risques de votre présence numérique.
+                </p>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 rounded-3xl reveal space-y-8 text-gray-300 leading-relaxed text-lg">
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">Le cauchemar du site piraté</h2>
+                    <p>
+                        Imaginez un client qui cherche votre numéro en urgence et tombe sur une page blanche ou, pire, sur un site affichant des messages malveillants. Pour un artisan, la réputation est tout. Un piratage ne détruit pas seulement votre visibilité, il détruit la confiance que vous avez mis des années à bâtir. La cybersécurité n'est plus réservée aux grandes banques ; les petites entreprises sont les cibles préférées des robots car elles sont souvent moins protégées.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">Pourquoi "faire son site soi-même" est un risque technique</h2>
+                    <p>
+                        Les plateformes gratuites ou les sites sans maintenance deviennent obsolètes en quelques mois. Les technologies web évoluent, les navigateurs (Chrome, Safari) se mettent à jour, et sans une surveillance constante, votre site finit par bugger ou ralentir. Chez <span class="text-white font-bold">Flashsite Agency</span>, nous codons nos structures pour qu'elles soient résilientes et nous surveillons chaque ligne de code pour garantir une disponibilité de 99.9%.
+                    </p>
+                </section>
+
+                <div class="bg-fuchsia-500/5 border border-fuchsia-500/20 p-6 rounded-2xl italic">
+                    <p class="text-fuchsia-400 font-bold mb-2">Le saviez-vous ?</p>
+                    "Un site non maintenu peut perdre jusqu'à 50% de sa vitesse de chargement en un an à cause de l'accumulation de données inutiles et de l'obsolescence des scripts."
+                </div>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">La sauvegarde : votre roue de secours</h2>
+                    <p>
+                        Une erreur de manipulation, une panne de serveur chez l'hébergeur... nul n'est à l'abri d'un incident. Nous effectuons des sauvegardes quotidiennes de votre site et de vos bases de données. En cas de problème, nous pouvons restaurer votre site en quelques minutes. C'est la garantie que vos photos de chantiers et vos textes sont en sécurité.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">Maintenance préventive vs curative</h2>
+                    <p>
+                        Attendre que le site soit cassé pour appeler un technicien coûte cher. Notre approche est préventive : nous mettons à jour les protocoles de sécurité, nous optimisons les bases de données et nous vérifions les formulaires de contact régulièrement. Vous ne voyez rien, mais votre site reste une machine de guerre performante jour après jour.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Call to Action Article -->
+            <div class="mt-12 glass-card p-10 rounded-3xl border-2 border-cyan/30 reveal text-center">
+                <h3 class="text-2xl font-display font-bold mb-4 italic">Dormez sur vos deux oreilles.</h3>
+                <p class="text-gray-400 mb-8">Offre de lancement février 2026 : -30% sur nos packs incluant 1 an de maintenance haute sécurité.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="../index.html#contact" class="btn btn-neon">Sécuriser mon business</a>
+                    <a href="../index.html#services" class="btn btn-outline">Découvrir nos Packs TTC</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="../assets/logo3.png" alt="Flashsite Logo" class="h-8">
+                        <span class="font-display font-bold text-lg italic tracking-tighter">FLASHSITE <span class=\"text-neon\">AGENCY</span></span>
+                    </div>
+                    <p class="text-sm text-gray-500">L'agence qui veille sur votre image pendant que vous veillez sur vos chantiers.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Liens utiles</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../index.html#portfolio" class="hover:text-neon transition-colors">Inspirations</a></li>
+                        <li><a href="../index.html#devis-tool" class="hover:text-cyan transition-colors">Outil Devis</a></li>
+                        <li><a href="../index.html#contact" class="hover:text-neon transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Légal</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../mentions-legales.html" class="hover:text-neon transition-colors">Mentions Légales</a></li>
+                        <li class="pt-4 text-xs italic">TVA non applicable, art. 293 B du CGI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 text-center text-sm text-gray-600">
+                © 2026 Flashsite Agency - Emmanuel Smadja EI - Tous prix affichés en TTC.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

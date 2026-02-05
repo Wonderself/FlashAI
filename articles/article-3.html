@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & META TAGS -->
+    <title>Devis en 5 minutes : Le secret des artisans rentables | Flashsite Agency</title>
+    <meta name="description" content="Découvrez comment notre outil de devis semi-automatisé permet aux entreprises de travaux de gagner 2h par jour et de signer plus de chantiers.">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Automatisez vos devis et gagnez des chantiers | Flashsite Agency">
+    <meta property="og:description" content="Finies les soirées sur Excel. Envoyez vos devis PDF pros directement depuis le chantier.">
+    <meta property="og:image" content="../assets/logo3.png">
+
+    <!-- Styles & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="selection:bg-fuchsia-500 selection:text-white">
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Unified Header -->
+    <header class="main-header fixed top-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-3 group logo-container">
+                <div class="logo-frame p-1">
+                    <img src="../assets/logo3.png" alt="Flashsite Logo" class="h-10 w-auto logo">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tighter hidden sm:block">FLASHSITE <span class="text-neon">AGENCY</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="../index.html#portfolio" class="text-sm font-medium hover:text-neon transition-colors">Inspirations</a>
+                <a href="../index.html#services" class="text-sm font-medium hover:text-neon transition-colors">Services</a>
+                <a href="../index.html#devis-tool" class="text-sm font-medium text-cyan hover:brightness-125 transition-all">Outil Devis</a>
+                <a href="../index.html#contact" class="btn btn-outline py-2 px-5 text-sm">Contact</a>
+            </div>
+
+            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 p-6 space-y-4 text-center">
+            <a href="../index.html#portfolio" class="block text-lg">Inspirations</a>
+            <a href="../index.html#services" class="block text-lg">Services</a>
+            <a href="../index.html#devis-tool" class="block text-lg text-cyan">Outil Devis</a>
+            <a href="../index.html#contact" class="block text-lg text-neon">Contact</a>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto">
+            <div class="mb-12 reveal">
+                <div class="inline-flex items-center gap-2 mb-6">
+                    <span class="promo-badge">Innovation Métier</span>
+                    <span class="text-xs font-bold text-cyan">PRODUCTIVITÉ ARTISAN</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 italic text-gradient leading-tight">
+                    Le Devis : Votre pire cauchemar ou votre meilleur atout ?
+                </h1>
+                <p class="text-xl text-gray-400 italic border-l-4 border-cyan pl-6">
+                    Pourquoi 80% des artisans perdent de l'argent avant même d'avoir commencé le chantier, et comment y remédier.
+                </p>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 rounded-3xl reveal space-y-8 text-gray-300 leading-relaxed text-lg">
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">La fin des soirées "paperasse"</h2>
+                    <p>
+                        La scène est classique : après 10 heures sur un chantier, vous rentrez chez vous et vous devez encore passer 2 heures à rédiger des devis sur un logiciel complexe ou un tableur Excel récalcitrant. Cette fatigue entraîne des erreurs de chiffrage, des oublis, et surtout, un délai d'envoi trop long qui laisse le temps à vos concurrents de prendre la place.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">L'impact psychologique de l'instantanéité</h2>
+                    <p>
+                        Un client qui reçoit un devis propre, professionnel et personnalisé avec votre logo <span class="text-white font-bold">directement après votre visite</span> est un client déjà à moitié signé. Pourquoi ? Parce que l'efficacité de votre gestion administrative reflète la qualité de votre travail sur le terrain. L'instantanéité crée une confiance inébranlable.
+                    </p>
+                </section>
+
+                <div class="feature-devis-box p-8 rounded-2xl border-2 border-cyan/30 bg-cyan/5">
+                    <h3 class="text-xl font-bold text-cyan mb-4 flex items-center gap-2">
+                        <span>⚡</span> L'Exclusivité Flashsite : Le Devis Semi-Auto
+                    </h3>
+                    <p class="mb-4">
+                        Notre outil phare n'est pas un simple formulaire. C'est une interface conçue pour être utilisée avec de gros doigts sur un écran de smartphone :
+                    </p>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li>• <span class="text-white font-bold">Notes Vocales :</span> Dictez vos travaux, l'outil les transforme en lignes de devis.</li>
+                        <li>• <span class="text-white font-bold">Bibliothèque de prix :</span> Sélectionnez vos prestations habituelles en un clic.</li>
+                        <li>• <span class="text-white font-bold">Génération PDF :</span> Mise en page automatique, calcul de la TVA (si applicable) et signature.</li>
+                    </ul>
+                </div>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">Gagnez 2 heures de vie par jour</h2>
+                    <p>
+                        Imaginez finir votre journée en même temps que votre chantier. Les devis sont déjà dans la boîte mail de vos clients. Vous pouvez enfin profiter de votre soirée sans culpabiliser. C'est ce que nous appelons <span class="italic text-cyan">"le luxe de l'artisan moderne"</span>.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Call to Action Article -->
+            <div class="mt-12 glass-card p-10 rounded-3xl border-2 border-fuchsia-500/30 reveal text-center">
+                <h3 class="text-2xl font-display font-bold mb-4 italic">Passez à la vitesse supérieure</h3>
+                <p class="text-gray-400 mb-8">Offre de lancement février 2026 : -30% sur votre site incluant l'option Devis Semi-Automatisé.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="../index.html#contact" class="btn btn-neon">Demander une démo de l'outil</a>
+                    <a href="../index.html#devis-tool" class="btn btn-outline">En savoir plus sur l'option</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="../assets/logo3.png" alt="Flashsite Logo" class="h-8">
+                        <span class="font-display font-bold text-lg italic tracking-tighter">FLASHSITE <span class="text-neon">AGENCY</span></span>
+                    </div>
+                    <p class="text-sm text-gray-500">L'agence qui automatise le succès des pros du bâtiment.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Navigation</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../index.html#portfolio" class="hover:text-neon transition-colors">Inspirations</a></li>
+                        <li><a href="../index.html#devis-tool" class="hover:text-cyan transition-colors">L'outil de Devis</a></li>
+                        <li><a href="../index.html#contact" class="hover:text-neon transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Légal</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="../mentions-legales.html" class="hover:text-neon transition-colors">Mentions Légales</a></li>
+                        <li class="pt-4 text-xs italic">TVA non applicable, art. 293 B du CGI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 text-center text-sm text-gray-600">
+                © 2026 Flashsite Agency - Emmanuel Smadja EI - Tarifs affichés en TTC.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
