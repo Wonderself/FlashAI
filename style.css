@@ -287,42 +287,27 @@ footer {
     pointer-events: none;
 }
 
-/* Success Popup */
+/* Success Popup - Simple */
 .success-popup {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
-    border: 2px solid #F900BF;
-    border-radius: 2rem;
-    padding: 3rem 2rem;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(249, 0, 191, 0.95);
+    border: 1px solid #F900BF;
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s ease;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 60px rgba(249, 0, 191, 0.3);
-    text-align: center;
-    max-width: 400px;
+    font-weight: bold;
+    color: white;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 20px rgba(249, 0, 191, 0.3);
 }
 
 .success-popup.show {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.success-popup h3 {
-    color: #00F5FF;
-    font-size: 1.8rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.success-popup p {
-    color: #a0a0a0;
-    font-size: 1rem;
-    line-height: 1.6;
 }

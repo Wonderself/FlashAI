@@ -190,17 +190,16 @@ function initFormHandler() {
     if (!contactForm) return;
 
     contactForm.addEventListener('submit', (e) => {
-        // On laisse FormSubmit gérer l'envoi
         setTimeout(() => {
             const successPopup = document.getElementById('successPopup');
             if (successPopup) {
                 successPopup.classList.add('show');
 
-                // Cacher le popup après 4 secondes
+                // Cacher le popup après 3 secondes
                 setTimeout(() => {
                     successPopup.classList.remove('show');
-                }, 4000);
+                }, 3000);
             }
-        }, 500);
+        }, 300);
     });
 }
