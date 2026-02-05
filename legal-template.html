@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashsite Agency | LEGAL_TITLE</title>
+    <meta name="description" content="Sites web futuristes, ultra-rapides et sur-mesure. Devenez propriétaire de votre présence en ligne.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="selection:bg-neon selection:text-white">
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-dark-bg/80 backdrop-blur-lg border-b border-white/5">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group logo-container">
+                <img src="assets/logo3.png" alt="Flashsite Agency Logo" class="h-16 w-auto logo logo-frame">
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html#adn" class="nav-link">Notre ADN</a>
+                <a href="index.html#solutions" class="nav-link">Solutions</a>
+                <a href="index.html#services-ia" class="nav-link">Services IA</a>
+                <a href="index.html#blog" class="nav-link">Blog</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="btn btn-outline">Devis Gratuit</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#adn" class="nav-link-mobile">Notre ADN</a>
+                <a href="index.html#solutions" class="nav-link-mobile">Solutions</a>
+                <a href="index.html#services-ia" class="nav-link-mobile">Services IA</a>
+                <a href="index.html#blog" class="nav-link-mobile">Blog</a>
+                <a href="index.html#faq" class="nav-link-mobile">FAQ</a>
+                <a href="index.html#contact" class="nav-link-mobile">Devis Gratuit</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Legal Section -->
+    <section class="py-32 bg-dark-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="glass-card p-8 md:p-12 rounded-2xl reveal shadow-lg">
+                <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-8">LEGAL_TITLE</h1>
+                <div class="text-gray-400 space-y-6 text-base leading-relaxed">
+                    LEGAL_CONTENT
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center mb-8">
+                <img src="../assets/logo3.png" alt="Flashsite Agency Logo" class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity">
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-xs font-bold text-gray-500 uppercase tracking-widest mb-8">
+                <a href="../mentions-legales.html" class="hover:text-neon transition-colors">Mentions Légales</a>
+                <a href="../cgu.html" class="hover:text-neon transition-colors">Conditions Générales d'Utilisation</a>
+            </div>
+
+            <p class="text-[10px] text-gray-700 leading-relaxed italic">
+                Flashsite Agency - l'Agence Web des Métiers du Bâtiment<br>
+                39 rue de la gare de Reuilly, 75012 PARIS - Tous droits Réservés
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

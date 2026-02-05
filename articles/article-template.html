@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & META TAGS -->
+    <title>ARTICLE_TITLE | Flashsite Agency</title>
+    <meta name="description" content="ARTICLE_DESCRIPTION">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="ARTICLE_TITLE | Flashsite Agency">
+    <meta property="og:description" content="ARTICLE_DESCRIPTION">
+    <meta property="og:image" content="../assets/logo3.png">
+
+    <!-- Styles & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="selection:bg-fuchsia-500 selection:text-white">
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Unified Header -->
+    <header class="main-header fixed top-0 w-full z-50">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-3 group logo-container">
+                <div class="logo-frame p-1">
+                    <img src="../assets/logo3.png" alt="Flashsite Logo" class="h-10 w-auto logo">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tighter hidden sm:block">FLASHSITE <span class="text-neon">AGENCY</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="../index.html#portfolio" class="text-sm font-medium hover:text-neon transition-colors">Inspirations</a>
+                <a href="../index.html#services" class="text-sm font-medium hover:text-neon transition-colors">Services</a>
+                <a href="../index.html#devis-tool" class="text-sm font-medium text-cyan hover:brightness-125 transition-all">Outil Devis</a>
+                <a href="../index.html#contact" class="btn btn-outline py-2 px-5 text-sm">Contact</a>
+            </div>
+
+            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 p-6 space-y-4 text-center">
+            <a href="../index.html#portfolio" class="block text-lg">Inspirations</a>
+            <a href="../index.html#services" class="block text-lg">Services</a>
+            <a href="../index.html#devis-tool" class="block text-lg text-cyan">Outil Devis</a>
+            <a href="../index.html#contact" class="block text-lg text-neon">Contact</a>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto">
+            <div class="mb-12 reveal">
+                <div class="inline-flex items-center gap-2 mb-6">
+                    <span class="promo-badge">CATEGORIE_LABEL</span>
+                    <span class="text-xs font-bold text-cyan">TOPIC_TAG</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 italic text-gradient leading-tight">
+                    MAIN_TITLE_HERE
+                </h1>
+                <p class="text-xl text-gray-400 italic border-l-4 border-fuchsia-500 pl-6">
+                    SUBTITLE_OR_HOOK_HERE
+                </p>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 rounded-3xl reveal space-y-8 text-gray-300 leading-relaxed text-lg">
+                <!-- CONTENT_START -->
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">SECTION_TITLE</h2>
+                    <p>SECTION_BODY_TEXT</p>
+                </section>
+                <!-- CONTENT_END -->
+            </div>
+
+            <!-- Call to Action Article -->
+            <div class="mt-12 glass-card p-10 rounded-3xl border-2 border-fuchsia-500/30 reveal text-center">
+                <h3 class="text-2xl font-display font-bold mb-4 italic">CALL_TO_ACTION_TITLE</h3>
+                <p class="text-gray-400 mb-8">CTA_DESCRIPTION_PROMO_FEB_2026</p>
+                <a href="../index.html#contact" class="btn btn-neon">CTA_BUTTON_TEXT</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center mb-8">
+                <img src="../assets/logo3.png" alt="Flashsite Agency Logo" class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity">
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-xs font-bold text-gray-500 uppercase tracking-widest mb-8">
+                <a href="../mentions-legales.html" class="hover:text-neon transition-colors">Mentions Légales</a>
+                <a href="../cgu.html" class="hover:text-neon transition-colors">Conditions Générales d'Utilisation</a>
+            </div>
+
+            <p class="text-[10px] text-gray-700 leading-relaxed italic">
+                Flashsite Agency - l'Agence Web des Métiers du Bâtiment<br>
+                39 rue de la gare de Reuilly, 75012 PARIS - Tous droits Réservés
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
