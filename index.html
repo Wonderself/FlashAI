@@ -5,42 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashsite Agency | Sites Web & Devis IA pour Artisans</title>
     <meta name="description" content="L'agence web dédiée aux artisans et PME du bâtiment. Sites ultra-rapides, SEO local et outil de devis IA. Offre de lancement -30% jusqu'au 28 février 2026.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-fuchsia: #F900BF;
-            --color-cyan: #00F5FF;
-            --color-dark-bg: #050505;
-        }
-        body { background-color: var(--color-dark-bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; }
-        .glass-card { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .glass-card:hover { border-color: var(--color-fuchsia); transform: translateY(-5px); }
-        .btn-neon { background: var(--color-fuchsia); color: white; font-weight: 800; box-shadow: 0 0 20px rgba(249, 0, 191, 0.3); transition: 0.3s; }
-        .btn-neon:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(249, 0, 191, 0.6); }
-        .btn-outline { border: 1px solid rgba(255, 255, 255, 0.2); color: white; transition: 0.3s; }
-        .btn-outline:hover { border-color: var(--color-fuchsia); background: rgba(249, 0, 191, 0.05); }
-        .text-neon { color: var(--color-fuchsia); }
-        .text-cyan { color: var(--color-cyan); }
-        .input-dark { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; padding: 1rem; border-radius: 12px; width: 100%; transition: 0.3s; }
-        .input-dark:focus { border-color: var(--color-fuchsia); outline: none; background: rgba(255, 255, 255, 0.06); }
-        select.input-dark option { background: #0a0a0a; color: #fff; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .accordion-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease-in-out; }
-        .accordion-item.active .accordion-content { max-height: 2000px; opacity: 1; margin-top: 1.5rem; }
-        .accordion-item.active .icon { transform: rotate(180deg); color: var(--color-fuchsia); }
-        .portfolio-item { position: relative; overflow: hidden; aspect-ratio: 16/10; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
-        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; opacity: 0; transition: 0.3s; }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-        .portfolio-item:hover img { transform: scale(1.1); }
-        img { transition: 0.6s ease; }
-        .promo-badge { background: linear-gradient(90deg, var(--color-fuchsia), #ff52d9); color: white; font-weight: 900; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; letter-spacing: 1px; }
-    </style>
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
@@ -90,16 +62,67 @@
         </div>
     </section>
 
-    <section id="portfolio" class="py-32 bg-zinc-950/30">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <h2 class="text-4xl md:text-6xl font-display font-bold italic mb-16 reveal">Inspirations Métiers</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Maçonnerie Pro</h3></div></div>
-                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Menuiserie Design</h3></div></div>
-                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Plomberie & Chauffage</h3></div></div>
-                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Électricité IA</h3></div></div>
-                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Peinture & Déco</h3></div></div>
-                <div class="portfolio-item reveal"><img src="https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&q=80" class="w-full h-full object-cover"><div class="portfolio-overlay"><h3 class="text-2xl font-bold">Espaces Verts</h3></div></div>
+    <section id="portfolio" class="py-24 bg-zinc-950/30 border-y border-white/5">
+        <div class="max-w-full mx-auto">
+            <h2 class="text-3xl md:text-5xl font-display font-bold italic mb-12 reveal text-center">Inspirations Métiers</h2>
+            
+            <div class="carousel-slider reveal">
+                <div class="carousel-track">
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" alt="Maçonnerie">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Maçonnerie</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80" alt="Menuiserie">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Menuiserie</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80" alt="Plomberie">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Plomberie</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80" alt="Électricité">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Électricité</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80" alt="Peinture">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Peinture</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&q=80" alt="Espaces Verts">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Espaces Verts</span></div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" alt="Maçonnerie">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Maçonnerie</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&q=80" alt="Menuiserie">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Menuiserie</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80" alt="Plomberie">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Plomberie</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80" alt="Électricité">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Électricité</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80" alt="Peinture">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Peinture</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&q=80" alt="Espaces Verts">
+                        <div class="carousel-overlay"><span class="font-bold text-sm text-white">Espaces Verts</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-xs text-gray-500 italic mb-4">Glissez ou survolez pour mettre en pause</p>
+                <a href="#contact" class="btn btn-outline py-3 px-8 rounded-full text-sm">Voir plus de modèles</a>
             </div>
         </div>
     </section>
