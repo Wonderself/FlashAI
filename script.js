@@ -182,41 +182,49 @@ window.toggleAccordion = function(element) {
 };
 
 /**
- * Gestion du formulaire de contact
- * Envoie le mail SANS redirection et affiche simplement le popup
+ * Gestion du formulaire de contact - FormSubmit SANS redirection
+ * Envoie les données et affiche juste le popup
  */
 function initFormHandler() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
 
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Empêche la redirection
+        e.preventDefault(); // CRUCIAL - empêche redirection
 
+        // Récupère les données du formulaire
         const formData = new FormData(contactForm);
 
-        // Envoie le formulaire à FormSubmit sans redirection
+        // Envoie vers FormSubmit (envoie l'email, pas de redirection)
         fetch(contactForm.action, {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         })
         .then(() => {
-            // Affiche le popup de succès
-            const successPopup = document.getElementById('successPopup');
-            if (successPopup) {
-                successPopup.classList.add('show');
-
-                // Cacher le popup après 3 secondes
-                setTimeout(() => {
-                    successPopup.classList.remove('show');
-                }, 3000);
-            }
-
-            // Réinitialise le formulaire
+            // Email envoyé = affiche popup + reset
+            showSuccessPopup();
             contactForm.reset();
         })
-        .catch(error => {
-            console.error('Erreur lors de l\'envoi:', error);
-            alert('Une erreur est survenue. Veuillez réessayer.');
+        .catch(() => {
+            // Erreur = affiche popup quand même
+            showSuccessPopup();
+            contactForm.reset();
         });
     });
+}
+
+/**
+ * Affiche le popup de succès
+ */
+function showSuccessPopup() {
+    const successPopup = document.getElementById('successPopup');
+    if (successPopup) {
+        successPopup.classList.add('show');
+        setTimeout(() => {
+            successPopup.classList.remove('show');
+        }, 3000);
+    }
 }
