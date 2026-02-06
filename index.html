@@ -271,7 +271,38 @@
     </footer>
 
     <script>
+        // --- 1. FONCTION POPUP (NOUVEAU) ---
+        function closePopup() {
+            const popup = document.getElementById('customSuccessPopup');
+            if(popup) {
+                popup.classList.add('hidden');
+                popup.classList.remove('flex');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 2. GESTION DU FORMULAIRE SANS REDIRECTION (NOUVEAU) ---
+            const contactForm = document.getElementById('contactForm');
+            const successPopup = document.getElementById('customSuccessPopup');
+
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // EMPÊCHE la redirection vers formsubmit
+                    
+                    // Affiche le popup
+                    if(successPopup) {
+                        successPopup.classList.remove('hidden');
+                        successPopup.classList.add('flex'); // Active le centrage
+                    }
+                    
+                    // Vide les champs du formulaire pour faire propre
+                    contactForm.reset();
+                });
+            }
+
+            // --- 3. LE RESTE EST IDENTIQUE À AVANT (FAQ, BLOG, ANIMATIONS) ---
+
             // FAQ Generator
             const faqData = [
                 { q: "Pourquoi un artisan du bâtiment a-t-il besoin d'un site web en 2026 ?", a: "Votre site web est votre nouvelle assurance crédibilité. En 2026, 95% des parcours d'achat commencent sur smartphone. Un artisan sans site web est un artisan invisible, point final. Même avec le bouche-à-oreille, vos clients potentiels vont taper votre nom sur Google pour vérifier votre sérieux, vos réalisations passées et vos avis. Posséder un site Flashsite Agency vous permet de contrôler cette première impression, de montrer des photos haute définition de vos chantiers et de rassurer sur votre solvabilité et votre professionnalisme. C'est l'outil qui transforme une simple curiosité en une demande de devis ferme. En dominant le web local, vous ne subissez plus le marché, vous le menez. Un site professionnel est le seul commercial qui travaille pour vous 24h/24, sans jamais se fatiguer, pour un coût dérisoire comparé à une publicité classique." },
@@ -284,12 +315,14 @@
                 { q: "Quelles sont les garanties de sécurité pour mon site ?", a: "La sécurité est encodée dans notre code. Contrairement à des sites WordPress remplis de plugins vulnérables, nos sites sont robustes et protégés par les derniers protocoles de sécurité. Certificat SSL (le petit cadenas) inclus, sauvegardes quotidiennes et protection contre les attaques par force brute. Votre outil de travail numérique est sécurisé comme vous sécurisez vos échafaudages. En cas d'incident majeur sur les serveurs, nous pouvons restaurer votre site en quelques minutes. Vous dormez tranquille, nous veillons sur votre vitrine numérique." }
             ];
             const faqContainer = document.getElementById('faq-container');
-            faqContainer.innerHTML = faqData.map(item => `
-                <div class="accordion-item glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleAccordion(this)">
-                    <div class="flex justify-between items-center"><h4 class="font-bold text-white text-sm md:text-base">${item.q}</h4><span class="icon text-fuchsia-500 font-bold transition-transform">↓</span></div>
-                    <div class="accordion-content text-gray-400 text-sm leading-relaxed"><p class="pt-6 border-t border-white/5 mt-4 italic">${item.a}</p></div>
-                </div>
-            `).join('');
+            if(faqContainer) {
+                faqContainer.innerHTML = faqData.map(item => `
+                    <div class="accordion-item glass-card rounded-2xl p-6 cursor-pointer" onclick="toggleAccordion(this)">
+                        <div class="flex justify-between items-center"><h4 class="font-bold text-white text-sm md:text-base">${item.q}</h4><span class="icon text-fuchsia-500 font-bold transition-transform">↓</span></div>
+                        <div class="accordion-content text-gray-400 text-sm leading-relaxed"><p class="pt-6 border-t border-white/5 mt-4 italic">${item.a}</p></div>
+                    </div>
+                `).join('');
+            }
 
             // Blog Generator
             const blogData = [
@@ -303,13 +336,15 @@
                 { id: 8, title: "Sécurité Web", desc: "🔒 Protéger votre outil de travail...", color: "cyan" }
             ];
             const blogGrid = document.getElementById('blog-grid');
-            blogGrid.innerHTML = blogData.map(art => `
-                <a href="articles/article-${art.id}.html" class="glass-card p-8 rounded-3xl hover:border-${art.color} transition-all group block relative overflow-hidden">
-                    <h5 class="font-bold text-xl mb-3 text-${art.color}">${art.title}</h5>
-                    <p class="text-sm text-gray-500 mb-4 italic">${art.desc}</p>
-                    <span class="text-${art.color} font-black text-xs">LIRE L'ARTICLE →</span>
-                </a>
-            `).join('');
+            if(blogGrid) {
+                blogGrid.innerHTML = blogData.map(art => `
+                    <a href="articles/article-${art.id}.html" class="glass-card p-8 rounded-3xl transition-all group block relative overflow-hidden">
+                        <h5 class="font-bold text-xl mb-3 text-${art.color}">${art.title}</h5>
+                        <p class="text-sm text-gray-500 mb-4 italic">${art.desc}</p>
+                        <span class="text-${art.color} font-black text-xs">LIRE L'ARTICLE →</span>
+                    </a>
+                `).join('');
+            }
 
             // Scroll Reveal Logic
             const observer = new IntersectionObserver((entries) => {
@@ -317,26 +352,28 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // Particle Canvas (Simplified)
+            // Particle Canvas
             const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            let particles = [];
-            for (let i = 0; i < 60; i++) {
-                particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: Math.random() - 0.5, vy: Math.random() - 0.5 });
+            if(canvas) {
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+                let particles = [];
+                for (let i = 0; i < 60; i++) {
+                    particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: Math.random() - 0.5, vy: Math.random() - 0.5 });
+                }
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#F900BF';
+                    particles.forEach(p => {
+                        p.x += p.vx; p.y += p.vy;
+                        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                        ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
+                    });
+                    requestAnimationFrame(animate);
+                }
+                animate();
             }
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#F900BF';
-                particles.forEach(p => {
-                    p.x += p.vx; p.y += p.vy;
-                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                    ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
-                });
-                requestAnimationFrame(animate);
-            }
-            animate();
         });
 
         function toggleAccordion(element) {
