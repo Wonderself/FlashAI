@@ -217,33 +217,40 @@
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-4 md:px-6">
-        <div class="max-w-3xl mx-auto glass-card p-5 md:p-12 rounded-3xl md:rounded-[3rem] reveal border-4 border-fuchsia-500">
-            <h2 class="text-4xl font-display font-bold italic mb-8">Lancez votre projet.</h2>
-            <form class="space-y-6" id="contactForm" action="https://formsubmit.co/flashsiteagency@gmail.com" method="POST">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <input type="text" name="nomEntreprise" class="input-dark" placeholder="Nom complet / Entreprise" required>
-                    <input type="text" name="metier" class="input-dark" placeholder="Métier (ex: Plombier)" required>
-                </div>
-                <input type="email" name="email" class="input-dark" placeholder="Email professionnel" required>
-                <select class="input-dark" name="pack" id="contactServiceSelect" required>
-                    <option value="" disabled selected>Sélectionnez votre pack</option>
-                    <option value="flash">Pack FLASH - 250€</option>
-                    <option value="pro">Pack PRO - 490€</option>
-                    <option value="ultimate">Pack ULTIMATE - 999€</option>
-                </select>
-                <textarea rows="4" name="message" class="input-dark" placeholder="Décrivez votre besoin..." required></textarea>
-                <input type="hidden" name="_subject" value="Nouvelle demande de contact - Flashsite Agency">
-                <input type="hidden" name="_captcha" value="false">
-                <button type="submit" class="btn btn-neon w-full py-5 text-xl font-black italic rounded-2xl tracking-widest uppercase">ENVOYEZ 🚀</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Success Popup -->
-    <div id="successPopup" class="success-popup">
-        Mail envoyé ✓
+<section id="contact" class="py-24 px-4 md:px-6">
+    <div class="max-w-3xl mx-auto glass-card p-5 md:p-12 rounded-3xl md:rounded-[3rem] reveal border-4 border-fuchsia-500">
+        <h2 class="text-4xl font-display font-bold italic mb-8">Lancez votre projet.</h2>
+        <form class="space-y-6" id="contactForm">
+            <div class="grid md:grid-cols-2 gap-6">
+                <input type="text" name="nomEntreprise" class="input-dark" placeholder="Nom complet / Entreprise" required>
+                <input type="text" name="metier" class="input-dark" placeholder="Métier (ex: Plombier)" required>
+            </div>
+            <input type="email" name="email" class="input-dark" placeholder="Email professionnel" required>
+            <select class="input-dark" name="pack" id="contactServiceSelect" required>
+                <option value="" disabled selected>Sélectionnez votre besoin</option>
+                <option value="flash">Pack FLASH - 250€</option>
+                <option value="pro">Pack PRO - 490€</option>
+                <option value="ultimate">Pack ULTIMATE - 999€</option>
+                <option value="renseignements">Demande de renseignements</option>
+                <option value="partenariat">Proposition de partenariat</option>
+            </select>
+            <textarea rows="4" name="message" class="input-dark" placeholder="Décrivez votre besoin..." required></textarea>
+            
+            <button type="submit" id="submitBtn" class="btn btn-neon w-full py-5 text-xl font-black italic rounded-2xl tracking-widest uppercase">
+                ENVOYEZ 🚀
+            </button>
+        </form>
     </div>
+</section>
+
+<div id="customSuccessPopup" class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-black/80 backdrop-blur-sm">
+    <div class="glass-card p-10 rounded-3xl border-2 border-fuchsia-500 text-center max-w-sm mx-4">
+        <div class="text-6xl mb-4 text-fuchsia-500">🚀</div>
+        <h3 class="text-2xl font-bold mb-2">Message envoyé !</h3>
+        <p class="text-gray-400 italic">Nous revenons vers vous très bientôt.</p>
+        <button onclick="closePopup()" class="mt-6 btn btn-outline py-2 px-8 rounded-full border-fuchsia-500 text-fuchsia-500">Fermer</button>
+    </div>
+</div>
 
     <footer class="py-12 bg-black border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 text-center">
