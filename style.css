@@ -311,3 +311,21 @@ footer {
     opacity: 1;
     visibility: visible;
 }
+/* --- OVERRIDES : BORDURES ALTERNÉES (DEMANDE UTILISATEUR) --- */
+
+/* 1. Pour la FAQ (Questions) */
+#faq-container .accordion-item:nth-child(odd) {
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Blanc semi-transparent */
+}
+#faq-container .accordion-item:nth-child(even) {
+    border: 1px solid var(--color-fuchsia); /* Fushia */
+}
+
+/* 2. Pour le Blog (Expertise Travaux) */
+/* On cible les liens <a> directs dans la grille */
+#blog-grid > a:nth-child(odd) {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+#blog-grid > a:nth-child(even) {
+    border: 1px solid var(--color-fuchsia) !important;
+}
