@@ -1,12 +1,11 @@
 /**
- * FlashAI v5.0 — MEGA ULTRA PREMIUM
- * Solar System, Interactive Demos, 3D Everything
+ * FlashAI v5.5 — MEGA ULTRA PREMIUM UPGRADE
+ * Sparkle Cursor, Galaxy, 3D Pricing, Smart Form, Knowledge Base FAQ
  */
-
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
     initScrollProgress();
-    initCustomCursor();
+    initSparkleCursor();
     initScrollReveal();
     initHeader();
     initMobileMenu();
@@ -24,15 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initMethodTimeline();
     initPortfolio();
     initTestimonials();
-    initSolarSystem();
+    initGalaxy();
     initToolsMobile();
-    initToolsCategories();
+    initGalaxyCategories();
     initPricing();
     initROICalculator();
     initFAQ();
     initCTACanvas();
     initCTATimer();
-    initContactForm();
+    initSmartForm();
     initMagneticBtn();
     initScrollTop();
     initSmoothAnchors();
@@ -40,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initEasterEggs();
 });
 
-/* ========== HELPERS ========== */
 function showToast(msg) {
     const c = document.getElementById('toast-container');
     if (!c) return;
@@ -59,100 +57,141 @@ function initLoader() {
     const pct = document.getElementById('loader-percent');
     if (!loader) return;
     document.body.style.overflow = 'hidden';
-
-    const lines = [
-        '[INIT] Loading neural network...',
-        '[OK] 247 tools connected',
-        '[OK] AI Core ready',
-        '[OK] Three.js renderer initialized',
-        '[OK] Solar system mapped',
-        '[LAUNCH] FlashAI v5.0'
-    ];
-
-    let progress = 0;
-    let lineIdx = 0;
-
+    const lines = ['[INIT] Loading neural network...','[OK] 247 tools connected','[OK] AI Core ready','[OK] Galaxy renderer initialized','[OK] Sparkle engine loaded','[LAUNCH] FlashAI v5.5'];
+    let progress = 0, lineIdx = 0;
     const interval = setInterval(() => {
         progress += Math.random() * 15 + 5;
         if (progress > 100) progress = 100;
         if (bar) bar.style.width = progress + '%';
         if (pct) pct.textContent = Math.floor(progress) + '%';
-
         if (lineIdx < lines.length && progress > (lineIdx + 1) * (100 / lines.length)) {
-            if (boot) {
-                const span = document.createElement('div');
-                span.textContent = lines[lineIdx];
-                span.style.opacity = '0';
-                span.style.transform = 'translateX(-10px)';
-                span.style.transition = 'all 0.3s ease';
-                boot.appendChild(span);
-                requestAnimationFrame(() => { span.style.opacity = '1'; span.style.transform = 'translateX(0)'; });
-            }
+            if (boot) { const s = document.createElement('div'); s.textContent = lines[lineIdx]; s.style.cssText = 'opacity:0;transform:translateX(-10px);transition:all 0.3s'; boot.appendChild(s); requestAnimationFrame(() => { s.style.opacity = '1'; s.style.transform = 'translateX(0)'; }); }
             lineIdx++;
         }
-
-        if (progress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 600);
-        }
+        if (progress >= 100) { clearInterval(interval); setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 600); }
     }, 200);
-
     setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 5000);
 }
 
-/* ========== SCROLL PROGRESS ========== */
 function initScrollProgress() {
     const bar = document.getElementById('scroll-progress');
     if (!bar) return;
-    window.addEventListener('scroll', () => {
-        const h = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (window.scrollY / h * 100) + '%';
-    }, { passive: true });
+    window.addEventListener('scroll', () => { bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%'; }, { passive: true });
 }
 
-/* ========== CUSTOM CURSOR ========== */
-function initCustomCursor() {
+/* ========== SPARKLE CURSOR ========== */
+function initSparkleCursor() {
     if (window.matchMedia('(hover: none)').matches) return;
-    const dot = document.querySelector('.cursor-dot');
-    const ring = document.querySelector('.cursor-ring');
-    if (!dot || !ring) return;
-    let mx = 0, my = 0, rx = 0, ry = 0;
+    const canvas = document.getElementById('sparkle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, mx = 0, my = 0, pmx = 0, pmy = 0;
+    const particles = [];
+    const colors = ['#ff006e','#bf00ff','#ff69b4','#00f0ff','#ffd700','#ff8c00','#00ff87','#e879f9','#f472b6'];
+
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    (function loop() {
-        rx += (mx - rx) * 0.15;
-        ry += (my - ry) * 0.15;
-        dot.style.left = mx + 'px';
-        dot.style.top = my + 'px';
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
+
+    class Sparkle {
+        constructor(x, y) {
+            this.x = x + (Math.random() - 0.5) * 20;
+            this.y = y + (Math.random() - 0.5) * 20;
+            this.vx = (Math.random() - 0.5) * 3;
+            this.vy = (Math.random() - 0.5) * 3 - 1;
+            this.life = 1;
+            this.decay = Math.random() * 0.02 + 0.015;
+            this.size = Math.random() * 4 + 1.5;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.type = Math.random() > 0.3 ? 'star' : 'circle';
+            this.rotation = Math.random() * Math.PI * 2;
+            this.rotSpeed = (Math.random() - 0.5) * 0.2;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.vy += 0.03;
+            this.life -= this.decay;
+            this.rotation += this.rotSpeed;
+            this.size *= 0.995;
+        }
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.life * 0.8;
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            if (this.type === 'star') {
+                ctx.beginPath();
+                for (let i = 0; i < 5; i++) {
+                    const a = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+                    const r = i % 2 === 0 ? this.size : this.size * 0.4;
+                    ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+                }
+                ctx.closePath();
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = this.size * 3;
+                ctx.fill();
+            } else {
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = this.size * 4;
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+    }
+
+    let frame = 0;
+    function loop() {
+        ctx.clearRect(0, 0, w, h);
+        const dx = mx - pmx, dy = my - pmy;
+        const speed = Math.sqrt(dx * dx + dy * dy);
+        const spawnCount = Math.min(Math.floor(speed * 0.5) + 1, 8);
+
+        if (speed > 2 && frame % 2 === 0) {
+            for (let i = 0; i < spawnCount; i++) {
+                particles.push(new Sparkle(mx, my));
+            }
+        }
+
+        // Main cursor glow
+        ctx.beginPath();
+        const grad = ctx.createRadialGradient(mx, my, 0, mx, my, 30);
+        grad.addColorStop(0, 'rgba(255, 0, 110, 0.15)');
+        grad.addColorStop(0.5, 'rgba(191, 0, 255, 0.05)');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.arc(mx, my, 30, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].life <= 0) particles.splice(i, 1);
+        }
+
+        pmx = mx; pmy = my;
+        frame++;
         requestAnimationFrame(loop);
-    })();
-    document.addEventListener('mouseover', e => {
-        const t = e.target.closest('a, button, [data-tilt], .bento-card, .crm-card, input, textarea, select');
-        if (t) ring.classList.add('hover');
-        else ring.classList.remove('hover');
-    });
+    }
+    loop();
 }
 
-/* ========== SCROLL REVEAL ========== */
 function initScrollReveal() {
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.06 });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 }
 
-/* ========== HEADER ========== */
 function initHeader() {
     const hdr = document.getElementById('main-header');
     if (!hdr) return;
     const navLinks = hdr.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
         hdr.classList.toggle('scrolled', window.scrollY > 50);
-        // Active section
         const sections = document.querySelectorAll('section[id]');
         let current = '';
         sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
@@ -160,813 +199,303 @@ function initHeader() {
     }, { passive: true });
 }
 
-/* ========== MOBILE MENU ========== */
 function initMobileMenu() {
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('mobile-menu-btn'), menu = document.getElementById('mobile-menu');
     if (!btn || !menu) return;
-    btn.addEventListener('click', () => {
-        const open = menu.classList.toggle('open');
-        btn.classList.toggle('menu-open');
-        document.body.style.overflow = open ? 'hidden' : '';
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        menu.classList.remove('open');
-        btn.classList.remove('menu-open');
-        document.body.style.overflow = '';
-    }));
+    btn.addEventListener('click', () => { const o = menu.classList.toggle('open'); btn.classList.toggle('menu-open'); document.body.style.overflow = o ? 'hidden' : ''; });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); btn.classList.remove('menu-open'); document.body.style.overflow = ''; }));
 }
 
-/* ========== COUNTERS ========== */
 function initCounters() {
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            const card = e.target;
-            const target = parseInt(card.dataset.count);
-            const suffix = card.dataset.suffix || '';
-            const numEl = card.querySelector('.stat-number');
-            if (!numEl) return;
-            let start = 0;
-            const dur = 2000;
-            const startTime = performance.now();
-            function tick(now) {
-                const p = Math.min((now - startTime) / dur, 1);
-                const eased = 1 - Math.pow(1 - p, 4);
-                const val = Math.round(eased * target);
-                numEl.textContent = val.toLocaleString('fr') + suffix;
-                if (p < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-            obs.unobserve(card);
-        });
-    }, { threshold: 0.3 });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; const card = e.target, target = parseInt(card.dataset.count), suffix = card.dataset.suffix || '', numEl = card.querySelector('.stat-number'); if (!numEl) return; const startTime = performance.now(); function tick(now) { const p = Math.min((now - startTime) / 2000, 1); numEl.textContent = Math.round((1 - Math.pow(1 - p, 4)) * target).toLocaleString('fr') + suffix; if (p < 1) requestAnimationFrame(tick); } requestAnimationFrame(tick); obs.unobserve(card); }); }, { threshold: 0.3 });
     document.querySelectorAll('.stat-card').forEach(c => obs.observe(c));
 }
 
-/* ========== MARQUEE ========== */
 function initMarquee() {
-    const tools1 = ['React','Vue.js','Next.js','Node.js','Python','TypeScript','PostgreSQL','MongoDB','Redis','Docker','AWS','Vercel','Stripe','OpenAI','TailwindCSS','GraphQL'];
-    const tools2 = ['Firebase','Supabase','Prisma','tRPC','Cloudflare','Twilio','SendGrid','Zapier','Make','n8n','HubSpot','Slack','Discord','Figma','GitHub','VS Code'];
-    const svgIcons = {
-        'React': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/><path d="M12 21.35c-1.1 0-2.13-.27-3.02-.73-.52.12-1.07.18-1.63.18-3.07 0-5.56-1.63-5.56-3.64 0-1.2.83-2.3 2.2-3.16-.08-.5-.12-1-.12-1.5s.04-1 .12-1.5C2.62 10.14 1.79 9.04 1.79 7.84c0-2.01 2.49-3.64 5.56-3.64.56 0 1.11.06 1.63.18C9.87 3.92 10.9 3.65 12 3.65s2.13.27 3.02.73c.52-.12 1.07-.18 1.63-.18 3.07 0 5.56 1.63 5.56 3.64 0 1.2-.83 2.3-2.2 3.16.08.5.12 1 .12 1.5s-.04 1-.12 1.5c1.37.86 2.2 1.96 2.2 3.16 0 2.01-2.49 3.64-5.56 3.64-.56 0-1.11-.06-1.63-.18-.89.46-1.92.73-3.02.73z" opacity=".2"/></svg>',
-    };
-    function buildRow(id, items) {
-        const row = document.getElementById(id);
-        if (!row) return;
-        const html = items.map(t => `<span class="marquee-pill"><span>${t}</span></span>`).join('');
-        row.innerHTML = html + html;
-    }
-    buildRow('marquee-row-1', tools1);
-    buildRow('marquee-row-2', tools2);
+    const t1 = ['React','Vue.js','Next.js','Node.js','Python','TypeScript','PostgreSQL','MongoDB','Redis','Docker','AWS','Vercel','Stripe','OpenAI','TailwindCSS','GraphQL'];
+    const t2 = ['Firebase','Supabase','Prisma','tRPC','Cloudflare','Twilio','SendGrid','Zapier','Make','n8n','HubSpot','Slack','Discord','Figma','GitHub','VS Code'];
+    function build(id, items) { const r = document.getElementById(id); if (!r) return; r.innerHTML = items.map(t => `<span class="marquee-pill">${t}</span>`).join('') + items.map(t => `<span class="marquee-pill">${t}</span>`).join(''); }
+    build('marquee-row-1', t1); build('marquee-row-2', t2);
 }
 
-/* ========== SERVICES ========== */
 function initServices() {
     const grid = document.getElementById('services-grid');
     if (!grid) return;
-    const services = [
+    const svcs = [
         { icon: '🌐', title: 'Sites Web', desc: 'Sites vitrines, landing pages, e-commerce. Design premium, SEO-ready, ultra-rapides.', color: '#00f0ff', anim: 'browser' },
-        { icon: '📊', title: 'CRM & ERP', desc: 'Outils de gestion clients et business sur mesure. Tableaux de bord, pipelines, automatisations.', color: '#bf00ff', anim: 'dashboard' },
-        { icon: '🤖', title: 'Chatbot IA', desc: 'Assistants virtuels intelligents qui convertissent. Intégration WhatsApp, site, Messenger.', color: '#ff006e', anim: 'chat' },
+        { icon: '📊', title: 'CRM & ERP', desc: 'Outils de gestion clients sur mesure. Pipelines, automatisations, dashboards.', color: '#bf00ff', anim: 'dashboard' },
+        { icon: '🤖', title: 'Chatbot IA', desc: 'Assistants virtuels intelligents. Intégration WhatsApp, site, Messenger.', color: '#ff006e', anim: 'chat' },
         { icon: '⚡', title: 'Automatisation', desc: 'Workflows automatisés entre vos outils. Zapier, Make, n8n, scripts custom.', color: '#ff8c00', anim: 'flow' },
-        { icon: '🔍', title: 'SEO Technique', desc: 'Audit complet, optimisation on-page, Core Web Vitals. Résultats mesurables en 30 jours.', color: '#00ff87', anim: 'chart' },
-        { icon: '🛡️', title: 'Sécurité', desc: 'SSL, WAF, audit de vulnérabilités, RGPD. Protection complète de vos assets digitaux.', color: '#ffd700', anim: 'shield' }
+        { icon: '🔍', title: 'SEO Technique', desc: 'Audit complet, Core Web Vitals. Résultats mesurables en 30 jours.', color: '#00ff87', anim: 'chart' },
+        { icon: '🛡️', title: 'Sécurité', desc: 'SSL, WAF, audit OWASP, RGPD. Protection complète de vos assets.', color: '#ffd700', anim: 'shield' }
     ];
-
-    grid.innerHTML = services.map((s, i) => `
-        <div class="bento-card reveal" style="--card-glow: ${s.color}30; transition-delay: ${i * 0.1}s" data-tilt>
-            <div class="bento-card-glow"></div>
-            <div class="bento-icon" style="background: ${s.color}15; color: ${s.color}">${s.icon}</div>
-            <h3 class="font-display font-bold text-lg mb-2">${s.title}</h3>
-            <p class="text-surface-400 text-sm leading-relaxed">${s.desc}</p>
-            <div class="bento-mini-anim" id="bento-anim-${s.anim}"></div>
-        </div>
-    `).join('');
-
-    // Tilt effect
+    grid.innerHTML = svcs.map((s, i) => `<div class="bento-card reveal" style="--card-glow:${s.color}30;transition-delay:${i*0.1}s" data-tilt><div class="bento-card-glow"></div><div class="bento-icon" style="background:${s.color}15;color:${s.color}">${s.icon}</div><h3 class="font-display font-bold text-lg mb-2">${s.title}</h3><p class="text-surface-400 text-sm leading-relaxed">${s.desc}</p><div class="bento-mini-anim" id="bento-anim-${s.anim}"></div></div>`).join('');
     grid.querySelectorAll('[data-tilt]').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const r = card.getBoundingClientRect();
-            const x = (e.clientX - r.left) / r.width - 0.5;
-            const y = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
-            card.querySelector('.bento-card-glow').style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
-            card.querySelector('.bento-card-glow').style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
-        });
+        card.addEventListener('mousemove', e => { const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; card.style.transform = `perspective(1000px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`; const g = card.querySelector('.bento-card-glow'); if(g) { g.style.setProperty('--mouse-x', (e.clientX-r.left)+'px'); g.style.setProperty('--mouse-y', (e.clientY-r.top)+'px'); } });
         card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
-
-    // Mini animations inside bento cards
     initBentoAnims();
 }
 
 function initBentoAnims() {
-    // Browser building animation
-    const browser = document.getElementById('bento-anim-browser');
-    if (browser) {
-        browser.innerHTML = '<div style="padding:8px"><div style="height:8px;background:rgba(0,240,255,0.3);border-radius:4px;margin-bottom:6px;width:60%;animation:bento-grow 2s ease infinite"></div><div style="height:40px;background:rgba(0,240,255,0.1);border-radius:4px;margin-bottom:6px;animation:bento-grow 2s ease infinite 0.3s"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="height:30px;background:rgba(0,240,255,0.08);border-radius:4px;animation:bento-grow 2s ease infinite 0.6s"></div><div style="height:30px;background:rgba(0,240,255,0.08);border-radius:4px;animation:bento-grow 2s ease infinite 0.9s"></div></div></div>';
-    }
-    const dashboard = document.getElementById('bento-anim-dashboard');
-    if (dashboard) {
-        dashboard.innerHTML = '<div style="padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="height:20px;background:rgba(191,0,255,0.15);border-radius:4px"></div><div style="height:20px;background:rgba(191,0,255,0.1);border-radius:4px"></div><div style="grid-column:span 2;height:50px;background:linear-gradient(90deg,rgba(191,0,255,0.2),rgba(191,0,255,0.05));border-radius:4px;position:relative;overflow:hidden"><div style="position:absolute;bottom:0;left:0;right:0;height:70%;background:rgba(191,0,255,0.15);border-radius:4px;animation:bento-pulse 2s ease infinite"></div></div></div>';
-    }
-    const chat = document.getElementById('bento-anim-chat');
-    if (chat) {
-        chat.innerHTML = '<div style="padding:8px;space-y:4px"><div style="display:flex;margin-bottom:6px"><div style="height:12px;background:rgba(255,0,110,0.15);border-radius:8px;padding:4px 8px;max-width:70%;width:60%;animation:bento-grow 3s ease infinite"></div></div><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><div style="height:12px;background:rgba(255,0,110,0.25);border-radius:8px;padding:4px 8px;max-width:60%;width:50%;animation:bento-grow 3s ease infinite 0.5s"></div></div><div style="display:flex"><div style="height:12px;background:rgba(255,0,110,0.1);border-radius:8px;padding:4px 8px;max-width:75%;width:70%;animation:bento-grow 3s ease infinite 1s"></div></div></div>';
-    }
-    const flow = document.getElementById('bento-anim-flow');
-    if (flow) {
-        flow.innerHTML = '<div style="padding:12px;display:flex;align-items:center;justify-content:center;gap:8px;height:100%"><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bento-pulse 1.5s ease infinite"></div><div style="width:20px;height:2px;background:rgba(255,140,0,0.3)"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bento-pulse 1.5s ease infinite 0.3s"></div><div style="width:20px;height:2px;background:rgba(255,140,0,0.3)"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bento-pulse 1.5s ease infinite 0.6s"></div></div>';
-    }
-    const chart = document.getElementById('bento-anim-chart');
-    if (chart) {
-        chart.innerHTML = '<svg viewBox="0 0 200 80" style="width:100%;height:100%;padding:8px"><polyline points="10,70 40,50 70,55 100,30 130,35 160,15 190,20" fill="none" stroke="rgba(0,255,135,0.5)" stroke-width="2" stroke-dasharray="300" stroke-dashoffset="300" style="animation:bento-draw 3s ease infinite"><animate attributeName="stroke-dashoffset" from="300" to="0" dur="2s" repeatCount="indefinite"/></polyline></svg>';
-    }
-    const shield = document.getElementById('bento-anim-shield');
-    if (shield) {
-        shield.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%"><div style="width:40px;height:50px;border:2px solid rgba(255,215,0,0.3);border-radius:0 0 20px 20px;position:relative;animation:bento-pulse 2s ease infinite"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:rgba(255,215,0,0.4);border-radius:50%"></div></div></div>';
-    }
-
-    // Add keyframes
-    if (!document.getElementById('bento-keyframes')) {
-        const style = document.createElement('style');
-        style.id = 'bento-keyframes';
-        style.textContent = `
-            @keyframes bento-grow { 0%,100% { opacity:0.5; transform:scaleX(0.8); } 50% { opacity:1; transform:scaleX(1); } }
-            @keyframes bento-pulse { 0%,100% { opacity:0.4; transform:scale(0.9); } 50% { opacity:1; transform:scale(1.1); } }
-            @keyframes bento-draw { 0% { stroke-dashoffset:300; } 50% { stroke-dashoffset:0; } 100% { stroke-dashoffset:0; } }
-        `;
-        document.head.appendChild(style);
-    }
+    const anims = { browser: '<div style="padding:8px"><div style="height:8px;background:rgba(0,240,255,0.3);border-radius:4px;margin-bottom:6px;width:60%;animation:bp 2s ease infinite"></div><div style="height:40px;background:rgba(0,240,255,0.1);border-radius:4px;margin-bottom:6px;animation:bp 2s ease infinite 0.3s"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="height:30px;background:rgba(0,240,255,0.08);border-radius:4px;animation:bp 2s ease infinite 0.6s"></div><div style="height:30px;background:rgba(0,240,255,0.08);border-radius:4px;animation:bp 2s ease infinite 0.9s"></div></div></div>',
+        dashboard: '<div style="padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="height:20px;background:rgba(191,0,255,0.15);border-radius:4px"></div><div style="height:20px;background:rgba(191,0,255,0.1);border-radius:4px"></div><div style="grid-column:span 2;height:50px;background:linear-gradient(90deg,rgba(191,0,255,0.2),rgba(191,0,255,0.05));border-radius:4px;overflow:hidden"><div style="height:70%;margin-top:auto;background:rgba(191,0,255,0.15);border-radius:4px;animation:bp 2s ease infinite"></div></div></div>',
+        chat: '<div style="padding:8px"><div style="display:flex;margin-bottom:6px"><div style="height:12px;background:rgba(255,0,110,0.15);border-radius:8px;width:60%;animation:bp 3s ease infinite"></div></div><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><div style="height:12px;background:rgba(255,0,110,0.25);border-radius:8px;width:50%;animation:bp 3s ease infinite 0.5s"></div></div><div style="display:flex"><div style="height:12px;background:rgba(255,0,110,0.1);border-radius:8px;width:70%;animation:bp 3s ease infinite 1s"></div></div></div>',
+        flow: '<div style="padding:12px;display:flex;align-items:center;justify-content:center;gap:8px;height:100%"><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bp 1.5s ease infinite"></div><div style="width:20px;height:2px;background:rgba(255,140,0,0.3)"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bp 1.5s ease infinite 0.3s"></div><div style="width:20px;height:2px;background:rgba(255,140,0,0.3)"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bp 1.5s ease infinite 0.6s"></div></div>',
+        chart: '<svg viewBox="0 0 200 80" style="width:100%;height:100%;padding:8px"><polyline points="10,70 40,50 70,55 100,30 130,35 160,15 190,20" fill="none" stroke="rgba(0,255,135,0.5)" stroke-width="2"><animate attributeName="stroke-dasharray" from="0,300" to="300,0" dur="2s" repeatCount="indefinite"/></polyline></svg>',
+        shield: '<div style="display:flex;align-items:center;justify-content:center;height:100%"><div style="width:40px;height:50px;border:2px solid rgba(255,215,0,0.3);border-radius:0 0 20px 20px;animation:bp 2s ease infinite"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:rgba(255,215,0,0.4);border-radius:50%"></div></div></div>'
+    };
+    for (const [k, v] of Object.entries(anims)) { const el = document.getElementById('bento-anim-' + k); if (el) el.innerHTML = v; }
+    if (!document.getElementById('bp-style')) { const s = document.createElement('style'); s.id = 'bp-style'; s.textContent = '@keyframes bp{0%,100%{opacity:.5;transform:scaleX(.8)}50%{opacity:1;transform:scaleX(1)}}'; document.head.appendChild(s); }
 }
 
 /* ========== HERO TERMINAL ========== */
 function initHeroTerminal() {
     const output = document.getElementById('terminal-output');
     if (!output) return;
-
     const sequences = [
         { cmd: '$ flashai create --type website --name "MonSite"', lines: [
-            { t: '<span class="t-blue">→</span> Initialisation du projet...', d: 400 },
+            { t: '<span class="t-blue">→</span> Initialisation...', d: 400 },
             { t: '<span class="t-green">✓</span> Template premium chargé', d: 300 },
             { t: '<span class="t-green">✓</span> Design responsive configuré', d: 300 },
-            { t: '<span class="t-green">✓</span> SEO optimisé (meta, sitemap, schema)', d: 300 },
-            { t: '<span class="t-yellow">⚡</span> Build en cours... <span class="t-gray">[████████████] 100%</span>', d: 500 },
-            { t: '<span class="t-green t-bold">✨ Site déployé → monsite.flashai.dev</span>', d: 400 }
+            { t: '<span class="t-green">✓</span> SEO optimisé', d: 300 },
+            { t: '<span class="t-yellow">⚡</span> Build... <span class="t-gray">[████████████] 100%</span>', d: 500 },
+            { t: '<span class="t-green t-bold">✨ Déployé → monsite.flashai.dev</span>', d: 400 }
         ]},
-        { cmd: '$ flashai add crm --pipeline --contacts --analytics', lines: [
-            { t: '<span class="t-blue">→</span> Ajout du module CRM...', d: 400 },
-            { t: '<span class="t-green">✓</span> Pipeline de vente configuré (5 étapes)', d: 300 },
-            { t: '<span class="t-green">✓</span> Base contacts initialisée', d: 250 },
-            { t: '<span class="t-green">✓</span> Dashboard analytics connecté', d: 300 },
-            { t: '<span class="t-green">✓</span> Notifications temps réel activées', d: 250 },
+        { cmd: '$ flashai add crm --pipeline --contacts', lines: [
+            { t: '<span class="t-blue">→</span> Ajout CRM...', d: 400 },
+            { t: '<span class="t-green">✓</span> Pipeline configuré', d: 300 },
+            { t: '<span class="t-green">✓</span> Contacts initialisés', d: 250 },
+            { t: '<span class="t-green">✓</span> Dashboard connecté', d: 300 },
             { t: '<span class="t-green t-bold">🎯 CRM opérationnel</span>', d: 400 }
         ]},
-        { cmd: '$ flashai add chatbot --ai gpt-4 --channels web,whatsapp', lines: [
-            { t: '<span class="t-blue">→</span> Configuration du chatbot IA...', d: 400 },
-            { t: '<span class="t-green">✓</span> GPT-4 connecté avec contexte métier', d: 350 },
-            { t: '<span class="t-green">✓</span> Canal web intégré', d: 250 },
-            { t: '<span class="t-green">✓</span> Canal WhatsApp Business activé', d: 300 },
-            { t: '<span class="t-green">✓</span> Formation sur vos données... <span class="t-gray">[████████████] 100%</span>', d: 500 },
-            { t: '<span class="t-green t-bold">🤖 Chatbot en ligne — 24/7</span>', d: 400 }
-        ]},
-        { cmd: '$ flashai generate devis --client "Acme Corp" --auto', lines: [
-            { t: '<span class="t-blue">→</span> Analyse des besoins...', d: 400 },
-            { t: '<span class="t-green">✓</span> 3 services identifiés', d: 300 },
-            { t: '<span class="t-green">✓</span> Calcul du tarif optimal', d: 300 },
-            { t: '<span class="t-yellow">💰</span> Devis généré : <span class="t-green t-bold">2 490 €</span>', d: 400 },
-            { t: '<span class="t-green">✓</span> PDF envoyé au client', d: 300 },
-            { t: '<span class="t-green t-bold">📋 Devis #2024-087 créé</span>', d: 400 }
-        ]},
-        { cmd: '$ flashai deploy --env production --region eu-west', lines: [
-            { t: '<span class="t-blue">→</span> Déploiement en production...', d: 400 },
-            { t: '<span class="t-green">✓</span> Tests automatisés : <span class="t-green">47/47 passed</span>', d: 350 },
-            { t: '<span class="t-green">✓</span> Build optimisé (98/100 Lighthouse)', d: 300 },
-            { t: '<span class="t-green">✓</span> CDN configuré (23 edge locations)', d: 300 },
-            { t: '<span class="t-green">✓</span> SSL/TLS activé', d: 250 },
-            { t: '<span class="t-green">✓</span> Monitoring 24/7 en place', d: 300 },
-            { t: '<span class="t-green t-bold">🚀 En production — Temps de réponse : 47ms</span>', d: 400 }
-        ]},
-        { cmd: '$ flashai analytics --report weekly', lines: [
-            { t: '<span class="t-blue">→</span> Génération du rapport...', d: 400 },
-            { t: '<span class="t-yellow">📊</span> Visiteurs : <span class="t-green">+247%</span> vs semaine dernière', d: 300 },
-            { t: '<span class="t-yellow">📊</span> Conversions : <span class="t-green">+180%</span>', d: 300 },
-            { t: '<span class="t-yellow">📊</span> Temps moyen : <span class="t-green">4min 32s</span>', d: 300 },
-            { t: '<span class="t-yellow">📊</span> Satisfaction client : <span class="t-green">100%</span>', d: 300 },
-            { t: '<span class="t-green t-bold">✅ Rapport envoyé par email</span>', d: 400 }
+        { cmd: '$ flashai deploy --env production', lines: [
+            { t: '<span class="t-blue">→</span> Déploiement...', d: 400 },
+            { t: '<span class="t-green">✓</span> Tests: <span class="t-green">47/47 passed</span>', d: 350 },
+            { t: '<span class="t-green">✓</span> Lighthouse: 98/100', d: 300 },
+            { t: '<span class="t-green">✓</span> CDN + SSL activé', d: 300 },
+            { t: '<span class="t-green t-bold">🚀 Live — 47ms response</span>', d: 400 }
         ]}
     ];
-
     let seqIdx = 0;
-
     async function runSequence() {
         const seq = sequences[seqIdx % sequences.length];
-        // Type command
         const cmdLine = document.createElement('div');
         cmdLine.className = 't-green';
         output.appendChild(cmdLine);
-        for (let i = 0; i < seq.cmd.length; i++) {
-            cmdLine.textContent += seq.cmd[i];
-            await new Promise(r => setTimeout(r, 25));
-        }
+        for (let i = 0; i < seq.cmd.length; i++) { cmdLine.textContent += seq.cmd[i]; await new Promise(r => setTimeout(r, 25)); }
         output.scrollTop = output.scrollHeight;
-
-        // Show output lines
         for (const line of seq.lines) {
             await new Promise(r => setTimeout(r, line.d));
             const div = document.createElement('div');
             div.innerHTML = line.t;
-            div.style.opacity = '0';
-            div.style.transform = 'translateX(-5px)';
-            div.style.transition = 'all 0.2s ease';
+            div.style.cssText = 'opacity:0;transform:translateX(-5px);transition:all 0.2s';
             output.appendChild(div);
             requestAnimationFrame(() => { div.style.opacity = '1'; div.style.transform = 'translateX(0)'; });
             output.scrollTop = output.scrollHeight;
         }
-
         await new Promise(r => setTimeout(r, 2000));
-
-        // Add separator
-        const sep = document.createElement('div');
-        sep.innerHTML = '<br>';
-        output.appendChild(sep);
-
+        output.appendChild(document.createElement('br'));
         seqIdx++;
-        // Keep only last 30 lines
         while (output.children.length > 30) output.removeChild(output.firstChild);
         runSequence();
     }
-
     setTimeout(runSequence, 2500);
 }
 
-/* ========== DEMO TABS ========== */
 function initDemoTabs() {
-    const tabs = document.querySelectorAll('.demo-tab');
-    const panels = document.querySelectorAll('.demo-panel');
-    tabs.forEach(tab => {
+    document.querySelectorAll('.demo-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            panels.forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
             tab.classList.add('active');
-            const panel = document.getElementById('demo-' + tab.dataset.demo);
-            if (panel) panel.classList.add('active');
+            const p = document.getElementById('demo-' + tab.dataset.demo);
+            if (p) p.classList.add('active');
         });
     });
 }
 
-/* ========== DEMO CRM ========== */
 function initDemoCRM() {
-    const container = document.getElementById('demo-crm');
-    if (!container) return;
-
+    const ct = document.getElementById('demo-crm');
+    if (!ct) return;
     const contacts = [
         { name: 'Marie Dupont', email: 'marie@acme.fr', value: '4 200 €', status: 'prospect', avatar: 'MD' },
         { name: 'Jean Martin', email: 'jean@startup.io', value: '8 500 €', status: 'prospect', avatar: 'JM' },
         { name: 'Sophie Bernard', email: 'sophie@tech.com', value: '12 000 €', status: 'encours', avatar: 'SB' },
         { name: 'Lucas Petit', email: 'lucas@digital.fr', value: '3 800 €', status: 'encours', avatar: 'LP' },
         { name: 'Emma Leroy', email: 'emma@design.co', value: '6 500 €', status: 'client', avatar: 'EL' },
-        { name: 'Thomas Moreau', email: 'thomas@web.fr', value: '15 000 €', status: 'client', avatar: 'TM' },
+        { name: 'Thomas Moreau', email: 'thomas@web.fr', value: '15 000 €', status: 'client', avatar: 'TM' }
     ];
-
     const columns = { prospect: 'Prospects', encours: 'En cours', client: 'Clients' };
-
-    function render(filter = '') {
-        const filtered = contacts.filter(c =>
-            c.name.toLowerCase().includes(filter) || c.email.toLowerCase().includes(filter)
-        );
-
-        container.innerHTML = `
-            <div class="crm-header">
-                <h3 class="font-display font-bold text-lg">Mini CRM</h3>
-                <input type="text" class="crm-search" placeholder="Rechercher un contact..." id="crm-search-input" value="${filter}">
-            </div>
-            <div class="crm-columns">
-                ${Object.entries(columns).map(([key, label]) => {
-                    const items = filtered.filter(c => c.status === key);
-                    return `<div class="crm-column" data-col="${key}">
-                        <div class="crm-col-header">
-                            <span style="color:${key === 'prospect' ? '#ff8c00' : key === 'encours' ? '#00f0ff' : '#00ff87'}">${label}</span>
-                            <span class="crm-col-count">${items.length}</span>
-                        </div>
-                        ${items.map(c => `
-                            <div class="crm-card" draggable="true" data-name="${c.name}">
-                                <div class="crm-card-name">${c.name}</div>
-                                <div class="crm-card-email">${c.email}</div>
-                                <div class="crm-card-value">${c.value}</div>
-                                <div class="crm-card-actions">
-                                    <button class="crm-action-btn" onclick="showToast('Appel vers ${c.name}...')">📞 Appeler</button>
-                                    <button class="crm-action-btn" onclick="showToast('Email envoyé à ${c.email}')">✉️ Email</button>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>`;
-                }).join('')}
-            </div>
-        `;
-
-        // Search
-        const searchInput = document.getElementById('crm-search-input');
-        if (searchInput) {
-            searchInput.addEventListener('input', e => render(e.target.value.toLowerCase()));
-            searchInput.focus();
-        }
-
-        // Drag & Drop
-        container.querySelectorAll('.crm-card').forEach(card => {
-            card.addEventListener('dragstart', e => {
-                e.dataTransfer.setData('text/plain', card.dataset.name);
-                card.classList.add('dragging');
-            });
+    function render(filter='') {
+        const filtered = contacts.filter(c => c.name.toLowerCase().includes(filter) || c.email.toLowerCase().includes(filter));
+        ct.innerHTML = `<div class="crm-header"><h3 class="font-display font-bold text-lg">Mini CRM</h3><input type="text" class="crm-search" placeholder="Rechercher..." id="crm-si" value="${filter}"></div><div class="crm-columns">${Object.entries(columns).map(([key, label]) => { const items = filtered.filter(c => c.status === key); return `<div class="crm-column" data-col="${key}"><div class="crm-col-header"><span style="color:${key === 'prospect' ? '#ff8c00' : key === 'encours' ? '#00f0ff' : '#00ff87'}">${label}</span><span class="crm-col-count">${items.length}</span></div>${items.map(c => `<div class="crm-card" draggable="true" data-name="${c.name}"><div class="crm-card-name">${c.name}</div><div class="crm-card-email">${c.email}</div><div class="crm-card-value">${c.value}</div><div class="crm-card-actions"><button class="crm-action-btn" onclick="showToast('Appel ${c.name}...')">📞</button><button class="crm-action-btn" onclick="showToast('Email envoyé')">✉️</button></div></div>`).join('')}</div>`; }).join('')}</div>`;
+        const si = document.getElementById('crm-si');
+        if (si) { si.addEventListener('input', e => render(e.target.value.toLowerCase())); }
+        ct.querySelectorAll('.crm-card').forEach(card => {
+            card.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', card.dataset.name); card.classList.add('dragging'); });
             card.addEventListener('dragend', () => card.classList.remove('dragging'));
         });
-        container.querySelectorAll('.crm-column').forEach(col => {
+        ct.querySelectorAll('.crm-column').forEach(col => {
             col.addEventListener('dragover', e => e.preventDefault());
-            col.addEventListener('drop', e => {
-                e.preventDefault();
-                const name = e.dataTransfer.getData('text/plain');
-                const contact = contacts.find(c => c.name === name);
-                if (contact) {
-                    contact.status = col.dataset.col;
-                    render(filter);
-                    showToast(`${name} déplacé vers ${columns[col.dataset.col]}`);
-                }
-            });
+            col.addEventListener('drop', e => { e.preventDefault(); const n = e.dataTransfer.getData('text/plain'); const c = contacts.find(x => x.name === n); if (c) { c.status = col.dataset.col; render(filter); showToast(n + ' déplacé'); } });
         });
     }
-
     render();
 }
 
-/* ========== DEMO DEVIS ========== */
 function initDemoDevis() {
-    const container = document.getElementById('demo-devis');
-    if (!container) return;
-
+    const ct = document.getElementById('demo-devis');
+    if (!ct) return;
     const state = { step: 1, type: null, features: [], total: 0 };
-
-    const types = [
-        { id: 'vitrine', name: 'Site Vitrine', icon: '🌐', price: 990 },
-        { id: 'ecommerce', name: 'E-Commerce', icon: '🛒', price: 2490 },
-        { id: 'crm', name: 'CRM / ERP', icon: '📊', price: 1990 },
-        { id: 'chatbot', name: 'Chatbot IA', icon: '🤖', price: 1490 },
-        { id: 'dashboard', name: 'Dashboard', icon: '📈', price: 1790 },
-        { id: 'auto', name: 'Automatisation', icon: '⚡', price: 890 },
-    ];
-
-    const features = [
-        { name: 'Design premium', price: 490 },
-        { name: 'SEO avancé', price: 390 },
-        { name: 'Multilingue', price: 290 },
-        { name: 'Analytics', price: 190 },
-        { name: 'Chatbot intégré', price: 590 },
-        { name: 'API custom', price: 490 },
-        { name: 'Paiement en ligne', price: 390 },
-        { name: 'CRM intégré', price: 690 },
-        { name: 'Automatisations', price: 490 },
-        { name: 'Support prioritaire', price: 290 },
-    ];
-
-    function calcTotal() {
-        const base = state.type ? types.find(t => t.id === state.type)?.price || 0 : 0;
-        const feat = state.features.reduce((sum, f) => sum + (features.find(x => x.name === f)?.price || 0), 0);
-        state.total = base + feat;
-    }
-
+    const types = [ { id: 'vitrine', name: 'Site Vitrine', icon: '🌐', price: 990 }, { id: 'ecommerce', name: 'E-Commerce', icon: '🛒', price: 2490 }, { id: 'crm', name: 'CRM / ERP', icon: '📊', price: 1990 }, { id: 'chatbot', name: 'Chatbot IA', icon: '🤖', price: 1490 }, { id: 'dashboard', name: 'Dashboard', icon: '📈', price: 1790 }, { id: 'auto', name: 'Automatisation', icon: '⚡', price: 890 } ];
+    const features = [ { name: 'Design premium', price: 490 }, { name: 'SEO avancé', price: 390 }, { name: 'Multilingue', price: 290 }, { name: 'Analytics', price: 190 }, { name: 'Chatbot', price: 590 }, { name: 'API custom', price: 490 }, { name: 'Paiement', price: 390 }, { name: 'CRM intégré', price: 690 }, { name: 'Automatisations', price: 490 }, { name: 'Support prioritaire', price: 290 } ];
+    function calc() { const base = state.type ? (types.find(t => t.id === state.type)?.price || 0) : 0; state.total = base + state.features.reduce((s, f) => s + (features.find(x => x.name === f)?.price || 0), 0); }
     function render() {
-        calcTotal();
-        const stepsHtml = [1,2,3,4].map(s => `
-            <div class="devis-step ${s === state.step ? 'active' : ''} ${s < state.step ? 'completed' : ''}">
-                <span class="devis-step-num">${s < state.step ? '✓' : s}</span>
-                <span>${['Projet','Options','Style','Résumé'][s-1]}</span>
-            </div>
-        `).join('');
-
-        let bodyHtml = '';
-        if (state.step === 1) {
-            bodyHtml = `<div class="devis-options">${types.map(t => `
-                <div class="devis-option ${state.type === t.id ? 'selected' : ''}" data-type="${t.id}">
-                    <div class="devis-option-icon">${t.icon}</div>
-                    <div class="devis-option-name">${t.name}</div>
-                    <div class="devis-option-price">À partir de ${t.price} €</div>
-                </div>
-            `).join('')}</div>`;
-        } else if (state.step === 2) {
-            bodyHtml = `<div class="devis-features">${features.map(f => `
-                <div class="devis-feature ${state.features.includes(f.name) ? 'checked' : ''}" data-feat="${f.name}">
-                    <div class="devis-feature-check">${state.features.includes(f.name) ? '✓' : ''}</div>
-                    <span>${f.name}</span>
-                    <span style="margin-left:auto;color:#00ff87;font-size:0.75rem">+${f.price}€</span>
-                </div>
-            `).join('')}</div>`;
-        } else if (state.step === 3) {
-            bodyHtml = `<div class="devis-options">
-                ${['Minimaliste','Moderne','Audacieux','Classique'].map((s,i) => `
-                    <div class="devis-option" style="border-color:${['#00f0ff','#bf00ff','#ff006e','#ffd700'][i]}30">
-                        <div class="devis-option-icon">${['🎨','💎','🔥','✨'][i]}</div>
-                        <div class="devis-option-name">${s}</div>
-                    </div>
-                `).join('')}
-            </div>`;
-        } else {
-            const typeName = types.find(t => t.id === state.type)?.name || 'Non défini';
-            bodyHtml = `
-                <div style="text-align:center">
-                    <div style="font-size:0.85rem;color:#94a3b8;margin-bottom:1rem">Récapitulatif du devis</div>
-                    <div style="font-size:1rem;margin-bottom:0.5rem"><strong>Projet :</strong> ${typeName}</div>
-                    <div style="font-size:0.85rem;color:#94a3b8;margin-bottom:1rem">${state.features.length} option${state.features.length > 1 ? 's' : ''} sélectionnée${state.features.length > 1 ? 's' : ''}</div>
-                    <div class="devis-total">
-                        <div class="devis-total-label">Prix total estimé</div>
-                        <div class="devis-total-price">${state.total.toLocaleString('fr')} €</div>
-                    </div>
-                    <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
-                        <button class="btn-glow" onclick="showToast('📋 Devis téléchargé !')"><span>Télécharger le devis</span></button>
-                        <button class="btn-outline" onclick="showToast('📧 Devis envoyé par email !')"><span>Envoyer par email</span></button>
-                    </div>
-                </div>
-            `;
-        }
-
-        container.innerHTML = `
-            <div class="devis-steps">${stepsHtml}</div>
-            <div class="devis-body">${bodyHtml}</div>
-            <div class="devis-total" style="margin-top:1rem">
-                <div class="devis-total-label">Estimation en cours</div>
-                <div class="devis-total-price">${state.total.toLocaleString('fr')} €</div>
-            </div>
-            <div class="devis-nav-btns">
-                ${state.step > 1 ? '<button class="btn-outline" id="devis-prev"><span>← Retour</span></button>' : ''}
-                ${state.step < 4 ? '<button class="btn-glow" id="devis-next"><span>Suivant →</span></button>' : ''}
-            </div>
-        `;
-
-        // Events
-        container.querySelectorAll('.devis-option[data-type]').forEach(opt => {
-            opt.addEventListener('click', () => { state.type = opt.dataset.type; render(); });
-        });
-        container.querySelectorAll('.devis-feature').forEach(feat => {
-            feat.addEventListener('click', () => {
-                const name = feat.dataset.feat;
-                if (state.features.includes(name)) state.features = state.features.filter(f => f !== name);
-                else state.features.push(name);
-                render();
-            });
-        });
-        const prev = container.querySelector('#devis-prev');
-        const next = container.querySelector('#devis-next');
-        if (prev) prev.addEventListener('click', () => { state.step--; render(); });
-        if (next) next.addEventListener('click', () => { state.step++; render(); });
+        calc();
+        let body = '';
+        if (state.step === 1) body = `<div class="devis-options">${types.map(t => `<div class="devis-option ${state.type === t.id ? 'selected' : ''}" data-type="${t.id}"><div class="devis-option-icon">${t.icon}</div><div class="devis-option-name">${t.name}</div><div class="devis-option-price">À partir de ${t.price} €</div></div>`).join('')}</div>`;
+        else if (state.step === 2) body = `<div class="devis-features">${features.map(f => `<div class="devis-feature ${state.features.includes(f.name) ? 'checked' : ''}" data-feat="${f.name}"><div class="devis-feature-check">${state.features.includes(f.name) ? '✓' : ''}</div><span>${f.name}</span><span style="margin-left:auto;color:#00ff87;font-size:0.75rem">+${f.price}€</span></div>`).join('')}</div>`;
+        else if (state.step === 3) body = '<div class="devis-options">' + ['Minimaliste','Moderne','Audacieux','Classique'].map((s,i) => `<div class="devis-option" style="border-color:${['#00f0ff','#bf00ff','#ff006e','#ffd700'][i]}30"><div class="devis-option-icon">${['🎨','💎','🔥','✨'][i]}</div><div class="devis-option-name">${s}</div></div>`).join('') + '</div>';
+        else body = `<div style="text-align:center"><div class="devis-total"><div class="devis-total-label">Prix total</div><div class="devis-total-price">${state.total.toLocaleString('fr')} €</div></div><div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center"><button class="btn-glow" onclick="showToast('Devis téléchargé !')"><span>Télécharger</span></button></div></div>`;
+        ct.innerHTML = `<div class="devis-steps">${[1,2,3,4].map(s => `<div class="devis-step ${s===state.step?'active':''} ${s<state.step?'completed':''}"><span class="devis-step-num">${s<state.step?'✓':s}</span><span>${['Projet','Options','Style','Résumé'][s-1]}</span></div>`).join('')}</div><div class="devis-body">${body}</div><div class="devis-total" style="margin-top:1rem"><div class="devis-total-label">Estimation</div><div class="devis-total-price">${state.total.toLocaleString('fr')} €</div></div><div class="devis-nav-btns">${state.step>1?'<button class="btn-outline" id="dp">← Retour</button>':''}${state.step<4?'<button class="btn-glow" id="dn"><span>Suivant →</span></button>':''}</div>`;
+        ct.querySelectorAll('.devis-option[data-type]').forEach(o => o.addEventListener('click', () => { state.type = o.dataset.type; render(); }));
+        ct.querySelectorAll('.devis-feature').forEach(f => f.addEventListener('click', () => { const n = f.dataset.feat; state.features.includes(n) ? state.features = state.features.filter(x => x !== n) : state.features.push(n); render(); }));
+        const p = ct.querySelector('#dp'), n = ct.querySelector('#dn');
+        if (p) p.addEventListener('click', () => { state.step--; render(); });
+        if (n) n.addEventListener('click', () => { state.step++; render(); });
     }
-
     render();
 }
 
-/* ========== DEMO CHATBOT ========== */
 function initDemoChatbot() {
-    const container = document.getElementById('demo-chatbot');
-    if (!container) return;
-
-    const botResponses = {
-        'prix': 'Nos tarifs commencent à 890€ pour une automatisation simple, et à 990€ pour un site vitrine. Chaque projet est sur mesure, donc le prix dépend de vos besoins spécifiques. Voulez-vous un devis gratuit ?',
-        'delai': 'En moyenne, nous livrons en 5 jours ouvrés. Les projets plus complexes (CRM, e-commerce) prennent entre 7 et 14 jours. On travaille vite, mais bien !',
-        'services': 'Nous proposons : sites web, CRM/ERP, chatbots IA, dashboards, automatisations, SEO technique et sécurité web. Tout est construit sur mesure, jamais de templates !',
-        'contact': 'Vous pouvez nous contacter à contact@flashai.dev ou remplir le formulaire en bas de page. On répond en moins de 2 heures !',
-        'technologie': 'Nous utilisons les technologies les plus modernes : React, Next.js, Node.js, Python, PostgreSQL, et plus de 200 APIs connectées (Stripe, OpenAI, AWS, etc.).',
-        'garantie': 'Oui ! Nous offrons une garantie satisfait ou remboursé à 100%. Si le résultat ne vous convient pas, on vous rembourse intégralement.',
-        'israel': 'FlashAI est née au cœur de la Startup Nation, à Tel Aviv. L\'écosystème tech israélien est le plus dynamique au monde, et nous en profitons pour vous offrir le meilleur de l\'innovation.',
-        'default': 'Merci pour votre message ! Je suis l\'assistant FlashAI. Je peux vous renseigner sur nos services, tarifs, délais ou technologies. Que souhaitez-vous savoir ?'
-    };
-
-    const suggestions = ['Quels sont vos prix ?', 'Quel est le délai ?', 'Quels services ?', 'Garantie ?', 'Technologies ?'];
-
-    let messages = [
-        { from: 'bot', text: 'Bonjour ! 👋 Je suis l\'assistant FlashAI. Comment puis-je vous aider aujourd\'hui ?' }
-    ];
-
-    function getResponse(text) {
-        const lower = text.toLowerCase();
-        for (const [key, resp] of Object.entries(botResponses)) {
-            if (key !== 'default' && lower.includes(key)) return resp;
-        }
-        if (lower.includes('bonjour') || lower.includes('salut') || lower.includes('hello'))
-            return 'Bonjour ! Ravi de vous accueillir. Comment puis-je vous aider ? 😊';
-        if (lower.includes('merci'))
-            return 'Avec plaisir ! N\'hésitez pas si vous avez d\'autres questions. 🙏';
-        return botResponses.default;
-    }
-
+    const ct = document.getElementById('demo-chatbot');
+    if (!ct) return;
+    const responses = { prix: 'Nos tarifs commencent à 890€. Chaque projet est sur mesure.', delai: 'En moyenne 5 jours ouvrés. Projets complexes: 7-14 jours.', services: 'Sites web, CRM, chatbots IA, dashboards, automatisations, SEO, sécurité.', contact: 'Contactez-nous à contact@flashai.dev. Réponse en <2h !', technologie: 'React, Next.js, Node.js, Python, 200+ APIs connectées.', garantie: 'Garantie satisfait ou remboursé à 100%.', default: 'Je suis l\'assistant FlashAI. Posez vos questions sur nos services, tarifs ou technologies !' };
+    const suggestions = ['Quels prix ?', 'Délai ?', 'Services ?', 'Garantie ?'];
+    let messages = [{ from: 'bot', text: 'Bonjour ! 👋 Comment puis-je vous aider ?' }];
+    function getResp(t) { const l = t.toLowerCase(); for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('bonjour')||l.includes('salut')) return 'Bonjour ! Comment puis-je vous aider ? 😊'; return responses.default; }
     function render() {
-        container.innerHTML = `
-            <div class="chatbot-container">
-                <div class="chatbot-messages" id="chat-messages">
-                    ${messages.map(m => `
-                        <div class="chat-msg ${m.from}">
-                            <div class="chat-avatar">${m.from === 'bot' ? '🤖' : '👤'}</div>
-                            <div class="chat-bubble">${m.text}</div>
-                        </div>
-                    `).join('')}
-                </div>
-                <div class="chat-suggestions" id="chat-suggestions">
-                    ${suggestions.map(s => `<button class="chat-suggestion">${s}</button>`).join('')}
-                </div>
-                <div class="chat-input-wrap">
-                    <input type="text" class="chat-input" id="chat-input" placeholder="Tapez votre message...">
-                    <button class="chat-send" id="chat-send">Envoyer</button>
-                </div>
-            </div>
-        `;
-
-        const msgContainer = document.getElementById('chat-messages');
-        if (msgContainer) msgContainer.scrollTop = msgContainer.scrollHeight;
-
-        // Events
-        const input = document.getElementById('chat-input');
-        const send = document.getElementById('chat-send');
-
-        function sendMessage(text) {
-            if (!text.trim()) return;
-            messages.push({ from: 'user', text });
-            render();
-
-            // Show typing
-            setTimeout(() => {
-                const msgEl = document.getElementById('chat-messages');
-                if (msgEl) {
-                    const typing = document.createElement('div');
-                    typing.className = 'chat-msg bot';
-                    typing.id = 'chat-typing';
-                    typing.innerHTML = '<div class="chat-avatar">🤖</div><div class="chat-bubble"><div class="chat-typing"><span></span><span></span><span></span></div></div>';
-                    msgEl.appendChild(typing);
-                    msgEl.scrollTop = msgEl.scrollHeight;
-                }
-
-                setTimeout(() => {
-                    const typingEl = document.getElementById('chat-typing');
-                    if (typingEl) typingEl.remove();
-                    messages.push({ from: 'bot', text: getResponse(text) });
-                    render();
-                }, 1200);
-            }, 400);
-        }
-
-        if (send) send.addEventListener('click', () => { sendMessage(input?.value || ''); });
-        if (input) input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(input.value); });
-        document.querySelectorAll('.chat-suggestion').forEach(btn => {
-            btn.addEventListener('click', () => sendMessage(btn.textContent));
-        });
+        ct.innerHTML = `<div class="chatbot-container"><div class="chatbot-messages" id="cm">${messages.map(m => `<div class="chat-msg ${m.from}"><div class="chat-avatar">${m.from==='bot'?'🤖':'👤'}</div><div class="chat-bubble">${m.text}</div></div>`).join('')}</div><div class="chat-suggestions">${suggestions.map(s => `<button class="chat-suggestion">${s}</button>`).join('')}</div><div class="chat-input-wrap"><input type="text" class="chat-input" id="ci" placeholder="Votre message..."><button class="chat-send" id="cs">Envoyer</button></div></div>`;
+        const mc = document.getElementById('cm'); if (mc) mc.scrollTop = mc.scrollHeight;
+        function send(text) { if (!text.trim()) return; messages.push({ from: 'user', text }); render(); setTimeout(() => { const mc2 = document.getElementById('cm'); if(mc2) { const t = document.createElement('div'); t.className='chat-msg bot'; t.id='ct'; t.innerHTML='<div class="chat-avatar">🤖</div><div class="chat-bubble"><div class="chat-typing"><span></span><span></span><span></span></div></div>'; mc2.appendChild(t); mc2.scrollTop=mc2.scrollHeight; } setTimeout(() => { const te = document.getElementById('ct'); if(te) te.remove(); messages.push({from:'bot',text:getResp(text)}); render(); }, 1200); }, 400); }
+        const cs = document.getElementById('cs'), ci = document.getElementById('ci');
+        if (cs) cs.addEventListener('click', () => send(ci?.value||''));
+        if (ci) ci.addEventListener('keydown', e => { if(e.key==='Enter') send(ci.value); });
+        ct.querySelectorAll('.chat-suggestion').forEach(b => b.addEventListener('click', () => send(b.textContent)));
     }
-
     render();
 }
 
-/* ========== DEMO DASHBOARD ========== */
+/* ========== DASHBOARD DEMO ========== */
 function initDemoDashboard() {
-    const container = document.getElementById('demo-dashboard');
-    if (!container) return;
+    const ct = document.getElementById('demo-dashboard');
+    if (!ct) return;
+    const kpis = [
+        { label: 'Visiteurs', value: '12,847', change: '+23%', color: '#00f0ff', icon: '👁️' },
+        { label: 'Conversions', value: '342', change: '+18%', color: '#00ff87', icon: '🎯' },
+        { label: 'Revenue', value: '€48,290', change: '+31%', color: '#bf00ff', icon: '💰' },
+        { label: 'Satisfaction', value: '98%', change: '+2%', color: '#ffd700', icon: '⭐' }
+    ];
+    ct.innerHTML = `<div class="dashboard-demo">
+        <div class="dash-header"><h3 class="font-display font-bold text-lg">Dashboard Analytics</h3>
+        <div class="dash-period"><button class="dash-period-btn active" data-p="7j">7j</button><button class="dash-period-btn" data-p="30j">30j</button><button class="dash-period-btn" data-p="90j">90j</button></div></div>
+        <div class="dash-kpis">${kpis.map(k => `<div class="dash-kpi" style="--kc:${k.color}"><div class="dash-kpi-icon">${k.icon}</div><div class="dash-kpi-value">${k.value}</div><div class="dash-kpi-label">${k.label}</div><div class="dash-kpi-change" style="color:${k.color}">${k.change}</div></div>`).join('')}</div>
+        <div class="dash-charts"><canvas id="dash-line-chart" width="500" height="180"></canvas><canvas id="dash-bar-chart" width="200" height="180"></canvas></div></div>`;
+    drawDashCharts();
+    ct.querySelectorAll('.dash-period-btn').forEach(b => b.addEventListener('click', () => {
+        ct.querySelectorAll('.dash-period-btn').forEach(x => x.classList.remove('active'));
+        b.classList.add('active'); drawDashCharts();
+    }));
+}
 
-    const periods = { '7j': 7, '30j': 30, '90j': 90 };
-    let activePeriod = '30j';
-
-    function genData(n) { return Array.from({ length: n }, () => Math.floor(Math.random() * 800 + 200)); }
-
-    function drawLineChart(canvas, data, color) {
-        const ctx = canvas.getContext('2d');
-        const w = canvas.width = canvas.offsetWidth * 2;
-        const h = canvas.height = canvas.offsetHeight * 2;
-        ctx.scale(2, 2);
-        const cw = canvas.offsetWidth;
-        const ch = canvas.offsetHeight;
-        ctx.clearRect(0, 0, cw, ch);
-
-        const max = Math.max(...data) * 1.1;
-        const step = cw / (data.length - 1);
-
-        // Gradient fill
-        const grad = ctx.createLinearGradient(0, 0, 0, ch);
-        grad.addColorStop(0, color + '30');
-        grad.addColorStop(1, 'transparent');
-
-        ctx.beginPath();
-        ctx.moveTo(0, ch);
-        data.forEach((v, i) => {
-            const x = i * step;
-            const y = ch - (v / max * ch * 0.85) - 10;
-            if (i === 0) ctx.lineTo(x, y);
-            else {
-                const px = (i - 1) * step;
-                const py = ch - (data[i-1] / max * ch * 0.85) - 10;
-                const cx1 = px + step * 0.4;
-                const cx2 = x - step * 0.4;
-                ctx.bezierCurveTo(cx1, py, cx2, y, x, y);
-            }
-        });
-        ctx.lineTo(cw, ch);
-        ctx.fillStyle = grad;
-        ctx.fill();
-
-        // Line
-        ctx.beginPath();
-        data.forEach((v, i) => {
-            const x = i * step;
-            const y = ch - (v / max * ch * 0.85) - 10;
-            if (i === 0) ctx.moveTo(x, y);
-            else {
-                const px = (i - 1) * step;
-                const py = ch - (data[i-1] / max * ch * 0.85) - 10;
-                ctx.bezierCurveTo(px + step * 0.4, py, x - step * 0.4, y, x, y);
-            }
-        });
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-    }
-
-    function drawBarChart(canvas, data, colors) {
-        const ctx = canvas.getContext('2d');
-        const w = canvas.width = canvas.offsetWidth * 2;
-        const h = canvas.height = canvas.offsetHeight * 2;
-        ctx.scale(2, 2);
-        const cw = canvas.offsetWidth;
-        const ch = canvas.offsetHeight;
-        ctx.clearRect(0, 0, cw, ch);
-        const max = Math.max(...data.map(d => d.value)) * 1.2;
-        const barW = cw / data.length * 0.6;
-        const gap = cw / data.length;
-        data.forEach((d, i) => {
-            const x = i * gap + (gap - barW) / 2;
-            const barH = (d.value / max) * (ch - 30);
-            const y = ch - barH - 15;
-            ctx.fillStyle = colors[i % colors.length];
+function drawDashCharts() {
+    const lc = document.getElementById('dash-line-chart');
+    const bc = document.getElementById('dash-bar-chart');
+    if (lc) {
+        const ctx = lc.getContext('2d'), w = lc.width, h = lc.height;
+        ctx.clearRect(0, 0, w, h);
+        const pts = Array.from({length: 12}, () => Math.random() * 100 + 40);
+        const pts2 = Array.from({length: 12}, () => Math.random() * 80 + 20);
+        [{ data: pts, color: '#00f0ff' }, { data: pts2, color: '#bf00ff' }].forEach(line => {
             ctx.beginPath();
-            ctx.roundRect(x, y, barW, barH, 4);
-            ctx.fill();
-            ctx.fillStyle = '#64748b';
-            ctx.font = '9px Inter';
-            ctx.textAlign = 'center';
-            ctx.fillText(d.label, x + barW / 2, ch - 2);
+            const grad = ctx.createLinearGradient(0, 0, 0, h);
+            grad.addColorStop(0, line.color + '40'); grad.addColorStop(1, 'transparent');
+            line.data.forEach((v, i) => {
+                const x = (i / (line.data.length - 1)) * (w - 40) + 20;
+                const y = h - 20 - (v / 140) * (h - 40);
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = line.color; ctx.lineWidth = 2; ctx.stroke();
+            const last = line.data[line.data.length - 1];
+            ctx.lineTo(w - 20, h - 20); ctx.lineTo(20, h - 20); ctx.closePath();
+            ctx.fillStyle = grad; ctx.fill();
         });
     }
-
-    function drawDonut(canvas, data, colors) {
-        const ctx = canvas.getContext('2d');
-        const w = canvas.width = canvas.offsetWidth * 2;
-        const h = canvas.height = canvas.offsetHeight * 2;
-        ctx.scale(2, 2);
-        const cw = canvas.offsetWidth;
-        const ch = canvas.offsetHeight;
-        const cx = cw / 2;
-        const cy = ch / 2;
-        const r = Math.min(cx, cy) - 10;
-        const total = data.reduce((s, d) => s + d.value, 0);
-        let angle = -Math.PI / 2;
-        data.forEach((d, i) => {
-            const slice = (d.value / total) * Math.PI * 2;
-            ctx.beginPath();
-            ctx.arc(cx, cy, r, angle, angle + slice);
-            ctx.arc(cx, cy, r * 0.6, angle + slice, angle, true);
-            ctx.closePath();
-            ctx.fillStyle = colors[i % colors.length];
-            ctx.fill();
-            angle += slice;
+    if (bc) {
+        const ctx = bc.getContext('2d'), w = bc.width, h = bc.height;
+        ctx.clearRect(0, 0, w, h);
+        const bars = [65, 85, 55, 90, 70, 80];
+        const colors = ['#00f0ff', '#bf00ff', '#ff006e', '#00ff87', '#ff8c00', '#ffd700'];
+        bars.forEach((v, i) => {
+            const bw = (w - 40) / bars.length - 4;
+            const bh = (v / 100) * (h - 40);
+            const x = 20 + i * ((w - 40) / bars.length) + 2;
+            ctx.fillStyle = colors[i] + '80';
+            ctx.beginPath(); ctx.roundRect(x, h - 20 - bh, bw, bh, 4); ctx.fill();
         });
     }
-
-    function render() {
-        const n = periods[activePeriod];
-        const kpis = [
-            { label: 'Visiteurs', value: (Math.random() * 5000 + 1000).toFixed(0), change: '+' + (Math.random() * 30 + 5).toFixed(1) + '%', up: true, color: '#00f0ff' },
-            { label: 'Conversions', value: (Math.random() * 200 + 50).toFixed(0), change: '+' + (Math.random() * 20 + 10).toFixed(1) + '%', up: true, color: '#00ff87' },
-            { label: 'CA généré', value: (Math.random() * 50000 + 10000).toFixed(0) + '€', change: '+' + (Math.random() * 40 + 15).toFixed(1) + '%', up: true, color: '#bf00ff' },
-            { label: 'Satisfaction', value: (Math.random() * 5 + 95).toFixed(1) + '%', change: '+' + (Math.random() * 3).toFixed(1) + '%', up: true, color: '#ffd700' },
-        ];
-
-        container.innerHTML = `
-            <div class="dash-kpis">
-                ${kpis.map(k => `
-                    <div class="dash-kpi">
-                        <div class="dash-kpi-label">${k.label}</div>
-                        <div class="dash-kpi-value" style="color:${k.color}">${k.value}</div>
-                        <div class="dash-kpi-change up">${k.change}</div>
-                    </div>
-                `).join('')}
-            </div>
-            <div class="dash-period-tabs">
-                ${Object.keys(periods).map(p => `<button class="dash-period-tab ${p === activePeriod ? 'active' : ''}" data-period="${p}">${p}</button>`).join('')}
-            </div>
-            <div class="dash-charts">
-                <div class="dash-chart-card">
-                    <div class="dash-chart-title">Trafic</div>
-                    <canvas id="dash-line-chart" style="width:100%;height:150px"></canvas>
-                </div>
-                <div>
-                    <div class="dash-chart-card" style="margin-bottom:1rem">
-                        <div class="dash-chart-title">Sources</div>
-                        <canvas id="dash-bar-chart" style="width:100%;height:100px"></canvas>
-                    </div>
-                    <div class="dash-chart-card">
-                        <div class="dash-chart-title">Répartition</div>
-                        <canvas id="dash-donut-chart" style="width:100%;height:100px"></canvas>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Period tabs
-        container.querySelectorAll('.dash-period-tab').forEach(tab => {
-            tab.addEventListener('click', () => { activePeriod = tab.dataset.period; render(); showToast('Période : ' + tab.dataset.period); });
-        });
-
-        // Draw charts after DOM update
-        requestAnimationFrame(() => {
-            const lineCanvas = document.getElementById('dash-line-chart');
-            if (lineCanvas) drawLineChart(lineCanvas, genData(n), '#00f0ff');
-
-            const barCanvas = document.getElementById('dash-bar-chart');
-            if (barCanvas) drawBarChart(barCanvas,
-                [{ label: 'Direct', value: 35 }, { label: 'SEO', value: 45 }, { label: 'Social', value: 25 }, { label: 'Email', value: 20 }],
-                ['#00f0ff', '#00ff87', '#bf00ff', '#ff8c00']
-            );
-
-            const donutCanvas = document.getElementById('dash-donut-chart');
-            if (donutCanvas) drawDonut(donutCanvas,
-                [{ value: 40 }, { value: 30 }, { value: 20 }, { value: 10 }],
-                ['#00f0ff', '#00ff87', '#bf00ff', '#ff8c00']
-            );
-        });
-    }
-
-    render();
 }
 
 /* ========== COMPARISON ========== */
 function initComparison() {
     const ct = document.getElementById('comparison-timeline');
     if (!ct) return;
-
-    const items = [
-        { old: { title: '📅 Délai : 3-6 mois', desc: 'Réunions interminables, allers-retours, validations multiples...' }, new: { title: '⚡ Délai : 5-14 jours', desc: 'Process agile, itérations rapides, livraison continue.' } },
-        { old: { title: '💰 Budget : 10-50K €', desc: 'Cahier des charges rigide, devis à rallonge, surcoûts fréquents.' }, new: { title: '💰 Budget : 990-4990 €', desc: 'Prix transparent, tout inclus, pas de surprises.' } },
-        { old: { title: '🔧 Stack : imposée', desc: 'Technologies choisies par l\'agence, pas forcément les meilleures.' }, new: { title: '🔧 Stack : optimale', desc: '200+ outils, on choisit les meilleurs pour VOTRE projet.' } },
-        { old: { title: '📞 Support : bureau 9h-17h', desc: 'Ticket envoyé le vendredi ? Réponse lundi... peut-être.' }, new: { title: '📞 Support : 24/7 réactif', desc: 'Réponse en 2h max. Toujours disponibles.' } },
-        { old: { title: '🐌 Résultat', desc: 'Un site qui ressemble à tous les autres.' }, new: { title: '🚀 Résultat', desc: 'Un outil sur mesure qui impressionne et convertit.' } },
+    const rows = [
+        { label: 'Délai de livraison', classic: '3 à 6 mois', flash: '5 à 14 jours', icon: '⏱️' },
+        { label: 'Coût moyen', classic: '15 000 — 50 000€', flash: '890 — 4 990€', icon: '💰' },
+        { label: 'Technologies', classic: 'WordPress / Wix', flash: 'React, Next.js, IA', icon: '⚙️' },
+        { label: 'Maintenance', classic: '200€/mois min', flash: 'Incluse 12 mois', icon: '🔧' },
+        { label: 'Performance', classic: 'Lighthouse ~60', flash: 'Lighthouse 95+', icon: '🚀' },
+        { label: 'Support', classic: 'Email lent', flash: '< 2h, 24/7', icon: '💬' },
+        { label: 'Personnalisation', classic: 'Templates limités', flash: '100% sur mesure', icon: '🎨' },
+        { label: 'SEO', classic: 'Basique', flash: 'Avancé, optimisé IA', icon: '🔍' }
     ];
-
-    ct.innerHTML = `
-        <div class="comp-side">
-            ${items.map((item, i) => `<div class="comp-item" style="transition-delay:${i * 0.15}s"><div class="comp-item-card old"><div class="comp-item-title comp-old-title">${item.old.title}</div><div style="color:#94a3b8;font-size:0.8rem">${item.old.desc}</div></div></div>`).join('')}
-        </div>
-        <div class="comp-center"></div>
-        <div class="comp-side">
-            ${items.map((item, i) => `<div class="comp-item" style="transition-delay:${i * 0.15 + 0.1}s"><div class="comp-item-card new"><div class="comp-item-title comp-new-title">${item.new.title}</div><div style="color:#94a3b8;font-size:0.8rem">${item.new.desc}</div></div></div>`).join('')}
-        </div>
-    `;
-
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.2 });
-    ct.querySelectorAll('.comp-item').forEach(el => obs.observe(el));
+    ct.innerHTML = `<div class="comp-table">
+        <div class="comp-header"><div class="comp-h-label"></div><div class="comp-h-classic">Agence classique</div><div class="comp-h-flash">FlashAI ⚡</div></div>
+        ${rows.map((r, i) => `<div class="comp-row reveal" style="transition-delay:${i * 0.08}s">
+            <div class="comp-label"><span class="comp-icon">${r.icon}</span>${r.label}</div>
+            <div class="comp-classic"><span class="comp-badge-classic">${r.classic}</span></div>
+            <div class="comp-flash"><span class="comp-badge-flash">${r.flash}</span></div>
+        </div>`).join('')}
+    </div>`;
 }
 
 /* ========== EXPERTISE ========== */
 function initExpertise() {
     const ct = document.getElementById('expertise-carousel');
     if (!ct) return;
-
     const cards = [
-        { icon: '🔍', title: 'SEO Technique', desc: 'Audit complet et optimisation', stat: '98/100', statLabel: 'Score Lighthouse moyen', barWidth: '98%', barColor: '#00ff87', backDesc: 'Core Web Vitals, Schema.org, Sitemap XML, meta tags optimisés, audit de backlinks, stratégie de contenu.' },
-        { icon: '🛡️', title: 'Sécurité', desc: 'Protection de niveau bancaire', stat: '0', statLabel: 'Failles en production', barWidth: '100%', barColor: '#00f0ff', backDesc: 'SSL/TLS, WAF, audit OWASP, protection DDoS, conformité RGPD, chiffrement des données, monitoring 24/7.' },
-        { icon: '⚡', title: 'Performance', desc: 'Vitesse extrême garantie', stat: '47ms', statLabel: 'Temps de réponse moyen', barWidth: '95%', barColor: '#bf00ff', backDesc: 'CDN mondial, lazy loading, code splitting, compression Brotli, cache intelligent, optimisation images WebP/AVIF.' },
-        { icon: '🔄', title: 'Automatisation', desc: 'Zéro tâche répétitive', stat: '200+', statLabel: 'Workflows automatisés', barWidth: '90%', barColor: '#ff8c00', backDesc: 'Zapier, Make, n8n, scripts Python custom, webhooks, CRON jobs, alertes intelligentes, sync bi-directionnelle.' },
+        { title: 'Frontend', icon: '🎨', color: '#00f0ff', skills: [['React / Next.js', 95], ['Vue / Nuxt', 88], ['TypeScript', 92], ['TailwindCSS', 98], ['Three.js / GSAP', 85]] },
+        { title: 'Backend', icon: '⚙️', color: '#bf00ff', skills: [['Node.js / Express', 94], ['Python / FastAPI', 90], ['PostgreSQL', 92], ['MongoDB / Redis', 88], ['GraphQL / REST', 95]] },
+        { title: 'IA & Data', icon: '🧠', color: '#ff006e', skills: [['OpenAI / GPT', 96], ['LangChain', 88], ['RAG Systems', 85], ['NLP / NLU', 82], ['Data Pipeline', 87]] },
+        { title: 'DevOps', icon: '🚀', color: '#00ff87', skills: [['Docker / K8s', 90], ['AWS / GCP', 92], ['CI/CD', 95], ['Monitoring', 88], ['Sécurité', 91]] }
     ];
-
-    ct.innerHTML = cards.map((c, i) => `
-        <div class="expertise-card reveal" style="transition-delay:${i * 0.15}s">
-            <div class="expertise-card-inner">
-                <div class="expertise-card-front">
-                    <div class="expertise-icon">${c.icon}</div>
-                    <div class="expertise-title">${c.title}</div>
-                    <div class="expertise-desc">${c.desc}</div>
-                    <div class="expertise-bar"><div class="expertise-bar-fill" style="background:${c.barColor};--bar-width:${c.barWidth}"></div></div>
-                </div>
-                <div class="expertise-card-back">
-                    <div class="expertise-stat" style="color:${c.barColor}">${c.stat}</div>
-                    <div class="expertise-stat-label">${c.statLabel}</div>
-                    <p style="font-size:0.8rem;color:#94a3b8;margin-top:1rem;text-align:left">${c.backDesc}</p>
-                </div>
-            </div>
+    ct.innerHTML = `<div class="expertise-grid">${cards.map((c, i) => `<div class="expertise-card reveal" style="transition-delay:${i * 0.15}s;--ec:${c.color}">
+        <div class="expertise-card-front">
+            <div class="expertise-icon" style="background:${c.color}15;color:${c.color}">${c.icon}</div>
+            <h3 class="font-display font-bold text-xl mb-4">${c.title}</h3>
+            <div class="expertise-bars">${c.skills.map(s => `<div class="expertise-bar-row"><span class="text-xs text-surface-300">${s[0]}</span><div class="expertise-bar-bg"><div class="expertise-bar-fill" style="width:${s[1]}%;background:${c.color}" data-width="${s[1]}"></div></div><span class="text-xs" style="color:${c.color}">${s[1]}%</span></div>`).join('')}</div>
         </div>
-    `).join('');
-
-    // Animate bars on scroll
+    </div>`).join('')}</div>`;
     const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.querySelectorAll('.expertise-bar-fill').forEach(bar => {
-                    bar.style.width = bar.style.getPropertyValue('--bar-width');
-                });
-            }
-        });
+        entries.forEach(e => { if (e.isIntersecting) {
+            e.target.querySelectorAll('.expertise-bar-fill').forEach(bar => {
+                bar.style.width = '0%';
+                setTimeout(() => { bar.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1)'; bar.style.width = bar.dataset.width + '%'; }, 200);
+            });
+            obs.unobserve(e.target);
+        }});
     }, { threshold: 0.3 });
     ct.querySelectorAll('.expertise-card').forEach(c => obs.observe(c));
 }
@@ -975,420 +504,375 @@ function initExpertise() {
 function initMethodTimeline() {
     const ct = document.getElementById('method-timeline');
     if (!ct) return;
-
     const steps = [
-        { num: 1, icon: '🎯', title: 'Briefing', desc: 'Appel de 30 min pour comprendre vos besoins, objectifs et contraintes.', time: '30 min' },
-        { num: 2, icon: '📐', title: 'Prototype', desc: 'Maquette interactive en 48h. Vous validez avant le développement.', time: '48h' },
-        { num: 3, icon: '💻', title: 'Développement', desc: 'Construction agile avec démo quotidienne. Vous suivez en temps réel.', time: '3-10 jours' },
-        { num: 4, icon: '🚀', title: 'Lancement', desc: 'Déploiement, formation, et suivi. Vous êtes opérationnel en minutes.', time: '1 jour' },
+        { num: '01', title: 'Discovery', desc: 'Appel de 30 min pour comprendre vos besoins, objectifs et contraintes. Analyse de l\'existant et recommandations.', icon: '🎯', color: '#00f0ff', duration: '30 min' },
+        { num: '02', title: 'Prototype', desc: 'Maquette interactive livrée en 48h. Vous validez le design, l\'UX et les fonctionnalités avant le développement.', icon: '✏️', color: '#bf00ff', duration: '48h' },
+        { num: '03', title: 'Build', desc: 'Développement agile avec démos quotidiennes. Stack moderne, code propre, tests automatisés.', icon: '⚡', color: '#ff006e', duration: '3-10 jours' },
+        { num: '04', title: 'Launch', desc: 'Déploiement, formation, documentation. Support prioritaire inclus 12 mois. Monitoring 24/7.', icon: '🚀', color: '#00ff87', duration: 'J+0' }
     ];
-
-    ct.innerHTML = steps.map((s, i) => `
-        <div class="method-step reveal" style="transition-delay:${i * 0.2}s">
-            <div class="method-step-num">${s.num}</div>
-            <div class="method-step-icon">${s.icon}</div>
-            <div class="method-step-title">${s.title}</div>
-            <div class="method-step-desc">${s.desc}</div>
-            <div class="method-step-time">${s.time}</div>
+    ct.innerHTML = `<div class="method-steps">${steps.map((s, i) => `<div class="method-step reveal" style="transition-delay:${i * 0.2}s">
+        <div class="method-step-line" style="background:${s.color}"></div>
+        <div class="method-step-dot" style="background:${s.color};box-shadow:0 0 20px ${s.color}60"><span>${s.icon}</span></div>
+        <div class="method-step-content">
+            <div class="method-step-num" style="color:${s.color}">${s.num}</div>
+            <h3 class="font-display font-bold text-xl mb-2">${s.title}</h3>
+            <p class="text-surface-400 text-sm leading-relaxed mb-3">${s.desc}</p>
+            <span class="method-step-duration" style="color:${s.color}">${s.duration}</span>
         </div>
-    `).join('');
+    </div>`).join('')}</div>`;
 }
 
 /* ========== PORTFOLIO ========== */
 function initPortfolio() {
     const ct = document.getElementById('portfolio-carousel');
-    const dotsEl = document.getElementById('portfolio-dots');
     if (!ct) return;
-
     const projects = [
-        { name: 'Le Gourmet Parisien', sector: 'Restaurant haut de gamme', result: '+180% de réservations', tags: ['Next.js','Stripe','SEO'], color: '#ff8c00', url: 'legourmet.fr', screen: 'restaurant' },
-        { name: 'Cabinet Durand & Associés', sector: 'Cabinet d\'avocats', result: '+95% de prises de contact', tags: ['React','CRM','RGPD'], color: '#00f0ff', url: 'durand-avocats.fr', screen: 'avocats' },
-        { name: 'ModaChic', sector: 'E-commerce mode', result: '+320% de ventes en ligne', tags: ['Shopify','Stripe','Analytics'], color: '#ff006e', url: 'modachic.com', screen: 'ecommerce' },
-        { name: 'Bijouterie Élégance', sector: 'Bijouterie artisanale', result: '+250% de trafic organique', tags: ['WordPress','SEO','Schema'], color: '#ffd700', url: 'elegance-bijoux.fr', screen: 'bijouterie' },
-        { name: 'NovaTech SaaS', sector: 'Startup SaaS B2B', result: '+400% de leads qualifiés', tags: ['React','Node.js','API'], color: '#bf00ff', url: 'novatech.io', screen: 'saas' },
-        { name: 'Immobilière du Parc', sector: 'Agence immobilière', result: '+150% de mandats signés', tags: ['Vue.js','Maps','CRM'], color: '#00ff87', url: 'immo-parc.fr', screen: 'immo' },
-        { name: 'FitLife Studio', sector: 'Salle de sport premium', result: '+210% d\'inscriptions', tags: ['React','Paiement','Planning'], color: '#06b6d4', url: 'fitlife-studio.com', screen: 'fitness' },
-        { name: 'TechConsult Pro', sector: 'Cabinet de conseil IT', result: '+175% de conversions', tags: ['Next.js','Dashboard','CRM'], color: '#8b5cf6', url: 'techconsult.pro', screen: 'consulting' },
+        { title: 'TechVision SaaS', type: 'Dashboard', desc: 'Plateforme analytics temps réel avec 50+ widgets personnalisables.', color: '#00f0ff', tags: ['React','D3.js','Node.js'], stat: '+340% adoption' },
+        { title: 'FoodExpress', type: 'E-Commerce', desc: 'Marketplace food-tech avec livraison temps réel et paiement Stripe.', color: '#ff006e', tags: ['Next.js','Stripe','Maps'], stat: '€2M CA/an' },
+        { title: 'MediCare Pro', type: 'CRM Médical', desc: 'Gestion patients, RDV, facturation. Conforme RGPD.', color: '#bf00ff', tags: ['React','PostgreSQL','IA'], stat: '5000+ patients' },
+        { title: 'CryptoTrack', type: 'Fintech', desc: 'Portfolio crypto avec alertes IA et analyse prédictive.', color: '#00ff87', tags: ['Vue.js','Python','ML'], stat: '15K users' },
+        { title: 'EduSmart', type: 'EdTech', desc: 'Plateforme e-learning adaptive avec chatbot tuteur IA.', color: '#ffd700', tags: ['Next.js','OpenAI','Prisma'], stat: '98% satisfaction' },
+        { title: 'LogiFlow', type: 'Automatisation', desc: 'ERP logistique avec tracking temps réel et optimisation routes.', color: '#ff8c00', tags: ['React','Node.js','Maps'], stat: '-40% coûts' },
+        { title: 'GreenEnergy', type: 'IoT Dashboard', desc: 'Monitoring énergie solaire avec prédictions ML.', color: '#06b6d4', tags: ['React','Python','IoT'], stat: '+60% efficacité' },
+        { title: 'LegalBot', type: 'Chatbot IA', desc: 'Assistant juridique IA pour cabinets d\'avocats. RAG + GPT-4.', color: '#e879f9', tags: ['LangChain','GPT-4','React'], stat: '10K requêtes/j' }
     ];
-
     let current = 0;
-
-    function getScreenHTML(type, color) {
-        const c = color + '20';
-        const c2 = color + '40';
-        switch(type) {
-            case 'restaurant': return `<div style="padding:12px"><div style="height:80px;background:linear-gradient(135deg,${c},${c2});border-radius:8px;margin-bottom:8px"></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">${[1,2,3].map(() => `<div style="height:50px;background:${c};border-radius:6px"></div>`).join('')}</div><div style="height:12px;background:${c};border-radius:4px;margin-top:8px;width:60%"></div><div style="height:8px;background:${c};border-radius:4px;margin-top:6px;width:80%"></div></div>`;
-            case 'avocats': return `<div style="padding:12px"><div style="display:flex;gap:8px;margin-bottom:8px"><div style="width:60px;height:60px;border-radius:50%;background:${c2}"></div><div style="flex:1"><div style="height:10px;background:${c};border-radius:4px;margin-bottom:6px;width:70%"></div><div style="height:8px;background:${c};border-radius:4px;width:50%"></div></div></div><div style="height:40px;background:${c};border-radius:6px;margin-bottom:6px"></div><div style="height:40px;background:${c};border-radius:6px"></div></div>`;
-            case 'ecommerce': return `<div style="padding:12px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">${[1,2,3,4].map(() => `<div style="background:${c};border-radius:6px;padding:8px"><div style="height:45px;background:${c2};border-radius:4px;margin-bottom:4px"></div><div style="height:6px;background:${c2};border-radius:2px;width:60%"></div><div style="height:8px;background:${color}50;border-radius:2px;width:40%;margin-top:4px"></div></div>`).join('')}</div></div>`;
-            default: return `<div style="padding:12px"><div style="height:50px;background:linear-gradient(135deg,${c},${c2});border-radius:8px;margin-bottom:8px"></div><div style="height:8px;background:${c};border-radius:4px;width:70%;margin-bottom:6px"></div><div style="height:8px;background:${c};border-radius:4px;width:50%;margin-bottom:8px"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><div style="height:60px;background:${c};border-radius:6px"></div><div style="height:60px;background:${c};border-radius:6px"></div></div></div>`;
-        }
-    }
-
     function render() {
         ct.innerHTML = projects.map((p, i) => {
             const offset = i - current;
-            let transform, opacity, zIndex;
-            if (offset === 0) {
-                transform = 'translate(-50%, -50%) scale(1) rotateY(0deg)';
-                opacity = 1; zIndex = 10;
-            } else if (Math.abs(offset) === 1) {
-                transform = `translate(${offset > 0 ? '0%' : '-100%'}, -50%) scale(0.85) rotateY(${offset * -15}deg)`;
-                opacity = 0.6; zIndex = 5;
-            } else if (Math.abs(offset) === 2) {
-                transform = `translate(${offset > 0 ? '50%' : '-150%'}, -50%) scale(0.7) rotateY(${offset * -20}deg)`;
-                opacity = 0.3; zIndex = 2;
-            } else {
-                transform = `translate(-50%, -50%) scale(0.5)`;
-                opacity = 0; zIndex = 0;
-            }
-            return `
-                <div class="portfolio-card-3d" style="transform:${transform};opacity:${opacity};z-index:${zIndex}">
-                    <div class="portfolio-mockup">
-                        <div class="portfolio-mockup-bar">
-                            <div class="portfolio-mockup-dot" style="background:#ef4444"></div>
-                            <div class="portfolio-mockup-dot" style="background:#eab308"></div>
-                            <div class="portfolio-mockup-dot" style="background:#22c55e"></div>
-                            <div class="portfolio-mockup-url">${p.url}</div>
-                        </div>
-                        <div class="portfolio-mockup-screen">${getScreenHTML(p.screen, p.color)}</div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-name">${p.name}</div>
-                            <div class="portfolio-info-sector">${p.sector}</div>
-                            <div class="portfolio-info-result">${p.result}</div>
-                            <div class="portfolio-tags">${p.tags.map(t => `<span class="portfolio-tag">${t}</span>`).join('')}</div>
-                        </div>
+            const absOff = Math.abs(offset);
+            const z = 10 - absOff;
+            const tx = offset * 320;
+            const sc = Math.max(0.7, 1 - absOff * 0.12);
+            const op = Math.max(0.3, 1 - absOff * 0.3);
+            return `<div class="portfolio-card" style="transform:translateX(${tx}px) scale(${sc});z-index:${z};opacity:${op};${absOff > 2 ? 'display:none' : ''}">
+                <div class="portfolio-card-inner" style="--pc:${p.color}">
+                    <div class="portfolio-card-top" style="background:linear-gradient(135deg,${p.color}20,transparent)">
+                        <span class="portfolio-type" style="color:${p.color}">${p.type}</span>
+                        <span class="portfolio-stat" style="background:${p.color}20;color:${p.color}">${p.stat}</span>
                     </div>
+                    <h3 class="font-display font-bold text-xl mb-2">${p.title}</h3>
+                    <p class="text-surface-400 text-sm mb-4">${p.desc}</p>
+                    <div class="portfolio-tags">${p.tags.map(t => `<span class="portfolio-tag" style="border-color:${p.color}40;color:${p.color}">${t}</span>`).join('')}</div>
                 </div>
-            `;
+            </div>`;
         }).join('');
-
-        // Dots
-        if (dotsEl) {
-            dotsEl.innerHTML = projects.map((_, i) => `<div class="portfolio-dot ${i === current ? 'active' : ''}" data-idx="${i}"></div>`).join('');
-            dotsEl.querySelectorAll('.portfolio-dot').forEach(d => {
-                d.addEventListener('click', () => { current = parseInt(d.dataset.idx); render(); });
-            });
-        }
+        const dots = document.getElementById('portfolio-dots');
+        if (dots) dots.innerHTML = projects.map((_, i) => `<button class="portfolio-dot ${i === current ? 'active' : ''}" data-i="${i}"></button>`).join('');
+        document.querySelectorAll('.portfolio-dot').forEach(d => d.addEventListener('click', () => { current = +d.dataset.i; render(); }));
     }
-
     render();
-
     const prev = document.getElementById('portfolio-prev');
     const next = document.getElementById('portfolio-next');
     if (prev) prev.addEventListener('click', () => { current = (current - 1 + projects.length) % projects.length; render(); });
     if (next) next.addEventListener('click', () => { current = (current + 1) % projects.length; render(); });
-
-    // Auto rotate
-    setInterval(() => { current = (current + 1) % projects.length; render(); }, 5000);
+    let autoplay = setInterval(() => { current = (current + 1) % projects.length; render(); }, 4000);
+    ct.addEventListener('mouseenter', () => clearInterval(autoplay));
+    ct.addEventListener('mouseleave', () => { autoplay = setInterval(() => { current = (current + 1) % projects.length; render(); }, 4000); });
 }
 
 /* ========== TESTIMONIALS ========== */
 function initTestimonials() {
     const ct = document.getElementById('testimonials-container');
     if (!ct) return;
-
-    const testimonials = [
-        { text: 'FlashAI a transformé notre présence en ligne. Notre site génère maintenant 3x plus de leads qu\'avant, et le CRM intégré nous fait gagner 10h par semaine.', name: 'Marie Dupont', role: 'CEO, Dupont Consulting', avatar: 'MD', color: '#00f0ff' },
-        { text: 'Incroyable rapport qualité/prix. En 5 jours, on avait un site e-commerce complet avec paiement, gestion de stock et dashboard analytics. Impensable avec une agence classique.', name: 'Thomas Martin', role: 'Fondateur, ModaChic', avatar: 'TM', color: '#bf00ff' },
-        { text: 'Le chatbot IA a révolutionné notre service client. Il gère 80% des demandes automatiquement et nos clients adorent la rapidité de réponse. ROI positif dès le premier mois.', name: 'Sophie Bernard', role: 'Directrice, TechConsult Pro', avatar: 'SB', color: '#ff006e' },
-        { text: 'L\'équipe FlashAI comprend vraiment les enjeux business. Pas juste des développeurs, mais de vrais partenaires qui pensent conversion et croissance.', name: 'Lucas Petit', role: 'CMO, NovaTech SaaS', avatar: 'LP', color: '#00ff87' },
-        { text: 'La meilleure décision de l\'année. Notre ancien site nous coûtait 2000€/mois avec une agence, FlashAI nous a livré un site 10x mieux pour un quart du prix.', name: 'Emma Leroy', role: 'Gérante, Immobilière du Parc', avatar: 'EL', color: '#ffd700' },
+    const items = [
+        { name: 'Marie Dupont', role: 'CEO, TechVision', text: 'FlashAI a transformé notre vision en réalité en seulement 8 jours. Le dashboard est incroyable, nos équipes l\'adorent. Le ROI a été immédiat.', rating: 5, avatar: 'MD', color: '#00f0ff' },
+        { name: 'Thomas Martin', role: 'CTO, FoodExpress', text: 'On a économisé 40 000€ par rapport aux devis d\'agences classiques. Et le résultat est meilleur. Qualité exceptionnelle, support réactif.', rating: 5, avatar: 'TM', color: '#bf00ff' },
+        { name: 'Sophie Bernard', role: 'Fondatrice, MediCare', text: 'Le CRM médical est parfait. Conforme RGPD, intuitif, et nos patients adorent le portail en ligne. Support 24/7 vraiment réactif.', rating: 5, avatar: 'SB', color: '#ff006e' },
+        { name: 'Lucas Chen', role: 'PM, CryptoTrack', text: 'L\'intégration IA est bluffante. Le chatbot comprend vraiment nos clients. Taux de satisfaction passé de 72% à 96%.', rating: 5, avatar: 'LC', color: '#00ff87' },
+        { name: 'Emma Laurent', role: 'Directrice, EduSmart', text: 'Plateforme livrée en 5 jours, alors que d\'autres agences demandaient 3 mois. Qualité irréprochable et prix imbattable.', rating: 5, avatar: 'EL', color: '#ffd700' }
     ];
-
-    ct.innerHTML = testimonials.map(t => `
-        <div class="testimonial-card reveal">
-            <div class="testimonial-quote">"</div>
-            <div class="testimonial-text">${t.text}</div>
-            <div class="testimonial-author">
-                <div class="testimonial-avatar" style="background:${t.color}20;color:${t.color}">${t.avatar}</div>
-                <div>
-                    <div class="testimonial-name">${t.name}</div>
-                    <div class="testimonial-role">${t.role}</div>
-                    <div class="testimonial-stars">${'★'.repeat(5).split('').map(s => `<span class="testimonial-star">${s}</span>`).join('')}</div>
-                </div>
-            </div>
+    ct.innerHTML = `<div class="testimonials-track">${items.map((t, i) => `<div class="testimonial-card reveal" style="transition-delay:${i * 0.12}s;--tc:${t.color}">
+        <div class="testimonial-quote">"</div>
+        <p class="text-surface-200 text-sm leading-relaxed mb-6">${t.text}</p>
+        <div class="testimonial-stars">${'★'.repeat(t.rating)}</div>
+        <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:${t.color}30;color:${t.color}">${t.avatar}</div>
+            <div><div class="font-bold text-sm">${t.name}</div><div class="text-xs text-surface-400">${t.role}</div></div>
         </div>
-    `).join('');
+    </div>`).join('')}</div>`;
 }
 
-/* ========== SOLAR SYSTEM (TOOLS) ========== */
-function initSolarSystem() {
-    const canvas = document.getElementById('solar-canvas');
-    const container = document.getElementById('solar-system');
-    const infoPanel = document.getElementById('solar-info');
-    if (!canvas || !container) return;
-
-    const orbits = [
-        { name: 'Paiement', color: '#00ff87', tools: [
-            { name: 'Stripe', desc: 'Paiements en ligne sécurisés', emoji: '💳' },
-            { name: 'PayPal', desc: 'Paiements internationaux', emoji: '🅿️' },
-            { name: 'Square', desc: 'Terminal de paiement', emoji: '⬜' },
-            { name: 'Mollie', desc: 'Paiements européens', emoji: '💶' },
-        ]},
-        { name: 'Communication', color: '#00f0ff', tools: [
-            { name: 'Slack', desc: 'Messagerie d\'équipe', emoji: '💬' },
-            { name: 'Discord', desc: 'Communauté et support', emoji: '🎮' },
-            { name: 'WhatsApp', desc: 'Messagerie business', emoji: '📱' },
-            { name: 'Twilio', desc: 'SMS et appels API', emoji: '📞' },
-            { name: 'SendGrid', desc: 'Emails transactionnels', emoji: '📧' },
-        ]},
-        { name: 'Cloud & Data', color: '#bf00ff', tools: [
-            { name: 'AWS', desc: 'Infrastructure cloud', emoji: '☁️' },
-            { name: 'Firebase', desc: 'Backend as a Service', emoji: '🔥' },
-            { name: 'MongoDB', desc: 'Base NoSQL flexible', emoji: '🍃' },
-            { name: 'PostgreSQL', desc: 'Base SQL robuste', emoji: '🐘' },
-            { name: 'Redis', desc: 'Cache haute performance', emoji: '⚡' },
-            { name: 'Supabase', desc: 'Alternative open-source Firebase', emoji: '⚡' },
-        ]},
-        { name: 'Automatisation', color: '#ff8c00', tools: [
-            { name: 'Zapier', desc: 'Automatisation no-code', emoji: '⚡' },
-            { name: 'Make', desc: 'Workflows visuels', emoji: '🔧' },
-            { name: 'n8n', desc: 'Automatisation open-source', emoji: '🔗' },
-            { name: 'GitHub Actions', desc: 'CI/CD automatisé', emoji: '🔄' },
-            { name: 'Webhooks', desc: 'Events en temps réel', emoji: '🪝' },
-            { name: 'CRON', desc: 'Tâches planifiées', emoji: '⏰' },
-            { name: 'Puppeteer', desc: 'Web scraping intelligent', emoji: '🤖' },
-        ]},
-        { name: 'IA & ML', color: '#ff006e', tools: [
-            { name: 'OpenAI', desc: 'GPT-4, DALL·E, Whisper', emoji: '🧠' },
-            { name: 'Claude', desc: 'IA conversationnelle avancée', emoji: '🤖' },
-            { name: 'Hugging Face', desc: 'Modèles open-source', emoji: '🤗' },
-            { name: 'TensorFlow', desc: 'Machine learning', emoji: '📊' },
-            { name: 'Pinecone', desc: 'Base vectorielle', emoji: '🌲' },
-            { name: 'LangChain', desc: 'Orchestration LLM', emoji: '🔗' },
-            { name: 'Vercel AI', desc: 'SDK streaming IA', emoji: '▲' },
-            { name: 'Replicate', desc: 'Modèles en API', emoji: '🔁' },
-        ]},
-        { name: 'Marketing', color: '#ffd700', tools: [
-            { name: 'HubSpot', desc: 'CRM & marketing automation', emoji: '🎯' },
-            { name: 'Mailchimp', desc: 'Email marketing', emoji: '📮' },
-            { name: 'Google Ads', desc: 'Publicité search', emoji: '🔍' },
-            { name: 'Meta Ads', desc: 'Publicité sociale', emoji: '📘' },
-            { name: 'Google Analytics', desc: 'Analyse de trafic', emoji: '📈' },
-            { name: 'Hotjar', desc: 'Heatmaps et recordings', emoji: '🔥' },
-            { name: 'Segment', desc: 'Customer data platform', emoji: '📊' },
-            { name: 'Mixpanel', desc: 'Product analytics', emoji: '🔬' },
-            { name: 'Ahrefs', desc: 'SEO et backlinks', emoji: '🔗' },
-        ]},
-    ];
-
+/* ========== GALAXY VISUALIZATION ========== */
+function initGalaxy() {
+    const container = document.getElementById('galaxy-container');
+    const canvas = document.getElementById('galaxy-canvas');
+    if (!canvas || !container || window.innerWidth < 768) return;
     const ctx = canvas.getContext('2d');
-    let width, height, cx, cy;
-    let hoveredTool = null;
-    let mouseX = 0, mouseY = 0;
-    let time = 0;
+    let w, h, cx, cy, mouseX = 0, mouseY = 0, hoveredTool = null;
+
+    const categories = {
+        'Frontend': { color: '#00f0ff', tools: ['React','Vue.js','Next.js','Angular','Svelte','Nuxt','Gatsby','Remix','Astro','Solid'], orbit: 1 },
+        'Backend': { color: '#bf00ff', tools: ['Node.js','Python','Go','Rust','PHP','Ruby','Java','Elixir','Deno','Bun'], orbit: 2 },
+        'Database': { color: '#ff006e', tools: ['PostgreSQL','MongoDB','Redis','Supabase','Firebase','MySQL','DynamoDB','Prisma','Drizzle','PlanetScale'], orbit: 3 },
+        'IA / ML': { color: '#ffd700', tools: ['OpenAI','LangChain','Pinecone','Replicate','Hugging Face','TensorFlow','PyTorch','Anthropic','Mistral','Cohere'], orbit: 4 },
+        'DevOps': { color: '#00ff87', tools: ['Docker','AWS','Vercel','Cloudflare','GitHub Actions','Terraform','K8s','Nginx','Netlify','Railway'], orbit: 5 },
+        'Outils': { color: '#ff8c00', tools: ['Stripe','Twilio','SendGrid','Zapier','Make','n8n','Segment','Mixpanel','Sentry','Datadog'], orbit: 6 }
+    };
 
     function resize() {
         const rect = container.getBoundingClientRect();
-        width = canvas.width = rect.width * 2;
-        height = canvas.height = rect.height * 2;
-        ctx.scale(2, 2);
-        cx = rect.width / 2;
-        cy = rect.height / 2;
+        w = canvas.width = rect.width;
+        h = canvas.height = rect.height;
+        cx = w / 2; cy = h / 2;
     }
-
     resize();
-    window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+    window.addEventListener('resize', resize);
 
     container.addEventListener('mousemove', e => {
         const rect = container.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
     });
+    container.addEventListener('mouseleave', () => { hoveredTool = null; });
 
-    container.addEventListener('mouseleave', () => {
-        hoveredTool = null;
-        if (infoPanel) infoPanel.style.display = 'none';
-    });
+    // Star field
+    const stars = Array.from({length: 200}, () => ({
+        x: Math.random(), y: Math.random(),
+        size: Math.random() * 1.5 + 0.3,
+        speed: Math.random() * 0.0003 + 0.0001,
+        brightness: Math.random()
+    }));
 
-    function draw() {
-        ctx.setTransform(2, 0, 0, 2, 0, 0);
-        ctx.clearRect(0, 0, width, height);
-        time += 0.003;
-        hoveredTool = null;
-        let closestDist = 30;
+    // Nebula particles
+    const nebulae = Array.from({length: 30}, () => ({
+        x: Math.random(), y: Math.random(),
+        size: Math.random() * 80 + 40,
+        color: ['#00f0ff','#bf00ff','#ff006e','#ffd700'][Math.floor(Math.random() * 4)],
+        alpha: Math.random() * 0.04 + 0.01,
+        speed: Math.random() * 0.0002 + 0.0001
+    }));
 
-        orbits.forEach((orbit, oi) => {
-            const r = 80 + oi * 50;
-            const speed = 0.2 + oi * 0.05;
-
-            // Draw orbit ring
-            ctx.beginPath();
-            ctx.arc(cx, cy, r, 0, Math.PI * 2);
-            ctx.strokeStyle = orbit.color + '15';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            // Draw tools
-            orbit.tools.forEach((tool, ti) => {
-                const angle = time * speed + (ti / orbit.tools.length) * Math.PI * 2;
-                const x = cx + Math.cos(angle) * r;
-                const y = cy + Math.sin(angle) * r;
-
-                const dist = Math.sqrt((mouseX - x) ** 2 + (mouseY - y) ** 2);
-                const isHovered = dist < closestDist;
-                if (isHovered) {
-                    hoveredTool = { ...tool, orbit: orbit.name, color: orbit.color };
-                    closestDist = dist;
-                }
-
-                const size = isHovered ? 18 : 12;
-
-                // Glow
-                if (isHovered) {
-                    ctx.beginPath();
-                    ctx.arc(x, y, 25, 0, Math.PI * 2);
-                    ctx.fillStyle = orbit.color + '20';
-                    ctx.fill();
-
-                    // Line to center
-                    ctx.beginPath();
-                    ctx.moveTo(cx, cy);
-                    ctx.lineTo(x, y);
-                    ctx.strokeStyle = orbit.color + '30';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-
-                // Circle
-                ctx.beginPath();
-                ctx.arc(x, y, size, 0, Math.PI * 2);
-                ctx.fillStyle = isHovered ? orbit.color : orbit.color + '60';
-                ctx.fill();
-
-                // Emoji
-                ctx.font = `${isHovered ? 14 : 10}px sans-serif`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(tool.emoji, x, y);
+    // Build tool positions
+    const toolPositions = [];
+    const catEntries = Object.entries(categories);
+    catEntries.forEach(([catName, cat]) => {
+        const orbitRadius = (cat.orbit / 7) * Math.min(cx, cy) * 0.85 + 50;
+        cat.tools.forEach((tool, i) => {
+            const baseAngle = (i / cat.tools.length) * Math.PI * 2;
+            toolPositions.push({
+                name: tool, category: catName, color: cat.color,
+                orbit: orbitRadius, baseAngle, angle: baseAngle,
+                speed: (0.0004 + Math.random() * 0.0003) * (cat.orbit % 2 === 0 ? -1 : 1),
+                size: 24 + Math.random() * 8,
+                pulsePhase: Math.random() * Math.PI * 2
             });
         });
+    });
 
-        // Update info panel
-        if (infoPanel) {
-            if (hoveredTool) {
-                infoPanel.style.display = 'block';
-                document.getElementById('solar-info-name').textContent = hoveredTool.name;
-                document.getElementById('solar-info-desc').textContent = hoveredTool.desc;
-                document.getElementById('solar-info-integration').innerHTML = `<span style="color:${hoveredTool.color}">${hoveredTool.orbit}</span> — Intégration FlashAI`;
-            } else {
-                infoPanel.style.display = 'none';
-            }
+    // Comet trails
+    const comets = [];
+    function spawnComet() {
+        comets.push({
+            angle: Math.random() * Math.PI * 2,
+            radius: Math.random() * Math.min(cx, cy) * 0.3 + 80,
+            speed: Math.random() * 0.02 + 0.015,
+            life: 1, decay: 0.005 + Math.random() * 0.005,
+            trail: [],
+            color: ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87'][Math.floor(Math.random() * 5)]
+        });
+    }
+
+    let time = 0;
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        time++;
+
+        // Nebulae
+        nebulae.forEach(n => {
+            n.x += n.speed; n.y += n.speed * 0.5;
+            if (n.x > 1.2) n.x = -0.2; if (n.y > 1.2) n.y = -0.2;
+            const grad = ctx.createRadialGradient(n.x * w, n.y * h, 0, n.x * w, n.y * h, n.size);
+            grad.addColorStop(0, n.color + '15');
+            grad.addColorStop(1, 'transparent');
+            ctx.fillStyle = grad;
+            ctx.beginPath(); ctx.arc(n.x * w, n.y * h, n.size, 0, Math.PI * 2); ctx.fill();
+        });
+
+        // Stars
+        stars.forEach(s => {
+            s.brightness = 0.3 + Math.sin(time * 0.02 + s.x * 10) * 0.4 + 0.3;
+            ctx.fillStyle = `rgba(255,255,255,${s.brightness})`;
+            ctx.beginPath(); ctx.arc(s.x * w, s.y * h, s.size, 0, Math.PI * 2); ctx.fill();
+        });
+
+        // Center glow
+        const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, 80);
+        cg.addColorStop(0, 'rgba(0,240,255,0.15)');
+        cg.addColorStop(0.5, 'rgba(191,0,255,0.05)');
+        cg.addColorStop(1, 'transparent');
+        ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(cx, cy, 80, 0, Math.PI * 2); ctx.fill();
+
+        // Orbit rings
+        catEntries.forEach(([_, cat]) => {
+            const r = (cat.orbit / 7) * Math.min(cx, cy) * 0.85 + 50;
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+            ctx.strokeStyle = cat.color + '12'; ctx.lineWidth = 1; ctx.setLineDash([4, 8]); ctx.stroke(); ctx.setLineDash([]);
+        });
+
+        // Comets
+        if (Math.random() < 0.01 && comets.length < 3) spawnComet();
+        for (let i = comets.length - 1; i >= 0; i--) {
+            const c = comets[i];
+            c.angle += c.speed; c.life -= c.decay;
+            const px = cx + Math.cos(c.angle) * c.radius;
+            const py = cy + Math.sin(c.angle) * c.radius * 0.6;
+            c.trail.push({ x: px, y: py }); if (c.trail.length > 20) c.trail.shift();
+            c.trail.forEach((pt, ti) => {
+                const a = (ti / c.trail.length) * c.life * 0.6;
+                ctx.fillStyle = c.color + Math.floor(a * 255).toString(16).padStart(2, '0');
+                ctx.beginPath(); ctx.arc(pt.x, pt.y, 2 * (ti / c.trail.length), 0, Math.PI * 2); ctx.fill();
+            });
+            if (c.life <= 0) comets.splice(i, 1);
         }
 
-        // Data particles
-        for (let i = 0; i < 20; i++) {
-            const angle = time * 2 + i * 0.31;
-            const r = 60 + (i * 17) % 300;
-            const x = cx + Math.cos(angle) * r;
-            const y = cy + Math.sin(angle) * r;
+        // Tools
+        hoveredTool = null;
+        toolPositions.forEach(t => {
+            t.angle += t.speed;
+            const x = cx + Math.cos(t.angle) * t.orbit;
+            const y = cy + Math.sin(t.angle) * t.orbit * 0.55;
+            t.cx = x; t.cy = y;
+
+            const pulse = Math.sin(time * 0.03 + t.pulsePhase) * 0.15 + 1;
+            const dist = Math.hypot(mouseX - x, mouseY - y);
+            const isHovered = dist < t.size + 5;
+            if (isHovered) hoveredTool = t;
+            const scale = isHovered ? 1.3 : pulse;
+            const s = t.size * scale;
+
+            // Hexagon shape
+            ctx.save();
+            ctx.translate(x, y);
             ctx.beginPath();
-            ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(99,102,241,0.3)';
+            for (let i = 0; i < 6; i++) {
+                const a = (i / 6) * Math.PI * 2 - Math.PI / 6;
+                i === 0 ? ctx.moveTo(Math.cos(a) * s / 2, Math.sin(a) * s / 2) : ctx.lineTo(Math.cos(a) * s / 2, Math.sin(a) * s / 2);
+            }
+            ctx.closePath();
+            ctx.fillStyle = isHovered ? t.color + '50' : t.color + '20';
             ctx.fill();
+            ctx.strokeStyle = t.color + (isHovered ? 'cc' : '60');
+            ctx.lineWidth = isHovered ? 2 : 1;
+            ctx.stroke();
+
+            if (isHovered) {
+                ctx.shadowColor = t.color; ctx.shadowBlur = 20;
+                ctx.stroke(); ctx.shadowBlur = 0;
+            }
+
+            // Tool name
+            ctx.fillStyle = isHovered ? '#fff' : t.color + 'cc';
+            ctx.font = `${isHovered ? 'bold ' : ''}${Math.max(8, s * 0.32)}px "Space Grotesk", sans-serif`;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(t.name, 0, 0);
+            ctx.restore();
+        });
+
+        // Tooltip
+        const tooltip = document.getElementById('galaxy-tooltip');
+        if (hoveredTool && tooltip) {
+            tooltip.style.display = 'block';
+            tooltip.style.left = hoveredTool.cx + 'px';
+            tooltip.style.top = (hoveredTool.cy - 40) + 'px';
+            tooltip.innerHTML = `<strong style="color:${hoveredTool.color}">${hoveredTool.name}</strong><br><span style="font-size:11px;color:#94a3b8">${hoveredTool.category}</span>`;
+        } else if (tooltip) {
+            tooltip.style.display = 'none';
         }
 
         requestAnimationFrame(draw);
     }
-
     draw();
 
     // Search filter
-    const search = document.getElementById('tools-search');
-    if (search) {
-        search.addEventListener('input', e => {
+    const searchInput = document.getElementById('tools-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', e => {
             const q = e.target.value.toLowerCase();
-            // Could highlight matching tools - for now just a toast
-            if (q.length > 2) {
-                const all = orbits.flatMap(o => o.tools);
-                const matches = all.filter(t => t.name.toLowerCase().includes(q));
-                if (matches.length > 0) showToast(`${matches.length} outil${matches.length > 1 ? 's' : ''} trouvé${matches.length > 1 ? 's' : ''}`);
-            }
+            toolPositions.forEach(t => {
+                t.size = (!q || t.name.toLowerCase().includes(q)) ? 24 + Math.random() * 8 : 10;
+            });
         });
     }
 }
 
-/* ========== TOOLS MOBILE GRID ========== */
 function initToolsMobile() {
+    if (window.innerWidth >= 768) return;
     const grid = document.getElementById('tools-mobile-grid');
     if (!grid) return;
-
-    const allTools = [
-        { name: 'Stripe', emoji: '💳' }, { name: 'OpenAI', emoji: '🧠' }, { name: 'AWS', emoji: '☁️' },
-        { name: 'Slack', emoji: '💬' }, { name: 'Zapier', emoji: '⚡' }, { name: 'HubSpot', emoji: '🎯' },
-        { name: 'Firebase', emoji: '🔥' }, { name: 'Discord', emoji: '🎮' }, { name: 'MongoDB', emoji: '🍃' },
-        { name: 'Twilio', emoji: '📞' }, { name: 'Make', emoji: '🔧' }, { name: 'Analytics', emoji: '📈' },
-        { name: 'Redis', emoji: '⚡' }, { name: 'Claude', emoji: '🤖' }, { name: 'WhatsApp', emoji: '📱' },
-        { name: 'PayPal', emoji: '🅿️' }, { name: 'Vercel', emoji: '▲' }, { name: 'n8n', emoji: '🔗' },
-    ];
-
-    grid.innerHTML = allTools.map(t => `
-        <div class="tools-mobile-item">
-            <span class="tool-emoji">${t.emoji}</span>
-            <span>${t.name}</span>
-        </div>
-    `).join('');
+    const tools = ['React','Next.js','Vue.js','Node.js','Python','TypeScript','PostgreSQL','MongoDB','Redis','Docker','AWS','Vercel','Stripe','OpenAI','TailwindCSS','GraphQL','Firebase','Supabase','Prisma','LangChain','Cloudflare','Twilio','GitHub Actions','Terraform'];
+    const colors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87','#ff8c00'];
+    grid.innerHTML = tools.map((t, i) => `<div class="tool-mobile-pill" style="border-color:${colors[i % colors.length]}40;color:${colors[i % colors.length]}">${t}</div>`).join('');
 }
 
-/* ========== TOOLS CATEGORIES ========== */
-function initToolsCategories() {
-    const ct = document.getElementById('tools-categories');
+function initGalaxyCategories() {
+    const ct = document.getElementById('galaxy-categories');
     if (!ct) return;
     const cats = [
-        { name: 'Paiement', color: '#00ff87' },
-        { name: 'Communication', color: '#00f0ff' },
-        { name: 'Cloud & Data', color: '#bf00ff' },
-        { name: 'Automatisation', color: '#ff8c00' },
-        { name: 'IA & ML', color: '#ff006e' },
-        { name: 'Marketing', color: '#ffd700' },
+        { name: 'Frontend', color: '#00f0ff', count: 10 },
+        { name: 'Backend', color: '#bf00ff', count: 10 },
+        { name: 'Database', color: '#ff006e', count: 10 },
+        { name: 'IA / ML', color: '#ffd700', count: 10 },
+        { name: 'DevOps', color: '#00ff87', count: 10 },
+        { name: 'Outils', color: '#ff8c00', count: 10 }
     ];
-    ct.innerHTML = cats.map(c => `
-        <span class="tool-cat-pill" style="--cat-color:${c.color};--cat-glow:${c.color}30">${c.name}</span>
-    `).join('');
+    ct.innerHTML = `<div class="galaxy-cats-row">${cats.map(c => `<div class="galaxy-cat-pill" style="border-color:${c.color}40;color:${c.color}"><span class="galaxy-cat-dot" style="background:${c.color}"></span>${c.name}<span class="galaxy-cat-count">${c.count}</span></div>`).join('')}</div>`;
 }
 
-/* ========== PRICING ========== */
+/* ========== PRICING 3D ========== */
 function initPricing() {
     const grid = document.getElementById('pricing-grid');
+    const toggle = document.getElementById('pricing-toggle');
     if (!grid) return;
+    let annual = false;
 
     const plans = [
-        { name: 'Starter', price: '990', suffix: '€', desc: 'Parfait pour démarrer avec un site vitrine professionnel.', badge: null, featured: false,
-          features: ['Site vitrine responsive', 'Design premium', 'SEO de base', 'Formulaire de contact', 'Hébergement 1 an', 'Support email'] },
-        { name: 'Business', price: '2 490', suffix: '€', desc: 'La solution complète pour développer votre activité.', badge: 'Populaire', featured: true,
-          features: ['Tout Starter +', 'CRM intégré', 'Chatbot IA basique', 'Analytics avancés', 'Paiement en ligne', 'SEO avancé', 'Support prioritaire', '3 mois de maintenance'] },
-        { name: 'Premium', price: '4 990', suffix: '€', desc: 'Le package ultime pour dominer votre marché.', badge: null, featured: false,
-          features: ['Tout Business +', 'Dashboard custom', 'Automatisations avancées', 'API sur mesure', 'Chatbot IA avancé', 'Formation équipe', 'Support 24/7', '6 mois de maintenance'] },
-        { name: 'Enterprise', price: 'Sur mesure', suffix: '', desc: 'Pour les projets ambitieux qui nécessitent une solution dédiée.', badge: null, featured: false,
-          features: ['Solution 100% custom', 'Architecture dédiée', 'SLA garanti 99.9%', 'Account manager dédié', 'Audit sécurité mensuel', 'Support 24/7 prioritaire', 'Formation continue', 'Évolutions illimitées'] },
+        { name: 'Starter', icon: '⚡', desc: 'Parfait pour démarrer votre présence digitale', price: 890, features: ['Site vitrine responsive','Design premium sur mesure','SEO de base optimisé','Hébergement 3 mois inclus','Support email'], color: '#00f0ff', popular: false },
+        { name: 'Business', icon: '🚀', desc: 'La solution complète pour scaler votre business', price: 2490, features: ['Tout Starter +','CRM / Dashboard intégré','Chatbot IA basique','API & Automatisations','Analytics avancé','Support prioritaire 12 mois','Formation équipe incluse'], color: '#bf00ff', popular: true },
+        { name: 'Enterprise', icon: '👑', desc: 'Infrastructure complète, IA avancée, support dédié', price: 4990, features: ['Tout Business +','IA avancée (GPT-4, RAG)','Infrastructure scalable','Multi-langue / Multi-pays','SLA 99.9% garanti','Account manager dédié','Audit sécurité complet','Maintenance illimitée'], color: '#ffd700', popular: false }
     ];
 
-    grid.innerHTML = plans.map(p => `
-        <div class="pricing-card ${p.featured ? 'featured' : ''} reveal">
-            <div class="pricing-holo"></div>
-            ${p.badge ? `<div class="pricing-badge">${p.badge}</div>` : ''}
-            <div class="pricing-name">${p.name}</div>
-            <div class="pricing-price">${p.price}<span class="pricing-price-suffix">${p.suffix}</span></div>
-            <div class="pricing-desc">${p.desc}</div>
-            <ul class="pricing-features">
-                ${p.features.map(f => `<li>${f}</li>`).join('')}
-            </ul>
-            <a href="#contact" class="btn-glow w-full justify-center ${p.featured ? '' : 'btn-outline'}" style="${p.featured ? '' : 'background:transparent;border:1.5px solid rgba(255,255,255,0.2)'}">
-                <span>${p.price === 'Sur mesure' ? 'Nous contacter' : 'Choisir ce plan'}</span>
-            </a>
-        </div>
-    `).join('');
+    function render() {
+        grid.innerHTML = plans.map((p, i) => {
+            const price = annual ? Math.round(p.price * 0.8) : p.price;
+            return `<div class="pricing-card-3d reveal ${p.popular ? 'pricing-featured' : ''}" style="transition-delay:${i * 0.15}s;--plan-color:${p.color}" data-tilt>
+                ${p.popular ? '<div class="pricing-popular-badge">⭐ Plus populaire</div>' : ''}
+                <div class="pricing-card-aurora"></div>
+                <div class="pricing-card-content">
+                    <div class="pricing-card-icon" style="background:${p.color}15">${p.icon}</div>
+                    <h3 class="font-display font-bold text-2xl mb-2">${p.name}</h3>
+                    <p class="text-surface-400 text-sm mb-6">${p.desc}</p>
+                    <div class="pricing-price">
+                        <span class="pricing-currency">€</span>
+                        <span class="pricing-amount" data-target="${price}">${price.toLocaleString('fr')}</span>
+                    </div>
+                    <div class="text-surface-500 text-xs mb-6">${annual ? 'par an (économisez 20%)' : 'prix unique, pas d\'abonnement'}</div>
+                    <ul class="pricing-features">${p.features.map((f, fi) => `<li class="pricing-feature" style="transition-delay:${fi * 0.05}s"><svg class="w-4 h-4 flex-shrink-0" style="color:${p.color}" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg><span>${f}</span></li>`).join('')}</ul>
+                    <a href="#contact" class="pricing-cta ${p.popular ? 'pricing-cta-featured' : ''}" style="--pc:${p.color}"><span>${p.popular ? 'Choisir Business' : 'Commencer'}</span></a>
+                </div>
+            </div>`;
+        }).join('');
 
-    // Holographic effect
-    grid.querySelectorAll('.pricing-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const r = card.getBoundingClientRect();
-            const x = (e.clientX - r.left) / r.width;
-            const y = (e.clientY - r.top) / r.height;
-            const holo = card.querySelector('.pricing-holo');
-            if (holo) holo.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, rgba(0,240,255,0.08), rgba(191,0,255,0.05), rgba(255,0,110,0.03), transparent 60%)`;
+        // 3D tilt
+        grid.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5;
+                const y = (e.clientY - r.top) / r.height - 0.5;
+                card.style.transform = `perspective(1200px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
         });
-    });
+    }
+    render();
+
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            annual = !annual;
+            toggle.classList.toggle('active', annual);
+            render();
+        });
+    }
 }
 
 /* ========== ROI CALCULATOR ========== */
@@ -1398,118 +882,127 @@ function initROICalculator() {
     const conv = document.getElementById('roi-conv');
     if (!budget || !leads || !conv) return;
 
-    function calc() {
-        const b = parseFloat(budget.value);
-        const l = parseFloat(leads.value);
-        const c = parseFloat(conv.value);
-
+    function update() {
+        const b = +budget.value, l = +leads.value, c = +conv.value;
         document.getElementById('roi-budget-val').textContent = b.toLocaleString('fr') + ' €';
         document.getElementById('roi-leads-val').textContent = l;
         document.getElementById('roi-conv-val').textContent = c + '%';
 
-        const currentRevenue = l * (c / 100) * 200;
-        const improvedRevenue = l * 1.5 * ((c * 1.8) / 100) * 200;
-        const roi = Math.round(((improvedRevenue - currentRevenue) / (b || 1)) * 100);
-        const savings = Math.round(improvedRevenue - currentRevenue);
+        const newConv = Math.min(c * 2.5, 25);
+        const currentRevenue = l * (c / 100) * 500;
+        const flashRevenue = l * 1.4 * (newConv / 100) * 500;
+        const roi = Math.round(((flashRevenue - currentRevenue) / b) * 100);
+        const savings = Math.round(flashRevenue - currentRevenue);
 
         document.getElementById('roi-number').textContent = '+' + roi + '%';
-        document.getElementById('roi-detail').textContent = 'Revenu additionnel estimé : ' + savings.toLocaleString('fr') + ' €/mois';
+        document.getElementById('roi-detail').textContent = 'Gain estimé : ' + savings.toLocaleString('fr') + ' €/mois';
 
-        // Draw mini chart
+        // Draw chart
         const canvas = document.getElementById('roi-chart');
         if (canvas) {
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width;
-            const h = canvas.height;
+            const ctx = canvas.getContext('2d'), w = canvas.width, h = canvas.height;
             ctx.clearRect(0, 0, w, h);
-
-            // Before bar
-            const barW = 60;
-            const beforeH = (currentRevenue / (improvedRevenue || 1)) * (h - 40);
-            const afterH = h - 40;
-
-            ctx.fillStyle = '#ef444440';
-            ctx.beginPath();
-            ctx.roundRect(w/2 - barW - 10, h - beforeH - 20, barW, beforeH, 6);
-            ctx.fill();
-            ctx.fillStyle = '#94a3b8';
-            ctx.font = '10px Inter';
-            ctx.textAlign = 'center';
-            ctx.fillText('Avant', w/2 - barW/2 - 10, h - 5);
-
-            // After bar
-            ctx.fillStyle = '#00ff8740';
-            ctx.beginPath();
-            ctx.roundRect(w/2 + 10, h - afterH - 20, barW, afterH, 6);
-            ctx.fill();
-            ctx.fillStyle = '#00ff87';
-            ctx.fillText('Après', w/2 + barW/2 + 10, h - 5);
+            const barW = 60, gap = 40;
+            const maxH = h - 30;
+            const maxVal = Math.max(currentRevenue, flashRevenue, 1);
+            // Current
+            const h1 = (currentRevenue / maxVal) * maxH * 0.8;
+            ctx.fillStyle = '#475569';
+            ctx.beginPath(); ctx.roundRect(w / 2 - barW - gap / 2, h - 15 - h1, barW, h1, 6); ctx.fill();
+            ctx.fillStyle = '#94a3b8'; ctx.font = '11px Inter'; ctx.textAlign = 'center';
+            ctx.fillText('Avant', w / 2 - barW / 2 - gap / 2, h - 2);
+            // Flash
+            const h2 = (flashRevenue / maxVal) * maxH * 0.8;
+            const grad = ctx.createLinearGradient(0, h - 15 - h2, 0, h - 15);
+            grad.addColorStop(0, '#00f0ff'); grad.addColorStop(1, '#bf00ff');
+            ctx.fillStyle = grad;
+            ctx.beginPath(); ctx.roundRect(w / 2 + gap / 2, h - 15 - h2, barW, h2, 6); ctx.fill();
+            ctx.fillStyle = '#00f0ff'; ctx.fillText('FlashAI', w / 2 + barW / 2 + gap / 2, h - 2);
         }
     }
-
-    [budget, leads, conv].forEach(el => el.addEventListener('input', calc));
-    calc();
+    [budget, leads, conv].forEach(el => el.addEventListener('input', update));
+    update();
 }
 
-/* ========== FAQ ========== */
+/* ========== FAQ KNOWLEDGE BASE ========== */
 function initFAQ() {
     const list = document.getElementById('faq-list');
     if (!list) return;
-
-    const faqs = [
-        { q: 'Quels types de projets réalisez-vous ?', a: 'Nous créons des sites web, CRM, dashboards, chatbots IA, automatisations, et tout outil digital sur mesure. Chaque projet est unique et construit de zéro selon vos besoins spécifiques.', cat: 'general' },
-        { q: 'Combien coûte un projet ?', a: 'Nos tarifs commencent à 890€ pour une automatisation et 990€ pour un site vitrine. Le prix dépend de la complexité du projet. Nous fournissons toujours un devis détaillé et transparent avant de commencer.', cat: 'business' },
-        { q: 'Quel est le délai de livraison ?', a: 'En moyenne 5 jours ouvrés pour un site vitrine, 7-14 jours pour un projet complexe (CRM, e-commerce). Nous travaillons en sprints courts avec des démos quotidiennes.', cat: 'general' },
-        { q: 'Quelles technologies utilisez-vous ?', a: 'React, Next.js, Vue.js, Node.js, Python, PostgreSQL, MongoDB, et plus de 200 APIs (Stripe, OpenAI, AWS, Firebase, etc.). On choisit toujours la stack optimale pour votre projet.', cat: 'technique' },
-        { q: 'Proposez-vous du SEO ?', a: 'Oui ! Chaque site est optimisé SEO par défaut (meta tags, schema.org, sitemap, Core Web Vitals). On propose aussi un audit SEO complet et une stratégie de contenu avancée.', cat: 'technique' },
-        { q: 'Comment gérez-vous la sécurité ?', a: 'SSL/TLS, WAF, protection DDoS, audit OWASP, conformité RGPD, chiffrement des données, et monitoring 24/7. Zéro compromis sur la sécurité.', cat: 'technique' },
-        { q: 'Y a-t-il une garantie ?', a: 'Oui, garantie satisfait ou remboursé à 100%. Si le résultat ne vous convient pas, on vous rembourse intégralement. Sans conditions ni délai.', cat: 'business' },
-        { q: 'Proposez-vous de la maintenance ?', a: 'Oui ! Nos plans incluent de la maintenance (1 à 6 mois selon le plan). Au-delà, nous proposons des forfaits de maintenance mensuels à partir de 99€/mois.', cat: 'support' },
-        { q: 'Comment se passe le process de travail ?', a: '4 étapes simples : 1) Briefing de 30 min, 2) Prototype en 48h, 3) Développement avec démos quotidiennes, 4) Lancement et formation. Vous êtes impliqué à chaque étape.', cat: 'general' },
-        { q: 'Peut-on intégrer des outils existants ?', a: 'Absolument ! Nous avons plus de 247 intégrations possibles : Stripe, Slack, HubSpot, Zapier, OpenAI, et bien d\'autres. Si un outil a une API, on peut l\'intégrer.', cat: 'technique' },
-        { q: 'Travaillez-vous avec des entreprises hors d\'Israël ?', a: 'Oui, nous travaillons principalement avec des clients en France, Belgique, Suisse, Luxembourg et Canada. Tout se fait à distance avec des outils de communication modernes.', cat: 'general' },
-        { q: 'Comment fonctionne l\'automatisation ?', a: 'On connecte vos outils entre eux pour supprimer les tâches répétitives. Par exemple : un lead remplit un formulaire → CRM mis à jour → email de bienvenue → notification Slack → suivi planifié. Tout automatiquement.', cat: 'technique' },
-        { q: 'Quel support proposez-vous ?', a: 'Support email avec réponse en 2h max. Les plans Business et Premium incluent un support prioritaire. Le plan Enterprise inclut un support 24/7 avec account manager dédié.', cat: 'support' },
-        { q: 'Peut-on faire évoluer le projet après livraison ?', a: 'Bien sûr ! Nos solutions sont conçues pour évoluer. On peut ajouter des fonctionnalités, intégrer de nouveaux outils, ou scaler l\'infrastructure à tout moment.', cat: 'support' },
-        { q: 'Vous faites aussi des chatbots IA ?', a: 'Oui ! Nos chatbots sont alimentés par GPT-4 ou Claude, formés sur vos données métier. Ils gèrent les questions fréquentes, qualifient les leads, et peuvent même prendre des rendez-vous. Intégration web, WhatsApp, Messenger.', cat: 'technique' },
-        { q: 'Pourquoi FlashAI est basé en Israël ?', a: 'Israël est la Startup Nation — le pays avec le plus de startups par habitant au monde. Notre écosystème tech est le plus dynamique de la planète. On s\'en inspire chaque jour pour innover et livrer des solutions qui dépassent les attentes. 🇮🇱', cat: 'general' },
-        { q: 'Comment gérez-vous les données personnelles (RGPD) ?', a: 'Nous sommes 100% conformes RGPD. Hébergement en Europe, chiffrement des données, politique de confidentialité, consentement cookies, et droit à l\'effacement intégré dans tous nos outils.', cat: 'technique' },
-        { q: 'Proposez-vous des formations ?', a: 'Oui ! Chaque livraison inclut une formation complète pour utiliser votre outil. Les plans Premium et Enterprise incluent des sessions de formation supplémentaires pour toute l\'équipe.', cat: 'support' },
-        { q: 'Pouvez-vous gérer de gros volumes de trafic ?', a: 'Absolument. Nos solutions sont déployées sur des infrastructures cloud scalables (AWS, Vercel, Cloudflare). CDN mondial, mise en cache intelligente, et auto-scaling pour gérer les pics de trafic.', cat: 'technique' },
-        { q: 'Comment être sûr de la qualité ?', a: 'Tests automatisés, revue de code, score Lighthouse > 95, audit de sécurité, et surtout : vous validez chaque étape avant qu\'on avance. Et si ça ne vous convient pas, on vous rembourse.', cat: 'business' },
+    const readSet = new Set();
+    const questions = [
+        { q: 'Quels types de projets réalisez-vous ?', cat: 'general', color: '#00f0ff', a: 'FlashAI est une agence digitale full-service capable de réaliser une large gamme de projets numériques. Voici nos principales expertises :<br><br><strong>• Sites web sur mesure</strong> — Sites vitrines, landing pages, sites corporate, blogs, portfolios. Design premium, responsive, optimisé SEO, avec des performances Lighthouse 95+.<br><br><strong>• E-commerce</strong> — Boutiques en ligne complètes avec gestion produits, panier, paiement Stripe/PayPal, gestion stocks, factures automatiques, et tableaux de bord vendeur.<br><br><strong>• CRM & ERP</strong> — Outils de gestion clients et entreprise sur mesure : pipelines commerciaux, gestion contacts, automatisations, dashboards analytics, reporting avancé.<br><br><strong>• Dashboards & Analytics</strong> — Tableaux de bord interactifs avec visualisations de données en temps réel, KPIs personnalisés, exports, alertes automatiques.<br><br><strong>• Chatbots IA</strong> — Assistants virtuels intelligents basés sur GPT-4, intégrables sur votre site, WhatsApp, Messenger, Slack. Entraînés sur vos données.<br><br><strong>• Automatisations</strong> — Workflows automatisés entre vos outils (Zapier, Make, n8n), scripts custom, intégrations API, synchronisation de données.<br><br>Chaque projet est 100% sur mesure et livré en moyenne en 5 à 14 jours ouvrés.' },
+        { q: 'Combien coûtent vos services ?', cat: 'business', color: '#bf00ff', a: 'Nos tarifs sont conçus pour être <strong>3 à 5 fois moins chers</strong> que les agences classiques, sans compromettre la qualité :<br><br><strong>• Starter (à partir de 890€)</strong> — Site vitrine responsive, design premium sur mesure, SEO de base, hébergement 3 mois inclus.<br><br><strong>• Business (à partir de 2 490€)</strong> — Solution complète incluant CRM/Dashboard, chatbot IA basique, API & automatisations, analytics avancé, support prioritaire 12 mois.<br><br><strong>• Enterprise (à partir de 4 990€)</strong> — Infrastructure scalable, IA avancée (GPT-4, RAG), multi-langue, SLA 99.9%, account manager dédié, audit sécurité complet.<br><br>Ces prix sont <strong>uniques, pas des abonnements</strong>. Ils incluent le design, le développement, les tests, le déploiement et la formation. La maintenance est incluse pour une durée variable selon la formule.<br><br><strong>Comment est-ce possible ?</strong> Notre équipe basée en Israël utilise des outils d\'IA avancés et des méthodologies agiles qui nous permettent de livrer plus vite avec une qualité supérieure. Nous n\'avons pas les charges d\'une grande agence parisienne.<br><br>Chaque devis est personnalisé. <a href="#contact" style="color:#bf00ff">Demandez le vôtre gratuitement</a> — réponse en moins de 2h.' },
+        { q: 'Quels sont vos délais de livraison ?', cat: 'general', color: '#ff006e', a: 'Nos délais sont notre force. Là où une agence classique met <strong>3 à 6 mois</strong>, nous livrons en <strong>5 à 14 jours ouvrés</strong> :<br><br><strong>• Site vitrine simple</strong> — 3 à 5 jours ouvrés<br><strong>• Site e-commerce</strong> — 7 à 14 jours ouvrés<br><strong>• CRM / Dashboard</strong> — 5 à 10 jours ouvrés<br><strong>• Chatbot IA</strong> — 3 à 7 jours ouvrés<br><strong>• Automatisations</strong> — 2 à 5 jours ouvrés<br><br><strong>Notre méthode en 4 étapes :</strong><br>1. <strong>Discovery (30 min)</strong> — Appel pour comprendre vos besoins<br>2. <strong>Prototype (48h)</strong> — Maquette interactive à valider<br>3. <strong>Build (3-10 jours)</strong> — Développement avec démos quotidiennes<br>4. <strong>Launch (J+0)</strong> — Déploiement, formation, documentation<br><br>Ces délais rapides sont possibles grâce à notre stack technique moderne, nos outils d\'IA propriétaires, et notre méthodologie agile éprouvée sur 50+ projets.' },
+        { q: 'Quelles technologies utilisez-vous ?', cat: 'technique', color: '#00ff87', a: 'Nous utilisons un stack technique moderne et performant, constamment mis à jour :<br><br><strong>Frontend :</strong><br>• React, Next.js, Vue.js, Nuxt, Svelte<br>• TypeScript, TailwindCSS, Framer Motion<br>• Three.js, GSAP pour les animations 3D<br><br><strong>Backend :</strong><br>• Node.js, Express, Fastify<br>• Python, FastAPI, Django<br>• Go pour les microservices haute performance<br><br><strong>Bases de données :</strong><br>• PostgreSQL, MongoDB, Redis<br>• Supabase, Firebase, PlanetScale<br>• Prisma, Drizzle comme ORM<br><br><strong>IA & Machine Learning :</strong><br>• OpenAI GPT-4, Claude (Anthropic)<br>• LangChain, RAG systems<br>• Pinecone, Weaviate pour le vector search<br><br><strong>DevOps & Infrastructure :</strong><br>• Docker, Kubernetes, Terraform<br>• AWS, GCP, Vercel, Cloudflare<br>• GitHub Actions pour le CI/CD<br><br>Au total, nous maîtrisons <strong>247+ outils et technologies</strong> que nous intégrons selon les besoins spécifiques de chaque projet.' },
+        { q: 'Proposez-vous une garantie satisfait ou remboursé ?', cat: 'business', color: '#ffd700', a: 'Oui, absolument ! Nous offrons une <strong>garantie satisfait ou remboursé à 100%</strong>. Voici comment ça fonctionne :<br><br><strong>• Validation par étapes</strong> — Vous validez chaque étape du projet (prototype, design, développement). Rien n\'avance sans votre accord explicite.<br><br><strong>• Révisions illimitées</strong> — Pendant la phase de développement, nous intégrons toutes vos modifications sans surcoût. Votre satisfaction est notre priorité.<br><br><strong>• Remboursement complet</strong> — Si malgré tout le résultat final ne vous convient pas à 100%, nous vous remboursons intégralement. Sans conditions, sans délai, sans questions.<br><br><strong>• Pas de risque</strong> — Vous ne payez le solde qu\'après validation finale. Un acompte de 30% est demandé au démarrage pour engager les ressources.<br><br>Sur nos 50+ projets livrés, <strong>0 demande de remboursement</strong>. Notre taux de satisfaction est de 100%. Nous sommes tellement confiants dans notre travail que nous prenons tout le risque à votre place.<br><br>C\'est notre engagement : vous êtes satisfait, ou c\'est gratuit.' },
+        { q: 'Comment se déroule un projet typique ?', cat: 'general', color: '#00f0ff', a: 'Chaque projet suit notre méthodologie éprouvée en <strong>4 phases</strong>, conçue pour maximiser la qualité tout en minimisant les délais :<br><br><strong>Phase 1 — Discovery (30 minutes)</strong><br>Un appel vidéo pour comprendre vos besoins, objectifs, contraintes et inspirations. Nous analysons votre marché, vos concurrents, et vos outils existants. Livrable : brief détaillé + recommandations stratégiques.<br><br><strong>Phase 2 — Prototype (48 heures)</strong><br>Nous créons une maquette interactive haute fidélité de votre projet. Vous pouvez naviguer, tester l\'UX, valider le design et les fonctionnalités avant tout développement. Modifications illimitées à ce stade.<br><br><strong>Phase 3 — Build (3 à 10 jours)</strong><br>Développement agile avec des démos quotidiennes. Vous suivez l\'avancement en temps réel. Stack moderne, code propre documenté, tests automatisés. Chaque fonctionnalité est validée par vous avant de passer à la suivante.<br><br><strong>Phase 4 — Launch (Jour J)</strong><br>Déploiement en production, configuration DNS et SSL, optimisation performances. Formation de votre équipe (vidéo + documentation). Monitoring 24/7 activé. Support prioritaire pendant 12 mois.<br><br>Tout au long du projet, vous avez un interlocuteur unique et un accès direct à l\'équipe technique via Slack ou WhatsApp.' },
+        { q: 'Est-ce que je garde la propriété de mon code ?', cat: 'technique', color: '#bf00ff', a: 'Oui, <strong>à 100%</strong>. Vous êtes propriétaire de tout ce que nous développons pour vous :<br><br><strong>• Code source complet</strong> — Livré via un repository GitHub/GitLab à votre nom. Vous avez accès à chaque ligne de code, chaque commit, chaque décision technique.<br><br><strong>• Aucun lock-in</strong> — Votre projet tourne sur votre infrastructure (ou celle de votre choix). Vous pouvez migrer, modifier, ou faire évoluer le code avec n\'importe quel développeur.<br><br><strong>• Documentation technique</strong> — Architecture documentée, guide de déploiement, documentation API, instructions de maintenance.<br><br><strong>• Propriété intellectuelle</strong> — Un contrat clair vous transfère tous les droits de propriété intellectuelle dès le paiement final. Designs, code, contenus — tout vous appartient.<br><br><strong>• Open source friendly</strong> — Nous utilisons exclusivement des technologies open source sans licences cachées. Pas de dépendance à des outils propriétaires.<br><br>C\'est une différence majeure avec beaucoup d\'agences qui gardent le code en otage ou utilisent des builders propriétaires. Chez FlashAI, la transparence est totale.' },
+        { q: 'Votre support est-il vraiment disponible 24/7 ?', cat: 'support', color: '#ff006e', a: 'Oui, notre support est <strong>réellement disponible 24/7</strong>. Voici comment nous y parvenons :<br><br><strong>• Temps de réponse garanti</strong><br>— Urgence critique (site down) : < 15 minutes<br>— Question importante : < 2 heures<br>— Demande standard : < 24 heures<br><br><strong>• Canaux de communication</strong><br>— Slack/Discord dédié (recommandé)<br>— WhatsApp direct<br>— Email : contact@flashai.dev<br>— Visioconférence sur demande<br><br><strong>• Couverture géographique</strong><br>Notre équipe est répartie entre Israël et l\'Europe, ce qui nous permet de couvrir tous les fuseaux horaires. Il y a toujours quelqu\'un de disponible.<br><br><strong>• Monitoring proactif</strong><br>Nous ne attendons pas que vous signaliez un problème. Notre système de monitoring détecte les anomalies en temps réel : uptime, performances, erreurs, sécurité. Nous intervenons souvent avant même que vous ne remarquiez un souci.<br><br><strong>• Inclus dans tous les plans</strong><br>Le support est inclus pendant 12 mois pour les plans Business et Enterprise. Le plan Starter inclut un support email pendant 3 mois.<br><br>Notre NPS (Net Promoter Score) est de 92/100, ce qui nous place parmi les meilleurs du secteur.' },
+        { q: 'Travaillez-vous avec des entreprises hors d\'Israël ?', cat: 'general', color: '#00ff87', a: '<strong>Absolument !</strong> Bien que notre siège soit à Tel Aviv, <strong>80% de nos clients sont francophones</strong> basés en :<br><br>• <strong>France</strong> — Paris, Lyon, Marseille, Bordeaux, et toute la France<br>• <strong>Belgique</strong> — Bruxelles, Anvers, Liège<br>• <strong>Suisse</strong> — Genève, Lausanne, Zurich<br>• <strong>Luxembourg</strong><br>• <strong>Canada</strong> — Montréal, Québec<br>• <strong>Afrique francophone</strong> — Maroc, Tunisie, Sénégal, Côte d\'Ivoire<br><br><strong>Comment ça fonctionne à distance ?</strong><br>Grâce aux outils modernes (Slack, Zoom, Notion, GitHub), la collaboration est fluide et transparente. Nos clients ne sentent aucune différence avec une agence locale — sauf sur le prix et la rapidité !<br><br><strong>Fuseau horaire :</strong> Israël (GMT+2/+3) est parfaitement aligné avec l\'Europe. Les réunions se font aux heures de bureau françaises.<br><br><strong>Facturation :</strong> Nous facturons en euros, avec TVA intra-communautaire pour les entreprises européennes. Paiement par virement ou carte bancaire.' },
+        { q: 'Comment intégrez-vous l\'IA dans vos projets ?', cat: 'technique', color: '#ffd700', a: 'L\'intelligence artificielle est au cœur de notre approche. Nous intégrons l\'IA de plusieurs façons :<br><br><strong>1. Chatbots intelligents</strong><br>— Basés sur GPT-4 ou Claude<br>— Entraînés sur vos données (documentation, FAQ, catalogue produits)<br>— Technologie RAG (Retrieval-Augmented Generation) pour des réponses précises<br>— Intégration WhatsApp, Messenger, site web, Slack<br><br><strong>2. Automatisations IA</strong><br>— Classification automatique d\'emails et demandes<br>— Génération de contenu (descriptions produits, articles, réponses clients)<br>— Extraction de données depuis des documents (factures, contrats, CVs)<br>— Analyse de sentiment sur les avis clients<br><br><strong>3. Analytics prédictifs</strong><br>— Prévision de ventes et de trafic<br>— Scoring de leads automatique<br>— Détection d\'anomalies en temps réel<br>— Recommandations personnalisées<br><br><strong>4. Optimisation IA de nos processus</strong><br>— Nous utilisons l\'IA pour accélérer notre propre développement<br>— Génération de code assistée<br>— Tests automatisés intelligents<br>— Documentation auto-générée<br><br>L\'IA n\'est pas un gadget marketing pour nous — c\'est un outil concret qui apporte une valeur mesurable à chaque projet.' },
+        { q: 'Proposez-vous des facilités de paiement ?', cat: 'business', color: '#00f0ff', a: 'Oui, nous proposons plusieurs options pour faciliter votre investissement :<br><br><strong>Option 1 — Paiement en 2 fois</strong><br>— 50% à la commande (validation du prototype)<br>— 50% à la livraison finale<br>— Sans frais supplémentaires<br><br><strong>Option 2 — Paiement en 3 fois</strong><br>— 30% à la commande<br>— 30% à mi-parcours<br>— 40% à la livraison<br>— Sans frais supplémentaires<br><br><strong>Option 3 — Paiement mensuel</strong><br>— Pour les projets Enterprise uniquement<br>— Étalement sur 3 à 6 mois<br>— Frais de dossier de 5%<br><br><strong>Moyens de paiement acceptés :</strong><br>• Virement bancaire (SEPA)<br>• Carte bancaire (Visa, Mastercard, Amex)<br>• PayPal<br><br><strong>Facturation :</strong> Factures conformes avec TVA intra-communautaire pour les entreprises UE. Facturation en euros ou shekels selon votre préférence.<br><br>Pas de frais cachés, pas de surcoûts. Le prix annoncé est le prix final.' },
+        { q: 'Que se passe-t-il après la livraison ?', cat: 'support', color: '#bf00ff', a: 'La livraison n\'est que le début de notre relation. Voici ce qui est inclus après la mise en ligne :<br><br><strong>Support & Maintenance inclus :</strong><br>— <strong>Starter :</strong> Support email 3 mois + hébergement 3 mois<br>— <strong>Business :</strong> Support prioritaire 12 mois + maintenance corrective<br>— <strong>Enterprise :</strong> Account manager dédié + maintenance illimitée 12 mois<br><br><strong>Ce qui est couvert :</strong><br>• Corrections de bugs (s\'il y en a)<br>• Mises à jour de sécurité<br>• Monitoring uptime et performances 24/7<br>• Sauvegardes automatiques quotidiennes<br>• Mises à jour des dépendances<br>• Petits ajustements texte/images<br><br><strong>Évolutions futures :</strong><br>Besoin d\'ajouter des fonctionnalités ? Nous proposons des packs heures à tarif préférentiel pour nos clients existants (réduction de 20%).<br><br><strong>Formation :</strong><br>Chaque livraison inclut une session de formation vidéo personnalisée + documentation complète pour que votre équipe soit autonome.<br><br><strong>Transfert de connaissances :</strong><br>Si vous souhaitez internaliser le développement à terme, nous facilitons la transition avec documentation technique complète et sessions de passation.' },
+        { q: 'Vos sites sont-ils optimisés pour le SEO ?', cat: 'technique', color: '#ff006e', a: 'Le SEO est intégré dès la conception de chaque projet. Voici notre approche complète :<br><br><strong>SEO Technique :</strong><br>• Core Web Vitals optimisés (LCP < 2.5s, FID < 100ms, CLS < 0.1)<br>• Score Lighthouse 95+ garanti<br>• HTML sémantique (balises H1-H6, structured data, schema.org)<br>• Sitemap XML et robots.txt optimisés<br>• URLs propres et canonical tags<br>• Compression images (WebP/AVIF) et lazy loading<br>• Server-side rendering (Next.js) pour un indexation optimale<br><br><strong>SEO On-Page :</strong><br>• Balises meta title et description optimisées<br>• Hiérarchie de contenu structurée<br>• Maillage interne intelligent<br>• Balises Open Graph pour les réseaux sociaux<br>• Alt text pour toutes les images<br><br><strong>SEO Avancé (Plan Business+) :</strong><br>• Audit SEO complet de votre marché<br>• Recherche de mots-clés stratégiques<br>• Optimisation du contenu existant<br>• Analytics et suivi de positions<br>• Rapport mensuel de performances<br><br><strong>Résultats constatés :</strong><br>Nos clients voient en moyenne une <strong>augmentation de 200% du trafic organique</strong> dans les 3 premiers mois après le lancement.' },
+        { q: 'Comment assurez-vous la sécurité des projets ?', cat: 'technique', color: '#00ff87', a: 'La sécurité est une priorité absolue sur chaque projet. Notre approche multi-couches :<br><br><strong>Infrastructure :</strong><br>• SSL/TLS (HTTPS) sur tous les projets<br>• WAF (Web Application Firewall) Cloudflare<br>• Protection DDoS intégrée<br>• Hébergement sur des providers certifiés (AWS, GCP, Vercel)<br>• Sauvegardes quotidiennes avec rétention 30 jours<br><br><strong>Code :</strong><br>• Audit OWASP Top 10 sur chaque projet<br>• Protection contre XSS, CSRF, SQL Injection<br>• Validation des inputs côté serveur<br>• Rate limiting et throttling<br>• Dependency scanning automatique<br><br><strong>Données :</strong><br>• Conformité RGPD complète<br>• Chiffrement des données sensibles (AES-256)<br>• Politique de rétention des données<br>• Privacy by design<br>• Consentement cookies conforme ePrivacy<br><br><strong>Authentification :</strong><br>• JWT sécurisés avec refresh tokens<br>• OAuth 2.0 / OpenID Connect<br>• 2FA disponible<br>• Politique de mots de passe robuste<br><br><strong>Monitoring :</strong><br>• Alertes en temps réel (Sentry, Datadog)<br>• Logs sécurisés et auditable<br>• Scan de vulnérabilités automatique mensuel' },
+        { q: 'Puis-je voir des exemples de projets réalisés ?', cat: 'general', color: '#ffd700', a: 'Bien sûr ! Nous avons réalisé <strong>50+ projets</strong> dans des secteurs variés. Voici quelques références :<br><br><strong>🏢 TechVision — Dashboard SaaS</strong><br>Plateforme analytics avec 50+ widgets, temps réel, multi-utilisateurs. Stack : React, D3.js, Node.js, PostgreSQL. Résultat : +340% adoption utilisateurs.<br><br><strong>🛒 FoodExpress — E-Commerce</strong><br>Marketplace food-tech, livraison temps réel, Stripe, 10K+ produits. Stack : Next.js, Stripe, Google Maps. Résultat : €2M CA première année.<br><br><strong>🏥 MediCare Pro — CRM Médical</strong><br>Gestion patients, rendez-vous, facturation, conforme RGPD. Stack : React, PostgreSQL, OpenAI. Résultat : 5000+ patients gérés.<br><br><strong>💰 CryptoTrack — Fintech</strong><br>Portfolio crypto, alertes IA, analyse prédictive. Stack : Vue.js, Python, ML. Résultat : 15K utilisateurs actifs.<br><br><strong>🎓 EduSmart — EdTech</strong><br>E-learning adaptive, chatbot tuteur IA, quiz interactifs. Stack : Next.js, OpenAI, Prisma. Résultat : 98% satisfaction étudiants.<br><br>Chaque projet est détaillé dans notre section <a href="#portfolio" style="color:#ffd700">Réalisations</a>. Vous pouvez aussi demander des études de cas détaillées lors de notre appel découverte.' },
+        { q: 'Comment gérez-vous les projets complexes ?', cat: 'technique', color: '#00f0ff', a: 'Les projets complexes sont notre spécialité. Voici notre approche :<br><br><strong>Architecture :</strong><br>• Microservices pour la scalabilité<br>• Event-driven architecture pour le temps réel<br>• API-first design pour l\'interopérabilité<br>• Domain-Driven Design pour les projets métier complexes<br><br><strong>Gestion de projet :</strong><br>• Méthodologie agile Scrum/Kanban<br>• Sprints courts de 2-3 jours<br>• Daily standups et démos quotidiennes<br>• Retrospectives pour amélioration continue<br>• Board Notion/Jira partagé en temps réel<br><br><strong>Qualité :</strong><br>• Tests unitaires, d\'intégration et E2E<br>• Code review systématique<br>• CI/CD avec déploiement automatique<br>• Documentation technique auto-générée<br>• Performance testing avant chaque release<br><br><strong>Scalabilité :</strong><br>• Infrastructure auto-scaling (Kubernetes)<br>• CDN global (Cloudflare)<br>• Database sharding et réplication<br>• Cache multi-niveaux (Redis, CDN, browser)<br><br>Pour les projets Enterprise, nous assignons un Tech Lead dédié qui coordonne l\'ensemble et garantit la cohérence architecturale.' },
+        { q: 'Quels sont les avantages de travailler avec une agence israélienne ?', cat: 'general', color: '#bf00ff', a: 'Israël est reconnue comme la <strong>« Startup Nation »</strong> — voici pourquoi c\'est un avantage pour vous :<br><br><strong>1. Écosystème tech de classe mondiale</strong><br>— Plus de startups par habitant que n\'importe quel pays au monde<br>— Berceau de technologies utilisées par Google, Meta, Amazon<br>— Culture d\'innovation et de disruption<br><br><strong>2. Talent technique exceptionnel</strong><br>— Formations techniques parmi les meilleures (Technion, TAU, Hebrew U)<br>— Expérience dans des scale-ups internationales<br>— Culture du « faire plus avec moins »<br><br><strong>3. Rapport qualité-prix imbattable</strong><br>— Coût de développement 3-5x inférieur à Paris/Genève<br>— Qualité égale ou supérieure aux agences premium européennes<br>— Pas de compromis sur le design ou les performances<br><br><strong>4. Alignement culturel et linguistique</strong><br>— Équipe 100% francophone<br>— Fuseau horaire compatible (GMT+2/+3)<br>— Compréhension des marchés européens et nord-américains<br><br><strong>5. Innovation constante</strong><br>— Accès aux dernières technologies IA avant le marché<br>— R&D continue sur les outils et méthodologies<br>— Veille technologique permanente' },
+        { q: 'Proposez-vous des partenariats ou du white-label ?', cat: 'business', color: '#ff006e', a: 'Oui ! Nous proposons plusieurs formules de partenariat :<br><br><strong>🤝 Partenariat Agence (White-label)</strong><br>Vous êtes une agence marketing, communication ou consulting ? Nous développons pour vos clients sous votre marque :<br>— Vous gardez la relation client<br>— Nous développons en marque blanche<br>— Tarifs partenaires privilégiés (-25%)<br>— NDA et confidentialité garantis<br>— Livraison directe à votre client si souhaité<br><br><strong>📊 Partenariat Technique</strong><br>Pour les freelances et développeurs qui veulent offrir plus de services :<br>— Sous-traitance technique au projet<br>— Renfort d\'équipe temporaire<br>— Expertise IA et data à la demande<br><br><strong>🏢 Partenariat Entreprise</strong><br>Pour les entreprises qui veulent un partenaire tech long terme :<br>— Pack heures mensuelles à tarif dédié<br>— Account manager attitré<br>— SLA personnalisé<br>— Roadmap technique co-construite<br><br><strong>💼 Programme d\'affiliation</strong><br>Recommandez FlashAI et gagnez 10% de commission sur chaque projet signé. Programme sans engagement, sans minimum.<br><br><a href="#contact" style="color:#ff006e">Contactez-nous</a> pour discuter du partenariat qui vous convient.' },
+        { q: 'Comment fonctionne votre chatbot IA ?', cat: 'technique', color: '#00ff87', a: 'Nos chatbots sont bien plus que des FAQ automatisées. Voici l\'architecture technique :<br><br><strong>Technologie de base :</strong><br>• Modèle : GPT-4 (OpenAI) ou Claude (Anthropic)<br>• Architecture RAG (Retrieval-Augmented Generation)<br>• Base de connaissances vectorielle (Pinecone/Weaviate)<br>• Mémoire conversationnelle pour le contexte<br><br><strong>Entraînement :</strong><br>1. Nous ingérons vos données : site web, FAQ, documentation, catalogue<br>2. Les données sont vectorisées et indexées<br>3. Le chatbot cherche dans votre base de connaissances pour chaque question<br>4. GPT-4 formule une réponse naturelle basée sur vos données réelles<br>5. Fine-tuning du ton et du style selon votre marque<br><br><strong>Intégrations :</strong><br>• Widget sur votre site web (customisable)<br>• WhatsApp Business API<br>• Facebook Messenger<br>• Slack, Teams, Discord<br>• API REST pour intégration custom<br><br><strong>Fonctionnalités avancées :</strong><br>• Escalade automatique vers un humain<br>• Prise de rendez-vous intégrée<br>• Génération de leads qualifiés<br>• Multi-langue automatique<br>• Analytics des conversations<br>• Amélioration continue par feedback loop<br><br><strong>Résultats moyens :</strong><br>— Taux de résolution : 85%<br>— Réduction support humain : -60%<br>— Satisfaction utilisateur : 94%' },
+        { q: 'Comment puis-je commencer un projet ?', cat: 'general', color: '#ffd700', a: 'Démarrer avec FlashAI est simple et rapide. Voici les étapes :<br><br><strong>Étape 1 — Premier contact (5 minutes)</strong><br>Remplissez notre <a href="#contact" style="color:#ffd700">formulaire intelligent</a> ou envoyez-nous un email à contact@flashai.dev. Décrivez brièvement votre projet et vos objectifs.<br><br><strong>Étape 2 — Appel découverte (30 minutes, gratuit)</strong><br>Un expert FlashAI vous rappelle dans les 2h pour :<br>— Comprendre vos besoins en détail<br>— Analyser votre existant<br>— Recommander la solution optimale<br>— Estimer le budget et le délai<br><br><strong>Étape 3 — Devis personnalisé (24h)</strong><br>Vous recevez un devis détaillé avec :<br>— Périmètre fonctionnel précis<br>— Stack technique recommandée<br>— Planning de livraison<br>— Prix ferme et définitif<br>— Conditions de paiement<br><br><strong>Étape 4 — Go ! 🚀</strong><br>Dès votre validation, nous démarrons immédiatement. Vous recevez votre premier prototype interactif en 48h.<br><br><strong>Pas de risque :</strong> Rappel — garantie satisfait ou remboursé à 100%. Vous ne payez le solde qu\'une fois 100% satisfait.<br><br>Des questions ? Appelez-nous, écrivez-nous, ou remplissez le formulaire. On vous répond en moins de 2h, 7j/7.' }
     ];
 
-    let activeCat = 'all';
-    let searchQuery = '';
+    let activeFilter = 'all', searchQuery = '', readCount = 0;
 
     function render() {
-        const filtered = faqs.filter(f => {
-            const catMatch = activeCat === 'all' || f.cat === activeCat;
-            const searchMatch = !searchQuery || f.q.toLowerCase().includes(searchQuery) || f.a.toLowerCase().includes(searchQuery);
-            return catMatch && searchMatch;
+        const filtered = questions.filter(q => {
+            const matchCat = activeFilter === 'all' || q.cat === activeFilter;
+            const matchSearch = !searchQuery || q.q.toLowerCase().includes(searchQuery) || q.a.toLowerCase().includes(searchQuery);
+            return matchCat && matchSearch;
         });
-
-        list.innerHTML = filtered.map((f, i) => `
-            <div class="faq-item" data-idx="${i}">
-                <button class="faq-question">
-                    <span class="faq-num">${String(i + 1).padStart(2, '0')}</span>
-                    <span>${f.q}</span>
-                    <span class="faq-icon-wrap">+</span>
+        list.innerHTML = filtered.map((q, i) => {
+            const isRead = readSet.has(q.q);
+            return `<div class="faq-card ${isRead ? 'faq-read' : ''}" style="transition-delay:${i * 0.05}s">
+                <div class="faq-card-accent" style="background:${q.color}"></div>
+                <button class="faq-question" data-idx="${i}">
+                    <span class="faq-q-text">${highlightSearch(q.q)}</span>
+                    <span class="faq-q-cat" style="color:${q.color}">${q.cat}</span>
+                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-text">${f.a}</div>
-                </div>
-            </div>
-        `).join('');
+                <div class="faq-answer">${highlightSearch(q.a)}</div>
+            </div>`;
+        }).join('');
 
         list.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
-                const item = btn.closest('.faq-item');
-                const wasOpen = item.classList.contains('open');
-                list.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-                if (!wasOpen) item.classList.add('open');
+                const card = btn.closest('.faq-card');
+                const wasOpen = card.classList.contains('open');
+                card.classList.toggle('open');
+                if (!wasOpen) {
+                    const q = questions.find(x => x.q === btn.querySelector('.faq-q-text').textContent.trim() || highlightSearch(x.q) === btn.querySelector('.faq-q-text').innerHTML);
+                    if (q && !readSet.has(q.q)) {
+                        readSet.add(q.q);
+                        readCount++;
+                        updateProgress();
+                    }
+                }
             });
         });
+    }
+
+    function highlightSearch(text) {
+        if (!searchQuery) return text;
+        const regex = new RegExp(`(${searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark class="faq-highlight">$1</mark>');
+    }
+
+    function updateProgress() {
+        const el = document.getElementById('faq-read-count');
+        const bar = document.getElementById('faq-progress-bar');
+        const total = document.getElementById('faq-total-count');
+        if (el) el.textContent = readCount;
+        if (total) total.textContent = questions.length;
+        if (bar) bar.style.width = (readCount / questions.length * 100) + '%';
     }
 
     // Tabs
@@ -1517,75 +1010,79 @@ function initFAQ() {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            activeCat = tab.dataset.cat;
+            activeFilter = tab.dataset.cat;
             render();
         });
     });
 
     // Search
-    const search = document.getElementById('faq-search');
-    if (search) {
-        search.addEventListener('input', e => {
+    const searchInput = document.getElementById('faq-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', e => {
             searchQuery = e.target.value.toLowerCase();
             render();
         });
     }
 
+    updateProgress();
     render();
 }
 
-/* ========== CTA CANVAS (VORTEX) ========== */
+/* ========== CTA CANVAS ========== */
 function initCTACanvas() {
     const canvas = document.getElementById('cta-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let particles = [];
     let w, h;
+    function resize() { w = canvas.width = canvas.parentElement.offsetWidth; h = canvas.height = canvas.parentElement.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
 
-    function resize() {
-        w = canvas.width = canvas.offsetWidth * 2;
-        h = canvas.height = canvas.offsetHeight * 2;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    for (let i = 0; i < 100; i++) {
-        particles.push({
-            angle: Math.random() * Math.PI * 2,
-            radius: Math.random() * 300 + 100,
-            speed: Math.random() * 0.01 + 0.005,
-            size: Math.random() * 2 + 0.5,
-            color: ['#00f0ff', '#bf00ff', '#ff006e', '#00ff87', '#ffd700'][Math.floor(Math.random() * 5)]
-        });
-    }
+    const particles = Array.from({length: 80}, () => ({
+        x: Math.random(), y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.002,
+        vy: (Math.random() - 0.5) * 0.002,
+        size: Math.random() * 3 + 1,
+        color: ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87'][Math.floor(Math.random() * 5)]
+    }));
 
     function draw() {
-        ctx.setTransform(2, 0, 0, 2, 0, 0);
         ctx.clearRect(0, 0, w, h);
-        const cx = canvas.offsetWidth / 2;
-        const cy = canvas.offsetHeight / 2;
-
+        const cx = w / 2, cy = h / 2;
         particles.forEach(p => {
-            p.angle += p.speed;
-            p.radius -= 0.15;
-            if (p.radius < 5) { p.radius = Math.random() * 300 + 100; p.angle = Math.random() * Math.PI * 2; }
-
-            const x = cx + Math.cos(p.angle) * p.radius;
-            const y = cy + Math.sin(p.angle) * p.radius;
-
+            const dx = cx / w - p.x, dy = cy / h - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            p.vx += dx * 0.00005; p.vy += dy * 0.00005;
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > 1) p.vx *= -1;
+            if (p.y < 0 || p.y > 1) p.vy *= -1;
+            const px = p.x * w, py = p.y * h;
             ctx.beginPath();
-            ctx.arc(x, y, p.size, 0, Math.PI * 2);
+            ctx.arc(px, py, p.size, 0, Math.PI * 2);
             ctx.fillStyle = p.color + '60';
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 10;
             ctx.fill();
+            ctx.shadowBlur = 0;
         });
-
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = (particles[i].x - particles[j].x) * w;
+                const dy = (particles[i].y - particles[j].y) * h;
+                const d = Math.sqrt(dx * dx + dy * dy);
+                if (d < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x * w, particles[i].y * h);
+                    ctx.lineTo(particles[j].x * w, particles[j].y * h);
+                    ctx.strokeStyle = particles[i].color + Math.floor((1 - d / 120) * 30).toString(16).padStart(2, '0');
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
         requestAnimationFrame(draw);
     }
-
-    const obs = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) draw();
-    }, { threshold: 0.1 });
-    obs.observe(canvas);
+    draw();
 }
 
 /* ========== CTA TIMER ========== */
@@ -1594,34 +1091,165 @@ function initCTATimer() {
     if (!el) return;
     let h = 23, m = 59, s = 42;
     setInterval(() => {
-        s--;
-        if (s < 0) { s = 59; m--; }
-        if (m < 0) { m = 59; h--; }
-        if (h < 0) { h = 23; m = 59; s = 59; }
+        s--; if (s < 0) { s = 59; m--; } if (m < 0) { m = 59; h--; } if (h < 0) { h = 23; m = 59; s = 59; }
         el.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
     }, 1000);
 }
 
-/* ========== CONTACT FORM ========== */
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
-    form.addEventListener('submit', e => {
-        showToast('Message envoyé avec succès ! 🚀');
-    });
+/* ========== SMART FORM ========== */
+function initSmartForm() {
+    const selector = document.getElementById('smart-form-selector');
+    const container = document.getElementById('smart-form-container');
+    if (!selector || !container) return;
+
+    const types = [
+        { id: 'devis', name: 'Demande de Devis', icon: '📋', color: '#00f0ff', desc: 'Obtenez un devis personnalisé en 24h' },
+        { id: 'contact', name: 'Contact Général', icon: '💬', color: '#bf00ff', desc: 'Une question ? Parlons-en !' },
+        { id: 'partenariat', name: 'Partenariat', icon: '🤝', color: '#ff006e', desc: 'Travaillons ensemble' },
+        { id: 'agence', name: 'White-Label Agence', icon: '🏢', color: '#ffd700', desc: 'Solutions pour agences' },
+        { id: 'recrutement', name: 'Recrutement', icon: '🚀', color: '#00ff87', desc: 'Rejoignez l\'aventure' }
+    ];
+
+    let activeType = 'devis';
+
+    const formConfigs = {
+        devis: {
+            fields: [
+                { type: 'text', name: 'company', label: 'Nom de votre entreprise', placeholder: 'Acme Inc.', required: true },
+                { type: 'email', name: 'email', label: 'Email professionnel', placeholder: 'vous@entreprise.com', required: true },
+                { type: 'tel', name: 'phone', label: 'Téléphone', placeholder: '+33 6 12 34 56 78' },
+                { type: 'chips', name: 'project_type', label: 'Type de projet', options: ['Site Vitrine','E-Commerce','CRM','Dashboard','Chatbot IA','Automatisation','Application Mobile','Autre'] },
+                { type: 'range', name: 'budget', label: 'Budget estimé', min: 500, max: 15000, step: 500, suffix: '€' },
+                { type: 'select', name: 'deadline', label: 'Délai souhaité', options: ['Le plus vite possible','1-2 semaines','1 mois','Pas de deadline précise'] },
+                { type: 'textarea', name: 'description', label: 'Décrivez votre projet', placeholder: 'Décrivez votre projet, vos objectifs, vos contraintes...', rows: 4 },
+                { type: 'chips', name: 'features', label: 'Fonctionnalités souhaitées', options: ['Design premium','SEO avancé','Multilingue','Analytics','Paiement en ligne','API','CRM intégré','IA'] }
+            ]
+        },
+        contact: {
+            fields: [
+                { type: 'text', name: 'name', label: 'Votre nom', placeholder: 'Jean Dupont', required: true },
+                { type: 'email', name: 'email', label: 'Email', placeholder: 'jean@email.com', required: true },
+                { type: 'select', name: 'subject', label: 'Sujet', options: ['Question générale','Demande d\'information','Support technique','Autre'] },
+                { type: 'textarea', name: 'message', label: 'Votre message', placeholder: 'Comment pouvons-nous vous aider ?', rows: 5, required: true }
+            ]
+        },
+        partenariat: {
+            fields: [
+                { type: 'text', name: 'company', label: 'Votre entreprise', placeholder: 'Nom de votre agence/entreprise', required: true },
+                { type: 'email', name: 'email', label: 'Email professionnel', placeholder: 'contact@agence.com', required: true },
+                { type: 'text', name: 'website', label: 'Site web', placeholder: 'https://votre-site.com' },
+                { type: 'chips', name: 'partner_type', label: 'Type de partenariat', options: ['White-label','Sous-traitance','Affiliation','Co-développement','Autre'] },
+                { type: 'select', name: 'volume', label: 'Volume estimé / an', options: ['1-5 projets','5-15 projets','15-30 projets','30+ projets'] },
+                { type: 'textarea', name: 'details', label: 'Détails', placeholder: 'Décrivez le partenariat que vous envisagez...', rows: 4 }
+            ]
+        },
+        agence: {
+            fields: [
+                { type: 'text', name: 'agency', label: 'Nom de l\'agence', placeholder: 'Votre agence', required: true },
+                { type: 'email', name: 'email', label: 'Email', placeholder: 'contact@agence.com', required: true },
+                { type: 'tel', name: 'phone', label: 'Téléphone', placeholder: '+33 1 23 45 67 89' },
+                { type: 'chips', name: 'services', label: 'Services recherchés', options: ['Développement web','Développement mobile','IA & Chatbot','CRM custom','Design UI/UX','DevOps','Consulting technique'] },
+                { type: 'select', name: 'team_size', label: 'Taille de votre agence', options: ['1-5 personnes','5-20 personnes','20-50 personnes','50+ personnes'] },
+                { type: 'textarea', name: 'needs', label: 'Vos besoins', placeholder: 'Décrivez vos besoins en sous-traitance technique...', rows: 4 }
+            ]
+        },
+        recrutement: {
+            fields: [
+                { type: 'text', name: 'name', label: 'Nom complet', placeholder: 'Votre nom', required: true },
+                { type: 'email', name: 'email', label: 'Email', placeholder: 'votre@email.com', required: true },
+                { type: 'chips', name: 'role', label: 'Poste souhaité', options: ['Développeur Frontend','Développeur Backend','Développeur Full-Stack','Designer UI/UX','Chef de projet','DevOps','IA / ML Engineer'] },
+                { type: 'text', name: 'portfolio', label: 'Portfolio / GitHub', placeholder: 'https://github.com/vous' },
+                { type: 'select', name: 'experience', label: 'Expérience', options: ['Junior (0-2 ans)','Intermédiaire (2-5 ans)','Senior (5-10 ans)','Expert (10+ ans)'] },
+                { type: 'select', name: 'availability', label: 'Disponibilité', options: ['Immédiate','1 mois','2-3 mois','À discuter'] },
+                { type: 'textarea', name: 'motivation', label: 'Motivation', placeholder: 'Pourquoi souhaitez-vous rejoindre FlashAI ?', rows: 4 }
+            ]
+        }
+    };
+
+    function renderSelector() {
+        selector.innerHTML = `<div class="sf-types">${types.map(t => `<button class="smart-form-type ${t.id === activeType ? 'active' : ''}" data-type="${t.id}" style="--form-color:${t.color}">
+            <span class="sf-type-icon">${t.icon}</span>
+            <span class="sf-type-name">${t.name}</span>
+            <span class="sf-type-desc">${t.desc}</span>
+        </button>`).join('')}</div>`;
+        selector.querySelectorAll('.smart-form-type').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeType = btn.dataset.type;
+                renderSelector();
+                renderForm();
+            });
+        });
+    }
+
+    function renderForm() {
+        const config = formConfigs[activeType];
+        const typeInfo = types.find(t => t.id === activeType);
+        container.innerHTML = `<form class="smart-form" action="https://formspree.io/f/xvgogwvz" method="POST" style="--form-color:${typeInfo.color}">
+            <input type="hidden" name="form_type" value="${activeType}">
+            <div class="sf-fields">${config.fields.map(f => renderField(f, typeInfo.color)).join('')}</div>
+            <button type="submit" class="sf-submit" style="background:${typeInfo.color}"><span>Envoyer ${typeInfo.icon}</span></button>
+        </form>`;
+
+        // Chips logic
+        container.querySelectorAll('.sf-chip').forEach(chip => {
+            chip.addEventListener('click', () => chip.classList.toggle('active'));
+        });
+
+        // Range logic
+        container.querySelectorAll('.sf-range').forEach(range => {
+            const val = range.parentElement.querySelector('.sf-range-val');
+            range.addEventListener('input', () => {
+                val.textContent = (+range.value).toLocaleString('fr') + ' ' + (range.dataset.suffix || '');
+            });
+        });
+
+        // Submit
+        container.querySelector('.smart-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = container.querySelector('.sf-submit');
+            btn.innerHTML = '<span>Envoyé ! ✨</span>';
+            btn.style.background = '#00ff87';
+            showToast('Message envoyé avec succès !');
+            setTimeout(() => { btn.innerHTML = `<span>Envoyer ${typeInfo.icon}</span>`; btn.style.background = typeInfo.color; }, 3000);
+        });
+    }
+
+    function renderField(f, color) {
+        if (f.type === 'chips') {
+            return `<div class="sf-field sf-field-full"><label class="sf-label">${f.label}</label><div class="sf-chips">${f.options.map(o => `<button type="button" class="sf-chip" style="--chip-color:${color}">${o}</button>`).join('')}</div><input type="hidden" name="${f.name}"></div>`;
+        }
+        if (f.type === 'range') {
+            const mid = Math.round((f.min + f.max) / 2);
+            return `<div class="sf-field sf-field-full"><label class="sf-label">${f.label}</label><input type="range" class="sf-range" name="${f.name}" min="${f.min}" max="${f.max}" step="${f.step}" value="${mid}" data-suffix="${f.suffix || ''}"><div class="sf-range-val" style="color:${color}">${mid.toLocaleString('fr')} ${f.suffix || ''}</div></div>`;
+        }
+        if (f.type === 'select') {
+            return `<div class="sf-field"><label class="sf-label">${f.label}</label><select class="sf-select" name="${f.name}">${f.options.map(o => `<option>${o}</option>`).join('')}</select></div>`;
+        }
+        if (f.type === 'textarea') {
+            return `<div class="sf-field sf-field-full"><label class="sf-label">${f.label}</label><textarea class="sf-textarea" name="${f.name}" rows="${f.rows || 4}" placeholder="${f.placeholder || ''}" ${f.required ? 'required' : ''}></textarea></div>`;
+        }
+        return `<div class="sf-field"><label class="sf-label">${f.label}</label><input type="${f.type}" class="sf-input" name="${f.name}" placeholder="${f.placeholder || ''}" ${f.required ? 'required' : ''}></div>`;
+    }
+
+    renderSelector();
+    renderForm();
 }
 
 /* ========== MAGNETIC BUTTON ========== */
 function initMagneticBtn() {
-    const btn = document.getElementById('magnetic-cta');
-    if (!btn) return;
-    btn.addEventListener('mousemove', e => {
-        const r = btn.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const r = btn.getBoundingClientRect();
+            const x = e.clientX - r.left - r.width / 2;
+            const y = e.clientY - r.top - r.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+            btn.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+            setTimeout(() => { btn.style.transition = ''; }, 400);
+        });
     });
-    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
 }
 
 /* ========== SCROLL TOP ========== */
@@ -1631,86 +1259,83 @@ function initScrollTop() {
     window.addEventListener('scroll', () => {
         btn.classList.toggle('visible', window.scrollY > 500);
     }, { passive: true });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 /* ========== SMOOTH ANCHORS ========== */
 function initSmoothAnchors() {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(a.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const id = a.getAttribute('href');
+            if (id === '#') return;
+            const target = document.querySelector(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 }
 
 /* ========== THREE.JS BACKGROUND ========== */
 function initThreeBackground() {
+    if (typeof THREE === 'undefined') return;
     const canvas = document.getElementById('three-canvas');
-    if (!canvas || typeof THREE === 'undefined') return;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Particles
-    const count = 600;
-    const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
-    const palette = [[0, 0.94, 1], [0.75, 0, 1], [1, 0, 0.43], [0, 1, 0.53], [1, 0.55, 0]];
-
-    for (let i = 0; i < count; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 20;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-        const c = palette[Math.floor(Math.random() * palette.length)];
-        colors[i * 3] = c[0];
-        colors[i * 3 + 1] = c[1];
-        colors[i * 3 + 2] = c[2];
-    }
-
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    const mat = new THREE.PointsMaterial({
-        size: 0.04,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.7,
-        sizeAttenuation: true,
-    });
-
-    const points = new THREE.Points(geo, mat);
-    scene.add(points);
-    camera.position.z = 8;
-
-    let mouseX = 0, mouseY = 0;
-    document.addEventListener('mousemove', e => {
-        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    });
-
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
+    if (!canvas) return;
+    try {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
         renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
-    function animate() {
-        requestAnimationFrame(animate);
-        points.rotation.y += 0.0005;
-        points.rotation.x += 0.0002;
-        camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.02;
-        camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.02;
-        camera.lookAt(scene.position);
-        renderer.render(scene, camera);
-    }
+        const geometry = new THREE.BufferGeometry();
+        const count = 600;
+        const positions = new Float32Array(count * 3);
+        const colors = new Float32Array(count * 3);
+        const palette = [
+            [0, 0.94, 1], [0.75, 0, 1], [1, 0, 0.43],
+            [0, 1, 0.53], [1, 0.84, 0], [1, 0.55, 0]
+        ];
+        for (let i = 0; i < count; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 30;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+            const c = palette[Math.floor(Math.random() * palette.length)];
+            colors[i * 3] = c[0]; colors[i * 3 + 1] = c[1]; colors[i * 3 + 2] = c[2];
+        }
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        const material = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.6, sizeAttenuation: true });
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+        camera.position.z = 8;
 
-    animate();
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', e => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            points.rotation.y += 0.0005;
+            points.rotation.x += 0.0002;
+            camera.position.x += (mouseX - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        animate();
+    } catch (e) { /* Three.js not available */ }
 }
 
 /* ========== EASTER EGGS ========== */
@@ -1723,57 +1348,45 @@ function initEasterEggs() {
             konamiIdx++;
             if (konamiIdx === konami.length) {
                 konamiIdx = 0;
-                fireConfetti();
-                showToast('🎉 Easter egg trouvé ! Vous êtes un vrai geek !');
+                // Confetti!
+                for (let i = 0; i < 150; i++) {
+                    const conf = document.createElement('div');
+                    conf.style.cssText = `position:fixed;width:10px;height:10px;background:${['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87','#ff8c00'][Math.floor(Math.random()*6)]};left:${Math.random()*100}vw;top:-10px;z-index:99999;border-radius:${Math.random()>0.5?'50%':'2px'};pointer-events:none;animation:confetti-fall ${2+Math.random()*3}s linear forwards`;
+                    document.body.appendChild(conf);
+                    setTimeout(() => conf.remove(), 5000);
+                }
+                if (!document.getElementById('confetti-style')) {
+                    const s = document.createElement('style');
+                    s.id = 'confetti-style';
+                    s.textContent = '@keyframes confetti-fall{to{top:110vh;transform:rotate(' + (Math.random()*720) + 'deg)}}';
+                    document.head.appendChild(s);
+                }
+                showToast('🎉 Konami Code activé !');
             }
-        } else konamiIdx = 0;
+        } else { konamiIdx = 0; }
     });
 
-    // Type "flashai"
-    let typed = '';
-    document.addEventListener('keypress', e => {
-        typed += e.key.toLowerCase();
-        if (typed.includes('flashai')) {
-            typed = '';
-            document.body.style.transition = 'filter 0.3s';
-            let count = 0;
-            const disco = setInterval(() => {
-                document.body.style.filter = `hue-rotate(${count * 60}deg)`;
-                count++;
-                if (count > 15) { clearInterval(disco); document.body.style.filter = ''; }
-            }, 200);
-            showToast('🕺 Mode disco activé !');
-        }
-        if (typed.length > 20) typed = typed.slice(-10);
+    // Disco mode on triple-click logo
+    document.querySelectorAll('.header-logo-icon').forEach(logo => {
+        let clicks = 0;
+        logo.addEventListener('click', () => {
+            clicks++;
+            if (clicks >= 3) {
+                clicks = 0;
+                document.body.classList.toggle('disco-mode');
+                if (document.body.classList.contains('disco-mode')) {
+                    if (!document.getElementById('disco-style')) {
+                        const s = document.createElement('style');
+                        s.id = 'disco-style';
+                        s.textContent = '.disco-mode{animation:disco 0.5s ease infinite}@keyframes disco{0%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(180deg)}100%{filter:hue-rotate(360deg)}}';
+                        document.head.appendChild(s);
+                    }
+                    showToast('🕺 Disco mode ON!');
+                } else {
+                    showToast('Disco mode OFF');
+                }
+            }
+            setTimeout(() => { clicks = 0; }, 600);
+        });
     });
-
-    // Console art
-    console.log('%c⚡ FlashAI v5.0', 'font-size:24px;font-weight:bold;background:linear-gradient(135deg,#00f0ff,#bf00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;');
-    console.log('%cStartup Nation — Tel Aviv 🇮🇱', 'font-size:14px;color:#94a3b8;');
-    console.log('%cOn recrute ! → contact@flashai.dev', 'font-size:12px;color:#00ff87;');
-}
-
-function fireConfetti() {
-    for (let i = 0; i < 80; i++) {
-        const c = document.createElement('div');
-        c.style.cssText = `position:fixed;top:50%;left:50%;width:8px;height:8px;border-radius:${Math.random()>0.5?'50%':'0'};background:${['#00f0ff','#bf00ff','#ff006e','#00ff87','#ffd700','#ff8c00'][Math.floor(Math.random()*6)]};pointer-events:none;z-index:99999;`;
-        document.body.appendChild(c);
-        const angle = Math.random() * Math.PI * 2;
-        const vel = Math.random() * 400 + 200;
-        const vx = Math.cos(angle) * vel;
-        const vy = Math.sin(angle) * vel - 200;
-        let x = window.innerWidth / 2, y = window.innerHeight / 2, opacity = 1;
-        const start = performance.now();
-        function tick(now) {
-            const t = (now - start) / 1000;
-            x += vx * 0.016;
-            y += vy * 0.016 + 500 * t * 0.016;
-            opacity -= 0.015;
-            c.style.transform = `translate(${x - window.innerWidth/2}px, ${y - window.innerHeight/2}px) rotate(${t*360}deg)`;
-            c.style.opacity = Math.max(0, opacity);
-            if (opacity > 0) requestAnimationFrame(tick);
-            else c.remove();
-        }
-        requestAnimationFrame(tick);
-    }
 }

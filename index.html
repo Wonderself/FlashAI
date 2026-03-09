@@ -61,10 +61,8 @@
     </div>
 </div>
 
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot" aria-hidden="true"></div>
-<div class="cursor-ring" aria-hidden="true"></div>
-<div class="cursor-trail" aria-hidden="true"></div>
+<!-- SPARKLE CURSOR -->
+<canvas id="sparkle-canvas" aria-hidden="true"></canvas>
 
 <!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scroll-progress"></div>
@@ -124,9 +122,7 @@
 <main>
 <!-- ============ HERO ============ -->
 <section id="hero" class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
-    <div class="hero-globe-container">
-        <canvas id="hero-globe"></canvas>
-    </div>
+    <div class="hero-globe-container"><canvas id="hero-globe"></canvas></div>
     <div class="hero-grid-bg"></div>
     <div class="hero-orbs">
         <div class="hero-orb hero-orb-1"></div>
@@ -150,9 +146,7 @@
                     Sites web, CRM, dashboards, chatbots IA, automatisations — <strong class="text-white">sur mesure, 3 à 5× moins cher</strong>. Construits par une équipe née au cœur de l'écosystème tech le plus dynamique au monde.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="btn-glow btn-glow-lg">
-                        <span>Lancer mon projet</span>
-                    </a>
+                    <a href="#contact" class="btn-glow btn-glow-lg"><span>Lancer mon projet</span></a>
                     <a href="#demos" class="btn-outline btn-outline-lg group">
                         <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
                         <span>Voir les démos live</span>
@@ -193,14 +187,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Nos Services</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Tout ce dont vous avez besoin,<br><span class="gradient-text-hero">rien de superflu</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Tout ce dont vous avez besoin,<br><span class="gradient-text-hero">rien de superflu</span></h2>
             <p class="text-surface-300 text-lg max-w-2xl mx-auto">Chaque solution est construite sur mesure, optimisée, et livrée en jours.</p>
         </div>
-        <div class="bento-grid" id="services-grid">
-            <!-- Cards injected by JS -->
-        </div>
+        <div class="bento-grid" id="services-grid"></div>
     </div>
 </section>
 
@@ -211,9 +201,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-pink font-mono text-sm tracking-widest uppercase mb-4">// Démos Interactives</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Testez avant de commander<br><span class="gradient-text-warm">des outils qui fonctionnent vraiment</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Testez avant de commander<br><span class="gradient-text-warm">des outils qui fonctionnent vraiment</span></h2>
             <p class="text-surface-300 text-lg max-w-2xl mx-auto">Découvrez nos micro-applications fonctionnelles. Tout est interactif, tout est réel.</p>
         </div>
         <div class="demos-nav" id="demos-nav">
@@ -238,13 +226,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-orange font-mono text-sm tracking-widest uppercase mb-4">// Pourquoi nous ?</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Agence classique <span class="text-surface-500">vs</span> <span class="gradient-text-hero">FlashAI</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Agence classique <span class="text-surface-500">vs</span> <span class="gradient-text-hero">FlashAI</span></h2>
         </div>
-        <div class="comparison-timeline" id="comparison-timeline">
-            <!-- Injected by JS -->
-        </div>
+        <div class="comparison-timeline" id="comparison-timeline"></div>
     </div>
 </section>
 
@@ -254,13 +238,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-green font-mono text-sm tracking-widest uppercase mb-4">// Expertise</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Bien plus qu'un site web<br><span class="gradient-text-green">une expertise complète</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Bien plus qu'un site web<br><span class="gradient-text-green">une expertise complète</span></h2>
         </div>
-        <div class="expertise-carousel" id="expertise-carousel">
-            <!-- 3D cards injected by JS -->
-        </div>
+        <div class="expertise-carousel" id="expertise-carousel"></div>
     </div>
 </section>
 
@@ -279,19 +259,15 @@
     </div>
 </section>
 
-<!-- ============ METHOD TIMELINE ============ -->
+<!-- ============ METHOD ============ -->
 <section id="method" class="relative py-24 lg:py-32">
     <div class="section-glow-line"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-purple font-mono text-sm tracking-widest uppercase mb-4">// Notre Méthode</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                De l'idée au lancement,<br><span class="gradient-text-hero">en 4 étapes</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">De l'idée au lancement,<br><span class="gradient-text-hero">en 4 étapes</span></h2>
         </div>
-        <div class="method-iso-timeline" id="method-timeline">
-            <!-- Injected by JS -->
-        </div>
+        <div class="method-iso-timeline" id="method-timeline"></div>
     </div>
 </section>
 
@@ -301,13 +277,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-cyan font-mono text-sm tracking-widest uppercase mb-4">// Réalisations</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Des projets qui <span class="gradient-text-warm">parlent d'eux-mêmes</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Des projets qui <span class="gradient-text-warm">parlent d'eux-mêmes</span></h2>
         </div>
-        <div class="portfolio-carousel-3d" id="portfolio-carousel">
-            <!-- 3D carousel injected by JS -->
-        </div>
+        <div class="portfolio-carousel-3d" id="portfolio-carousel"></div>
         <div class="portfolio-nav text-center mt-8">
             <button class="portfolio-prev" id="portfolio-prev" aria-label="Précédent">‹</button>
             <div class="portfolio-dots" id="portfolio-dots"></div>
@@ -322,63 +294,53 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-gold font-mono text-sm tracking-widest uppercase mb-4">// Témoignages</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Ils nous font <span class="gradient-text-warm">confiance</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Ils nous font <span class="gradient-text-warm">confiance</span></h2>
         </div>
-        <div class="testimonials-immersive" id="testimonials-container">
-            <!-- Injected by JS -->
-        </div>
+        <div class="testimonials-immersive" id="testimonials-container"></div>
     </div>
 </section>
 
-<!-- ============ 200+ TOOLS — SOLAR SYSTEM ============ -->
+<!-- ============ TOOLS — GALAXY ============ -->
 <section id="tools" class="relative py-24 lg:py-40 overflow-hidden">
     <div class="section-glow-line"></div>
+    <div class="galaxy-nebula-bg"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-orange font-mono text-sm tracking-widest uppercase mb-4">// Écosystème</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                <span class="gradient-text-hero" id="tools-counter">247</span> outils connectés
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6"><span class="gradient-text-hero" id="tools-counter">247</span> outils connectés</h2>
             <p class="text-surface-300 text-lg max-w-2xl mx-auto">Un écosystème complet qui s'intègre à tous vos outils existants.</p>
             <div class="tools-search-wrap mt-8">
                 <input type="text" id="tools-search" class="tools-search-input" placeholder="Rechercher un outil..." aria-label="Rechercher un outil">
             </div>
         </div>
-        <div class="solar-system-container" id="solar-system">
-            <canvas id="solar-canvas"></canvas>
-            <div class="solar-center">
-                <div class="solar-sun">
-                    <svg width="48" height="48" viewBox="0 0 32 32" fill="none"><path d="M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z" fill="url(#slg)"/><defs><linearGradient id="slg" x1="8" y1="4" x2="22" y2="28"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#bf00ff"/></linearGradient></defs></svg>
-                </div>
+        <div class="galaxy-container" id="galaxy-container">
+            <canvas id="galaxy-canvas"></canvas>
+            <div class="galaxy-center-logo">
+                <svg width="48" height="48" viewBox="0 0 32 32" fill="none"><path d="M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z" fill="url(#glg)"/><defs><linearGradient id="glg" x1="8" y1="4" x2="22" y2="28"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#bf00ff"/></linearGradient></defs></svg>
             </div>
-            <div class="solar-info-panel" id="solar-info" style="display:none">
-                <div class="solar-info-name" id="solar-info-name"></div>
-                <div class="solar-info-desc" id="solar-info-desc"></div>
-                <div class="solar-info-integration" id="solar-info-integration"></div>
-            </div>
+            <div class="galaxy-tooltip" id="galaxy-tooltip"></div>
         </div>
-        <!-- Mobile fallback grid -->
         <div class="tools-mobile-grid" id="tools-mobile-grid"></div>
-        <div class="tools-categories" id="tools-categories"></div>
+        <div class="galaxy-categories" id="galaxy-categories"></div>
     </div>
 </section>
 
 <!-- ============ PRICING ============ -->
-<section id="pricing" class="relative py-24 lg:py-32">
+<section id="pricing" class="relative py-24 lg:py-32 overflow-hidden">
     <div class="section-glow-line"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="pricing-aurora"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16 reveal">
             <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Tarifs</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Des prix <span class="gradient-text-hero">transparents</span>
-            </h2>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Des prix <span class="gradient-text-hero">transparents</span></h2>
             <p class="text-surface-300 text-lg max-w-2xl mx-auto">Pas de surprise, pas de frais cachés. Tout est inclus.</p>
+            <div class="pricing-toggle-wrap mt-6">
+                <span class="text-sm text-surface-400">Mensuel</span>
+                <button class="pricing-toggle" id="pricing-toggle"><span class="pricing-toggle-dot"></span></button>
+                <span class="text-sm text-surface-400">Annuel <span class="text-neon-green font-bold">-20%</span></span>
+            </div>
         </div>
-        <div class="pricing-grid" id="pricing-grid">
-            <!-- Injected by JS -->
-        </div>
+        <div class="pricing-grid-3d" id="pricing-grid"></div>
     </div>
 </section>
 
@@ -422,35 +384,36 @@
         <div class="guarantee-card reveal">
             <div class="guarantee-shield">🛡️</div>
             <h3 class="font-display font-bold text-2xl mb-4">Garantie Satisfait ou Remboursé</h3>
-            <p class="text-surface-300 text-lg max-w-xl mx-auto">Si le résultat ne vous convient pas à 100%, on vous rembourse intégralement. Sans conditions, sans délai. C'est notre engagement.</p>
+            <p class="text-surface-300 text-lg max-w-xl mx-auto">Si le résultat ne vous convient pas à 100%, on vous rembourse intégralement. Sans conditions, sans délai.</p>
         </div>
     </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq" class="relative py-24 lg:py-32">
+<section id="faq" class="relative py-24 lg:py-32 overflow-hidden">
     <div class="section-glow-line"></div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="faq-particles-bg"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-12 reveal">
-            <span class="inline-block text-neon-pink font-mono text-sm tracking-widest uppercase mb-4">// FAQ</span>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
-                Questions <span class="gradient-text-warm">fréquentes</span>
-            </h2>
-            <p class="text-surface-400 mb-6">92% des questions trouvent leur réponse ici</p>
-            <div class="faq-search-wrap">
-                <input type="text" id="faq-search" class="faq-search-input" placeholder="Rechercher une question..." aria-label="Rechercher dans la FAQ">
+            <span class="inline-block text-neon-pink font-mono text-sm tracking-widest uppercase mb-4">// Centre de Connaissances</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Questions <span class="gradient-text-warm">fréquentes</span></h2>
+            <p class="text-surface-400 mb-6">92% des questions trouvent leur réponse ici — <span id="faq-read-count">0</span>/<span id="faq-total-count">20</span> lues</p>
+            <div class="faq-progress-wrap"><div class="faq-progress-bar" id="faq-progress-bar"></div></div>
+            <div class="faq-search-wrap mt-6">
+                <div class="faq-search-box">
+                    <svg class="faq-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="faq-search" class="faq-search-input" placeholder="Rechercher une question..." aria-label="Rechercher dans la FAQ">
+                </div>
             </div>
             <div class="faq-tabs" id="faq-tabs">
-                <button class="faq-tab active" data-cat="all">Tout</button>
-                <button class="faq-tab" data-cat="general">Général</button>
-                <button class="faq-tab" data-cat="technique">Technique</button>
-                <button class="faq-tab" data-cat="business">Business</button>
-                <button class="faq-tab" data-cat="support">Support</button>
+                <button class="faq-tab active" data-cat="all"><span class="faq-tab-icon">🔮</span>Tout</button>
+                <button class="faq-tab" data-cat="general"><span class="faq-tab-icon">💡</span>Général</button>
+                <button class="faq-tab" data-cat="technique"><span class="faq-tab-icon">⚙️</span>Technique</button>
+                <button class="faq-tab" data-cat="business"><span class="faq-tab-icon">💰</span>Business</button>
+                <button class="faq-tab" data-cat="support"><span class="faq-tab-icon">🛟</span>Support</button>
             </div>
         </div>
-        <div class="faq-list" id="faq-list">
-            <!-- Injected by JS -->
-        </div>
+        <div class="faq-masonry" id="faq-list"></div>
     </div>
 </section>
 
@@ -459,68 +422,32 @@
     <canvas id="cta-canvas"></canvas>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div class="reveal">
-            <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-6">
-                Prêt à <span class="gradient-text-hero">transformer</span><br>votre business ?
-            </h2>
-            <p class="text-surface-300 text-xl mb-4 max-w-xl mx-auto">Rejoignez les 50+ entreprises qui ont choisi FlashAI pour accélérer leur transformation digitale.</p>
-            <p class="text-neon-orange text-sm font-bold mb-8">🔥 Offre de lancement — Consultation gratuite pendant encore <span id="cta-timer">23:59:42</span></p>
-            <a href="#contact" class="btn-glow btn-glow-xl magnetic-btn" id="magnetic-cta">
-                <span>Démarrer maintenant</span>
-            </a>
+            <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-6">Prêt à <span class="gradient-text-hero">transformer</span><br>votre business ?</h2>
+            <p class="text-surface-300 text-xl mb-4 max-w-xl mx-auto">Rejoignez les 50+ entreprises qui ont choisi FlashAI.</p>
+            <p class="text-neon-orange text-sm font-bold mb-8">🔥 Consultation gratuite — encore <span id="cta-timer">23:59:42</span></p>
+            <a href="#contact" class="btn-glow btn-glow-xl magnetic-btn" id="magnetic-cta"><span>Démarrer maintenant</span></a>
         </div>
     </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- ============ CONTACT — SMART FORM ============ -->
 <section id="contact" class="relative py-24 lg:py-32">
     <div class="section-glow-line"></div>
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12">
-            <div class="reveal">
-                <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Contact</span>
-                <h2 class="font-display font-bold text-3xl sm:text-4xl mb-6">
-                    Parlons de votre <span class="gradient-text-hero">projet</span>
-                </h2>
-                <p class="text-surface-300 text-lg mb-8">Réponse garantie en moins de 2 heures. On ne mord pas, promis.</p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-3 text-surface-300"><svg class="w-5 h-5 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@flashai.dev</div>
-                    <div class="flex items-center gap-3 text-surface-300"><svg class="w-5 h-5 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Tel Aviv, Israel 🇮🇱</div>
-                    <div class="flex items-center gap-3 text-surface-300"><svg class="w-5 h-5 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Temps de réponse moyen : <strong class="text-white">2h</strong></div>
-                </div>
-                <div class="contact-map-svg mt-8" id="contact-map">
-                    <!-- SVG map injected by JS -->
-                </div>
-            </div>
-            <div class="reveal">
-                <form action="https://formspree.io/f/xvgogwvz" method="POST" class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="c-name" name="name" required class="form-input" placeholder=" ">
-                        <label for="c-name" class="form-label">Votre nom</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="c-email" name="email" required class="form-input" placeholder=" ">
-                        <label for="c-email" class="form-label">Email professionnel</label>
-                    </div>
-                    <div class="form-group">
-                        <select id="c-service" name="service" required class="form-input form-select" placeholder=" ">
-                            <option value="" disabled selected></option>
-                            <option>Site web</option>
-                            <option>CRM / ERP</option>
-                            <option>Chatbot IA</option>
-                            <option>Dashboard</option>
-                            <option>Automatisation</option>
-                            <option>Autre</option>
-                        </select>
-                        <label for="c-service" class="form-label">Type de projet</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="c-message" name="message" rows="4" required class="form-input" placeholder=" "></textarea>
-                        <label for="c-message" class="form-label">Votre message</label>
-                    </div>
-                    <button type="submit" class="btn-glow w-full justify-center">
-                        <span>Envoyer le message</span>
-                    </button>
-                </form>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 reveal">
+            <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Contact</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">Parlons de votre <span class="gradient-text-hero">projet</span></h2>
+            <p class="text-surface-300 text-lg mb-8">Choisissez le type de demande pour un formulaire adapté à vos besoins.</p>
+        </div>
+        <!-- Smart Form Type Selector -->
+        <div class="smart-form-selector" id="smart-form-selector"></div>
+        <!-- Dynamic Form Container -->
+        <div class="smart-form-container" id="smart-form-container"></div>
+        <div class="text-center mt-8 reveal">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-surface-400">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@flashai.dev</div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>Tel Aviv, Israel 🇮🇱</div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Réponse en <strong class="text-white">< 2h</strong></div>
             </div>
         </div>
     </div>
@@ -573,27 +500,18 @@
             </div>
         </div>
         <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2 text-sm text-surface-400">
-                <span>Made with</span>
-                <span class="text-red-400">♥</span>
-                <span>and AI in Israel 🇮🇱</span>
-            </div>
-            <div class="startup-badge">
-                <span class="startup-badge-text">Startup Nation Certified</span>
-            </div>
+            <div class="flex items-center gap-2 text-sm text-surface-400"><span>Made with</span><span class="text-red-400">♥</span><span>and AI in Israel 🇮🇱</span></div>
+            <div class="startup-badge"><span class="startup-badge-text">Startup Nation Certified</span></div>
             <div class="text-sm text-surface-500">© 2025 FlashAI. Tous droits réservés.</div>
         </div>
     </div>
 </footer>
 
-<!-- SCROLL TO TOP -->
 <button id="scroll-top" class="scroll-top-btn" aria-label="Retour en haut">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
 </button>
 
-<!-- TOAST -->
 <div class="toast-container" id="toast-container"></div>
-
 <script src="script.js"></script>
 </body>
 </html>
