@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashAI | Agence Digitale Ultra-Premium</title>
-    <meta name="description" content="FlashAI construit vos outils digitaux sur mesure : sites web, CRM, dashboards, integrations API et automatisations IA. 3 a 5x moins cher. Livraison en jours.">
-    <meta name="keywords" content="agence digitale, creation site web, CRM sur mesure, dashboard entreprise, integration API, automatisation IA, developpement web PME, logiciel metier, SEO, securite web">
+    <title>FlashAI | Agence Digitale Ultra-Premium — Startup Nation</title>
+    <meta name="description" content="FlashAI construit vos outils digitaux sur mesure : sites web, CRM, dashboards, integrations API et automatisations IA. Née au cœur de la Startup Nation. 3 à 5x moins cher. Livraison en jours.">
+    <meta name="keywords" content="agence digitale, creation site web, CRM sur mesure, dashboard entreprise, integration API, automatisation IA, developpement web PME, logiciel metier, SEO, securite web, Israel, startup nation, Tel Aviv">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flashai.dev/">
-    <meta property="og:title" content="FlashAI | Vos outils digitaux, livres en jours, pas en mois">
-    <meta property="og:description" content="Sites, CRM, dashboards, API, IA — sur mesure, 3-5x moins cher.">
+    <meta property="og:title" content="FlashAI | Vos outils digitaux, livrés en jours, pas en mois">
+    <meta property="og:description" content="Sites, CRM, dashboards, API, IA — sur mesure, 3-5x moins cher. Startup Nation.">
     <meta name="twitter:card" content="summary_large_image">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-596949253"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","AW-596949253");</script>
@@ -22,11 +22,12 @@
                     primary: {50:"#eef2ff",100:"#e0e7ff",200:"#c7d2fe",300:"#a5b4fc",400:"#818cf8",500:"#6366f1",600:"#4f46e5",700:"#4338ca",800:"#3730a3",900:"#312e81"},
                     surface: {50:"#f8fafc",100:"#f1f5f9",200:"#e2e8f0",300:"#cbd5e1",400:"#94a3b8",500:"#64748b",600:"#475569",700:"#334155",800:"#1e293b",900:"#0f172a",950:"#020617"},
                     accent: {400:"#22d3ee",500:"#0ea5e9",600:"#0284c7"},
-                    neon: {blue:"#00f0ff",purple:"#bf00ff",pink:"#ff006e",green:"#00ff87",orange:"#ff8c00"}
+                    neon: {blue:"#00f0ff",purple:"#bf00ff",pink:"#ff006e",green:"#00ff87",orange:"#ff8c00",gold:"#ffd700",cyan:"#06b6d4"}
                 },
                 fontFamily: {
                     display: ["Space Grotesk","system-ui","sans-serif"],
-                    body: ["Inter","system-ui","sans-serif"]
+                    body: ["Inter","system-ui","sans-serif"],
+                    mono: ["JetBrains Mono","monospace"]
                 }
             }
         }
@@ -36,1034 +37,562 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"ProfessionalService","name":"FlashAI","description":"Agence digitale specialisee dans le developpement sur mesure.","url":"https://flashai.dev","areaServed":["France","Belgique","Suisse","Luxembourg","Canada"],"serviceType":["Developpement web","CRM","Dashboard","Integration API","Automatisation IA","SEO","Securite web"]}
+    {"@context":"https://schema.org","@type":"ProfessionalService","name":"FlashAI","description":"Agence digitale née au cœur de la Startup Nation, spécialisée dans le développement sur mesure.","url":"https://flashai.dev","areaServed":["France","Belgique","Suisse","Luxembourg","Canada","Israel"],"serviceType":["Développement web","CRM","Dashboard","Intégration API","Automatisation IA","SEO","Sécurité web"]}
     </script>
 </head>
 <body class="bg-surface-950 text-white font-body">
 
 <!-- LOADER -->
 <div id="page-loader">
+    <canvas id="loader-canvas"></canvas>
     <div class="loader-content">
         <div class="loader-logo">
             <span class="loader-flash">Flash</span><span class="loader-ai">AI</span>
         </div>
-        <div class="loader-tagline">Constructeur d'outils digitaux</div>
-        <div class="loader-bar mt-6">
-            <div class="loader-bar-fill"></div>
+        <div class="loader-boot" id="loader-boot"></div>
+        <div class="loader-bar-wrap">
+            <div class="loader-bar" id="loader-bar"></div>
         </div>
+        <div class="loader-percent" id="loader-percent">0%</div>
     </div>
 </div>
 
 <!-- CUSTOM CURSOR -->
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-trail" aria-hidden="true"></div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scroll-progress"></div>
 
 <!-- THREE.JS CANVAS -->
 <canvas id="three-canvas"></canvas>
 
-<!-- ==================== HEADER ==================== -->
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-        <a href="#" class="flex items-center gap-1 text-xl font-display font-bold tracking-tight logo-glow">
-            <span class="text-white">Flash</span><span class="text-gradient">AI</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-8 relative">
-            <a href="#services" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">Services</a>
-            <a href="#expertise" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">Expertise</a>
-            <a href="#methode" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">M&eacute;thode</a>
-            <a href="#portfolio" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">R&eacute;alisations</a>
-            <a href="#outils" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">Outils</a>
-            <a href="#tarifs" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">Tarifs</a>
-            <a href="#faq" class="nav-link text-sm text-surface-400 hover:text-white transition-colors">FAQ</a>
-            <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all btn-glow shadow-lg shadow-primary-600/20">Devis gratuit</a>
-        </nav>
-        <button id="mobile-toggle" class="md:hidden text-white p-2" aria-label="Menu" aria-expanded="false">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-    </div>
-    <div id="mobile-menu" class="md:hidden bg-surface-950/98 backdrop-blur-2xl border-t border-white/5">
-        <div class="px-5 py-6 flex flex-col gap-4">
-            <a href="#services" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">Services</a>
-            <a href="#expertise" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">Expertise</a>
-            <a href="#methode" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">M&eacute;thode</a>
-            <a href="#portfolio" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">R&eacute;alisations</a>
-            <a href="#outils" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">Outils</a>
-            <a href="#tarifs" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">Tarifs</a>
-            <a href="#faq" class="text-surface-300 hover:text-white py-2 text-lg font-medium transition-colors">FAQ</a>
-            <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold px-5 py-3 rounded-xl text-center mt-2 transition-all">Devis gratuit</a>
+<!-- HEADER -->
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+            <a href="#" class="flex items-center gap-2 group" aria-label="FlashAI Accueil">
+                <div class="header-logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z" fill="url(#lg)"/><defs><linearGradient id="lg" x1="8" y1="4" x2="22" y2="28"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#bf00ff"/></linearGradient></defs></svg>
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight">Flash<span class="text-neon-blue">AI</span></span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-1" id="main-nav">
+                <a href="#services" class="nav-link" data-section="services">Services</a>
+                <a href="#demos" class="nav-link" data-section="demos">Démos</a>
+                <a href="#expertise" class="nav-link" data-section="expertise">Expertise</a>
+                <a href="#method" class="nav-link" data-section="method">Méthode</a>
+                <a href="#portfolio" class="nav-link" data-section="portfolio">Réalisations</a>
+                <a href="#tools" class="nav-link" data-section="tools">Outils</a>
+                <a href="#pricing" class="nav-link" data-section="pricing">Tarifs</a>
+                <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="btn-glow hidden sm:inline-flex text-sm">
+                    <span>Démarrer un projet</span>
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center" aria-label="Menu">
+                    <span class="hamburger-line hamburger-top"></span>
+                    <span class="hamburger-line hamburger-mid"></span>
+                    <span class="hamburger-line hamburger-bot"></span>
+                </button>
+            </div>
         </div>
     </div>
 </header>
 
-<!-- ==================== HERO ==================== -->
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu-overlay">
+    <nav class="mobile-menu-content">
+        <a href="#services" class="mobile-menu-link">Services</a>
+        <a href="#demos" class="mobile-menu-link">Démos Live</a>
+        <a href="#expertise" class="mobile-menu-link">Expertise</a>
+        <a href="#method" class="mobile-menu-link">Méthode</a>
+        <a href="#portfolio" class="mobile-menu-link">Réalisations</a>
+        <a href="#tools" class="mobile-menu-link">200+ Outils</a>
+        <a href="#pricing" class="mobile-menu-link">Tarifs</a>
+        <a href="#faq" class="mobile-menu-link">FAQ</a>
+        <a href="#contact" class="btn-glow mt-6 justify-center">Démarrer un projet</a>
+    </nav>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
 <section id="hero" class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
-    <div class="hero-bg">
+    <div class="hero-globe-container">
+        <canvas id="hero-globe"></canvas>
+    </div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orbs">
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
         <div class="hero-orb hero-orb-4"></div>
         <div class="hero-orb hero-orb-5"></div>
-        <div class="hero-grid"></div>
-        <div class="hero-noise"></div>
-        <div id="particles-hero"></div>
     </div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-5 w-full">
-        <div class="grid lg:grid-cols-5 gap-12 items-center">
-            <!-- Left: Text -->
-            <div class="lg:col-span-3">
-                <div class="reveal inline-flex items-center gap-2 bg-primary-600/10 border border-primary-500/20 rounded-full px-4 py-2 mb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neon-blue/30 bg-neon-blue/5 text-neon-blue text-sm font-medium">
                     <span class="pulse-dot"></span>
-                    <span class="text-sm text-surface-300">Disponible &mdash; d&eacute;lai moyen : 5 jours</span>
+                    <span>Startup Nation — Tel Aviv 🇮🇱</span>
                 </div>
-
-                <h1 class="reveal font-display font-bold leading-[1.06] tracking-tight mb-6" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">
-                    On construit vos outils<br>digitaux.
-                    <span class="block text-gradient-hero glitch-text" data-text="En jours, pas en mois." style="font-size: clamp(2.5rem, 6.5vw, 5rem);">En jours, pas en mois.</span>
+                <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1]">
+                    Vos outils digitaux,<br>
+                    <span class="gradient-text-hero" id="hero-morph">livrés en jours</span>
                 </h1>
-
-                <p class="reveal text-lg sm:text-xl text-surface-400 max-w-2xl mb-3 leading-relaxed">
-                    Votre
-                    <span id="typewriter" class="text-white font-semibold" data-words='["site web","CRM sur mesure","dashboard","chatbot IA","int&eacute;gration API","application mobile","landing page","e-commerce","automatisation","SEO technique"]'>site web</span><span class="typewriter-cursor"></span>
-                    &mdash; sur mesure, livr&eacute; rapidement.
+                <p class="text-lg sm:text-xl text-surface-300 max-w-xl leading-relaxed">
+                    Sites web, CRM, dashboards, chatbots IA, automatisations — <strong class="text-white">sur mesure, 3 à 5× moins cher</strong>. Construits par une équipe née au cœur de l'écosystème tech le plus dynamique au monde.
                 </p>
-                <p class="reveal text-lg sm:text-xl text-surface-400 max-w-2xl mb-10 leading-relaxed">
-                    Design premium. Code propre. Prix <span class="text-gradient-warm font-semibold">3 &agrave; 5x inf&eacute;rieurs</span> au march&eacute;.
-                </p>
-
-                <div class="reveal flex flex-col sm:flex-row gap-4 mb-10">
-                    <a href="#services" class="hero-cta-primary bg-primary-600 hover:bg-primary-500 text-white font-semibold px-8 py-4 rounded-2xl text-center transition-all btn-glow text-lg shadow-lg shadow-primary-600/25 hover:shadow-primary-500/40">
-                        Voir ce qu&rsquo;on peut faire &rarr;
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="btn-glow btn-glow-lg">
+                        <span>Lancer mon projet</span>
                     </a>
-                    <a href="#demo" class="hero-cta-secondary border border-white/10 hover:border-white/25 text-white font-medium px-8 py-4 rounded-2xl text-center transition-all hover:bg-white/5 text-lg">
-                        <span class="flex items-center justify-center gap-2">
-                            <svg class="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/></svg>
-                            Voir la d&eacute;mo live
-                        </span>
+                    <a href="#demos" class="btn-outline btn-outline-lg group">
+                        <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                        <span>Voir les démos live</span>
                     </a>
                 </div>
-
-                <div class="reveal flex flex-wrap gap-x-6 gap-y-2 text-sm text-surface-400">
-                    <span class="hero-stat"><svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>50+ projets livr&eacute;s</span>
-                    <span class="hero-stat"><svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Code 100% &agrave; vous</span>
-                    <span class="hero-stat"><svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Sans engagement</span>
-                    <span class="hero-stat"><svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>100% satisfaction</span>
+                <div class="flex items-center gap-6 pt-4 text-sm text-surface-400">
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Sans engagement</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Devis en 24h</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-green" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Satisfait ou remboursé</div>
                 </div>
             </div>
-
-            <!-- Right: 3D Interactive Terminal -->
-            <div class="lg:col-span-2 reveal-right hidden lg:block">
-                <div class="hero-terminal tilt-card">
+            <div class="relative" id="hero-terminal-wrap">
+                <div class="hero-terminal" id="hero-terminal">
                     <div class="terminal-header">
-                        <div class="terminal-dot" style="background:#ef4444;"></div>
-                        <div class="terminal-dot" style="background:#eab308;"></div>
-                        <div class="terminal-dot" style="background:#22c55e;"></div>
-                        <span class="text-surface-500 text-xs ml-3 font-mono">flashai-cli v4.0</span>
-                    </div>
-                    <div class="terminal-body" id="hero-terminal">
-                        <div class="terminal-line">
-                            <span class="terminal-prompt">$</span>
-                            <span class="terminal-command" id="terminal-typing"></span>
-                            <span class="terminal-cursor-block">|</span>
+                        <div class="terminal-dots">
+                            <span class="terminal-dot bg-red-500"></span>
+                            <span class="terminal-dot bg-yellow-500"></span>
+                            <span class="terminal-dot bg-green-500"></span>
                         </div>
+                        <span class="terminal-title font-mono text-xs text-surface-400">flashai-cli v5.0</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
-        <svg class="w-6 h-6 text-surface-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-    </div>
-</section>
-
-<!-- ==================== TRUST MARQUEE ==================== -->
-<section class="py-6 overflow-hidden border-y border-white/5 relative">
-    <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-surface-950 to-transparent z-10"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-surface-950 to-transparent z-10"></div>
-    <div class="marquee-track">
-        <div class="flex items-center gap-4 px-2">
-            <span class="marquee-pill"><span class="text-primary-400 font-bold">50+</span> projets livr&eacute;s</span>
-            <span class="marquee-pill tech-pill">React</span>
-            <span class="marquee-pill"><span class="text-green-400 font-bold">5 jours</span> en moyenne</span>
-            <span class="marquee-pill tech-pill">Next.js</span>
-            <span class="marquee-pill"><span class="text-gradient font-bold">3-5x</span> moins cher</span>
-            <span class="marquee-pill tech-pill">Python</span>
-            <span class="marquee-pill"><span class="text-yellow-400 font-bold">100%</span> satisfaction</span>
-            <span class="marquee-pill tech-pill">Node.js</span>
-            <span class="marquee-pill tech-pill">PostgreSQL</span>
-            <span class="marquee-pill tech-pill">Stripe</span>
-            <span class="marquee-pill tech-pill">Claude AI</span>
-            <span class="marquee-pill tech-pill">Tailwind</span>
-            <span class="marquee-pill tech-pill">Supabase</span>
-            <span class="marquee-pill tech-pill">Firebase</span>
-            <span class="marquee-pill tech-pill">TypeScript</span>
-            <span class="marquee-pill tech-pill">Docker</span>
-            <span class="marquee-pill tech-pill">Vercel</span>
-            <span class="marquee-pill tech-pill">OpenAI</span>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== SERVICES — BENTO GRID ==================== -->
-<section id="services" class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Ce qu&rsquo;on construit</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Tout ce dont votre business a besoin</h2>
-            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Du site vitrine au logiciel m&eacute;tier complet. Chaque projet est cod&eacute; sur mesure, de z&eacute;ro.</p>
-        </div>
-
-        <div class="bento-grid" data-stagger>
-            <!-- CRM — LARGE -->
-            <div class="bento-card bento-large reveal" data-tilt style="--card-accent: #0ea5e9;">
-                <div class="bento-glow"></div>
-                <div class="bento-icon bg-accent-500/15">
-                    <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
-                </div>
-                <h3 class="font-display text-xl font-bold mb-2">CRM &amp; Logiciels M&eacute;tier</h3>
-                <p class="text-surface-400 text-sm leading-relaxed mb-3">Gestion clients, devis, facturation, suivi projets &mdash; adapt&eacute;s &agrave; <strong class="text-white">VOTRE</strong> m&eacute;tier.</p>
-                <p class="text-surface-500 text-xs mb-1">Remplace : Salesforce (25&euro;/mois/user), Pipedrive, Monday&hellip;</p>
-                <div class="bento-price"><span class="text-accent-400 font-bold">&Agrave; partir de 700&euro;</span><span class="text-surface-600">&bull;</span><span class="text-surface-500">1-2 semaines</span></div>
-            </div>
-
-            <!-- IA — LARGE -->
-            <div class="bento-card bento-large reveal" data-tilt style="--card-accent: #22c55e;">
-                <div class="bento-glow"></div>
-                <div class="bento-icon bg-green-500/15">
-                    <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
-                </div>
-                <h3 class="font-display text-xl font-bold mb-2">Automatisation &amp; IA</h3>
-                <p class="text-surface-400 text-sm leading-relaxed mb-3">Chatbots IA, g&eacute;n&eacute;ration de contenu, workflows automatis&eacute;s, classification intelligente.</p>
-                <p class="text-surface-500 text-xs mb-1">Le diff&eacute;renciateur n&deg;1 face &agrave; vos concurrents.</p>
-                <div class="bento-price"><span class="text-green-400 font-bold">&Agrave; partir de 500&euro;</span><span class="text-surface-600">&bull;</span><span class="text-surface-500">1-2 semaines</span></div>
-            </div>
-
-            <!-- Sites Web -->
-            <div class="bento-card reveal" data-tilt style="--card-accent: #6366f1;">
-                <div class="bento-glow"></div>
-                <div class="bento-icon bg-primary-600/15">
-                    <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-                </div>
-                <h3 class="font-display text-lg font-bold mb-2">Sites Web &amp; Landing Pages</h3>
-                <p class="text-surface-400 text-sm leading-relaxed mb-3">Design moderne, SEO int&eacute;gr&eacute;, performance 100/100.</p>
-                <div class="bento-price"><span class="text-primary-400 font-bold">&Agrave; partir de 250&euro;</span><span class="text-surface-600">&bull;</span><span class="text-surface-500">3-5 jours</span></div>
-            </div>
-
-            <!-- Dashboards -->
-            <div class="bento-card reveal" data-tilt style="--card-accent: #8b5cf6;">
-                <div class="bento-glow"></div>
-                <div class="bento-icon bg-violet-500/15">
-                    <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
-                </div>
-                <h3 class="font-display text-lg font-bold mb-2">Dashboards &amp; Analytics</h3>
-                <p class="text-surface-400 text-sm leading-relaxed mb-3">Tableaux de bord temps r&eacute;el, rapports, visualisation donn&eacute;es.</p>
-                <div class="bento-price"><span class="text-violet-400 font-bold">&Agrave; partir de 800&euro;</span><span class="text-surface-600">&bull;</span><span class="text-surface-500">1-2 semaines</span></div>
-            </div>
-
-            <!-- E-commerce -->
-            <div class="bento-card reveal" data-tilt style="--card-accent: #f97316;">
-                <div class="bento-glow"></div>
-                <div class="bento-icon bg-orange-500/15">
-                    <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
-                </div>
-                <h3 class="font-display text-lg font-bold mb-2">E-commerce</h3>
-                <p class="text-surface-400 text-sm leading-relaxed mb-3">Boutique en ligne, paiement Stripe, gestion stock automatis&eacute;e.</p>
-                <div class="bento-price"><span class="text-orange-400 font-bold">&Agrave; partir de 800&euro;</span><span class="text-surface-600">&bull;</span><span class="text-surface-500">1-2 semaines</span></div>
-            </div>
-
-            <!-- Apps -->
-            <div class="bento-card reveal" data-tilt style="--card-accent: #ec4899;">
-                <div class="bento-glow"></div>
-                <div class="bento-icon bg-pink-500/15">
-                    <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
-                </div>
-                <h3 class="font-display text-lg font-bold mb-2">Applications Web &amp; Mobile</h3>
-                <p class="text-surface-400 text-sm leading-relaxed mb-3">Apps compl&egrave;tes avec auth, paiement, notifications.</p>
-                <div class="bento-price"><span class="text-pink-400 font-bold">&Agrave; partir de 2 000&euro;</span><span class="text-surface-600">&bull;</span><span class="text-surface-500">2-4 semaines</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== LIVE DEMO ==================== -->
-<section id="demo" class="py-20 md:py-28 relative overflow-hidden">
-    <div class="demo-bg-glow"></div>
-    <div class="max-w-7xl mx-auto px-5 relative z-10">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-green-400 text-sm font-semibold tracking-wider uppercase mb-4">D&eacute;mo en direct</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Regardez l&rsquo;IA <span class="text-gradient">construire</span> en temps r&eacute;el</h2>
-            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Voici comment on travaille. Votre brief &rarr; notre IA &rarr; votre outil. En quelques jours.</p>
-        </div>
-
-        <div class="reveal-scale">
-            <div class="demo-window">
-                <div class="demo-header">
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
-                    </div>
-                    <div class="demo-tabs">
-                        <button class="demo-tab active" data-demo="site">Site Web</button>
-                        <button class="demo-tab" data-demo="crm">CRM</button>
-                        <button class="demo-tab" data-demo="chatbot">Chatbot IA</button>
-                        <button class="demo-tab" data-demo="dashboard">Dashboard</button>
-                    </div>
-                </div>
-                <div class="demo-body">
-                    <div class="demo-split">
-                        <!-- Code side -->
-                        <div class="demo-code">
-                            <div class="demo-code-header">
-                                <span class="text-surface-500 text-xs font-mono">flashai-build.js</span>
-                                <span class="demo-live-badge">LIVE</span>
-                            </div>
-                            <div class="demo-code-content" id="demo-code-output"></div>
-                        </div>
-                        <!-- Preview side -->
-                        <div class="demo-preview">
-                            <div class="demo-preview-header">
-                                <span class="text-surface-500 text-xs">Aper&ccedil;u en direct</span>
-                            </div>
-                            <div class="demo-preview-content" id="demo-preview-output"></div>
-                        </div>
-                    </div>
+                    <div class="terminal-body font-mono text-sm" id="terminal-output"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="section-glow-line"></div>
-
-<!-- ==================== COMPARISON ==================== -->
-<section class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Pourquoi nous</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Ce que les agences<br><span class="text-gradient">ne vous disent pas</span></h2>
-        </div>
-
-        <div class="comparison-split reveal-scale">
-            <div class="comparison-side comparison-classic">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-red-500/15 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </div>
-                    <h3 class="font-display text-lg font-bold text-red-300">Agence classique</h3>
-                </div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><div><p class="text-surface-400 text-sm"><strong class="text-surface-300">3-6 mois</strong> de d&eacute;veloppement</p></div></div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><div><p class="text-surface-400 text-sm"><strong class="text-surface-300">5 000 &agrave; 50 000&euro;</strong></p></div></div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><div><p class="text-surface-400 text-sm">Abonnement mensuel obligatoire</p></div></div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><div><p class="text-surface-400 text-sm">Code souvent propri&eacute;taire</p></div></div>
-            </div>
-            <div class="comparison-side comparison-flash">
-                <div class="comparison-flash-glow"></div>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-primary-600/15 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-                    </div>
-                    <h3 class="font-display text-lg font-bold text-gradient">FlashAI</h3>
-                </div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><div><p class="text-surface-300 text-sm"><strong class="text-white">3-14 jours</strong></p></div></div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><div><p class="text-surface-300 text-sm"><strong class="text-white">250 &agrave; 5 000&euro;</strong></p></div></div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><div><p class="text-surface-300 text-sm"><strong class="text-white">Paiement unique.</strong> Sans engagement.</p></div></div>
-                <div class="comparison-item"><svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><div><p class="text-surface-300 text-sm"><strong class="text-white">100% votre code.</strong> Pour toujours.</p></div></div>
-            </div>
-        </div>
-    </div>
+<!-- ============ TRUST MARQUEE ============ -->
+<section class="relative py-6 overflow-hidden border-y border-white/5">
+    <div class="marquee-row marquee-row-1" id="marquee-row-1"></div>
+    <div class="marquee-row marquee-row-2 mt-3" id="marquee-row-2"></div>
 </section>
 
-<div class="section-glow-line"></div>
-
-<!-- ==================== EXPERTISE — SEO / SECURITE / AUTOMATISATION ==================== -->
-<section id="expertise" class="py-20 md:py-28 relative overflow-hidden">
-    <div class="expertise-bg-particles" id="expertise-particles"></div>
-    <div class="max-w-7xl mx-auto px-5 relative z-10">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Notre expertise</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">On ne fait pas que des sites.<br>On fait <span class="text-gradient">tout le reste</span> aussi.</h2>
-            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">SEO, s&eacute;curit&eacute;, automatisation, performance &mdash; chaque projet est livr&eacute; avec tout.</p>
-        </div>
-
-        <div class="expertise-grid" data-stagger>
-            <!-- SEO -->
-            <div class="expertise-card reveal" data-tilt>
-                <div class="expertise-card-inner">
-                    <div class="expertise-icon" style="--icon-color: #22c55e;">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
-                        <div class="expertise-icon-glow"></div>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">SEO Technique Avanc&eacute;</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed mb-4">Chaque site est optimis&eacute; pour Google d&egrave;s le d&eacute;part.</p>
-                    <ul class="expertise-features">
-                        <li>Score Lighthouse 95-100/100</li>
-                        <li>Schema.org / Rich Snippets</li>
-                        <li>Core Web Vitals optimis&eacute;s</li>
-                        <li>Sitemap XML + robots.txt</li>
-                        <li>Meta tags dynamiques</li>
-                        <li>SSR / SSG pour le crawl</li>
-                    </ul>
-                    <div class="expertise-metric">
-                        <div class="expertise-metric-bar" style="--bar-width: 97%; --bar-color: #22c55e;"></div>
-                        <span class="text-green-400 font-bold text-lg">97/100</span>
-                        <span class="text-surface-500 text-xs">Score SEO moyen</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- S&eacute;curit&eacute; -->
-            <div class="expertise-card reveal" data-tilt>
-                <div class="expertise-card-inner">
-                    <div class="expertise-icon" style="--icon-color: #3b82f6;">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-                        <div class="expertise-icon-glow"></div>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">S&eacute;curit&eacute; Renforc&eacute;e</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed mb-4">Protection contre les attaques les plus courantes. Z&eacute;ro compromis.</p>
-                    <ul class="expertise-features">
-                        <li>Protection XSS &amp; injection SQL</li>
-                        <li>HTTPS / SSL forc&eacute;</li>
-                        <li>Auth JWT / OAuth 2.0</li>
-                        <li>Rate limiting &amp; CORS</li>
-                        <li>Chiffrement donn&eacute;es sensibles</li>
-                        <li>Audit OWASP Top 10</li>
-                    </ul>
-                    <div class="expertise-metric">
-                        <div class="expertise-metric-bar" style="--bar-width: 100%; --bar-color: #3b82f6;"></div>
-                        <span class="text-blue-400 font-bold text-lg">A+</span>
-                        <span class="text-surface-500 text-xs">Score s&eacute;curit&eacute;</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Performance -->
-            <div class="expertise-card reveal" data-tilt>
-                <div class="expertise-card-inner">
-                    <div class="expertise-icon" style="--icon-color: #f97316;">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-                        <div class="expertise-icon-glow"></div>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">Performance Extr&ecirc;me</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed mb-4">Des sites qui chargent en moins d&rsquo;une seconde. Partout.</p>
-                    <ul class="expertise-features">
-                        <li>Temps de chargement &lt; 1s</li>
-                        <li>CDN mondial (Vercel/Cloudflare)</li>
-                        <li>Images WebP/AVIF optimis&eacute;es</li>
-                        <li>Code splitting automatique</li>
-                        <li>Lazy loading intelligent</li>
-                        <li>Cache strat&eacute;gique</li>
-                    </ul>
-                    <div class="expertise-metric">
-                        <div class="expertise-metric-bar" style="--bar-width: 99%; --bar-color: #f97316;"></div>
-                        <span class="text-orange-400 font-bold text-lg">99/100</span>
-                        <span class="text-surface-500 text-xs">Performance Lighthouse</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Automatisation -->
-            <div class="expertise-card reveal" data-tilt>
-                <div class="expertise-card-inner">
-                    <div class="expertise-icon" style="--icon-color: #a855f7;">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m4.894 5.877l-1.15-.964M6.256 7.178l-1.15-.964m12.233 3.86l-1.41-.514M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"/></svg>
-                        <div class="expertise-icon-glow"></div>
-                    </div>
-                    <h3 class="font-display text-xl font-bold mb-3">Automatisation Totale</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed mb-4">On automatise tout ce qui peut l&rsquo;&ecirc;tre. Vous vous concentrez sur votre m&eacute;tier.</p>
-                    <ul class="expertise-features">
-                        <li>Emails automatiques personnalis&eacute;s</li>
-                        <li>Workflows n8n / Make / Zapier</li>
-                        <li>G&eacute;n&eacute;ration de rapports auto</li>
-                        <li>Notifications intelligentes</li>
-                        <li>Synchronisation multi-plateformes</li>
-                        <li>Chatbots IA 24/7</li>
-                    </ul>
-                    <div class="expertise-metric">
-                        <div class="expertise-metric-bar" style="--bar-width: 80%; --bar-color: #a855f7;"></div>
-                        <span class="text-purple-400 font-bold text-lg">80%</span>
-                        <span class="text-surface-500 text-xs">T&acirc;ches automatis&eacute;es</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Impressive numbers -->
-        <div class="reveal mt-20">
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-number font-display text-4xl md:text-5xl font-bold text-gradient"><span data-count="50" data-suffix="+">0</span></div>
-                    <div class="text-surface-400 text-sm mt-1">Projets livr&eacute;s</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number font-display text-4xl md:text-5xl font-bold text-gradient-green"><span data-count="200" data-suffix="+">0</span></div>
-                    <div class="text-surface-400 text-sm mt-1">APIs int&eacute;gr&eacute;es</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number font-display text-4xl md:text-5xl font-bold text-gradient-warm"><span data-count="5" data-suffix=" jours">0</span></div>
-                    <div class="text-surface-400 text-sm mt-1">D&eacute;lai moyen</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number font-display text-4xl md:text-5xl font-bold" style="color:#22c55e;"><span data-count="100" data-suffix="%">0</span></div>
-                    <div class="text-surface-400 text-sm mt-1">Satisfaction</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== METHODE — TIMELINE ==================== -->
-<section id="methode" class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Comment &ccedil;a marche</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">4 &eacute;tapes. C&rsquo;est tout.</h2>
-            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Un processus simple et transparent.</p>
-        </div>
-
-        <div class="timeline-wrapper reveal">
-            <div class="timeline-line"><div class="timeline-line-fill"></div></div>
-            <div class="timeline-step">
-                <div class="timeline-node"><svg class="w-5 h-5 text-surface-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg></div>
-                <div><h3 class="font-display text-lg font-bold mb-2">D&eacute;crivez</h3><p class="text-surface-400 text-sm leading-relaxed max-w-[220px] mx-auto">Envoyez votre id&eacute;e en 5 min. R&eacute;ponse sous 24h.</p></div>
-            </div>
-            <div class="timeline-step">
-                <div class="timeline-node"><svg class="w-5 h-5 text-surface-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg></div>
-                <div><h3 class="font-display text-lg font-bold mb-2">On propose</h3><p class="text-surface-400 text-sm leading-relaxed max-w-[220px] mx-auto">Maquette + estimation. Vous validez.</p></div>
-            </div>
-            <div class="timeline-step">
-                <div class="timeline-node"><svg class="w-5 h-5 text-surface-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg></div>
-                <div><h3 class="font-display text-lg font-bold mb-2">On construit</h3><p class="text-surface-400 text-sm leading-relaxed max-w-[220px] mx-auto">D&eacute;veloppement temps r&eacute;el. Feedbacks illimit&eacute;s.</p></div>
-            </div>
-            <div class="timeline-step">
-                <div class="timeline-node"><svg class="w-5 h-5 text-surface-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg></div>
-                <div><h3 class="font-display text-lg font-bold mb-2">C&rsquo;est live</h3><p class="text-surface-400 text-sm leading-relaxed max-w-[220px] mx-auto">D&eacute;ploiement + formation. Le code est &agrave; vous.</p></div>
-            </div>
-        </div>
-
-        <div class="reveal text-center mt-12">
-            <a href="#contact" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold px-8 py-4 rounded-2xl transition-all btn-glow shadow-lg shadow-primary-600/25">D&eacute;marrer un projet <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== PORTFOLIO ==================== -->
-<section id="portfolio" class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Ce qu&rsquo;on a construit</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Des projets concrets,<br>des <span class="text-gradient">r&eacute;sultats r&eacute;els</span></h2>
-        </div>
-
-        <div class="portfolio-showcase" data-stagger>
-            <div class="portfolio-card reveal" data-tilt>
-                <div class="portfolio-mockup">
-                    <div class="portfolio-mockup-screen portfolio-screen-1">
-                        <div class="portfolio-screen-content">
-                            <div class="mock-nav"></div>
-                            <div class="mock-hero-block"></div>
-                            <div class="mock-grid-3"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <span class="portfolio-tag" style="--tag-color: #6366f1;">Site vitrine</span>
-                    <h3 class="font-display font-bold text-lg mb-1">Restaurant gastronomique &mdash; Paris</h3>
-                    <p class="text-surface-400 text-sm mb-3">Site vitrine + r&eacute;servation en ligne + menu dynamique. <strong class="text-green-400">+300% de r&eacute;servations.</strong></p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-primary-400 font-bold">~500&euro;</span>
-                        <span class="text-surface-500 text-xs">5 jours &bull; <span class="line-through">Agence: 4 000&euro;</span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-card reveal" data-tilt>
-                <div class="portfolio-mockup">
-                    <div class="portfolio-mockup-screen portfolio-screen-2">
-                        <div class="portfolio-screen-content">
-                            <div class="mock-sidebar"></div>
-                            <div class="mock-dashboard"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <span class="portfolio-tag" style="--tag-color: #8b5cf6;">CRM complet</span>
-                    <h3 class="font-display font-bold text-lg mb-1">Cabinet d&rsquo;avocats &mdash; Lyon</h3>
-                    <p class="text-surface-400 text-sm mb-3">CRM + suivi dossiers + facturation auto + agenda sync&eacute;. <strong class="text-green-400">20h/semaine gagn&eacute;es.</strong></p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-violet-400 font-bold">~1 500&euro;</span>
-                        <span class="text-surface-500 text-xs">12 jours &bull; <span class="line-through">Agence: 12 000&euro;</span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-card reveal" data-tilt>
-                <div class="portfolio-mockup">
-                    <div class="portfolio-mockup-screen portfolio-screen-3">
-                        <div class="portfolio-screen-content">
-                            <div class="mock-chat-ui"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <span class="portfolio-tag" style="--tag-color: #22c55e;">Chatbot IA</span>
-                    <h3 class="font-display font-bold text-lg mb-1">E-commerce mode &mdash; Bordeaux</h3>
-                    <p class="text-surface-400 text-sm mb-3">Chatbot IA qui r&eacute;pond aux clients 24/7 + recommandations produits. <strong class="text-green-400">+45% de ventes.</strong></p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-green-400 font-bold">~800&euro;</span>
-                        <span class="text-surface-500 text-xs">7 jours &bull; <span class="line-through">Agence: 6 000&euro;</span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-card reveal" data-tilt>
-                <div class="portfolio-mockup">
-                    <div class="portfolio-mockup-screen portfolio-screen-4">
-                        <div class="portfolio-screen-content">
-                            <div class="mock-nav"></div>
-                            <div class="mock-product-grid"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <span class="portfolio-tag" style="--tag-color: #f97316;">E-commerce</span>
-                    <h3 class="font-display font-bold text-lg mb-1">Bijouterie artisanale &mdash; Nice</h3>
-                    <p class="text-surface-400 text-sm mb-3">Boutique en ligne + paiement Stripe + gestion stock + SEO. <strong class="text-green-400">80 commandes/mois.</strong></p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-orange-400 font-bold">~1 200&euro;</span>
-                        <span class="text-surface-500 text-xs">10 jours &bull; <span class="line-through">Agence: 8 000&euro;</span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-card reveal" data-tilt>
-                <div class="portfolio-mockup">
-                    <div class="portfolio-mockup-screen portfolio-screen-5">
-                        <div class="portfolio-screen-content">
-                            <div class="mock-sidebar"></div>
-                            <div class="mock-charts"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <span class="portfolio-tag" style="--tag-color: #ec4899;">Dashboard</span>
-                    <h3 class="font-display font-bold text-lg mb-1">Startup SaaS &mdash; Remote</h3>
-                    <p class="text-surface-400 text-sm mb-3">Dashboard analytics + KPIs temps r&eacute;el + alertes intelligentes. <strong class="text-green-400">D&eacute;cisions 10x plus rapides.</strong></p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-pink-400 font-bold">~2 000&euro;</span>
-                        <span class="text-surface-500 text-xs">14 jours &bull; <span class="line-through">Agence: 15 000&euro;</span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-card reveal" data-tilt>
-                <div class="portfolio-mockup">
-                    <div class="portfolio-mockup-screen portfolio-screen-6">
-                        <div class="portfolio-screen-content">
-                            <div class="mock-workflow"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <span class="portfolio-tag" style="--tag-color: #0ea5e9;">Automatisation</span>
-                    <h3 class="font-display font-bold text-lg mb-1">Agence immobili&egrave;re &mdash; Marseille</h3>
-                    <p class="text-surface-400 text-sm mb-3">Automatisation compl&egrave;te : lead capture + suivi + relances auto + reporting. <strong class="text-green-400">15h/semaine lib&eacute;r&eacute;es.</strong></p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-cyan-400 font-bold">~900&euro;</span>
-                        <span class="text-surface-500 text-xs">8 jours &bull; <span class="line-through">Agence: 5 000&euro;</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== TESTIMONIALS ==================== -->
-<section class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">T&eacute;moignages</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Ce que disent<br>nos <span class="text-gradient">clients</span></h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6" data-stagger>
-            <div class="testimonial-card reveal" data-tilt>
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="text-surface-300 text-sm leading-relaxed mb-6">&laquo; J&rsquo;ai eu mon site en 4 jours pour 450&euro;. Mon confr&egrave;re a pay&eacute; 4 000&euro; chez une agence pour quelque chose de moins bien. Je recommande &agrave; 200%. &raquo;</p>
-                <div class="flex items-center gap-3">
-                    <div class="testimonial-avatar bg-primary-600/20 text-primary-400">MD</div>
-                    <div><p class="text-sm font-semibold text-white">Marc D.</p><p class="text-xs text-surface-500">Plombier, Paris</p></div>
-                </div>
-            </div>
-            <div class="testimonial-card reveal" data-tilt>
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="text-surface-300 text-sm leading-relaxed mb-6">&laquo; Le CRM me fait gagner 2h par jour. Toute ma facturation, mes devis, le suivi clients &mdash; tout est automatis&eacute;. Je ne reviendrais jamais en arri&egrave;re. &raquo;</p>
-                <div class="flex items-center gap-3">
-                    <div class="testimonial-avatar bg-violet-600/20 text-violet-400">SL</div>
-                    <div><p class="text-sm font-semibold text-white">Sophie L.</p><p class="text-xs text-surface-500">Consultante, Lyon</p></div>
-                </div>
-            </div>
-            <div class="testimonial-card reveal" data-tilt>
-                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="text-surface-300 text-sm leading-relaxed mb-6">&laquo; Le chatbot IA qu&rsquo;ils m&rsquo;ont install&eacute; r&eacute;pond &agrave; 90% des questions clients. Mes ventes ont augment&eacute; de 45% le premier mois. Incroyable. &raquo;</p>
-                <div class="flex items-center gap-3">
-                    <div class="testimonial-avatar bg-green-600/20 text-green-400">AB</div>
-                    <div><p class="text-sm font-semibold text-white">Am&eacute;lie B.</p><p class="text-xs text-surface-500">E-commerce, Bordeaux</p></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== 200+ OUTILS — ORBITAL ==================== -->
-<section id="outils" class="py-20 md:py-28 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Int&eacute;grations</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">+200 outils <span class="text-gradient">connect&eacute;s</span></h2>
-            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">On connecte tous vos outils. Si une API existe, on l&rsquo;int&egrave;gre.</p>
-        </div>
-
-        <div class="reveal-scale">
-            <div class="orbital-container" id="orbital-container">
-                <!-- Center -->
-                <div class="orbital-center">
-                    <div class="orbital-center-inner">
-                        <span class="font-display font-bold text-gradient text-lg">Flash<br>AI</span>
-                    </div>
-                    <div class="orbital-center-ring"></div>
-                    <div class="orbital-center-ring orbital-center-ring-2"></div>
-                </div>
-                <!-- Orbits rendered by JS -->
-                <div class="orbital-ring orbital-ring-1" id="orbit-1"></div>
-                <div class="orbital-ring orbital-ring-2" id="orbit-2"></div>
-                <div class="orbital-ring orbital-ring-3" id="orbit-3"></div>
-            </div>
-        </div>
-
-        <div class="reveal text-center mt-10">
-            <p class="text-surface-400 text-sm">Aussi : Airtable, Mailchimp, WhatsApp, Calendly, Twilio, SendGrid, Maps, DocuSign, Pennylane, Monday, Xero, Supabase, Firebase, Vercel, n8n, Make, <strong class="text-surface-300">et +200 autres</strong>.</p>
-        </div>
-
-        <!-- Tool categories -->
-        <div class="reveal mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="tool-category-card">
-                <div class="tool-cat-icon" style="color: #22c55e;">&#9889;</div>
-                <h4 class="font-display font-bold text-sm mb-1">Paiement</h4>
-                <p class="text-surface-500 text-xs">Stripe, PayPal, GoCardless, Mollie</p>
-            </div>
-            <div class="tool-category-card">
-                <div class="tool-cat-icon" style="color: #3b82f6;">&#9729;</div>
-                <h4 class="font-display font-bold text-sm mb-1">Cloud & H&eacute;bergement</h4>
-                <p class="text-surface-500 text-xs">AWS, Vercel, Firebase, Supabase</p>
-            </div>
-            <div class="tool-category-card">
-                <div class="tool-cat-icon" style="color: #f97316;">&#9993;</div>
-                <h4 class="font-display font-bold text-sm mb-1">Communication</h4>
-                <p class="text-surface-500 text-xs">Slack, WhatsApp, Twilio, SendGrid</p>
-            </div>
-            <div class="tool-category-card">
-                <div class="tool-cat-icon" style="color: #a855f7;">&#9881;</div>
-                <h4 class="font-display font-bold text-sm mb-1">Automatisation</h4>
-                <p class="text-surface-500 text-xs">Zapier, Make, n8n, IFTTT</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== TARIFS ==================== -->
-<section id="tarifs" class="py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Tarifs transparents</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Des prix clairs,<br><span class="text-gradient">sans surprise</span></h2>
-            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Pas d&rsquo;abonnement, pas de frais cach&eacute;s. Vous payez une fois, c&rsquo;est &agrave; vous pour toujours.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto" data-stagger>
-            <div class="pricing-card reveal" data-tilt>
-                <div class="pricing-card-glow"></div>
-                <div class="mb-8">
-                    <h3 class="font-display text-xl font-bold mb-2">Essentiel</h3>
-                    <p class="text-surface-400 text-sm mb-6">Pr&eacute;sence en ligne pro.</p>
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="font-display text-4xl font-bold">250&euro;</span>
-                        <span class="text-surface-500 text-sm">&ndash; 700&euro;</span>
-                    </div>
-                    <span class="text-surface-500 text-xs">Paiement unique</span>
-                </div>
-                <ul class="space-y-3 mb-8">
-                    <li class="pricing-feature">Site vitrine ou landing page</li>
-                    <li class="pricing-feature">Design responsive &amp; moderne</li>
-                    <li class="pricing-feature">SEO technique avanc&eacute;</li>
-                    <li class="pricing-feature">Formulaire de contact</li>
-                    <li class="pricing-feature">H&eacute;bergement 2 ans inclus</li>
-                    <li class="pricing-feature">SSL / HTTPS s&eacute;curis&eacute;</li>
-                    <li class="pricing-feature">Livraison en 3-5 jours</li>
-                </ul>
-                <a href="#contact" class="block w-full text-center py-3.5 rounded-xl border border-white/10 text-white font-semibold hover:bg-white/5 hover:border-white/20 transition-all text-sm">Demander un devis</a>
-            </div>
-
-            <div class="pricing-card pricing-featured reveal" data-tilt>
-                <div class="pricing-card-glow pricing-glow-featured"></div>
-                <div class="pricing-badge">Le plus populaire</div>
-                <div class="mb-8">
-                    <h3 class="font-display text-xl font-bold mb-2">Business</h3>
-                    <p class="text-surface-400 text-sm mb-6">Outils m&eacute;tier performants.</p>
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="font-display text-4xl font-bold">700&euro;</span>
-                        <span class="text-surface-500 text-sm">&ndash; 2 000&euro;</span>
-                    </div>
-                    <span class="text-surface-500 text-xs">Paiement unique</span>
-                </div>
-                <ul class="space-y-3 mb-8">
-                    <li class="pricing-feature pricing-feature-bold">Tout le pack Essentiel</li>
-                    <li class="pricing-feature">CRM ou logiciel m&eacute;tier</li>
-                    <li class="pricing-feature">2-3 int&eacute;grations API</li>
-                    <li class="pricing-feature">Dashboard de suivi</li>
-                    <li class="pricing-feature">Automatisation IA</li>
-                    <li class="pricing-feature">S&eacute;curit&eacute; renforc&eacute;e</li>
-                    <li class="pricing-feature">Formation &amp; documentation</li>
-                    <li class="pricing-feature">Livraison en 1-2 semaines</li>
-                </ul>
-                <a href="#contact" class="block w-full text-center py-3.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-semibold transition-all btn-glow shadow-lg shadow-primary-600/25 text-sm">Demander un devis</a>
-            </div>
-
-            <div class="pricing-card reveal" data-tilt>
-                <div class="pricing-card-glow"></div>
-                <div class="mb-8">
-                    <h3 class="font-display text-xl font-bold mb-2">Sur Mesure</h3>
-                    <p class="text-surface-400 text-sm mb-6">Projets ambitieux.</p>
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="font-display text-4xl font-bold">2 000&euro;</span>
-                        <span class="text-surface-500 text-sm">&ndash; 5 000&euro;+</span>
-                    </div>
-                    <span class="text-surface-500 text-xs">Paiement unique, &eacute;ch&eacute;ancier possible</span>
-                </div>
-                <ul class="space-y-3 mb-8">
-                    <li class="pricing-feature pricing-feature-bold">Tout le pack Business</li>
-                    <li class="pricing-feature">Application web ou mobile</li>
-                    <li class="pricing-feature">IA avanc&eacute;e (GPT, Claude)</li>
-                    <li class="pricing-feature">Int&eacute;grations API illimit&eacute;es</li>
-                    <li class="pricing-feature">Architecture scalable</li>
-                    <li class="pricing-feature">Tests automatis&eacute;s</li>
-                    <li class="pricing-feature">Accompagnement continu</li>
-                    <li class="pricing-feature">Livraison en 2-4 semaines</li>
-                </ul>
-                <a href="#contact" class="block w-full text-center py-3.5 rounded-xl border border-white/10 text-white font-semibold hover:bg-white/5 hover:border-white/20 transition-all text-sm">Demander un devis</a>
-            </div>
-        </div>
-
-        <!-- ROI Calculator -->
-        <div class="reveal max-w-2xl mx-auto mt-16">
-            <div class="glass rounded-2xl p-8">
-                <h3 class="font-display text-xl font-bold mb-6 text-center">Estimez votre projet</h3>
-                <div class="grid sm:grid-cols-2 gap-4 mb-6">
-                    <div>
-                        <label class="form-label">Vous &ecirc;tes</label>
-                        <select id="roi-type" class="roi-select w-full">
-                            <option value="">S&eacute;lectionnez...</option>
-                            <option value="artisan">Artisan / Ind&eacute;pendant</option>
-                            <option value="pme">PME / Commerce</option>
-                            <option value="startup">Startup</option>
-                            <option value="consultant">Consultant / Coach</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="form-label">Vous avez besoin de</label>
-                        <select id="roi-need" class="roi-select w-full">
-                            <option value="">S&eacute;lectionnez...</option>
-                            <option value="site">Site web / Landing page</option>
-                            <option value="crm">CRM / Logiciel m&eacute;tier</option>
-                            <option value="dashboard">Dashboard / Analytics</option>
-                            <option value="ia">Automatisation IA</option>
-                            <option value="api">Int&eacute;grations API</option>
-                            <option value="app">Application compl&egrave;te</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="roi-result" class="roi-result"><p class="text-surface-400 text-sm">S&eacute;lectionnez vos besoins ci-dessus</p></div>
-            </div>
-        </div>
-
-        <!-- Guarantee -->
-        <div class="reveal max-w-3xl mx-auto mt-10 text-center">
-            <div class="guarantee-card glass rounded-2xl p-8">
-                <div class="guarantee-shield">
-                    <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-                </div>
-                <h3 class="font-display text-xl font-bold mb-3">Garantie satisfaction totale</h3>
-                <p class="text-surface-400 text-sm leading-relaxed">Modifications illimit&eacute;es jusqu&rsquo;&agrave; satisfaction. 30 jours de support gratuit. <strong class="text-white">Vous ne payez le solde qu&rsquo;une fois satisfait.</strong></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== FAQ ==================== -->
-<section id="faq" class="py-20 md:py-28 relative overflow-hidden">
-    <div class="faq-bg-glow"></div>
-    <div class="max-w-3xl mx-auto px-5 relative z-10">
-        <div class="text-center mb-16">
-            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">FAQ</span>
-            <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight mb-5">Toutes vos <span class="text-gradient">questions</span></h2>
-            <p class="reveal text-surface-400 text-lg">Tout ce que vous devez savoir avant de d&eacute;marrer.</p>
-        </div>
-        <div id="faq-container" class="space-y-3"></div>
-    </div>
-</section>
-
-<div class="section-glow-line"></div>
-
-<!-- ==================== CTA FINAL ==================== -->
-<section class="py-20 md:py-28 relative overflow-hidden">
-    <div class="cta-final-bg"></div>
-    <div class="max-w-4xl mx-auto px-5 text-center relative z-10">
-        <div class="reveal">
-            <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                Pr&ecirc;t &agrave; passer au <span class="text-gradient">niveau sup&eacute;rieur</span> ?
+<!-- ============ SERVICES BENTO ============ -->
+<section id="services" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Nos Services</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Tout ce dont vous avez besoin,<br><span class="gradient-text-hero">rien de superflu</span>
             </h2>
-            <p class="text-surface-400 text-lg max-w-2xl mx-auto mb-10">
-                Rejoignez les 50+ entreprises qui ont d&eacute;j&agrave; transform&eacute; leur activit&eacute; avec FlashAI. Premier devis gratuit en 24h.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" class="hero-cta-primary bg-primary-600 hover:bg-primary-500 text-white font-semibold px-10 py-5 rounded-2xl transition-all btn-glow text-xl shadow-lg shadow-primary-600/25 hover:shadow-primary-500/40">
-                    Demander un devis gratuit &rarr;
-                </a>
+            <p class="text-surface-300 text-lg max-w-2xl mx-auto">Chaque solution est construite sur mesure, optimisée, et livrée en jours.</p>
+        </div>
+        <div class="bento-grid" id="services-grid">
+            <!-- Cards injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ DEMOS LIVE ============ -->
+<section id="demos" class="relative py-24 lg:py-32 overflow-hidden">
+    <div class="section-glow-line"></div>
+    <div class="demos-matrix-bg"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-pink font-mono text-sm tracking-widest uppercase mb-4">// Démos Interactives</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Testez avant de commander<br><span class="gradient-text-warm">des outils qui fonctionnent vraiment</span>
+            </h2>
+            <p class="text-surface-300 text-lg max-w-2xl mx-auto">Découvrez nos micro-applications fonctionnelles. Tout est interactif, tout est réel.</p>
+        </div>
+        <div class="demos-nav" id="demos-nav">
+            <button class="demo-tab active" data-demo="crm"><span class="demo-tab-icon">📊</span>Mini CRM</button>
+            <button class="demo-tab" data-demo="devis"><span class="demo-tab-icon">📋</span>Devis Auto</button>
+            <button class="demo-tab" data-demo="chatbot"><span class="demo-tab-icon">🤖</span>Chatbot IA</button>
+            <button class="demo-tab" data-demo="dashboard"><span class="demo-tab-icon">📈</span>Dashboard</button>
+        </div>
+        <div class="demo-container" id="demo-container">
+            <div class="demo-live-badge"><span class="pulse-dot"></span>Live Demo</div>
+            <div class="demo-panel active" id="demo-crm"></div>
+            <div class="demo-panel" id="demo-devis"></div>
+            <div class="demo-panel" id="demo-chatbot"></div>
+            <div class="demo-panel" id="demo-dashboard"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section id="comparison" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-orange font-mono text-sm tracking-widest uppercase mb-4">// Pourquoi nous ?</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Agence classique <span class="text-surface-500">vs</span> <span class="gradient-text-hero">FlashAI</span>
+            </h2>
+        </div>
+        <div class="comparison-timeline" id="comparison-timeline">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ EXPERTISE ============ -->
+<section id="expertise" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-green font-mono text-sm tracking-widest uppercase mb-4">// Expertise</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Bien plus qu'un site web<br><span class="gradient-text-green">une expertise complète</span>
+            </h2>
+        </div>
+        <div class="expertise-carousel" id="expertise-carousel">
+            <!-- 3D cards injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ STATS BAR ============ -->
+<section class="relative py-16 overflow-hidden" id="stats-bar">
+    <div class="stats-bg"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="stats-grid" id="stats-grid">
+            <div class="stat-card reveal" data-count="50" data-suffix="+"><div class="stat-number">0</div><div class="stat-label">Projets livrés</div></div>
+            <div class="stat-card reveal" data-count="247" data-suffix=""><div class="stat-number">0</div><div class="stat-label">APIs connectées</div></div>
+            <div class="stat-card reveal" data-count="5" data-suffix=" jours"><div class="stat-number">0</div><div class="stat-label">Délai moyen</div></div>
+            <div class="stat-card reveal" data-count="100" data-suffix="%"><div class="stat-number">0</div><div class="stat-label">Satisfaction client</div></div>
+            <div class="stat-card reveal" data-count="24" data-suffix="/7"><div class="stat-number">0</div><div class="stat-label">Support réactif</div></div>
+            <div class="stat-card reveal" data-count="0" data-suffix=" bugs"><div class="stat-number">0</div><div class="stat-label">En production</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ METHOD TIMELINE ============ -->
+<section id="method" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-purple font-mono text-sm tracking-widest uppercase mb-4">// Notre Méthode</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                De l'idée au lancement,<br><span class="gradient-text-hero">en 4 étapes</span>
+            </h2>
+        </div>
+        <div class="method-iso-timeline" id="method-timeline">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-cyan font-mono text-sm tracking-widest uppercase mb-4">// Réalisations</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Des projets qui <span class="gradient-text-warm">parlent d'eux-mêmes</span>
+            </h2>
+        </div>
+        <div class="portfolio-carousel-3d" id="portfolio-carousel">
+            <!-- 3D carousel injected by JS -->
+        </div>
+        <div class="portfolio-nav text-center mt-8">
+            <button class="portfolio-prev" id="portfolio-prev" aria-label="Précédent">‹</button>
+            <div class="portfolio-dots" id="portfolio-dots"></div>
+            <button class="portfolio-next" id="portfolio-next" aria-label="Suivant">›</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-gold font-mono text-sm tracking-widest uppercase mb-4">// Témoignages</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Ils nous font <span class="gradient-text-warm">confiance</span>
+            </h2>
+        </div>
+        <div class="testimonials-immersive" id="testimonials-container">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ 200+ TOOLS — SOLAR SYSTEM ============ -->
+<section id="tools" class="relative py-24 lg:py-40 overflow-hidden">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-orange font-mono text-sm tracking-widest uppercase mb-4">// Écosystème</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                <span class="gradient-text-hero" id="tools-counter">247</span> outils connectés
+            </h2>
+            <p class="text-surface-300 text-lg max-w-2xl mx-auto">Un écosystème complet qui s'intègre à tous vos outils existants.</p>
+            <div class="tools-search-wrap mt-8">
+                <input type="text" id="tools-search" class="tools-search-input" placeholder="Rechercher un outil..." aria-label="Rechercher un outil">
+            </div>
+        </div>
+        <div class="solar-system-container" id="solar-system">
+            <canvas id="solar-canvas"></canvas>
+            <div class="solar-center">
+                <div class="solar-sun">
+                    <svg width="48" height="48" viewBox="0 0 32 32" fill="none"><path d="M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z" fill="url(#slg)"/><defs><linearGradient id="slg" x1="8" y1="4" x2="22" y2="28"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#bf00ff"/></linearGradient></defs></svg>
+                </div>
+            </div>
+            <div class="solar-info-panel" id="solar-info" style="display:none">
+                <div class="solar-info-name" id="solar-info-name"></div>
+                <div class="solar-info-desc" id="solar-info-desc"></div>
+                <div class="solar-info-integration" id="solar-info-integration"></div>
+            </div>
+        </div>
+        <!-- Mobile fallback grid -->
+        <div class="tools-mobile-grid" id="tools-mobile-grid"></div>
+        <div class="tools-categories" id="tools-categories"></div>
+    </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Tarifs</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Des prix <span class="gradient-text-hero">transparents</span>
+            </h2>
+            <p class="text-surface-300 text-lg max-w-2xl mx-auto">Pas de surprise, pas de frais cachés. Tout est inclus.</p>
+        </div>
+        <div class="pricing-grid" id="pricing-grid">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ ROI CALCULATOR ============ -->
+<section class="relative py-24 lg:py-32" id="roi">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="roi-card reveal">
+            <h3 class="font-display font-bold text-2xl sm:text-3xl mb-8 text-center gradient-text-hero">Calculez votre ROI</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm text-surface-300 mb-2">Budget actuel / mois (€)</label>
+                        <input type="range" id="roi-budget" min="500" max="10000" value="3000" step="100" class="roi-slider">
+                        <div class="text-right text-neon-blue font-bold mt-1" id="roi-budget-val">3 000 €</div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-surface-300 mb-2">Nombre de leads / mois</label>
+                        <input type="range" id="roi-leads" min="10" max="500" value="100" step="10" class="roi-slider">
+                        <div class="text-right text-neon-blue font-bold mt-1" id="roi-leads-val">100</div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-surface-300 mb-2">Taux de conversion actuel (%)</label>
+                        <input type="range" id="roi-conv" min="1" max="20" value="3" step="0.5" class="roi-slider">
+                        <div class="text-right text-neon-blue font-bold mt-1" id="roi-conv-val">3%</div>
+                    </div>
+                </div>
+                <div class="roi-result" id="roi-result">
+                    <div class="roi-result-label">ROI estimé avec FlashAI</div>
+                    <div class="roi-result-number" id="roi-number">+180%</div>
+                    <canvas id="roi-chart" width="300" height="150"></canvas>
+                    <div class="roi-result-detail" id="roi-detail">Économie estimée : 2 400 €/mois</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="section-glow-line"></div>
+<!-- ============ GUARANTEE ============ -->
+<section class="relative py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="guarantee-card reveal">
+            <div class="guarantee-shield">🛡️</div>
+            <h3 class="font-display font-bold text-2xl mb-4">Garantie Satisfait ou Remboursé</h3>
+            <p class="text-surface-300 text-lg max-w-xl mx-auto">Si le résultat ne vous convient pas à 100%, on vous rembourse intégralement. Sans conditions, sans délai. C'est notre engagement.</p>
+        </div>
+    </div>
+</section>
 
-<!-- ==================== CONTACT ==================== -->
-<section id="contact" class="py-20 md:py-28 contact-bg">
-    <div class="max-w-7xl mx-auto px-5 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-16">
-            <div>
-                <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Contact</span>
-                <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight mb-6">Parlons de votre <span class="text-gradient">projet</span></h2>
-                <p class="reveal text-surface-400 text-lg leading-relaxed mb-10">D&eacute;crivez votre besoin en quelques lignes. On vous r&eacute;pond sous 24h avec un devis gratuit et d&eacute;taill&eacute;.</p>
-                <div class="space-y-6 reveal">
-                    <div class="flex items-center gap-4">
-                        <div class="contact-icon-box bg-primary-600/15"><svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                        <div><p class="text-white font-semibold text-sm">R&eacute;ponse en &lt; 24h</p><p class="text-surface-400 text-xs">On ne laisse personne sans r&eacute;ponse</p></div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="contact-icon-box bg-green-500/15"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg></div>
-                        <div><p class="text-white font-semibold text-sm">Devis gratuit et d&eacute;taill&eacute;</p><p class="text-surface-400 text-xs">Sans engagement, sans surprise</p></div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="contact-icon-box bg-violet-500/15"><svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg></div>
-                        <div><p class="text-white font-semibold text-sm">Communication directe</p><p class="text-surface-400 text-xs">Email, WhatsApp, ou visio</p></div>
-                    </div>
+<!-- ============ FAQ ============ -->
+<section id="faq" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 reveal">
+            <span class="inline-block text-neon-pink font-mono text-sm tracking-widest uppercase mb-4">// FAQ</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
+                Questions <span class="gradient-text-warm">fréquentes</span>
+            </h2>
+            <p class="text-surface-400 mb-6">92% des questions trouvent leur réponse ici</p>
+            <div class="faq-search-wrap">
+                <input type="text" id="faq-search" class="faq-search-input" placeholder="Rechercher une question..." aria-label="Rechercher dans la FAQ">
+            </div>
+            <div class="faq-tabs" id="faq-tabs">
+                <button class="faq-tab active" data-cat="all">Tout</button>
+                <button class="faq-tab" data-cat="general">Général</button>
+                <button class="faq-tab" data-cat="technique">Technique</button>
+                <button class="faq-tab" data-cat="business">Business</button>
+                <button class="faq-tab" data-cat="support">Support</button>
+            </div>
+        </div>
+        <div class="faq-list" id="faq-list">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="cta-final" class="relative py-32 lg:py-40 overflow-hidden">
+    <canvas id="cta-canvas"></canvas>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="reveal">
+            <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-6">
+                Prêt à <span class="gradient-text-hero">transformer</span><br>votre business ?
+            </h2>
+            <p class="text-surface-300 text-xl mb-4 max-w-xl mx-auto">Rejoignez les 50+ entreprises qui ont choisi FlashAI pour accélérer leur transformation digitale.</p>
+            <p class="text-neon-orange text-sm font-bold mb-8">🔥 Offre de lancement — Consultation gratuite pendant encore <span id="cta-timer">23:59:42</span></p>
+            <a href="#contact" class="btn-glow btn-glow-xl magnetic-btn" id="magnetic-cta">
+                <span>Démarrer maintenant</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="relative py-24 lg:py-32">
+    <div class="section-glow-line"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <div class="reveal">
+                <span class="inline-block text-neon-blue font-mono text-sm tracking-widest uppercase mb-4">// Contact</span>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl mb-6">
+                    Parlons de votre <span class="gradient-text-hero">projet</span>
+                </h2>
+                <p class="text-surface-300 text-lg mb-8">Réponse garantie en moins de 2 heures. On ne mord pas, promis.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-surface-300"><svg class="w-5 h-5 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@flashai.dev</div>
+                    <div class="flex items-center gap-3 text-surface-300"><svg class="w-5 h-5 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Tel Aviv, Israel 🇮🇱</div>
+                    <div class="flex items-center gap-3 text-surface-300"><svg class="w-5 h-5 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Temps de réponse moyen : <strong class="text-white">2h</strong></div>
+                </div>
+                <div class="contact-map-svg mt-8" id="contact-map">
+                    <!-- SVG map injected by JS -->
                 </div>
             </div>
-            <div class="reveal-right">
-                <form id="contact-form" action="https://formspree.io/f/xvgogwvz" method="POST" class="space-y-5">
-                    <div class="grid sm:grid-cols-2 gap-5">
-                        <div class="form-group"><label class="form-label">Nom</label><input type="text" name="name" class="form-input" placeholder="Votre nom" required></div>
-                        <div class="form-group"><label class="form-label">Email</label><input type="email" name="email" class="form-input" placeholder="votre@email.com" required></div>
+            <div class="reveal">
+                <form action="https://formspree.io/f/xvgogwvz" method="POST" class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="c-name" name="name" required class="form-input" placeholder=" ">
+                        <label for="c-name" class="form-label">Votre nom</label>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Type de projet</label>
-                        <select name="project_type" class="form-input form-select">
-                            <option value="">S&eacute;lectionnez...</option>
-                            <option value="site">Site web / Landing page</option>
-                            <option value="crm">CRM / Logiciel m&eacute;tier</option>
-                            <option value="dashboard">Dashboard / Analytics</option>
-                            <option value="ia">Automatisation IA</option>
-                            <option value="ecommerce">E-commerce</option>
-                            <option value="chatbot">Chatbot IA</option>
-                            <option value="api">Int&eacute;gration API</option>
-                            <option value="seo">SEO / Performance</option>
-                            <option value="app">Application compl&egrave;te</option>
-                            <option value="autre">Autre</option>
-                        </select>
+                        <input type="email" id="c-email" name="email" required class="form-input" placeholder=" ">
+                        <label for="c-email" class="form-label">Email professionnel</label>
                     </div>
-                    <div class="form-group"><label class="form-label">D&eacute;crivez votre projet</label><textarea name="message" rows="4" class="form-input resize-none" placeholder="D&eacute;crivez bri&egrave;vement votre besoin, votre secteur, et vos objectifs..." required></textarea></div>
                     <div class="form-group">
-                        <label class="form-label">Budget estim&eacute;</label>
-                        <select name="budget" class="form-input form-select">
-                            <option value="">S&eacute;lectionnez...</option>
-                            <option value="250-700">250&euro; &ndash; 700&euro;</option>
-                            <option value="700-2000">700&euro; &ndash; 2 000&euro;</option>
-                            <option value="2000-5000">2 000&euro; &ndash; 5 000&euro;</option>
-                            <option value="5000+">5 000&euro;+</option>
-                            <option value="nosure">Je ne sais pas encore</option>
+                        <select id="c-service" name="service" required class="form-input form-select" placeholder=" ">
+                            <option value="" disabled selected></option>
+                            <option>Site web</option>
+                            <option>CRM / ERP</option>
+                            <option>Chatbot IA</option>
+                            <option>Dashboard</option>
+                            <option>Automatisation</option>
+                            <option>Autre</option>
                         </select>
+                        <label for="c-service" class="form-label">Type de projet</label>
                     </div>
-                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-500 text-white font-semibold py-4 rounded-2xl transition-all btn-glow shadow-lg shadow-primary-600/25 text-lg">Envoyer ma demande &rarr;</button>
-                    <p class="text-surface-500 text-xs text-center">Gratuit &amp; sans engagement. R&eacute;ponse sous 24h.</p>
+                    <div class="form-group">
+                        <textarea id="c-message" name="message" rows="4" required class="form-input" placeholder=" "></textarea>
+                        <label for="c-message" class="form-label">Votre message</label>
+                    </div>
+                    <button type="submit" class="btn-glow w-full justify-center">
+                        <span>Envoyer le message</span>
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+</main>
 
-<!-- ==================== FOOTER ==================== -->
-<footer class="py-16 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-5">
-        <div class="grid md:grid-cols-4 gap-10 mb-12">
-            <div class="md:col-span-2">
-                <a href="#" class="flex items-center gap-1 text-xl font-display font-bold tracking-tight mb-4 logo-glow">
-                    <span class="text-white">Flash</span><span class="text-gradient">AI</span>
-                </a>
-                <p class="text-surface-400 text-sm leading-relaxed max-w-sm mb-6">On construit vos outils digitaux sur mesure. Rapidement. &Agrave; des prix que personne d&rsquo;autre ne peut proposer.</p>
-                <div class="flex gap-3">
-                    <a href="#" class="footer-social" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                    <a href="#" class="footer-social" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    <a href="#" class="footer-social" aria-label="Instagram"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+<!-- FOOTER -->
+<footer class="relative border-t border-white/5 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+                <h4 class="font-display font-bold text-white mb-4">Services</h4>
+                <ul class="space-y-2 text-sm text-surface-400">
+                    <li><a href="#services" class="hover:text-neon-blue transition-colors">Sites Web</a></li>
+                    <li><a href="#services" class="hover:text-neon-blue transition-colors">CRM / ERP</a></li>
+                    <li><a href="#services" class="hover:text-neon-blue transition-colors">Chatbot IA</a></li>
+                    <li><a href="#services" class="hover:text-neon-blue transition-colors">Dashboards</a></li>
+                    <li><a href="#services" class="hover:text-neon-blue transition-colors">Automatisation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-display font-bold text-white mb-4">Entreprise</h4>
+                <ul class="space-y-2 text-sm text-surface-400">
+                    <li><a href="#method" class="hover:text-neon-blue transition-colors">Notre Méthode</a></li>
+                    <li><a href="#portfolio" class="hover:text-neon-blue transition-colors">Réalisations</a></li>
+                    <li><a href="#testimonials" class="hover:text-neon-blue transition-colors">Témoignages</a></li>
+                    <li><a href="#tools" class="hover:text-neon-blue transition-colors">Écosystème</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-display font-bold text-white mb-4">Ressources</h4>
+                <ul class="space-y-2 text-sm text-surface-400">
+                    <li><a href="#faq" class="hover:text-neon-blue transition-colors">FAQ</a></li>
+                    <li><a href="#pricing" class="hover:text-neon-blue transition-colors">Tarifs</a></li>
+                    <li><a href="#roi" class="hover:text-neon-blue transition-colors">Calculateur ROI</a></li>
+                    <li><a href="#demos" class="hover:text-neon-blue transition-colors">Démos Live</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-display font-bold text-white mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm text-surface-400">
+                    <li>contact@flashai.dev</li>
+                    <li>Tel Aviv, Israel</li>
+                </ul>
+                <div class="flex gap-3 mt-4">
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
                 </div>
             </div>
-            <div>
-                <h4 class="font-semibold text-white text-sm mb-4">Services</h4>
-                <ul class="space-y-2">
-                    <li><a href="#services" class="footer-link">Sites web</a></li>
-                    <li><a href="#services" class="footer-link">CRM &amp; Logiciels</a></li>
-                    <li><a href="#services" class="footer-link">Dashboards</a></li>
-                    <li><a href="#services" class="footer-link">Automatisation IA</a></li>
-                    <li><a href="#services" class="footer-link">E-commerce</a></li>
-                    <li><a href="#expertise" class="footer-link">SEO &amp; Performance</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold text-white text-sm mb-4">Ressources</h4>
-                <ul class="space-y-2">
-                    <li><a href="#methode" class="footer-link">Notre m&eacute;thode</a></li>
-                    <li><a href="#tarifs" class="footer-link">Tarifs</a></li>
-                    <li><a href="#portfolio" class="footer-link">R&eacute;alisations</a></li>
-                    <li><a href="#outils" class="footer-link">Int&eacute;grations</a></li>
-                    <li><a href="#faq" class="footer-link">FAQ</a></li>
-                    <li><a href="#contact" class="footer-link">Contact</a></li>
-                </ul>
-            </div>
         </div>
-        <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-surface-500 text-xs">&copy; 2024-2026 FlashAI. Tous droits r&eacute;serv&eacute;s.</p>
-            <p class="text-surface-600 text-xs">Fait avec &#9889; et beaucoup de &#9749; par FlashAI</p>
+        <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-sm text-surface-400">
+                <span>Made with</span>
+                <span class="text-red-400">♥</span>
+                <span>and AI in Israel 🇮🇱</span>
+            </div>
+            <div class="startup-badge">
+                <span class="startup-badge-text">Startup Nation Certified</span>
+            </div>
+            <div class="text-sm text-surface-500">© 2025 FlashAI. Tous droits réservés.</div>
         </div>
     </div>
 </footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" class="scroll-top-btn" aria-label="Retour en haut">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</button>
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-container"></div>
 
 <script src="script.js"></script>
 </body>
