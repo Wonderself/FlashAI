@@ -253,54 +253,105 @@ function initBentoAnims() {
 function initHeroTerminal() {
     const output = document.getElementById('terminal-output');
     if (!output) return;
-    const sequences = [
-        { cmd: '$ flashai create --type website --name "MonSite"', lines: [
-            { t: '<span class="t-blue">→</span> Initialisation...', d: 400 },
-            { t: '<span class="t-green">✓</span> Template premium chargé', d: 300 },
-            { t: '<span class="t-green">✓</span> Design responsive configuré', d: 300 },
-            { t: '<span class="t-green">✓</span> SEO optimisé', d: 300 },
-            { t: '<span class="t-yellow">⚡</span> Build... <span class="t-gray">[████████████] 100%</span>', d: 500 },
-            { t: '<span class="t-green t-bold">✨ Déployé → monsite.flashai.dev</span>', d: 400 }
+
+    const days = [
+        { day: 'JOUR 1 \u2014 Discovery & Architecture', steps: [
+            { t: '$ flashai init --project "VotreProjet"', cls: 't-green', d: 800 },
+            { t: '\u2192 Analyse des besoins client...', cls: 't-blue', d: 1000 },
+            { t: '\u2713 Brief client valid\u00e9 (12 user stories)', cls: 't-green', d: 800 },
+            { t: '\u2192 Design de l\'architecture technique...', cls: 't-blue', d: 1200 },
+            { t: '  \u251C\u2500 Frontend: Next.js 14 + TypeScript', cls: 't-gray', d: 600 },
+            { t: '  \u251C\u2500 Backend: Node.js + PostgreSQL', cls: 't-gray', d: 600 },
+            { t: '  \u2514\u2500 IA: GPT-4 + RAG Pipeline', cls: 't-gray', d: 600 },
+            { t: '\u2713 Architecture valid\u00e9e par lead dev', cls: 't-green', d: 800 },
+            { t: '\u2713 Maquettes Figma livr\u00e9es (14 \u00e9crans)', cls: 't-green', d: 1000 },
+            { t: '', cls: 'progress', color: '#00f0ff', d: 1500 }
         ]},
-        { cmd: '$ flashai add crm --pipeline --contacts', lines: [
-            { t: '<span class="t-blue">→</span> Ajout CRM...', d: 400 },
-            { t: '<span class="t-green">✓</span> Pipeline configuré', d: 300 },
-            { t: '<span class="t-green">✓</span> Contacts initialisés', d: 250 },
-            { t: '<span class="t-green">✓</span> Dashboard connecté', d: 300 },
-            { t: '<span class="t-green t-bold">🎯 CRM opérationnel</span>', d: 400 }
+        { day: 'JOUR 2-3 \u2014 D\u00e9veloppement Frontend', steps: [
+            { t: '$ flashai build --frontend', cls: 't-green', d: 800 },
+            { t: '\u2192 Cr\u00e9ation des composants React (47)...', cls: 't-blue', d: 1000 },
+            { t: '\u2713 Design system impl\u00e9ment\u00e9', cls: 't-green', d: 800 },
+            { t: '\u2713 Pages responsives (mobile + desktop)', cls: 't-green', d: 800 },
+            { t: '\u2713 Animations & micro-interactions', cls: 't-green', d: 800 },
+            { t: '\u2713 Accessibilit\u00e9 WCAG 2.1 AA', cls: 't-green', d: 600 },
+            { t: '', cls: 'progress', color: '#bf00ff', d: 1500 }
         ]},
-        { cmd: '$ flashai deploy --env production', lines: [
-            { t: '<span class="t-blue">→</span> Déploiement...', d: 400 },
-            { t: '<span class="t-green">✓</span> Tests: <span class="t-green">47/47 passed</span>', d: 350 },
-            { t: '<span class="t-green">✓</span> Lighthouse: 98/100', d: 300 },
-            { t: '<span class="t-green">✓</span> CDN + SSL activé', d: 300 },
-            { t: '<span class="t-green t-bold">🚀 Live — 47ms response</span>', d: 400 }
+        { day: 'JOUR 4 \u2014 Backend & Int\u00e9grations', steps: [
+            { t: '$ flashai build --backend --integrations', cls: 't-green', d: 800 },
+            { t: '\u2192 API REST + GraphQL endpoints...', cls: 't-blue', d: 1000 },
+            { t: '\u2713 Base de donn\u00e9es PostgreSQL (12 tables)', cls: 't-green', d: 800 },
+            { t: '\u2713 Auth JWT + OAuth 2.0 configur\u00e9', cls: 't-green', d: 800 },
+            { t: '\u2713 Int\u00e9gration Stripe paiements', cls: 't-green', d: 600 },
+            { t: '\u2713 Chatbot IA connect\u00e9 (RAG pipeline)', cls: 't-green', d: 800 },
+            { t: '', cls: 'progress', color: '#ff006e', d: 1500 }
+        ]},
+        { day: 'JOUR 5 \u2014 Tests, S\u00e9curit\u00e9 & D\u00e9ploiement', steps: [
+            { t: '$ flashai test --full-suite', cls: 't-green', d: 800 },
+            { t: '\u2192 Tests unitaires: 127/127 pass\u00e9s', cls: 't-blue', d: 1000 },
+            { t: '\u2192 Tests E2E: 34/34 pass\u00e9s', cls: 't-blue', d: 800 },
+            { t: '\u2713 Audit s\u00e9curit\u00e9 OWASP Top 10', cls: 't-green', d: 800 },
+            { t: '\u2713 Lighthouse: 98/100 perf, 100 SEO', cls: 't-green', d: 800 },
+            { t: '$ flashai deploy --production', cls: 't-green', d: 1000 },
+            { t: '\u2192 CDN Cloudflare activ\u00e9 (34 pays)', cls: 't-blue', d: 800 },
+            { t: '\u2192 SSL/TLS + WAF configur\u00e9s', cls: 't-blue', d: 600 },
+            { t: '\u2713 Monitoring 24/7 activ\u00e9', cls: 't-green', d: 800 },
+            { t: '', cls: 'progress', color: '#00ff87', d: 1500 },
+            { t: '\u{1F680} LIVE \u2014 votresite.com \u2014 47ms response', cls: 't-green t-bold', d: 1200 }
         ]}
     ];
-    let seqIdx = 0;
-    async function runSequence() {
-        const seq = sequences[seqIdx % sequences.length];
-        const cmdLine = document.createElement('div');
-        cmdLine.className = 't-green';
-        output.appendChild(cmdLine);
-        for (let i = 0; i < seq.cmd.length; i++) { cmdLine.textContent += seq.cmd[i]; await new Promise(r => setTimeout(r, 25)); }
+
+    let dayIdx = 0;
+
+    async function runDay() {
+        const day = days[dayIdx % days.length];
+
+        // Day marker
+        const marker = document.createElement('div');
+        marker.className = 'terminal-day-marker';
+        marker.textContent = day.day;
+        marker.style.cssText = 'opacity:0;transform:translateY(-5px);transition:all 0.4s';
+        output.appendChild(marker);
+        requestAnimationFrame(() => { marker.style.opacity = '1'; marker.style.transform = 'translateY(0)'; });
         output.scrollTop = output.scrollHeight;
-        for (const line of seq.lines) {
-            await new Promise(r => setTimeout(r, line.d));
-            const div = document.createElement('div');
-            div.innerHTML = line.t;
-            div.style.cssText = 'opacity:0;transform:translateX(-5px);transition:all 0.2s';
-            output.appendChild(div);
-            requestAnimationFrame(() => { div.style.opacity = '1'; div.style.transform = 'translateX(0)'; });
-            output.scrollTop = output.scrollHeight;
+
+        await new Promise(r => setTimeout(r, 600));
+
+        for (const step of day.steps) {
+            if (step.cls === 'progress') {
+                // Progress bar
+                const wrap = document.createElement('div');
+                wrap.className = 'terminal-progress';
+                const fill = document.createElement('div');
+                fill.className = 'terminal-progress-fill';
+                fill.style.background = step.color;
+                wrap.appendChild(fill);
+                output.appendChild(wrap);
+                output.scrollTop = output.scrollHeight;
+                await new Promise(r => setTimeout(r, 100));
+                fill.style.width = '100%';
+                await new Promise(r => setTimeout(r, step.d));
+            } else {
+                await new Promise(r => setTimeout(r, step.d));
+                const div = document.createElement('div');
+                div.innerHTML = step.t;
+                if (step.cls) div.className = step.cls;
+                div.style.cssText = 'opacity:0;transform:translateX(-5px);transition:all 0.3s';
+                output.appendChild(div);
+                requestAnimationFrame(() => { div.style.opacity = '1'; div.style.transform = 'translateX(0)'; });
+                output.scrollTop = output.scrollHeight;
+            }
         }
-        await new Promise(r => setTimeout(r, 2000));
+
+        await new Promise(r => setTimeout(r, 3000));
         output.appendChild(document.createElement('br'));
-        seqIdx++;
-        while (output.children.length > 30) output.removeChild(output.firstChild);
-        runSequence();
+        dayIdx++;
+
+        // Clean up old entries
+        while (output.children.length > 50) output.removeChild(output.firstChild);
+        runDay();
     }
-    setTimeout(runSequence, 2500);
+
+    setTimeout(runDay, 2500);
 }
 
 function initDemoTabs() {
@@ -586,7 +637,6 @@ function initPortfolio() {
     }, { passive: true });
 }
 
-/* ========== TESTIMONIALS ========== */
 function initTestimonials() {
     const ct = document.getElementById('testimonials-container');
     if (!ct) return;
@@ -837,49 +887,50 @@ function initGalaxyCategories() {
 /* ========== PRICING 3D ========== */
 function initPricing() {
     const grid = document.getElementById('pricing-grid');
-    const toggle = document.getElementById('pricing-toggle');
     if (!grid) return;
+    const toggle = document.getElementById('pricing-toggle');
     let annual = false;
 
     const plans = [
-        { name: 'Starter', icon: '⚡', desc: 'Parfait pour démarrer votre présence digitale', price: 890, features: ['Site vitrine responsive','Design premium sur mesure','SEO de base optimisé','Hébergement 3 mois inclus','Support email'], color: '#00f0ff', popular: false },
-        { name: 'Business', icon: '🚀', desc: 'La solution complète pour scaler votre business', price: 2490, features: ['Tout Starter +','CRM / Dashboard intégré','Chatbot IA basique','API & Automatisations','Analytics avancé','Support prioritaire 12 mois','Formation équipe incluse'], color: '#bf00ff', popular: true },
-        { name: 'Enterprise', icon: '👑', desc: 'Infrastructure complète, IA avancée, support dédié', price: 4990, features: ['Tout Business +','IA avancée (GPT-4, RAG)','Infrastructure scalable','Multi-langue / Multi-pays','SLA 99.9% garanti','Account manager dédié','Audit sécurité complet','Maintenance illimitée'], color: '#ffd700', popular: false }
+        {
+            name: 'Starter', icon: '\u{1F680}', price: 890, annualPrice: 712,
+            desc: 'Parfait pour d\u00e9marrer votre pr\u00e9sence digitale avec un site performant.',
+            color: '#00f0ff', rgb: '0,240,255',
+            features: ['Site vitrine responsive premium','Design sur mesure (pas de template)','SEO technique optimis\u00e9','H\u00e9bergement 3 mois inclus','Score Lighthouse 95+ garanti','Support email 3 mois','Livraison en 3-5 jours']
+        },
+        {
+            name: 'Business', icon: '\u26A1', price: 2490, annualPrice: 1992,
+            desc: 'La solution compl\u00e8te pour scaler avec CRM, IA et automatisations.',
+            color: '#bf00ff', rgb: '191,0,255', featured: true,
+            features: ['Tout Starter inclus','CRM/Dashboard int\u00e9gr\u00e9','Chatbot IA (GPT-4)','API & automatisations','Analytics avanc\u00e9','Support prioritaire 12 mois','Formation \u00e9quipe incluse','Int\u00e9grations illimit\u00e9es']
+        },
+        {
+            name: 'Enterprise', icon: '\u{1F451}', price: 4990, annualPrice: 3992,
+            desc: 'Infrastructure compl\u00e8te avec IA avanc\u00e9e et support d\u00e9di\u00e9.',
+            color: '#ffd700', rgb: '255,215,0',
+            features: ['Tout Business inclus','IA avanc\u00e9e (GPT-4, RAG, ML)','Infrastructure auto-scalable','Multi-langue / multi-pays','SLA 99.9% garanti','Account manager d\u00e9di\u00e9','Audit s\u00e9curit\u00e9 complet','Maintenance illimit\u00e9e','Architecture microservices']
+        }
     ];
 
     function render() {
         grid.innerHTML = plans.map((p, i) => {
-            const price = annual ? Math.round(p.price * 0.8) : p.price;
-            return `<div class="pricing-card-3d reveal ${p.popular ? 'pricing-featured' : ''}" style="transition-delay:${i * 0.15}s;--plan-color:${p.color}" data-tilt>
-                ${p.popular ? '<div class="pricing-popular-badge">⭐ Plus populaire</div>' : ''}
-                <div class="pricing-card-aurora"></div>
-                <div class="pricing-card-content">
-                    <div class="pricing-card-icon" style="background:${p.color}15">${p.icon}</div>
-                    <h3 class="font-display font-bold text-2xl mb-2">${p.name}</h3>
-                    <p class="text-surface-400 text-sm mb-6">${p.desc}</p>
-                    <div class="pricing-price">
-                        <span class="pricing-currency">€</span>
-                        <span class="pricing-amount" data-target="${price}">${price.toLocaleString('fr')}</span>
-                    </div>
-                    <div class="text-surface-500 text-xs mb-6">${annual ? 'par an (économisez 20%)' : 'prix unique, pas d\'abonnement'}</div>
-                    <ul class="pricing-features">${p.features.map((f, fi) => `<li class="pricing-feature" style="transition-delay:${fi * 0.05}s"><svg class="w-4 h-4 flex-shrink-0" style="color:${p.color}" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg><span>${f}</span></li>`).join('')}</ul>
-                    <a href="#contact" class="pricing-cta ${p.popular ? 'pricing-cta-featured' : ''}" style="--pc:${p.color}"><span>${p.popular ? 'Choisir Business' : 'Commencer'}</span></a>
-                </div>
-            </div>`;
+            const price = annual ? p.annualPrice : p.price;
+            const oldPrice = annual ? p.price : null;
+            return '<div class="pricing-card-3d ' + (p.featured ? 'pricing-featured' : '') + '" style="--pc:' + p.color + ';--pc-rgb:' + p.rgb + '">' +
+                (p.featured ? '<div class="pricing-popular-badge">PLUS POPULAIRE</div>' : '') +
+                '<div class="pricing-card-bg"></div>' +
+                '<div class="pricing-card-content">' +
+                '<div class="pricing-card-icon" style="background:' + p.color + '15;color:' + p.color + '">' + p.icon + '</div>' +
+                '<div class="pricing-name">' + p.name + '</div>' +
+                '<div class="pricing-price"><span class="pricing-currency">\u20AC</span><span class="pricing-amount" data-target="' + price + '">' + price.toLocaleString('fr') + '</span></div>' +
+                (oldPrice ? '<div class="pricing-old-price">' + oldPrice.toLocaleString('fr') + ' \u20AC</div>' : '') +
+                '<div class="pricing-desc">' + p.desc + '</div>' +
+                '<div class="pricing-divider"></div>' +
+                '<div class="pricing-features">' + p.features.map((f, fi) => '<div class="pricing-feature" style="animation-delay:' + (fi * 0.08) + 's"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="' + p.color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>' + f + '</span></div>').join('') + '</div>' +
+                '<a href="#contact" class="pricing-cta ' + (p.featured ? 'pricing-cta-featured' : '') + '">Choisir ' + p.name + '</a>' +
+                '</div></div>';
         }).join('');
-
-        // 3D tilt
-        grid.querySelectorAll('[data-tilt]').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const r = card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width - 0.5;
-                const y = (e.clientY - r.top) / r.height - 0.5;
-                card.style.transform = `perspective(1200px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-8px)`;
-            });
-            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-        });
     }
-    render();
 
     if (toggle) {
         toggle.addEventListener('click', () => {
@@ -888,9 +939,9 @@ function initPricing() {
             render();
         });
     }
+    render();
 }
 
-/* ========== ROI CALCULATOR ========== */
 function initROICalculator() {
     const budget = document.getElementById('roi-budget');
     const leads = document.getElementById('roi-leads');
@@ -943,60 +994,73 @@ function initROICalculator() {
 function initFAQ() {
     const list = document.getElementById('faq-list');
     if (!list) return;
-    const readSet = new Set();
+
     const questions = [
-        { q: 'Quels types de projets réalisez-vous ?', cat: 'general', color: '#00f0ff', a: 'FlashAI est une agence digitale full-service capable de réaliser une large gamme de projets numériques. Voici nos principales expertises :<br><br><strong>• Sites web sur mesure</strong> — Sites vitrines, landing pages, sites corporate, blogs, portfolios. Design premium, responsive, optimisé SEO, avec des performances Lighthouse 95+.<br><br><strong>• E-commerce</strong> — Boutiques en ligne complètes avec gestion produits, panier, paiement Stripe/PayPal, gestion stocks, factures automatiques, et tableaux de bord vendeur.<br><br><strong>• CRM & ERP</strong> — Outils de gestion clients et entreprise sur mesure : pipelines commerciaux, gestion contacts, automatisations, dashboards analytics, reporting avancé.<br><br><strong>• Dashboards & Analytics</strong> — Tableaux de bord interactifs avec visualisations de données en temps réel, KPIs personnalisés, exports, alertes automatiques.<br><br><strong>• Chatbots IA</strong> — Assistants virtuels intelligents basés sur GPT-4, intégrables sur votre site, WhatsApp, Messenger, Slack. Entraînés sur vos données.<br><br><strong>• Automatisations</strong> — Workflows automatisés entre vos outils (Zapier, Make, n8n), scripts custom, intégrations API, synchronisation de données.<br><br>Chaque projet est 100% sur mesure et livré en moyenne en 5 à 14 jours ouvrés.' },
-        { q: 'Combien coûtent vos services ?', cat: 'business', color: '#bf00ff', a: 'Nos tarifs sont conçus pour être <strong>3 à 5 fois moins chers</strong> que les agences classiques, sans compromettre la qualité :<br><br><strong>• Starter (à partir de 890€)</strong> — Site vitrine responsive, design premium sur mesure, SEO de base, hébergement 3 mois inclus.<br><br><strong>• Business (à partir de 2 490€)</strong> — Solution complète incluant CRM/Dashboard, chatbot IA basique, API & automatisations, analytics avancé, support prioritaire 12 mois.<br><br><strong>• Enterprise (à partir de 4 990€)</strong> — Infrastructure scalable, IA avancée (GPT-4, RAG), multi-langue, SLA 99.9%, account manager dédié, audit sécurité complet.<br><br>Ces prix sont <strong>uniques, pas des abonnements</strong>. Ils incluent le design, le développement, les tests, le déploiement et la formation. La maintenance est incluse pour une durée variable selon la formule.<br><br><strong>Comment est-ce possible ?</strong> Notre équipe basée en Israël utilise des outils d\'IA avancés et des méthodologies agiles qui nous permettent de livrer plus vite avec une qualité supérieure. Nous n\'avons pas les charges d\'une grande agence parisienne.<br><br>Chaque devis est personnalisé. <a href="#contact" style="color:#bf00ff">Demandez le vôtre gratuitement</a> — réponse en moins de 2h.' },
-        { q: 'Quels sont vos délais de livraison ?', cat: 'general', color: '#ff006e', a: 'Nos délais sont notre force. Là où une agence classique met <strong>3 à 6 mois</strong>, nous livrons en <strong>5 à 14 jours ouvrés</strong> :<br><br><strong>• Site vitrine simple</strong> — 3 à 5 jours ouvrés<br><strong>• Site e-commerce</strong> — 7 à 14 jours ouvrés<br><strong>• CRM / Dashboard</strong> — 5 à 10 jours ouvrés<br><strong>• Chatbot IA</strong> — 3 à 7 jours ouvrés<br><strong>• Automatisations</strong> — 2 à 5 jours ouvrés<br><br><strong>Notre méthode en 4 étapes :</strong><br>1. <strong>Discovery (30 min)</strong> — Appel pour comprendre vos besoins<br>2. <strong>Prototype (48h)</strong> — Maquette interactive à valider<br>3. <strong>Build (3-10 jours)</strong> — Développement avec démos quotidiennes<br>4. <strong>Launch (J+0)</strong> — Déploiement, formation, documentation<br><br>Ces délais rapides sont possibles grâce à notre stack technique moderne, nos outils d\'IA propriétaires, et notre méthodologie agile éprouvée sur 50+ projets.' },
-        { q: 'Quelles technologies utilisez-vous ?', cat: 'technique', color: '#00ff87', a: 'Nous utilisons un stack technique moderne et performant, constamment mis à jour :<br><br><strong>Frontend :</strong><br>• React, Next.js, Vue.js, Nuxt, Svelte<br>• TypeScript, TailwindCSS, Framer Motion<br>• Three.js, GSAP pour les animations 3D<br><br><strong>Backend :</strong><br>• Node.js, Express, Fastify<br>• Python, FastAPI, Django<br>• Go pour les microservices haute performance<br><br><strong>Bases de données :</strong><br>• PostgreSQL, MongoDB, Redis<br>• Supabase, Firebase, PlanetScale<br>• Prisma, Drizzle comme ORM<br><br><strong>IA & Machine Learning :</strong><br>• OpenAI GPT-4, Claude (Anthropic)<br>• LangChain, RAG systems<br>• Pinecone, Weaviate pour le vector search<br><br><strong>DevOps & Infrastructure :</strong><br>• Docker, Kubernetes, Terraform<br>• AWS, GCP, Vercel, Cloudflare<br>• GitHub Actions pour le CI/CD<br><br>Au total, nous maîtrisons <strong>247+ outils et technologies</strong> que nous intégrons selon les besoins spécifiques de chaque projet.' },
-        { q: 'Proposez-vous une garantie satisfait ou remboursé ?', cat: 'business', color: '#ffd700', a: 'Oui, absolument ! Nous offrons une <strong>garantie satisfait ou remboursé à 100%</strong>. Voici comment ça fonctionne :<br><br><strong>• Validation par étapes</strong> — Vous validez chaque étape du projet (prototype, design, développement). Rien n\'avance sans votre accord explicite.<br><br><strong>• Révisions illimitées</strong> — Pendant la phase de développement, nous intégrons toutes vos modifications sans surcoût. Votre satisfaction est notre priorité.<br><br><strong>• Remboursement complet</strong> — Si malgré tout le résultat final ne vous convient pas à 100%, nous vous remboursons intégralement. Sans conditions, sans délai, sans questions.<br><br><strong>• Pas de risque</strong> — Vous ne payez le solde qu\'après validation finale. Un acompte de 30% est demandé au démarrage pour engager les ressources.<br><br>Sur nos 50+ projets livrés, <strong>0 demande de remboursement</strong>. Notre taux de satisfaction est de 100%. Nous sommes tellement confiants dans notre travail que nous prenons tout le risque à votre place.<br><br>C\'est notre engagement : vous êtes satisfait, ou c\'est gratuit.' },
-        { q: 'Comment se déroule un projet typique ?', cat: 'general', color: '#00f0ff', a: 'Chaque projet suit notre méthodologie éprouvée en <strong>4 phases</strong>, conçue pour maximiser la qualité tout en minimisant les délais :<br><br><strong>Phase 1 — Discovery (30 minutes)</strong><br>Un appel vidéo pour comprendre vos besoins, objectifs, contraintes et inspirations. Nous analysons votre marché, vos concurrents, et vos outils existants. Livrable : brief détaillé + recommandations stratégiques.<br><br><strong>Phase 2 — Prototype (48 heures)</strong><br>Nous créons une maquette interactive haute fidélité de votre projet. Vous pouvez naviguer, tester l\'UX, valider le design et les fonctionnalités avant tout développement. Modifications illimitées à ce stade.<br><br><strong>Phase 3 — Build (3 à 10 jours)</strong><br>Développement agile avec des démos quotidiennes. Vous suivez l\'avancement en temps réel. Stack moderne, code propre documenté, tests automatisés. Chaque fonctionnalité est validée par vous avant de passer à la suivante.<br><br><strong>Phase 4 — Launch (Jour J)</strong><br>Déploiement en production, configuration DNS et SSL, optimisation performances. Formation de votre équipe (vidéo + documentation). Monitoring 24/7 activé. Support prioritaire pendant 12 mois.<br><br>Tout au long du projet, vous avez un interlocuteur unique et un accès direct à l\'équipe technique via Slack ou WhatsApp.' },
-        { q: 'Est-ce que je garde la propriété de mon code ?', cat: 'technique', color: '#bf00ff', a: 'Oui, <strong>à 100%</strong>. Vous êtes propriétaire de tout ce que nous développons pour vous :<br><br><strong>• Code source complet</strong> — Livré via un repository GitHub/GitLab à votre nom. Vous avez accès à chaque ligne de code, chaque commit, chaque décision technique.<br><br><strong>• Aucun lock-in</strong> — Votre projet tourne sur votre infrastructure (ou celle de votre choix). Vous pouvez migrer, modifier, ou faire évoluer le code avec n\'importe quel développeur.<br><br><strong>• Documentation technique</strong> — Architecture documentée, guide de déploiement, documentation API, instructions de maintenance.<br><br><strong>• Propriété intellectuelle</strong> — Un contrat clair vous transfère tous les droits de propriété intellectuelle dès le paiement final. Designs, code, contenus — tout vous appartient.<br><br><strong>• Open source friendly</strong> — Nous utilisons exclusivement des technologies open source sans licences cachées. Pas de dépendance à des outils propriétaires.<br><br>C\'est une différence majeure avec beaucoup d\'agences qui gardent le code en otage ou utilisent des builders propriétaires. Chez FlashAI, la transparence est totale.' },
-        { q: 'Votre support est-il vraiment disponible 24/7 ?', cat: 'support', color: '#ff006e', a: 'Oui, notre support est <strong>réellement disponible 24/7</strong>. Voici comment nous y parvenons :<br><br><strong>• Temps de réponse garanti</strong><br>— Urgence critique (site down) : < 15 minutes<br>— Question importante : < 2 heures<br>— Demande standard : < 24 heures<br><br><strong>• Canaux de communication</strong><br>— Slack/Discord dédié (recommandé)<br>— WhatsApp direct<br>— Email : contact@flashai.dev<br>— Visioconférence sur demande<br><br><strong>• Couverture géographique</strong><br>Notre équipe est répartie entre Israël et l\'Europe, ce qui nous permet de couvrir tous les fuseaux horaires. Il y a toujours quelqu\'un de disponible.<br><br><strong>• Monitoring proactif</strong><br>Nous ne attendons pas que vous signaliez un problème. Notre système de monitoring détecte les anomalies en temps réel : uptime, performances, erreurs, sécurité. Nous intervenons souvent avant même que vous ne remarquiez un souci.<br><br><strong>• Inclus dans tous les plans</strong><br>Le support est inclus pendant 12 mois pour les plans Business et Enterprise. Le plan Starter inclut un support email pendant 3 mois.<br><br>Notre NPS (Net Promoter Score) est de 92/100, ce qui nous place parmi les meilleurs du secteur.' },
-        { q: 'Travaillez-vous avec des entreprises hors d\'Israël ?', cat: 'general', color: '#00ff87', a: '<strong>Absolument !</strong> Bien que notre siège soit à Tel Aviv, <strong>80% de nos clients sont francophones</strong> basés en :<br><br>• <strong>France</strong> — Paris, Lyon, Marseille, Bordeaux, et toute la France<br>• <strong>Belgique</strong> — Bruxelles, Anvers, Liège<br>• <strong>Suisse</strong> — Genève, Lausanne, Zurich<br>• <strong>Luxembourg</strong><br>• <strong>Canada</strong> — Montréal, Québec<br>• <strong>Afrique francophone</strong> — Maroc, Tunisie, Sénégal, Côte d\'Ivoire<br><br><strong>Comment ça fonctionne à distance ?</strong><br>Grâce aux outils modernes (Slack, Zoom, Notion, GitHub), la collaboration est fluide et transparente. Nos clients ne sentent aucune différence avec une agence locale — sauf sur le prix et la rapidité !<br><br><strong>Fuseau horaire :</strong> Israël (GMT+2/+3) est parfaitement aligné avec l\'Europe. Les réunions se font aux heures de bureau françaises.<br><br><strong>Facturation :</strong> Nous facturons en euros, avec TVA intra-communautaire pour les entreprises européennes. Paiement par virement ou carte bancaire.' },
-        { q: 'Comment intégrez-vous l\'IA dans vos projets ?', cat: 'technique', color: '#ffd700', a: 'L\'intelligence artificielle est au cœur de notre approche. Nous intégrons l\'IA de plusieurs façons :<br><br><strong>1. Chatbots intelligents</strong><br>— Basés sur GPT-4 ou Claude<br>— Entraînés sur vos données (documentation, FAQ, catalogue produits)<br>— Technologie RAG (Retrieval-Augmented Generation) pour des réponses précises<br>— Intégration WhatsApp, Messenger, site web, Slack<br><br><strong>2. Automatisations IA</strong><br>— Classification automatique d\'emails et demandes<br>— Génération de contenu (descriptions produits, articles, réponses clients)<br>— Extraction de données depuis des documents (factures, contrats, CVs)<br>— Analyse de sentiment sur les avis clients<br><br><strong>3. Analytics prédictifs</strong><br>— Prévision de ventes et de trafic<br>— Scoring de leads automatique<br>— Détection d\'anomalies en temps réel<br>— Recommandations personnalisées<br><br><strong>4. Optimisation IA de nos processus</strong><br>— Nous utilisons l\'IA pour accélérer notre propre développement<br>— Génération de code assistée<br>— Tests automatisés intelligents<br>— Documentation auto-générée<br><br>L\'IA n\'est pas un gadget marketing pour nous — c\'est un outil concret qui apporte une valeur mesurable à chaque projet.' },
-        { q: 'Proposez-vous des facilités de paiement ?', cat: 'business', color: '#00f0ff', a: 'Oui, nous proposons plusieurs options pour faciliter votre investissement :<br><br><strong>Option 1 — Paiement en 2 fois</strong><br>— 50% à la commande (validation du prototype)<br>— 50% à la livraison finale<br>— Sans frais supplémentaires<br><br><strong>Option 2 — Paiement en 3 fois</strong><br>— 30% à la commande<br>— 30% à mi-parcours<br>— 40% à la livraison<br>— Sans frais supplémentaires<br><br><strong>Option 3 — Paiement mensuel</strong><br>— Pour les projets Enterprise uniquement<br>— Étalement sur 3 à 6 mois<br>— Frais de dossier de 5%<br><br><strong>Moyens de paiement acceptés :</strong><br>• Virement bancaire (SEPA)<br>• Carte bancaire (Visa, Mastercard, Amex)<br>• PayPal<br><br><strong>Facturation :</strong> Factures conformes avec TVA intra-communautaire pour les entreprises UE. Facturation en euros ou shekels selon votre préférence.<br><br>Pas de frais cachés, pas de surcoûts. Le prix annoncé est le prix final.' },
-        { q: 'Que se passe-t-il après la livraison ?', cat: 'support', color: '#bf00ff', a: 'La livraison n\'est que le début de notre relation. Voici ce qui est inclus après la mise en ligne :<br><br><strong>Support & Maintenance inclus :</strong><br>— <strong>Starter :</strong> Support email 3 mois + hébergement 3 mois<br>— <strong>Business :</strong> Support prioritaire 12 mois + maintenance corrective<br>— <strong>Enterprise :</strong> Account manager dédié + maintenance illimitée 12 mois<br><br><strong>Ce qui est couvert :</strong><br>• Corrections de bugs (s\'il y en a)<br>• Mises à jour de sécurité<br>• Monitoring uptime et performances 24/7<br>• Sauvegardes automatiques quotidiennes<br>• Mises à jour des dépendances<br>• Petits ajustements texte/images<br><br><strong>Évolutions futures :</strong><br>Besoin d\'ajouter des fonctionnalités ? Nous proposons des packs heures à tarif préférentiel pour nos clients existants (réduction de 20%).<br><br><strong>Formation :</strong><br>Chaque livraison inclut une session de formation vidéo personnalisée + documentation complète pour que votre équipe soit autonome.<br><br><strong>Transfert de connaissances :</strong><br>Si vous souhaitez internaliser le développement à terme, nous facilitons la transition avec documentation technique complète et sessions de passation.' },
-        { q: 'Vos sites sont-ils optimisés pour le SEO ?', cat: 'technique', color: '#ff006e', a: 'Le SEO est intégré dès la conception de chaque projet. Voici notre approche complète :<br><br><strong>SEO Technique :</strong><br>• Core Web Vitals optimisés (LCP < 2.5s, FID < 100ms, CLS < 0.1)<br>• Score Lighthouse 95+ garanti<br>• HTML sémantique (balises H1-H6, structured data, schema.org)<br>• Sitemap XML et robots.txt optimisés<br>• URLs propres et canonical tags<br>• Compression images (WebP/AVIF) et lazy loading<br>• Server-side rendering (Next.js) pour un indexation optimale<br><br><strong>SEO On-Page :</strong><br>• Balises meta title et description optimisées<br>• Hiérarchie de contenu structurée<br>• Maillage interne intelligent<br>• Balises Open Graph pour les réseaux sociaux<br>• Alt text pour toutes les images<br><br><strong>SEO Avancé (Plan Business+) :</strong><br>• Audit SEO complet de votre marché<br>• Recherche de mots-clés stratégiques<br>• Optimisation du contenu existant<br>• Analytics et suivi de positions<br>• Rapport mensuel de performances<br><br><strong>Résultats constatés :</strong><br>Nos clients voient en moyenne une <strong>augmentation de 200% du trafic organique</strong> dans les 3 premiers mois après le lancement.' },
-        { q: 'Comment assurez-vous la sécurité des projets ?', cat: 'technique', color: '#00ff87', a: 'La sécurité est une priorité absolue sur chaque projet. Notre approche multi-couches :<br><br><strong>Infrastructure :</strong><br>• SSL/TLS (HTTPS) sur tous les projets<br>• WAF (Web Application Firewall) Cloudflare<br>• Protection DDoS intégrée<br>• Hébergement sur des providers certifiés (AWS, GCP, Vercel)<br>• Sauvegardes quotidiennes avec rétention 30 jours<br><br><strong>Code :</strong><br>• Audit OWASP Top 10 sur chaque projet<br>• Protection contre XSS, CSRF, SQL Injection<br>• Validation des inputs côté serveur<br>• Rate limiting et throttling<br>• Dependency scanning automatique<br><br><strong>Données :</strong><br>• Conformité RGPD complète<br>• Chiffrement des données sensibles (AES-256)<br>• Politique de rétention des données<br>• Privacy by design<br>• Consentement cookies conforme ePrivacy<br><br><strong>Authentification :</strong><br>• JWT sécurisés avec refresh tokens<br>• OAuth 2.0 / OpenID Connect<br>• 2FA disponible<br>• Politique de mots de passe robuste<br><br><strong>Monitoring :</strong><br>• Alertes en temps réel (Sentry, Datadog)<br>• Logs sécurisés et auditable<br>• Scan de vulnérabilités automatique mensuel' },
-        { q: 'Puis-je voir des exemples de projets réalisés ?', cat: 'general', color: '#ffd700', a: 'Bien sûr ! Nous avons réalisé <strong>50+ projets</strong> dans des secteurs variés. Voici quelques références :<br><br><strong>🏢 TechVision — Dashboard SaaS</strong><br>Plateforme analytics avec 50+ widgets, temps réel, multi-utilisateurs. Stack : React, D3.js, Node.js, PostgreSQL. Résultat : +340% adoption utilisateurs.<br><br><strong>🛒 FoodExpress — E-Commerce</strong><br>Marketplace food-tech, livraison temps réel, Stripe, 10K+ produits. Stack : Next.js, Stripe, Google Maps. Résultat : €2M CA première année.<br><br><strong>🏥 MediCare Pro — CRM Médical</strong><br>Gestion patients, rendez-vous, facturation, conforme RGPD. Stack : React, PostgreSQL, OpenAI. Résultat : 5000+ patients gérés.<br><br><strong>💰 CryptoTrack — Fintech</strong><br>Portfolio crypto, alertes IA, analyse prédictive. Stack : Vue.js, Python, ML. Résultat : 15K utilisateurs actifs.<br><br><strong>🎓 EduSmart — EdTech</strong><br>E-learning adaptive, chatbot tuteur IA, quiz interactifs. Stack : Next.js, OpenAI, Prisma. Résultat : 98% satisfaction étudiants.<br><br>Chaque projet est détaillé dans notre section <a href="#portfolio" style="color:#ffd700">Réalisations</a>. Vous pouvez aussi demander des études de cas détaillées lors de notre appel découverte.' },
-        { q: 'Comment gérez-vous les projets complexes ?', cat: 'technique', color: '#00f0ff', a: 'Les projets complexes sont notre spécialité. Voici notre approche :<br><br><strong>Architecture :</strong><br>• Microservices pour la scalabilité<br>• Event-driven architecture pour le temps réel<br>• API-first design pour l\'interopérabilité<br>• Domain-Driven Design pour les projets métier complexes<br><br><strong>Gestion de projet :</strong><br>• Méthodologie agile Scrum/Kanban<br>• Sprints courts de 2-3 jours<br>• Daily standups et démos quotidiennes<br>• Retrospectives pour amélioration continue<br>• Board Notion/Jira partagé en temps réel<br><br><strong>Qualité :</strong><br>• Tests unitaires, d\'intégration et E2E<br>• Code review systématique<br>• CI/CD avec déploiement automatique<br>• Documentation technique auto-générée<br>• Performance testing avant chaque release<br><br><strong>Scalabilité :</strong><br>• Infrastructure auto-scaling (Kubernetes)<br>• CDN global (Cloudflare)<br>• Database sharding et réplication<br>• Cache multi-niveaux (Redis, CDN, browser)<br><br>Pour les projets Enterprise, nous assignons un Tech Lead dédié qui coordonne l\'ensemble et garantit la cohérence architecturale.' },
-        { q: 'Quels sont les avantages de travailler avec une agence israélienne ?', cat: 'general', color: '#bf00ff', a: 'Israël est reconnue comme la <strong>« Startup Nation »</strong> — voici pourquoi c\'est un avantage pour vous :<br><br><strong>1. Écosystème tech de classe mondiale</strong><br>— Plus de startups par habitant que n\'importe quel pays au monde<br>— Berceau de technologies utilisées par Google, Meta, Amazon<br>— Culture d\'innovation et de disruption<br><br><strong>2. Talent technique exceptionnel</strong><br>— Formations techniques parmi les meilleures (Technion, TAU, Hebrew U)<br>— Expérience dans des scale-ups internationales<br>— Culture du « faire plus avec moins »<br><br><strong>3. Rapport qualité-prix imbattable</strong><br>— Coût de développement 3-5x inférieur à Paris/Genève<br>— Qualité égale ou supérieure aux agences premium européennes<br>— Pas de compromis sur le design ou les performances<br><br><strong>4. Alignement culturel et linguistique</strong><br>— Équipe 100% francophone<br>— Fuseau horaire compatible (GMT+2/+3)<br>— Compréhension des marchés européens et nord-américains<br><br><strong>5. Innovation constante</strong><br>— Accès aux dernières technologies IA avant le marché<br>— R&D continue sur les outils et méthodologies<br>— Veille technologique permanente' },
-        { q: 'Proposez-vous des partenariats ou du white-label ?', cat: 'business', color: '#ff006e', a: 'Oui ! Nous proposons plusieurs formules de partenariat :<br><br><strong>🤝 Partenariat Agence (White-label)</strong><br>Vous êtes une agence marketing, communication ou consulting ? Nous développons pour vos clients sous votre marque :<br>— Vous gardez la relation client<br>— Nous développons en marque blanche<br>— Tarifs partenaires privilégiés (-25%)<br>— NDA et confidentialité garantis<br>— Livraison directe à votre client si souhaité<br><br><strong>📊 Partenariat Technique</strong><br>Pour les freelances et développeurs qui veulent offrir plus de services :<br>— Sous-traitance technique au projet<br>— Renfort d\'équipe temporaire<br>— Expertise IA et data à la demande<br><br><strong>🏢 Partenariat Entreprise</strong><br>Pour les entreprises qui veulent un partenaire tech long terme :<br>— Pack heures mensuelles à tarif dédié<br>— Account manager attitré<br>— SLA personnalisé<br>— Roadmap technique co-construite<br><br><strong>💼 Programme d\'affiliation</strong><br>Recommandez FlashAI et gagnez 10% de commission sur chaque projet signé. Programme sans engagement, sans minimum.<br><br><a href="#contact" style="color:#ff006e">Contactez-nous</a> pour discuter du partenariat qui vous convient.' },
-        { q: 'Comment fonctionne votre chatbot IA ?', cat: 'technique', color: '#00ff87', a: 'Nos chatbots sont bien plus que des FAQ automatisées. Voici l\'architecture technique :<br><br><strong>Technologie de base :</strong><br>• Modèle : GPT-4 (OpenAI) ou Claude (Anthropic)<br>• Architecture RAG (Retrieval-Augmented Generation)<br>• Base de connaissances vectorielle (Pinecone/Weaviate)<br>• Mémoire conversationnelle pour le contexte<br><br><strong>Entraînement :</strong><br>1. Nous ingérons vos données : site web, FAQ, documentation, catalogue<br>2. Les données sont vectorisées et indexées<br>3. Le chatbot cherche dans votre base de connaissances pour chaque question<br>4. GPT-4 formule une réponse naturelle basée sur vos données réelles<br>5. Fine-tuning du ton et du style selon votre marque<br><br><strong>Intégrations :</strong><br>• Widget sur votre site web (customisable)<br>• WhatsApp Business API<br>• Facebook Messenger<br>• Slack, Teams, Discord<br>• API REST pour intégration custom<br><br><strong>Fonctionnalités avancées :</strong><br>• Escalade automatique vers un humain<br>• Prise de rendez-vous intégrée<br>• Génération de leads qualifiés<br>• Multi-langue automatique<br>• Analytics des conversations<br>• Amélioration continue par feedback loop<br><br><strong>Résultats moyens :</strong><br>— Taux de résolution : 85%<br>— Réduction support humain : -60%<br>— Satisfaction utilisateur : 94%' },
-        { q: 'Comment puis-je commencer un projet ?', cat: 'general', color: '#ffd700', a: 'Démarrer avec FlashAI est simple et rapide. Voici les étapes :<br><br><strong>Étape 1 — Premier contact (5 minutes)</strong><br>Remplissez notre <a href="#contact" style="color:#ffd700">formulaire intelligent</a> ou envoyez-nous un email à contact@flashai.dev. Décrivez brièvement votre projet et vos objectifs.<br><br><strong>Étape 2 — Appel découverte (30 minutes, gratuit)</strong><br>Un expert FlashAI vous rappelle dans les 2h pour :<br>— Comprendre vos besoins en détail<br>— Analyser votre existant<br>— Recommander la solution optimale<br>— Estimer le budget et le délai<br><br><strong>Étape 3 — Devis personnalisé (24h)</strong><br>Vous recevez un devis détaillé avec :<br>— Périmètre fonctionnel précis<br>— Stack technique recommandée<br>— Planning de livraison<br>— Prix ferme et définitif<br>— Conditions de paiement<br><br><strong>Étape 4 — Go ! 🚀</strong><br>Dès votre validation, nous démarrons immédiatement. Vous recevez votre premier prototype interactif en 48h.<br><br><strong>Pas de risque :</strong> Rappel — garantie satisfait ou remboursé à 100%. Vous ne payez le solde qu\'une fois 100% satisfait.<br><br>Des questions ? Appelez-nous, écrivez-nous, ou remplissez le formulaire. On vous répond en moins de 2h, 7j/7.' }
+        { q: 'Quels types de projets r\u00e9alisez-vous ?', a: 'FlashAI r\u00e9alise une gamme compl\u00e8te de projets digitaux sur mesure : <strong>sites web</strong> (vitrines, landing pages, e-commerce, portails), <strong>CRM et ERP personnalis\u00e9s</strong> avec pipelines commerciaux et automatisations int\u00e9gr\u00e9es, <strong>dashboards analytics</strong> temps r\u00e9el avec visualisations interactives, <strong>chatbots IA intelligents</strong> bas\u00e9s sur GPT-4 et Claude avec architecture RAG pour des r\u00e9ponses pr\u00e9cises, et des <strong>automatisations de processus m\u00e9tier</strong> via Zapier, Make, n8n et scripts custom. Chaque projet b\u00e9n\u00e9ficie d\'une approche 100% sur mesure, sans template, avec une livraison en 5 \u00e0 14 jours ouvrables. Notre expertise couvre \u00e9galement les applications mobiles (React Native), les int\u00e9grations API complexes et les solutions d\'intelligence artificielle avanc\u00e9e.', cat: 'general', icon: '\u{1F4CB}' },
+        { q: 'Combien co\u00fbtent vos services ?', a: 'Nos tarifs sont con\u00e7us pour offrir le <strong>meilleur rapport qualit\u00e9-prix du march\u00e9</strong>, 3 \u00e0 5 fois moins cher qu\'une agence classique. <strong>Starter \u00e0 partir de 890\u20AC</strong> : site vitrine responsive avec design premium sur mesure, SEO optimis\u00e9 et h\u00e9bergement inclus 3 mois. <strong>Business \u00e0 partir de 2 490\u20AC</strong> : solution compl\u00e8te incluant CRM/Dashboard int\u00e9gr\u00e9, chatbot IA, automatisations et support prioritaire 12 mois. <strong>Enterprise \u00e0 partir de 4 990\u20AC</strong> : infrastructure scalable avec IA avanc\u00e9e (GPT-4, RAG, ML), SLA 99.9%, account manager d\u00e9di\u00e9 et maintenance illimit\u00e9e. Tous nos prix sont <strong>uniques et transparents</strong> \u2014 pas d\'abonnement cach\u00e9, pas de frais suppl\u00e9mentaires. Facilit\u00e9s de paiement disponibles.', cat: 'business', icon: '\u{1F4B0}' },
+        { q: 'Quels sont vos d\u00e9lais de livraison ?', a: 'Nos d\u00e9lais sont parmi les plus rapides de l\'industrie gr\u00e2ce \u00e0 notre stack moderne et nos outils IA propri\u00e9taires. <strong>Site vitrine</strong> : 3 \u00e0 5 jours ouvrables. <strong>E-commerce complet</strong> : 7 \u00e0 14 jours. <strong>CRM/Dashboard</strong> : 5 \u00e0 10 jours. <strong>Chatbot IA</strong> : 3 \u00e0 7 jours. <strong>Automatisations</strong> : 2 \u00e0 5 jours. L\u00e0 o\u00f9 une agence classique met 3 \u00e0 6 mois, FlashAI livre en jours gr\u00e2ce \u00e0 une m\u00e9thodologie agile \u00e9prouv\u00e9e sur 50+ projets. Chaque \u00e9tape est valid\u00e9e avec vous en temps r\u00e9el via des d\u00e9mos quotidiennes, garantissant un r\u00e9sultat align\u00e9 avec vos attentes d\u00e8s la premi\u00e8re livraison.', cat: 'general', icon: '\u23F1\uFE0F' },
+        { q: 'Quelles technologies utilisez-vous ?', a: 'Notre stack technologique couvre l\'ensemble de l\'\u00e9cosyst\u00e8me digital moderne. <strong>Frontend</strong> : React, Next.js 14, Vue.js, TypeScript, TailwindCSS, Three.js, GSAP pour des interfaces ultra-performantes. <strong>Backend</strong> : Node.js, Express, Python, FastAPI, Go pour des API robustes et scalables. <strong>Bases de donn\u00e9es</strong> : PostgreSQL, MongoDB, Redis, Supabase. <strong>Intelligence Artificielle</strong> : OpenAI GPT-4, Claude, LangChain, architectures RAG, fine-tuning de mod\u00e8les, NLP avanc\u00e9. <strong>DevOps</strong> : Docker, Kubernetes, AWS, GCP, Vercel, CI/CD automatis\u00e9. Au total, <strong>247+ outils et technologies</strong> ma\u00eetris\u00e9s par notre \u00e9quipe, garantissant le choix de la meilleure solution pour chaque projet.', cat: 'technique', icon: '\u2699\uFE0F' },
+        { q: 'Proposez-vous une garantie satisfait ou rembours\u00e9 ?', a: 'Oui, nous offrons une <strong>garantie satisfait ou rembours\u00e9 \u00e0 100%</strong> \u2014 c\'est notre engagement qualit\u00e9 le plus fort. Vous validez chaque \u00e9tape du projet : brief, maquettes, prototype, d\u00e9veloppement. Les r\u00e9visions sont <strong>illimit\u00e9es</strong> jusqu\'\u00e0 votre enti\u00e8re satisfaction. Si le r\u00e9sultat final ne vous convient pas malgr\u00e9 nos efforts, nous vous remboursons int\u00e9gralement, <strong>sans conditions et sans d\u00e9lai</strong>. Sur 50+ projets livr\u00e9s \u00e0 ce jour, nous comptons <strong>0 demande de remboursement</strong>, ce qui t\u00e9moigne de la qualit\u00e9 constante de nos livraisons et de notre approche centr\u00e9e client.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
+        { q: 'Comment se d\u00e9roule un projet typique ?', a: 'Notre m\u00e9thodologie est structur\u00e9e en <strong>4 phases cl\u00e9s</strong> pour garantir un r\u00e9sultat optimal. <strong>Phase 1 \u2014 Discovery (30 min)</strong> : appel strat\u00e9gique pour comprendre vos besoins, objectifs business, contraintes techniques et cibles utilisateurs. <strong>Phase 2 \u2014 Prototype (48h)</strong> : maquette interactive haute fid\u00e9lit\u00e9 sur Figma, avec validation du design, de l\'UX et des parcours utilisateurs avant tout d\u00e9veloppement. <strong>Phase 3 \u2014 Build (3-10 jours)</strong> : d\u00e9veloppement agile avec d\u00e9mos quotidiennes, code review syst\u00e9matique et tests automatis\u00e9s. <strong>Phase 4 \u2014 Launch (J+0)</strong> : d\u00e9ploiement en production, formation de votre \u00e9quipe, documentation compl\u00e8te, et activation du monitoring 24/7. Support prioritaire inclus pendant 12 mois.', cat: 'general', icon: '\u{1F3AF}' },
+        { q: 'Est-ce que je garde la propri\u00e9t\u00e9 de mon code ?', a: 'Absolument, <strong>\u00e0 100%</strong>. D\u00e8s la livraison, vous recevez le code source complet via un repository GitHub priv\u00e9, accompagn\u00e9 d\'une documentation technique d\u00e9taill\u00e9e. Tous les <strong>droits de propri\u00e9t\u00e9 intellectuelle</strong> vous sont transf\u00e9r\u00e9s. Aucun lock-in, aucune d\u00e9pendance envers FlashAI : vous \u00eates libre de faire \u00e9voluer votre code avec n\'importe quel d\u00e9veloppeur ou agence. Nous utilisons exclusivement des <strong>technologies open source</strong> et des architectures standard, ce qui garantit la p\u00e9rennit\u00e9 et la maintenabilit\u00e9 de votre projet sur le long terme.', cat: 'technique', icon: '\u{1F4BB}' },
+        { q: 'Votre support est-il vraiment disponible 24/7 ?', a: 'Oui, notre support est r\u00e9ellement disponible <strong>24 heures sur 24, 7 jours sur 7</strong>. Urgence critique (site down, faille de s\u00e9curit\u00e9) : r\u00e9ponse en <strong>moins de 15 minutes</strong>. Question importante : r\u00e9ponse en <strong>moins de 2 heures</strong>. Demande standard : r\u00e9ponse en moins de 24 heures. Nos canaux de support incluent <strong>Slack, WhatsApp, email et visioconf\u00e9rence</strong>. Notre \u00e9quipe est r\u00e9partie entre Isra\u00ebl et l\'Europe pour couvrir tous les fuseaux horaires. De plus, un <strong>monitoring proactif</strong> est inclus : nous d\u00e9tectons et r\u00e9solvons souvent les probl\u00e8mes avant m\u00eame que vous ne les remarquiez.', cat: 'support', icon: '\u{1F4DE}' },
+        { q: 'Travaillez-vous avec des entreprises hors d\'Isra\u00ebl ?', a: '<strong>80% de nos clients sont francophones</strong> bas\u00e9s en France, Belgique, Suisse, Luxembourg, Canada et Afrique francophone. Le fuseau horaire isra\u00e9lien (GMT+2/+3) est parfaitement <strong>align\u00e9 avec l\'Europe</strong>, ce qui permet des calls quotidiens et une collaboration fluide en temps r\u00e9el. Nous facturons en <strong>euros avec TVA intra-communautaire</strong> pour les entreprises de l\'UE. Notre \u00e9quipe 100% francophone comprend les enjeux du march\u00e9 europ\u00e9en et les sp\u00e9cificit\u00e9s r\u00e9glementaires (RGPD, mentions l\u00e9gales, accessibilit\u00e9). La distance g\u00e9ographique n\'est jamais un frein : nos outils collaboratifs et notre m\u00e9thodologie agile garantissent une communication transparente.', cat: 'general', icon: '\u{1F30D}' },
+        { q: 'Comment int\u00e9grez-vous l\'IA dans vos projets ?', a: 'L\'intelligence artificielle est au c\u0153ur de notre proposition de valeur. Nous int\u00e9grons l\'IA de mani\u00e8re concr\u00e8te et mesurable : <strong>Chatbots intelligents</strong> (GPT-4, Claude) avec architecture RAG pour des r\u00e9ponses pr\u00e9cises bas\u00e9es sur vos donn\u00e9es r\u00e9elles. <strong>Automatisations IA</strong> : classification automatique d\'emails, g\u00e9n\u00e9ration de contenu marketing, extraction de donn\u00e9es de documents, scoring de leads. <strong>Analytics pr\u00e9dictifs</strong> : pr\u00e9vision de ventes, d\u00e9tection d\'anomalies, recommandations personnalis\u00e9es. Chaque int\u00e9gration IA est pens\u00e9e pour apporter une <strong>valeur m\u00e9trique tangible</strong> : +60% de r\u00e9solution automatique, -40% de temps de traitement, +25% de conversion.', cat: 'technique', icon: '\u{1F9E0}' },
+        { q: 'Proposez-vous des facilit\u00e9s de paiement ?', a: 'Oui, nous proposons plusieurs options de <strong>paiement flexibles</strong> adapt\u00e9es \u00e0 chaque budget. Paiement en <strong>2 fois (50/50)</strong> : 50% au d\u00e9marrage, 50% \u00e0 la livraison. Paiement en <strong>3 fois (30/30/40)</strong> sans frais suppl\u00e9mentaires. Pour les projets Enterprise, <strong>paiement mensuel sur 3 \u00e0 6 mois</strong>. Nous acceptons le virement SEPA, la carte bancaire et PayPal. La facturation est conforme avec TVA intra-communautaire pour les entreprises de l\'Union Europ\u00e9enne. Un <strong>devis personnalis\u00e9 avec prix ferme</strong> est syst\u00e9matiquement fourni avant tout engagement, sans surprise ni co\u00fbt cach\u00e9.', cat: 'business', icon: '\u{1F4B3}' },
+        { q: 'Que se passe-t-il apr\u00e8s la livraison ?', a: 'Apr\u00e8s la livraison, nous ne vous laissons pas seul. Chaque formule inclut un <strong>support et maintenance</strong> adapt\u00e9 : Starter (3 mois support email), Business (12 mois support prioritaire), Enterprise (account manager d\u00e9di\u00e9 + maintenance illimit\u00e9e). Sont inclus : <strong>corrections de bugs</strong>, mises \u00e0 jour de s\u00e9curit\u00e9, monitoring 24/7 avec alertes proactives, et sauvegardes quotidiennes automatis\u00e9es. Pour les \u00e9volutions futures, nous proposons des <strong>packs heures \u00e0 -20%</strong> par rapport \u00e0 nos tarifs standard. Votre projet \u00e9volue avec votre business \u2014 nous restons votre partenaire technologique sur le long terme.', cat: 'support', icon: '\u{1F527}' },
+        { q: 'Vos sites sont-ils optimis\u00e9s pour le SEO ?', a: 'Le SEO est <strong>int\u00e9gr\u00e9 d\u00e8s la conception</strong> de chaque projet, pas ajout\u00e9 en post-production. Notre approche couvre tous les piliers du r\u00e9f\u00e9rencement naturel : <strong>Core Web Vitals</strong> optimis\u00e9s (LCP < 2.5s, FID < 100ms, CLS < 0.1), score <strong>Lighthouse 95+ garanti</strong>, HTML s\u00e9mantique, structured data Schema.org, sitemap XML automatis\u00e9, URLs propres et canoniques. C\u00f4t\u00e9 technique : Server-Side Rendering avec Next.js, <strong>lazy loading intelligent</strong>, compression d\'images automatique, CDN global. Nos clients constatent en moyenne <strong>+200% de trafic organique</strong> dans les 3 premiers mois apr\u00e8s lancement, avec des positions en premi\u00e8re page Google sur leurs mots-cl\u00e9s strat\u00e9giques.', cat: 'technique', icon: '\u{1F50D}' },
+        { q: 'Comment assurez-vous la s\u00e9curit\u00e9 ?', a: 'La s\u00e9curit\u00e9 est une priorit\u00e9 absolue avec une <strong>approche multi-couches compl\u00e8te</strong>. Au niveau r\u00e9seau : SSL/TLS syst\u00e9matique, WAF Cloudflare, protection DDoS, IP whitelisting pour les zones admin. Au niveau applicatif : audit <strong>OWASP Top 10</strong> syst\u00e9matique, protection XSS/CSRF/SQL Injection, validation des entr\u00e9es c\u00f4t\u00e9 serveur. Au niveau donn\u00e9es : chiffrement <strong>AES-256</strong>, JWT s\u00e9curis\u00e9s avec rotation, OAuth 2.0, authentification 2FA. Conformit\u00e9 <strong>RGPD</strong> native avec consentement granulaire, droit \u00e0 l\'oubli et portabilit\u00e9 des donn\u00e9es. Monitoring temps r\u00e9el via <strong>Sentry et Datadog</strong>, scan de vuln\u00e9rabilit\u00e9s mensuel automatis\u00e9. Chaque d\u00e9ploiement passe par une pipeline CI/CD avec tests de s\u00e9curit\u00e9 int\u00e9gr\u00e9s.', cat: 'technique', icon: '\u{1F512}' },
+        { q: 'Puis-je voir des exemples de projets ?', a: 'Absolument ! Nous avons livr\u00e9 <strong>50+ projets</strong> avec succ\u00e8s dans des secteurs vari\u00e9s. Quelques r\u00e9f\u00e9rences cl\u00e9s : <strong>TechVision</strong> (Dashboard SaaS analytics, +340% adoption utilisateurs en 3 mois), <strong>FoodExpress</strong> (Marketplace e-commerce, \u20AC2M de CA premi\u00e8re ann\u00e9e), <strong>MediCare Pro</strong> (CRM m\u00e9dical conforme RGPD, 5000+ patients g\u00e9r\u00e9s), <strong>CryptoTrack</strong> (Plateforme fintech, 15K utilisateurs actifs), <strong>EduSmart</strong> (E-learning avec chatbot tuteur IA, 98% satisfaction), <strong>LogiFlow</strong> (ERP logistique, -40% co\u00fbts op\u00e9rationnels). Chaque projet est accompagn\u00e9 d\'une \u00e9tude de cas d\u00e9taill\u00e9e avec m\u00e9triques de r\u00e9sultat mesurables disponibles sur demande.', cat: 'general', icon: '\u{1F4C2}' },
+        { q: 'Comment g\u00e9rez-vous les projets complexes ?', a: 'Les projets complexes sont notre sp\u00e9cialit\u00e9. Nous utilisons une <strong>architecture microservices</strong>, event-driven, API-first avec Domain-Driven Design (DDD) pour garantir scalabilit\u00e9 et maintenabilit\u00e9. Notre m\u00e9thodologie agile combine <strong>Scrum et Kanban</strong> : sprints courts de 3-5 jours, daily standups, r\u00e9trospectives. Chaque ligne de code passe par un <strong>code review syst\u00e9matique</strong>, des tests unitaires et d\'int\u00e9gration (couverture >85%), et une pipeline CI/CD automatis\u00e9e. L\'infrastructure est con\u00e7ue pour scaler : <strong>Kubernetes auto-scaling</strong>, CDN global multi-r\u00e9gions, cache multi-niveaux (Redis + CDN), et monitoring temps r\u00e9el avec alertes proactives.', cat: 'technique', icon: '\u{1F3D7}\uFE0F' },
+        { q: 'Quels sont les avantages d\'une agence isra\u00e9lienne ?', a: 'Isra\u00ebl est la <strong>Startup Nation</strong> \u2014 l\'\u00e9cosyst\u00e8me technologique le plus dense au monde, avec plus de startups par habitant que n\'importe quel autre pays. Travailler avec une agence isra\u00e9lienne vous donne acc\u00e8s \u00e0 un <strong>talent tech exceptionnel</strong>, form\u00e9 dans les unit\u00e9s technologiques d\'\u00e9lite (8200, Mamram). Le rapport qualit\u00e9-prix est <strong>3 \u00e0 5 fois inf\u00e9rieur</strong> \u00e0 Paris ou Gen\u00e8ve pour un niveau d\'expertise \u00e9quivalent ou sup\u00e9rieur. Notre \u00e9quipe est <strong>100% francophone</strong>, le fuseau horaire est compatible avec l\'Europe (GMT+2/+3), et nous avons un acc\u00e8s privil\u00e9gi\u00e9 aux derni\u00e8res innovations IA avant qu\'elles n\'arrivent sur le march\u00e9 europ\u00e9en.', cat: 'general', icon: '\u{1F1EE}\u{1F1F1}' },
+        { q: 'Proposez-vous du white-label ?', a: 'Oui, nous proposons un <strong>programme complet de partenariats</strong> adapt\u00e9 \u00e0 diff\u00e9rents profils. <strong>White-label agence</strong> : d\u00e9veloppement sous votre marque avec une r\u00e9duction de 25%, id\u00e9al pour les agences marketing qui souhaitent \u00e9tendre leurs comp\u00e9tences techniques. <strong>Partenariat freelance</strong> : support technique pour les d\u00e9veloppeurs ind\u00e9pendants sur les projets d\u00e9passant leurs capacit\u00e9s. <strong>Partenariat entreprise</strong> : accord cadre long terme avec tarifs d\u00e9gressifs et \u00e9quipe d\u00e9di\u00e9e. <strong>Programme affiliation</strong> : 10% de commission sur chaque client recommand\u00e9. Tous nos partenariats sont couverts par un <strong>NDA strict</strong> et une confidentialit\u00e9 totale.', cat: 'business', icon: '\u{1F91D}' },
+        { q: 'Comment fonctionne votre chatbot IA ?', a: 'Notre chatbot utilise la technologie <strong>GPT-4 ou Claude</strong> combin\u00e9e \u00e0 une architecture <strong>RAG (Retrieval-Augmented Generation)</strong> pour des r\u00e9ponses ultra-pr\u00e9cises. Concr\u00e8tement : vos donn\u00e9es (site web, FAQ, catalogue produits, documentation) sont <strong>vectoris\u00e9es et index\u00e9es</strong> dans une base de connaissances d\u00e9di\u00e9e. Quand un utilisateur pose une question, le chatbot recherche dans votre base de connaissances et formule une r\u00e9ponse naturelle et contextualis\u00e9e. <strong>Int\u00e9grations disponibles</strong> : widget site web, WhatsApp Business, Facebook Messenger, Slack, email. R\u00e9sultats moyens : <strong>85% de taux de r\u00e9solution</strong> automatique, -60% de charge sur le support humain, satisfaction utilisateur >90%.', cat: 'technique', icon: '\u{1F916}' },
+        { q: 'Comment puis-je commencer un projet ?', a: 'D\u00e9marrer avec FlashAI est simple et rapide. <strong>\u00c9tape 1</strong> : remplissez notre formulaire de contact ou envoyez un email \u00e0 contact@flashai.dev avec une description g\u00e9n\u00e9rale de votre projet. <strong>\u00c9tape 2</strong> : dans les 2 heures, nous vous proposons un <strong>appel d\u00e9couverte gratuit de 30 minutes</strong> pour comprendre en profondeur vos besoins, objectifs et contraintes. <strong>\u00c9tape 3</strong> : dans les 24 heures suivant l\'appel, vous recevez un <strong>devis personnalis\u00e9 avec prix ferme</strong>, sans surprise. <strong>\u00c9tape 4</strong> : d\u00e8s validation, un prototype interactif est livr\u00e9 en 48 heures. Garantie satisfait ou rembours\u00e9 : vous ne prenez aucun risque. Premi\u00e8re consultation 100% gratuite et sans engagement.', cat: 'general', icon: '\u{1F4E9}' }
     ];
 
-    let activeFilter = 'all', searchQuery = '', readCount = 0;
+    let activeFilter = 'all';
+    let searchQuery = '';
+    let readCount = 0;
+    const readSet = new Set();
 
     function render() {
         const filtered = questions.filter(q => {
-            const matchCat = activeFilter === 'all' || q.cat === activeFilter;
-            const matchSearch = !searchQuery || q.q.toLowerCase().includes(searchQuery) || q.a.toLowerCase().includes(searchQuery);
-            return matchCat && matchSearch;
+            if (activeFilter !== 'all' && q.cat !== activeFilter) return false;
+            if (searchQuery && !q.q.toLowerCase().includes(searchQuery) && !q.a.toLowerCase().includes(searchQuery)) return false;
+            return true;
         });
+
+        const catColors = { general: '#00f0ff', technique: '#bf00ff', business: '#ff8c00', support: '#00ff87' };
+
         list.innerHTML = filtered.map((q, i) => {
-            const isRead = readSet.has(q.q);
-            return `<div class="faq-card ${isRead ? 'faq-read' : ''}" style="transition-delay:${i * 0.05}s">
-                <div class="faq-card-accent" style="background:${q.color}"></div>
-                <button class="faq-question" data-idx="${i}">
-                    <span class="faq-q-text">${highlightSearch(q.q)}</span>
-                    <span class="faq-q-cat" style="color:${q.color}">${q.cat}</span>
-                    <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </button>
-                <div class="faq-answer">${highlightSearch(q.a)}</div>
-            </div>`;
+            const isRead = readSet.has(i);
+            const color = catColors[q.cat] || '#6366f1';
+            return '<div class="faq-card ' + (isRead ? 'faq-read' : '') + '" data-idx="' + questions.indexOf(q) + '">' +
+                '<div class="faq-card-accent" style="background:linear-gradient(180deg,' + color + ',' + color + '40)"></div>' +
+                '<button class="faq-question" aria-expanded="false">' +
+                '<span class="faq-card-icon">' + q.icon + '</span>' +
+                '<span class="faq-card-num">' + String(questions.indexOf(q) + 1).padStart(2, '0') + '</span>' +
+                '<span class="faq-q-text">' + highlightSearch(q.q) + '</span>' +
+                '<span class="faq-q-cat" style="color:' + color + '">' + q.cat + '</span>' +
+                '<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' +
+                '</button>' +
+                '<div class="faq-answer">' + highlightSearch(q.a) + '</div>' +
+                '</div>';
         }).join('');
 
+        // Bind clicks
         list.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const card = btn.closest('.faq-card');
                 const wasOpen = card.classList.contains('open');
-                card.classList.toggle('open');
+                // Close all
+                list.querySelectorAll('.faq-card.open').forEach(c => { c.classList.remove('open'); c.querySelector('.faq-question').setAttribute('aria-expanded', 'false'); });
                 if (!wasOpen) {
-                    const q = questions.find(x => x.q === btn.querySelector('.faq-q-text').textContent.trim() || highlightSearch(x.q) === btn.querySelector('.faq-q-text').innerHTML);
-                    if (q && !readSet.has(q.q)) {
-                        readSet.add(q.q);
+                    card.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                    const idx = parseInt(card.dataset.idx);
+                    if (!readSet.has(idx)) {
+                        readSet.add(idx);
                         readCount++;
                         updateProgress();
                     }
@@ -1007,7 +1071,7 @@ function initFAQ() {
 
     function highlightSearch(text) {
         if (!searchQuery) return text;
-        const regex = new RegExp(`(${searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        const regex = new RegExp('(' + searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
         return text.replace(regex, '<mark class="faq-highlight">$1</mark>');
     }
 
@@ -1020,7 +1084,6 @@ function initFAQ() {
         if (bar) bar.style.width = (readCount / questions.length * 100) + '%';
     }
 
-    // Tabs
     document.querySelectorAll('.faq-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
@@ -1030,7 +1093,6 @@ function initFAQ() {
         });
     });
 
-    // Search
     const searchInput = document.getElementById('faq-search');
     if (searchInput) {
         searchInput.addEventListener('input', e => {
@@ -1043,7 +1105,6 @@ function initFAQ() {
     render();
 }
 
-/* ========== CTA CANVAS ========== */
 function initCTACanvas() {
     const canvas = document.getElementById('cta-canvas');
     if (!canvas) return;
@@ -1118,11 +1179,11 @@ function initSmartForm() {
     if (!selector || !container) return;
 
     const types = [
-        { id: 'devis', name: 'Demande de Devis', icon: '📋', color: '#00f0ff', desc: 'Obtenez un devis personnalisé en 24h' },
-        { id: 'contact', name: 'Contact Général', icon: '💬', color: '#bf00ff', desc: 'Une question ? Parlons-en !' },
-        { id: 'partenariat', name: 'Partenariat', icon: '🤝', color: '#ff006e', desc: 'Travaillons ensemble' },
-        { id: 'agence', name: 'White-Label Agence', icon: '🏢', color: '#ffd700', desc: 'Solutions pour agences' },
-        { id: 'recrutement', name: 'Recrutement', icon: '🚀', color: '#00ff87', desc: 'Rejoignez l\'aventure' }
+        { id: 'devis', name: 'Demande de Devis', icon: '\u{1F4CB}', color: '#00f0ff', desc: 'Obtenez un devis personnalis\u00e9 en 24h' },
+        { id: 'contact', name: 'Contact G\u00e9n\u00e9ral', icon: '\u{1F4AC}', color: '#bf00ff', desc: 'Une question ? Parlons-en !' },
+        { id: 'partenariat', name: 'Partenariat', icon: '\u{1F91D}', color: '#ff006e', desc: 'Travaillons ensemble' },
+        { id: 'agence', name: 'White-Label Agence', icon: '\u{1F3E2}', color: '#ffd700', desc: 'Solutions pour agences' },
+        { id: 'recrutement', name: 'Recrutement', icon: '\u{1F680}', color: '#00ff87', desc: 'Rejoignez l\'aventure' }
     ];
 
     let activeType = 'devis';
@@ -1132,19 +1193,19 @@ function initSmartForm() {
             fields: [
                 { type: 'text', name: 'company', label: 'Nom de votre entreprise', placeholder: 'Acme Inc.', required: true },
                 { type: 'email', name: 'email', label: 'Email professionnel', placeholder: 'vous@entreprise.com', required: true },
-                { type: 'tel', name: 'phone', label: 'Téléphone', placeholder: '+33 6 12 34 56 78' },
+                { type: 'tel', name: 'phone', label: 'T\u00e9l\u00e9phone', placeholder: '+33 6 12 34 56 78' },
                 { type: 'chips', name: 'project_type', label: 'Type de projet', options: ['Site Vitrine','E-Commerce','CRM','Dashboard','Chatbot IA','Automatisation','Application Mobile','Autre'] },
-                { type: 'range', name: 'budget', label: 'Budget estimé', min: 500, max: 15000, step: 500, suffix: '€' },
-                { type: 'select', name: 'deadline', label: 'Délai souhaité', options: ['Le plus vite possible','1-2 semaines','1 mois','Pas de deadline précise'] },
-                { type: 'textarea', name: 'description', label: 'Décrivez votre projet', placeholder: 'Décrivez votre projet, vos objectifs, vos contraintes...', rows: 4 },
-                { type: 'chips', name: 'features', label: 'Fonctionnalités souhaitées', options: ['Design premium','SEO avancé','Multilingue','Analytics','Paiement en ligne','API','CRM intégré','IA'] }
+                { type: 'range', name: 'budget', label: 'Budget estim\u00e9', min: 500, max: 15000, step: 500, suffix: '\u20AC' },
+                { type: 'select', name: 'deadline', label: 'D\u00e9lai souhait\u00e9', options: ['Le plus vite possible','1-2 semaines','1 mois','Pas de deadline pr\u00e9cise'] },
+                { type: 'textarea', name: 'description', label: 'D\u00e9crivez votre projet', placeholder: 'D\u00e9crivez votre projet, vos objectifs, vos contraintes...', rows: 4 },
+                { type: 'chips', name: 'features', label: 'Fonctionnalit\u00e9s souhait\u00e9es', options: ['Design premium','SEO avanc\u00e9','Multilingue','Analytics','Paiement en ligne','API','CRM int\u00e9gr\u00e9','IA'] }
             ]
         },
         contact: {
             fields: [
                 { type: 'text', name: 'name', label: 'Votre nom', placeholder: 'Jean Dupont', required: true },
                 { type: 'email', name: 'email', label: 'Email', placeholder: 'jean@email.com', required: true },
-                { type: 'select', name: 'subject', label: 'Sujet', options: ['Question générale','Demande d\'information','Support technique','Autre'] },
+                { type: 'select', name: 'subject', label: 'Sujet', options: ['Question g\u00e9n\u00e9rale','Demande d\'information','Support technique','Autre'] },
                 { type: 'textarea', name: 'message', label: 'Votre message', placeholder: 'Comment pouvons-nous vous aider ?', rows: 5, required: true }
             ]
         },
@@ -1153,40 +1214,40 @@ function initSmartForm() {
                 { type: 'text', name: 'company', label: 'Votre entreprise', placeholder: 'Nom de votre agence/entreprise', required: true },
                 { type: 'email', name: 'email', label: 'Email professionnel', placeholder: 'contact@agence.com', required: true },
                 { type: 'text', name: 'website', label: 'Site web', placeholder: 'https://votre-site.com' },
-                { type: 'chips', name: 'partner_type', label: 'Type de partenariat', options: ['White-label','Sous-traitance','Affiliation','Co-développement','Autre'] },
-                { type: 'select', name: 'volume', label: 'Volume estimé / an', options: ['1-5 projets','5-15 projets','15-30 projets','30+ projets'] },
-                { type: 'textarea', name: 'details', label: 'Détails', placeholder: 'Décrivez le partenariat que vous envisagez...', rows: 4 }
+                { type: 'chips', name: 'partner_type', label: 'Type de partenariat', options: ['White-label','Sous-traitance','Affiliation','Co-d\u00e9veloppement','Autre'] },
+                { type: 'select', name: 'volume', label: 'Volume estim\u00e9 / an', options: ['1-5 projets','5-15 projets','15-30 projets','30+ projets'] },
+                { type: 'textarea', name: 'details', label: 'D\u00e9tails', placeholder: 'D\u00e9crivez le partenariat que vous envisagez...', rows: 4 }
             ]
         },
         agence: {
             fields: [
                 { type: 'text', name: 'agency', label: 'Nom de l\'agence', placeholder: 'Votre agence', required: true },
                 { type: 'email', name: 'email', label: 'Email', placeholder: 'contact@agence.com', required: true },
-                { type: 'tel', name: 'phone', label: 'Téléphone', placeholder: '+33 1 23 45 67 89' },
-                { type: 'chips', name: 'services', label: 'Services recherchés', options: ['Développement web','Développement mobile','IA & Chatbot','CRM custom','Design UI/UX','DevOps','Consulting technique'] },
+                { type: 'tel', name: 'phone', label: 'T\u00e9l\u00e9phone', placeholder: '+33 1 23 45 67 89' },
+                { type: 'chips', name: 'services', label: 'Services recherch\u00e9s', options: ['D\u00e9veloppement web','D\u00e9veloppement mobile','IA & Chatbot','CRM custom','Design UI/UX','DevOps','Consulting technique'] },
                 { type: 'select', name: 'team_size', label: 'Taille de votre agence', options: ['1-5 personnes','5-20 personnes','20-50 personnes','50+ personnes'] },
-                { type: 'textarea', name: 'needs', label: 'Vos besoins', placeholder: 'Décrivez vos besoins en sous-traitance technique...', rows: 4 }
+                { type: 'textarea', name: 'needs', label: 'Vos besoins', placeholder: 'D\u00e9crivez vos besoins en sous-traitance technique...', rows: 4 }
             ]
         },
         recrutement: {
             fields: [
                 { type: 'text', name: 'name', label: 'Nom complet', placeholder: 'Votre nom', required: true },
                 { type: 'email', name: 'email', label: 'Email', placeholder: 'votre@email.com', required: true },
-                { type: 'chips', name: 'role', label: 'Poste souhaité', options: ['Développeur Frontend','Développeur Backend','Développeur Full-Stack','Designer UI/UX','Chef de projet','DevOps','IA / ML Engineer'] },
+                { type: 'chips', name: 'role', label: 'Poste souhait\u00e9', options: ['D\u00e9veloppeur Frontend','D\u00e9veloppeur Backend','D\u00e9veloppeur Full-Stack','Designer UI/UX','Chef de projet','DevOps','IA / ML Engineer'] },
                 { type: 'text', name: 'portfolio', label: 'Portfolio / GitHub', placeholder: 'https://github.com/vous' },
-                { type: 'select', name: 'experience', label: 'Expérience', options: ['Junior (0-2 ans)','Intermédiaire (2-5 ans)','Senior (5-10 ans)','Expert (10+ ans)'] },
-                { type: 'select', name: 'availability', label: 'Disponibilité', options: ['Immédiate','1 mois','2-3 mois','À discuter'] },
+                { type: 'select', name: 'experience', label: 'Exp\u00e9rience', options: ['Junior (0-2 ans)','Interm\u00e9diaire (2-5 ans)','Senior (5-10 ans)','Expert (10+ ans)'] },
+                { type: 'select', name: 'availability', label: 'Disponibilit\u00e9', options: ['Imm\u00e9diate','1 mois','2-3 mois','\u00c0 discuter'] },
                 { type: 'textarea', name: 'motivation', label: 'Motivation', placeholder: 'Pourquoi souhaitez-vous rejoindre FlashAI ?', rows: 4 }
             ]
         }
     };
 
     function renderSelector() {
-        selector.innerHTML = `<div class="sf-types">${types.map(t => `<button class="smart-form-type ${t.id === activeType ? 'active' : ''}" data-type="${t.id}" style="--form-color:${t.color}">
-            <span class="sf-type-icon">${t.icon}</span>
-            <span class="sf-type-name">${t.name}</span>
-            <span class="sf-type-desc">${t.desc}</span>
-        </button>`).join('')}</div>`;
+        selector.innerHTML = '<div class="sf-types">' + types.map(t => '<button class="smart-form-type ' + (t.id === activeType ? 'active' : '') + '" data-type="' + t.id + '" style="--form-color:' + t.color + '">' +
+            '<span class="sf-type-icon">' + t.icon + '</span>' +
+            '<span class="sf-type-name">' + t.name + '</span>' +
+            '<span class="sf-type-desc">' + t.desc + '</span>' +
+        '</button>').join('') + '</div>';
         selector.querySelectorAll('.smart-form-type').forEach(btn => {
             btn.addEventListener('click', () => {
                 activeType = btn.dataset.type;
@@ -1199,18 +1260,18 @@ function initSmartForm() {
     function renderForm() {
         const config = formConfigs[activeType];
         const typeInfo = types.find(t => t.id === activeType);
-        container.innerHTML = `<form class="smart-form" action="https://formspree.io/f/xvgogwvz" method="POST" style="--form-color:${typeInfo.color}">
-            <input type="hidden" name="form_type" value="${activeType}">
-            <div class="sf-fields">${config.fields.map(f => renderField(f, typeInfo.color)).join('')}</div>
-            <button type="submit" class="sf-submit" style="background:${typeInfo.color}"><span>Envoyer ${typeInfo.icon}</span></button>
-        </form>`;
+        container.innerHTML = '<form class="smart-form" action="https://formspree.io/f/xvgogwvz" method="POST" style="--form-color:' + typeInfo.color + '">' +
+            '<input type="hidden" name="form_type" value="' + activeType + '">' +
+            '<div class="sf-fields">' + config.fields.map(f => renderField(f, typeInfo.color)).join('') + '</div>' +
+            '<button type="submit" class="sf-submit" style="background:' + typeInfo.color + '"><span>Envoyer ' + typeInfo.icon + '</span></button>' +
+        '</form>';
 
-        // Chips logic
         container.querySelectorAll('.sf-chip').forEach(chip => {
-            chip.addEventListener('click', () => chip.classList.toggle('active'));
+            chip.addEventListener('click', () => {
+                chip.classList.toggle('active');
+            });
         });
 
-        // Range logic
         container.querySelectorAll('.sf-range').forEach(range => {
             const val = range.parentElement.querySelector('.sf-range-val');
             range.addEventListener('input', () => {
@@ -1218,39 +1279,37 @@ function initSmartForm() {
             });
         });
 
-        // Submit
         container.querySelector('.smart-form').addEventListener('submit', e => {
             e.preventDefault();
             const btn = container.querySelector('.sf-submit');
-            btn.innerHTML = '<span>Envoyé ! ✨</span>';
+            btn.innerHTML = '<span>Envoy\u00e9 ! \u2728</span>';
             btn.style.background = '#00ff87';
-            showToast('Message envoyé avec succès !');
-            setTimeout(() => { btn.innerHTML = `<span>Envoyer ${typeInfo.icon}</span>`; btn.style.background = typeInfo.color; }, 3000);
+            showToast('Message envoy\u00e9 avec succ\u00e8s !');
+            setTimeout(() => { btn.innerHTML = '<span>Envoyer ' + typeInfo.icon + '</span>'; btn.style.background = typeInfo.color; }, 3000);
         });
     }
 
     function renderField(f, color) {
         if (f.type === 'chips') {
-            return `<div class="sf-field sf-field-full"><label class="sf-label">${f.label}</label><div class="sf-chips">${f.options.map(o => `<button type="button" class="sf-chip" style="--chip-color:${color}">${o}</button>`).join('')}</div><input type="hidden" name="${f.name}"></div>`;
+            return '<div class="sf-field sf-field-full"><label class="sf-label">' + f.label + '</label><div class="sf-chips">' + f.options.map(o => '<button type="button" class="sf-chip" style="--chip-color:' + color + '">' + o + '</button>').join('') + '</div><input type="hidden" name="' + f.name + '"></div>';
         }
         if (f.type === 'range') {
             const mid = Math.round((f.min + f.max) / 2);
-            return `<div class="sf-field sf-field-full"><label class="sf-label">${f.label}</label><input type="range" class="sf-range" name="${f.name}" min="${f.min}" max="${f.max}" step="${f.step}" value="${mid}" data-suffix="${f.suffix || ''}"><div class="sf-range-val" style="color:${color}">${mid.toLocaleString('fr')} ${f.suffix || ''}</div></div>`;
+            return '<div class="sf-field sf-field-full"><label class="sf-label">' + f.label + '</label><input type="range" class="sf-range" name="' + f.name + '" min="' + f.min + '" max="' + f.max + '" step="' + f.step + '" value="' + mid + '" data-suffix="' + (f.suffix || '') + '"><div class="sf-range-val" style="color:' + color + '">' + mid.toLocaleString('fr') + ' ' + (f.suffix || '') + '</div></div>';
         }
         if (f.type === 'select') {
-            return `<div class="sf-field"><label class="sf-label">${f.label}</label><select class="sf-select" name="${f.name}">${f.options.map(o => `<option>${o}</option>`).join('')}</select></div>`;
+            return '<div class="sf-field"><label class="sf-label">' + f.label + '</label><select class="sf-select" name="' + f.name + '">' + f.options.map(o => '<option>' + o + '</option>').join('') + '</select></div>';
         }
         if (f.type === 'textarea') {
-            return `<div class="sf-field sf-field-full"><label class="sf-label">${f.label}</label><textarea class="sf-textarea" name="${f.name}" rows="${f.rows || 4}" placeholder="${f.placeholder || ''}" ${f.required ? 'required' : ''}></textarea></div>`;
+            return '<div class="sf-field sf-field-full"><label class="sf-label">' + f.label + '</label><textarea class="sf-textarea" name="' + f.name + '" rows="' + (f.rows || 4) + '" placeholder="' + (f.placeholder || '') + '" ' + (f.required ? 'required' : '') + '></textarea></div>';
         }
-        return `<div class="sf-field"><label class="sf-label">${f.label}</label><input type="${f.type}" class="sf-input" name="${f.name}" placeholder="${f.placeholder || ''}" ${f.required ? 'required' : ''}></div>`;
+        return '<div class="sf-field"><label class="sf-label">' + f.label + '</label><input type="' + f.type + '" class="sf-input" name="' + f.name + '" placeholder="' + (f.placeholder || '') + '" ' + (f.required ? 'required' : '') + '></div>';
     }
 
     renderSelector();
     renderForm();
 }
 
-/* ========== MAGNETIC BUTTON ========== */
 function initMagneticBtn() {
     document.querySelectorAll('.magnetic-btn').forEach(btn => {
         btn.addEventListener('mousemove', e => {
