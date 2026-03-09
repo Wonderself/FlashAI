@@ -3,625 +3,1042 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FlashAI | Agence Digitale — Sites, CRM, Dashboards & Automatisation IA</title>
-
-    <meta name="description" content="FlashAI développe vos outils digitaux sur mesure : sites web, CRM, dashboards, intégrations API et automatisations IA. Tarifs ultra-compétitifs grâce à notre stack automatisée. Résultats en jours, pas en mois.">
-
-    <meta name="keywords" content="agence digitale, création site web, CRM sur mesure, dashboard entreprise, intégration API, automatisation IA, développement web PME, logiciel métier">
-
+    <title>FlashAI | Agence Digitale — Sites, CRM, Dashboards &amp; Automatisation IA</title>
+    <meta name="description" content="FlashAI developpe vos outils digitaux sur mesure : sites web, CRM, dashboards, integrations API et automatisations IA. Tarifs ultra-competitifs. Resultats en jours, pas en mois.">
+    <meta name="keywords" content="agence digitale, creation site web, CRM sur mesure, dashboard entreprise, integration API, automatisation IA, developpement web PME, logiciel metier">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://flashai.dev/">
-    <meta property="og:title" content="FlashAI | Votre équipe tech, sans le budget d'une équipe tech">
-    <meta property="og:description" content="Sites, CRM, dashboards, API, IA — des outils digitaux sur mesure livrés en un éclair, à des tarifs ultra-compétitifs.">
-
+    <meta property="og:title" content="FlashAI | Votre equipe tech, sans le budget d une equipe tech">
+    <meta property="og:description" content="Sites, CRM, dashboards, API, IA — des outils digitaux sur mesure livres en un eclair.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FlashAI | Agence Digitale Sur Mesure">
-    <meta name="twitter:description" content="On construit vos outils digitaux. Rapidement. À des prix qui n'existent nulle part ailleurs.">
-
-    <!-- Google tag (gtag.js) -->
+    <meta name="twitter:description" content="On construit vos outils digitaux. Rapidement. A des prix qui n existent nulle part ailleurs.">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-596949253"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-596949253');
-    </script>
-
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","AW-596949253");</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' },
-                        surface: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a',950:'#020617' },
-                        accent: { 400:'#38bdf8',500:'#0ea5e9',600:'#0284c7' },
-                        success: { 500:'#22c55e' },
-                        warm: { 400:'#fb923c',500:'#f97316' }
-                    },
-                    fontFamily: {
-                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-                        body: ['Inter', 'system-ui', 'sans-serif'],
-                    }
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: { 50:"#eef2ff",100:"#e0e7ff",200:"#c7d2fe",300:"#a5b4fc",400:"#818cf8",500:"#6366f1",600:"#4f46e5",700:"#4338ca",800:"#3730a3",900:"#312e81" },
+                    surface: { 50:"#f8fafc",100:"#f1f5f9",200:"#e2e8f0",300:"#cbd5e1",400:"#94a3b8",500:"#64748b",600:"#475569",700:"#334155",800:"#1e293b",900:"#0f172a",950:"#020617" },
+                    accent: { 400:"#22d3ee",500:"#0ea5e9",600:"#0284c7" }
+                },
+                fontFamily: {
+                    display: ["Space Grotesk","system-ui","sans-serif"],
+                    body: ["Inter","system-ui","sans-serif"]
                 }
             }
         }
-    </script>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "FlashAI",
-      "description": "Agence digitale spécialisée dans le développement sur mesure : sites web, CRM, dashboards, intégrations API et automatisations IA pour PME et indépendants.",
-      "priceRange": "€€",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Paris",
-        "addressCountry": "FR"
-      },
-      "areaServed": ["FR", "BE", "CH", "LU", "CA"],
-      "knowsAbout": ["Web Development", "CRM", "API Integration", "Artificial Intelligence", "Business Automation"]
     }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"ProfessionalService","name":"FlashAI","description":"Agence digitale specialisee dans le developpement sur mesure pour PME et independants.","url":"https://flashai.dev","areaServed":["France","Belgique","Suisse","Luxembourg","Canada"],"serviceType":["Developpement web","CRM","Dashboard","Integration API","Automatisation IA"]}
+    </script>
 </head>
-<body class="bg-surface-950 text-white font-body antialiased overflow-x-hidden">
+<body class="bg-surface-950 text-white font-body">
 
-    <!-- ========== HEADER ========== -->
-    <header id="site-header" class="fixed top-0 w-full z-50 transition-all duration-300">
-        <nav class="max-w-6xl mx-auto px-5 h-16 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2.5 group" aria-label="FlashAI - Accueil">
-                <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center text-white font-display font-bold text-sm">F</div>
-                <span class="font-display font-bold text-lg tracking-tight">Flash<span class="text-primary-400">AI</span></span>
-            </a>
-            <div class="hidden md:flex items-center gap-8 text-sm">
-                <a href="#services" class="text-surface-400 hover:text-white transition-colors">Services</a>
-                <a href="#method" class="text-surface-400 hover:text-white transition-colors">Méthode</a>
-                <a href="#integrations" class="text-surface-400 hover:text-white transition-colors">Intégrations</a>
-                <a href="#pricing" class="text-surface-400 hover:text-white transition-colors">Tarifs</a>
-                <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Parlons de votre projet</a>
-            </div>
-            <button id="mobile-toggle" class="md:hidden text-surface-400 hover:text-white" aria-label="Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
+<!-- ==================== HEADER ==================== -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-1 text-xl font-display font-bold tracking-tight">
+            <span class="text-white">Flash</span><span class="text-gradient">AI</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="#services" class="text-sm text-surface-400 hover:text-white transition-colors">Services</a>
+            <a href="#methode" class="text-sm text-surface-400 hover:text-white transition-colors">M&eacute;thode</a>
+            <a href="#portfolio" class="text-sm text-surface-400 hover:text-white transition-colors">R&eacute;alisations</a>
+            <a href="#tarifs" class="text-sm text-surface-400 hover:text-white transition-colors">Tarifs</a>
+            <a href="#faq" class="text-sm text-surface-400 hover:text-white transition-colors">FAQ</a>
+            <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all btn-glow">Devis gratuit</a>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-surface-900/98 backdrop-blur-xl border-t border-white/5">
-            <div class="max-w-6xl mx-auto px-5 py-4 space-y-3">
-                <a href="#services" class="block text-surface-300 hover:text-white py-1.5">Services</a>
-                <a href="#method" class="block text-surface-300 hover:text-white py-1.5">Méthode</a>
-                <a href="#integrations" class="block text-surface-300 hover:text-white py-1.5">Intégrations</a>
-                <a href="#pricing" class="block text-surface-300 hover:text-white py-1.5">Tarifs</a>
-                <a href="#contact" class="block bg-primary-600 text-white text-center px-4 py-2.5 rounded-lg font-medium mt-2">Parlons de votre projet</a>
-            </div>
+        <button id="mobile-toggle" class="md:hidden text-white p-2" aria-label="Menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-surface-950/95 backdrop-blur-xl border-t border-white/5">
+        <div class="px-5 py-4 flex flex-col gap-3">
+            <a href="#services" class="text-surface-300 hover:text-white py-2 transition-colors">Services</a>
+            <a href="#methode" class="text-surface-300 hover:text-white py-2 transition-colors">M&eacute;thode</a>
+            <a href="#portfolio" class="text-surface-300 hover:text-white py-2 transition-colors">R&eacute;alisations</a>
+            <a href="#tarifs" class="text-surface-300 hover:text-white py-2 transition-colors">Tarifs</a>
+            <a href="#faq" class="text-surface-300 hover:text-white py-2 transition-colors">FAQ</a>
+            <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl text-center mt-2 transition-all">Devis gratuit</a>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- ========== HERO ========== -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 px-5">
-        <!-- Subtle gradient orbs -->
-        <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-primary-600/8 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent-500/6 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- ==================== HERO ==================== -->
+<section class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
+    <div class="hero-bg">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+        <div class="hero-grid"></div>
+        <div id="particles"></div>
+    </div>
 
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 bg-primary-600/10 border border-primary-500/20 rounded-full px-4 py-1.5 mb-8 reveal">
-                <span class="w-1.5 h-1.5 bg-success-500 rounded-full animate-pulse"></span>
-                <span class="text-xs text-primary-300 font-medium">Disponible pour nouveaux projets — délai moyen de livraison : 5 jours</span>
+    <div class="relative z-10 max-w-7xl mx-auto px-5 w-full">
+        <div class="max-w-4xl">
+            <!-- Status badge -->
+            <div class="reveal inline-flex items-center gap-2 bg-primary-600/10 border border-primary-500/20 rounded-full px-4 py-2 mb-8">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-sm text-surface-300">Disponible pour nouveaux projets &mdash; livraison sous 5 jours</span>
             </div>
 
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-[1.1] tracking-tight reveal">
-                Votre équipe tech,<br>
+            <!-- Main headline -->
+            <h1 class="reveal font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight mb-6">
+                Votre &eacute;quipe tech,<br>
                 <span class="text-gradient">sans le budget</span><br>
-                d'une équipe tech.
+                d&rsquo;une &eacute;quipe tech.
             </h1>
 
-            <p class="text-lg md:text-xl text-surface-400 max-w-2xl mx-auto mb-10 leading-relaxed reveal">
-                Sites web, CRM, dashboards, intégrations API, automatisations IA — on construit vos outils digitaux sur mesure, <strong class="text-surface-200">rapidement</strong> et à des <strong class="text-surface-200">tarifs ultra-compétitifs</strong>.
+            <!-- Typewriter subheadline -->
+            <p class="reveal text-lg sm:text-xl text-surface-400 max-w-2xl mb-4 leading-relaxed">
+                On construit vos
+                <span id="typewriter" class="text-white font-semibold" data-words='["sites web","CRM","dashboards","automatisations IA","int&eacute;grations API","applications mobiles"]'>sites web</span><span class="typewriter-cursor"></span>
+            </p>
+            <p class="reveal text-lg sm:text-xl text-surface-400 max-w-2xl mb-10 leading-relaxed">
+                Sur mesure, rapidement, &agrave; des prix <span class="text-gradient-warm font-semibold">3 &agrave; 5x inf&eacute;rieurs</span> au march&eacute;.
             </p>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal">
-                <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-primary-600/25">
-                    Discuter de mon projet
+            <!-- CTA buttons -->
+            <div class="reveal flex flex-col sm:flex-row gap-4 mb-12">
+                <a href="#contact" class="bg-primary-600 hover:bg-primary-500 text-white font-semibold px-8 py-4 rounded-2xl text-center transition-all btn-glow text-lg shadow-lg shadow-primary-600/25 hover:shadow-primary-500/40">
+                    Demander un devis gratuit &rarr;
                 </a>
-                <a href="#services" class="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-3.5 rounded-xl font-semibold transition-all">
-                    Découvrir nos services
+                <a href="#portfolio" class="border border-white/10 hover:border-white/25 text-white font-medium px-8 py-4 rounded-2xl text-center transition-all hover:bg-white/5 text-lg">
+                    Voir nos r&eacute;alisations
                 </a>
             </div>
 
             <!-- Trust indicators -->
-            <div class="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-surface-500 reveal">
+            <div class="reveal flex flex-wrap gap-x-8 gap-y-3 text-sm text-surface-400">
                 <span class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-success-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                     Livraison en jours, pas en mois
                 </span>
                 <span class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-success-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    Prix 3 à 5x inférieurs au marché
+                    <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    100% propri&eacute;taire de votre code
                 </span>
                 <span class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-success-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                     Sans engagement ni abonnement
                 </span>
             </div>
         </div>
-    </section>
-
-    <!-- ========== SOCIAL PROOF BAR ========== -->
-    <section class="border-y border-white/5 py-10 px-5">
-        <div class="max-w-5xl mx-auto">
-            <p class="text-center text-xs text-surface-500 uppercase tracking-widest mb-6">Technologies & outils qu'on maîtrise</p>
-            <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 text-surface-500">
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">React</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Next.js</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Node.js</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Python</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">PostgreSQL</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Stripe</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">OpenAI</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Tailwind</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Supabase</span>
-                <span class="font-display font-semibold text-sm opacity-50 hover:opacity-80 transition-opacity">Figma</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SERVICES ========== -->
-    <section id="services" class="py-20 md:py-28 px-5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Ce qu'on construit pour vous</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight">Tout ce dont votre business a besoin.</h2>
-                <p class="text-surface-400 mt-4 max-w-2xl mx-auto text-lg">Du site vitrine au logiciel métier complet — on développe, on intègre, on automatise. Vous, vous vous concentrez sur votre activité.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <!-- Service 1 -->
-                <div class="service-card group reveal">
-                    <div class="service-icon bg-primary-600/10 text-primary-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-                    </div>
-                    <h3 class="text-lg font-display font-bold mb-2">Sites Web & Landing Pages</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Sites vitrines, landing pages de conversion, sites e-commerce. Design moderne, responsive, optimisé SEO. Livrés en quelques jours.</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="service-card group reveal">
-                    <div class="service-icon bg-accent-500/10 text-accent-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
-                    </div>
-                    <h3 class="text-lg font-display font-bold mb-2">CRM & Logiciels Métier</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Gestion clients, suivi de projets, facturation, devis automatisés. Des outils pensés pour votre métier, pas des usines à gaz.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card group reveal">
-                    <div class="service-icon bg-emerald-500/10 text-emerald-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
-                    </div>
-                    <h3 class="text-lg font-display font-bold mb-2">Dashboards & Analytics</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Tableaux de bord en temps réel pour piloter votre activité. KPIs, graphiques, rapports — tout ce qu'il faut pour prendre les bonnes décisions.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card group reveal">
-                    <div class="service-icon bg-orange-500/10 text-orange-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
-                    </div>
-                    <h3 class="text-lg font-display font-bold mb-2">Intégrations API</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">On connecte vos outils entre eux : Stripe, Google, HubSpot, Slack, Notion, WhatsApp, Shopify, et des centaines d'autres. Fini la saisie en double.</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="service-card group reveal">
-                    <div class="service-icon bg-violet-500/10 text-violet-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
-                    </div>
-                    <h3 class="text-lg font-display font-bold mb-2">Automatisation & IA</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Chatbots intelligents, génération de contenu, traitement de données, workflows automatisés. L'IA au service de votre productivité.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="service-card group reveal">
-                    <div class="service-icon bg-rose-500/10 text-rose-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
-                    </div>
-                    <h3 class="text-lg font-display font-bold mb-2">Applications Web & Mobile</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Portails clients, plateformes de réservation, outils internes, apps métier. Du prototype à la mise en production.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== WHY FLASH ========== -->
-    <section id="method" class="py-20 md:py-28 px-5 bg-surface-900/50 border-y border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Pourquoi FlashAI</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight">Des résultats concrets,<br>pas des promesses.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-                <!-- Advantage 1 -->
-                <div class="advantage-card reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-primary-600/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-lg mb-2">Rapidité d'exécution</h3>
-                            <p class="text-surface-400 text-sm leading-relaxed">Flash, c'est pas juste un nom. Un site livré en 3-5 jours. Un CRM en 1-2 semaines. On a automatisé nos propres process pour vous livrer à une vitesse que les agences traditionnelles ne peuvent pas suivre.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Advantage 2 -->
-                <div class="advantage-card reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-emerald-600/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-lg mb-2">Tarifs ultra-compétitifs</h3>
-                            <p class="text-surface-400 text-sm leading-relaxed">On utilise massivement l'IA et l'automatisation dans notre workflow. Résultat : on vous facture 3 à 5 fois moins cher qu'une agence classique, pour un résultat équivalent ou supérieur. Sans compromis sur la qualité.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Advantage 3 -->
-                <div class="advantage-card reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-accent-600/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-lg mb-2">Expertise tech réelle</h3>
-                            <p class="text-surface-400 text-sm leading-relaxed">Pas de templates WordPress rechauffés. On code vos solutions sur mesure avec les technologies les plus performantes du marché. APIs, bases de données, architecture — c'est notre coeur de métier.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Advantage 4 -->
-                <div class="advantage-card reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-violet-600/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-lg mb-2">Un interlocuteur, pas un formulaire</h3>
-                            <p class="text-surface-400 text-sm leading-relaxed">Vous parlez directement avec le développeur qui construit votre projet. Pas de commercial, pas de chef de projet intermédiaire, pas de réunions inutiles. Communication directe, résultats rapides.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== HOW IT WORKS ========== -->
-    <section class="py-20 md:py-28 px-5">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Comment ça marche</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight">Simple, rapide, efficace.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-                <div class="text-center reveal">
-                    <div class="w-12 h-12 bg-primary-600/15 border border-primary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <span class="font-display font-bold text-primary-400">01</span>
-                    </div>
-                    <h3 class="font-display font-bold text-lg mb-3">Vous nous décrivez votre besoin</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Un appel de 15 min ou un message. On comprend votre activité, vos contraintes, et ce que vous voulez vraiment.</p>
-                </div>
-
-                <div class="text-center reveal">
-                    <div class="w-12 h-12 bg-primary-600/15 border border-primary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <span class="font-display font-bold text-primary-400">02</span>
-                    </div>
-                    <h3 class="font-display font-bold text-lg mb-3">On construit, vous validez</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">On développe une première version en quelques jours. Vous voyez le résultat, vous demandez des ajustements, on itère.</p>
-                </div>
-
-                <div class="text-center reveal">
-                    <div class="w-12 h-12 bg-primary-600/15 border border-primary-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <span class="font-display font-bold text-primary-400">03</span>
-                    </div>
-                    <h3 class="font-display font-bold text-lg mb-3">C'est en ligne, vous êtes autonome</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">On déploie, on vous forme si besoin, et tout vous appartient. Pas d'abonnement, pas de dépendance.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== INTEGRATIONS ========== -->
-    <section id="integrations" class="py-20 md:py-28 px-5 bg-surface-900/50 border-y border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Intégrations</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight">On connecte tout.</h2>
-                <p class="text-surface-400 mt-4 max-w-2xl mx-auto text-lg">Vos outils ne se parlent pas ? On les fait collaborer. Voici quelques-unes des APIs et plateformes qu'on intègre couramment.</p>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 reveal">
-                <div class="integration-badge">Stripe</div>
-                <div class="integration-badge">Google Workspace</div>
-                <div class="integration-badge">HubSpot</div>
-                <div class="integration-badge">Slack</div>
-                <div class="integration-badge">Notion</div>
-                <div class="integration-badge">Airtable</div>
-                <div class="integration-badge">Mailchimp</div>
-                <div class="integration-badge">WhatsApp Business</div>
-                <div class="integration-badge">Shopify</div>
-                <div class="integration-badge">Zapier</div>
-                <div class="integration-badge">Calendly</div>
-                <div class="integration-badge">Google Analytics</div>
-                <div class="integration-badge">Twilio</div>
-                <div class="integration-badge">SendGrid</div>
-                <div class="integration-badge">OpenAI / Claude</div>
-                <div class="integration-badge">Google Maps</div>
-                <div class="integration-badge">DocuSign</div>
-                <div class="integration-badge">Xero / Pennylane</div>
-                <div class="integration-badge">Monday.com</div>
-                <div class="integration-badge">+ des centaines d'autres</div>
-            </div>
-
-            <p class="text-center text-surface-500 text-sm mt-8 reveal">Vous avez un outil spécifique ? Si l'API existe, on peut l'intégrer.</p>
-        </div>
-    </section>
-
-    <!-- ========== WHAT WE BUILD (Examples) ========== -->
-    <section class="py-20 md:py-28 px-5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Exemples concrets</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight">Ce qu'on a déjà construit.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 reveal">
-                <div class="example-card">
-                    <div class="example-tag">Site + CRM</div>
-                    <h3 class="font-display font-bold text-lg mb-2">Artisan plombier — Paris</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Site vitrine avec formulaire de demande de devis, outil de création de devis assisté par IA (le client décrit ses travaux, l'IA structure le devis), et tableau de bord de suivi des demandes.</p>
-                    <p class="text-primary-400 text-xs font-medium mt-3">Livré en 5 jours — Budget : ~500€</p>
-                </div>
-
-                <div class="example-card">
-                    <div class="example-tag">Dashboard + API</div>
-                    <h3 class="font-display font-bold text-lg mb-2">Cabinet de conseil — Lyon</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Dashboard de suivi des missions avec intégration Google Calendar, facturation automatique via Stripe, et rapports PDF générés par IA envoyés automatiquement aux clients.</p>
-                    <p class="text-primary-400 text-xs font-medium mt-3">Livré en 10 jours — Budget : ~1 200€</p>
-                </div>
-
-                <div class="example-card">
-                    <div class="example-tag">Automatisation IA</div>
-                    <h3 class="font-display font-bold text-lg mb-2">E-commerce — Belgique</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Chatbot IA pour le service client intégré à Shopify, réponses automatiques sur WhatsApp Business, et synchronisation des commandes avec leur ERP.</p>
-                    <p class="text-primary-400 text-xs font-medium mt-3">Livré en 7 jours — Budget : ~800€</p>
-                </div>
-
-                <div class="example-card">
-                    <div class="example-tag">Application Web</div>
-                    <h3 class="font-display font-bold text-lg mb-2">Coach indépendant — Suisse</h3>
-                    <p class="text-surface-400 text-sm leading-relaxed">Plateforme de réservation de séances avec paiement en ligne, espace client personnalisé, rappels automatiques par email et SMS via Twilio.</p>
-                    <p class="text-primary-400 text-xs font-medium mt-3">Livré en 8 jours — Budget : ~900€</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PRICING ========== -->
-    <section id="pricing" class="py-20 md:py-28 px-5 bg-surface-900/50 border-y border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Tarifs transparents</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight">Des prix clairs. Pas de surprises.</h2>
-                <p class="text-surface-400 mt-4 max-w-2xl mx-auto text-lg">Chaque projet est unique, mais voici nos fourchettes habituelles pour vous donner une idée réaliste.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 items-start">
-                <!-- Tier 1 -->
-                <div class="pricing-card reveal">
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-xl mb-1">Essentiel</h3>
-                        <p class="text-surface-500 text-sm">Idéal pour démarrer</p>
-                    </div>
-                    <div class="mb-6">
-                        <span class="text-4xl font-display font-bold">250€</span>
-                        <span class="text-surface-500 text-sm ml-1">— 700€</span>
-                    </div>
-                    <ul class="space-y-3 text-sm text-surface-300 mb-8">
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Site vitrine ou landing page
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Design responsive sur mesure
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Optimisation SEO
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Hébergement inclus (2 ans)
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Livraison 3-5 jours
-                        </li>
-                    </ul>
-                    <a href="#contact" class="block text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-3 rounded-xl font-medium transition-all text-sm">Commencer</a>
-                </div>
-
-                <!-- Tier 2 - Featured -->
-                <div class="pricing-card pricing-featured reveal">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span class="bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full">Le plus demandé</span>
-                    </div>
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-xl mb-1">Business</h3>
-                        <p class="text-surface-500 text-sm">Pour structurer et automatiser</p>
-                    </div>
-                    <div class="mb-6">
-                        <span class="text-4xl font-display font-bold">700€</span>
-                        <span class="text-surface-500 text-sm ml-1">— 2 000€</span>
-                    </div>
-                    <ul class="space-y-3 text-sm text-surface-300 mb-8">
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Tout de l'Essentiel +
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            CRM ou outil métier sur mesure
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Intégrations API (2-3 services)
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Dashboard de pilotage
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Espace admin autonome
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Livraison 5-10 jours
-                        </li>
-                    </ul>
-                    <a href="#contact" class="block text-center bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-xl font-medium transition-all text-sm">Discuter de mon projet</a>
-                </div>
-
-                <!-- Tier 3 -->
-                <div class="pricing-card reveal">
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-xl mb-1">Sur Mesure</h3>
-                        <p class="text-surface-500 text-sm">Pour les projets ambitieux</p>
-                    </div>
-                    <div class="mb-6">
-                        <span class="text-4xl font-display font-bold">2 000€</span>
-                        <span class="text-surface-500 text-sm ml-1">— 5 000€+</span>
-                    </div>
-                    <ul class="space-y-3 text-sm text-surface-300 mb-8">
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Tout de Business +
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Application web complète
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Automatisations IA avancées
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Intégrations API illimitées
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <svg class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                            Support & évolutions continues
-                        </li>
-                    </ul>
-                    <a href="#contact" class="block text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-3 rounded-xl font-medium transition-all text-sm">Obtenir un devis</a>
-                </div>
-            </div>
-
-            <p class="text-center mt-10 text-surface-500 text-sm reveal">Chaque projet est différent. Ces fourchettes sont indicatives — contactez-nous pour un devis précis et gratuit.</p>
-            <p class="text-center mt-2 text-surface-600 text-xs italic">TVA non applicable, art. 293 B du CGI.</p>
-        </div>
-    </section>
-
-    <!-- ========== FAQ ========== -->
-    <section id="faq" class="py-20 md:py-28 px-5">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-14 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">FAQ</p>
-                <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight">Questions fréquentes</h2>
-            </div>
-            <div class="space-y-3" id="faq-container"></div>
-        </div>
-    </section>
-
-    <!-- ========== CONTACT ========== -->
-    <section id="contact" class="py-20 md:py-28 px-5 bg-surface-900/50 border-y border-white/5">
-        <div class="max-w-2xl mx-auto">
-            <div class="text-center mb-12 reveal">
-                <p class="text-primary-400 font-medium text-sm mb-3 uppercase tracking-wider">Contact</p>
-                <h2 class="text-3xl md:text-4xl font-display font-bold tracking-tight mb-4">Parlons de votre projet.</h2>
-                <p class="text-surface-400">Décrivez-nous votre besoin — on revient vers vous sous 24h avec une proposition concrète et un devis gratuit.</p>
-            </div>
-
-            <form class="space-y-4 reveal" id="contactForm">
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <input type="text" name="name" class="form-input" placeholder="Votre nom" required>
-                    <input type="text" name="company" class="form-input" placeholder="Entreprise (optionnel)">
-                </div>
-                <input type="email" name="email" class="form-input" placeholder="Email" required>
-                <select name="need" class="form-input" required>
-                    <option value="" disabled selected>Quel est votre besoin principal ?</option>
-                    <option value="site">Site web / Landing page</option>
-                    <option value="crm">CRM / Logiciel métier</option>
-                    <option value="dashboard">Dashboard / Analytics</option>
-                    <option value="api">Intégrations API</option>
-                    <option value="automation">Automatisation / IA</option>
-                    <option value="app">Application web / mobile</option>
-                    <option value="other">Autre / Je ne sais pas encore</option>
-                </select>
-                <textarea name="message" rows="4" class="form-input" placeholder="Décrivez votre projet en quelques lignes..." required></textarea>
-
-                <button type="submit" id="submitBtn" class="w-full bg-primary-600 hover:bg-primary-500 text-white py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-primary-600/25">
-                    Envoyer ma demande
-                </button>
-                <p class="text-xs text-surface-600 text-center">Réponse sous 24h. Devis gratuit, sans engagement.</p>
-            </form>
-        </div>
-    </section>
-
-    <!-- ========== SUCCESS POPUP ========== -->
-    <div id="successPopup" class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-black/70 backdrop-blur-sm">
-        <div class="bg-surface-900 border border-white/10 p-8 rounded-2xl text-center max-w-sm mx-4 shadow-2xl">
-            <div class="w-12 h-12 bg-success-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-6 h-6 text-success-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <h3 class="text-xl font-display font-bold mb-2">Message envoyé</h3>
-            <p class="text-surface-400 text-sm">On revient vers vous très rapidement avec une proposition concrète.</p>
-            <button onclick="closePopup()" class="mt-5 text-sm text-primary-400 hover:text-primary-300 font-medium">Fermer</button>
-        </div>
     </div>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="py-10 px-5 border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-7 h-7 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center text-white font-display font-bold text-xs">F</div>
-                    <span class="font-display font-bold text-sm tracking-tight">Flash<span class="text-primary-400">AI</span></span>
-                </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-gentle">
+        <svg class="w-6 h-6 text-surface-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+</section>
 
-                <div class="flex flex-wrap justify-center gap-6 text-xs text-surface-500">
-                    <a href="mentions-legales.html" class="hover:text-surface-300 transition-colors">Mentions légales</a>
-                    <a href="cgu.html" class="hover:text-surface-300 transition-colors">CGU</a>
-                    <a href="#contact" class="hover:text-surface-300 transition-colors">Contact</a>
+<!-- ==================== STATS BAR ==================== -->
+<section class="relative py-16 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <div class="text-center reveal">
+                <div class="font-display text-3xl sm:text-4xl font-bold text-white mb-2">
+                    <span data-count="50" data-suffix="+">0</span>
+                </div>
+                <p class="text-sm text-surface-400">Projets livr&eacute;s</p>
+            </div>
+            <div class="text-center reveal">
+                <div class="font-display text-3xl sm:text-4xl font-bold text-white mb-2">
+                    <span data-count="5" data-suffix=" jours">0</span>
+                </div>
+                <p class="text-sm text-surface-400">D&eacute;lai moyen de livraison</p>
+            </div>
+            <div class="text-center reveal">
+                <div class="font-display text-3xl sm:text-4xl font-bold text-gradient mb-2">
+                    <span data-count="3" data-suffix="&ndash;5x">0</span>
+                </div>
+                <p class="text-sm text-surface-400">Moins cher que le march&eacute;</p>
+            </div>
+            <div class="text-center reveal">
+                <div class="font-display text-3xl sm:text-4xl font-bold text-white mb-2">
+                    <span data-count="100" data-suffix="%">0</span>
+                </div>
+                <p class="text-sm text-surface-400">Clients satisfaits</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TECH MARQUEE ==================== -->
+<section class="py-10 overflow-hidden border-b border-white/5">
+    <div class="relative">
+        <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-surface-950 to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-surface-950 to-transparent z-10"></div>
+        <div class="marquee-track">
+            <div class="flex items-center gap-12 px-6">
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">React</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Next.js</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Node.js</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Python</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">PostgreSQL</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Stripe</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">OpenAI</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Tailwind CSS</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Supabase</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Figma</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">TypeScript</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Firebase</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Vercel</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Claude AI</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">Docker</span>
+                <span class="text-surface-500 font-medium whitespace-nowrap text-sm">AWS</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SERVICES ==================== -->
+<section id="services" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Nos services</span>
+            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Tout ce dont votre business a besoin</h2>
+            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Du site vitrine au logiciel m&eacute;tier complet, on couvre l&rsquo;ensemble de vos besoins digitaux.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
+            <!-- Service 1 -->
+            <div class="service-card reveal tilt-card" style="--card-accent: #6366f1;">
+                <div class="service-icon bg-primary-600/15">
+                    <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                </div>
+                <h3 class="font-display text-lg font-bold mb-2">Sites Web &amp; Landing Pages</h3>
+                <p class="text-surface-400 text-sm leading-relaxed mb-4">Sites vitrine, landing pages de conversion, blogs. Design moderne, responsive, optimis&eacute; SEO. Livr&eacute; en 3-5 jours.</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-primary-400 font-semibold">&Agrave; partir de 250&euro;</span>
+                    <span class="text-surface-600">&bull;</span>
+                    <span class="text-surface-500">3-5 jours</span>
                 </div>
             </div>
 
-            <p class="text-center text-[11px] text-surface-700 mt-6">
-                FlashAI — Agence digitale. Développement sur mesure pour PME et indépendants.
-            </p>
-        </div>
-    </footer>
+            <!-- Service 2 -->
+            <div class="service-card reveal tilt-card" style="--card-accent: #0ea5e9;">
+                <div class="service-icon bg-accent-500/15">
+                    <svg class="w-6 h-6 text-accent-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+                </div>
+                <h3 class="font-display text-lg font-bold mb-2">CRM &amp; Logiciels M&eacute;tier</h3>
+                <p class="text-surface-400 text-sm leading-relaxed mb-4">Outils de gestion clients, devis, facturation, suivi de projets. Adapt&eacute;s &agrave; VOTRE m&eacute;tier, pas l&rsquo;inverse.</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-accent-400 font-semibold">&Agrave; partir de 700&euro;</span>
+                    <span class="text-surface-600">&bull;</span>
+                    <span class="text-surface-500">1-2 semaines</span>
+                </div>
+            </div>
 
-    <script src="script.js"></script>
+            <!-- Service 3 -->
+            <div class="service-card reveal tilt-card" style="--card-accent: #8b5cf6;">
+                <div class="service-icon bg-violet-500/15">
+                    <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+                </div>
+                <h3 class="font-display text-lg font-bold mb-2">Dashboards &amp; Analytics</h3>
+                <p class="text-surface-400 text-sm leading-relaxed mb-4">Tableaux de bord en temps r&eacute;el, rapports automatis&eacute;s, visualisation de donn&eacute;es. Prenez des d&eacute;cisions &eacute;clair&eacute;es.</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-violet-400 font-semibold">&Agrave; partir de 800&euro;</span>
+                    <span class="text-surface-600">&bull;</span>
+                    <span class="text-surface-500">1-2 semaines</span>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card reveal tilt-card" style="--card-accent: #f97316;">
+                <div class="service-icon bg-orange-500/15">
+                    <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-4.939a4.5 4.5 0 00-6.364-6.364L4.5 8.31a4.5 4.5 0 006.364 6.364l4.5-4.5z"/></svg>
+                </div>
+                <h3 class="font-display text-lg font-bold mb-2">Int&eacute;grations API</h3>
+                <p class="text-surface-400 text-sm leading-relaxed mb-4">Connexion de vos outils : Stripe, Google, HubSpot, Slack, Zapier, et +200 autres. Tout communique.</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-orange-400 font-semibold">&Agrave; partir de 300&euro;</span>
+                    <span class="text-surface-600">&bull;</span>
+                    <span class="text-surface-500">2-5 jours</span>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card reveal tilt-card" style="--card-accent: #22c55e;">
+                <div class="service-icon bg-green-500/15">
+                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
+                </div>
+                <h3 class="font-display text-lg font-bold mb-2">Automatisation &amp; IA</h3>
+                <p class="text-surface-400 text-sm leading-relaxed mb-4">Chatbots IA, g&eacute;n&eacute;ration de contenu, workflows automatis&eacute;s, classification intelligente. L&rsquo;IA au service de votre business.</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-green-400 font-semibold">&Agrave; partir de 500&euro;</span>
+                    <span class="text-surface-600">&bull;</span>
+                    <span class="text-surface-500">1-2 semaines</span>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card reveal tilt-card" style="--card-accent: #ec4899;">
+                <div class="service-icon bg-pink-500/15">
+                    <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+                </div>
+                <h3 class="font-display text-lg font-bold mb-2">Applications Web &amp; Mobile</h3>
+                <p class="text-surface-400 text-sm leading-relaxed mb-4">Apps compl&egrave;tes avec authentification, paiement, notifications. Votre id&eacute;e transform&eacute;e en produit fonctionnel.</p>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-pink-400 font-semibold">&Agrave; partir de 2 000&euro;</span>
+                    <span class="text-surface-600">&bull;</span>
+                    <span class="text-surface-500">2-4 semaines</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== POURQUOI FLASHAI ==================== -->
+<section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Pourquoi nous</span>
+                <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+                    L&rsquo;agilit&eacute; d&rsquo;un freelance,<br>
+                    la rigueur d&rsquo;une <span class="text-gradient">agence</span>.
+                </h2>
+                <p class="reveal text-surface-400 text-lg leading-relaxed mb-10">
+                    On a automatis&eacute; notre workflow avec l&rsquo;IA pour livrer plus vite et moins cher &mdash; sans sacrifier la qualit&eacute;. Chaque ligne de code est v&eacute;rifi&eacute;e, test&eacute;e, optimis&eacute;e.
+                </p>
+                <div class="space-y-6">
+                    <div class="reveal-left flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-600/15 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white mb-1">Rapidit&eacute; d&rsquo;ex&eacute;cution</h3>
+                            <p class="text-surface-400 text-sm">Votre site en 3-5 jours. Votre CRM en 1-2 semaines. Pas en 3 mois.</p>
+                        </div>
+                    </div>
+                    <div class="reveal-left flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-500/15 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white mb-1">Prix ultra-comp&eacute;titifs</h3>
+                            <p class="text-surface-400 text-sm">3 &agrave; 5x moins cher qu&rsquo;une agence classique. On r&eacute;percute nos gains IA sur vos prix.</p>
+                        </div>
+                    </div>
+                    <div class="reveal-left flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white mb-1">Vrai code, vraie expertise</h3>
+                            <p class="text-surface-400 text-sm">Pas de templates. Du code sur mesure, propre, maintenable. On utilise l&rsquo;IA pour acc&eacute;l&eacute;rer, pas pour remplacer le savoir-faire.</p>
+                        </div>
+                    </div>
+                    <div class="reveal-left flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white mb-1">Communication directe</h3>
+                            <p class="text-surface-400 text-sm">Vous parlez directement au d&eacute;veloppeur. Z&eacute;ro interm&eacute;diaire, z&eacute;ro perte d&rsquo;information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison card -->
+            <div class="reveal-right">
+                <div class="glow-card p-8 rounded-2xl">
+                    <h3 class="font-display text-xl font-bold mb-6 text-center">FlashAI vs Agence classique</h3>
+                    <div class="overflow-x-auto">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="text-primary-400">FlashAI</th>
+                                    <th>Agence classique</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-surface-300 text-sm font-medium">Site vitrine</td>
+                                    <td class="text-white font-semibold text-sm">250&ndash;700&euro;</td>
+                                    <td class="text-surface-500 text-sm">2 000&ndash;5 000&euro;</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-surface-300 text-sm font-medium">CRM sur mesure</td>
+                                    <td class="text-white font-semibold text-sm">700&ndash;2 000&euro;</td>
+                                    <td class="text-surface-500 text-sm">5 000&ndash;15 000&euro;</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-surface-300 text-sm font-medium">D&eacute;lai moyen</td>
+                                    <td class="text-white font-semibold text-sm">3&ndash;10 jours</td>
+                                    <td class="text-surface-500 text-sm">4&ndash;12 semaines</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-surface-300 text-sm font-medium">Interlocuteur</td>
+                                    <td class="text-white font-semibold text-sm">Le d&eacute;veloppeur</td>
+                                    <td class="text-surface-500 text-sm">Chef de projet</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-surface-300 text-sm font-medium">Engagement</td>
+                                    <td class="text-white font-semibold text-sm">Aucun</td>
+                                    <td class="text-surface-500 text-sm">Abonnement</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-surface-300 text-sm font-medium">Propri&eacute;t&eacute; du code</td>
+                                    <td class="text-white font-semibold text-sm">100% vous</td>
+                                    <td class="text-surface-500 text-sm">Souvent limit&eacute;e</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== METHODE ==================== -->
+<section id="methode" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Comment &ccedil;a marche</span>
+            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">3 &eacute;tapes. C&rsquo;est tout.</h2>
+            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Un processus simple et transparent. Pas de r&eacute;unions inutiles, pas de jargon.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8" data-stagger>
+            <!-- Step 1 -->
+            <div class="reveal text-center">
+                <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary-600/10 border border-primary-500/20 mb-6">
+                    <span class="font-display text-3xl font-bold text-primary-400">1</span>
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-primary-500 rounded-full animate-pulse"></div>
+                </div>
+                <h3 class="font-display text-xl font-bold mb-3">D&eacute;crivez votre besoin</h3>
+                <p class="text-surface-400 text-sm leading-relaxed max-w-xs mx-auto">Envoyez-nous un message. En 5 minutes, on comprend votre projet. On vous r&eacute;pond sous 24h avec un devis gratuit d&eacute;taill&eacute;.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="reveal text-center">
+                <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-accent-500/10 border border-accent-500/20 mb-6">
+                    <span class="font-display text-3xl font-bold text-accent-400">2</span>
+                </div>
+                <h3 class="font-display text-xl font-bold mb-3">On construit, vous validez</h3>
+                <p class="text-surface-400 text-sm leading-relaxed max-w-xs mx-auto">On d&eacute;veloppe votre solution. Vous avez un aper&ccedil;u en temps r&eacute;el. Feedbacks illimit&eacute;s jusqu&rsquo;&agrave; ce que ce soit parfait.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="reveal text-center">
+                <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-green-500/10 border border-green-500/20 mb-6">
+                    <span class="font-display text-3xl font-bold text-green-400">3</span>
+                </div>
+                <h3 class="font-display text-xl font-bold mb-3">C&rsquo;est en ligne</h3>
+                <p class="text-surface-400 text-sm leading-relaxed max-w-xs mx-auto">On d&eacute;ploie, on vous forme &agrave; l&rsquo;utiliser. Vous &ecirc;tes autonome. Le code est &agrave; vous, pour toujours.</p>
+            </div>
+        </div>
+
+        <div class="reveal text-center mt-12">
+            <a href="#contact" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold px-8 py-4 rounded-2xl transition-all btn-glow shadow-lg shadow-primary-600/25">
+                D&eacute;marrer un projet
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== PORTFOLIO CAROUSEL ==================== -->
+<section id="portfolio" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">R&eacute;alisations</span>
+            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Des projets concrets, des r&eacute;sultats r&eacute;els</h2>
+            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Chaque projet est unique. Voici quelques exemples de ce qu&rsquo;on a construit pour nos clients.</p>
+        </div>
+
+        <div class="carousel-container reveal-scale">
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide">
+                    <div class="glow-card p-1 rounded-2xl h-full">
+                        <div class="bg-surface-900 rounded-2xl overflow-hidden h-full">
+                            <div class="aspect-video bg-gradient-to-br from-primary-600/20 to-accent-500/20 flex items-center justify-center">
+                                <img src="assets/portfolio-site-plomberie.jpg" alt="Site artisan plombier" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-xs font-semibold uppercase tracking-wider bg-primary-600/15 text-primary-400 px-3 py-1 rounded-full">Site vitrine</span>
+                                    <span class="text-xs text-surface-500">5 jours</span>
+                                </div>
+                                <h3 class="font-display font-bold text-lg mb-2">Artisan plombier &mdash; Paris</h3>
+                                <p class="text-surface-400 text-sm mb-4">Site vitrine + SEO local + formulaire de devis. +200% de demandes en 3 mois.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-primary-400 font-bold">~500&euro;</span>
+                                    <span class="text-surface-500 text-xs line-through">Agence : ~3 000&euro;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="glow-card p-1 rounded-2xl h-full">
+                        <div class="bg-surface-900 rounded-2xl overflow-hidden h-full">
+                            <div class="aspect-video bg-gradient-to-br from-violet-600/20 to-pink-500/20 flex items-center justify-center">
+                                <img src="assets/logiciel-devis-ia-artisan-screenshot.jpg" alt="CRM artisan" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-xs font-semibold uppercase tracking-wider bg-violet-600/15 text-violet-400 px-3 py-1 rounded-full">CRM / Logiciel</span>
+                                    <span class="text-xs text-surface-500">10 jours</span>
+                                </div>
+                                <h3 class="font-display font-bold text-lg mb-2">Cabinet de conseil &mdash; Lyon</h3>
+                                <p class="text-surface-400 text-sm mb-4">CRM client + g&eacute;n&eacute;ration de devis IA + tableau de bord. 15h/semaine gagn&eacute;es.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-violet-400 font-bold">~1 200&euro;</span>
+                                    <span class="text-surface-500 text-xs line-through">Agence : ~8 000&euro;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="glow-card p-1 rounded-2xl h-full">
+                        <div class="bg-surface-900 rounded-2xl overflow-hidden h-full">
+                            <div class="aspect-video bg-gradient-to-br from-orange-600/20 to-yellow-500/20 flex items-center justify-center">
+                                <img src="assets/portfolio-site-menuiserie.jpg" alt="E-commerce" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-xs font-semibold uppercase tracking-wider bg-orange-600/15 text-orange-400 px-3 py-1 rounded-full">E-commerce</span>
+                                    <span class="text-xs text-surface-500">7 jours</span>
+                                </div>
+                                <h3 class="font-display font-bold text-lg mb-2">Menuiserie artisanale &mdash; Bordeaux</h3>
+                                <p class="text-surface-400 text-sm mb-4">Boutique en ligne + paiement Stripe + gestion stock. Premier mois : 40 commandes.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-orange-400 font-bold">~800&euro;</span>
+                                    <span class="text-surface-500 text-xs line-through">Agence : ~5 000&euro;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="glow-card p-1 rounded-2xl h-full">
+                        <div class="bg-surface-900 rounded-2xl overflow-hidden h-full">
+                            <div class="aspect-video bg-gradient-to-br from-green-600/20 to-emerald-500/20 flex items-center justify-center">
+                                <img src="assets/portfolio-site-paysagiste-exterieur.jpg" alt="Site coach" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-xs font-semibold uppercase tracking-wider bg-green-600/15 text-green-400 px-3 py-1 rounded-full">Site + Booking</span>
+                                    <span class="text-xs text-surface-500">8 jours</span>
+                                </div>
+                                <h3 class="font-display font-bold text-lg mb-2">Paysagiste &mdash; Nantes</h3>
+                                <p class="text-surface-400 text-sm mb-4">Site vitrine + syst&egrave;me de r&eacute;servation en ligne + galerie portfolio dynamique.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-green-400 font-bold">~900&euro;</span>
+                                    <span class="text-surface-500 text-xs line-through">Agence : ~4 500&euro;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="glow-card p-1 rounded-2xl h-full">
+                        <div class="bg-surface-900 rounded-2xl overflow-hidden h-full">
+                            <div class="aspect-video bg-gradient-to-br from-pink-600/20 to-rose-500/20 flex items-center justify-center">
+                                <img src="assets/portfolio-site-electricite.jpg" alt="Dashboard" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-xs font-semibold uppercase tracking-wider bg-pink-600/15 text-pink-400 px-3 py-1 rounded-full">Dashboard</span>
+                                    <span class="text-xs text-surface-500">12 jours</span>
+                                </div>
+                                <h3 class="font-display font-bold text-lg mb-2">&Eacute;lectricien &mdash; Marseille</h3>
+                                <p class="text-surface-400 text-sm mb-4">Site + dashboard interne pour suivi des chantiers et facturation automatis&eacute;e.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-pink-400 font-bold">~1 500&euro;</span>
+                                    <span class="text-surface-500 text-xs line-through">Agence : ~10 000&euro;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <div class="glow-card p-1 rounded-2xl h-full">
+                        <div class="bg-surface-900 rounded-2xl overflow-hidden h-full">
+                            <div class="aspect-video bg-gradient-to-br from-cyan-600/20 to-blue-500/20 flex items-center justify-center">
+                                <img src="assets/portfolio-site-peinture-finition.jpg" alt="Automatisation" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-xs font-semibold uppercase tracking-wider bg-cyan-600/15 text-cyan-400 px-3 py-1 rounded-full">Automatisation IA</span>
+                                    <span class="text-xs text-surface-500">6 jours</span>
+                                </div>
+                                <h3 class="font-display font-bold text-lg mb-2">Peintre en b&acirc;timent &mdash; Toulouse</h3>
+                                <p class="text-surface-400 text-sm mb-4">Site vitrine + chatbot IA pour devis automatiques + int&eacute;gration Google Agenda.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-cyan-400 font-bold">~700&euro;</span>
+                                    <span class="text-surface-500 text-xs line-through">Agence : ~4 000&euro;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <div class="flex items-center justify-center gap-4 mt-8">
+                <button class="carousel-prev w-10 h-10 rounded-full border border-white/10 hover:border-white/25 flex items-center justify-center transition-all hover:bg-white/5" aria-label="Pr&eacute;c&eacute;dent">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <div class="carousel-dots flex items-center gap-2"></div>
+                <button class="carousel-next w-10 h-10 rounded-full border border-white/10 hover:border-white/25 flex items-center justify-center transition-all hover:bg-white/5" aria-label="Suivant">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== INTEGRATIONS ==================== -->
+<section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Int&eacute;grations</span>
+            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">+200 outils connect&eacute;s</h2>
+            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">On connecte vos outils existants. Si une API existe, on l&rsquo;int&egrave;gre.</p>
+        </div>
+
+        <div class="reveal grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3" data-stagger>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Stripe</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Google</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">HubSpot</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Slack</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Notion</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Airtable</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Mailchimp</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">WhatsApp</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Shopify</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Zapier</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Calendly</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Analytics</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Twilio</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">SendGrid</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">OpenAI</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Maps</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">DocuSign</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Pennylane</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Monday</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Xero</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Supabase</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Firebase</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">Vercel</span>
+            </div>
+            <div class="glass rounded-xl p-4 text-center hover:border-primary-500/25 transition-all hover:-translate-y-1">
+                <span class="text-sm font-medium text-surface-300">+200 autres</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== TARIFS ==================== -->
+<section id="tarifs" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Tarifs transparents</span>
+            <h2 class="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5">Des prix clairs,<br><span class="text-gradient">sans surprise</span></h2>
+            <p class="reveal text-surface-400 text-lg max-w-2xl mx-auto">Pas d&rsquo;abonnement, pas de frais cach&eacute;s. Vous payez une fois, c&rsquo;est &agrave; vous pour toujours.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto" data-stagger>
+            <!-- Essentiel -->
+            <div class="pricing-card reveal">
+                <div class="mb-8">
+                    <h3 class="font-display text-xl font-bold mb-2">Essentiel</h3>
+                    <p class="text-surface-400 text-sm mb-6">Id&eacute;al pour d&eacute;marrer avec une pr&eacute;sence en ligne professionnelle.</p>
+                    <div class="flex items-baseline gap-1 mb-2">
+                        <span class="font-display text-4xl font-bold">250&euro;</span>
+                        <span class="text-surface-500 text-sm">&ndash; 700&euro;</span>
+                    </div>
+                    <span class="text-surface-500 text-xs">Paiement unique, sans abonnement</span>
+                </div>
+
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Site vitrine ou landing page</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Design responsive &amp; moderne</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Optimisation SEO de base</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Formulaire de contact</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">H&eacute;bergement inclus 2 ans</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Livraison en 3-5 jours</span>
+                    </li>
+                </ul>
+
+                <a href="#contact" class="block w-full text-center py-3.5 rounded-xl border border-white/10 text-white font-semibold hover:bg-white/5 hover:border-white/20 transition-all text-sm">
+                    Demander un devis
+                </a>
+            </div>
+
+            <!-- Business (featured) -->
+            <div class="pricing-card pricing-featured reveal">
+                <div class="pricing-badge">Le plus populaire</div>
+                <div class="mb-8">
+                    <h3 class="font-display text-xl font-bold mb-2">Business</h3>
+                    <p class="text-surface-400 text-sm mb-6">Pour les entreprises qui veulent des outils m&eacute;tier performants.</p>
+                    <div class="flex items-baseline gap-1 mb-2">
+                        <span class="font-display text-4xl font-bold">700&euro;</span>
+                        <span class="text-surface-500 text-sm">&ndash; 2 000&euro;</span>
+                    </div>
+                    <span class="text-surface-500 text-xs">Paiement unique, sans abonnement</span>
+                </div>
+
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300"><strong class="text-white">Tout le pack Essentiel</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">CRM ou logiciel m&eacute;tier sur mesure</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">2-3 int&eacute;grations API</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Dashboard de suivi</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Espace administration</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Formation &amp; documentation</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Livraison en 1-2 semaines</span>
+                    </li>
+                </ul>
+
+                <a href="#contact" class="block w-full text-center py-3.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-semibold transition-all btn-glow shadow-lg shadow-primary-600/25 text-sm">
+                    Demander un devis
+                </a>
+            </div>
+
+            <!-- Sur Mesure -->
+            <div class="pricing-card reveal">
+                <div class="mb-8">
+                    <h3 class="font-display text-xl font-bold mb-2">Sur Mesure</h3>
+                    <p class="text-surface-400 text-sm mb-6">Pour les projets ambitieux qui n&eacute;cessitent une solution compl&egrave;te.</p>
+                    <div class="flex items-baseline gap-1 mb-2">
+                        <span class="font-display text-4xl font-bold">2 000&euro;</span>
+                        <span class="text-surface-500 text-sm">&ndash; 5 000&euro;+</span>
+                    </div>
+                    <span class="text-surface-500 text-xs">Paiement unique, &eacute;ch&eacute;ancier possible</span>
+                </div>
+
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300"><strong class="text-white">Tout le pack Business</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Application web ou mobile compl&egrave;te</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Automatisation IA avanc&eacute;e</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Int&eacute;grations API illimit&eacute;es</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Architecture scalable</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Accompagnement continu</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span class="text-surface-300">Livraison en 2-4 semaines</span>
+                    </li>
+                </ul>
+
+                <a href="#contact" class="block w-full text-center py-3.5 rounded-xl border border-white/10 text-white font-semibold hover:bg-white/5 hover:border-white/20 transition-all text-sm">
+                    Demander un devis
+                </a>
+            </div>
+        </div>
+
+        <!-- Guarantee -->
+        <div class="reveal max-w-3xl mx-auto mt-12 text-center">
+            <div class="glow-card p-8 rounded-2xl">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                    <h3 class="font-display text-xl font-bold">Garantie satisfaction</h3>
+                </div>
+                <p class="text-surface-400 text-sm leading-relaxed">Si le r&eacute;sultat ne correspond pas au cahier des charges valid&eacute;, on corrige gratuitement. Modifications illimit&eacute;es jusqu&rsquo;&agrave; satisfaction. <strong class="text-white">Vous ne payez le solde qu&rsquo;une fois satisfait.</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq" class="py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-5">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">FAQ</span>
+            <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight mb-5">Questions fr&eacute;quentes</h2>
+            <p class="reveal text-surface-400 text-lg">Tout ce que vous devez savoir avant de d&eacute;marrer.</p>
+        </div>
+        <div id="faq-container" class="space-y-3"></div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <div>
+                <span class="reveal inline-block text-primary-400 text-sm font-semibold tracking-wider uppercase mb-4">Contact</span>
+                <h2 class="reveal font-display text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+                    Un projet en t&ecirc;te ?<br>Parlons-en.
+                </h2>
+                <p class="reveal text-surface-400 text-lg leading-relaxed mb-10">
+                    D&eacute;crivez votre besoin en quelques mots. On vous r&eacute;pond sous 24h avec un devis gratuit et un plan d&rsquo;action clair.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="reveal-left flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-primary-600/15 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-surface-500 text-xs uppercase tracking-wider mb-0.5">Email</p>
+                            <p class="text-white font-medium">contact@flashai.dev</p>
+                        </div>
+                    </div>
+                    <div class="reveal-left flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-surface-500 text-xs uppercase tracking-wider mb-0.5">R&eacute;ponse</p>
+                            <p class="text-white font-medium">Sous 24h, 7j/7</p>
+                        </div>
+                    </div>
+                    <div class="reveal-left flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-surface-500 text-xs uppercase tracking-wider mb-0.5">Zone</p>
+                            <p class="text-white font-medium">France, Belgique, Suisse, Luxembourg, Canada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact form -->
+            <div class="reveal-right">
+                <form id="contactForm" class="glow-card p-8 rounded-2xl space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div class="form-group">
+                            <label class="block text-sm font-medium text-surface-300 mb-2">Nom / Pr&eacute;nom *</label>
+                            <input type="text" name="name" required class="form-input" placeholder="Jean Dupont">
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-sm font-medium text-surface-300 mb-2">Entreprise</label>
+                            <input type="text" name="company" class="form-input" placeholder="Ma Soci&eacute;t&eacute;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="block text-sm font-medium text-surface-300 mb-2">Email *</label>
+                        <input type="email" name="email" required class="form-input" placeholder="jean@exemple.fr">
+                    </div>
+                    <div class="form-group">
+                        <label class="block text-sm font-medium text-surface-300 mb-2">Type de besoin *</label>
+                        <select name="need" required class="form-input">
+                            <option value="" disabled selected>Choisissez...</option>
+                            <option value="site">Site web / Landing page</option>
+                            <option value="crm">CRM / Logiciel m&eacute;tier</option>
+                            <option value="dashboard">Dashboard / Analytics</option>
+                            <option value="api">Int&eacute;grations API</option>
+                            <option value="ia">Automatisation / IA</option>
+                            <option value="app">Application web / mobile</option>
+                            <option value="autre">Autre / Je ne sais pas encore</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="block text-sm font-medium text-surface-300 mb-2">Votre message *</label>
+                        <textarea name="message" required class="form-input" rows="4" placeholder="D&eacute;crivez votre projet en quelques lignes..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-500 text-white font-semibold py-4 rounded-xl transition-all btn-glow shadow-lg shadow-primary-600/25 text-sm">
+                        Envoyer &mdash; C&rsquo;est gratuit et sans engagement
+                    </button>
+                    <p class="text-center text-surface-500 text-xs">R&eacute;ponse garantie sous 24h. Devis gratuit et d&eacute;taill&eacute;.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+                <a href="#" class="flex items-center gap-1 text-xl font-display font-bold tracking-tight mb-4">
+                    <span class="text-white">Flash</span><span class="text-gradient">AI</span>
+                </a>
+                <p class="text-surface-500 text-sm leading-relaxed">Agence digitale. D&eacute;veloppement sur mesure pour PME et ind&eacute;pendants.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm mb-4">Services</h4>
+                <ul class="space-y-2">
+                    <li><a href="#services" class="text-surface-500 hover:text-white text-sm transition-colors">Sites Web</a></li>
+                    <li><a href="#services" class="text-surface-500 hover:text-white text-sm transition-colors">CRM &amp; Logiciels</a></li>
+                    <li><a href="#services" class="text-surface-500 hover:text-white text-sm transition-colors">Dashboards</a></li>
+                    <li><a href="#services" class="text-surface-500 hover:text-white text-sm transition-colors">Int&eacute;grations API</a></li>
+                    <li><a href="#services" class="text-surface-500 hover:text-white text-sm transition-colors">Automatisation IA</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm mb-4">Entreprise</h4>
+                <ul class="space-y-2">
+                    <li><a href="#methode" class="text-surface-500 hover:text-white text-sm transition-colors">Notre m&eacute;thode</a></li>
+                    <li><a href="#tarifs" class="text-surface-500 hover:text-white text-sm transition-colors">Tarifs</a></li>
+                    <li><a href="#portfolio" class="text-surface-500 hover:text-white text-sm transition-colors">R&eacute;alisations</a></li>
+                    <li><a href="#faq" class="text-surface-500 hover:text-white text-sm transition-colors">FAQ</a></li>
+                    <li><a href="#contact" class="text-surface-500 hover:text-white text-sm transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm mb-4">L&eacute;gal</h4>
+                <ul class="space-y-2">
+                    <li><a href="mentions-legales.html" class="text-surface-500 hover:text-white text-sm transition-colors">Mentions l&eacute;gales</a></li>
+                    <li><a href="cgu.html" class="text-surface-500 hover:text-white text-sm transition-colors">CGU / CGV</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-surface-600 text-xs">&copy; 2025 FlashAI. Tous droits r&eacute;serv&eacute;s.</p>
+            <p class="text-surface-600 text-xs">Fait avec passion &amp; IA &mdash; Paris, France</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ==================== SUCCESS POPUP ==================== -->
+<div id="successPopup" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/60 backdrop-blur-sm p-5" onclick="closePopup()">
+    <div class="popup-content bg-surface-900 border border-white/10 rounded-2xl p-8 max-w-sm w-full text-center" onclick="event.stopPropagation()">
+        <div class="w-16 h-16 rounded-full bg-green-500/15 flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3">Message envoy&eacute; !</h3>
+        <p class="text-surface-400 text-sm mb-6">On revient vers vous tr&egrave;s rapidement avec un devis gratuit et d&eacute;taill&eacute;.</p>
+        <button onclick="closePopup()" class="bg-primary-600 hover:bg-primary-500 text-white font-semibold px-6 py-3 rounded-xl transition-all text-sm">Parfait !</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
