@@ -1,331 +1,316 @@
-/* FLASHSITE AGENCY - STYLES PRINCIPAUX 
-    Optimisé pour : Performance, SEO visuel et UX Artisans/Travaux
-    Version : Launch Promo Feb 2026
-*/
+/* ============================================
+   FLASHAI — GLOBAL STYLES
+   Professional dark theme, clean & modern
+   ============================================ */
 
-:root {
-    /* Palette de base */
-    --color-fuchsia: #F900BF;
-    --color-fuchsia-glow: #ff52d9;
-    --color-cyan: #00F5FF; 
-    --color-gold: #FFD700;
-    --color-dark-bg: #050505;
-    --color-dark-card: #0a0a0a;
-    --color-border: #202020;
-    
-    /* Typographies */
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    
-    /* Spacing & Utilities */
-    --transition-fast: 0.2s ease;
-    --transition-standard: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Base Reset */
+/* --- BASE --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--color-dark-bg);
-    color: #ffffff;
-    font-family: var(--font-body);
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
 }
 
-/* Canvas Particles Background */
-#particle-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    pointer-events: none;
-    opacity: 0.6;
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: white;
 }
 
-/* --- TYPOGRAPHIE --- */
-.font-display { font-family: var(--font-display); }
-.text-neon { color: var(--color-fuchsia); text-shadow: 0 0 10px rgba(249, 0, 191, 0.3); }
-.text-cyan { color: var(--color-cyan); }
+/* --- GRADIENT TEXT --- */
 .text-gradient {
-    background: linear-gradient(to right, #fff, var(--color-fuchsia));
+    background: linear-gradient(135deg, #818cf8 0%, #38bdf8 50%, #818cf8 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 6s ease-in-out infinite;
 }
 
-/* --- COMPOSANTS UI --- */
-
-/* Badge Promotionnel */
-.promo-badge {
-    background: linear-gradient(45deg, var(--color-fuchsia), #8e00ff);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 15px rgba(249, 0, 191, 0.4);
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
 }
 
-/* Glassmorphism Card */
-.glass-card {
-    background: rgba(15, 15, 15, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition-standard);
-}
-.glass-card:hover {
-    border-color: rgba(249, 0, 191, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+/* --- HEADER --- */
+#site-header {
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Boutons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 700;
-    transition: var(--transition-standard);
-    cursor: pointer;
-    text-decoration: none;
-    gap: 10px;
+#site-header.scrolled {
+    background: rgba(2, 6, 23, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
-.btn-neon {
-    background-color: var(--color-fuchsia);
-    color: white;
-    box-shadow: 0 0 20px rgba(249, 0, 191, 0.4);
-}
-.btn-neon:hover {
-    background-color: var(--color-fuchsia-glow);
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(249, 0, 191, 0.6);
-}
-
-.btn-outline {
-    border: 1px solid var(--color-border);
-    color: white;
-    background: transparent;
-}
-.btn-outline:hover {
-    border-color: var(--color-fuchsia);
-    background: rgba(249, 0, 191, 0.05);
-}
-
-/* --- SECTIONS SPÉCIFIQUES --- */
-
-/* Header Uniforme */
-.main-header {
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: height 0.3s ease;
-}
-
-/* --- CAROUSEL INFINI (Inspirations) --- */
-.carousel-slider {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    /* Effet de fondu sur les côtés */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-.carousel-track {
-    display: flex;
-    width: max-content;
-    gap: 2rem;
-    animation: scroll 30s linear infinite;
-}
-.carousel-track:hover {
-    animation-play-state: paused;
-}
-.carousel-item {
-    width: 280px;
-    height: 180px;
-    flex-shrink: 0;
-    border-radius: 1rem;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.carousel-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-    opacity: 0.8;
-    transition: 0.3s;
-}
-/* Ancienne classe Portfolio Grid (gardée en secours si besoin, mais carrousel prioritaire) */
-.portfolio-item {
-    aspect-ratio: 16/10;
-    background: var(--color-dark-card);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid var(--color-border);
-}
-.portfolio-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-.portfolio-item:hover .portfolio-overlay { opacity: 1; }
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-
-/* Feature "Devis Automatisé" */
-.feature-devis-box {
-    border: 2px solid var(--color-cyan);
-    background: rgba(0, 245, 255, 0.03);
-    position: relative;
-    overflow: hidden;
-}
-.feature-devis-box::before {
-    content: "OPTION PHARE ARTISANS";
-    position: absolute;
-    top: 12px;
-    right: -30px;
-    background: var(--color-cyan);
-    color: black;
-    font-size: 10px;
-    font-weight: 900;
-    padding: 4px 40px;
-    transform: rotate(45deg);
-}
-
-/* Scroll Reveal */
+/* --- SCROLL REVEAL --- */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Accordion (FAQ) */
-.accordion-item {
-    border-bottom: 1px solid var(--color-border);
+/* Staggered children */
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+
+/* --- SERVICE CARDS --- */
+.service-card {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s ease;
 }
-.accordion-content {
+
+.service-card:hover {
+    border-color: rgba(99, 102, 241, 0.2);
+    background: rgba(15, 23, 42, 0.8);
+    transform: translateY(-2px);
+}
+
+.service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+/* --- ADVANTAGE CARDS --- */
+.advantage-card {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.advantage-card:hover {
+    border-color: rgba(99, 102, 241, 0.15);
+    background: rgba(15, 23, 42, 0.6);
+}
+
+/* --- INTEGRATION BADGES --- */
+.integration-badge {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(148, 163, 184, 1);
+    transition: all 0.2s ease;
+}
+
+.integration-badge:hover {
+    border-color: rgba(99, 102, 241, 0.25);
+    color: white;
+    background: rgba(15, 23, 42, 0.9);
+}
+
+/* --- EXAMPLE CARDS --- */
+.example-card {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s ease;
+}
+
+.example-card:hover {
+    border-color: rgba(99, 102, 241, 0.15);
+}
+
+.example-tag {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.12);
+    color: #818cf8;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* --- PRICING CARDS --- */
+.pricing-card {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.pricing-featured {
+    border-color: rgba(99, 102, 241, 0.4);
+    background: rgba(99, 102, 241, 0.06);
+}
+
+.pricing-featured:hover {
+    border-color: rgba(99, 102, 241, 0.6);
+}
+
+/* --- FAQ ACCORDION --- */
+.faq-item {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.faq-question {
+    padding: 18px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.faq-question h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.4;
+}
+
+.faq-chevron {
+    width: 20px;
+    height: 20px;
+    color: rgba(148, 163, 184, 0.5);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+    color: #818cf8;
+}
+
+.faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out;
-}
-.accordion-item.active .accordion-content {
-    max-height: 500px;
+    transition: max-height 0.35s ease;
 }
 
-/* Footer & Legal */
-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+.faq-item.open .faq-answer {
+    max-height: 300px;
 }
 
-/* Formulaires */
-.input-dark {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--color-border);
-    color: white;
-    transition: var(--transition-fast);
-    padding: 0.75rem 1rem;
+.faq-answer-inner {
+    padding: 0 20px 18px;
+    color: rgba(148, 163, 184, 1);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 14px;
+}
+
+/* --- FORM INPUTS --- */
+.form-input {
     width: 100%;
-    border-radius: 8px;
-}
-.input-dark:focus {
-    outline: none;
-    border-color: var(--color-fuchsia);
-    box-shadow: 0 0 15px rgba(249, 0, 191, 0.1);
-}
-
-/* Responsivité Mobile */
-@media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-    h1 { font-size: 2.5rem !important; }
-}
-
-/* Animation Glow */
-.section-glow {
-    position: absolute;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(249,0,191,0.15) 0%, transparent 70%);
-    z-index: -1;
-    filter: blur(100px);
-    pointer-events: none;
-}
-
-/* Success Popup - Simple */
-.success-popup {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(249, 0, 191, 0.95);
-    border: 1px solid #F900BF;
-    border-radius: 50px;
-    padding: 1rem 1.5rem;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    font-weight: bold;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: white;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 20px rgba(249, 0, 191, 0.3);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    outline: none;
+    -webkit-appearance: none;
 }
 
-.success-popup.show {
-    opacity: 1;
-    visibility: visible;
-}
-/* --- OVERRIDES : BORDURES ALTERNÉES (DEMANDE UTILISATEUR) --- */
-
-/* 1. Pour la FAQ (Questions) */
-#faq-container .accordion-item:nth-child(odd) {
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Blanc semi-transparent */
-}
-#faq-container .accordion-item:nth-child(even) {
-    border: 1px solid var(--color-fuchsia); /* Fushia */
+.form-input::placeholder {
+    color: rgba(100, 116, 139, 0.8);
 }
 
-/* 2. Pour le Blog (Expertise Travaux) */
-/* On cible les liens <a> directs dans la grille */
-#blog-grid > a:nth-child(odd) {
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+.form-input:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+    background: rgba(15, 23, 42, 0.8);
 }
-#blog-grid > a:nth-child(even) {
-    border: 1px solid var(--color-fuchsia) !important;
+
+select.form-input {
+    cursor: pointer;
+}
+
+select.form-input option {
+    background: #0f172a;
+    color: white;
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+    animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .pricing-featured {
+        order: -1;
+    }
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.4);
 }

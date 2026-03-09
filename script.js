@@ -1,230 +1,183 @@
 /**
- * FLASHSITE AGENCY - CORE ENGINE 2026
- * Optimisé pour : LCP (Vitesse), UX Mobile & SEO Performance
+ * FlashAI — Main Script
+ * Clean, performant, no bloat.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
+    initHeader();
     initMobileMenu();
-    initParticleBackground();
-    initPromoLogic();
-    initFormHandler();
+    initFAQ();
+    initContactForm();
 });
 
-/**
- * Gestion des animations au défilement (Scroll Reveal)
- * Utilise l'API IntersectionObserver pour une performance maximale.
- */
+/* ========== SCROLL REVEAL ========== */
 function initScrollReveal() {
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // On arrête d'observer une fois l'élément révélé pour libérer de la mémoire
-                revealObserver.unobserve(entry.target);
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-/**
- * Menu Mobile Interactif
- */
+/* ========== HEADER SCROLL EFFECT ========== */
+function initHeader() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                header.classList.toggle('scrolled', window.scrollY > 20);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
+
+/* ========== MOBILE MENU ========== */
 function initMobileMenu() {
-    const menuBtn = document.querySelector('button[onclick*="mobile-menu"]');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (!menuBtn || !mobileMenu) return;
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
 
-    // Fermer le menu après un clic sur un lien
-    mobileMenu.querySelectorAll('a').forEach(link => {
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+
+    // Close on link click
+    menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+            menu.classList.add('hidden');
         });
     });
 
-    // Fermer si on clique en dehors
+    // Close on outside click
     document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-            mobileMenu.classList.add('hidden');
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.classList.add('hidden');
         }
     });
 }
 
-/**
- * Logique Promotionnelle Février 2026
- * Affiche dynamiquement le temps restant pour créer un sentiment d'urgence (Scarcity).
- */
-function initPromoLogic() {
-    const now = new Date();
-    const targetMonth = 1; // Février (0-indexed)
-    const targetYear = 2026;
+/* ========== FAQ ========== */
+function initFAQ() {
+    const container = document.getElementById('faq-container');
+    if (!container) return;
 
-    // Si nous sommes en février 2026, on peut ajouter une mention "Derniers jours"
-    if (now.getMonth() === targetMonth && now.getFullYear() === targetYear) {
-        const daysInMonth = new Date(2026, 2, 0).getDate();
-        const daysLeft = daysInMonth - now.getDate();
-        
-        const promoBadges = document.querySelectorAll('.promo-badge');
-        promoBadges.forEach(badge => {
-            if (daysLeft <= 7 && daysLeft > 0) {
-                badge.innerHTML = `🔥 Plus que ${daysLeft} jours !`;
-            }
-        });
-    }
+    const faqData = [
+        {
+            q: "Combien de temps faut-il pour livrer un projet ?",
+            a: "Un site vitrine est généralement livré en 3 à 5 jours. Un projet plus complexe (CRM, dashboard, intégrations API) prend entre 1 et 3 semaines selon le périmètre. On est transparents dès le départ sur le délai exact."
+        },
+        {
+            q: "Comment pouvez-vous être aussi compétitifs sur les prix ?",
+            a: "On a massivement automatisé notre propre workflow grâce à l'IA et aux outils modernes. Ce qui prenait 2 semaines à une agence classique, on le fait en quelques jours. On vous fait bénéficier de ces gains de productivité directement dans nos prix — sans sacrifier la qualité."
+        },
+        {
+            q: "Est-ce que je suis propriétaire de ce que vous construisez ?",
+            a: "Oui, à 100%. Le code, le design, le nom de domaine — tout vous appartient. Pas d'abonnement mensuel caché, pas de dépendance. Si un jour vous voulez changer de prestataire, vous repartez avec tout."
+        },
+        {
+            q: "J'ai déjà un site / des outils. Vous pouvez améliorer l'existant ?",
+            a: "Tout à fait. On peut reprendre un projet existant, l'améliorer, ajouter des fonctionnalités, ou connecter des APIs à vos outils actuels. Pas besoin de tout refaire de zéro."
+        },
+        {
+            q: "Je n'y connais rien en technique, c'est un problème ?",
+            a: "Pas du tout, c'est même la majorité de nos clients. On s'occupe de toute la partie technique. Vous nous décrivez ce que vous voulez en termes simples, on traduit ça en solution concrète. Et on vous forme à utiliser vos outils."
+        },
+        {
+            q: "Quelles technologies utilisez-vous ?",
+            a: "On travaille avec les technologies les plus modernes et performantes : React, Next.js, Node.js, Python, PostgreSQL, Supabase, et bien d'autres. On choisit toujours la stack la plus adaptée à votre projet spécifique."
+        },
+        {
+            q: "Proposez-vous de la maintenance après livraison ?",
+            a: "Oui. On propose un accompagnement post-livraison si vous le souhaitez : corrections, évolutions, ajouts de fonctionnalités. Tout est facturé à la prestation, sans engagement ni abonnement."
+        },
+        {
+            q: "Comment se passe le paiement ?",
+            a: "En général, 50% à la commande et 50% à la livraison. Pour les plus gros projets, on peut adapter l'échéancier. TVA non applicable (art. 293 B du CGI)."
+        }
+    ];
+
+    container.innerHTML = faqData.map((item, i) => `
+        <div class="faq-item" data-faq="${i}">
+            <div class="faq-question" onclick="toggleFAQ(${i})">
+                <h4>${item.q}</h4>
+                <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">${item.a}</div>
+            </div>
+        </div>
+    `).join('');
 }
 
-/**
- * Arrière-plan de Particules (Canvas)
- * Optimisé : réduction du nombre de particules sur mobile pour économiser le CPU.
- */
-function initParticleBackground() {
-    const canvas = document.getElementById('particle-canvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 40 : 100; // Moins de charge sur mobile
-    const connectionDistance = isMobile ? 100 : 150;
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    class Particle {
-        constructor() {
-            this.init();
+/* Global FAQ toggle */
+window.toggleFAQ = function(index) {
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach((item, i) => {
+        if (i === index) {
+            item.classList.toggle('open');
+        } else {
+            item.classList.remove('open');
         }
-
-        init() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.5;
-            this.vy = (Math.random() - 0.5) * 0.5;
-            this.size = Math.random() * 2;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        }
-
-        draw() {
-            ctx.fillStyle = 'rgba(249, 0, 191, 0.5)';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        for (let i = 0; i < particles.length; i++) {
-            const p1 = particles[i];
-            p1.update();
-            p1.draw();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p1.x - p2.x;
-                const dy = p1.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < connectionDistance) {
-                    ctx.strokeStyle = `rgba(249, 0, 191, ${1 - dist / connectionDistance})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-}
-
-/**
- * Fonctions Utilitaires Globales
- */
-window.scrollToContact = function() {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    });
 };
 
-window.toggleAccordion = function(element) {
-    const item = element.parentElement;
-    item.classList.toggle('active');
-};
+/* ========== CONTACT FORM ========== */
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
 
-/**
- * Gestion du formulaire de contact - FormSubmit SANS redirection
- * Envoie les données et affiche juste le popup
- */
-function initFormHandler() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // CRUCIAL - empêche redirection
+        const formData = new FormData(form);
 
-        // Récupère les données du formulaire
-        const formData = new FormData(contactForm);
-
-        // Envoie vers FormSubmit (envoie l'email, pas de redirection)
-        fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(() => {
-            // Email envoyé = affiche popup + reset
-            showSuccessPopup();
-            contactForm.reset();
-        })
-        .catch(() => {
-            // Erreur = affiche popup quand même
-            showSuccessPopup();
-            contactForm.reset();
-        });
+        // If form has an action attribute, send data
+        if (form.action && form.action !== window.location.href) {
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(() => {
+                showPopup();
+                form.reset();
+            }).catch(() => {
+                showPopup();
+                form.reset();
+            });
+        } else {
+            // No action set — just show success
+            showPopup();
+            form.reset();
+        }
     });
 }
 
-/**
- * Affiche le popup de succès
- */
-function showSuccessPopup() {
-    const successPopup = document.getElementById('successPopup');
-    if (successPopup) {
-        successPopup.classList.add('show');
-        setTimeout(() => {
-            successPopup.classList.remove('show');
-        }, 3000);
+function showPopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.classList.remove('hidden');
+        popup.classList.add('flex');
     }
 }
+
+window.closePopup = function() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.classList.add('hidden');
+        popup.classList.remove('flex');
+    }
+};
