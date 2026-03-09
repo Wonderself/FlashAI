@@ -401,7 +401,7 @@ function initDemoDashboard() {
         <div class="dash-header"><h3 class="font-display font-bold text-lg">Dashboard Analytics</h3>
         <div class="dash-period"><button class="dash-period-btn active" data-p="7j">7j</button><button class="dash-period-btn" data-p="30j">30j</button><button class="dash-period-btn" data-p="90j">90j</button></div></div>
         <div class="dash-kpis">${kpis.map(k => `<div class="dash-kpi" style="--kc:${k.color}"><div class="dash-kpi-icon">${k.icon}</div><div class="dash-kpi-value">${k.value}</div><div class="dash-kpi-label">${k.label}</div><div class="dash-kpi-change" style="color:${k.color}">${k.change}</div></div>`).join('')}</div>
-        <div class="dash-charts"><canvas id="dash-line-chart" width="500" height="180"></canvas><canvas id="dash-bar-chart" width="200" height="180"></canvas></div></div>`;
+        <div class="dash-charts"><canvas id="dash-line-chart" style="width:100%;height:150px"></canvas><canvas id="dash-bar-chart" style="width:100%;height:150px"></canvas></div></div>`;
     drawDashCharts();
     ct.querySelectorAll('.dash-period-btn').forEach(b => b.addEventListener('click', () => {
         ct.querySelectorAll('.dash-period-btn').forEach(x => x.classList.remove('active'));
@@ -413,6 +413,7 @@ function drawDashCharts() {
     const lc = document.getElementById('dash-line-chart');
     const bc = document.getElementById('dash-bar-chart');
     if (lc) {
+        lc.width = lc.offsetWidth; lc.height = lc.offsetHeight;
         const ctx = lc.getContext('2d'), w = lc.width, h = lc.height;
         ctx.clearRect(0, 0, w, h);
         const pts = Array.from({length: 12}, () => Math.random() * 100 + 40);
@@ -433,6 +434,7 @@ function drawDashCharts() {
         });
     }
     if (bc) {
+        bc.width = bc.offsetWidth; bc.height = bc.offsetHeight;
         const ctx = bc.getContext('2d'), w = bc.width, h = bc.height;
         ctx.clearRect(0, 0, w, h);
         const bars = [65, 85, 55, 90, 70, 80];
@@ -542,10 +544,11 @@ function initPortfolio() {
             const offset = i - current;
             const absOff = Math.abs(offset);
             const z = 10 - absOff;
-            const tx = offset * 320;
+            const step = window.innerWidth < 480 ? 180 : window.innerWidth < 640 ? 220 : window.innerWidth < 768 ? 270 : 320;
+            const tx = offset * step;
             const sc = Math.max(0.7, 1 - absOff * 0.12);
             const op = Math.max(0.3, 1 - absOff * 0.3);
-            return `<div class="portfolio-card" style="transform:translateX(${tx}px) scale(${sc});z-index:${z};opacity:${op};${absOff > 2 ? 'display:none' : ''}">
+            return `<div class="portfolio-card" style="transform:translateX(${tx}px) scale(${sc});z-index:${z};opacity:${op};${absOff > (window.innerWidth < 640 ? 1 : 2) ? 'display:none' : ''}">
                 <div class="portfolio-card-inner" style="--pc:${p.color}">
                     <div class="portfolio-card-top" style="background:linear-gradient(135deg,${p.color}20,transparent)">
                         <span class="portfolio-type" style="color:${p.color}">${p.type}</span>
@@ -569,6 +572,18 @@ function initPortfolio() {
     let autoplay = setInterval(() => { current = (current + 1) % projects.length; render(); }, 4000);
     ct.addEventListener('mouseenter', () => clearInterval(autoplay));
     ct.addEventListener('mouseleave', () => { autoplay = setInterval(() => { current = (current + 1) % projects.length; render(); }, 4000); });
+    window.addEventListener('resize', () => render());
+    // Touch swipe for mobile
+    let touchStartX = 0;
+    ct.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    ct.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) {
+            if (dx < 0) current = (current + 1) % projects.length;
+            else current = (current - 1 + projects.length) % projects.length;
+            render();
+        }
+    }, { passive: true });
 }
 
 /* ========== TESTIMONIALS ========== */
@@ -1390,3 +1405,4 @@ function initEasterEggs() {
         });
     });
 }
+
