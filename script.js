@@ -394,49 +394,85 @@ function initServices() {
 
 function initBentoAnims() {
     const anims = {
-        browser: '<div class="bento-anim-browser-bar"><div class="bento-anim-browser-dot" style="background:#ff5f57"></div><div class="bento-anim-browser-dot" style="background:#ffbd2e"></div><div class="bento-anim-browser-dot" style="background:#28c840"></div><div class="bento-anim-browser-url"><div class="bento-anim-browser-url-fill"></div></div></div>' +
-            '<div class="ba-site-nav"><div class="ba-site-nav-item" style="width:20px"></div><div class="ba-site-nav-item" style="width:28px;animation-delay:0.2s"></div><div class="ba-site-nav-item" style="width:22px;animation-delay:0.4s"></div><div class="ba-site-nav-item" style="width:18px;animation-delay:0.6s"></div></div>' +
-            '<div class="ba-site-hero"></div>' +
-            '<div class="ba-site-cols"><div class="ba-site-col" style="height:32px;animation-delay:0.3s"></div><div class="ba-site-col" style="height:32px;animation-delay:0.6s"></div><div class="ba-site-col" style="height:32px;animation-delay:0.9s"></div></div>',
+        /* ---- SITE WEB: Full mini-browser with nav, hero, cards, footer, cursor ---- */
+        browser: '<div class="ba-browser">' +
+            '<div class="ba-browser-chrome"><div class="ba-dots"><span style="background:#ff5f57"></span><span style="background:#ffbd2e"></span><span style="background:#28c840"></span></div><div class="ba-url-bar"><div class="ba-url-typing"></div></div></div>' +
+            '<div class="ba-browser-body">' +
+            '<div class="ba-s-nav"><div class="ba-s-nav-logo"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-cta"></div></div>' +
+            '<div class="ba-s-hero"><div class="ba-s-hero-bg"><div class="ba-s-h1"></div><div class="ba-s-h2"></div><div class="ba-s-btn"></div></div></div>' +
+            '<div class="ba-s-cards"><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div></div>' +
+            '<div class="ba-s-footer"><div class="ba-s-footer-link"></div><div class="ba-s-footer-link"></div><div class="ba-s-footer-link"></div></div>' +
+            '</div>' +
+            '<div class="ba-build-bar"><div class="ba-build-fill"></div></div>' +
+            '<div class="ba-cursor"><svg viewBox="0 0 12 18"><path d="M1 1l10 7-5 1.5L4 16z" fill="white" stroke="black" stroke-width="1"/></svg></div>' +
+            '</div>',
 
-        dashboard: '<div style="display:flex;height:100%"><div class="ba-crm-sidebar">' +
-            '<div class="ba-crm-sidebar-item active"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.3s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.6s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.9s"></div><div class="ba-crm-sidebar-item" style="animation-delay:1.2s;width:60%"></div></div>' +
+        /* ---- CRM: Kanban board with sidebar, columns, cards, chart ---- */
+        dashboard: '<div class="ba-crm">' +
+            '<div class="ba-crm-sidebar"><div class="ba-crm-sidebar-item active"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.3s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.6s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.9s"></div><div class="ba-crm-sidebar-item" style="animation-delay:1.2s;width:60%"></div></div>' +
             '<div class="ba-crm-main">' +
-            '<div style="display:flex;gap:4px;margin-bottom:4px"><div style="flex:1;height:16px;border-radius:4px;background:rgba(191,0,255,0.08);padding:3px 5px;font-size:5px;color:rgba(191,0,255,0.4)">Pipeline</div><div style="width:24px;height:16px;border-radius:4px;background:rgba(191,0,255,0.15);animation:bp 2s ease infinite"></div></div>' +
-            '<div class="ba-crm-row"><div class="ba-crm-avatar"></div><div class="ba-crm-name"></div><div class="ba-crm-badge" style="background:rgba(0,255,135,0.15);color:rgba(0,255,135,0.7)">$</div></div>' +
-            '<div class="ba-crm-row"><div class="ba-crm-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-name" style="width:70%"></div><div class="ba-crm-badge" style="background:rgba(255,140,0,0.15);color:rgba(255,140,0,0.7)">!</div></div>' +
-            '<div class="ba-crm-row"><div class="ba-crm-avatar" style="background:rgba(255,0,110,0.25)"></div><div class="ba-crm-name" style="width:55%"></div><div class="ba-crm-badge" style="background:rgba(0,240,255,0.15);color:rgba(0,240,255,0.7)">&#10003;</div></div>' +
-            '<div class="ba-crm-row"><div class="ba-crm-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-name" style="width:80%"></div><div class="ba-crm-badge" style="background:rgba(191,0,255,0.15);color:rgba(191,0,255,0.7)">&#9733;</div></div>' +
+            '<div class="ba-crm-header"><div class="ba-crm-title">Pipeline</div><div class="ba-crm-add-btn">+</div></div>' +
+            '<div class="ba-crm-kanban">' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(255,140,0,0.6)"></div>Prospects</div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,140,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name" style="width:55%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,240,255,0.6)"></div>En cours</div><div class="ba-crm-card" style="border-color:rgba(0,240,255,0.3)"><div class="ba-crm-card-name" style="width:80%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,255,135,0.6)"></div>Gagn\u00e9</div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:60%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,255,135,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:45%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(191,0,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '</div>' +
+            '<div class="ba-crm-chart">' + Array.from({length:12}, (_,i) => '<div class="ba-crm-chart-bar" style="animation-delay:' + (i*0.15) + 's"></div>').join('') + '</div>' +
             '</div></div>',
 
-        chat: '<div class="ba-chat-container">' +
-            '<div class="ba-chat-msg ba-chat-msg-bot" style="animation-delay:0s"><div class="ba-chat-bubble">Bonjour ! Comment puis-je vous aider ?</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-user" style="animation-delay:0.8s"><div class="ba-chat-bubble">Je cherche des infos sur vos prix</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-bot" style="animation-delay:1.6s"><div class="ba-chat-bubble">Nos formules commencent a 890&#8364;. Voici le detail :</div></div>' +
-            '<div class="ba-chat-typing" style="animation-delay:2.4s"><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div></div>' +
+        /* ---- CHATBOT: Rich conversation with cards, quick replies, typing ---- */
+        chat: '<div class="ba-chat">' +
+            '<div class="ba-chat-header"><div class="ba-chat-bot-avatar">\u{1F916}</div><div class="ba-chat-bot-info"><div class="ba-chat-bot-name">FlashAI Bot</div><div class="ba-chat-bot-status">En ligne</div></div></div>' +
+            '<div class="ba-chat-msgs">' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Bonjour ! Comment puis-je vous aider ?</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Je cherche des infos sur vos prix</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Voici nos formules :</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-rich-card"><div class="ba-chat-rich-img"></div><div class="ba-chat-rich-title"></div><div class="ba-chat-rich-desc"></div><div class="ba-chat-rich-btns"><div class="ba-chat-rich-btn"></div><div class="ba-chat-rich-btn"></div></div></div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Super, merci !</div></div>' +
+            '</div>' +
+            '<div class="ba-chat-quick"><div class="ba-chat-quick-btn">Tarifs</div><div class="ba-chat-quick-btn">D\u00e9lai</div><div class="ba-chat-quick-btn">Contact</div></div>' +
+            '<div class="ba-chat-typing"><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div></div>' +
+            '<div class="ba-chat-input"><div class="ba-chat-input-field"></div><div class="ba-chat-input-send"></div></div>' +
             '</div>',
 
-        flow: '<div class="ba-flow-container"><div class="ba-flow-pipeline">' +
-            '<div class="ba-flow-node active">&#9993;</div>' +
-            '<div class="ba-flow-arrow"><div class="ba-flow-data-dot"></div></div>' +
-            '<div class="ba-flow-node">&#9881;</div>' +
-            '<div class="ba-flow-arrow"><div class="ba-flow-data-dot" style="animation-delay:0.3s"></div></div>' +
-            '<div class="ba-flow-node">&#128202;</div>' +
-            '<div class="ba-flow-arrow"><div class="ba-flow-data-dot" style="animation-delay:0.6s"></div></div>' +
-            '<div class="ba-flow-node active">&#10003;</div>' +
-            '</div></div>',
-
-        chart: '<div class="ba-seo-container">' +
-            '<div style="display:flex;align-items:center;gap:8px">' +
-            '<div class="ba-seo-score-ring"><svg viewBox="0 0 40 40"><circle class="bg" cx="20" cy="20" r="18"/><circle class="fg" cx="20" cy="20" r="18"/></svg><div class="ba-seo-score-num">95+</div></div>' +
-            '<div style="flex:1;display:flex;flex-direction:column;gap:3px"><div class="ba-seo-metric"><div class="ba-seo-metric-label">Performance</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">Accessibility</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.3s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">Best Practices</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.6s"></div></div></div></div></div>' +
-            '<div class="ba-seo-metrics"><div class="ba-seo-metric"><div class="ba-seo-metric-label">FCP</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">LCP</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.2s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">CLS</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.4s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">TBT</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.6s"></div></div></div></div>' +
-            '<div class="ba-seo-keywords"><span class="ba-seo-keyword">SEO</span><span class="ba-seo-keyword" style="animation-delay:0.2s">Core Vitals</span><span class="ba-seo-keyword" style="animation-delay:0.4s">Schema.org</span><span class="ba-seo-keyword" style="animation-delay:0.6s">Sitemap</span></div>' +
+        /* ---- AUTOMATION: Node-based workflow pipeline with data packets ---- */
+        flow: '<div class="ba-flow">' +
+            '<div class="ba-flow-label">Workflow actif</div>' +
+            '<div class="ba-flow-canvas"><div class="ba-flow-pipeline">' +
+            '<div class="ba-flow-node active"><span>&#9993;</span><div class="ba-flow-node-label">Email</div></div>' +
+            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet"></div></div>' +
+            '<div class="ba-flow-node"><span>&#9881;</span><div class="ba-flow-node-label">Process</div></div>' +
+            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet" style="animation-delay:0.4s"></div></div>' +
+            '<div class="ba-flow-node active"><span>&#128202;</span><div class="ba-flow-node-label">CRM</div></div>' +
+            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet" style="animation-delay:0.8s"></div></div>' +
+            '<div class="ba-flow-node"><span>&#10003;</span><div class="ba-flow-node-label">Done</div></div>' +
+            '</div></div>' +
+            '<div class="ba-flow-status"><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:#00ff87"></div>3 actifs</div><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:#ff8c00"></div>1 en attente</div><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:rgba(255,255,255,0.2)"></div>0 erreurs</div></div>' +
             '</div>',
 
-        shield: '<div class="ba-shield-container">' +
-            '<div class="ba-shield-icon"><svg class="ba-shield-svg" viewBox="0 0 36 42"><path d="M18 2L4 10v12c0 10 14 18 14 18s14-8 14-18V10L18 2z" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5"/><path d="M18 2L4 10v12c0 10 14 18 14 18s14-8 14-18V10L18 2z" fill="rgba(255,215,0,0.05)"/><path d="M14 21l3 3 6-6" fill="none" stroke="rgba(255,215,0,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="20" stroke-dashoffset="20"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.5s" repeatCount="indefinite"/></path></svg><div class="ba-shield-scan"></div></div>' +
-            '<div class="ba-shield-checks"><div class="ba-shield-check" style="animation-delay:0.3s">&#10003; SSL/TLS</div><div class="ba-shield-check" style="animation-delay:0.6s">&#10003; WAF Active</div><div class="ba-shield-check" style="animation-delay:0.9s">&#10003; OWASP OK</div><div class="ba-shield-check" style="animation-delay:1.2s">&#10003; RGPD</div></div>' +
+        /* ---- SEO: Lighthouse audit with ring gauge, vitals, chart, keywords ---- */
+        chart: '<div class="ba-seo">' +
+            '<div class="ba-seo-top">' +
+            '<div class="ba-seo-ring"><svg viewBox="0 0 48 48"><defs><linearGradient id="seo-ring-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(0,255,135,0.8)"/><stop offset="100%" stop-color="rgba(0,240,255,0.8)"/></linearGradient></defs><circle class="bg" cx="24" cy="24" r="22"/><circle class="fg" cx="24" cy="24" r="22"/></svg><div class="ba-seo-ring-score">98</div><div class="ba-seo-ring-label">Lighthouse</div></div>' +
+            '<div class="ba-seo-sub">' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#00ff87"></div><div class="ba-seo-sub-label">Performance</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:96%;background:linear-gradient(90deg,#00ff87,#00f0ff)"></div></div></div>' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#bf00ff"></div><div class="ba-seo-sub-label">Accessibility</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:92%;background:linear-gradient(90deg,#bf00ff,#ff006e);animation-delay:0.3s"></div></div></div>' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#00f0ff"></div><div class="ba-seo-sub-label">Best Practices</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:100%;background:linear-gradient(90deg,#00f0ff,#00ff87);animation-delay:0.6s"></div></div></div>' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#ff8c00"></div><div class="ba-seo-sub-label">SEO</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:98%;background:linear-gradient(90deg,#ff8c00,#ffd700);animation-delay:0.9s"></div></div></div>' +
+            '</div></div>' +
+            '<div class="ba-seo-vitals"><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#00ff87">0.8s</div><div class="ba-seo-vital-label">FCP</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#00f0ff">1.2s</div><div class="ba-seo-vital-label">LCP</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#bf00ff">0.01</div><div class="ba-seo-vital-label">CLS</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#ff8c00">50ms</div><div class="ba-seo-vital-label">TBT</div></div></div>' +
+            '<div class="ba-seo-chart">' + Array.from({length:16}, (_,i) => '<div class="ba-seo-chart-bar" style="--h1:' + (15+Math.random()*25) + '%;--h2:' + (55+Math.random()*40) + '%;background:linear-gradient(180deg,rgba(0,255,135,0.4),rgba(0,240,255,0.15));animation-delay:' + (i*0.12) + 's"></div>').join('') + '</div>' +
+            '<div class="ba-seo-kw"><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>SEO</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Core Vitals</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Schema</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Sitemap</div></div>' +
+            '</div>',
+
+        /* ---- SECURITY: Shield scan with checks, encryption, threat counters ---- */
+        shield: '<div class="ba-sec">' +
+            '<div class="ba-sec-top">' +
+            '<div class="ba-sec-shield"><svg viewBox="0 0 40 46"><path d="M20 2L4 10v14c0 12 16 20 16 20s16-8 16-20V10L20 2z" fill="rgba(255,215,0,0.04)" stroke="rgba(255,215,0,0.25)" stroke-width="1.5"/><path d="M15 24l4 4 7-8" fill="none" stroke="rgba(255,215,0,0.6)" stroke-width="2" stroke-linecap="round" stroke-dasharray="24" stroke-dashoffset="24"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="2s" repeatCount="indefinite"/></path></svg><div class="ba-sec-shield-scan"></div></div>' +
+            '<div class="ba-sec-checks"><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> SSL/TLS 1.3</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> WAF Active</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> OWASP Top 10</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> RGPD OK</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> 2FA Enforced</div></div>' +
+            '</div>' +
+            '<div class="ba-sec-encrypt"><div class="ba-sec-encrypt-label">AES-256</div><div class="ba-sec-encrypt-bar"><div class="ba-sec-encrypt-fill"></div></div></div>' +
+            '<div class="ba-sec-threats"><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#00ff87">0</div><div class="ba-sec-threat-label">Menaces</div></div><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#00f0ff">847</div><div class="ba-sec-threat-label">Bloqu\u00e9es</div></div><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#ffd700">99.9%</div><div class="ba-sec-threat-label">Uptime</div></div></div>' +
             '</div>'
     };
     for (const [k, v] of Object.entries(anims)) { const el = document.getElementById('bento-anim-' + k); if (el) el.innerHTML = v; }
