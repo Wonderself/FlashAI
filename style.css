@@ -573,8 +573,37 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 }
 
 @media (max-width: 768px) {
-    section { padding-top: 4rem; padding-bottom: 4rem; }
-    section.relative.py-24 { padding-top: 4rem; padding-bottom: 4rem; }
+    section { padding-top: 3rem; padding-bottom: 3rem; }
+    section.relative.py-24 { padding-top: 3rem; padding-bottom: 3rem; }
+    section.relative.py-32 { padding-top: 3rem; padding-bottom: 3rem; }
+    /* Reduce heading sizes on mobile */
+    h2.text-3xl, .text-3xl { font-size: 1.5rem !important; }
+    h2.text-4xl, .text-4xl { font-size: 1.75rem !important; }
+    .text-5xl { font-size: 2rem !important; }
+    .text-6xl { font-size: 2.25rem !important; }
+    h1.text-4xl { font-size: 1.875rem !important; }
+    .mb-16 { margin-bottom: 2.5rem !important; }
+    .mb-12 { margin-bottom: 2rem !important; }
+    /* Ensure reveal elements don't cause huge blank gaps */
+    .reveal { transition-delay: 0s !important; }
+    /* Method/expertise single column */
+    .method-steps { grid-template-columns: 1fr !important; gap: 1rem; }
+    .expertise-grid { grid-template-columns: 1fr !important; gap: 1rem; }
+    .method-step { padding: 1.25rem 1rem; }
+    .expertise-card .expertise-card-front { padding: 1.25rem; }
+    /* Pricing single column */
+    .pricing-grid-3d { grid-template-columns: 1fr !important; max-width: 100%; gap: 1.5rem; }
+    .pricing-card-3d.featured { transform: none; }
+    .pricing-card-3d.featured:hover { transform: translateY(-8px); }
+    .pricing-card-inner { padding: 1.75rem 1.25rem; }
+    /* Testimonials single column */
+    .testimonials-track, .testimonials-immersive { grid-template-columns: 1fr !important; }
+    /* Stats grid */
+    .stats-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 0.75rem; }
+    /* Smart form */
+    .smart-form-selector { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem; }
+    .smart-form-type { padding: 1rem 0.5rem; }
+    .sf-type-desc, .smart-form-type-desc { display: none; }
     .demo-container { min-height: 350px; }
     .demo-panel { padding: 1.25rem; }
     .terminal-body { min-height: 200px; max-height: 260px; font-size: 0.75rem; }
@@ -630,9 +659,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 }
 
 @media (max-width: 639px) {
-    .expertise-grid { grid-template-columns: 1fr; }
-    .method-steps { grid-template-columns: 1fr; gap: 1.25rem; }
-    .method-step { padding: 1.5rem 1.25rem; }
+    .expertise-grid { grid-template-columns: 1fr !important; }
+    .method-steps { grid-template-columns: 1fr !important; gap: 1rem; }
+    .method-step { padding: 1.25rem 1rem; }
     .method-step-dot { width: 44px; height: 44px; font-size: 1.25rem; }
     .portfolio-carousel-3d { height: 320px; overflow: visible; }
     .portfolio-card-3d { width: 240px; }
@@ -652,7 +681,9 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     .tool-mobile-pill { padding: 0.5rem; font-size: 0.65rem; }
     .loader-logo { font-size: 2rem; }
     .loader-boot { font-size: 0.65rem; }
-    .stat-number { font-size: 1.5rem; }
+    .stat-number { font-size: 1.25rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem; }
+    .stat-card { padding: 1rem 0.5rem; }
     .stat-card { padding: 1rem 0.5rem; }
     .scroll-top-btn { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
 }

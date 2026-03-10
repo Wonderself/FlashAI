@@ -187,8 +187,28 @@ function initSparkleCursor() {
 }
 
 function initScrollReveal() {
-    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.06 });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.01, rootMargin: '50px' });
+    // Observe all current .reveal elements
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    // Watch for dynamically added .reveal elements
+    const mo = new MutationObserver(mutations => {
+        mutations.forEach(m => {
+            m.addedNodes.forEach(node => {
+                if (node.nodeType !== 1) return;
+                if (node.classList && node.classList.contains('reveal') && !node.classList.contains('visible')) obs.observe(node);
+                if (node.querySelectorAll) node.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+            });
+        });
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+    // Expose globally so other functions can trigger re-scan
+    window._revealObs = obs;
+    // Safety net: if any .reveal elements are still hidden after 3s, force-show them
+    setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+            el.classList.add('visible');
+        });
+    }, 3000);
 }
 
 function initHeader() {
