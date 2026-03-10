@@ -88,7 +88,7 @@ function initSparkleCursor() {
     const ctx = canvas.getContext('2d');
     let w, h, mx = 0, my = 0, pmx = 0, pmy = 0;
     const particles = [];
-    const roseColors = ['#ff006e','#e879f9','#f472b6','#fda4af','#ffd700','#00f0ff','#ff69b4','#fb7185','#f9a8d4'];
+    const roseColors = ['#ff006e','#e879f9','#f472b6','#fda4af','#ffd700','#00f0ff','#ff69b4','#fb7185','#f9a8d4','#c084fc','#f0abfc'];
 
     function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
     resize();
@@ -99,11 +99,11 @@ function initSparkleCursor() {
         constructor(x, y) {
             this.x = x + (Math.random() - 0.5) * 24;
             this.y = y + (Math.random() - 0.5) * 24;
-            this.vx = (Math.random() - 0.5) * 2.5;
-            this.vy = (Math.random() - 0.5) * 2.5 - 0.8;
+            this.vx = (Math.random() - 0.5) * 3;
+            this.vy = (Math.random() - 0.5) * 3 - 1;
             this.life = 1;
-            this.decay = Math.random() * 0.018 + 0.012;
-            this.size = Math.random() * 4.5 + 1;
+            this.decay = Math.random() * 0.014 + 0.008;
+            this.size = Math.random() * 5.5 + 1.5;
             this.color = roseColors[Math.floor(Math.random() * roseColors.length)];
             this.type = Math.random() > 0.25 ? 'star' : 'circle';
             this.rotation = Math.random() * Math.PI * 2;
@@ -156,21 +156,21 @@ function initSparkleCursor() {
         const speed = Math.sqrt(dx * dx + dy * dy);
         const spawnCount = Math.min(Math.floor(speed * 0.6) + 1, 10);
 
-        if (speed > 1.5 && frame % 2 === 0) {
-            for (let i = 0; i < spawnCount; i++) {
+        if (speed > 1 && frame % 2 === 0) {
+            for (let i = 0; i < spawnCount + 2; i++) {
                 particles.push(new Sparkle(mx, my));
             }
         }
 
         // Rose/pink gradient glow with feathered edge
-        const grad = ctx.createRadialGradient(mx, my, 0, mx, my, 45);
-        grad.addColorStop(0, 'rgba(255, 0, 110, 0.12)');
-        grad.addColorStop(0.3, 'rgba(232, 121, 249, 0.06)');
-        grad.addColorStop(0.6, 'rgba(244, 114, 182, 0.03)');
+        const grad = ctx.createRadialGradient(mx, my, 0, mx, my, 65);
+        grad.addColorStop(0, 'rgba(255, 0, 110, 0.18)');
+        grad.addColorStop(0.25, 'rgba(232, 121, 249, 0.10)');
+        grad.addColorStop(0.5, 'rgba(244, 114, 182, 0.05)');
         grad.addColorStop(1, 'transparent');
         ctx.beginPath();
         ctx.fillStyle = grad;
-        ctx.arc(mx, my, 45, 0, Math.PI * 2);
+        ctx.arc(mx, my, 65, 0, Math.PI * 2);
         ctx.fill();
 
         for (let i = particles.length - 1; i >= 0; i--) {
@@ -729,3 +729,366 @@ function initGalaxyCategories() {
     const cats = [ { name: 'Frontend', color: '#00f0ff', count: 10 }, { name: 'Backend', color: '#bf00ff', count: 10 }, { name: 'Database', color: '#ff006e', count: 10 }, { name: 'IA / ML', color: '#ffd700', count: 10 }, { name: 'DevOps', color: '#00ff87', count: 10 }, { name: 'Outils', color: '#ff8c00', count: 10 } ];
     ct.innerHTML = '<div class="galaxy-cats-row">' + cats.map(c => '<div class="galaxy-cat-pill" style="border-color:' + c.color + '40;color:' + c.color + '"><span class="galaxy-cat-dot" style="background:' + c.color + '"></span>' + c.name + '<span class="galaxy-cat-count">' + c.count + '</span></div>').join('') + '</div>';
 }
+
+/* ========== PRICING ========== */
+function initPricing() {
+    const grid = document.getElementById('pricing-grid');
+    const toggle = document.getElementById('pricing-toggle');
+    if (!grid) return;
+    let annual = false;
+    const plans = [
+        { name: 'Starter', icon: '\u{1F680}', price: 890, priceAnnual: 712, desc: 'Parfait pour demarrer votre presence digitale.', color: '#00f0ff', features: ['Site vitrine responsive','Design premium sur mesure','SEO de base optimise','Hebergement 3 mois inclus','Support email','Livraison en 5 jours'] },
+        { name: 'Business', icon: '\u{1F4BC}', price: 2490, priceAnnual: 1992, desc: 'La solution complete pour scaler votre business.', color: '#bf00ff', featured: true, features: ['Tout Starter +','CRM / Dashboard integre','Chatbot IA basique','API & automatisations','Analytics avance','Support prioritaire 12 mois','Formation equipe incluse'] },
+        { name: 'Enterprise', icon: '\u{1F3AF}', price: 4990, priceAnnual: 3992, desc: 'Infrastructure complete avec IA avancee.', color: '#ffd700', features: ['Tout Business +','IA avancee (GPT-4, RAG)','Infrastructure scalable','Multi-langue / multi-pays','SLA 99.9% garanti','Account manager dedie','Audit securite complet','Maintenance illimitee'] }
+    ];
+    function render() {
+        grid.innerHTML = plans.map((p, idx) => {
+            const price = annual ? p.priceAnnual : p.price;
+            const oldPrice = annual ? p.price : null;
+            return '<div class="pricing-card-3d ' + (p.featured ? 'featured' : '') + '" style="--pc:' + p.color + '">' +
+                (p.featured ? '<div class="pricing-popular-badge">\u2B50 Plus populaire</div>' : '') +
+                '<div class="pricing-card-aurora pricing-card-aurora-' + (idx + 1) + '"></div>' +
+                '<div class="pricing-card-inner"><div class="pricing-card-icon" style="background:' + p.color + '15;color:' + p.color + '">' + p.icon + '</div>' +
+                '<div class="pricing-name">' + p.name + '</div>' +
+                '<div class="pricing-desc">' + p.desc + '</div>' +
+                (oldPrice ? '<div class="pricing-old-price">' + oldPrice.toLocaleString('fr') + ' \u20AC</div>' : '') +
+                '<div class="pricing-price"><span class="pricing-amount" style="color:' + p.color + '">' + price.toLocaleString('fr') + '</span><span class="pricing-currency">\u20AC</span></div>' +
+                '<div class="pricing-divider"></div>' +
+                '<ul class="pricing-features">' + p.features.map((f, fi) => '<li style="animation-delay:' + (fi * 0.06) + 's"><span class="pf-check">\u2713</span><span>' + f + '</span></li>').join('') + '</ul>' +
+                '<a href="#contact" class="pricing-cta ' + (p.featured ? 'pricing-cta-featured' : '') + '">' + (p.featured ? 'Choisir Business' : 'Commencer') + '</a>' +
+                '</div></div>';
+        }).join('');
+    }
+    render();
+    if (toggle) toggle.addEventListener('click', () => { annual = !annual; toggle.classList.toggle('active', annual); render(); });
+}
+
+/* ========== ROI CALCULATOR ========== */
+function initROICalculator() {
+    const budget = document.getElementById('roi-budget');
+    const leads = document.getElementById('roi-leads');
+    const conv = document.getElementById('roi-conv');
+    if (!budget || !leads || !conv) return;
+    function calc() {
+        const b = +budget.value, l = +leads.value, c = +conv.value;
+        document.getElementById('roi-budget-val').textContent = b.toLocaleString('fr') + ' \u20AC';
+        document.getElementById('roi-leads-val').textContent = l;
+        document.getElementById('roi-conv-val').textContent = c + '%';
+        const improvedConv = c * 2.5;
+        const currentRevenue = l * (c / 100) * 200;
+        const flashRevenue = l * (improvedConv / 100) * 200;
+        const saving = flashRevenue - currentRevenue;
+        const roi = Math.round((saving / b) * 100);
+        document.getElementById('roi-number').textContent = '+' + roi + '%';
+        document.getElementById('roi-detail').textContent = 'Economie estimee : ' + Math.round(saving).toLocaleString('fr') + ' \u20AC/mois';
+        drawROIChart(currentRevenue, flashRevenue);
+    }
+    function drawROIChart(current, flash) {
+        const canvas = document.getElementById('roi-chart');
+        if (!canvas) return;
+        canvas.width = 300; canvas.height = 150;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, 300, 150);
+        const max = Math.max(current, flash, 1);
+        const h1 = (current / max) * 100, h2 = (flash / max) * 100;
+        ctx.fillStyle = 'rgba(239,68,68,0.4)'; ctx.beginPath(); ctx.roundRect(80, 130 - h1, 50, h1, 4); ctx.fill();
+        ctx.fillStyle = 'rgba(0,240,255,0.5)'; ctx.beginPath(); ctx.roundRect(170, 130 - h2, 50, h2, 4); ctx.fill();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '11px Inter, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('Avant', 105, 145); ctx.fillText('FlashAI', 195, 145);
+    }
+    [budget, leads, conv].forEach(el => el.addEventListener('input', calc));
+    calc();
+}
+
+/* ========== FAQ KNOWLEDGE BASE ========== */
+function initFAQ() {
+    const list = document.getElementById('faq-list');
+    if (!list) return;
+    const faqs = [
+        { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos tarifs commencent a <span class="faq-highlight">890\u20AC</span> pour un site vitrine. Chaque projet est chiffre sur mesure selon vos besoins. Devis gratuit en <strong>24h</strong>.', cat: 'business', icon: '\u{1F4B0}' },
+        { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'general', icon: '\u23F1\uFE0F' },
+        { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 247 APIs connectees.', cat: 'technique', icon: '\u2699\uFE0F' },
+        { q: 'Proposez-vous une garantie ?', a: 'Oui ! <span class="faq-highlight">Garantie satisfait ou rembourse a 100%</span>. Si le resultat ne vous convient pas, on vous rembourse integralement.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
+        { q: 'Comment fonctionne le support ?', a: 'Support prioritaire avec reponse en <span class="faq-highlight">moins de 2 heures</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
+        { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Plus de <span class="faq-highlight">50 projets</span> livres dans des secteurs varies : SaaS, e-commerce, sante, fintech.', cat: 'general', icon: '\u{1F3A8}' },
+        { q: 'Est-ce que le SEO est inclus ?', a: 'Oui, chaque projet inclut une <strong>optimisation SEO technique</strong> : meta tags, structured data, Core Web Vitals, sitemap XML, schema.org.', cat: 'technique', icon: '\u{1F50D}' },
+        { q: 'Comment se passe le paiement ?', a: '<strong>30% a la commande</strong>, 40% a la validation du prototype, 30% a la livraison. Paiement par virement ou carte bancaire via <span class="faq-highlight">Stripe</span>.', cat: 'business', icon: '\u{1F4B3}' },
+        { q: 'Faites-vous la maintenance ?', a: 'Oui ! <strong>12 mois de maintenance inclus</strong> : mises a jour, corrections, monitoring 24/7. Au-dela, forfaits a partir de 99\u20AC/mois.', cat: 'support', icon: '\u{1F527}' },
+        { q: 'Travaillez-vous a l\'international ?', a: 'Absolument. Bases a <strong>Tel Aviv</strong>, nous travaillons avec des clients en France, Suisse, Belgique, Canada et dans le monde entier. Tout se fait a distance.', cat: 'general', icon: '\u{1F30D}' },
+        { q: 'Puis-je modifier mon site moi-meme ?', a: 'Oui, nous fournissons un <strong>panneau d\'administration</strong> intuitif ou un CMS headless. Formation incluse pour votre equipe.', cat: 'technique', icon: '\u270F\uFE0F' },
+        { q: 'Que comprend le chatbot IA ?', a: 'Un assistant virtuel base sur <span class="faq-highlight">GPT-4</span> entraine sur vos donnees. Integration WhatsApp, site web, Messenger. Taux de resolution moyen de 85%.', cat: 'technique', icon: '\u{1F916}' },
+        { q: 'Proposez-vous des automatisations ?', a: 'Oui : workflows <strong>Zapier, Make, n8n</strong>, scripts custom. Reduction des taches manuelles de 60% en moyenne.', cat: 'technique', icon: '\u26A1' },
+        { q: 'Comment assurez-vous la securite ?', a: 'SSL, WAF Cloudflare, audit OWASP, conformite <span class="faq-highlight">RGPD</span>, chiffrement AES-256, authentification 2FA, monitoring 24/7.', cat: 'technique', icon: '\u{1F512}' },
+        { q: 'Y a-t-il un engagement ?', a: '<strong>Aucun engagement</strong>. Pas d\'abonnement obligatoire. Vous payez le projet, c\'est tout. Le support 12 mois est inclus.', cat: 'business', icon: '\u2705' },
+        { q: 'Quel est votre avantage par rapport a une agence classique ?', a: '<span class="faq-highlight">3 a 5x moins cher</span>, livraison en jours au lieu de mois, technologies modernes vs WordPress, support reactif inclus 12 mois.', cat: 'general', icon: '\u{1F680}' },
+        { q: 'Faites-vous des applications mobiles ?', a: 'Nous specialisons dans les <strong>Progressive Web Apps (PWA)</strong> qui fonctionnent comme des apps natives. Pour des apps natives, nous recommandons React Native.', cat: 'technique', icon: '\u{1F4F1}' },
+        { q: 'Comment demarrer mon projet ?', a: 'Simple : <strong>1)</strong> Remplissez le formulaire ci-dessous, <strong>2)</strong> On vous rappelle en <2h, <strong>3)</strong> Devis gratuit en 24h, <strong>4)</strong> On demarre !', cat: 'general', icon: '\u{1F3AF}' },
+        { q: 'Puis-je avoir un devis gratuit ?', a: 'Oui, <span class="faq-highlight">100% gratuit et sans engagement</span>. Remplissez le formulaire ou ecrivez-nous a contact@flashai.dev. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F4E9}' },
+        { q: 'Offrez-vous de la formation ?', a: 'Oui ! Chaque projet inclut une <strong>session de formation</strong> pour votre equipe + documentation complete de 40+ pages.', cat: 'support', icon: '\u{1F393}' }
+    ];
+    const totalEl = document.getElementById('faq-total-count');
+    if (totalEl) totalEl.textContent = faqs.length;
+    let readSet = new Set(), currentCat = 'all', searchQuery = '';
+    function render() {
+        const filtered = faqs.filter(f => {
+            if (currentCat !== 'all' && f.cat !== currentCat) return false;
+            if (searchQuery && !f.q.toLowerCase().includes(searchQuery) && !f.a.toLowerCase().includes(searchQuery)) return false;
+            return true;
+        });
+        list.innerHTML = filtered.map((f, i) => {
+            const idx = faqs.indexOf(f);
+            const isRead = readSet.has(idx);
+            const colors = { general: '#00f0ff', technique: '#bf00ff', business: '#00ff87', support: '#ff8c00' };
+            const c = colors[f.cat] || '#6366f1';
+            return '<div class="faq-card ' + (isRead ? 'faq-read' : '') + ' reveal" data-idx="' + idx + '">' +
+                '<div class="faq-card-accent" style="background:linear-gradient(180deg,' + c + ',' + c + '40)"></div>' +
+                '<button class="faq-question" aria-expanded="false">' +
+                '<span style="font-size:1.25rem;flex-shrink:0">' + f.icon + '</span>' +
+                '<span class="faq-q-text">' + f.q + '</span>' +
+                '<span class="faq-q-cat" style="color:' + c + ';border:1px solid ' + c + '40;background:' + c + '10">' + f.cat + '</span>' +
+                '<svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>' +
+                '</button>' +
+                '<div class="faq-answer"><div class="faq-card-answer">' + f.a + '</div></div>' +
+                '</div>';
+        }).join('');
+        list.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.faq-card');
+                const wasOpen = card.classList.contains('open');
+                card.classList.toggle('open');
+                btn.setAttribute('aria-expanded', !wasOpen);
+                if (!wasOpen) {
+                    const idx = +card.dataset.idx;
+                    readSet.add(idx);
+                    card.classList.add('faq-read');
+                    const readEl = document.getElementById('faq-read-count');
+                    const progEl = document.getElementById('faq-progress-bar');
+                    if (readEl) readEl.textContent = readSet.size;
+                    if (progEl) progEl.style.width = (readSet.size / faqs.length * 100) + '%';
+                }
+            });
+        });
+        document.querySelectorAll('.faq-card.reveal').forEach(el => {
+            el.classList.add('visible');
+        });
+    }
+    render();
+    const tabs = document.getElementById('faq-tabs');
+    if (tabs) tabs.querySelectorAll('.faq-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentCat = tab.dataset.cat;
+            render();
+        });
+    });
+    const search = document.getElementById('faq-search');
+    if (search) search.addEventListener('input', e => { searchQuery = e.target.value.toLowerCase(); render(); });
+}
+
+/* ========== CTA CANVAS ========== */
+function initCTACanvas() {
+    const canvas = document.getElementById('cta-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    function resize() { w = canvas.width = canvas.parentElement.offsetWidth; h = canvas.height = canvas.parentElement.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    const particles = Array.from({ length: 50 }, () => ({
+        x: Math.random(), y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.002,
+        vy: (Math.random() - 0.5) * 0.002,
+        size: Math.random() * 2 + 1,
+        color: ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87'][Math.floor(Math.random() * 5)],
+        alpha: Math.random() * 0.3 + 0.1
+    }));
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > 1) p.vx *= -1;
+            if (p.y < 0 || p.y > 1) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x * w, p.y * h, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+        });
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = (particles[i].x - particles[j].x) * w;
+                const dy = (particles[i].y - particles[j].y) * h;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x * w, particles[i].y * h);
+                    ctx.lineTo(particles[j].x * w, particles[j].y * h);
+                    ctx.strokeStyle = 'rgba(99,102,241,' + (0.1 * (1 - dist / 120)) + ')';
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
+
+/* ========== CTA TIMER ========== */
+function initCTATimer() {
+    const el = document.getElementById('cta-timer');
+    if (!el) return;
+    let total = 23 * 3600 + 59 * 60 + 42;
+    setInterval(() => {
+        if (total <= 0) total = 24 * 3600;
+        total--;
+        const h = Math.floor(total / 3600), m = Math.floor((total % 3600) / 60), s = total % 60;
+        el.textContent = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }, 1000);
+}
+
+/* ========== SMART FORM ========== */
+function initSmartForm() {
+    const selector = document.getElementById('smart-form-selector');
+    const container = document.getElementById('smart-form-container');
+    if (!selector || !container) return;
+    const types = [
+        { id: 'site', name: 'Site Web', icon: '\u{1F310}', color: '#00f0ff', desc: 'Vitrine, e-commerce' },
+        { id: 'crm', name: 'CRM / ERP', icon: '\u{1F4CA}', color: '#bf00ff', desc: 'Gestion clients' },
+        { id: 'chatbot', name: 'Chatbot IA', icon: '\u{1F916}', color: '#ff006e', desc: 'Assistant virtuel' },
+        { id: 'auto', name: 'Automatisation', icon: '\u26A1', color: '#ff8c00', desc: 'Workflows' },
+        { id: 'autre', name: 'Autre', icon: '\u{1F4AC}', color: '#00ff87', desc: 'Projet sur mesure' }
+    ];
+    let selected = null;
+    function renderSelector() {
+        selector.innerHTML = types.map(t => '<div class="smart-form-type ' + (selected === t.id ? 'selected' : '') + '" data-type="' + t.id + '" style="--form-color:' + t.color + ';--form-glow:' + t.color + '40"><span class="sf-type-icon">' + t.icon + '</span><span class="sf-type-name">' + t.name + '</span><span class="sf-type-desc">' + t.desc + '</span></div>').join('');
+        selector.querySelectorAll('.smart-form-type').forEach(el => {
+            el.addEventListener('click', () => { selected = el.dataset.type; renderSelector(); renderForm(); });
+        });
+    }
+    function renderForm() {
+        if (!selected) { container.innerHTML = '<p class="text-center text-surface-400 text-sm">Selectionnez un type de projet ci-dessus pour afficher le formulaire adapte.</p>'; return; }
+        const type = types.find(t => t.id === selected);
+        container.innerHTML = '<div class="smart-form" style="--form-color:' + type.color + ';--form-glow:' + type.color + '40">' +
+            '<div class="sf-form-title" style="color:' + type.color + '">' + type.icon + ' ' + type.name + '</div>' +
+            '<div class="sf-form-subtitle">Remplissez les informations pour recevoir un devis personnalise</div>' +
+            '<div class="sf-fields">' +
+            '<div class="sf-field"><label class="sf-label">Prenom *</label><input type="text" class="sf-input" placeholder="Votre prenom" required></div>' +
+            '<div class="sf-field"><label class="sf-label">Nom *</label><input type="text" class="sf-input" placeholder="Votre nom" required></div>' +
+            '<div class="sf-field"><label class="sf-label">Email *</label><input type="email" class="sf-input" placeholder="votre@email.com" required></div>' +
+            '<div class="sf-field"><label class="sf-label">Telephone</label><input type="tel" class="sf-input" placeholder="+33 6 00 00 00 00"></div>' +
+            '<div class="sf-field"><label class="sf-label">Entreprise</label><input type="text" class="sf-input" placeholder="Nom de votre entreprise"></div>' +
+            '<div class="sf-field"><label class="sf-label">Budget</label><select class="sf-select"><option value="">Selectionnez</option><option>< 1 000\u20AC</option><option>1 000 - 3 000\u20AC</option><option>3 000 - 5 000\u20AC</option><option>5 000 - 10 000\u20AC</option><option>> 10 000\u20AC</option></select></div>' +
+            '<div class="sf-field sf-field-full"><label class="sf-label">Description du projet *</label><textarea class="sf-textarea" placeholder="Decrivez votre projet, vos objectifs et contraintes..." rows="4" required></textarea></div>' +
+            '</div>' +
+            '<button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button" onclick="showToast(\'Demande envoyee ! On vous recontacte en < 2h.\')"><span>Envoyer ma demande</span></button>' +
+            '</div>';
+        container.querySelectorAll('.sf-input').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value.trim()) input.classList.add('valid');
+                else input.classList.remove('valid');
+            });
+        });
+    }
+    renderSelector();
+    renderForm();
+}
+
+/* ========== MAGNETIC BUTTON ========== */
+function initMagneticBtn() {
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+}
+
+/* ========== SCROLL TOP ========== */
+function initScrollTop() {
+    const btn = document.getElementById('scroll-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    btn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+}
+
+/* ========== SMOOTH ANCHORS ========== */
+function initSmoothAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+}
+
+/* ========== THREE.JS BACKGROUND (lightweight) ========== */
+function initThreeBackground() {
+    const canvas = document.getElementById('three-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    const dots = Array.from({ length: 60 }, () => ({
+        x: Math.random() * 1, y: Math.random() * 1,
+        size: Math.random() * 1.5 + 0.5,
+        speed: Math.random() * 0.0002 + 0.00005,
+        phase: Math.random() * Math.PI * 2
+    }));
+    let t = 0;
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        t += 0.01;
+        dots.forEach(d => {
+            d.phase += d.speed;
+            const x = (d.x + Math.sin(d.phase) * 0.02) * w;
+            const y = (d.y + Math.cos(d.phase * 0.7) * 0.02) * h;
+            const alpha = 0.15 + Math.sin(t + d.phase) * 0.1;
+            ctx.beginPath();
+            ctx.arc(x, y, d.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(99,102,241,' + alpha + ')';
+            ctx.fill();
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
+
+/* ========== EASTER EGGS ========== */
+function initEasterEggs() {
+    let konamiCode = '';
+    const konamiSeq = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
+    document.addEventListener('keydown', e => {
+        konamiCode += e.key;
+        if (konamiCode.length > konamiSeq.length) konamiCode = konamiCode.slice(-konamiSeq.length);
+        if (konamiCode === konamiSeq) {
+            showToast('\u{1F389} Mode secret active ! Vous etes un vrai geek !');
+            document.body.style.filter = 'hue-rotate(180deg)';
+            setTimeout(() => { document.body.style.filter = ''; }, 3000);
+        }
+    });
+}
+
+/* ========== HEADING SPARKLE REMINDERS ========== */
+(function initHeadingSparkles() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('heading-shimmer');
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.gradient-text-hero, .gradient-text-warm, .gradient-text-green').forEach(el => {
+        observer.observe(el);
+    });
+})();

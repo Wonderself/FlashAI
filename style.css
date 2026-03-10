@@ -692,10 +692,30 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     .scroll-top-btn { bottom: calc(1rem + env(safe-area-inset-bottom)); }
 }
 
-/* --- Heading shimmer on cursor hover --- */
-.heading-shimmer { position: relative; }
+/* --- Heading shimmer on cursor hover + subtle sparkle reminder --- */
+.heading-shimmer { position: relative; display: inline; }
 .heading-shimmer::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 65%, transparent 100%); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
 .heading-shimmer:hover::after { opacity: 1; animation: shimmer-glitter 1.5s ease-in-out; }
+
+/* Mini sparkle dots that appear near gradient headings — subtle reminder of cursor effect */
+.gradient-text-hero, .gradient-text-warm, .gradient-text-green { position: relative; }
+@keyframes mini-sparkle-drift {
+    0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+    20% { opacity: 0.6; transform: translate(-3px, -6px) scale(1); }
+    50% { opacity: 1; transform: translate(2px, -10px) scale(1.2); }
+    80% { opacity: 0.4; transform: translate(5px, -14px) scale(0.8); }
+}
+.gradient-text-hero::before, .gradient-text-warm::before, .gradient-text-green::before {
+    content: "\2728";
+    position: absolute;
+    top: -4px;
+    right: -16px;
+    font-size: 0.5em;
+    opacity: 0;
+    animation: mini-sparkle-drift 4s ease-in-out infinite 2s;
+    pointer-events: none;
+    filter: drop-shadow(0 0 4px rgba(255,0,110,0.5));
+}
 
 /* Portfolio card old classes compat */
 .portfolio-carousel-3d .portfolio-card { position: absolute; width: 320px; transition: all 0.6s cubic-bezier(0.22,1,0.36,1); }
