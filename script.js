@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initExpertise();
     initMethodTimeline();
     initPortfolio();
-    initTestimonials();
+    // initTestimonials(); // removed
     initGalaxy();
     initToolsMobile();
     initGalaxyCategories();
     initPricing();
-    initROICalculator();
+    // initROICalculator(); // removed
     initFAQ();
     initCTACanvas();
     initCTATimer();
