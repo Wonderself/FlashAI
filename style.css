@@ -816,3 +816,44 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .expertise-carousel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 @media (max-width: 1023px) { .expertise-carousel { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .expertise-carousel { grid-template-columns: 1fr; } }
+
+/* ========== TRUST BAR ========== */
+.trust-marquee { display: flex; gap: 2rem; animation: trust-scroll 30s linear infinite; width: max-content; }
+.trust-logo { display: flex; align-items: center; gap: 0.5rem; font-family: "Space Grotesk", sans-serif; font-size: 0.9rem; font-weight: 600; white-space: nowrap; opacity: 0.6; transition: opacity 0.3s; padding: 0.5rem 1rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 0.5rem; background: rgba(15,23,42,0.4); backdrop-filter: blur(4px); }
+.trust-logo:hover { opacity: 1; }
+.trust-logo-icon { font-size: 1.1rem; }
+@keyframes trust-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ========== WHATSAPP FLOAT ========== */
+.whatsapp-float { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 999; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.3s, box-shadow 0.3s; animation: whatsapp-pulse 2s ease infinite; text-decoration: none; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.6); }
+@keyframes whatsapp-pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6), 0 0 0 12px rgba(37,211,102,0.1); } }
+@media (max-width: 768px) { .whatsapp-float { bottom: 1rem; left: 1rem; width: 50px; height: 50px; } .whatsapp-float svg { width: 24px; height: 24px; } }
+
+/* ========== GLASSMORPHISM ENHANCEMENTS ========== */
+.bento-card, .pricing-card-3d .pricing-card-inner, .testimonial-card, .method-step, .expertise-card .expertise-card-front { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.bento-card:hover, .testimonial-card:hover, .method-step:hover { box-shadow: 0 0 30px rgba(99,102,241,0.15), 0 8px 32px rgba(0,0,0,0.3); }
+
+/* ========== CARD HOVER GLOW PULSE ========== */
+@keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 15px rgba(99,102,241,0.1); } 50% { box-shadow: 0 0 25px rgba(99,102,241,0.25); } }
+.bento-card:hover, .stat-card:hover { animation: glow-pulse 2s ease infinite; }
+
+/* ========== BUTTON RIPPLE ========== */
+.btn-glow::after { content: ""; position: absolute; inset: 0; border-radius: inherit; opacity: 0; background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), rgba(255,255,255,0.3) 0%, transparent 60%); transition: opacity 0.5s; }
+.btn-glow:active::after { opacity: 1; transition: opacity 0s; }
+
+/* ========== COMPARISON CARD GRID (mobile 2-col) ========== */
+.comp-card-grid { display: none; }
+@media (max-width: 768px) {
+    .comp-table > .comp-header, .comp-table > .comp-row { display: none; }
+    .comp-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .comp-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.85rem; padding: 0.85rem 0.75rem; backdrop-filter: blur(8px); transition: border-color 0.3s, transform 0.3s; }
+    .comp-card:hover { border-color: rgba(99,102,241,0.25); transform: translateY(-2px); }
+    .comp-card-icon { font-size: 1.25rem; margin-bottom: 0.35rem; }
+    .comp-card-label { font-size: 0.72rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.5rem; line-height: 1.2; }
+    .comp-card-values { display: flex; flex-direction: column; gap: 0.35rem; }
+    .comp-card-classic, .comp-card-flash { display: flex; flex-direction: column; gap: 0.15rem; }
+    .comp-card-col-label { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; font-weight: 600; }
+    .comp-card .comp-badge-classic { font-size: 0.65rem; padding: 0.2rem 0.5rem; display: inline-block; }
+    .comp-card .comp-badge-flash { font-size: 0.65rem; padding: 0.2rem 0.5rem; display: inline-block; }
+}

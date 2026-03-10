@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCTACanvas();
     initCTATimer();
     initSmartForm();
+    initTrustBar();
     initMagneticBtn();
     initScrollTop();
     initSmoothAnchors();
@@ -574,7 +575,22 @@ function initComparison() {
         { label: 'Personnalisation', classic: 'Templates limites', flash: '100% sur mesure', icon: '\u{1F3A8}' },
         { label: 'SEO', classic: 'Basique', flash: 'Avance, optimise IA', icon: '\u{1F50D}' }
     ];
-    ct.innerHTML = '<div class="comp-table"><div class="comp-header"><div class="comp-h-label"></div><div class="comp-h-classic">Agence classique</div><div class="comp-h-flash">FlashAI \u26A1</div></div>' + rows.map((r, i) => '<div class="comp-row reveal" style="transition-delay:' + (i * 0.08) + 's"><div class="comp-label"><span class="comp-icon">' + r.icon + '</span>' + r.label + '</div><div class="comp-classic"><span class="comp-badge-classic">' + r.classic + '</span></div><div class="comp-flash"><span class="comp-badge-flash">' + r.flash + '</span></div></div>').join('') + '</div>';
+    /* Desktop: table layout */
+    ct.innerHTML = '<div class="comp-table">' +
+        '<div class="comp-header"><div class="comp-h-label"></div><div class="comp-h-classic">Agence classique</div><div class="comp-h-flash">FlashAI \u26A1</div></div>' +
+        rows.map((r, i) => '<div class="comp-row reveal" style="transition-delay:' + (i * 0.08) + 's"><div class="comp-label"><span class="comp-icon">' + r.icon + '</span>' + r.label + '</div><div class="comp-classic"><span class="comp-badge-classic">' + r.classic + '</span></div><div class="comp-flash"><span class="comp-badge-flash">' + r.flash + '</span></div></div>').join('') +
+        '</div>' +
+        /* Mobile: 2-column card grid */
+        '<div class="comp-card-grid">' +
+        rows.map((r, i) => '<div class="comp-card reveal" style="transition-delay:' + (i * 0.06) + 's">' +
+            '<div class="comp-card-header"><span class="comp-card-icon">' + r.icon + '</span><span class="comp-card-label">' + r.label + '</span></div>' +
+            '<div class="comp-card-values">' +
+                '<div class="comp-card-classic"><span class="comp-card-col-label">Classique</span><span class="comp-badge-classic">' + r.classic + '</span></div>' +
+                '<div class="comp-card-vs">VS</div>' +
+                '<div class="comp-card-flash"><span class="comp-card-col-label">FlashAI \u26A1</span><span class="comp-badge-flash">' + r.flash + '</span></div>' +
+            '</div>' +
+        '</div>').join('') +
+        '</div>';
 }
 
 /* ========== EXPERTISE ========== */
@@ -987,6 +1003,8 @@ function initSmartForm() {
                 { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
                 { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
                 { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
                 { label: 'Type de site *', type: 'chips', options: ['Site vitrine','Landing page','E-commerce','Blog / Media','Portfolio','Application web'], full: true },
                 { label: 'Nombre de pages estimees', type: 'chips', options: ['1-5 pages','6-15 pages','16-30 pages','30+ pages'], full: true },
                 { label: 'Fonctionnalites souhaitees', type: 'checks', options: ['Formulaire de contact','Paiement en ligne','Espace membre','Blog integre','Multi-langue','Chat en direct','Booking / RDV','SEO avance'], full: true },
@@ -1003,6 +1021,8 @@ function initSmartForm() {
                 { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
                 { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
                 { label: 'Entreprise *', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
                 { label: 'Type d\'outil *', type: 'chips', options: ['CRM commercial','ERP complet','Dashboard analytics','Gestion de projet','Facturation','Sur mesure'], full: true },
                 { label: 'Nombre d\'utilisateurs', type: 'chips', options: ['1-5','6-20','21-50','50+'], full: true },
                 { label: 'Fonctionnalites cles', type: 'checks', options: ['Pipeline commercial','Gestion contacts','Facturation auto','Rapports / KPIs','Notifications email','Import/Export CSV','API tierce','Roles & permissions'], full: true },
@@ -1019,6 +1039,7 @@ function initSmartForm() {
                 { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
                 { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
                 { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
                 { label: 'Ou deployer le chatbot ? *', type: 'chips', options: ['Site web','WhatsApp','Messenger','Slack','Instagram','Plusieurs canaux'], full: true },
                 { label: 'Objectif principal *', type: 'chips', options: ['Support client','Generation de leads','FAQ automatisee','Prise de RDV','Recommandations produits','Assistant interne'], full: true },
                 { label: 'Capacites souhaitees', type: 'checks', options: ['Reponses en temps reel','Transfert agent humain','Base de connaissances','Multi-langue','Analyse de sentiment','Integration CRM','Collecte de donnees','Personnalisation contextuelle'], full: true },
@@ -1035,6 +1056,8 @@ function initSmartForm() {
                 { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
                 { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
                 { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
                 { label: 'Outils que vous utilisez *', type: 'checks', options: ['Gmail / Outlook','Slack / Teams','Google Sheets','HubSpot / Salesforce','Stripe / PayPal','Shopify / WooCommerce','Notion / Trello','Zapier / Make','Autre'], full: true },
                 { label: 'Type d\'automatisation *', type: 'chips', options: ['Email marketing','Facturation auto','Sync donnees','Notifications','Rapports auto','Scraping / Data','Onboarding client','Workflow interne'], full: true },
                 { label: 'Combien de taches manuelles repetitives par jour ?', type: 'chips', options: ['< 5','5 - 15','15 - 30','30+'], full: true },
@@ -1050,6 +1073,8 @@ function initSmartForm() {
                 { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
                 { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
                 { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
                 { label: 'Type de projet *', type: 'chips', options: ['Application mobile','SaaS / Plateforme','API / Backend','Data / Analytics','Design / UX','Consulting tech','Autre'], full: true },
                 { label: 'Budget estime', type: 'select', options: ['< 1 000\u20AC','1 000 - 5 000\u20AC','5 000 - 10 000\u20AC','10 000 - 20 000\u20AC','> 20 000\u20AC'], half: true },
                 { label: 'Delai souhaite', type: 'select', options: ['Urgent','1-2 semaines','1 mois','Flexible'], half: true },
@@ -1130,11 +1155,71 @@ function initSmartForm() {
         });
         // Submit
         container.querySelector('.sf-submit').addEventListener('click', () => {
+            launchConfetti();
             showToast('\u2705 Demande envoyee ! On vous recontacte en moins de 2h.');
         });
     }
     renderSelector();
     renderForm();
+}
+
+/* ========== CONFETTI ========== */
+function launchConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:99999;pointer-events:none';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const colors = ['#ff006e','#00f0ff','#bf00ff','#ffd700','#00ff87','#ff8c00','#e879f9','#f472b6'];
+    const pieces = Array.from({length: 150}, () => ({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 16,
+        vy: -Math.random() * 18 - 4,
+        w: Math.random() * 10 + 4,
+        h: Math.random() * 6 + 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.3,
+        gravity: 0.25 + Math.random() * 0.15,
+        life: 1,
+        decay: 0.005 + Math.random() * 0.005
+    }));
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        pieces.forEach(p => {
+            if (p.life <= 0) return;
+            alive = true;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += p.gravity;
+            p.vx *= 0.99;
+            p.rotation += p.rotSpeed;
+            p.life -= p.decay;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation);
+            ctx.globalAlpha = p.life;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+        });
+        if (alive) requestAnimationFrame(draw);
+        else canvas.remove();
+    }
+    draw();
+}
+
+/* ========== TRUST BAR ========== */
+function initTrustBar() {
+    const marquee = document.getElementById('trust-marquee');
+    if (!marquee) return;
+    const logos = ['TechVision','FoodExpress','MediCare Pro','CryptoTrack','EduSmart','LogiFlow','GreenEnergy','LegalBot','FinanceHub','DataWave','CloudNest','AutoPilot','SmartRetail','DevForge','SkyMetrics','NeoBank'];
+    const colors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87','#ff8c00','#e879f9','#06b6d4','#f472b6','#a78bfa','#34d399','#fb923c','#818cf8','#f87171','#38bdf8','#facc15'];
+    const items = logos.map((name, i) => '<div class="trust-logo" style="--tl-color:' + colors[i % colors.length] + '"><span class="trust-logo-icon" style="color:' + colors[i % colors.length] + '">' + name.charAt(0) + '</span><span class="trust-logo-name">' + name + '</span></div>').join('');
+    marquee.innerHTML = '<div class="trust-track">' + items + items + '</div>';
 }
 
 /* ========== MAGNETIC BUTTON ========== */
@@ -1200,6 +1285,59 @@ function initThreeBackground() {
             ctx.fill();
         });
         requestAnimationFrame(draw);
+    }
+    draw();
+}
+
+/* ========== TRUST BAR ========== */
+function initTrustBar() {
+    const ct = document.getElementById('trust-marquee');
+    if (!ct) return;
+    const logos = ['TechVision','FoodExpress','MediCare Pro','CryptoTrack','EduSmart','LogiFlow','GreenEnergy','LegalBot','DataPulse','NovaTech','FinanceHub','CloudNine','SmartRetail','BioGenix','AutoFlow','DesignLab'];
+    const colors = ['#00f0ff','#bf00ff','#ff006e','#00ff87','#ffd700','#ff8c00','#06b6d4','#e879f9','#f472b6','#a78bfa','#34d399','#fbbf24','#fb7185','#818cf8','#2dd4bf','#f97316'];
+    const html = logos.map((l, i) => '<div class="trust-logo" style="color:' + colors[i % colors.length] + '"><span class="trust-logo-icon">' + ['⚡','🚀','💎','📊','🎯','⭐','🔮','🛡️','📈','💡','🌐','☁️','🛒','🧬','⚙️','🎨'][i % 16] + '</span>' + l + '</div>').join('');
+    ct.innerHTML = html + html;
+}
+
+/* ========== CONFETTI ========== */
+function launchConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:99999;pointer-events:none';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    const colors = ['#00f0ff','#bf00ff','#ff006e','#00ff87','#ffd700','#ff8c00','#e879f9','#f472b6'];
+    const pieces = Array.from({length: 120}, () => ({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 16,
+        vy: -Math.random() * 18 - 5,
+        size: Math.random() * 8 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 12,
+        life: 1,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle'
+    }));
+    let frame = 0;
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        pieces.forEach(p => {
+            p.x += p.vx; p.y += p.vy; p.vy += 0.4; p.rotation += p.rotSpeed;
+            p.vx *= 0.99; p.life -= 0.008;
+            if (p.life <= 0) return;
+            alive = true;
+            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rotation * Math.PI / 180);
+            ctx.globalAlpha = p.life;
+            ctx.fillStyle = p.color;
+            if (p.shape === 'rect') { ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size * 0.6); }
+            else { ctx.beginPath(); ctx.arc(0, 0, p.size/2, 0, Math.PI*2); ctx.fill(); }
+            ctx.restore();
+        });
+        frame++;
+        if (alive && frame < 200) requestAnimationFrame(draw);
+        else canvas.remove();
     }
     draw();
 }
