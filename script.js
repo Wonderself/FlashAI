@@ -71,34 +71,53 @@ function initLoader() {
         ctx = canvas.getContext('2d');
         cw = canvas.width = window.innerWidth;
         ch = canvas.height = window.innerHeight;
-        const pColors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87'];
+        const pColors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87','#ff00ff','#e879f9','#f472b6'];
         class LoaderParticle {
             constructor() { this.reset(); }
             reset() {
-                this.x = cw / 2 + (Math.random() - 0.5) * 60;
-                this.y = ch / 2 + (Math.random() - 0.5) * 60;
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 100;
+                this.x = cw / 2 + Math.cos(angle) * dist;
+                this.y = ch / 2 + Math.sin(angle) * dist;
+                this.vx = (Math.random() - 0.5) * 2.5;
+                this.vy = (Math.random() - 0.5) * 2.5;
                 this.life = 1;
-                this.decay = Math.random() * 0.008 + 0.003;
-                this.size = Math.random() * 2.5 + 0.5;
+                this.decay = Math.random() * 0.006 + 0.002;
+                this.size = Math.random() * 3 + 0.5;
                 this.color = pColors[Math.floor(Math.random() * pColors.length)];
+                this.trail = [];
             }
             update() {
+                this.trail.push({x: this.x, y: this.y});
+                if (this.trail.length > 6) this.trail.shift();
                 this.x += this.vx;
                 this.y += this.vy;
+                this.vx *= 0.998;
+                this.vy *= 0.998;
                 this.life -= this.decay;
                 if (this.life <= 0) this.reset();
             }
             draw() {
-                ctx.globalAlpha = this.life * 0.6;
+                // Draw trail
+                this.trail.forEach((pt, i) => {
+                    const a = (i / this.trail.length) * this.life * 0.3;
+                    ctx.globalAlpha = a;
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(pt.x, pt.y, this.size * (i / this.trail.length) * 0.6, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                ctx.globalAlpha = this.life * 0.7;
                 ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 8;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
+                ctx.shadowBlur = 0;
             }
         }
-        for (let i = 0; i < 60; i++) particles.push(new LoaderParticle());
+        for (let i = 0; i < 120; i++) particles.push(new LoaderParticle());
         let animId;
         function animateParticles() {
             ctx.clearRect(0, 0, cw, ch);
@@ -123,7 +142,7 @@ function initLoader() {
 
     /* --- Progress with ring + bar + boot text --- */
     const ringTotal = 452.4; /* 2 * PI * 72 */
-    const lines = ['[INIT] Loading neural network...','[OK] 247 tools connected','[OK] AI Core ready','[OK] Galaxy renderer initialized','[OK] Sparkle engine loaded','[LAUNCH] FlashAI v6.0'];
+    const lines = ['[INIT] Booting FlashAI neural core...','[OK] 247 APIs connected','[OK] AI engine ready (GPT-4 + Claude)','[OK] Galaxy renderer initialized','[OK] Design system loaded','[OK] Sparkle engine armed','[OK] Security layer active','[LAUNCH] FlashAI v6.0 — Ready to deploy'];
     let progress = 0, lineIdx = 0;
     const interval = setInterval(() => {
         progress += Math.random() * 12 + 4;
@@ -146,13 +165,16 @@ function initLoader() {
             /* --- Explosion finale --- */
             setTimeout(() => {
                 if (loaderContent) loaderContent.classList.add('loader-explode');
-                /* Burst particles outward */
+                /* Burst particles outward — big explosion */
                 if (loader._particles && loader._ctx) {
                     loader._particles.forEach(p => {
-                        p.vx = (Math.random() - 0.5) * 12;
-                        p.vy = (Math.random() - 0.5) * 12;
-                        p.decay = 0.02;
-                        p.size = Math.random() * 4 + 1;
+                        const angle = Math.random() * Math.PI * 2;
+                        const speed = Math.random() * 20 + 8;
+                        p.vx = Math.cos(angle) * speed;
+                        p.vy = Math.sin(angle) * speed;
+                        p.decay = 0.015;
+                        p.size = Math.random() * 5 + 2;
+                        p.trail = [];
                     });
                 }
                 setTimeout(() => {
