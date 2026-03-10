@@ -1622,3 +1622,113 @@ function initSectionFlashReveal() {
         document.head.appendChild(style);
     }
 }
+
+/* ================================================================
+   LEGAL MODALS
+   ================================================================ */
+(function initLegalModals() {
+    const modal = document.getElementById('legal-modal');
+    const body = document.getElementById('legal-modal-body');
+    const closeBtn = document.getElementById('legal-modal-close');
+    if (!modal || !body) return;
+
+    const pages = {
+        'mentions-legales': `<h2>Mentions L\u00e9gales</h2>
+<h3>1. \u00c9diteur du site</h3>
+<p><strong>FlashAI</strong> \u2014 Entreprise isra\u00e9lienne<br>
+Fond\u00e9e par <strong>Emmanuel Smadja</strong><br>
+Si\u00e8ge social : Isra\u00ebl<br>
+Email : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a><br>
+T\u00e9l\u00e9phone : <a href="tel:+33758787025" style="color:#00f0ff">+33 7 58 78 70 25</a><br>
+Activit\u00e9 : Agence digitale \u2014 cr\u00e9ation de sites web, CRM, chatbots IA, automatisations</p>
+<h3>2. H\u00e9bergement</h3>
+<p>Ce site est h\u00e9berg\u00e9 par <strong>GitHub Pages</strong> (GitHub, Inc.), 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
+<h3>3. Propri\u00e9t\u00e9 intellectuelle</h3>
+<p>L\u2019ensemble du contenu de ce site (textes, images, logos, code, animations, design) est la propri\u00e9t\u00e9 exclusive de FlashAI et est prot\u00e9g\u00e9 par les lois isra\u00e9liennes et internationales relatives \u00e0 la propri\u00e9t\u00e9 intellectuelle. Toute reproduction, m\u00eame partielle, sans autorisation \u00e9crite pr\u00e9alable est interdite.</p>
+<h3>4. Responsabilit\u00e9</h3>
+<p>FlashAI s\u2019efforce de fournir des informations exactes et \u00e0 jour. Toutefois, FlashAI ne saurait \u00eatre tenu responsable des erreurs, omissions ou r\u00e9sultats obtenus suite \u00e0 l\u2019utilisation de ces informations.</p>
+<h3>5. Droit applicable</h3>
+<p>Les pr\u00e9sentes mentions l\u00e9gales sont r\u00e9gies par le droit isra\u00e9lien. Tout litige sera soumis \u00e0 la comp\u00e9tence exclusive des tribunaux d\u2019Isra\u00ebl.</p>`,
+
+        'politique-confidentialite': `<h2>Politique de Confidentialit\u00e9</h2>
+<h3>1. Responsable du traitement</h3>
+<p><strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja.<br>
+Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>
+<h3>2. Donn\u00e9es collect\u00e9es</h3>
+<p>Nous collectons les donn\u00e9es suivantes uniquement via le formulaire de contact :</p>
+<ul>
+<li>Nom et pr\u00e9nom</li>
+<li>Adresse email</li>
+<li>Nom de l\u2019entreprise (facultatif)</li>
+<li>Message / description du projet</li>
+</ul>
+<h3>3. Finalit\u00e9 du traitement</h3>
+<p>Ces donn\u00e9es sont utilis\u00e9es exclusivement pour :</p>
+<ul>
+<li>R\u00e9pondre \u00e0 vos demandes de devis et de contact</li>
+<li>\u00c9tablir et g\u00e9rer la relation commerciale</li>
+<li>Am\u00e9liorer nos services</li>
+</ul>
+<h3>4. Dur\u00e9e de conservation</h3>
+<p>Les donn\u00e9es sont conserv\u00e9es pendant une dur\u00e9e maximale de 3 ans apr\u00e8s le dernier contact, sauf obligation l\u00e9gale contraire.</p>
+<h3>5. Partage des donn\u00e9es</h3>
+<p>Vos donn\u00e9es ne sont jamais vendues, lou\u00e9es ou partag\u00e9es avec des tiers \u00e0 des fins commerciales. Elles peuvent \u00eatre transmises \u00e0 des sous-traitants techniques (h\u00e9bergement, email) uniquement dans le cadre strict de la prestation.</p>
+<h3>6. Cookies</h3>
+<p>Ce site utilise uniquement des cookies techniques n\u00e9cessaires au bon fonctionnement du site. Aucun cookie publicitaire ou de tracking n\u2019est utilis\u00e9.</p>
+<h3>7. Vos droits</h3>
+<p>Conform\u00e9ment \u00e0 la loi isra\u00e9lienne sur la protection de la vie priv\u00e9e (Privacy Protection Law, 5741-1981) et au RGPD pour les r\u00e9sidents europ\u00e9ens, vous disposez des droits d\u2019acc\u00e8s, de rectification, de suppression et de portabilit\u00e9 de vos donn\u00e9es. Contactez-nous \u00e0 <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a>.</p>
+<h3>8. S\u00e9curit\u00e9</h3>
+<p>Nous mettons en \u0153uvre des mesures de s\u00e9curit\u00e9 techniques et organisationnelles (SSL/TLS, chiffrement AES-256) pour prot\u00e9ger vos donn\u00e9es personnelles.</p>`,
+
+        'cgv': `<h2>Conditions G\u00e9n\u00e9rales de Vente</h2>
+<h3>1. Objet</h3>
+<p>Les pr\u00e9sentes CGV r\u00e9gissent les relations entre <strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja (ci-apr\u00e8s \u00ab le Prestataire \u00bb), et tout client (ci-apr\u00e8s \u00ab le Client \u00bb) pour les prestations de services digitaux.</p>
+<h3>2. Services propos\u00e9s</h3>
+<ul>
+<li>Cr\u00e9ation de sites web sur mesure</li>
+<li>D\u00e9veloppement de CRM / ERP personnalis\u00e9s</li>
+<li>Int\u00e9gration de chatbots IA</li>
+<li>Tableaux de bord et analytics</li>
+<li>Automatisation de processus</li>
+<li>SEO technique et audit</li>
+<li>S\u00e9curit\u00e9 web et conformit\u00e9 RGPD</li>
+</ul>
+<h3>3. Devis et commande</h3>
+<p>Tout projet d\u00e9bute par un devis personnalis\u00e9 gratuit, \u00e9tabli sous 24h. Le devis est valable 30 jours. La commande est confirm\u00e9e \u00e0 r\u00e9ception du devis sign\u00e9 et du versement de l\u2019acompte de 50%.</p>
+<h3>4. Tarifs et paiement</h3>
+<p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Le solde est d\u00fb \u00e0 la livraison du projet.</p>
+<h3>5. D\u00e9lais de livraison</h3>
+<p>Les d\u00e9lais indicatifs sont : site vitrine (5 jours), CRM/dashboard (7-10 jours), projet complexe (10-14 jours). Ces d\u00e9lais courent \u00e0 compter de la validation du cahier des charges et de la r\u00e9ception de l\u2019acompte.</p>
+<h3>6. Garantie satisfait ou rembours\u00e9</h3>
+<p>FlashAI offre une <strong>garantie satisfait ou rembours\u00e9</strong>. Si le Client n\u2019est pas satisfait du r\u00e9sultat apr\u00e8s les r\u00e9visions pr\u00e9vues, l\u2019acompte est int\u00e9gralement rembours\u00e9 dans un d\u00e9lai de 14 jours.</p>
+<h3>7. Propri\u00e9t\u00e9 et livraison</h3>
+<p>Le transfert de propri\u00e9t\u00e9 du code source et des livrables s\u2019effectue au paiement int\u00e9gral. Le Client re\u00e7oit un acc\u00e8s complet au code source, aux acc\u00e8s h\u00e9bergement et \u00e0 toute la documentation technique.</p>
+<h3>8. Support et maintenance</h3>
+<p>Un support technique est inclus pendant 12 mois apr\u00e8s la livraison. Au-del\u00e0, un contrat de maintenance peut \u00eatre propos\u00e9.</p>
+<h3>9. R\u00e9siliation</h3>
+<p>Chaque partie peut r\u00e9silier le contrat en cas de manquement grave de l\u2019autre partie, apr\u00e8s mise en demeure rest\u00e9e sans effet pendant 15 jours.</p>
+<h3>10. Droit applicable et litiges</h3>
+<p>Les pr\u00e9sentes CGV sont r\u00e9gies par le droit isra\u00e9lien. En cas de litige, les parties s\u2019engagent \u00e0 rechercher une solution amiable. \u00c0 d\u00e9faut, les tribunaux d\u2019Isra\u00ebl seront seuls comp\u00e9tents.</p>
+<h3>11. Contact</h3>
+<p>Pour toute question relative aux pr\u00e9sentes CGV : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>`
+    };
+
+    function openModal(page) {
+        if (!pages[page]) return;
+        body.innerHTML = pages[page];
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.querySelector('.legal-modal-backdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('link-mentions')?.addEventListener('click', e => { e.preventDefault(); openModal('mentions-legales'); });
+    document.getElementById('link-privacy')?.addEventListener('click', e => { e.preventDefault(); openModal('politique-confidentialite'); });
+    document.getElementById('link-cgv')?.addEventListener('click', e => { e.preventDefault(); openModal('cgv'); });
+})();
