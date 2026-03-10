@@ -446,7 +446,13 @@ function initDemoCRM() {
     const columns = { prospect: 'Prospects', encours: 'En cours', client: 'Clients' };
     function render(filter='') {
         const filtered = contacts.filter(c => c.name.toLowerCase().includes(filter) || c.email.toLowerCase().includes(filter));
-        ct.innerHTML = '<div class="crm-header"><h3 class="font-display font-bold text-lg">Mini CRM</h3><input type="text" class="crm-search" placeholder="Rechercher..." id="crm-si" value="' + filter + '"></div><div class="crm-columns">' + Object.entries(columns).map(([key, label]) => { const items = filtered.filter(c => c.status === key); return '<div class="crm-column" data-col="' + key + '"><div class="crm-col-header"><span style="color:' + (key === 'prospect' ? '#ff8c00' : key === 'encours' ? '#00f0ff' : '#00ff87') + '">' + label + '</span><span class="crm-col-count">' + items.length + '</span></div>' + items.map(c => '<div class="crm-card" draggable="true" data-name="' + c.name + '"><div class="crm-card-name">' + c.name + '</div><div class="crm-card-email">' + c.email + '</div><div class="crm-card-value">' + c.value + '</div><div class="crm-card-actions"><button class="crm-action-btn" onclick="showToast(\'Appel ' + c.name + '...\')">📞</button><button class="crm-action-btn" onclick="showToast(\'Email envoye\')">✉️</button></div></div>').join('') + '</div>'; }).join('') + '</div>';
+        const totalContacts = filtered.length;
+        const totalValue = filtered.reduce((s, c) => s + parseInt(c.value.replace(/[^\d]/g, '')), 0);
+        const clientCount = filtered.filter(c => c.status === 'client').length;
+        const convRate = totalContacts > 0 ? Math.round((clientCount / totalContacts) * 100) : 0;
+        ct.innerHTML = '<div class="crm-header"><h3 class="font-display font-bold text-lg">Mini CRM</h3><input type="text" class="crm-search" placeholder="Rechercher..." id="crm-si" value="' + filter + '"></div>' +
+        '<div class="crm-stats-bar"><div class="crm-stat-kpi"><div class="crm-stat-kpi-value" style="color:#00f0ff">' + totalContacts + '</div><div class="crm-stat-kpi-label">Contacts</div></div><div class="crm-stat-kpi"><div class="crm-stat-kpi-value" style="color:#00ff87">' + totalValue.toLocaleString('fr') + ' \u20AC</div><div class="crm-stat-kpi-label">Pipeline</div></div><div class="crm-stat-kpi"><div class="crm-stat-kpi-value" style="color:#bf00ff">' + convRate + '%</div><div class="crm-stat-kpi-label">Conversion</div></div></div>' +
+        '<div class="crm-columns">' + Object.entries(columns).map(([key, label]) => { const items = filtered.filter(c => c.status === key); return '<div class="crm-column" data-col="' + key + '"><div class="crm-col-header"><span style="color:' + (key === 'prospect' ? '#ff8c00' : key === 'encours' ? '#00f0ff' : '#00ff87') + '">' + label + '</span><span class="crm-col-count">' + items.length + '</span></div>' + items.map(c => '<div class="crm-card" draggable="true" data-name="' + c.name + '"><div class="crm-card-name">' + c.name + '</div><div class="crm-card-email">' + c.email + '</div><div class="crm-card-value">' + c.value + '</div><div class="crm-card-actions"><button class="crm-action-btn" onclick="showToast(\'Appel ' + c.name + '...\')">📞</button><button class="crm-action-btn" onclick="showToast(\'Email envoye\')">✉️</button></div></div>').join('') + '</div>'; }).join('') + '</div>';
         const si = document.getElementById('crm-si');
         if (si) { si.addEventListener('input', e => render(e.target.value.toLowerCase())); }
         ct.querySelectorAll('.crm-card').forEach(card => {
@@ -475,7 +481,8 @@ function initDemoDevis() {
         else if (state.step === 2) body = '<div class="devis-features">' + features.map(f => '<div class="devis-feature ' + (state.features.includes(f.name) ? 'checked' : '') + '" data-feat="' + f.name + '"><div class="devis-feature-check">' + (state.features.includes(f.name) ? '\u2713' : '') + '</div><span>' + f.name + '</span><span style="margin-left:auto;color:#00ff87;font-size:0.75rem">+' + f.price + '\u20AC</span></div>').join('') + '</div>';
         else if (state.step === 3) body = '<div class="devis-options">' + ['Minimaliste','Moderne','Audacieux','Classique'].map((s,i) => '<div class="devis-option" style="border-color:' + ['#00f0ff','#bf00ff','#ff006e','#ffd700'][i] + '30"><div class="devis-option-icon">' + ['\u{1F3A8}','\u{1F48E}','\u{1F525}','\u2728'][i] + '</div><div class="devis-option-name">' + s + '</div></div>').join('') + '</div>';
         else body = '<div style="text-align:center"><div class="devis-total"><div class="devis-total-label">Prix total</div><div class="devis-total-price">' + state.total.toLocaleString('fr') + ' \u20AC</div></div><div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center"><button class="btn-glow" onclick="showToast(\'Devis telecharge !\')"><span>Telecharger</span></button></div></div>';
-        ct.innerHTML = '<div class="devis-steps">' + [1,2,3,4].map(s => '<div class="devis-step ' + (s===state.step?'active':'') + ' ' + (s<state.step?'completed':'') + '"><span class="devis-step-num">' + (s<state.step?'\u2713':s) + '</span><span>' + ['Projet','Options','Style','Resume'][s-1] + '</span></div>').join('') + '</div><div class="devis-body">' + body + '</div><div class="devis-total" style="margin-top:1rem"><div class="devis-total-label">Estimation</div><div class="devis-total-price">' + state.total.toLocaleString('fr') + ' \u20AC</div></div><div class="devis-nav-btns">' + (state.step>1?'<button class="btn-outline" id="dp">\u2190 Retour</button>':'') + (state.step<4?'<button class="btn-glow" id="dn"><span>Suivant \u2192</span></button>':'') + '</div>';
+        const progressPct = ((state.step - 1) / 3 * 100);
+        ct.innerHTML = '<div class="devis-progress-wrap"><div class="devis-progress-line"><div class="devis-progress-fill" style="width:' + progressPct + '%"></div></div><div class="devis-steps">' + [1,2,3,4].map(s => '<div class="devis-step ' + (s===state.step?'active':'') + ' ' + (s<state.step?'completed':'') + '"><span class="devis-step-num">' + (s<state.step?'\u2713':s) + '</span><span>' + ['Projet','Options','Style','Resume'][s-1] + '</span></div>').join('') + '</div></div><div class="devis-body">' + body + '</div><div class="devis-total" style="margin-top:1rem"><div class="devis-total-label">Estimation</div><div class="devis-total-price">' + state.total.toLocaleString('fr') + ' \u20AC</div></div><div class="devis-nav-btns">' + (state.step>1?'<button class="btn-outline" id="dp">\u2190 Retour</button>':'') + (state.step<4?'<button class="btn-glow" id="dn"><span>Suivant \u2192</span></button>':'') + '</div>';
         ct.querySelectorAll('.devis-option[data-type]').forEach(o => o.addEventListener('click', () => { state.type = o.dataset.type; render(); }));
         ct.querySelectorAll('.devis-feature').forEach(f => f.addEventListener('click', () => { const n = f.dataset.feat; state.features.includes(n) ? state.features = state.features.filter(x => x !== n) : state.features.push(n); render(); }));
         const p = ct.querySelector('#dp'), n = ct.querySelector('#dn');
@@ -488,14 +495,24 @@ function initDemoDevis() {
 function initDemoChatbot() {
     const ct = document.getElementById('demo-chatbot');
     if (!ct) return;
-    const responses = { prix: 'Nos tarifs commencent a 890\u20AC. Chaque projet est sur mesure.', delai: 'En moyenne 5 jours ouvres. Projets complexes: 7-14 jours.', services: 'Sites web, CRM, chatbots IA, dashboards, automatisations, SEO, securite.', contact: 'Contactez-nous a contact@flashai.dev. Reponse en <2h !', technologie: 'React, Next.js, Node.js, Python, 200+ APIs connectees.', garantie: 'Garantie satisfait ou rembourse a 100%.', default: 'Je suis l\'assistant FlashAI. Posez vos questions sur nos services, tarifs ou technologies !' };
-    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Garantie ?'];
+    const responses = {
+        prix: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">A partir de <strong>890\u20AC</strong> pour un site vitrine.<br>CRM/Dashboard: des <strong>1 990\u20AC</strong><br>Chatbot IA: des <strong>1 490\u20AC</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection devis...\')">Devis gratuit</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Voir tarifs\')">Voir tous les prix</button></div></div>',
+        delai: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Delais de livraison</div><div class="chat-rich-body">\u2022 Site vitrine: <strong>5 jours</strong><br>\u2022 CRM/Dashboard: <strong>7-10 jours</strong><br>\u2022 Projet complexe: <strong>10-14 jours</strong></div></div>',
+        services: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">\u{1F310} Sites web & landing pages<br>\u{1F4CA} CRM & ERP sur mesure<br>\u{1F916} Chatbots IA (WhatsApp, web)<br>\u26A1 Automatisations<br>\u{1F50D} SEO technique<br>\u{1F6E1}\uFE0F Securite & RGPD</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection services\')">En savoir plus</button></div></div>',
+        contact: 'Contactez-nous a <strong>contact@flashai.dev</strong>. Reponse garantie en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
+        technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>200+ APIs</strong> connectees.</div></div>',
+        garantie: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F6E1}\uFE0F Garantie 100%</div><div class="chat-rich-body">Satisfait ou <strong>integralement rembourse</strong>. Aucun risque pour vous. Support inclus 12 mois.</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Conditions lues\')">Voir les conditions</button></div></div>',
+        portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">+50 projets livres: SaaS, e-commerce, sante, fintech, edtech...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
+        ia: 'Nous integrons <strong>GPT-4, LangChain, RAG</strong> et des modeles custom. Nos chatbots resolvent <strong>85%</strong> des demandes sans humain ! \u{1F9E0}',
+        default: 'Je suis l\'assistant FlashAI \u{1F916}. Posez vos questions sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>technologies</strong> ou <strong>delais</strong> !'
+    };
+    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Garantie ?', 'Portfolio ?', 'IA ?'];
     let messages = [{ from: 'bot', text: 'Bonjour ! Comment puis-je vous aider ?' }];
-    function getResp(t) { const l = t.toLowerCase(); for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('bonjour')||l.includes('salut')) return 'Bonjour ! Comment puis-je vous aider ?'; return responses.default; }
+    function getResp(t) { const l = t.toLowerCase(); for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('bonjour')||l.includes('salut')||l.includes('hello')) return 'Bonjour ! \u{1F44B} Comment puis-je vous aider ?'; if (l.includes('merci')||l.includes('thanks')) return 'Avec plaisir ! N\'hesitez pas si vous avez d\'autres questions. \u{1F60A}'; if (l.includes('site')||l.includes('web')) return responses.services; if (l.includes('cout')||l.includes('tarif')||l.includes('combien')) return responses.prix; if (l.includes('temps')||l.includes('rapide')||l.includes('livr')) return responses.delai; if (l.includes('projet')||l.includes('realisation')||l.includes('exemple')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')) return responses.ia; return responses.default; }
     function render() {
         ct.innerHTML = '<div class="chatbot-container"><div class="chatbot-messages" id="cm">' + messages.map(m => '<div class="chat-msg ' + m.from + '"><div class="chat-avatar">' + (m.from==='bot'?'\u{1F916}':'\u{1F464}') + '</div><div class="chat-bubble">' + m.text + '</div></div>').join('') + '</div><div class="chat-suggestions">' + suggestions.map(s => '<button class="chat-suggestion">' + s + '</button>').join('') + '</div><div class="chat-input-wrap"><input type="text" class="chat-input" id="ci" placeholder="Votre message..."><button class="chat-send" id="cs">Envoyer</button></div></div>';
         const mc = document.getElementById('cm'); if (mc) mc.scrollTop = mc.scrollHeight;
-        function send(text) { if (!text.trim()) return; messages.push({ from: 'user', text }); render(); setTimeout(() => { const mc2 = document.getElementById('cm'); if(mc2) { const t = document.createElement('div'); t.className='chat-msg bot'; t.id='ct'; t.innerHTML='<div class="chat-avatar">\u{1F916}</div><div class="chat-bubble"><div class="chat-typing"><span></span><span></span><span></span></div></div>'; mc2.appendChild(t); mc2.scrollTop=mc2.scrollHeight; } setTimeout(() => { const te = document.getElementById('ct'); if(te) te.remove(); messages.push({from:'bot',text:getResp(text)}); render(); }, 1200); }, 400); }
+        function send(text) { if (!text.trim()) return; messages.push({ from: 'user', text }); render(); setTimeout(() => { const mc2 = document.getElementById('cm'); if(mc2) { const t = document.createElement('div'); t.className='chat-msg bot'; t.id='ct'; t.innerHTML='<div class="chat-avatar">\u{1F916}</div><div class="chat-bubble"><div class="chat-typing-realistic"><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span></div></div>'; mc2.appendChild(t); mc2.scrollTop=mc2.scrollHeight; } const delay = 800 + Math.random() * 1000; setTimeout(() => { const te = document.getElementById('ct'); if(te) te.remove(); messages.push({from:'bot',text:getResp(text)}); render(); }, delay); }, 300); }
         const cs = document.getElementById('cs'), ci = document.getElementById('ci');
         if (cs) cs.addEventListener('click', () => send(ci?.value||''));
         if (ci) ci.addEventListener('keydown', e => { if(e.key==='Enter') send(ci.value); });
@@ -513,12 +530,30 @@ function initDemoDashboard() {
         { label: 'Revenue', value: '\u20AC48,290', change: '+31%', color: '#bf00ff', icon: '\u{1F4B0}' },
         { label: 'Satisfaction', value: '98%', change: '+2%', color: '#ffd700', icon: '\u2B50' }
     ];
-    ct.innerHTML = '<div class="dashboard-demo"><div class="dash-header"><h3 class="font-display font-bold text-lg">Dashboard Analytics</h3><div class="dash-period"><button class="dash-period-btn active" data-p="7j">7j</button><button class="dash-period-btn" data-p="30j">30j</button><button class="dash-period-btn" data-p="90j">90j</button></div></div><div class="dash-kpis">' + kpis.map(k => '<div class="dash-kpi" style="--kc:' + k.color + '"><div class="dash-kpi-icon">' + k.icon + '</div><div class="dash-kpi-value">' + k.value + '</div><div class="dash-kpi-label">' + k.label + '</div><div class="dash-kpi-change" style="color:' + k.color + '">' + k.change + '</div></div>').join('') + '</div><div class="dash-charts"><canvas id="dash-line-chart" style="width:100%;height:150px"></canvas><canvas id="dash-bar-chart" style="width:100%;height:150px"></canvas></div></div>';
-    drawDashCharts();
-    ct.querySelectorAll('.dash-period-btn').forEach(b => b.addEventListener('click', () => {
-        ct.querySelectorAll('.dash-period-btn').forEach(x => x.classList.remove('active'));
-        b.classList.add('active'); drawDashCharts();
-    }));
+    function renderDash() {
+        ct.innerHTML = '<div class="dashboard-demo"><div class="dash-header"><h3 class="font-display font-bold text-lg">Dashboard Analytics</h3><div style="display:flex;align-items:center;gap:0.75rem"><div class="dash-realtime-indicator"><span class="dash-realtime-dot"></span><span style="font-size:0.7rem;color:#00ff87">Live</span></div><div class="dash-period"><button class="dash-period-btn active" data-p="7j">7j</button><button class="dash-period-btn" data-p="30j">30j</button><button class="dash-period-btn" data-p="90j">90j</button></div></div></div><div class="dash-kpis">' + kpis.map(k => '<div class="dash-kpi" style="--kc:' + k.color + ';cursor:pointer" title="Cliquer pour actualiser"><div class="dash-kpi-icon">' + k.icon + '</div><div class="dash-kpi-value">' + k.value + '</div><div class="dash-kpi-label">' + k.label + '</div><div class="dash-kpi-change" style="color:' + k.color + '">' + k.change + '</div></div>').join('') + '</div><div class="dash-charts"><canvas id="dash-line-chart" style="width:100%;height:150px"></canvas><canvas id="dash-bar-chart" style="width:100%;height:150px"></canvas></div></div>';
+        drawDashCharts();
+        ct.querySelectorAll('.dash-period-btn').forEach(b => b.addEventListener('click', () => {
+            ct.querySelectorAll('.dash-period-btn').forEach(x => x.classList.remove('active'));
+            b.classList.add('active'); drawDashCharts();
+        }));
+        ct.querySelectorAll('.dash-kpi').forEach((el, i) => {
+            el.addEventListener('click', () => {
+                const bases = [12847, 342, 48290, 98];
+                const suffixes = ['', '', '\u20AC', '%'];
+                const prefixes = ['', '', '\u20AC', ''];
+                const newVal = Math.round(bases[i] * (0.8 + Math.random() * 0.4));
+                const formatted = i === 2 ? (prefixes[i] + newVal.toLocaleString('en')) : (newVal.toLocaleString('en') + suffixes[i]);
+                kpis[i].value = formatted;
+                const changes = ['+' + (Math.floor(Math.random() * 30) + 5) + '%', '+' + (Math.floor(Math.random() * 25) + 5) + '%', '+' + (Math.floor(Math.random() * 35) + 10) + '%', '+' + (Math.floor(Math.random() * 5) + 1) + '%'];
+                kpis[i].change = changes[i];
+                el.style.transform = 'scale(0.95)';
+                setTimeout(() => { el.style.transform = ''; }, 150);
+                renderDash();
+            });
+        });
+    }
+    renderDash();
 }
 
 function drawDashCharts() {
@@ -1285,59 +1320,6 @@ function initThreeBackground() {
             ctx.fill();
         });
         requestAnimationFrame(draw);
-    }
-    draw();
-}
-
-/* ========== TRUST BAR ========== */
-function initTrustBar() {
-    const ct = document.getElementById('trust-marquee');
-    if (!ct) return;
-    const logos = ['TechVision','FoodExpress','MediCare Pro','CryptoTrack','EduSmart','LogiFlow','GreenEnergy','LegalBot','DataPulse','NovaTech','FinanceHub','CloudNine','SmartRetail','BioGenix','AutoFlow','DesignLab'];
-    const colors = ['#00f0ff','#bf00ff','#ff006e','#00ff87','#ffd700','#ff8c00','#06b6d4','#e879f9','#f472b6','#a78bfa','#34d399','#fbbf24','#fb7185','#818cf8','#2dd4bf','#f97316'];
-    const html = logos.map((l, i) => '<div class="trust-logo" style="color:' + colors[i % colors.length] + '"><span class="trust-logo-icon">' + ['⚡','🚀','💎','📊','🎯','⭐','🔮','🛡️','📈','💡','🌐','☁️','🛒','🧬','⚙️','🎨'][i % 16] + '</span>' + l + '</div>').join('');
-    ct.innerHTML = html + html;
-}
-
-/* ========== CONFETTI ========== */
-function launchConfetti() {
-    const canvas = document.createElement('canvas');
-    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:99999;pointer-events:none';
-    document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    const colors = ['#00f0ff','#bf00ff','#ff006e','#00ff87','#ffd700','#ff8c00','#e879f9','#f472b6'];
-    const pieces = Array.from({length: 120}, () => ({
-        x: canvas.width / 2 + (Math.random() - 0.5) * 200,
-        y: canvas.height / 2,
-        vx: (Math.random() - 0.5) * 16,
-        vy: -Math.random() * 18 - 5,
-        size: Math.random() * 8 + 3,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rotation: Math.random() * 360,
-        rotSpeed: (Math.random() - 0.5) * 12,
-        life: 1,
-        shape: Math.random() > 0.5 ? 'rect' : 'circle'
-    }));
-    let frame = 0;
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        let alive = false;
-        pieces.forEach(p => {
-            p.x += p.vx; p.y += p.vy; p.vy += 0.4; p.rotation += p.rotSpeed;
-            p.vx *= 0.99; p.life -= 0.008;
-            if (p.life <= 0) return;
-            alive = true;
-            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rotation * Math.PI / 180);
-            ctx.globalAlpha = p.life;
-            ctx.fillStyle = p.color;
-            if (p.shape === 'rect') { ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size * 0.6); }
-            else { ctx.beginPath(); ctx.arc(0, 0, p.size/2, 0, Math.PI*2); ctx.fill(); }
-            ctx.restore();
-        });
-        frame++;
-        if (alive && frame < 200) requestAnimationFrame(draw);
-        else canvas.remove();
     }
     draw();
 }
