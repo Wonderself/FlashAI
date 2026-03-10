@@ -616,76 +616,53 @@ function initMethodTimeline() {
 /* ========== PORTFOLIO ========== */
 function initPortfolio() {
     const ct = document.getElementById('portfolio-carousel');
-    if (!ct) return;
+    const scrollCt = document.getElementById('portfolio-scroll');
+    if (!ct && !scrollCt) return;
     const projects = [
-        { title: 'TechVision SaaS', type: 'Dashboard', desc: 'Plateforme analytics temps reel avec 50+ widgets personnalisables.', color: '#00f0ff', tags: ['React','D3.js','Node.js'], stat: '+340% adoption', revenue: '' },
-        { title: 'FoodExpress', type: 'E-Commerce', desc: 'Marketplace food-tech avec livraison temps reel et paiement Stripe.', color: '#ff006e', tags: ['Next.js','Stripe','Maps'], stat: '\u20AC2M CA/an', revenue: '' },
-        { title: 'MediCare Pro', type: 'CRM Medical', desc: 'Gestion patients, RDV, facturation. Conforme RGPD.', color: '#bf00ff', tags: ['React','PostgreSQL','IA'], stat: '5000+ patients', revenue: '' },
-        { title: 'CryptoTrack', type: 'Fintech', desc: 'Portfolio crypto avec alertes IA et analyse predictive.', color: '#00ff87', tags: ['Vue.js','Python','ML'], stat: '15K users', revenue: '' },
-        { title: 'EduSmart', type: 'EdTech', desc: 'Plateforme e-learning adaptive avec chatbot tuteur IA.', color: '#ffd700', tags: ['Next.js','OpenAI','Prisma'], stat: '98% satisfaction', revenue: '' },
-        { title: 'LogiFlow', type: 'Automatisation', desc: 'ERP logistique avec tracking temps reel et optimisation routes.', color: '#ff8c00', tags: ['React','Node.js','Maps'], stat: '-40% couts', revenue: '' },
-        { title: 'GreenEnergy', type: 'IoT Dashboard', desc: 'Monitoring energie solaire avec predictions ML.', color: '#06b6d4', tags: ['React','Python','IoT'], stat: '+60% efficacite', revenue: '' },
-        { title: 'LegalBot', type: 'Chatbot IA', desc: 'Assistant juridique IA pour cabinets d\'avocats. RAG + GPT-4.', color: '#e879f9', tags: ['LangChain','GPT-4','React'], stat: '10K requetes/j', revenue: '' }
+        { title: 'TechVision SaaS', type: 'Dashboard', desc: 'Plateforme analytics temps reel avec 50+ widgets personnalisables.', color: '#00f0ff', tags: ['React','D3.js','Node.js'], stat: '+340% adoption' },
+        { title: 'FoodExpress', type: 'E-Commerce', desc: 'Marketplace food-tech avec livraison temps reel et paiement Stripe.', color: '#ff006e', tags: ['Next.js','Stripe','Maps'], stat: '\u20AC2M CA/an' },
+        { title: 'MediCare Pro', type: 'CRM Medical', desc: 'Gestion patients, RDV, facturation. Conforme RGPD.', color: '#bf00ff', tags: ['React','PostgreSQL','IA'], stat: '5000+ patients' },
+        { title: 'CryptoTrack', type: 'Fintech', desc: 'Portfolio crypto avec alertes IA et analyse predictive.', color: '#00ff87', tags: ['Vue.js','Python','ML'], stat: '15K users' },
+        { title: 'EduSmart', type: 'EdTech', desc: 'Plateforme e-learning adaptive avec chatbot tuteur IA.', color: '#ffd700', tags: ['Next.js','OpenAI','Prisma'], stat: '98% satisfaction' },
+        { title: 'LogiFlow', type: 'Automatisation', desc: 'ERP logistique avec tracking temps reel et optimisation routes.', color: '#ff8c00', tags: ['React','Node.js','Maps'], stat: '-40% couts' },
+        { title: 'GreenEnergy', type: 'IoT Dashboard', desc: 'Monitoring energie solaire avec predictions ML.', color: '#06b6d4', tags: ['React','Python','IoT'], stat: '+60% efficacite' },
+        { title: 'LegalBot', type: 'Chatbot IA', desc: 'Assistant juridique IA pour cabinets d\'avocats. RAG + GPT-4.', color: '#e879f9', tags: ['LangChain','GPT-4','React'], stat: '10K requetes/j' }
     ];
+    function cardHTML(p) {
+        return '<div class="portfolio-mockup"><div class="portfolio-mockup-bar"><span class="portfolio-mockup-dot" style="background:#ef4444"></span><span class="portfolio-mockup-dot" style="background:#f59e0b"></span><span class="portfolio-mockup-dot" style="background:#22c55e"></span><span class="portfolio-mockup-url">' + p.title.toLowerCase().replace(/\s/g, '') + '.app</span></div><div class="portfolio-mockup-screen" style="background:linear-gradient(135deg,' + p.color + '20,' + p.color + '05)"><div style="padding:12px"><div style="display:flex;gap:6px;margin-bottom:8px"><div style="height:6px;width:40%;background:' + p.color + '30;border-radius:3px"></div><div style="height:6px;width:20%;background:' + p.color + '15;border-radius:3px"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px"><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div></div><div style="height:50px;background:' + p.color + '08;border-radius:4px;border:1px solid ' + p.color + '10"></div></div></div><div class="portfolio-info"><div class="portfolio-info-name">' + p.title + '</div><div class="portfolio-info-sector">' + p.type + '</div><div class="portfolio-metric" style="background:' + p.color + '15;color:' + p.color + '">' + p.stat + '</div><div class="portfolio-tags">' + p.tags.map(t => '<span class="portfolio-tag" style="border-color:' + p.color + '40;color:' + p.color + '">' + t + '</span>').join('') + '</div></div></div>';
+    }
+    // Mobile: native scroll-snap carousel (no JS touch handling needed)
+    if (scrollCt) {
+        scrollCt.innerHTML = projects.map(p => '<div class="portfolio-scroll-card" style="--pc:' + p.color + '">' + cardHTML(p) + '</div>').join('');
+    }
+    // Desktop: 3D carousel
+    if (!ct) return;
     let current = 0;
     function render() {
+        if (window.innerWidth < 768) return;
         ct.innerHTML = projects.map((p, i) => {
             const offset = i - current;
             const absOff = Math.abs(offset);
             const z = 10 - absOff;
-            const step = window.innerWidth < 480 ? 180 : window.innerWidth < 640 ? 220 : window.innerWidth < 768 ? 270 : 320;
-            const tx = offset * step;
+            const tx = offset * 320;
             const sc = Math.max(0.7, 1 - absOff * 0.12);
             const op = Math.max(0.3, 1 - absOff * 0.3);
-            const screenColors = [
-                'linear-gradient(135deg, ' + p.color + '20, ' + p.color + '05)',
-                'radial-gradient(circle at 30% 40%, ' + p.color + '15, transparent 50%)'
-            ];
-            return '<div class="portfolio-card-3d" style="transform:translate(-50%,-50%) translateX(' + tx + 'px) scale(' + sc + ');z-index:' + z + ';opacity:' + op + ';' + (absOff > (window.innerWidth < 640 ? 1 : 2) ? 'display:none' : '') + ';--pc:' + p.color + '"><div class="portfolio-mockup"><div class="portfolio-mockup-bar"><span class="portfolio-mockup-dot" style="background:#ef4444"></span><span class="portfolio-mockup-dot" style="background:#f59e0b"></span><span class="portfolio-mockup-dot" style="background:#22c55e"></span><span class="portfolio-mockup-url">' + p.title.toLowerCase().replace(/\s/g, '') + '.app</span></div><div class="portfolio-mockup-screen" style="background:' + screenColors[0] + '"><div style="padding:12px"><div style="display:flex;gap:6px;margin-bottom:8px"><div style="height:6px;width:40%;background:' + p.color + '30;border-radius:3px"></div><div style="height:6px;width:20%;background:' + p.color + '15;border-radius:3px"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px">' + [1,2,3].map(() => '<div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div>').join('') + '</div><div style="height:60px;background:' + p.color + '08;border-radius:4px;border:1px solid ' + p.color + '10"></div></div></div><div class="portfolio-info"><div class="portfolio-info-name">' + p.title + '</div><div class="portfolio-info-sector">' + p.type + '</div><div class="portfolio-metric" style="background:' + p.color + '15;color:' + p.color + '">' + p.stat + '</div><div class="portfolio-tags">' + p.tags.map(t => '<span class="portfolio-tag" style="border-color:' + p.color + '40;color:' + p.color + '">' + t + '</span>').join('') + '</div></div></div></div>';
+            return '<div class="portfolio-card-3d" style="transform:translate(-50%,-50%) translateX(' + tx + 'px) scale(' + sc + ');z-index:' + z + ';opacity:' + op + ';' + (absOff > 2 ? 'display:none' : '') + ';--pc:' + p.color + '">' + cardHTML(p) + '</div>';
         }).join('');
         const dots = document.getElementById('portfolio-dots');
         if (dots) dots.innerHTML = projects.map((_, i) => '<button class="portfolio-dot ' + (i === current ? 'active' : '') + '" data-i="' + i + '"></button>').join('');
         document.querySelectorAll('.portfolio-dot').forEach(d => d.addEventListener('click', () => { current = +d.dataset.i; render(); }));
     }
     render();
+    function go(dir) { current = (current + dir + projects.length) % projects.length; render(); }
     const prev = document.getElementById('portfolio-prev');
     const next = document.getElementById('portfolio-next');
-    function go(dir) { current = (current + dir + projects.length) % projects.length; render(); }
     if (prev) prev.addEventListener('click', () => go(-1));
     if (next) next.addEventListener('click', () => go(1));
     let autoplay = setInterval(() => go(1), 5000);
-    function pauseAuto() { clearInterval(autoplay); }
-    function resumeAuto() { clearInterval(autoplay); autoplay = setInterval(() => go(1), 5000); }
-    ct.addEventListener('mouseenter', pauseAuto);
-    ct.addEventListener('mouseleave', resumeAuto);
+    ct.addEventListener('mouseenter', () => clearInterval(autoplay));
+    ct.addEventListener('mouseleave', () => { clearInterval(autoplay); autoplay = setInterval(() => go(1), 5000); });
     window.addEventListener('resize', () => render());
-    // Touch swipe with smooth tracking
-    let touchStartX = 0, touchStartY = 0, touchStartTime = 0, isSwiping = false;
-    ct.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        touchStartTime = Date.now();
-        isSwiping = false;
-        pauseAuto();
-    }, { passive: true });
-    ct.addEventListener('touchmove', e => {
-        if (!isSwiping) {
-            const dx = Math.abs(e.touches[0].clientX - touchStartX);
-            const dy = Math.abs(e.touches[0].clientY - touchStartY);
-            if (dx > dy && dx > 10) { isSwiping = true; }
-        }
-        if (isSwiping) { e.preventDefault(); }
-    }, { passive: false });
-    ct.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        const elapsed = Date.now() - touchStartTime;
-        const velocity = Math.abs(dx) / elapsed;
-        // Swipe if moved enough or fast enough
-        if (Math.abs(dx) > 30 || velocity > 0.3) {
-            if (dx < 0) go(1); else go(-1);
-        }
-        resumeAuto();
-    }, { passive: true });
 }
 
 /* ========== TESTIMONIALS ========== */
@@ -1111,16 +1088,28 @@ function initSmartForm() {
         }
         return '';
     }
+    const tips = {
+        site: { tip: 'Astuce : Un site bien pense convertit 3x plus de visiteurs en clients.', stat: '5 jours', statLabel: 'Delai moyen', examples: 'Sites vitrine, e-commerce Shopify, landing page, portfolio, blog' },
+        crm: { tip: 'Astuce : Un CRM sur mesure elimine 80% des taches manuelles de votre equipe.', stat: '10 jours', statLabel: 'Delai moyen', examples: 'CRM commercial, ERP, dashboard KPI, gestion stock, facturation' },
+        chatbot: { tip: 'Astuce : Nos chatbots resolvent 85% des demandes sans intervention humaine.', stat: '7 jours', statLabel: 'Delai moyen', examples: 'Support client, qualification leads, FAQ, prise de RDV, recommandations' },
+        auto: { tip: 'Astuce : En moyenne, nos clients economisent 15h/semaine grace a l\'automatisation.', stat: '3 jours', statLabel: 'Delai moyen', examples: 'Sync CRM-email, factures auto, rapports PDF, alertes Slack, scraping' },
+        autre: { tip: 'Astuce : On a deja realise des projets allant de l\'app mobile au SaaS complet.', stat: 'Sur mesure', statLabel: 'Delai', examples: 'App mobile, SaaS, API, marketplace, plateforme, outil interne' }
+    };
     function renderForm() {
         if (!selected) { container.innerHTML = '<div class="sf-empty-state"><div class="sf-empty-icon">\u{1F446}</div><p>Selectionnez un type de projet ci-dessus</p></div>'; return; }
         const type = types.find(t => t.id === selected);
         const config = formFields[selected];
+        const tip = tips[selected];
         container.innerHTML = '<div class="smart-form" style="--form-color:' + type.color + ';--form-glow:' + type.color + '40;--chip-color:' + type.color + '">' +
             '<div class="sf-form-header"><div class="sf-form-icon" style="background:' + type.color + '15;color:' + type.color + ';border:1px solid ' + type.color + '30">' + type.icon + '</div><div><div class="sf-form-title" style="color:' + type.color + '">' + type.name + '</div><div class="sf-form-subtitle">' + config.subtitle + '</div></div></div>' +
+            '<div class="sf-tip-banner" style="background:' + type.color + '08;border:1px solid ' + type.color + '20;border-radius:0.75rem;padding:0.85rem 1rem;margin-bottom:1.25rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">' +
+                '<div style="flex:1;min-width:200px"><div style="font-size:0.78rem;color:' + type.color + ';font-weight:600;margin-bottom:0.25rem">\u{1F4A1} ' + tip.tip + '</div><div style="font-size:0.7rem;color:#64748b">Ex : ' + tip.examples + '</div></div>' +
+                '<div style="text-align:center;padding:0.5rem 1rem;border-radius:0.5rem;background:' + type.color + '10;flex-shrink:0"><div style="font-family:Space Grotesk,sans-serif;font-size:1.1rem;font-weight:700;color:' + type.color + '">' + tip.stat + '</div><div style="font-size:0.6rem;color:#94a3b8">' + tip.statLabel + '</div></div>' +
+            '</div>' +
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
             '<div class="sf-fields">' + config.fields.map(f => renderField(f, type.color)).join('') + '</div>' +
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
-            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">Reponse garantie en moins de 2h</p></div>' +
+            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">\u2705 Devis gratuit \u2022 Reponse garantie en moins de 2h \u2022 Sans engagement</p></div>' +
             '</div>';
         // Chips toggle
         container.querySelectorAll('.sf-chips').forEach(group => {
