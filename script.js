@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothAnchors();
     initThreeBackground();
     initEasterEggs();
+    initElectricSparks();
+    initSectionFlashReveal();
 });
 
 function showToast(msg) {
@@ -57,22 +59,112 @@ function initLoader() {
     const boot = document.getElementById('loader-boot');
     const bar = document.getElementById('loader-bar');
     const pct = document.getElementById('loader-percent');
+    const ringCircle = document.getElementById('loader-ring-circle');
+    const loaderContent = loader ? loader.querySelector('.loader-content') : null;
     if (!loader) return;
     document.body.style.overflow = 'hidden';
+
+    /* --- Canvas particle system --- */
+    const canvas = document.getElementById('loader-canvas');
+    let ctx, cw, ch, particles = [];
+    if (canvas) {
+        ctx = canvas.getContext('2d');
+        cw = canvas.width = window.innerWidth;
+        ch = canvas.height = window.innerHeight;
+        const pColors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87'];
+        class LoaderParticle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = cw / 2 + (Math.random() - 0.5) * 60;
+                this.y = ch / 2 + (Math.random() - 0.5) * 60;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+                this.life = 1;
+                this.decay = Math.random() * 0.008 + 0.003;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.color = pColors[Math.floor(Math.random() * pColors.length)];
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= this.decay;
+                if (this.life <= 0) this.reset();
+            }
+            draw() {
+                ctx.globalAlpha = this.life * 0.6;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < 60; i++) particles.push(new LoaderParticle());
+        let animId;
+        function animateParticles() {
+            ctx.clearRect(0, 0, cw, ch);
+            particles.forEach(p => { p.update(); p.draw(); });
+            ctx.globalAlpha = 1;
+            animId = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+        /* Store animId so we can cancel later */
+        loader._particleAnim = animId;
+        loader._particles = particles;
+        loader._ctx = ctx;
+        loader._cw = cw;
+        loader._ch = ch;
+    }
+
+    /* --- Letter-by-letter reveal --- */
+    const letters = document.querySelectorAll('.loader-letter');
+    letters.forEach((letter, i) => {
+        setTimeout(() => letter.classList.add('visible'), 200 + i * 120);
+    });
+
+    /* --- Progress with ring + bar + boot text --- */
+    const ringTotal = 452.4; /* 2 * PI * 72 */
     const lines = ['[INIT] Loading neural network...','[OK] 247 tools connected','[OK] AI Core ready','[OK] Galaxy renderer initialized','[OK] Sparkle engine loaded','[LAUNCH] FlashAI v6.0'];
     let progress = 0, lineIdx = 0;
     const interval = setInterval(() => {
-        progress += Math.random() * 15 + 5;
+        progress += Math.random() * 12 + 4;
         if (progress > 100) progress = 100;
         if (bar) bar.style.width = progress + '%';
         if (pct) pct.textContent = Math.floor(progress) + '%';
+        if (ringCircle) ringCircle.style.strokeDashoffset = ringTotal - (ringTotal * progress / 100);
         if (lineIdx < lines.length && progress > (lineIdx + 1) * (100 / lines.length)) {
-            if (boot) { const s = document.createElement('div'); s.textContent = lines[lineIdx]; s.style.cssText = 'opacity:0;transform:translateX(-10px);transition:all 0.3s'; boot.appendChild(s); requestAnimationFrame(() => { s.style.opacity = '1'; s.style.transform = 'translateX(0)'; }); }
+            if (boot) {
+                const s = document.createElement('div');
+                s.textContent = lines[lineIdx];
+                s.style.cssText = 'opacity:0;transform:translateX(-10px);transition:all 0.3s';
+                boot.appendChild(s);
+                requestAnimationFrame(() => { s.style.opacity = '1'; s.style.transform = 'translateX(0)'; });
+            }
             lineIdx++;
         }
-        if (progress >= 100) { clearInterval(interval); setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 600); }
+        if (progress >= 100) {
+            clearInterval(interval);
+            /* --- Explosion finale --- */
+            setTimeout(() => {
+                if (loaderContent) loaderContent.classList.add('loader-explode');
+                /* Burst particles outward */
+                if (loader._particles && loader._ctx) {
+                    loader._particles.forEach(p => {
+                        p.vx = (Math.random() - 0.5) * 12;
+                        p.vy = (Math.random() - 0.5) * 12;
+                        p.decay = 0.02;
+                        p.size = Math.random() * 4 + 1;
+                    });
+                }
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    if (loader._particleAnim) cancelAnimationFrame(loader._particleAnim);
+                }, 800);
+            }, 300);
+        }
     }, 200);
-    setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 5000);
+    /* Safety timeout */
+    setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 6000);
 }
 
 function initScrollProgress() {
@@ -1028,7 +1120,8 @@ function initSmartForm() {
         { id: 'crm', name: 'CRM / ERP', icon: '\u{1F4CA}', color: '#bf00ff', desc: 'Gestion clients' },
         { id: 'chatbot', name: 'Chatbot IA', icon: '\u{1F916}', color: '#ff006e', desc: 'Assistant virtuel' },
         { id: 'auto', name: 'Automatisation', icon: '\u26A1', color: '#ff8c00', desc: 'Workflows' },
-        { id: 'autre', name: 'Autre', icon: '\u{1F4AC}', color: '#00ff87', desc: 'Projet sur mesure' }
+        { id: 'autre', name: 'Autre', icon: '\u{1F4AC}', color: '#00ff87', desc: 'Projet sur mesure' },
+        { id: 'partenaire', name: 'Partenaire', icon: '\u{1F91D}', color: '#a78bfa', desc: 'Collaboration' }
     ];
     const formFields = {
         site: {
@@ -1115,6 +1208,22 @@ function initSmartForm() {
                 { label: 'Delai souhaite', type: 'select', options: ['Urgent','1-2 semaines','1 mois','Flexible'], half: true },
                 { label: 'Description detaillee du projet *', type: 'textarea', placeholder: 'Decrivez votre idee, vos objectifs, votre cible, vos contraintes techniques...', full: true }
             ]
+        },
+        partenaire: {
+            subtitle: 'Collaborons ensemble pour creer quelque chose d\'exceptionnel',
+            fields: [
+                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
+                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
+                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
+                { label: 'Entreprise *', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
+                { label: 'Type de partenariat *', type: 'chips', options: ['White-label','Affiliation','Technique','Long terme','Consulting','Apporteur d\'affaires','Co-developpement','Autre'], full: true },
+                { label: 'Votre domaine d\'expertise *', type: 'chips', options: ['Marketing digital','Developpement web','Design / UX','Data / IA','E-commerce','Conseil / Strategie','Finance / Compta','Autre'], full: true },
+                { label: 'Taille de votre equipe', type: 'select', options: ['Freelance','2-5 personnes','6-20 personnes','20+'], half: true },
+                { label: 'Depuis combien de temps ?', type: 'select', options: ['< 1 an','1-3 ans','3-5 ans','5+ ans'], half: true },
+                { label: 'Decrivez votre proposition de partenariat *', type: 'textarea', placeholder: 'Quel type de collaboration envisagez-vous ? Quelles synergies voyez-vous entre nos activites ? Avez-vous des clients ou projets concrets en tete ?', full: true }
+            ]
         }
     };
     let selected = null;
@@ -1153,7 +1262,8 @@ function initSmartForm() {
         crm: { tip: 'Astuce : Un CRM sur mesure elimine 80% des taches manuelles de votre equipe.', stat: '10 jours', statLabel: 'Delai moyen', examples: 'CRM commercial, ERP, dashboard KPI, gestion stock, facturation' },
         chatbot: { tip: 'Astuce : Nos chatbots resolvent 85% des demandes sans intervention humaine.', stat: '7 jours', statLabel: 'Delai moyen', examples: 'Support client, qualification leads, FAQ, prise de RDV, recommandations' },
         auto: { tip: 'Astuce : En moyenne, nos clients economisent 15h/semaine grace a l\'automatisation.', stat: '3 jours', statLabel: 'Delai moyen', examples: 'Sync CRM-email, factures auto, rapports PDF, alertes Slack, scraping' },
-        autre: { tip: 'Astuce : On a deja realise des projets allant de l\'app mobile au SaaS complet.', stat: 'Sur mesure', statLabel: 'Delai', examples: 'App mobile, SaaS, API, marketplace, plateforme, outil interne' }
+        autre: { tip: 'Astuce : On a deja realise des projets allant de l\'app mobile au SaaS complet.', stat: 'Sur mesure', statLabel: 'Delai', examples: 'App mobile, SaaS, API, marketplace, plateforme, outil interne' },
+        partenaire: { tip: 'Astuce : Nos partenaires generent en moyenne 30% de revenus supplementaires grace a notre collaboration.', stat: 'Win-win', statLabel: 'Modele', examples: 'White-label, affiliation, co-dev, apport d\'affaires, consulting conjoint' }
     };
     function renderForm() {
         if (!selected) { container.innerHTML = '<div class="sf-empty-state"><div class="sf-empty-icon">\u{1F446}</div><p>Selectionnez un type de projet ci-dessus</p></div>'; return; }
@@ -1352,3 +1462,48 @@ function initEasterEggs() {
         observer.observe(el);
     });
 })();
+
+/* ========== ELECTRIC SPARKS ON CLICK ========== */
+function initElectricSparks() {
+    document.addEventListener('click', e => {
+        const colors = ['#00f0ff', '#bf00ff', '#ff006e', '#ffd700', '#00ff87'];
+        for (let i = 0; i < 6; i++) {
+            const spark = document.createElement('div');
+            spark.style.cssText = 'position:fixed;pointer-events:none;z-index:9998;width:4px;height:4px;border-radius:50%;background:' + colors[Math.floor(Math.random() * colors.length)] + ';left:' + e.clientX + 'px;top:' + e.clientY + 'px;box-shadow:0 0 6px currentColor;transition:all 0.6s cubic-bezier(0.22,1,0.36,1);opacity:1;';
+            document.body.appendChild(spark);
+            const angle = (Math.PI * 2 / 6) * i + Math.random() * 0.5;
+            const dist = 30 + Math.random() * 40;
+            requestAnimationFrame(() => {
+                spark.style.transform = 'translate(' + (Math.cos(angle) * dist) + 'px,' + (Math.sin(angle) * dist) + 'px) scale(0)';
+                spark.style.opacity = '0';
+            });
+            setTimeout(() => spark.remove(), 700);
+        }
+    });
+}
+
+/* ========== SECTION FLASH REVEAL — brief white flash when sections appear ========== */
+function initSectionFlashReveal() {
+    const sections = document.querySelectorAll('section[id]');
+    const flashObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting && !e.target.dataset.flashed) {
+                e.target.dataset.flashed = '1';
+                const flash = document.createElement('div');
+                flash.style.cssText = 'position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,240,255,0.06),rgba(191,0,255,0.04),transparent);pointer-events:none;z-index:1;border-radius:inherit;animation:section-flash 1s ease forwards;';
+                e.target.style.position = e.target.style.position || 'relative';
+                e.target.appendChild(flash);
+                setTimeout(() => flash.remove(), 1200);
+            }
+        });
+    }, { threshold: 0.15 });
+    sections.forEach(s => flashObserver.observe(s));
+
+    /* Add CSS keyframe for section flash */
+    if (!document.getElementById('flash-reveal-style')) {
+        const style = document.createElement('style');
+        style.id = 'flash-reveal-style';
+        style.textContent = '@keyframes section-flash{0%{opacity:0;}20%{opacity:1;}100%{opacity:0;}}';
+        document.head.appendChild(style);
+    }
+}

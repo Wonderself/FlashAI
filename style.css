@@ -35,6 +35,57 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .loader-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #00f0ff, #bf00ff); border-radius: 2px; transition: width 0.3s ease; }
 .loader-percent { font-family: "JetBrains Mono", monospace; font-size: 0.875rem; color: #00f0ff; margin-top: 0.5rem; }
 
+/* --- ANIMATED LOGO --- */
+.header-logo-icon { position: relative; width: 32px; height: 32px; }
+.logo-bolt-svg { display: block; filter: drop-shadow(0 0 6px rgba(0,240,255,0.3)); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), filter 0.5s ease; }
+.header-logo-icon:hover .logo-bolt-svg { transform: perspective(200px) rotateY(12deg) rotateX(-5deg) scale(1.12); filter: drop-shadow(0 0 14px rgba(0,240,255,0.6)) drop-shadow(0 0 30px rgba(191,0,255,0.3)); }
+.logo-glow-pulse { animation: logo-pulse-glow 3s ease-in-out infinite; }
+@keyframes logo-pulse-glow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.65; } }
+.logo-bolt-main { animation: logo-bolt-shimmer 6s ease-in-out infinite; }
+@keyframes logo-bolt-shimmer { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.2); } }
+.logo-spark { will-change: opacity, cx, cy, r; }
+.logo-energy-line { will-change: opacity; }
+
+/* --- EPIC LOADER --- */
+.loader-logo-epic { position: relative; display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; margin: 0 auto 2rem; }
+.loader-logo-epic .logo-bolt-svg-big { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; animation: loader-logo-float 3s ease-in-out infinite; }
+@keyframes loader-logo-float { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -52%) scale(1.04); } }
+.loader-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; animation: loader-ring-rotate 8s linear infinite; }
+@keyframes loader-ring-rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+#loader-ring-circle { transition: stroke-dashoffset 0.3s ease; }
+
+/* Energy beams */
+.loader-energy-beams { position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 0; pointer-events: none; }
+.loader-energy-beam { position: absolute; width: 200px; height: 1.5px; top: 0; left: 0; transform-origin: 0 50%; transform: rotate(var(--beam-angle)); background: linear-gradient(90deg, rgba(0,240,255,0.5), rgba(191,0,255,0.3), transparent); opacity: 0; animation: beam-pulse 3s ease-in-out infinite; will-change: opacity, transform; }
+.loader-energy-beam:nth-child(odd) { background: linear-gradient(90deg, rgba(191,0,255,0.5), rgba(255,0,110,0.3), transparent); animation-delay: 1.5s; }
+@keyframes beam-pulse { 0%, 100% { opacity: 0; width: 80px; } 50% { opacity: 0.6; width: 200px; } }
+
+/* Letter-by-letter text reveal */
+.loader-text-reveal { font-family: "Space Grotesk", sans-serif; font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 0; }
+.loader-letter { display: inline-block; opacity: 0; transform: translateY(20px) scale(0.8); transition: opacity 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease; color: white; }
+.loader-letter.visible { opacity: 1; transform: translateY(0) scale(1); }
+.loader-letter-accent { background: linear-gradient(135deg, #00f0ff, #bf00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.loader-letter-accent.visible { filter: drop-shadow(0 0 12px rgba(0,240,255,0.5)); }
+
+/* Loader explosion */
+.loader-explode .loader-logo-epic { animation: loader-explode-logo 0.8s ease-in forwards; }
+@keyframes loader-explode-logo { 0% { transform: scale(1); opacity: 1; filter: brightness(1); } 40% { transform: scale(1.3); opacity: 1; filter: brightness(2.5); } 100% { transform: scale(2.5); opacity: 0; filter: brightness(4); } }
+.loader-explode .loader-energy-beam { animation: beam-explode 0.6s ease-out forwards !important; }
+@keyframes beam-explode { to { width: 600px; opacity: 0; } }
+.loader-explode .loader-text-reveal { animation: text-fade-out 0.5s ease-in 0.2s forwards; }
+.loader-explode .loader-boot, .loader-explode .loader-bar-wrap, .loader-explode .loader-percent { animation: text-fade-out 0.3s ease-in forwards; }
+@keyframes text-fade-out { to { opacity: 0; transform: scale(0.95); } }
+
+/* Particles container for loader canvas */
+#loader-canvas { z-index: 1; }
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .logo-glow-pulse, .logo-bolt-main, .loader-energy-beam, .loader-logo-epic .logo-bolt-svg-big { animation: none; }
+    .logo-bolt-svg { filter: none; }
+    .header-logo-icon:hover .logo-bolt-svg { transform: scale(1.05); }
+}
+
 /* --- NAV --- */
 #main-header { backdrop-filter: blur(0px); background: transparent; }
 #main-header.scrolled { backdrop-filter: blur(20px); background: rgba(2, 6, 23, 0.8); border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -622,15 +673,28 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
     .mb-12 { margin-bottom: 2rem !important; }
     /* Ensure reveal elements don't cause huge blank gaps */
     .reveal { transition-delay: 0s !important; }
-    /* Method/expertise single column */
-    .method-steps { grid-template-columns: 1fr !important; gap: 1rem; }
-    .expertise-grid { grid-template-columns: 1fr !important; gap: 1rem; }
-    .method-step { padding: 1.25rem 1rem; }
-    .expertise-card .expertise-card-front { padding: 1.25rem; }
+    /* Method 2-col compact, expertise 2-col compact */
+    .method-steps { grid-template-columns: 1fr 1fr !important; gap: 0.6rem; }
+    .expertise-grid { grid-template-columns: 1fr 1fr !important; gap: 0.6rem; }
+    .method-step { padding: 0.85rem 0.6rem; }
+    .method-step-dot { width: 38px; height: 38px; font-size: 1.15rem; margin-bottom: 0.4rem; }
+    .method-step h3 { font-size: 0.85rem !important; }
+    .method-step p { font-size: 0.7rem !important; line-height: 1.4; }
+    .method-step-num { font-size: 0.65rem; }
+    .method-step-duration { font-size: 0.6rem; padding: 0.15rem 0.5rem; }
+    .method-step-line { display: none; }
+    .expertise-card .expertise-card-front { padding: 1rem 0.75rem; }
+    .expertise-icon { width: 36px; height: 36px; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .expertise-card h3 { font-size: 0.9rem !important; margin-bottom: 0.5rem; }
+    .expertise-bar-row { margin-bottom: 0.35rem; }
+    .expertise-bar-row span { font-size: 0.6rem !important; }
+    .expertise-bar-bg { height: 4px; }
     /* Pricing single column */
-    .pricing-grid-3d { grid-template-columns: 1fr !important; max-width: 100%; gap: 1.5rem; }
+    .pricing-grid-3d { grid-template-columns: 1fr !important; max-width: 100%; gap: 1.5rem; perspective: none; }
+    .pricing-card-3d { transform-style: flat; overflow: hidden; }
     .pricing-card-3d.featured { transform: none; }
     .pricing-card-3d.featured:hover { transform: translateY(-8px); }
+    .pricing-card-3d:hover { transform: translateY(-4px); }
     .pricing-card-inner { padding: 1.75rem 1.25rem; }
     /* Testimonials single column */
     .testimonials-track, .testimonials-immersive { grid-template-columns: 1fr !important; }
@@ -697,10 +761,10 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 }
 
 @media (max-width: 639px) {
-    .expertise-grid { grid-template-columns: 1fr !important; }
-    .method-steps { grid-template-columns: 1fr !important; gap: 1rem; }
-    .method-step { padding: 1.25rem 1rem; }
-    .method-step-dot { width: 44px; height: 44px; font-size: 1.25rem; }
+    .expertise-grid { grid-template-columns: 1fr 1fr !important; gap: 0.5rem; }
+    .method-steps { grid-template-columns: 1fr 1fr !important; gap: 0.5rem; }
+    .method-step { padding: 0.75rem 0.5rem; }
+    .method-step-dot { width: 34px; height: 34px; font-size: 1.1rem; }
     .portfolio-carousel-3d { height: 320px; overflow: visible; }
     .portfolio-card-3d { width: 240px; }
     .sf-types { grid-template-columns: repeat(2, 1fr); }
@@ -722,7 +786,11 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
     .galaxy-container { display: none; }
     .tools-mobile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
     .tool-mobile-pill { padding: 0.5rem; font-size: 0.65rem; }
-    .loader-logo { font-size: 2rem; }
+    .loader-text-reveal { font-size: 2rem; }
+    .loader-logo-epic { width: 120px; height: 120px; }
+    .loader-logo-epic .logo-bolt-svg-big { width: 80px; height: 80px; }
+    .loader-ring { width: 120px; height: 120px; }
+    .loader-energy-beam { width: 120px; }
     .loader-boot { font-size: 0.65rem; }
     .stat-number { font-size: 1.25rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem; }
@@ -893,3 +961,236 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 /* ========== SMOOTH TILT ON SCROLL FOR SECTIONS ========== */
 @keyframes section-tilt-in { from { transform: perspective(1200px) rotateX(2deg); opacity: 0.8; } to { transform: perspective(1200px) rotateX(0deg); opacity: 1; } }
 .reveal.visible { animation: section-tilt-in 0.8s ease-out forwards; }
+
+/* ========== FLASH ANIMATIONS EVERYWHERE ========== */
+
+/* Electric border shimmer on section titles */
+@keyframes electric-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+section h2 { position: relative; }
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00f0ff, #bf00ff, #ff006e, transparent);
+    background-size: 200% 100%;
+    animation: electric-shimmer 3s linear infinite;
+    border-radius: 2px;
+}
+
+/* Lightning flash on card hover */
+@keyframes lightning-flash {
+    0%, 100% { opacity: 0; }
+    2% { opacity: 0.8; }
+    4% { opacity: 0; }
+    6% { opacity: 0.6; }
+    8% { opacity: 0; }
+}
+.bento-card::before, .pricing-card-inner::before, .faq-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(0,240,255,0.15), rgba(191,0,255,0.1), transparent);
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.bento-card:hover::before, .pricing-card-inner:hover::before, .faq-card:hover::before {
+    animation: lightning-flash 4s ease infinite;
+}
+
+/* Floating spark particles on stat cards */
+@keyframes float-spark {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-40px) scale(0); opacity: 0; }
+}
+.stat-card { position: relative; overflow: hidden; }
+.stat-card::after {
+    content: "\u26A1";
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.7rem;
+    opacity: 0;
+    animation: float-spark 3s ease-in-out infinite;
+    pointer-events: none;
+}
+.stat-card:nth-child(2)::after { animation-delay: 0.5s; }
+.stat-card:nth-child(3)::after { animation-delay: 1s; }
+.stat-card:nth-child(4)::after { animation-delay: 1.5s; }
+.stat-card:nth-child(5)::after { animation-delay: 2s; }
+
+/* Neon pulse on pricing CTA buttons */
+@keyframes neon-pulse-btn {
+    0%, 100% { box-shadow: 0 0 5px var(--btn-glow, rgba(99,102,241,0.3)); }
+    50% { box-shadow: 0 0 20px var(--btn-glow, rgba(99,102,241,0.6)), 0 0 40px var(--btn-glow, rgba(99,102,241,0.2)); }
+}
+.pricing-card-3d .btn-glow { animation: neon-pulse-btn 2.5s ease infinite; }
+.pricing-card-3d.featured .btn-glow { --btn-glow: rgba(255,0,110,0.5); }
+
+/* Electric border crawl on expertise cards */
+@keyframes border-crawl {
+    0% { clip-path: inset(0 100% 100% 0); }
+    25% { clip-path: inset(0 0 100% 0); }
+    50% { clip-path: inset(0 0 0 0); }
+    75% { clip-path: inset(100% 0 0 0); }
+    100% { clip-path: inset(0 100% 100% 0); }
+}
+.expertise-card:hover .expertise-card-front::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #00f0ff, #bf00ff, #ff006e) 1;
+    border-radius: inherit;
+    animation: border-crawl 2s linear infinite;
+    pointer-events: none;
+}
+
+/* Glitch effect on hero title */
+@keyframes hero-glitch {
+    0%, 95%, 100% { text-shadow: none; }
+    96% { text-shadow: -2px 0 #ff006e, 2px 0 #00f0ff; }
+    97% { text-shadow: 2px 0 #bf00ff, -2px 0 #ffd700; }
+    98% { text-shadow: -1px 0 #00f0ff, 1px 0 #ff006e; }
+}
+.hero-title { animation: hero-glitch 8s ease infinite; }
+
+/* Scan line on demo panels */
+@keyframes scan-line {
+    0% { top: -2px; }
+    100% { top: 100%; }
+}
+.demo-panel { position: relative; overflow: hidden; }
+.demo-panel::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+    animation: scan-line 4s linear infinite;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Testimonial card shine sweep */
+@keyframes shine-sweep {
+    0% { left: -100%; }
+    50%, 100% { left: 200%; }
+}
+.testimonial-card { position: relative; overflow: hidden; }
+.testimonial-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+    animation: shine-sweep 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Method step entrance with electric arc */
+@keyframes arc-flash {
+    0% { width: 0; opacity: 0; }
+    50% { width: 100%; opacity: 0.6; }
+    100% { width: 100%; opacity: 0; }
+}
+.method-step.visible::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #00f0ff, #bf00ff);
+    animation: arc-flash 1s ease forwards;
+    pointer-events: none;
+}
+
+/* CTA section energy ring */
+@keyframes energy-ring-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+#cta { position: relative; overflow: hidden; }
+#cta::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    margin: -300px 0 0 -300px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-top-color: rgba(0,240,255,0.15);
+    border-right-color: rgba(191,0,255,0.1);
+    animation: energy-ring-rotate 15s linear infinite;
+    pointer-events: none;
+}
+#cta::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin: -200px 0 0 -200px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-bottom-color: rgba(255,0,110,0.12);
+    border-left-color: rgba(255,215,0,0.08);
+    animation: energy-ring-rotate 10s linear infinite reverse;
+    pointer-events: none;
+}
+
+/* Pulsing dot on guarantee badge */
+@keyframes guarantee-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,135,0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0,255,135,0); }
+}
+.guarantee-card { animation: guarantee-pulse 3s ease infinite; }
+
+/* ROI section counter glow */
+@keyframes counter-glow {
+    0%, 100% { text-shadow: 0 0 5px currentColor; }
+    50% { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+}
+.roi-stat-value, .stat-number { animation: counter-glow 3s ease infinite; }
+
+/* Floating micro-sparks around the page */
+@keyframes micro-spark {
+    0% { transform: translate(0, 0) scale(0); opacity: 0; }
+    30% { transform: translate(var(--sx, 20px), var(--sy, -30px)) scale(1); opacity: 1; }
+    100% { transform: translate(var(--ex, 40px), var(--ey, -60px)) scale(0); opacity: 0; }
+}
+
+/* Smart form type hover electric border */
+.smart-form-type { position: relative; overflow: hidden; }
+.smart-form-type::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    background: linear-gradient(var(--form-color, #00f0ff), var(--form-color, #00f0ff)) padding-box, linear-gradient(135deg, var(--form-color, #00f0ff), transparent) border-box;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.smart-form-type:hover::after, .smart-form-type.selected::after {
+    opacity: 1;
+    animation: neon-pulse-btn 2s ease infinite;
+}

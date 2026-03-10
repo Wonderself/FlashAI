@@ -131,8 +131,81 @@
 <div id="page-loader" aria-hidden="true" role="presentation">
     <canvas id="loader-canvas"></canvas>
     <div class="loader-content">
-        <div class="loader-logo">
-            <span class="loader-flash">Flash</span><span class="loader-ai">AI</span>
+        <!-- Energy beams -->
+        <div class="loader-energy-beams" id="loader-energy-beams">
+            <div class="loader-energy-beam" style="--beam-angle:0deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:45deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:90deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:135deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:180deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:225deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:270deg"></div>
+            <div class="loader-energy-beam" style="--beam-angle:315deg"></div>
+        </div>
+        <!-- Big animated logo -->
+        <div class="loader-logo-epic" id="loader-logo-epic">
+            <svg class="logo-bolt-svg logo-bolt-svg-big" width="120" height="120" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="ldr-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f0ff"><animate attributeName="stop-color" values="#00f0ff;#bf00ff;#ff006e;#00f0ff" dur="4s" repeatCount="indefinite"/></stop>
+                        <stop offset="50%" stop-color="#bf00ff"><animate attributeName="stop-color" values="#bf00ff;#ff006e;#00f0ff;#bf00ff" dur="4s" repeatCount="indefinite"/></stop>
+                        <stop offset="100%" stop-color="#ff006e"><animate attributeName="stop-color" values="#ff006e;#00f0ff;#bf00ff;#ff006e" dur="4s" repeatCount="indefinite"/></stop>
+                    </linearGradient>
+                    <linearGradient id="ldr-bolt-edge" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
+                        <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+                    </linearGradient>
+                    <filter id="ldr-bolt-glow">
+                        <feGaussianBlur stdDeviation="1.5" result="blur1"/>
+                        <feGaussianBlur stdDeviation="3.5" result="blur2"/>
+                        <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="ldr-bolt-mega">
+                        <feGaussianBlur stdDeviation="4" result="glow"/>
+                        <feColorMatrix in="glow" type="saturate" values="3" result="saturated"/>
+                        <feMerge><feMergeNode in="saturated"/><feMergeNode in="saturated"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <!-- Ultra glow background -->
+                <path class="logo-glow-pulse" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#ldr-bolt-grad)" filter="url(#ldr-bolt-mega)" opacity="0.5"/>
+                <!-- Shadow -->
+                <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,0,0,0.4)" transform="translate(1.5,1.5)"/>
+                <!-- Mid layer -->
+                <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,240,255,0.15)" transform="translate(0.7,0.7)" filter="url(#ldr-bolt-glow)"/>
+                <!-- Main bolt -->
+                <path class="logo-bolt-main" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#ldr-bolt-grad)" filter="url(#ldr-bolt-glow)"/>
+                <!-- Highlight edge -->
+                <path d="M9 5L19 5L13.5 15.5H21L10.5 27L14 17.5H9Z" fill="none" stroke="url(#ldr-bolt-edge)" stroke-width="0.5" opacity="0.8"/>
+                <!-- Inner shine -->
+                <path d="M11 7L17 7L13 14H18L11.5 23L14 16H11Z" fill="rgba(255,255,255,0.18)"/>
+                <!-- Energy lines -->
+                <line x1="20" y1="8" x2="26" y2="5" stroke="#00f0ff" stroke-width="0.5" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite"/><animate attributeName="x2" values="24;29;24" dur="2s" repeatCount="indefinite"/></line>
+                <line x1="22" y1="14" x2="28" y2="12" stroke="#bf00ff" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.7;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/></line>
+                <line x1="6" y1="20" x2="1" y2="23" stroke="#ff006e" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.6;0" dur="2.2s" repeatCount="indefinite" begin="1s"/></line>
+                <line x1="8" y1="10" x2="3" y2="8" stroke="#ffd700" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" begin="0.3s"/></line>
+                <!-- Spark particles -->
+                <circle cx="23" cy="5" r="0.7" fill="#00f0ff"><animate attributeName="opacity" values="0;1;0" dur="1.6s" repeatCount="indefinite"/><animate attributeName="cx" values="23;27;23" dur="1.6s" repeatCount="indefinite"/><animate attributeName="cy" values="5;2;5" dur="1.6s" repeatCount="indefinite"/></circle>
+                <circle cx="5" cy="19" r="0.6" fill="#ff006e"><animate attributeName="opacity" values="0;0.9;0" dur="2s" repeatCount="indefinite" begin="0.4s"/><animate attributeName="cx" values="5;2;5" dur="2s" repeatCount="indefinite" begin="0.4s"/></circle>
+                <circle cx="19" cy="27" r="0.5" fill="#bf00ff"><animate attributeName="opacity" values="0;0.8;0" dur="1.8s" repeatCount="indefinite" begin="0.9s"/><animate attributeName="cy" values="27;30;27" dur="1.8s" repeatCount="indefinite" begin="0.9s"/></circle>
+                <circle cx="25" cy="11" r="0.4" fill="#ffd700"><animate attributeName="opacity" values="0;1;0" dur="1.3s" repeatCount="indefinite" begin="0.2s"/><animate attributeName="r" values="0.4;0.9;0.4" dur="1.3s" repeatCount="indefinite" begin="0.2s"/></circle>
+                <circle cx="3" cy="12" r="0.35" fill="#00ff87"><animate attributeName="opacity" values="0;0.7;0" dur="2.4s" repeatCount="indefinite" begin="1.5s"/></circle>
+            </svg>
+            <!-- Progress ring -->
+            <svg class="loader-ring" width="160" height="160" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+                <circle id="loader-ring-circle" cx="80" cy="80" r="72" fill="none" stroke="url(#ring-grad)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="452.4" stroke-dashoffset="452.4" transform="rotate(-90 80 80)"/>
+                <defs>
+                    <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f0ff"/>
+                        <stop offset="50%" stop-color="#bf00ff"/>
+                        <stop offset="100%" stop-color="#ff006e"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <!-- Letter-by-letter text -->
+        <div class="loader-text-reveal" id="loader-text-reveal">
+            <span class="loader-letter loader-letter-f">F</span><span class="loader-letter loader-letter-l">l</span><span class="loader-letter loader-letter-a">a</span><span class="loader-letter loader-letter-s">s</span><span class="loader-letter loader-letter-h">h</span><span class="loader-letter loader-letter-A loader-letter-accent">A</span><span class="loader-letter loader-letter-I loader-letter-accent">I</span>
         </div>
         <div class="loader-boot" id="loader-boot"></div>
         <div class="loader-bar-wrap">
@@ -157,7 +230,50 @@
         <div class="flex items-center justify-between h-16 lg:h-20">
             <a href="#" class="flex items-center gap-2 group" aria-label="FlashAI Accueil">
                 <div class="header-logo-icon">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z" fill="url(#lg)"/><defs><linearGradient id="lg" x1="8" y1="4" x2="22" y2="28"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#bf00ff"/></linearGradient></defs></svg>
+                    <svg class="logo-bolt-svg" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="hdr-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00f0ff"><animate attributeName="stop-color" values="#00f0ff;#bf00ff;#ff006e;#00f0ff" dur="4s" repeatCount="indefinite"/></stop>
+                                <stop offset="50%" stop-color="#bf00ff"><animate attributeName="stop-color" values="#bf00ff;#ff006e;#00f0ff;#bf00ff" dur="4s" repeatCount="indefinite"/></stop>
+                                <stop offset="100%" stop-color="#ff006e"><animate attributeName="stop-color" values="#ff006e;#00f0ff;#bf00ff;#ff006e" dur="4s" repeatCount="indefinite"/></stop>
+                            </linearGradient>
+                            <linearGradient id="hdr-bolt-edge" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+                                <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+                            </linearGradient>
+                            <filter id="hdr-bolt-glow">
+                                <feGaussianBlur stdDeviation="1.5" result="blur1"/>
+                                <feGaussianBlur stdDeviation="3" result="blur2"/>
+                                <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <filter id="hdr-bolt-soft">
+                                <feGaussianBlur stdDeviation="2.5" result="glow"/>
+                                <feColorMatrix in="glow" type="saturate" values="2" result="saturated"/>
+                                <feMerge><feMergeNode in="saturated"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Outer glow pulse layer -->
+                        <path class="logo-glow-pulse" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#hdr-bolt-grad)" filter="url(#hdr-bolt-soft)" opacity="0.4"/>
+                        <!-- Back shadow for depth -->
+                        <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,0,0,0.3)" transform="translate(1.2,1.2)"/>
+                        <!-- Mid depth layer -->
+                        <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,240,255,0.12)" transform="translate(0.6,0.6)" filter="url(#hdr-bolt-glow)"/>
+                        <!-- Main bolt -->
+                        <path class="logo-bolt-main" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#hdr-bolt-grad)" filter="url(#hdr-bolt-glow)"/>
+                        <!-- Highlight edge -->
+                        <path d="M9 5L19 5L13.5 15.5H21L10.5 27L14 17.5H9Z" fill="none" stroke="url(#hdr-bolt-edge)" stroke-width="0.5" opacity="0.7"/>
+                        <!-- Inner shine -->
+                        <path d="M11 7L17 7L13 14H18L11.5 23L14 16H11Z" fill="rgba(255,255,255,0.15)"/>
+                        <!-- Energy lines -->
+                        <line class="logo-energy-line" x1="20" y1="8" x2="26" y2="5" stroke="#00f0ff" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.7;0" dur="2.5s" repeatCount="indefinite" begin="0s"/><animate attributeName="x2" values="24;28;24" dur="2.5s" repeatCount="indefinite" begin="0s"/></line>
+                        <line class="logo-energy-line" x1="21" y1="14" x2="27" y2="13" stroke="#bf00ff" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.6;0" dur="3s" repeatCount="indefinite" begin="0.8s"/><animate attributeName="x2" values="25;29;25" dur="3s" repeatCount="indefinite" begin="0.8s"/></line>
+                        <line class="logo-energy-line" x1="7" y1="20" x2="3" y2="22" stroke="#ff006e" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.5;0" dur="2.8s" repeatCount="indefinite" begin="1.4s"/><animate attributeName="x2" values="4;1;4" dur="2.8s" repeatCount="indefinite" begin="1.4s"/></line>
+                        <!-- Spark particles -->
+                        <circle class="logo-spark" cx="22" cy="6" r="0.6" fill="#00f0ff"><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="cx" values="22;25;22" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="cy" values="6;3;6" dur="1.8s" repeatCount="indefinite" begin="0s"/></circle>
+                        <circle class="logo-spark" cx="6" cy="18" r="0.5" fill="#ff006e"><animate attributeName="opacity" values="0;0.8;0" dur="2.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="cx" values="6;3;6" dur="2.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="cy" values="18;20;18" dur="2.2s" repeatCount="indefinite" begin="0.6s"/></circle>
+                        <circle class="logo-spark" cx="18" cy="26" r="0.4" fill="#bf00ff"><animate attributeName="opacity" values="0;0.7;0" dur="2s" repeatCount="indefinite" begin="1.2s"/><animate attributeName="cx" values="18;15;18" dur="2s" repeatCount="indefinite" begin="1.2s"/><animate attributeName="cy" values="26;29;26" dur="2s" repeatCount="indefinite" begin="1.2s"/></circle>
+                        <circle class="logo-spark" cx="24" cy="12" r="0.35" fill="#ffd700"><animate attributeName="opacity" values="0;0.9;0" dur="1.5s" repeatCount="indefinite" begin="0.3s"/><animate attributeName="r" values="0.35;0.7;0.35" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></circle>
+                    </svg>
                 </div>
                 <span class="font-display font-bold text-xl tracking-tight">Flash<span class="text-neon-blue">AI</span></span>
             </a>
