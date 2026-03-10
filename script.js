@@ -650,21 +650,41 @@ function initPortfolio() {
     render();
     const prev = document.getElementById('portfolio-prev');
     const next = document.getElementById('portfolio-next');
-    if (prev) prev.addEventListener('click', () => { current = (current - 1 + projects.length) % projects.length; render(); });
-    if (next) next.addEventListener('click', () => { current = (current + 1) % projects.length; render(); });
-    let autoplay = setInterval(() => { current = (current + 1) % projects.length; render(); }, 5000);
-    ct.addEventListener('mouseenter', () => clearInterval(autoplay));
-    ct.addEventListener('mouseleave', () => { autoplay = setInterval(() => { current = (current + 1) % projects.length; render(); }, 5000); });
+    function go(dir) { current = (current + dir + projects.length) % projects.length; render(); }
+    if (prev) prev.addEventListener('click', () => go(-1));
+    if (next) next.addEventListener('click', () => go(1));
+    let autoplay = setInterval(() => go(1), 5000);
+    function pauseAuto() { clearInterval(autoplay); }
+    function resumeAuto() { clearInterval(autoplay); autoplay = setInterval(() => go(1), 5000); }
+    ct.addEventListener('mouseenter', pauseAuto);
+    ct.addEventListener('mouseleave', resumeAuto);
     window.addEventListener('resize', () => render());
-    let touchStartX = 0;
-    ct.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    // Touch swipe with smooth tracking
+    let touchStartX = 0, touchStartY = 0, touchStartTime = 0, isSwiping = false;
+    ct.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+        isSwiping = false;
+        pauseAuto();
+    }, { passive: true });
+    ct.addEventListener('touchmove', e => {
+        if (!isSwiping) {
+            const dx = Math.abs(e.touches[0].clientX - touchStartX);
+            const dy = Math.abs(e.touches[0].clientY - touchStartY);
+            if (dx > dy && dx > 10) { isSwiping = true; }
+        }
+        if (isSwiping) { e.preventDefault(); }
+    }, { passive: false });
     ct.addEventListener('touchend', e => {
         const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 50) {
-            if (dx < 0) current = (current + 1) % projects.length;
-            else current = (current - 1 + projects.length) % projects.length;
-            render();
+        const elapsed = Date.now() - touchStartTime;
+        const velocity = Math.abs(dx) / elapsed;
+        // Swipe if moved enough or fast enough
+        if (Math.abs(dx) > 30 || velocity > 0.3) {
+            if (dx < 0) go(1); else go(-1);
         }
+        resumeAuto();
     }, { passive: true });
 }
 
@@ -982,35 +1002,146 @@ function initSmartForm() {
         { id: 'auto', name: 'Automatisation', icon: '\u26A1', color: '#ff8c00', desc: 'Workflows' },
         { id: 'autre', name: 'Autre', icon: '\u{1F4AC}', color: '#00ff87', desc: 'Projet sur mesure' }
     ];
+    const formFields = {
+        site: {
+            subtitle: 'Dites-nous tout sur le site web de vos reves',
+            fields: [
+                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
+                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
+                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
+                { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Type de site *', type: 'chips', options: ['Site vitrine','Landing page','E-commerce','Blog / Media','Portfolio','Application web'], full: true },
+                { label: 'Nombre de pages estimees', type: 'chips', options: ['1-5 pages','6-15 pages','16-30 pages','30+ pages'], full: true },
+                { label: 'Fonctionnalites souhaitees', type: 'checks', options: ['Formulaire de contact','Paiement en ligne','Espace membre','Blog integre','Multi-langue','Chat en direct','Booking / RDV','SEO avance'], full: true },
+                { label: 'Avez-vous deja un design / maquette ?', type: 'chips', options: ['Oui, pret','Quelques idees','Non, je pars de zero'], full: true },
+                { label: 'Budget', type: 'select', options: ['< 1 000\u20AC','1 000 - 3 000\u20AC','3 000 - 5 000\u20AC','5 000 - 10 000\u20AC','> 10 000\u20AC'], half: true },
+                { label: 'Delai souhaite', type: 'select', options: ['Urgent (< 1 semaine)','Normal (2-3 semaines)','Flexible (1 mois+)','Pas de deadline'], half: true },
+                { label: 'Description du projet *', type: 'textarea', placeholder: 'Decrivez votre site ideal, votre cible, vos objectifs business...', full: true }
+            ]
+        },
+        crm: {
+            subtitle: 'Concevons ensemble votre outil de gestion parfait',
+            fields: [
+                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
+                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
+                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
+                { label: 'Entreprise *', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Type d\'outil *', type: 'chips', options: ['CRM commercial','ERP complet','Dashboard analytics','Gestion de projet','Facturation','Sur mesure'], full: true },
+                { label: 'Nombre d\'utilisateurs', type: 'chips', options: ['1-5','6-20','21-50','50+'], full: true },
+                { label: 'Fonctionnalites cles', type: 'checks', options: ['Pipeline commercial','Gestion contacts','Facturation auto','Rapports / KPIs','Notifications email','Import/Export CSV','API tierce','Roles & permissions'], full: true },
+                { label: 'Outils actuels a remplacer', type: 'text', placeholder: 'Excel, HubSpot, Salesforce, aucun...', full: true },
+                { label: 'Budget', type: 'select', options: ['< 2 000\u20AC','2 000 - 5 000\u20AC','5 000 - 10 000\u20AC','> 10 000\u20AC'], half: true },
+                { label: 'Delai souhaite', type: 'select', options: ['Urgent (< 2 semaines)','Normal (1 mois)','Flexible (2 mois+)'], half: true },
+                { label: 'Decrivez vos processus actuels *', type: 'textarea', placeholder: 'Comment gerez-vous vos clients/donnees aujourd\'hui ? Quels sont les points de friction ?', full: true }
+            ]
+        },
+        chatbot: {
+            subtitle: 'Creez un assistant IA qui comprend vraiment vos clients',
+            fields: [
+                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
+                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
+                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
+                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
+                { label: 'Ou deployer le chatbot ? *', type: 'chips', options: ['Site web','WhatsApp','Messenger','Slack','Instagram','Plusieurs canaux'], full: true },
+                { label: 'Objectif principal *', type: 'chips', options: ['Support client','Generation de leads','FAQ automatisee','Prise de RDV','Recommandations produits','Assistant interne'], full: true },
+                { label: 'Capacites souhaitees', type: 'checks', options: ['Reponses en temps reel','Transfert agent humain','Base de connaissances','Multi-langue','Analyse de sentiment','Integration CRM','Collecte de donnees','Personnalisation contextuelle'], full: true },
+                { label: 'Volume de conversations / mois', type: 'chips', options: ['< 100','100 - 500','500 - 2000','2000+'], full: true },
+                { label: 'Budget', type: 'select', options: ['< 2 000\u20AC','2 000 - 5 000\u20AC','5 000 - 10 000\u20AC','> 10 000\u20AC'], half: true },
+                { label: 'Delai souhaite', type: 'select', options: ['Urgent','Normal (2-3 semaines)','Flexible'], half: true },
+                { label: 'Decrivez votre besoin *', type: 'textarea', placeholder: 'Quel type de questions posent vos clients ? Quelles donnees le chatbot doit connaitre ?', full: true }
+            ]
+        },
+        auto: {
+            subtitle: 'Automatisez vos processus et gagnez des heures chaque semaine',
+            fields: [
+                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
+                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
+                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
+                { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Outils que vous utilisez *', type: 'checks', options: ['Gmail / Outlook','Slack / Teams','Google Sheets','HubSpot / Salesforce','Stripe / PayPal','Shopify / WooCommerce','Notion / Trello','Zapier / Make','Autre'], full: true },
+                { label: 'Type d\'automatisation *', type: 'chips', options: ['Email marketing','Facturation auto','Sync donnees','Notifications','Rapports auto','Scraping / Data','Onboarding client','Workflow interne'], full: true },
+                { label: 'Combien de taches manuelles repetitives par jour ?', type: 'chips', options: ['< 5','5 - 15','15 - 30','30+'], full: true },
+                { label: 'Budget', type: 'select', options: ['< 1 000\u20AC','1 000 - 3 000\u20AC','3 000 - 5 000\u20AC','> 5 000\u20AC'], half: true },
+                { label: 'Delai souhaite', type: 'select', options: ['Urgent','Normal (2-3 semaines)','Flexible'], half: true },
+                { label: 'Decrivez les taches a automatiser *', type: 'textarea', placeholder: 'Quelles taches repetitives vous prennent le plus de temps ? Quels outils doivent communiquer entre eux ?', full: true }
+            ]
+        },
+        autre: {
+            subtitle: 'Un projet unique ? On adore les defis',
+            fields: [
+                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
+                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
+                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
+                { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
+                { label: 'Type de projet *', type: 'chips', options: ['Application mobile','SaaS / Plateforme','API / Backend','Data / Analytics','Design / UX','Consulting tech','Autre'], full: true },
+                { label: 'Budget estime', type: 'select', options: ['< 1 000\u20AC','1 000 - 5 000\u20AC','5 000 - 10 000\u20AC','10 000 - 20 000\u20AC','> 20 000\u20AC'], half: true },
+                { label: 'Delai souhaite', type: 'select', options: ['Urgent','1-2 semaines','1 mois','Flexible'], half: true },
+                { label: 'Description detaillee du projet *', type: 'textarea', placeholder: 'Decrivez votre idee, vos objectifs, votre cible, vos contraintes techniques...', full: true }
+            ]
+        }
+    };
     let selected = null;
     function renderSelector() {
         selector.innerHTML = types.map(t => '<div class="smart-form-type ' + (selected === t.id ? 'selected' : '') + '" data-type="' + t.id + '" style="--form-color:' + t.color + ';--form-glow:' + t.color + '40"><span class="sf-type-icon">' + t.icon + '</span><span class="sf-type-name">' + t.name + '</span><span class="sf-type-desc">' + t.desc + '</span></div>').join('');
         selector.querySelectorAll('.smart-form-type').forEach(el => {
-            el.addEventListener('click', () => { selected = el.dataset.type; renderSelector(); renderForm(); });
+            el.addEventListener('click', () => {
+                selected = el.dataset.type;
+                renderSelector();
+                renderForm();
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         });
     }
+    function renderField(f, color) {
+        const cls = f.full ? 'sf-field sf-field-full' : (f.half ? 'sf-field' : 'sf-field sf-field-full');
+        if (f.type === 'text' || f.type === 'email' || f.type === 'tel') {
+            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><input type="' + f.type + '" class="sf-input" placeholder="' + f.placeholder + '"></div>';
+        }
+        if (f.type === 'select') {
+            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><select class="sf-select"><option value="">Selectionnez</option>' + f.options.map(o => '<option>' + o + '</option>').join('') + '</select></div>';
+        }
+        if (f.type === 'textarea') {
+            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><textarea class="sf-textarea" placeholder="' + f.placeholder + '" rows="4"></textarea></div>';
+        }
+        if (f.type === 'chips') {
+            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><div class="sf-chips">' + f.options.map(o => '<button type="button" class="sf-chip" style="--chip-color:' + color + '">' + o + '</button>').join('') + '</div></div>';
+        }
+        if (f.type === 'checks') {
+            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><div class="sf-checks-grid">' + f.options.map(o => '<label class="sf-check-item" style="--check-color:' + color + '"><input type="checkbox" class="sf-check-input"><span class="sf-check-box"><svg viewBox="0 0 12 12" width="12" height="12"><path d="M2 6l3 3 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="sf-check-text">' + o + '</span></label>').join('') + '</div></div>';
+        }
+        return '';
+    }
     function renderForm() {
-        if (!selected) { container.innerHTML = '<p class="text-center text-surface-400 text-sm">Selectionnez un type de projet ci-dessus pour afficher le formulaire adapte.</p>'; return; }
+        if (!selected) { container.innerHTML = '<div class="sf-empty-state"><div class="sf-empty-icon">\u{1F446}</div><p>Selectionnez un type de projet ci-dessus</p></div>'; return; }
         const type = types.find(t => t.id === selected);
-        container.innerHTML = '<div class="smart-form" style="--form-color:' + type.color + ';--form-glow:' + type.color + '40">' +
-            '<div class="sf-form-title" style="color:' + type.color + '">' + type.icon + ' ' + type.name + '</div>' +
-            '<div class="sf-form-subtitle">Remplissez les informations pour recevoir un devis personnalise</div>' +
-            '<div class="sf-fields">' +
-            '<div class="sf-field"><label class="sf-label">Prenom *</label><input type="text" class="sf-input" placeholder="Votre prenom" required></div>' +
-            '<div class="sf-field"><label class="sf-label">Nom *</label><input type="text" class="sf-input" placeholder="Votre nom" required></div>' +
-            '<div class="sf-field"><label class="sf-label">Email *</label><input type="email" class="sf-input" placeholder="votre@email.com" required></div>' +
-            '<div class="sf-field"><label class="sf-label">Telephone</label><input type="tel" class="sf-input" placeholder="+33 6 00 00 00 00"></div>' +
-            '<div class="sf-field"><label class="sf-label">Entreprise</label><input type="text" class="sf-input" placeholder="Nom de votre entreprise"></div>' +
-            '<div class="sf-field"><label class="sf-label">Budget</label><select class="sf-select"><option value="">Selectionnez</option><option>< 1 000\u20AC</option><option>1 000 - 3 000\u20AC</option><option>3 000 - 5 000\u20AC</option><option>5 000 - 10 000\u20AC</option><option>> 10 000\u20AC</option></select></div>' +
-            '<div class="sf-field sf-field-full"><label class="sf-label">Description du projet *</label><textarea class="sf-textarea" placeholder="Decrivez votre projet, vos objectifs et contraintes..." rows="4" required></textarea></div>' +
-            '</div>' +
-            '<button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button" onclick="showToast(\'Demande envoyee ! On vous recontacte en < 2h.\')"><span>Envoyer ma demande</span></button>' +
+        const config = formFields[selected];
+        container.innerHTML = '<div class="smart-form" style="--form-color:' + type.color + ';--form-glow:' + type.color + '40;--chip-color:' + type.color + '">' +
+            '<div class="sf-form-header"><div class="sf-form-icon" style="background:' + type.color + '15;color:' + type.color + ';border:1px solid ' + type.color + '30">' + type.icon + '</div><div><div class="sf-form-title" style="color:' + type.color + '">' + type.name + '</div><div class="sf-form-subtitle">' + config.subtitle + '</div></div></div>' +
+            '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
+            '<div class="sf-fields">' + config.fields.map(f => renderField(f, type.color)).join('') + '</div>' +
+            '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
+            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">Reponse garantie en moins de 2h</p></div>' +
             '</div>';
+        // Chips toggle
+        container.querySelectorAll('.sf-chips').forEach(group => {
+            group.querySelectorAll('.sf-chip').forEach(chip => {
+                chip.addEventListener('click', () => chip.classList.toggle('active'));
+            });
+        });
+        // Check items
+        container.querySelectorAll('.sf-check-input').forEach(cb => {
+            cb.addEventListener('change', () => cb.closest('.sf-check-item').classList.toggle('checked', cb.checked));
+        });
+        // Input validation
         container.querySelectorAll('.sf-input').forEach(input => {
             input.addEventListener('input', () => {
-                if (input.value.trim()) input.classList.add('valid');
-                else input.classList.remove('valid');
+                if (input.type === 'email') { input.classList.toggle('valid', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)); input.classList.toggle('invalid', input.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)); }
+                else { input.classList.toggle('valid', input.value.trim().length > 0); input.classList.remove('invalid'); }
             });
+        });
+        // Submit
+        container.querySelector('.sf-submit').addEventListener('click', () => {
+            showToast('\u2705 Demande envoyee ! On vous recontacte en moins de 2h.');
         });
     }
     renderSelector();

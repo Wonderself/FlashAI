@@ -3,11 +3,13 @@
    Aurora Hero, 3D Pricing, Smart Form, Knowledge Base
    ============================================ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #6366f1 #020617; }
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #6366f1 #020617; overflow-x: hidden; }
+html, body { max-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
 html::-webkit-scrollbar { width: 6px; }
 html::-webkit-scrollbar-track { background: #020617; }
 html::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #6366f1, #8b5cf6); border-radius: 3px; }
-body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; line-height: 1.6; background: #020617; color: white; font-family: "Inter", system-ui, sans-serif; overflow-x: hidden; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; line-height: 1.6; background: #020617; color: white; font-family: "Inter", system-ui, sans-serif; overflow-x: hidden; position: relative; width: 100%; }
+main, footer, header, section { max-width: 100vw; overflow-x: hidden; }
 ::selection { background: rgba(99, 102, 241, 0.35); color: white; }
 
 /* --- SCROLL PROGRESS --- */
@@ -138,7 +140,7 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 .terminal-progress-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
 
 /* Marquee */
-.marquee-row { display: flex; gap: 2rem; white-space: nowrap; animation: marquee-scroll 40s linear infinite; }
+.marquee-row { display: flex; gap: 2rem; white-space: nowrap; animation: marquee-scroll 40s linear infinite; width: max-content; }
 .marquee-row-2 { animation-direction: reverse; animation-duration: 35s; }
 @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .marquee-pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 9999px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #94a3b8; white-space: nowrap; transition: all 0.3s ease; }
@@ -526,8 +528,24 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 .sf-submit:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(99,102,241,0.4); }
 .sf-submit-spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 0.5rem; vertical-align: middle; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.sf-form-title { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.25rem; margin-bottom: 1.5rem; text-align: center; }
-.sf-form-subtitle { text-align: center; font-size: 0.85rem; color: #64748b; margin-bottom: 2rem; }
+.sf-form-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.sf-form-icon { width: 52px; height: 52px; border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; flex-shrink: 0; }
+.sf-form-title { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.25rem; }
+.sf-form-subtitle { font-size: 0.85rem; color: #64748b; margin-top: 0.25rem; }
+.sf-divider { height: 1px; margin: 1.5rem 0; }
+.sf-empty-state { text-align: center; padding: 3rem 1rem; color: #64748b; font-size: 0.9rem; }
+.sf-empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; animation: shape-float 3s ease-in-out infinite; }
+.sf-checks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.5rem; }
+.sf-check-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; border-radius: 0.6rem; border: 1px solid rgba(255,255,255,0.08); background: rgba(15,23,42,0.5); cursor: pointer; transition: all 0.3s; font-size: 0.8rem; color: #94a3b8; }
+.sf-check-item:hover { border-color: rgba(255,255,255,0.15); color: white; }
+.sf-check-item.checked { border-color: var(--check-color, #6366f1); background: rgba(99,102,241,0.08); color: white; }
+.sf-check-input { display: none; }
+.sf-check-box { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; color: transparent; }
+.sf-check-item.checked .sf-check-box { background: var(--check-color, #6366f1); border-color: var(--check-color, #6366f1); color: white; }
+.sf-check-text { line-height: 1.3; }
+.sf-submit-wrap { text-align: center; }
+.sf-submit-text { display: inline-flex; align-items: center; gap: 0.5rem; }
+.sf-submit-note { font-size: 0.75rem; color: #64748b; margin-top: 0.75rem; }
 .sf-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
 
 /* --- ROI --- */
@@ -643,6 +661,13 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     .sf-fields { grid-template-columns: 1fr; }
     .sf-field-full { grid-column: 1; }
     .smart-form-container { max-width: 100%; }
+    .sf-checks-grid { grid-template-columns: 1fr 1fr; }
+    .sf-check-item { padding: 0.5rem; font-size: 0.75rem; }
+    .sf-form-header { gap: 0.75rem; }
+    .sf-form-icon { width: 44px; height: 44px; font-size: 1.5rem; }
+    .sf-form-title { font-size: 1.1rem; }
+    .sf-form-subtitle { font-size: 0.78rem; }
+    .sf-chip { padding: 0.4rem 0.7rem; font-size: 0.72rem; }
     .sf-chips { gap: 0.4rem; }
     .sf-chip { padding: 0.4rem 0.75rem; font-size: 0.75rem; }
     .galaxy-container { height: 500px; }
@@ -674,8 +699,13 @@ body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
     .faq-tab-icon { font-size: 0.85rem; }
     .faq-search-input { padding: 0.7rem 1rem 0.7rem 2.5rem; font-size: 0.85rem; }
     .btn-glow-lg { padding: 0.85rem 1.75rem; font-size: 0.9rem; }
-    .btn-glow-xl { padding: 1rem 2rem; font-size: 1rem; }
+    .btn-glow-xl { padding: 1rem 1.75rem; font-size: 0.95rem; }
     .btn-outline-lg { padding: 0.85rem 1.75rem; font-size: 0.9rem; }
+    .sf-checks-grid { grid-template-columns: 1fr !important; }
+    .smart-form-selector { grid-template-columns: repeat(3, 1fr) !important; gap: 0.5rem; }
+    .smart-form-type { padding: 0.75rem 0.5rem; }
+    .sf-type-icon, .smart-form-type-icon { font-size: 1.5rem !important; margin-bottom: 0.25rem; }
+    .sf-type-name, .smart-form-type-name { font-size: 0.7rem !important; }
     .galaxy-container { display: none; }
     .tools-mobile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
     .tool-mobile-pill { padding: 0.5rem; font-size: 0.65rem; }
