@@ -330,10 +330,47 @@ function initCounters() {
 }
 
 function initMarquee() {
-    const t1 = ['React','Vue.js','Next.js','Node.js','Python','TypeScript','PostgreSQL','MongoDB','Redis','Docker','AWS','Vercel','Stripe','OpenAI','TailwindCSS','GraphQL'];
-    const t2 = ['Firebase','Supabase','Prisma','tRPC','Cloudflare','Twilio','SendGrid','Zapier','Make','n8n','HubSpot','Slack','Discord','Figma','GitHub','VS Code'];
-    function build(id, items) { const r = document.getElementById(id); if (!r) return; r.innerHTML = items.map(t => '<span class="marquee-pill">' + t + '</span>').join('') + items.map(t => '<span class="marquee-pill">' + t + '</span>').join(''); }
-    build('marquee-row-1', t1); build('marquee-row-2', t2);
+    const tools = [
+        { name: 'React', color: '#61dafb' },
+        { name: 'Vue.js', color: '#42b883' },
+        { name: 'Next.js', color: '#00f0ff' },
+        { name: 'Node.js', color: '#68a063' },
+        { name: 'Python', color: '#ffd43b' },
+        { name: 'TypeScript', color: '#3178c6' },
+        { name: 'PostgreSQL', color: '#336791' },
+        { name: 'MongoDB', color: '#47a248' },
+        { name: 'Redis', color: '#dc382d' },
+        { name: 'Docker', color: '#2496ed' },
+        { name: 'AWS', color: '#ff9900' },
+        { name: 'Vercel', color: '#ffffff' },
+        { name: 'Stripe', color: '#635bff' },
+        { name: 'OpenAI', color: '#00ff87' },
+        { name: 'TailwindCSS', color: '#06b6d4' },
+        { name: 'GraphQL', color: '#e535ab' },
+        { name: 'Firebase', color: '#ffca28' },
+        { name: 'Supabase', color: '#3ecf8e' },
+        { name: 'Prisma', color: '#2d3748' },
+        { name: 'tRPC', color: '#398ccb' },
+        { name: 'Cloudflare', color: '#f38020' },
+        { name: 'Twilio', color: '#f22f46' },
+        { name: 'Zapier', color: '#ff4a00' },
+        { name: 'Make', color: '#6d4aff' },
+        { name: 'n8n', color: '#ea4b71' },
+        { name: 'HubSpot', color: '#ff7a59' },
+        { name: 'Slack', color: '#4a154b' },
+        { name: 'Figma', color: '#a259ff' },
+        { name: 'GitHub', color: '#f0f0f0' },
+        { name: 'VS Code', color: '#007acc' },
+        { name: 'Kubernetes', color: '#326ce5' },
+        { name: 'GPT-4', color: '#00ff87' }
+    ];
+    function buildColor(id, items) {
+        const r = document.getElementById(id);
+        if (!r) return;
+        const html = items.map(t => '<span class="marquee-pill-color" style="--pill-color:' + t.color + ';--pill-bg:' + t.color + '12;--pill-glow:' + t.color + '40"><span class="marquee-pill-dot"></span>' + t.name + '</span>').join('');
+        r.innerHTML = html + html;
+    }
+    buildColor('marquee-row-1', tools);
 }
 
 function initServices() {
@@ -356,12 +393,51 @@ function initServices() {
 }
 
 function initBentoAnims() {
-    const anims = { browser: '<div style="padding:8px"><div style="height:8px;background:rgba(0,240,255,0.3);border-radius:4px;margin-bottom:6px;width:60%;animation:bp 2s ease infinite"></div><div style="height:40px;background:rgba(0,240,255,0.1);border-radius:4px;margin-bottom:6px;animation:bp 2s ease infinite 0.3s"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="height:30px;background:rgba(0,240,255,0.08);border-radius:4px;animation:bp 2s ease infinite 0.6s"></div><div style="height:30px;background:rgba(0,240,255,0.08);border-radius:4px;animation:bp 2s ease infinite 0.9s"></div></div></div>',
-        dashboard: '<div style="padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="height:20px;background:rgba(191,0,255,0.15);border-radius:4px"></div><div style="height:20px;background:rgba(191,0,255,0.1);border-radius:4px"></div><div style="grid-column:span 2;height:50px;background:linear-gradient(90deg,rgba(191,0,255,0.2),rgba(191,0,255,0.05));border-radius:4px;overflow:hidden"><div style="height:70%;margin-top:auto;background:rgba(191,0,255,0.15);border-radius:4px;animation:bp 2s ease infinite"></div></div></div>',
-        chat: '<div style="padding:8px"><div style="display:flex;margin-bottom:6px"><div style="height:12px;background:rgba(255,0,110,0.15);border-radius:8px;width:60%;animation:bp 3s ease infinite"></div></div><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><div style="height:12px;background:rgba(255,0,110,0.25);border-radius:8px;width:50%;animation:bp 3s ease infinite 0.5s"></div></div><div style="display:flex"><div style="height:12px;background:rgba(255,0,110,0.1);border-radius:8px;width:70%;animation:bp 3s ease infinite 1s"></div></div></div>',
-        flow: '<div style="padding:12px;display:flex;align-items:center;justify-content:center;gap:8px;height:100%"><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bp 1.5s ease infinite"></div><div style="width:20px;height:2px;background:rgba(255,140,0,0.3)"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bp 1.5s ease infinite 0.3s"></div><div style="width:20px;height:2px;background:rgba(255,140,0,0.3)"></div><div style="width:20px;height:20px;border-radius:50%;background:rgba(255,140,0,0.3);animation:bp 1.5s ease infinite 0.6s"></div></div>',
-        chart: '<svg viewBox="0 0 200 80" style="width:100%;height:100%;padding:8px"><polyline points="10,70 40,50 70,55 100,30 130,35 160,15 190,20" fill="none" stroke="rgba(0,255,135,0.5)" stroke-width="2"><animate attributeName="stroke-dasharray" from="0,300" to="300,0" dur="2s" repeatCount="indefinite"/></polyline></svg>',
-        shield: '<div style="display:flex;align-items:center;justify-content:center;height:100%"><div style="width:40px;height:50px;border:2px solid rgba(255,215,0,0.3);border-radius:0 0 20px 20px;animation:bp 2s ease infinite"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:rgba(255,215,0,0.4);border-radius:50%"></div></div></div>'
+    const anims = {
+        browser: '<div class="bento-anim-browser-bar"><div class="bento-anim-browser-dot" style="background:#ff5f57"></div><div class="bento-anim-browser-dot" style="background:#ffbd2e"></div><div class="bento-anim-browser-dot" style="background:#28c840"></div><div class="bento-anim-browser-url"><div class="bento-anim-browser-url-fill"></div></div></div>' +
+            '<div class="ba-site-nav"><div class="ba-site-nav-item" style="width:20px"></div><div class="ba-site-nav-item" style="width:28px;animation-delay:0.2s"></div><div class="ba-site-nav-item" style="width:22px;animation-delay:0.4s"></div><div class="ba-site-nav-item" style="width:18px;animation-delay:0.6s"></div></div>' +
+            '<div class="ba-site-hero"></div>' +
+            '<div class="ba-site-cols"><div class="ba-site-col" style="height:32px;animation-delay:0.3s"></div><div class="ba-site-col" style="height:32px;animation-delay:0.6s"></div><div class="ba-site-col" style="height:32px;animation-delay:0.9s"></div></div>',
+
+        dashboard: '<div style="display:flex;height:100%"><div class="ba-crm-sidebar">' +
+            '<div class="ba-crm-sidebar-item active"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.3s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.6s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.9s"></div><div class="ba-crm-sidebar-item" style="animation-delay:1.2s;width:60%"></div></div>' +
+            '<div class="ba-crm-main">' +
+            '<div style="display:flex;gap:4px;margin-bottom:4px"><div style="flex:1;height:16px;border-radius:4px;background:rgba(191,0,255,0.08);padding:3px 5px;font-size:5px;color:rgba(191,0,255,0.4)">Pipeline</div><div style="width:24px;height:16px;border-radius:4px;background:rgba(191,0,255,0.15);animation:bp 2s ease infinite"></div></div>' +
+            '<div class="ba-crm-row"><div class="ba-crm-avatar"></div><div class="ba-crm-name"></div><div class="ba-crm-badge" style="background:rgba(0,255,135,0.15);color:rgba(0,255,135,0.7)">$</div></div>' +
+            '<div class="ba-crm-row"><div class="ba-crm-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-name" style="width:70%"></div><div class="ba-crm-badge" style="background:rgba(255,140,0,0.15);color:rgba(255,140,0,0.7)">!</div></div>' +
+            '<div class="ba-crm-row"><div class="ba-crm-avatar" style="background:rgba(255,0,110,0.25)"></div><div class="ba-crm-name" style="width:55%"></div><div class="ba-crm-badge" style="background:rgba(0,240,255,0.15);color:rgba(0,240,255,0.7)">&#10003;</div></div>' +
+            '<div class="ba-crm-row"><div class="ba-crm-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-name" style="width:80%"></div><div class="ba-crm-badge" style="background:rgba(191,0,255,0.15);color:rgba(191,0,255,0.7)">&#9733;</div></div>' +
+            '</div></div>',
+
+        chat: '<div class="ba-chat-container">' +
+            '<div class="ba-chat-msg ba-chat-msg-bot" style="animation-delay:0s"><div class="ba-chat-bubble">Bonjour ! Comment puis-je vous aider ?</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user" style="animation-delay:0.8s"><div class="ba-chat-bubble">Je cherche des infos sur vos prix</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot" style="animation-delay:1.6s"><div class="ba-chat-bubble">Nos formules commencent a 890&#8364;. Voici le detail :</div></div>' +
+            '<div class="ba-chat-typing" style="animation-delay:2.4s"><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div></div>' +
+            '</div>',
+
+        flow: '<div class="ba-flow-container"><div class="ba-flow-pipeline">' +
+            '<div class="ba-flow-node active">&#9993;</div>' +
+            '<div class="ba-flow-arrow"><div class="ba-flow-data-dot"></div></div>' +
+            '<div class="ba-flow-node">&#9881;</div>' +
+            '<div class="ba-flow-arrow"><div class="ba-flow-data-dot" style="animation-delay:0.3s"></div></div>' +
+            '<div class="ba-flow-node">&#128202;</div>' +
+            '<div class="ba-flow-arrow"><div class="ba-flow-data-dot" style="animation-delay:0.6s"></div></div>' +
+            '<div class="ba-flow-node active">&#10003;</div>' +
+            '</div></div>',
+
+        chart: '<div class="ba-seo-container">' +
+            '<div style="display:flex;align-items:center;gap:8px">' +
+            '<div class="ba-seo-score-ring"><svg viewBox="0 0 40 40"><circle class="bg" cx="20" cy="20" r="18"/><circle class="fg" cx="20" cy="20" r="18"/></svg><div class="ba-seo-score-num">95+</div></div>' +
+            '<div style="flex:1;display:flex;flex-direction:column;gap:3px"><div class="ba-seo-metric"><div class="ba-seo-metric-label">Performance</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">Accessibility</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.3s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">Best Practices</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.6s"></div></div></div></div></div>' +
+            '<div class="ba-seo-metrics"><div class="ba-seo-metric"><div class="ba-seo-metric-label">FCP</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">LCP</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.2s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">CLS</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.4s"></div></div></div><div class="ba-seo-metric"><div class="ba-seo-metric-label">TBT</div><div class="ba-seo-metric-bar"><div class="ba-seo-metric-bar-fill" style="animation-delay:0.6s"></div></div></div></div>' +
+            '<div class="ba-seo-keywords"><span class="ba-seo-keyword">SEO</span><span class="ba-seo-keyword" style="animation-delay:0.2s">Core Vitals</span><span class="ba-seo-keyword" style="animation-delay:0.4s">Schema.org</span><span class="ba-seo-keyword" style="animation-delay:0.6s">Sitemap</span></div>' +
+            '</div>',
+
+        shield: '<div class="ba-shield-container">' +
+            '<div class="ba-shield-icon"><svg class="ba-shield-svg" viewBox="0 0 36 42"><path d="M18 2L4 10v12c0 10 14 18 14 18s14-8 14-18V10L18 2z" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5"/><path d="M18 2L4 10v12c0 10 14 18 14 18s14-8 14-18V10L18 2z" fill="rgba(255,215,0,0.05)"/><path d="M14 21l3 3 6-6" fill="none" stroke="rgba(255,215,0,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="20" stroke-dashoffset="20"><animate attributeName="stroke-dashoffset" from="20" to="0" dur="1.5s" repeatCount="indefinite"/></path></svg><div class="ba-shield-scan"></div></div>' +
+            '<div class="ba-shield-checks"><div class="ba-shield-check" style="animation-delay:0.3s">&#10003; SSL/TLS</div><div class="ba-shield-check" style="animation-delay:0.6s">&#10003; WAF Active</div><div class="ba-shield-check" style="animation-delay:0.9s">&#10003; OWASP OK</div><div class="ba-shield-check" style="animation-delay:1.2s">&#10003; RGPD</div></div>' +
+            '</div>'
     };
     for (const [k, v] of Object.entries(anims)) { const el = document.getElementById('bento-anim-' + k); if (el) el.innerHTML = v; }
     if (!document.getElementById('bp-style')) { const s = document.createElement('style'); s.id = 'bp-style'; s.textContent = '@keyframes bp{0%,100%{opacity:.5;transform:scaleX(.8)}50%{opacity:1;transform:scaleX(1)}}'; document.head.appendChild(s); }
@@ -966,29 +1042,32 @@ function initFAQ() {
     if (!list) return;
     const faqs = [
         { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos tarifs commencent a <span class="faq-highlight">890\u20AC</span> pour un site vitrine. Chaque projet est chiffre sur mesure selon vos besoins. Devis gratuit en <strong>24h</strong>.', cat: 'business', icon: '\u{1F4B0}' },
-        { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'general', icon: '\u23F1\uFE0F' },
+        { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'projet', icon: '\u23F1\uFE0F' },
         { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 247 APIs connectees.', cat: 'technique', icon: '\u2699\uFE0F' },
         { q: 'Proposez-vous une garantie ?', a: 'Oui ! <span class="faq-highlight">Garantie satisfait ou rembourse a 100%</span>. Si le resultat ne vous convient pas, on vous rembourse integralement.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
         { q: 'Comment fonctionne le support ?', a: 'Support prioritaire avec reponse en <span class="faq-highlight">moins de 2 heures</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
-        { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Plus de <span class="faq-highlight">50 projets</span> livres dans des secteurs varies : SaaS, e-commerce, sante, fintech.', cat: 'general', icon: '\u{1F3A8}' },
+        { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Plus de <span class="faq-highlight">50 projets</span> livres dans des secteurs varies : SaaS, e-commerce, sante, fintech.', cat: 'projet', icon: '\u{1F3A8}' },
         { q: 'Est-ce que le SEO est inclus ?', a: 'Oui, chaque projet inclut une <strong>optimisation SEO technique</strong> : meta tags, structured data, Core Web Vitals, sitemap XML, schema.org.', cat: 'technique', icon: '\u{1F50D}' },
         { q: 'Comment se passe le paiement ?', a: '<strong>30% a la commande</strong>, 40% a la validation du prototype, 30% a la livraison. Paiement par virement ou carte bancaire via <span class="faq-highlight">Stripe</span>.', cat: 'business', icon: '\u{1F4B3}' },
         { q: 'Faites-vous la maintenance ?', a: 'Oui ! <strong>12 mois de maintenance inclus</strong> : mises a jour, corrections, monitoring 24/7. Au-dela, forfaits a partir de 99\u20AC/mois.', cat: 'support', icon: '\u{1F527}' },
         { q: 'Travaillez-vous a l\'international ?', a: 'Absolument. Bases a <strong>Tel Aviv</strong>, nous travaillons avec des clients en France, Suisse, Belgique, Canada et dans le monde entier. Tout se fait a distance.', cat: 'general', icon: '\u{1F30D}' },
         { q: 'Puis-je modifier mon site moi-meme ?', a: 'Oui, nous fournissons un <strong>panneau d\'administration</strong> intuitif ou un CMS headless. Formation incluse pour votre equipe.', cat: 'technique', icon: '\u270F\uFE0F' },
-        { q: 'Que comprend le chatbot IA ?', a: 'Un assistant virtuel base sur <span class="faq-highlight">GPT-4</span> entraine sur vos donnees. Integration WhatsApp, site web, Messenger. Taux de resolution moyen de 85%.', cat: 'technique', icon: '\u{1F916}' },
-        { q: 'Proposez-vous des automatisations ?', a: 'Oui : workflows <strong>Zapier, Make, n8n</strong>, scripts custom. Reduction des taches manuelles de 60% en moyenne.', cat: 'technique', icon: '\u26A1' },
+        { q: 'Que comprend le chatbot IA ?', a: 'Un assistant virtuel base sur <span class="faq-highlight">GPT-4</span> entraine sur vos donnees. Integration WhatsApp, site web, Messenger. Taux de resolution moyen de 85%.', cat: 'ia', icon: '\u{1F916}' },
+        { q: 'Proposez-vous des automatisations ?', a: 'Oui : workflows <strong>Zapier, Make, n8n</strong>, scripts custom. Reduction des taches manuelles de 60% en moyenne.', cat: 'ia', icon: '\u26A1' },
         { q: 'Comment assurez-vous la securite ?', a: 'SSL, WAF Cloudflare, audit OWASP, conformite <span class="faq-highlight">RGPD</span>, chiffrement AES-256, authentification 2FA, monitoring 24/7.', cat: 'technique', icon: '\u{1F512}' },
         { q: 'Y a-t-il un engagement ?', a: '<strong>Aucun engagement</strong>. Pas d\'abonnement obligatoire. Vous payez le projet, c\'est tout. Le support 12 mois est inclus.', cat: 'business', icon: '\u2705' },
         { q: 'Quel est votre avantage par rapport a une agence classique ?', a: '<span class="faq-highlight">3 a 5x moins cher</span>, livraison en jours au lieu de mois, technologies modernes vs WordPress, support reactif inclus 12 mois.', cat: 'general', icon: '\u{1F680}' },
         { q: 'Faites-vous des applications mobiles ?', a: 'Nous specialisons dans les <strong>Progressive Web Apps (PWA)</strong> qui fonctionnent comme des apps natives. Pour des apps natives, nous recommandons React Native.', cat: 'technique', icon: '\u{1F4F1}' },
-        { q: 'Comment demarrer mon projet ?', a: 'Simple : <strong>1)</strong> Remplissez le formulaire ci-dessous, <strong>2)</strong> On vous rappelle en <2h, <strong>3)</strong> Devis gratuit en 24h, <strong>4)</strong> On demarre !', cat: 'general', icon: '\u{1F3AF}' },
+        { q: 'Comment demarrer mon projet ?', a: 'Simple : <strong>1)</strong> Remplissez le formulaire ci-dessous, <strong>2)</strong> On vous rappelle en <2h, <strong>3)</strong> Devis gratuit en 24h, <strong>4)</strong> On demarre !', cat: 'projet', icon: '\u{1F3AF}' },
         { q: 'Puis-je avoir un devis gratuit ?', a: 'Oui, <span class="faq-highlight">100% gratuit et sans engagement</span>. Remplissez le formulaire ou ecrivez-nous a contact@flashai.dev. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F4E9}' },
-        { q: 'Offrez-vous de la formation ?', a: 'Oui ! Chaque projet inclut une <strong>session de formation</strong> pour votre equipe + documentation complete de 40+ pages.', cat: 'support', icon: '\u{1F393}' }
+        { q: 'Offrez-vous de la formation ?', a: 'Oui ! Chaque projet inclut une <strong>session de formation</strong> pour votre equipe + documentation complete de 40+ pages.', cat: 'support', icon: '\u{1F393}' },
+        { q: 'Comment l\'IA est-elle integree dans vos projets ?', a: 'Chatbots intelligents (GPT-4, Claude, RAG), automatisations IA (classification emails, generation contenu, extraction donnees), <span class="faq-highlight">analytics predictifs</span> (prevision ventes, scoring leads). L\'IA apporte une valeur mesurable a chaque projet.', cat: 'ia', icon: '\u{1F9E0}' },
+        { q: 'Comment se deroule un projet typique ?', a: '<strong>4 phases</strong> : 1) Discovery (30 min) — appel pour comprendre vos besoins. 2) Prototype (48h) — maquette interactive. 3) Build (3-10 jours) — developpement agile avec demos quotidiennes. 4) Launch — deploiement, formation, monitoring 24/7.', cat: 'projet', icon: '\u{1F4CB}' },
+        { q: 'Est-ce que je garde la propriete de mon code ?', a: 'Oui, a <span class="faq-highlight">100%</span>. Vous recevez le code source complet via GitHub, la documentation technique, et tous les droits de propriete intellectuelle. Aucun lock-in.', cat: 'projet', icon: '\u{1F4C4}' }
     ];
     const totalEl = document.getElementById('faq-total-count');
     if (totalEl) totalEl.textContent = faqs.length;
-    let readSet = new Set(), currentCat = 'all', searchQuery = '';
+    let readSet = new Set(), currentCat = 'general', searchQuery = '';
     function render() {
         const filtered = faqs.filter(f => {
             if (currentCat !== 'all' && f.cat !== currentCat) return false;
@@ -998,7 +1077,7 @@ function initFAQ() {
         list.innerHTML = filtered.map((f, i) => {
             const idx = faqs.indexOf(f);
             const isRead = readSet.has(idx);
-            const colors = { general: '#00f0ff', technique: '#bf00ff', business: '#00ff87', support: '#ff8c00' };
+            const colors = { general: '#00f0ff', technique: '#bf00ff', business: '#00ff87', support: '#ff8c00', ia: '#ff006e', projet: '#ffd700' };
             const c = colors[f.cat] || '#6366f1';
             return '<div class="faq-card ' + (isRead ? 'faq-read' : '') + ' reveal" data-idx="' + idx + '">' +
                 '<div class="faq-card-accent" style="background:linear-gradient(180deg,' + c + ',' + c + '40)"></div>' +
