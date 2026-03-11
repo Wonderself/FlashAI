@@ -858,7 +858,8 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .faq-read .faq-card-accent { opacity: 0.4; }
 
 /* --- SMART CONTACT FORM v6 --- */
-.smart-form-selector { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; max-width: 800px; margin: 0 auto 2rem; }
+.smart-form-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto 2rem; }
+@media (max-width: 639px) { .smart-form-selector { grid-template-columns: repeat(2, 1fr); } }
 .smart-form-type { position: relative; padding: 1.5rem 1rem; border-radius: 1.25rem; border: 1px solid rgba(255,255,255,0.08); background: rgba(15, 23, 42, 0.6); cursor: pointer; text-align: center; transition: all 0.5s cubic-bezier(0.22,1,0.36,1); overflow: hidden; }
 .smart-form-type:hover { border-color: rgba(99,102,241,0.3); transform: translateY(-4px); }
 .smart-form-type.active, .smart-form-type.selected { border-color: var(--form-color, #6366f1); box-shadow: 0 0 35px var(--form-glow, rgba(99,102,241,0.25)); transform: translateY(-6px); }
@@ -930,6 +931,17 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .roi-result-detail { font-size: 0.85rem; color: #00ff87; margin-top: 0.75rem; }
 .guarantee-card { text-align: center; padding: 3rem 2rem; border-radius: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 255, 135, 0.15); box-shadow: 0 0 40px rgba(0, 255, 135, 0.05); }
 .guarantee-shield { font-size: 3rem; margin-bottom: 1rem; }
+
+/* --- LUMIÈRE BROTHERS --- */
+.lumiere-film-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(255,215,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(255,140,0,0.04) 0%, transparent 50%); pointer-events: none; }
+.lumiere-card { border-color: rgba(255,215,0,0.12); }
+.lumiere-card:hover { border-color: rgba(255,215,0,0.3); box-shadow: 0 0 30px rgba(255,215,0,0.08); }
+
+/* --- ÉQUIPE --- */
+.team-card { text-align: center; padding: 2rem 1.5rem; border-radius: 1.25rem; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(99, 102, 241, 0.12); transition: all 0.4s ease; }
+.team-card:hover { border-color: rgba(99, 102, 241, 0.3); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(99, 102, 241, 0.1); }
+.team-avatar { display: flex; justify-content: center; }
+.team-avatar-placeholder { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(0,240,255,0.2)); border: 2px solid rgba(99,102,241,0.3); display: flex; align-items: center; justify-content: center; font-display: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; letter-spacing: 0.05em; }
 
 /* --- CTA --- */
 #cta-final { position: relative; }
@@ -1173,14 +1185,16 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .portfolio-stat { padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
 
 /* Method ISO timeline compat */
-.method-iso-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.method-iso-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; overflow: hidden; }
 @media (max-width: 1023px) { .method-iso-timeline { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .method-iso-timeline { grid-template-columns: 1fr; } }
+.method-iso-timeline > .method-steps { display: contents; }
 
 /* Expertise carousel compat */
-.expertise-carousel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.expertise-carousel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; overflow: hidden; }
 @media (max-width: 1023px) { .expertise-carousel { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 639px) { .expertise-carousel { grid-template-columns: 1fr; } }
+.expertise-carousel > .expertise-grid { display: contents; }
 
 /* ========== TRUST BAR ========== */
 .trust-marquee { overflow: hidden; width: 100%; }
