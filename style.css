@@ -761,6 +761,9 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 @keyframes holo-spin { from { --holo-angle: 0deg; } to { --holo-angle: 360deg; } }
 @property --holo-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 
+.pricing-features { list-style: none; padding: 0; margin: 1rem 0 1.5rem; }
+.pricing-features li { position: relative; padding: 0.35rem 0 0.35rem 1.5rem; font-size: 0.85rem; color: #cbd5e1; }
+.pricing-features li::before { content: "✓"; position: absolute; left: 0; color: #00ff87; font-weight: 700; }
 .pricing-card-inner { position: relative; padding: 2.5rem 2rem; border-radius: 1.5rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(20px); overflow: hidden; height: 100%; }
 .pricing-card-3d.featured .pricing-card-inner { background: rgba(15, 23, 42, 0.9); }
 .pricing-card-3d.featured { z-index: 5; transform: scale(1.05); }
@@ -931,6 +934,25 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .roi-result-detail { font-size: 0.85rem; color: #00ff87; margin-top: 0.75rem; }
 .guarantee-card { text-align: center; padding: 3rem 2rem; border-radius: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(0, 255, 135, 0.15); box-shadow: 0 0 40px rgba(0, 255, 135, 0.05); }
 .guarantee-shield { font-size: 3rem; margin-bottom: 1rem; }
+
+/* --- SERVICE LINKS --- */
+.service-link { cursor: pointer; transition: all 0.4s ease; }
+.service-link:hover { border-color: rgba(0,240,255,0.3); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,240,255,0.08); }
+.service-arrow { display: block; margin-top: 0.75rem; font-size: 0.8rem; color: #00f0ff; font-weight: 500; opacity: 0.6; transition: opacity 0.3s, transform 0.3s; }
+.service-link:hover .service-arrow { opacity: 1; transform: translateX(4px); }
+
+/* --- SERVICE DETAIL MODAL --- */
+.service-modal { position: fixed; inset: 0; z-index: 9999; display: none; }
+.service-modal.active { display: flex; align-items: center; justify-content: center; }
+.service-modal-backdrop { position: absolute; inset: 0; background: rgba(2,6,23,0.85); backdrop-filter: blur(8px); }
+.service-modal-content { position: relative; width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; border-radius: 1.5rem; background: rgba(15,23,42,0.95); border: 1px solid rgba(99,102,241,0.2); padding: 3rem 2.5rem; animation: smart-form-in 0.4s ease; }
+.service-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+.service-modal-close:hover { border-color: #ff006e; color: #ff006e; }
+.service-detail-section { margin-bottom: 2rem; }
+.service-detail-section h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; color: white; margin-bottom: 0.75rem; }
+.service-detail-list { list-style: none; padding: 0; }
+.service-detail-list li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; color: #cbd5e1; font-size: 0.9rem; }
+.service-detail-list li::before { content: "→"; position: absolute; left: 0; color: #00f0ff; }
 
 /* --- LUMIÈRE BROTHERS --- */
 .lumiere-film-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(255,215,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(255,140,0,0.04) 0%, transparent 50%); pointer-events: none; }
@@ -1501,17 +1523,19 @@ section h2::after {
 .smart-form-type::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -1px;
     border-radius: inherit;
-    border: 2px solid transparent;
-    background: linear-gradient(var(--form-color, #00f0ff), var(--form-color, #00f0ff)) padding-box, linear-gradient(135deg, var(--form-color, #00f0ff), transparent) border-box;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--form-color, #6366f1), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
 }
 .smart-form-type:hover::after, .smart-form-type.selected::after {
     opacity: 1;
-    animation: neon-pulse-btn 2s ease infinite;
 }
 
 /* --- LEGAL MODAL --- */

@@ -896,11 +896,11 @@ function initPortfolio() {
     const scrollCt = document.getElementById('portfolio-scroll');
     if (!ct && !scrollCt) return;
     const projects = [
-        { title: 'Freenzy.io', type: 'SaaS', desc: 'Plateforme SaaS complete, intuitive et gratuite pour independants.', color: '#00f0ff', tags: ['React','Node.js','SaaS'], stat: 'Gratuit', url: 'https://freenzy.io' },
-        { title: 'GlamHouse', type: 'Blockchain', desc: 'Tokenisation immobiliere et smart contracts automatises.', color: '#bf00ff', tags: ['Blockchain','Smart Contracts','React'], stat: 'Web3', url: '' },
-        { title: 'Psy Daniel', type: 'Dashboard', desc: 'Dashboard client pour cabinet de psychologie.', color: '#00ff87', tags: ['React','Dashboard','Analytics'], stat: 'Gestion clients', url: '' },
-        { title: 'David Spectacles', type: 'Dashboard', desc: 'Tableau de bord de gestion pour enseigne d\'optique.', color: '#ffd700', tags: ['Dashboard','Ventes','Stocks'], stat: 'Temps reel', url: '' },
-        { title: 'Levemente', type: 'Site + Dashboard', desc: 'Site web et dashboard pour marque portugaise.', color: '#ff8c00', tags: ['Next.js','CMS','Analytics'], stat: 'Design premium', url: '' },
+        { title: 'Freenzy', type: 'SaaS', desc: 'Automatisation totale, audit securite quotidien, +30 APIs connectees.', color: '#00f0ff', tags: ['Automatisation','Securite','APIs'], stat: '30+ APIs' },
+        { title: 'GlamHouse', type: 'Immobilier Web3', desc: 'Transactions immobilieres tokenisees et securisees on-chain.', color: '#bf00ff', tags: ['Blockchain','Smart Contracts','Tokenisation'], stat: 'Web3' },
+        { title: 'Psy Daniel', type: 'Automatisation', desc: 'Posts automatises et SEO optimise par IA pour cabinet psy.', color: '#00ff87', tags: ['SEO IA','Posts auto','Analytics'], stat: 'SEO auto' },
+        { title: 'David Spectacles', type: 'Dashboard', desc: 'Gestion spectacles, artistes, planning et billetterie.', color: '#ffd700', tags: ['Planning','Artistes','Dashboard'], stat: 'Live' },
+        { title: 'Levemente', type: 'Experience cadeau', desc: 'Site cadeau d\'anniversaire personnalise avec 3 choix.', color: '#ff8c00', tags: ['Design','Personnalisation','UX'], stat: '3 choix' },
         { title: 'Cinegen', type: 'Confidentiel', desc: 'Projet en cours sous accord de confidentialite.', color: '#ff006e', tags: ['Confidentiel'], stat: 'En cours', url: '' },
         { title: 'Afrique Digital', type: 'Portail web', desc: 'Portail digital pour le marche africain francophone.', color: '#06b6d4', tags: ['Mobile-first','Portail','Afrique'], stat: 'Multi-pays', url: '' },
         { title: 'LaunchPad', type: 'Mini App', desc: 'MVP fonctionnel livre en 5 jours pour startups.', color: '#e879f9', tags: ['MVP','Startup','Rapide'], stat: '5 jours', url: '' }
@@ -1758,4 +1758,110 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
     document.getElementById('link-mentions')?.addEventListener('click', e => { e.preventDefault(); openModal('mentions-legales'); });
     document.getElementById('link-privacy')?.addEventListener('click', e => { e.preventDefault(); openModal('politique-confidentialite'); });
     document.getElementById('link-cgv')?.addEventListener('click', e => { e.preventDefault(); openModal('cgv'); });
+})();
+
+// === SERVICE DETAIL MODAL ===
+(function() {
+    const serviceData = {
+        'sites-web': {
+            title: 'Sites Web sur mesure',
+            icon: '🌐',
+            color: '#00f0ff',
+            intro: 'Un site web professionnel, performant et optimise pour convertir vos visiteurs en clients.',
+            sections: [
+                { title: 'Ce que vous obtenez', items: ['Site vitrine, landing page ou e-commerce 100% sur mesure', 'Design responsive adapte mobile, tablette et desktop', 'Score Lighthouse 95+ garanti (performance, SEO, accessibilite)', 'Integration de vos contenus, textes, images, videos', 'Formulaire de contact et/ou prise de RDV integre', 'Hebergement 1 an offert + nom de domaine'] },
+                { title: 'Technologies utilisees', items: ['React / Next.js pour les performances', 'TailwindCSS pour un design pixel-perfect', 'Deploiement sur Vercel, Netlify ou votre serveur', 'SSL, CDN et optimisations automatiques'] },
+                { title: 'Deroulement typique', items: ['Jour 1 : Appel decouverte 30 min + brief', 'Jour 2-3 : Maquette interactive a valider', 'Jour 3-5 : Developpement et integration', 'Jour 5 : Mise en ligne + formation', 'Suivi et support email inclus'] },
+                { title: 'Tarif indicatif', items: ['A partir de 390\u20AC pour un site vitrine', 'E-commerce : a partir de 790\u20AC', 'Hebergement 1 an inclus dans tous les plans'] }
+            ]
+        },
+        'crm-erp': {
+            title: 'CRM & ERP personnalises',
+            icon: '📊',
+            color: '#bf00ff',
+            intro: 'Un outil de gestion sur mesure qui s\'adapte a votre facon de travailler, pas l\'inverse.',
+            sections: [
+                { title: 'Ce que vous obtenez', items: ['CRM adapte a votre metier (contacts, pipeline, relances)', 'Dashboard avec vos KPIs en temps reel', 'Automatisations : emails, relances, notifications', 'Export CSV/PDF, rapports automatiques', 'Multi-utilisateurs avec gestion des droits'] },
+                { title: 'Cas d\'usage', items: ['Gestion de clientele pour professions liberales', 'Suivi commercial et pipeline de ventes', 'Gestion de stock et commandes pour commercants', 'Facturation et devis automatises'] },
+                { title: 'Deroulement', items: ['Audit de vos besoins et processus actuels', 'Prototype interactif en 48h', 'Developpement iteratif avec vos retours', 'Formation de votre equipe + documentation'] },
+                { title: 'Tarif indicatif', items: ['A partir de 990\u20AC', 'Complement a un outil existant : a partir de 490\u20AC', 'Hebergement 1 an inclus'] }
+            ]
+        },
+        'chatbot-ia': {
+            title: 'Chatbot IA intelligent',
+            icon: '🤖',
+            color: '#ff006e',
+            intro: 'Un assistant virtuel qui repond a vos clients 24/7, base sur vos donnees et votre ton.',
+            sections: [
+                { title: 'Ce que vous obtenez', items: ['Chatbot entraine sur vos donnees (FAQ, catalogue, site)', 'Integration site web, WhatsApp, Messenger, Slack', 'Reponses naturelles et contextuelles', 'Tableau de bord pour suivre les conversations', 'Escalade automatique vers un humain si necessaire'] },
+                { title: 'Technologies', items: ['GPT-4 / Claude pour la comprehension', 'Architecture RAG pour des reponses fiables', 'Base de connaissances vectorisee (vos docs)', 'API securisee et hebergee'] },
+                { title: 'Resultats attendus', items: ['85% des questions resolues automatiquement', '-60% de charge sur votre support', 'Disponible 24h/24, 7j/7', 'Amelioration continue avec les retours'] },
+                { title: 'Tarif indicatif', items: ['A partir de 790\u20AC pour un chatbot de base', 'Chatbot avance avec RAG : a partir de 1 490\u20AC', 'Hebergement 1 an inclus'] }
+            ]
+        },
+        'automatisation': {
+            title: 'Automatisation de processus',
+            icon: '⚡',
+            color: '#ff8c00',
+            intro: 'Automatisez vos taches repetitives pour gagner du temps et reduire les erreurs.',
+            sections: [
+                { title: 'Ce que vous obtenez', items: ['Audit de vos processus manuels actuels', 'Workflows automatises entre vos outils', 'Connexion de vos apps (CRM, email, agenda, comptabilite...)', 'Alertes et notifications automatiques', 'Rapports generes automatiquement'] },
+                { title: 'Outils utilises', items: ['Zapier, Make (Integromat), n8n', 'Scripts custom Python / Node.js', 'API et webhooks sur mesure', 'Connexion a plus de 200 applications'] },
+                { title: 'Exemples concrets', items: ['Nouveau lead → email de bienvenue + ajout CRM + notification Slack', 'Facture payee → mise a jour comptabilite + email client', 'Post reseaux sociaux → planification automatique multi-plateformes', 'Audit SEO quotidien automatise + rapport email'] },
+                { title: 'Tarif indicatif', items: ['A partir de 390\u20AC pour un workflow simple', 'Pack 5 automatisations : a partir de 890\u20AC', 'Maintenance et monitoring inclus 6 mois'] }
+            ]
+        },
+        'seo': {
+            title: 'SEO & Croissance digitale',
+            icon: '📈',
+            color: '#00ff87',
+            intro: 'Soyez visible sur Google. On optimise votre site pour attirer du trafic qualifie.',
+            sections: [
+                { title: 'Ce que vous obtenez', items: ['Audit SEO complet de votre site', 'Optimisation Core Web Vitals (vitesse, UX)', 'Strategie de mots-cles adaptee a votre marche', 'Optimisation on-page (titres, meta, structure)', 'Schema.org et donnees structurees', 'Rapport mensuel de performances'] },
+                { title: 'Resultats mesurables', items: ['+200% de trafic organique en moyenne a 3 mois', 'Score Lighthouse 95+ garanti', 'Amelioration des positions Google', 'Plus de leads qualifies via le search'] },
+                { title: 'Notre approche', items: ['Analyse de la concurrence et opportunites', 'Contenu optimise avec l\'aide de l\'IA', 'Suivi et ajustements mensuels', 'Formation pour maintenir les bonnes pratiques'] },
+                { title: 'Tarif indicatif', items: ['Audit SEO ponctuel : a partir de 290\u20AC', 'Optimisation complete : a partir de 590\u20AC', 'Accompagnement mensuel : sur devis'] }
+            ]
+        },
+        'conseil': {
+            title: 'Conseil & Accompagnement',
+            icon: '💡',
+            color: '#ffd700',
+            intro: 'Pas sur de ce dont vous avez besoin ? On vous aide a y voir clair et a faire les bons choix.',
+            sections: [
+                { title: 'Ce que vous obtenez', items: ['Audit de votre situation digitale actuelle', 'Recommandations strategiques personnalisees', 'Choix d\'outils adaptes a votre budget', 'Plan d\'action concret et priorise', 'Formation a l\'utilisation de l\'IA pour votre metier'] },
+                { title: 'Pour qui ?', items: ['Vous demarrez et ne savez pas par ou commencer', 'Vous avez un site mais il ne performe pas', 'Vous voulez integrer l\'IA sans tout refaire', 'Vous cherchez un avis expert avant d\'investir'] },
+                { title: 'Formats possibles', items: ['Consultation ponctuelle (1h-2h)', 'Audit complet avec livrable ecrit', 'Accompagnement mensuel', 'Formation equipe (IA, outils digitaux, SEO)'] },
+                { title: 'Tarif indicatif', items: ['Consultation 1h : 90\u20AC', 'Audit complet : a partir de 290\u20AC', 'Accompagnement mensuel : sur devis'] }
+            ]
+        }
+    };
+
+    const modal = document.getElementById('service-modal');
+    const inner = document.getElementById('service-modal-inner');
+    if (!modal || !inner) return;
+
+    function openService(key) {
+        const s = serviceData[key];
+        if (!s) return;
+        inner.innerHTML = '<div style="text-align:center;margin-bottom:2rem"><span style="font-size:3rem;display:block;margin-bottom:0.75rem">' + s.icon + '</span><h3 class="font-display font-bold text-2xl sm:text-3xl" style="color:white">' + s.title + '</h3><p style="color:#94a3b8;margin-top:0.5rem;max-width:500px;margin-left:auto;margin-right:auto">' + s.intro + '</p></div>' +
+            s.sections.map(function(sec) {
+                return '<div class="service-detail-section"><h4 style="color:' + s.color + '">' + sec.title + '</h4><ul class="service-detail-list">' + sec.items.map(function(it) { return '<li>' + it + '</li>'; }).join('') + '</ul></div>';
+            }).join('') +
+            '<div style="text-align:center;margin-top:2rem"><a href="#contact" class="btn-glow" onclick="document.getElementById(\'service-modal\').classList.remove(\'active\')"><span>Demander un devis</span></a></div>';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeService() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.service-link').forEach(function(el) {
+        el.addEventListener('click', function() { openService(el.dataset.service); });
+    });
+    document.getElementById('service-modal-close').addEventListener('click', closeService);
+    document.getElementById('service-modal-backdrop').addEventListener('click', closeService);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeService(); });
 })();
