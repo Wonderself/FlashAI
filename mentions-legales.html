@@ -2,59 +2,96 @@
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales | Flashsite Agency</title>
-    <meta name="description" content="Informations légales de Flashsite Agency. Transparence et conformité pour nos services de création web.">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Mentions Legales | FlashAI</title>
+    <meta name="description" content="Mentions legales de FlashAI. Transparence et conformite pour nos services digitaux.">
+    <meta name="author" content="Emmanuel Smadja - FlashAI">
+    <meta name="theme-color" content="#020617">
+    <link rel="canonical" href="https://flashai.dev/mentions-legales.html">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: {50:"#eef2ff",100:"#e0e7ff",200:"#c7d2fe",300:"#a5b4fc",400:"#818cf8",500:"#6366f1",600:"#4f46e5",700:"#4338ca",800:"#3730a3",900:"#312e81"},
+                    surface: {50:"#f8fafc",100:"#f1f5f9",200:"#e2e8f0",300:"#cbd5e1",400:"#94a3b8",500:"#64748b",600:"#475569",700:"#334155",800:"#1e293b",900:"#0f172a",950:"#020617"},
+                    accent: {400:"#22d3ee",500:"#0ea5e9",600:"#0284c7"},
+                    neon: {blue:"#00f0ff",purple:"#bf00ff",pink:"#ff006e",green:"#00ff87",orange:"#ff8c00",gold:"#ffd700",cyan:"#06b6d4"}
+                },
+                fontFamily: {
+                    display: ["Space Grotesk","system-ui","sans-serif"],
+                    body: ["Inter","system-ui","sans-serif"],
+                    mono: ["JetBrains Mono","monospace"]
+                }
+            }
+        }
+    }
+    </script>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z' fill='%2300f0ff'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="selection:bg-fuchsia-500 selection:text-white">
-    <canvas id="particle-canvas"></canvas>
+<body class="bg-surface-950 text-white font-body antialiased overflow-x-hidden" style="background:#020617">
 
-    <header class="main-header fixed top-0 w-full z-50">
-        <nav class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3 group logo-container">
-                <div class="logo-frame p-1">
-                    <img src="assets/logo3.png" alt="Flashsite Logo" class="h-10 w-auto logo">
-                </div>
-                <span class="font-display font-bold text-xl tracking-tighter hidden sm:block">FLASHSITE <span class="text-neon">AGENCY</span></span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-8">
-                <a href="index.html#portfolio" class="text-sm font-medium hover:text-neon transition-colors">Inspirations</a>
-                <a href="index.html#services" class="text-sm font-medium hover:text-neon transition-colors">Services</a>
-                <a href="index.html#devis-tool" class="text-sm font-medium text-cyan hover:brightness-125 transition-all">Outil Devis</a>
-                <a href="index.html#contact" class="btn btn-outline py-2 px-5 text-sm">Contact</a>
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="backdrop-filter:blur(16px);background:rgba(0,0,0,0.82)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="/" class="flex items-center gap-2" aria-label="FlashAI Accueil">
+                    <div class="text-xl font-bold font-display"><span class="text-white">Flash</span><span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">AI</span></div>
+                </a>
+                <nav class="hidden lg:flex items-center gap-6">
+                    <div class="relative group">
+                        <a href="/#services" class="text-surface-400 hover:text-white transition-colors text-sm cursor-pointer">Services <svg class="inline w-3 h-3 ml-0.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+                        <div class="absolute top-full left-0 mt-1 w-56 py-2 rounded-xl bg-surface-900/95 border border-white/10 backdrop-blur-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                            <a href="/services/sites-web.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Sites Web sur mesure</a>
+                            <a href="/services/crm-erp.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">CRM & ERP</a>
+                            <a href="/services/chatbot-ia.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Chatbot IA</a>
+                            <a href="/services/automatisation.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Automatisation</a>
+                            <a href="/services/seo.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">SEO & Croissance</a>
+                            <a href="/services/conseil.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Conseil</a>
+                        </div>
+                    </div>
+                    <a href="/about.html" class="text-surface-400 hover:text-white transition-colors text-sm">A propos</a>
+                    <a href="/contact.html" class="text-surface-400 hover:text-white transition-colors text-sm">Contact</a>
+                </nav>
+                <a href="/contact.html" class="hidden lg:inline-flex px-4 py-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple text-white text-sm font-medium hover:opacity-90 transition-opacity">Demarrer un projet</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
             </div>
-
-            <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 6h16" />
-                </svg>
-            </button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-white/10 p-6 space-y-4 text-center">
-            <a href="index.html#portfolio" class="block text-lg">Inspirations</a>
-            <a href="index.html#services" class="block text-lg">Services</a>
-            <a href="index.html#devis-tool" class="block text-lg text-cyan">Outil Devis</a>
-            <a href="index.html#contact" class="block text-lg text-neon">Contact</a>
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(2,6,23,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="/" class="text-2xl text-surface-300 hover:text-white transition-colors">Accueil</a>
+            <a href="/#services" class="text-2xl text-surface-300 hover:text-white transition-colors">Services</a>
+            <a href="/about.html" class="text-2xl text-surface-300 hover:text-white transition-colors">A propos</a>
+            <a href="/contact.html" class="text-2xl text-surface-300 hover:text-white transition-colors">Contact</a>
+            <a href="/contact.html" class="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple text-white font-medium">Demarrer un projet</a>
+        </div>
+    </div>
+
     <main class="pt-32 pb-24 px-6">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-display font-bold mb-12 italic text-gradient">Mentions Légales</h1>
-            
-            <div class="glass-card p-8 md:p-12 rounded-3xl reveal space-y-10 text-gray-300">
+            <h1 class="text-4xl md:text-5xl font-display font-bold mb-12">
+                <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">Mentions Legales</span>
+            </h1>
+
+            <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 space-y-10 text-surface-300">
                 <section>
-                    <h2 class="text-2xl font-bold text-white mb-4">1. Édition du site</h2>
-                    <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet <strong>flashsite.fr</strong> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
+                    <h2 class="text-2xl font-bold text-white mb-4">1. Edition du site</h2>
+                    <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'economie numerique, il est precise aux utilisateurs du site internet <strong>flashai.dev</strong> l'identite des differents intervenants dans le cadre de sa realisation et de son suivi :</p>
                     <ul class="mt-4 space-y-2">
-                        <li><strong>Propriétaire du site :</strong> Emmanuel Smadja - Flashsite Agency</li>
+                        <li><strong>Proprietaire du site :</strong> Emmanuel Smadja - FlashAI</li>
                         <li><strong>Statut :</strong> Entrepreneur Individuel (EI)</li>
                         <li><strong>Contact :</strong> Via le formulaire de contact en page d'accueil</li>
                         <li><strong>Adresse :</strong> 39 Rue de la Gare de Reuilly, 75012 Paris, France</li>
@@ -62,52 +99,58 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-white mb-4">2. Propriété intellectuelle et contrefaçons</h2>
-                    <p><strong>Flashsite Agency</strong> détient les droits de propriété intellectuelle ou les droits d’usage sur tous les éléments accessibles sur le site internet, notamment les textes, images, graphismes, logos, vidéos, architecture, icônes et sons.</p>
-                    <p class="mt-2">Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de <strong>l'Agence</strong>.</p>
+                    <h2 class="text-2xl font-bold text-white mb-4">2. Propriete intellectuelle et contrefacons</h2>
+                    <p><strong>FlashAI</strong> detient les droits de propriete intellectuelle ou les droits d'usage sur tous les elements accessibles sur le site internet, notamment les textes, images, graphismes, logos, videos, architecture, icones et sons.</p>
+                    <p class="mt-2">Toute reproduction, representation, modification, publication, adaptation de tout ou partie des elements du site, quel que soit le moyen ou le procede utilise, est interdite, sauf autorisation ecrite prealable de <strong>FlashAI</strong>.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-white mb-4">3. Limitations de responsabilité</h2>
-                    <p><strong>La responsabilité de l'Agence</strong> ne pourra être tenue pour responsable des dommages directs ou indirects causés au matériel de l’utilisateur, ni des interruptions de service, bugs ou incompatibilités techniques rencontrés lors de l’accès au site flashsite.fr.</p>
-                    <p class="mt-2">L'utilisateur est seul responsable de la protection de ses données et de l'adéquation de son équipement informatique pour la navigation sur les services de l'Agence.</p>
+                    <h2 class="text-2xl font-bold text-white mb-4">3. Limitations de responsabilite</h2>
+                    <p><strong>FlashAI</strong> ne pourra etre tenu pour responsable des dommages directs ou indirects causes au materiel de l'utilisateur, ni des interruptions de service, bugs ou incompatibilites techniques rencontres lors de l'acces au site flashai.dev.</p>
+                    <p class="mt-2">L'utilisateur est seul responsable de la protection de ses donnees et de l'adequation de son equipement informatique pour la navigation sur les services de FlashAI.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-white mb-4">4. Fiscalité - TVA</h2>
-                    <p class="text-cyan font-bold italic">TVA non applicable, article 293 B du Code Général des Impôts (CGI).</p>
-                    <p class="mt-2">En tant qu'auto-entrepreneur / micro-entreprise, Flashsite Agency n'est pas assujetti à la TVA. Tous les tarifs indiqués sur le site sont entendus en Montant Net.</p>
+                    <h2 class="text-2xl font-bold text-white mb-4">4. Fiscalite - TVA</h2>
+                    <p class="text-neon-blue font-bold italic">TVA non applicable, article 293 B du Code General des Impots (CGI).</p>
+                    <p class="mt-2">En tant qu'auto-entrepreneur / micro-entreprise, FlashAI n'est pas assujetti a la TVA. Tous les tarifs indiques sur le site sont entendus en Montant Net.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-white mb-4">5. Hébergement</h2>
-                    <p>Le site est hébergé par : <strong>HETZNER Online GmbH</strong><br>
-                    Siège social : Gunzenhausen, Allemagne<br>
-                    Infrastructure Cloud hautement sécurisée conforme RGPD.
+                    <h2 class="text-2xl font-bold text-white mb-4">5. Hebergement</h2>
+                    <p>Le site est heberge par : <strong>HETZNER Online GmbH</strong><br>
+                    Siege social : Gunzenhausen, Allemagne<br>
+                    Infrastructure Cloud hautement securisee conforme RGPD.
                     </p>
                 </section>
             </div>
         </div>
     </main>
 
-    <footer class="py-12 bg-black border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex justify-center mb-8">
-                <img src="assets/logo3.png" alt="Flashsite Agency Logo" class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity">
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 text-center text-sm text-surface-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 FlashAI &mdash; Made with &#9829; in Israel &#127470;&#127473;</p>
+            <div class="flex justify-center gap-4 mt-3">
+                <a href="/" class="hover:text-neon-blue transition-colors">Accueil</a>
+                <a href="/about.html" class="hover:text-neon-blue transition-colors">A propos</a>
+                <a href="/contact.html" class="hover:text-neon-blue transition-colors">Contact</a>
+                <a href="/mentions-legales.html" class="hover:text-neon-blue transition-colors">Mentions legales</a>
             </div>
-            
-            <div class="flex flex-wrap justify-center gap-8 text-xs font-bold text-gray-500 uppercase tracking-widest mb-8">
-                <a href="mentions-legales.html" class="hover:text-neon transition-colors">Mentions Légales</a>
-                <a href="cgu.html" class="hover:text-neon transition-colors">Conditions Générales d'Utilisation</a>
-            </div>
-
-            <p class="text-[10px] text-gray-700 leading-relaxed italic">
-                Flashsite Agency - l'Agence Web des Métiers du Bâtiment<br>
-                39 rue de la gare de Reuilly, 75012 PARIS - Tous droits Réservés
-            </p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileOverlay = document.getElementById('mobile-menu-overlay');
+    const menuClose = document.getElementById('mobile-menu-close');
+    if (menuBtn && mobileOverlay) {
+        menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+        menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+        mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+    }
+    </script>
+
 </body>
 </html>
