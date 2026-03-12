@@ -1726,18 +1726,20 @@ section { position: relative; }
     overflow: hidden;
 }
 .hero-badge-row {
-    padding-top: 84px; /* 64px header + 20px gap */
+    padding-top: 70px; /* 64px header + 6px gap — tight under topbar */
     flex-shrink: 0;
 }
 .hero-badge-row .inline-flex {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    gap: 0.35rem;
+    font-size: 0.63rem;
+    padding: 0.18rem 0.5rem;
+    gap: 0.3rem;
 }
 #hero h1 {
     font-size: clamp(2.8rem, 8.5vw, 5rem);
     line-height: 1.02;
     letter-spacing: -0.025em;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 .trust-tickers {
     position: relative;
@@ -1759,11 +1761,11 @@ section { position: relative; }
 /* Desktop */
 @media (min-width: 1024px) {
     .hero-badge-row {
-        padding-top: 100px; /* 80px header + 20px gap */
+        padding-top: 86px; /* 80px header + 6px gap */
     }
     .hero-badge-row .inline-flex {
-        font-size: 0.8rem;
-        padding: 0.35rem 0.85rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem;
     }
     #hero h1 {
         font-size: clamp(3.5rem, 5vw, 6rem);
