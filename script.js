@@ -1039,9 +1039,7 @@ function initGalaxyCategories() {
 /* ========== PRICING ========== */
 function initPricing() {
     const grid = document.getElementById('pricing-grid');
-    const toggle = document.getElementById('pricing-toggle');
     if (!grid) return;
-    let annual = false;
     const plans = [
         { name: 'Starter', icon: '\u{1F680}', price: 490, priceAnnual: 392, desc: 'Parfait pour demarrer votre presence digitale.', color: '#00f0ff', features: ['Site vitrine responsive','Design premium sur mesure','SEO de base optimise','Hebergement 3 mois inclus','Support email','Livraison en 5 jours'] },
         { name: 'Business', icon: '\u{1F4BC}', price: 1490, priceAnnual: 1192, desc: 'La solution complete pour scaler votre business.', color: '#bf00ff', featured: true, features: ['Tout Starter +','CRM / Dashboard integre','Chatbot IA basique','API & automatisations','Analytics avance','Support prioritaire 12 mois','Formation equipe incluse'] },
@@ -1049,8 +1047,8 @@ function initPricing() {
     ];
     function render() {
         grid.innerHTML = plans.map((p, idx) => {
-            const price = annual ? p.priceAnnual : p.price;
-            const oldPrice = annual ? p.price : null;
+            const price = p.price;
+            const oldPrice = null;
             return '<div class="pricing-card-3d ' + (p.featured ? 'featured' : '') + '" style="--pc:' + p.color + '">' +
                 (p.featured ? '<div class="pricing-popular-badge">\u2B50 Plus populaire</div>' : '') +
                 '<div class="pricing-card-aurora pricing-card-aurora-' + (idx + 1) + '"></div>' +
@@ -1066,7 +1064,6 @@ function initPricing() {
         }).join('');
     }
     render();
-    if (toggle) toggle.addEventListener('click', () => { annual = !annual; toggle.classList.toggle('active', annual); render(); });
 }
 
 /* ========== ROI CALCULATOR ========== */
