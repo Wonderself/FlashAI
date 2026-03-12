@@ -1140,19 +1140,17 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
     .scroll-top-btn { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
     /* Mobile hero: fills viewport, tickers sit at very bottom */
     #hero { min-height: calc(100svh - 44px); padding-top: 5rem; padding-bottom: 0.5rem; display: flex; flex-direction: column; justify-content: flex-end; }
-    #hero h1 { font-size: 2.5rem; line-height: 1.08; margin-bottom: 0.6rem; }
-    #hero .space-y-8 { gap: 1.1rem; }
-    #hero .space-y-8 > * + * { margin-top: 0; }
-    #hero .space-y-8 > .inline-flex { margin-bottom: 0.4rem; }
-    #hero p { font-size: 0.78rem; line-height: 1.45; }
+    #hero h1 { font-size: 2.6rem; line-height: 1.08; margin-bottom: 0.6rem; }
+    #hero [class*="space-y-"] { gap: 1rem; }
+    #hero [class*="space-y-"] > * + * { margin-top: 0; }
+    #hero [class*="space-y-"] > .inline-flex { margin-bottom: 0.3rem; }
+    #hero p { font-size: 0.82rem; line-height: 1.45; }
     #hero .flex.flex-wrap { gap: 0.5rem; margin-top: 0.3rem; }
-    #hero .flex.flex-wrap .btn-glow-lg { padding: 0.6rem 1.3rem; font-size: 0.8rem; border-radius: 0.7rem; }
-    #hero .flex.flex-wrap .btn-outline-lg { padding: 0.55rem 1.1rem; font-size: 0.78rem; border-radius: 0.7rem; }
-    #hero .flex.items-center.gap-6 { gap: 0.5rem; font-size: 0.62rem; margin-top: 0.2rem; }
-    #hero .flex.items-center.gap-6 .flex.items-center { gap: 0.2rem; }
-    #hero .inline-flex { font-size: 0.66rem; padding: 0.22rem 0.55rem; }
+    #hero .flex.flex-wrap .btn-glow-lg { padding: 0.65rem 1.4rem; font-size: 0.82rem; border-radius: 0.7rem; }
+    #hero .flex.flex-wrap .btn-outline-lg { padding: 0.6rem 1.2rem; font-size: 0.8rem; border-radius: 0.7rem; }
+    #hero .flex.flex-wrap.items-center { gap: 0.6rem; font-size: 0.68rem; margin-top: 0.2rem; }
+    #hero .inline-flex { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
     #hero .max-w-7xl { padding-left: 1.25rem; padding-right: 1.25rem; }
-    #hero-terminal-wrap { display: none; }
     /* Tickers compact on mobile */
     .trust-tickers { padding: 3px 0; gap: 1px; }
     .marquee-pill-color { padding: 0.15rem 0.5rem; font-size: 0.55rem; }
@@ -1633,3 +1631,97 @@ section { position: relative; }
 /* Terminal glow effect */
 .hero-terminal { animation: terminal-glow 5s ease-in-out infinite; }
 @keyframes terminal-glow { 0%, 100% { box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 40px rgba(99,102,241,0.1); } 50% { box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 60px rgba(99,102,241,0.2), 0 0 100px rgba(191,0,255,0.08); } }
+
+/* ========== SERVICES CAROUSEL (mobile first) ========== */
+.services-carousel { position: relative; }
+.services-carousel-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.5rem 0 1.5rem;
+}
+.services-carousel-track::-webkit-scrollbar { display: none; }
+.services-slide {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.services-dots, .adn-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.services-dots .dot, .adn-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.services-dots .dot.active, .adn-dots .dot.active {
+    background: #00f0ff;
+    box-shadow: 0 0 10px rgba(0,240,255,0.5);
+    transform: scale(1.3);
+}
+
+/* Desktop: grid layout */
+@media (min-width: 768px) {
+    .services-carousel-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+    .services-slide { flex: none; }
+    .services-dots { display: none; }
+}
+@media (min-width: 1024px) {
+    .services-carousel-track {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ========== ADN CAROUSEL (mobile first) ========== */
+.adn-carousel { position: relative; }
+.adn-carousel-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.5rem 0 1.5rem;
+}
+.adn-carousel-track::-webkit-scrollbar { display: none; }
+.adn-slide {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+}
+
+/* Desktop: grid layout for ADN */
+@media (min-width: 768px) {
+    .adn-carousel-track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+    .adn-slide { flex: none; }
+    .adn-dots { display: none; }
+}
+
+/* ========== TRUST TICKERS flush at bottom of hero viewport ========== */
+.trust-tickers {
+    position: relative;
+    z-index: 10;
+    margin-top: -1px;
+}
