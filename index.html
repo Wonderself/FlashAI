@@ -329,8 +329,24 @@
         <div class="hero-shape-ring"></div>
     </div>
 
-    <!-- TOP: Badge Paris/TLV — 20px below header -->
-    <div class="hero-badge-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+    <!-- TOP: Badge Paris/TLV — 5px below header -->
+    <script>
+    // Sync badge padding to actual header height (runs inline, no wait)
+    requestAnimationFrame(function(){
+        var h=document.getElementById('main-header'),b=document.getElementById('hero-badge');
+        if(h&&b){
+            var hh=Math.round(h.getBoundingClientRect().height);
+            b.style.paddingTop=(hh+5)+'px';
+            // DEBUG: remove after testing — shows measured heights
+            var dbg=document.createElement('div');
+            dbg.id='dbg-hdr';
+            dbg.style.cssText='position:fixed;top:0;left:0;z-index:99999;background:red;color:white;font-size:10px;padding:2px 6px;pointer-events:none;';
+            dbg.textContent='hdr='+hh+'px → pt='+(hh+5)+'px';
+            document.body.appendChild(dbg);
+        }
+    });
+    </script>
+    <div id="hero-badge" class="hero-badge-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neon-blue/20 bg-neon-blue/5 text-neon-blue text-xs font-medium">
             <span class="pulse-dot"></span>
             <span>Paris 🇫🇷 — Tel Aviv 🇮🇱 | Startup Nation</span>
