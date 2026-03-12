@@ -338,7 +338,7 @@ function initHeader() {
         var logo = hdr.querySelector('a');
         var bot = logo ? logo.getBoundingClientRect().bottom : hdr.getBoundingClientRect().bottom;
         var heroTop = hero.getBoundingClientRect().top;
-        badge.style.paddingTop = Math.round(bot - heroTop - 20) + 'px';
+        badge.style.paddingTop = Math.round(bot - heroTop - 25) + 'px';
     }
     requestAnimationFrame(function() { requestAnimationFrame(syncBadge); });
     window.addEventListener('resize', syncBadge);

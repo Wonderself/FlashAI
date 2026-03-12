@@ -1734,6 +1734,7 @@ section { position: relative; }
 .hero-content-block p:first-of-type { margin-top: -20px; }
 /* Row 3: tickers — pinned to very bottom of 100dvh */
 .trust-tickers {
+    transform: translateY(20px);
     position: relative;
     z-index: 10;
     flex: 0 0 auto;
@@ -1743,7 +1744,7 @@ section { position: relative; }
 }
 /* Title */
 #hero h1 {
-    font-size: clamp(2.8rem, 8.5vw, 5rem);
+    font-size: clamp(3.16rem, 9.6vw, 5.65rem);
     line-height: 1.02;
     letter-spacing: -0.025em;
     padding-top: 0.15em;
