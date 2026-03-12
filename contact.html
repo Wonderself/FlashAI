@@ -109,9 +109,7 @@
                         </div>
                     </div>
                     <a href="/about.html" class="nav-link">À propos</a>
-                    <a href="/#pricing" class="nav-link">Tarifs</a>
                     <a href="/contact.html" class="nav-link">Contact</a>
-                    <a href="/#faq" class="nav-link">FAQ</a>
                 </nav>
                 <div class="flex items-center gap-3">
                     <a href="/contact.html" class="btn-glow hidden sm:inline-flex text-sm">
@@ -140,9 +138,7 @@
                 <a href="/services/conseil.html" class="text-sm text-surface-400 hover:text-white transition-colors">Conseil</a>
             </div>
             <a href="/about.html" class="mobile-menu-link">À propos</a>
-            <a href="/#pricing" class="mobile-menu-link">Tarifs</a>
             <a href="/contact.html" class="mobile-menu-link">Contact</a>
-            <a href="/#faq" class="mobile-menu-link">FAQ</a>
             <a href="/contact.html" class="btn-glow mt-6 justify-center">Démarrer un projet</a>
         </nav>
     </div>
@@ -164,120 +160,22 @@
             </div>
         </section>
 
-        <!-- Contact Form + Info -->
-        <section class="pb-20 lg:pb-28">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-5 gap-10 lg:gap-14">
-
-                    <!-- Left: Form (3 cols) -->
-                    <div class="lg:col-span-3">
-                        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10">
-                            <form id="contact-form" class="space-y-5">
-                                <div>
-                                    <label for="name" class="text-sm text-surface-300 mb-1 block">Nom complet</label>
-                                    <input type="text" id="name" name="name" required placeholder="Jean Dupont" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-500 focus:border-neon-blue focus:outline-none transition-colors w-full">
-                                </div>
-                                <div>
-                                    <label for="email" class="text-sm text-surface-300 mb-1 block">Email</label>
-                                    <input type="email" id="email" name="email" required placeholder="jean@exemple.com" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-500 focus:border-neon-blue focus:outline-none transition-colors w-full">
-                                </div>
-                                <div>
-                                    <label for="phone" class="text-sm text-surface-300 mb-1 block">Téléphone</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="+33 6 12 34 56 78" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-500 focus:border-neon-blue focus:outline-none transition-colors w-full">
-                                </div>
-                                <div>
-                                    <label for="project-type" class="text-sm text-surface-300 mb-1 block">Type de projet</label>
-                                    <select id="project-type" name="project-type" required class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-500 focus:border-neon-blue focus:outline-none transition-colors w-full">
-                                        <option value="" disabled selected class="text-surface-500 bg-surface-900">Sélectionnez un type</option>
-                                        <option value="site-web" class="bg-surface-900">Site web</option>
-                                        <option value="crm-erp" class="bg-surface-900">CRM/ERP</option>
-                                        <option value="chatbot-ia" class="bg-surface-900">Chatbot IA</option>
-                                        <option value="automatisation" class="bg-surface-900">Automatisation</option>
-                                        <option value="seo" class="bg-surface-900">SEO</option>
-                                        <option value="autre" class="bg-surface-900">Autre</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="budget" class="text-sm text-surface-300 mb-1 block">Budget estimé</label>
-                                    <select id="budget" name="budget" required class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-500 focus:border-neon-blue focus:outline-none transition-colors w-full">
-                                        <option value="" disabled selected class="text-surface-500 bg-surface-900">Sélectionnez un budget</option>
-                                        <option value="<500" class="bg-surface-900">&lt; 500€</option>
-                                        <option value="500-1500" class="bg-surface-900">500 - 1 500€</option>
-                                        <option value="1500-3000" class="bg-surface-900">1 500 - 3 000€</option>
-                                        <option value="3000+" class="bg-surface-900">3 000€+</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="message" class="text-sm text-surface-300 mb-1 block">Message</label>
-                                    <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre projet en quelques lignes..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-surface-500 focus:border-neon-blue focus:outline-none transition-colors w-full resize-none"></textarea>
-                                </div>
-                                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold text-lg hover:opacity-90 transition-opacity">
-                                    Envoyer ma demande
-                                </button>
-                            </form>
-                            <!-- Success message -->
-                            <div id="form-success" class="hidden text-center py-10">
-                                <div class="text-5xl mb-4">&#10003;</div>
-                                <h3 class="text-2xl font-bold font-display mb-2 text-neon-green">Message envoyé !</h3>
-                                <p class="text-surface-400">Nous vous répondrons en moins de 2h. Merci de votre confiance.</p>
-                            </div>
-                        </div>
+        <!-- Smart Form Section (same as homepage) -->
+        <section id="contact" class="relative pb-20 lg:pb-28">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 reveal">
+                    <p class="text-surface-300 text-lg mb-8">Choisissez le type de demande pour un formulaire adapté à vos besoins.</p>
+                </div>
+                <!-- Smart Form Type Selector -->
+                <div class="smart-form-selector" id="smart-form-selector"></div>
+                <!-- Dynamic Form Container -->
+                <div class="smart-form-container" id="smart-form-container"></div>
+                <div class="text-center mt-8 reveal">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-surface-400">
+                        <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:contact@flashai.dev" class="hover:text-neon-blue transition-colors">contact@flashai.dev</a></div>
+                        <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="https://wa.me/33758787025" class="hover:text-neon-green transition-colors">+33 7 58 78 70 25</a></div>
+                        <div class="flex items-center gap-2"><svg class="w-4 h-4 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Support <strong class="text-white">ultra rapide</strong></div>
                     </div>
-
-                    <!-- Right: Contact Info (2 cols) -->
-                    <div class="lg:col-span-2 space-y-5">
-                        <!-- Email -->
-                        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
-                            <div class="flex items-center gap-3 mb-1">
-                                <svg class="w-5 h-5 text-neon-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                <span class="text-sm text-surface-400">Email</span>
-                            </div>
-                            <a href="mailto:contact@flashai.dev" class="text-white font-medium hover:text-neon-blue transition-colors">contact@flashai.dev</a>
-                        </div>
-
-                        <!-- WhatsApp FR -->
-                        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
-                            <div class="flex items-center gap-3 mb-1">
-                                <svg class="w-5 h-5 text-neon-green flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.63-1.263A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.24 0-4.326-.69-6.05-1.87l-.244-.168-3.356.916.957-3.263-.192-.262A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                <span class="text-sm text-surface-400">WhatsApp FR</span>
-                            </div>
-                            <a href="https://wa.me/33758787025" target="_blank" rel="noopener" class="text-white font-medium hover:text-neon-green transition-colors">+33 7 58 78 70 25</a>
-                        </div>
-
-                        <!-- WhatsApp IL -->
-                        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
-                            <div class="flex items-center gap-3 mb-1">
-                                <svg class="w-5 h-5 text-neon-green flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.63-1.263A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.24 0-4.326-.69-6.05-1.87l-.244-.168-3.356.916.957-3.263-.192-.262A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                                <span class="text-sm text-surface-400">WhatsApp IL</span>
-                            </div>
-                            <a href="https://wa.me/972552418324" target="_blank" rel="noopener" class="text-white font-medium hover:text-neon-green transition-colors">+972 55 241 83 24</a>
-                        </div>
-
-                        <!-- WhatsApp CTA -->
-                        <a href="https://wa.me/33758787025" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold text-lg transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.63-1.263A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.24 0-4.326-.69-6.05-1.87l-.244-.168-3.356.916.957-3.263-.192-.262A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                            Discuter sur WhatsApp
-                        </a>
-
-                        <!-- Location -->
-                        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
-                            <div class="flex items-center gap-3 mb-1">
-                                <svg class="w-5 h-5 text-neon-purple flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                                <span class="text-sm text-surface-400">Localisation</span>
-                            </div>
-                            <p class="text-white font-medium">Paris &#127467;&#127479; &mdash; Tel Aviv &#127470;&#127473;</p>
-                        </div>
-
-                        <!-- Hours -->
-                        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
-                            <div class="flex items-center gap-3 mb-1">
-                                <svg class="w-5 h-5 text-neon-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                <span class="text-sm text-surface-400">Horaires</span>
-                            </div>
-                            <p class="text-white font-medium">Lun-Ven 9h-19h (CET)</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
@@ -341,8 +239,7 @@
             <div>
                 <h4 class="font-display font-bold text-white mb-4">Ressources</h4>
                 <ul class="space-y-2 text-sm text-surface-400">
-                    <li><a href="/#faq" class="hover:text-neon-blue transition-colors">FAQ</a></li>
-                    <li><a href="/#pricing" class="hover:text-neon-blue transition-colors">Tarifs</a></li>
+                    <li><a href="/#results" class="hover:text-neon-blue transition-colors">Résultats clients</a></li>
                     <li><a href="/#results" class="hover:text-neon-blue transition-colors">Résultats clients</a></li>
                     <li><a href="/#portfolio" class="hover:text-neon-blue transition-colors">Réalisations</a></li>
                 </ul>
@@ -388,14 +285,6 @@
 <div class="toast-container" id="toast-container"></div>
 
     <script src="script.js"></script>
-    <script>
-    // Form submission
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        this.classList.add('hidden');
-        document.getElementById('form-success').classList.remove('hidden');
-    });
-    </script>
     <script>
     // Electric sparks background
     (function(){
