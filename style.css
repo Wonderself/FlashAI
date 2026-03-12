@@ -1138,13 +1138,6 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
     .stat-card { padding: 1rem 0.5rem; }
     .stat-card { padding: 1rem 0.5rem; }
     .scroll-top-btn { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
-    /* Mobile hero: flex-col, badge top, content center, tickers bottom */
-    #hero { min-height: 100dvh; }
-    #hero h1 { font-size: 3.25rem; line-height: 1.02; letter-spacing: -0.02em; }
-    #hero .hero-content-block p { font-size: 0.85rem; line-height: 1.5; }
-    #hero .hero-content-block .btn-glow-lg { padding: 0.7rem 1.5rem; font-size: 0.85rem; }
-    #hero .hero-content-block .btn-outline-lg { padding: 0.65rem 1.2rem; font-size: 0.82rem; }
-    #hero .hero-content-block .flex.flex-wrap.items-center { gap: 0.6rem; font-size: 0.7rem; }
     #hero .max-w-7xl { padding-left: 1.25rem; padding-right: 1.25rem; }
     /* Tickers compact on mobile */
     .trust-tickers { padding: 3px 0; gap: 1px; }
@@ -1714,9 +1707,65 @@ section { position: relative; }
     .adn-dots { display: none; }
 }
 
-/* ========== TRUST TICKERS flush at bottom of hero viewport ========== */
+/* ========== HERO LAYOUT — pixel-precise across all viewports ========== */
+/*
+ * Structure: flex-col filling exactly 100dvh
+ *   1) .hero-badge-row — badge "Paris/TLV", 20px below fixed header
+ *   2) flex-1 center  — title + CTA vertically centered in remaining space
+ *   3) .trust-tickers  — mt-auto, bottom of viewport exactly
+ *
+ * Header heights: h-16 (64px) mobile, h-20 (80px) lg+
+ * Badge top = header + 20px gap
+ */
+#hero {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.hero-badge-row {
+    padding-top: 84px; /* 64px header + 20px gap */
+    flex-shrink: 0;
+}
+.hero-badge-row .inline-flex {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    gap: 0.35rem;
+}
+#hero h1 {
+    font-size: clamp(2.8rem, 8.5vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+}
 .trust-tickers {
     position: relative;
     z-index: 10;
-    margin-top: -1px;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+/* Tablet+ */
+@media (min-width: 640px) {
+    .hero-badge-row {
+        padding-top: 84px;
+    }
+    .hero-badge-row .inline-flex {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem;
+    }
+}
+/* Desktop */
+@media (min-width: 1024px) {
+    .hero-badge-row {
+        padding-top: 100px; /* 80px header + 20px gap */
+    }
+    .hero-badge-row .inline-flex {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.85rem;
+    }
+    #hero h1 {
+        font-size: clamp(3.5rem, 5vw, 6rem);
+    }
 }
