@@ -39,6 +39,8 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .loader-percent { font-family: "JetBrains Mono", monospace; font-size: 0.875rem; color: #00f0ff; margin-top: 0.5rem; text-shadow: 0 0 10px rgba(0,240,255,0.5); }
 
 /* --- ANIMATED LOGO --- */
+#main-header > div > div { transform: translateY(-20px); }
+#main-header a[aria-label="FlashAI Accueil"] { transform: scale(1.15); transform-origin: left center; }
 .header-logo-icon { position: relative; width: 36px; height: 36px; }
 .header-logo-icon::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; background: radial-gradient(circle, rgba(255,0,255,0.15), transparent 70%); animation: logo-halo-pulse 6s ease-in-out infinite; pointer-events: none; z-index: -1; }
 @keyframes logo-halo-pulse { 0%, 80%, 100% { opacity: 0; transform: scale(0.8); } 85% { opacity: 0.7; transform: scale(1.3); } 90% { opacity: 0; transform: scale(1.4); } }
@@ -1713,7 +1715,7 @@ section { position: relative; }
 }
 /* Row 1: badge — JS sets inline paddingTop = logo.bottom + 10px */
 .hero-badge-row {
-    padding-top: 58px; /* fallback: 48px (logo bottom in 64px header) + 10px gap */
+    padding-top: 28px; /* fallback; JS overrides with exact measurement */
     flex: 0 0 auto;
 }
 .hero-badge-row .inline-flex {
@@ -1729,13 +1731,16 @@ section { position: relative; }
     align-items: center;
     overflow: hidden;
 }
-/* Row 3: tickers — never compressed */
+/* Pull paragraph+buttons block up 20px */
+.hero-content-block p:first-of-type { margin-top: -20px; }
+/* Row 3: tickers — never compressed, 30px lower */
 .trust-tickers {
     position: relative;
     z-index: 10;
     flex: 0 0 auto;
     padding: 2px 0;
     gap: 1px;
+    margin-top: 30px;
 }
 /* Title */
 #hero h1 {

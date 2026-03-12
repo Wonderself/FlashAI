@@ -341,8 +341,7 @@
         var logo=hdr.querySelector('a');
         var bot=logo?logo.getBoundingClientRect().bottom:hdr.getBoundingClientRect().bottom;
         var heroTop=hero.getBoundingClientRect().top;
-        // 10px gap between bottom of logo line and top of badge text
-        b.style.paddingTop=Math.round(bot-heroTop+10)+'px';
+        b.style.paddingTop=Math.round(bot-heroTop-20)+'px';
     });
     </script>
     <div id="hero-badge" class="hero-badge-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
