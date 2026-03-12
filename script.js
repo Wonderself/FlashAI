@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDemoDashboard();
     initDemoTabs();
     initComparison();
-    initExpertise();
+    // initExpertise(); // removed
     initMethodTimeline();
     initPortfolio();
     // initTestimonials(); // removed
@@ -31,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // initROICalculator(); // removed
     initFAQ();
     initCTACanvas();
-    initCTATimer();
+    // initCTATimer(); // removed
+    initServicesDots();
+    initAdnDots();
     initSmartForm();
     initTrustBar();
     initMagneticBtn();
@@ -725,14 +727,13 @@ function initDemoChatbot() {
         prix: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">A partir de <strong>890\u20AC</strong> pour un site vitrine.<br>CRM/Dashboard: des <strong>1 990\u20AC</strong><br>Chatbot IA: des <strong>1 490\u20AC</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection devis...\')">Devis gratuit</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Voir tarifs\')">Voir tous les prix</button></div></div>',
         delai: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Delais de livraison</div><div class="chat-rich-body">\u2022 Site vitrine: <strong>5 jours</strong><br>\u2022 CRM/Dashboard: <strong>7-10 jours</strong><br>\u2022 Projet complexe: <strong>10-14 jours</strong></div></div>',
         services: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">\u{1F310} Sites web & landing pages<br>\u{1F4CA} CRM & ERP sur mesure<br>\u{1F916} Chatbots IA (WhatsApp, web)<br>\u26A1 Automatisations<br>\u{1F50D} SEO technique<br>\u{1F6E1}\uFE0F Securite & RGPD</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection services\')">En savoir plus</button></div></div>',
-        contact: 'Contactez-nous a <strong>contact@flashai.dev</strong>. Reponse garantie en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
+        contact: 'Contactez-nous a <strong>contact@flashai.dev</strong>. Reponse en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
         technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>200+ APIs</strong> connectees.</div></div>',
-        garantie: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F6E1}\uFE0F Garantie 100%</div><div class="chat-rich-body">Satisfait ou <strong>integralement rembourse</strong>. Aucun risque pour vous. Support inclus 12 mois.</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Conditions lues\')">Voir les conditions</button></div></div>',
         portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">+50 projets livres: SaaS, e-commerce, sante, fintech, edtech...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
         ia: 'Nous integrons <strong>GPT-4, LangChain, RAG</strong> et des modeles custom. Nos chatbots resolvent <strong>85%</strong> des demandes sans humain ! \u{1F9E0}',
         default: 'Je suis l\'assistant FlashAI \u{1F916}. Posez vos questions sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>technologies</strong> ou <strong>delais</strong> !'
     };
-    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Garantie ?', 'Portfolio ?', 'IA ?'];
+    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Portfolio ?', 'IA ?', 'Contact ?'];
     let messages = [{ from: 'bot', text: 'Bonjour ! Comment puis-je vous aider ?' }];
     function getResp(t) { const l = t.toLowerCase(); for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('bonjour')||l.includes('salut')||l.includes('hello')) return 'Bonjour ! \u{1F44B} Comment puis-je vous aider ?'; if (l.includes('merci')||l.includes('thanks')) return 'Avec plaisir ! N\'hesitez pas si vous avez d\'autres questions. \u{1F60A}'; if (l.includes('site')||l.includes('web')) return responses.services; if (l.includes('cout')||l.includes('tarif')||l.includes('combien')) return responses.prix; if (l.includes('temps')||l.includes('rapide')||l.includes('livr')) return responses.delai; if (l.includes('projet')||l.includes('realisation')||l.includes('exemple')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')) return responses.ia; return responses.default; }
     function render() {
@@ -1102,7 +1103,6 @@ function initFAQ() {
         { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos tarifs commencent a <span class="faq-highlight">490\u20AC</span> pour un site vitrine. Chaque projet est chiffre sur mesure selon vos besoins. <strong>Devis ultra rapide</strong>.', cat: 'business', icon: '\u{1F4B0}' },
         { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'projet', icon: '\u23F1\uFE0F' },
         { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 247 APIs connectees.', cat: 'technique', icon: '\u2699\uFE0F' },
-        { q: 'Proposez-vous une garantie ?', a: 'Oui ! <span class="faq-highlight">Garantie satisfait ou rembourse a 100%</span>. Si le resultat ne vous convient pas, on vous rembourse integralement.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
         { q: 'Comment fonctionne le support ?', a: 'Support <span class="faq-highlight">ultra rapide</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
         { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Plus de <span class="faq-highlight">50 projets</span> livres dans des secteurs varies : SaaS, e-commerce, sante, fintech.', cat: 'projet', icon: '\u{1F3A8}' },
         { q: 'Est-ce que le SEO est inclus ?', a: 'Oui, chaque projet inclut une <strong>optimisation SEO technique</strong> : meta tags, structured data, Core Web Vitals, sitemap XML, schema.org.', cat: 'technique', icon: '\u{1F50D}' },
@@ -1421,7 +1421,7 @@ function initSmartForm() {
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
             '<div class="sf-fields">' + config.fields.map(f => renderField(f, type.color)).join('') + '</div>' +
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
-            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">\u2705 Devis gratuit \u2022 Reponse garantie en moins de 2h \u2022 Sans engagement</p></div>' +
+            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">\u2705 Devis gratuit \u2022 Reponse en moins de 2h \u2022 Sans engagement</p></div>' +
             '</div>';
         // Chips toggle
         container.querySelectorAll('.sf-chips').forEach(group => {
@@ -1726,9 +1726,7 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
 <p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Le solde est d\u00fb \u00e0 la livraison du projet.</p>
 <h3>5. D\u00e9lais de livraison</h3>
 <p>Les d\u00e9lais indicatifs sont : site vitrine (5 jours), CRM/dashboard (7-10 jours), projet complexe (10-14 jours). Ces d\u00e9lais courent \u00e0 compter de la validation du cahier des charges et de la r\u00e9ception de l\u2019acompte.</p>
-<h3>6. Garantie satisfait ou rembours\u00e9</h3>
-<p>FlashAI offre une <strong>garantie satisfait ou rembours\u00e9</strong>. Si le Client n\u2019est pas satisfait du r\u00e9sultat apr\u00e8s les r\u00e9visions pr\u00e9vues, l\u2019acompte est int\u00e9gralement rembours\u00e9 dans un d\u00e9lai de 14 jours.</p>
-<h3>7. Propri\u00e9t\u00e9 et livraison</h3>
+<h3>6. Propri\u00e9t\u00e9 et livraison</h3>
 <p>Le transfert de propri\u00e9t\u00e9 du code source et des livrables s\u2019effectue au paiement int\u00e9gral. Le Client re\u00e7oit un acc\u00e8s complet au code source, aux acc\u00e8s h\u00e9bergement et \u00e0 toute la documentation technique.</p>
 <h3>8. Support et maintenance</h3>
 <p>Un support technique est inclus pendant 12 mois apr\u00e8s la livraison. Au-del\u00e0, un contrat de maintenance peut \u00eatre propos\u00e9.</p>
@@ -1865,3 +1863,59 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
     document.getElementById('service-modal-backdrop').addEventListener('click', closeService);
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeService(); });
 })();
+
+/* ========== SERVICES CAROUSEL DOTS ========== */
+function initServicesDots() {
+    const track = document.querySelector('.services-carousel-track');
+    const dotsContainer = document.getElementById('services-dots');
+    if (!track || !dotsContainer) return;
+    const slides = track.querySelectorAll('.services-slide');
+    if (window.innerWidth >= 768) { dotsContainer.innerHTML = ''; return; }
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); });
+        dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('.dot');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const idx = Array.from(slides).indexOf(e.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+        });
+    }, { root: track, threshold: 0.6 });
+    slides.forEach(s => obs.observe(s));
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) dotsContainer.innerHTML = '';
+    });
+}
+
+/* ========== ADN CAROUSEL DOTS ========== */
+function initAdnDots() {
+    const track = document.querySelector('.adn-carousel-track');
+    const dotsContainer = document.getElementById('adn-dots');
+    if (!track || !dotsContainer) return;
+    const slides = track.querySelectorAll('.adn-slide');
+    if (window.innerWidth >= 768) { dotsContainer.innerHTML = ''; return; }
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); });
+        dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('.dot');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const idx = Array.from(slides).indexOf(e.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+        });
+    }, { root: track, threshold: 0.6 });
+    slides.forEach(s => obs.observe(s));
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) dotsContainer.innerHTML = '';
+    });
+}
