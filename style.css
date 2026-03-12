@@ -1711,9 +1711,9 @@ section { position: relative; }
     flex-direction: column;
     overflow: hidden;
 }
-/* Row 1: badge — JS sets inline paddingTop = header.offsetHeight + 5 */
+/* Row 1: badge — JS sets inline paddingTop = logo.bottom + 10px */
 .hero-badge-row {
-    padding-top: 69px; /* fallback if JS hasn't run; overridden by JS inline style */
+    padding-top: 58px; /* fallback: 48px (logo bottom in 64px header) + 10px gap */
     flex: 0 0 auto;
 }
 .hero-badge-row .inline-flex {
@@ -1742,8 +1742,8 @@ section { position: relative; }
     font-size: clamp(2.8rem, 8.5vw, 5rem);
     line-height: 1.02;
     letter-spacing: -0.025em;
-    padding-top: 0.5em;
-    padding-bottom: 0.3em;
+    padding-top: 0.15em;
+    padding-bottom: 0.2em;
 }
 /* Mobile compact */
 @media (max-width: 639px) {
