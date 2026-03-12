@@ -193,12 +193,12 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 
 /* Aurora Background Layers */
 .hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.hero-orb { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.25; }
-.hero-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #ff00ff, #4a0030); top: -15%; left: -15%; animation: aurora-drift-1 25s ease-in-out infinite; }
-.hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #bf00ff, #2a0040); top: 50%; right: -10%; animation: aurora-drift-2 20s ease-in-out infinite; }
-.hero-orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, #ff006e, #30000f); bottom: -20%; left: 15%; animation: aurora-drift-3 22s ease-in-out infinite; }
-.hero-orb-4 { width: 300px; height: 300px; background: radial-gradient(circle, #ff00ff, #200030); top: 20%; right: 25%; animation: aurora-drift-4 18s ease-in-out infinite; }
-.hero-orb-5 { width: 250px; height: 250px; background: radial-gradient(circle, #ff006e, #200010); bottom: 5%; left: -8%; animation: aurora-drift-5 28s ease-in-out infinite; }
+.hero-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.35; }
+.hero-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #ff00ff, #ff40ff, #4a0030); top: -15%; left: -15%; animation: aurora-drift-1 25s ease-in-out infinite; }
+.hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #ff00ff, #e040ff, #2a0040); top: 50%; right: -10%; animation: aurora-drift-2 20s ease-in-out infinite; }
+.hero-orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, #ff006e, #ff40ff, #30000f); bottom: -20%; left: 15%; animation: aurora-drift-3 22s ease-in-out infinite; }
+.hero-orb-4 { width: 300px; height: 300px; background: radial-gradient(circle, #ff00ff, #ff60ff, #200030); top: 20%; right: 25%; animation: aurora-drift-4 18s ease-in-out infinite; }
+.hero-orb-5 { width: 250px; height: 250px; background: radial-gradient(circle, #ff006e, #ff00ff, #200010); bottom: 5%; left: -8%; animation: aurora-drift-5 28s ease-in-out infinite; }
 
 @keyframes aurora-drift-1 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.5; } 25% { transform: translate(80px, 40px) scale(1.15) rotate(5deg); opacity: 0.6; } 50% { transform: translate(-40px, 80px) scale(0.9) rotate(-3deg); opacity: 0.4; } 75% { transform: translate(60px, -30px) scale(1.1) rotate(7deg); opacity: 0.55; } }
 @keyframes aurora-drift-2 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 33% { transform: translate(-60px, 50px) scale(1.1) rotate(-5deg); } 66% { transform: translate(40px, -40px) scale(0.95) rotate(3deg); } }
@@ -238,23 +238,26 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .terminal-progress { display: inline-block; background: rgba(255,255,255,0.05); border-radius: 3px; height: 8px; width: 120px; overflow: hidden; vertical-align: middle; margin-left: 0.5em; }
 .terminal-progress-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
 
+/* Trust Tickers wrapper */
+.trust-tickers { border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); padding: 6px 0; display: flex; flex-direction: column; gap: 4px; }
+
 /* Marquee */
-.marquee-row { display: flex; gap: 1.5rem; white-space: nowrap; animation: marquee-scroll 50s linear infinite; }
+.marquee-row { display: flex; gap: 1rem; white-space: nowrap; animation: marquee-scroll 50s linear infinite; }
 .marquee-row-2 { animation-direction: reverse; animation-duration: 35s; }
-.marquee-row-color { animation-duration: 60s; }
+.marquee-row-color { animation-duration: 60s; animation-direction: reverse; }
 @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .marquee-pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 9999px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #94a3b8; white-space: nowrap; transition: all 0.3s ease; }
 .marquee-pill:hover { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.3); color: white; }
 /* Colorful marquee pills */
 .marquee-pill-color {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 0.4rem 1rem; border-radius: 9999px;
-    font-size: 0.78rem; font-weight: 500; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.3rem 0.8rem; border-radius: 9999px;
+    font-size: 0.72rem; font-weight: 600; white-space: nowrap;
     transition: all 0.3s ease;
-    border: 1px solid var(--pill-color, rgba(99,102,241,0.3));
-    background: linear-gradient(135deg, var(--pill-bg, rgba(99,102,241,0.08)), transparent);
+    border: 1px solid var(--pill-color, rgba(99,102,241,0.4));
+    background: linear-gradient(135deg, var(--pill-bg, rgba(99,102,241,0.12)), transparent);
     color: var(--pill-color, #a5b4fc);
-    text-shadow: 0 0 8px var(--pill-glow, rgba(99,102,241,0.3));
+    text-shadow: 0 0 10px var(--pill-glow, rgba(99,102,241,0.4));
 }
 .marquee-pill-color:hover {
     transform: translateY(-2px) scale(1.05);
@@ -1135,6 +1138,20 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
     .stat-card { padding: 1rem 0.5rem; }
     .stat-card { padding: 1rem 0.5rem; }
     .scroll-top-btn { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
+    /* Mobile hero: compact to fit on first screen */
+    #hero { min-height: auto; padding-top: 4.5rem; padding-bottom: 1rem; }
+    #hero h1 { font-size: 1.85rem; line-height: 1.15; }
+    #hero .space-y-8 { gap: 1rem; }
+    #hero .space-y-8 > * + * { margin-top: 0; }
+    #hero p { font-size: 0.9rem; line-height: 1.5; }
+    #hero .flex.flex-wrap { gap: 0.5rem; }
+    #hero .flex.items-center.gap-6 { gap: 0.75rem; font-size: 0.7rem; }
+    #hero .inline-flex { font-size: 0.72rem; padding: 0.3rem 0.7rem; }
+    #hero-terminal-wrap { display: none; }
+    /* Tickers compact on mobile */
+    .trust-tickers { padding: 4px 0; gap: 2px; }
+    .marquee-pill-color { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
+    .trust-logo { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
 }
 
 @media (max-width: 374px) {
@@ -1296,8 +1313,10 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .devis-progress-wrap .devis-steps { position: relative; z-index: 1; }
 
 /* ========== TRUST BAR ENHANCED ========== */
-.trust-track { display: flex; gap: 1.5rem; animation: trust-scroll 40s linear infinite; width: max-content; }
+.trust-track { display: flex; gap: 1rem; animation: trust-scroll 30s linear infinite; width: max-content; }
 .trust-logo-name { background: linear-gradient(135deg, var(--tl-color, #94a3b8), rgba(255,255,255,0.7)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.trust-logo { padding: 0.3rem 0.75rem; font-size: 0.8rem; opacity: 0.8; border-color: rgba(255,255,255,0.08); }
+.trust-logo-icon { font-size: 1rem; text-shadow: 0 0 8px var(--tl-color, #94a3b8); }
 
 /* ========== SMOOTH TILT ON SCROLL FOR SECTIONS ========== */
 @keyframes section-tilt-in { from { transform: perspective(1200px) rotateX(2deg); opacity: 0.8; } to { transform: perspective(1200px) rotateX(0deg); opacity: 1; } }
