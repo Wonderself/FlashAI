@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO & Croissance digitale — FlashAI</title>
+    <title>SEO & Croissance digitale | FlashAI — Visibilité Google, résultats en 30 jours</title>
+    <meta name="description" content="SEO & croissance digitale par FlashAI : audit technique, optimisation Core Web Vitals, contenu IA, link building. Résultats mesurables en 30 jours. À partir de 390€.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flashai.dev/services/seo.html">
+    <meta property="og:title" content="SEO & Croissance digitale — FlashAI | Visibilité Google, résultats en 30 jours">
+    <meta property="og:description" content="Audit SEO, optimisation technique, contenu IA et link building. Résultats mesurables, rapports mensuels. À partir de 390€.">
+    <meta property="og:image" content="https://flashai.dev/og-image.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://flashai.dev/services/seo.html">
     <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,65 +20,97 @@
             theme: {
                 extend: {
                     colors: {
-                        'neon-blue': '#00f0ff',
-                        'neon-purple': '#bf00ff',
-                        'neon-pink': '#ff006e',
-                        'neon-green': '#00ff87',
-                        'surface': {
-                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
-                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
-                            800: '#1e293b', 900: '#0f172a', 950: '#020617'
-                        },
-                        primary: {
-                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
-                            400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
-                            800: '#1e40af', 900: '#1e3a8a', 950: '#172554'
-                        }
+                        primary: {50:"#eef2ff",100:"#e0e7ff",200:"#c7d2fe",300:"#a5b4fc",400:"#818cf8",500:"#6366f1",600:"#4f46e5",700:"#4338ca",800:"#3730a3",900:"#312e81"},
+                        surface: {50:"#f8fafc",100:"#f1f5f9",200:"#e2e8f0",300:"#cbd5e1",400:"#94a3b8",500:"#64748b",600:"#475569",700:"#334155",800:"#1e293b",900:"#0f172a",950:"#020617"},
+                        accent: {400:"#22d3ee",500:"#0ea5e9",600:"#0284c7"},
+                        neon: {blue:"#00f0ff",purple:"#bf00ff",pink:"#ff006e",green:"#00ff87",orange:"#ff8c00",gold:"#ffd700",cyan:"#06b6d4"}
                     },
                     fontFamily: {
-                        display: ['Space Grotesk', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
+                        display: ["Space Grotesk","system-ui","sans-serif"],
+                        body: ["Inter","system-ui","sans-serif"],
+                        mono: ["JetBrains Mono","monospace"]
                     }
                 }
             }
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .glow-line { height: 2px; background: linear-gradient(90deg, transparent, #00f0ff, #bf00ff, #ff006e, transparent); opacity: 0.4; }
+        .feature-card { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.3s ease, box-shadow 0.3s ease; }
+        .feature-card:hover { transform: translateY(-6px) scale(1.02); border-color: rgba(0,240,255,0.3); box-shadow: 0 12px 40px rgba(0,240,255,0.1); }
+        .step-card { transition: transform 0.3s ease, border-color 0.3s ease; }
+        .step-card:hover { transform: translateX(8px); border-color: rgba(0,240,255,0.3); }
+        .tech-pill { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .tech-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,240,255,0.2); }
+        .price-glow { animation: priceGlow 3s ease-in-out infinite; }
+        @keyframes priceGlow { 0%, 100% { box-shadow: 0 0 20px rgba(0,240,255,0.1); } 50% { box-shadow: 0 0 40px rgba(191,0,255,0.2); } }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .cta-btn { transition: all 0.3s ease; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(191,0,255,0.3); }
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="bg-[#020617] text-white font-body antialiased">
 
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 bg-surface-950/80 backdrop-blur-xl border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="/" class="text-xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">FlashAI</a>
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="/" class="text-sm text-surface-300 hover:text-white transition-colors">Accueil</a>
-                <a href="/#services" class="text-sm text-surface-300 hover:text-white transition-colors">Services</a>
-                <a href="/about.html" class="text-sm text-surface-300 hover:text-white transition-colors">À propos</a>
-                <a href="/contact.html" class="text-sm text-surface-300 hover:text-white transition-colors">Contact</a>
-            </nav>
-            <button id="menu-toggle" class="md:hidden text-white" aria-label="Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-surface-950/95 backdrop-blur-xl border-b border-white/10">
-            <nav class="flex flex-col px-6 py-4 gap-4">
-                <a href="/" class="text-sm text-surface-300 hover:text-white transition-colors">Accueil</a>
-                <a href="/#services" class="text-sm text-surface-300 hover:text-white transition-colors">Services</a>
-                <a href="/about.html" class="text-sm text-surface-300 hover:text-white transition-colors">À propos</a>
-                <a href="/contact.html" class="text-sm text-surface-300 hover:text-white transition-colors">Contact</a>
-            </nav>
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="backdrop-filter:blur(16px);background:rgba(0,0,0,0.82)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="/" class="flex items-center gap-2" aria-label="FlashAI Accueil">
+                    <div class="text-xl font-bold font-display"><span class="text-white">Flash</span><span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">AI</span></div>
+                </a>
+                <nav class="hidden lg:flex items-center gap-6">
+                    <div class="relative group">
+                        <a href="/#services" class="text-surface-400 hover:text-white transition-colors text-sm cursor-pointer">Services <svg class="inline w-3 h-3 ml-0.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+                        <div class="absolute top-full left-0 mt-1 w-56 py-2 rounded-xl bg-surface-900/95 border border-white/10 backdrop-blur-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                            <a href="/services/sites-web.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Sites Web sur mesure</a>
+                            <a href="/services/crm-erp.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">CRM & ERP</a>
+                            <a href="/services/chatbot-ia.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Chatbot IA</a>
+                            <a href="/services/automatisation.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Automatisation</a>
+                            <a href="/services/seo.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">SEO & Croissance</a>
+                            <a href="/services/conseil.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Conseil</a>
+                        </div>
+                    </div>
+                    <a href="/about.html" class="text-surface-400 hover:text-white transition-colors text-sm">A propos</a>
+                    <a href="/contact.html" class="text-surface-400 hover:text-white transition-colors text-sm">Contact</a>
+                </nav>
+                <a href="/contact.html" class="hidden lg:inline-flex px-4 py-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple text-white text-sm font-medium hover:opacity-90 transition-opacity">Demarrer un projet</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(2,6,23,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="/" class="text-2xl text-surface-300 hover:text-white transition-colors">Accueil</a>
+            <a href="/#services" class="text-2xl text-surface-300 hover:text-white transition-colors">Services</a>
+            <a href="/about.html" class="text-2xl text-surface-300 hover:text-white transition-colors">A propos</a>
+            <a href="/contact.html" class="text-2xl text-surface-300 hover:text-white transition-colors">Contact</a>
+            <a href="/contact.html" class="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple text-white font-medium">Demarrer un projet</a>
+        </div>
+    </div>
 
     <main class="pt-16">
 
         <!-- Hero -->
         <section class="relative py-24 md:py-32 overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-b from-neon-blue/5 to-transparent"></div>
-            <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-                <span class="text-6xl mb-6 block">🔍</span>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-neon-blue/10 rounded-full blur-3xl float-anim"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-neon-purple/[0.08] rounded-full blur-3xl float-anim" style="animation-delay: -3s;"></div>
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="mb-6 flex justify-center">
+                    <svg class="w-16 h-16 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </div>
                 <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">SEO & Croissance digitale</h1>
                 <p class="text-xl md:text-2xl text-surface-300 max-w-2xl mx-auto">Visibilité maximale, résultats mesurables en 30 jours</p>
             </div>
@@ -77,7 +118,7 @@
 
         <!-- What we do -->
         <section class="py-20 bg-white/[0.02]">
-            <div class="max-w-4xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto px-6 reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-bold mb-10 text-center">Ce que nous faisons</h2>
                 <div class="space-y-6 text-surface-300 text-lg leading-relaxed">
                     <p>Nous propulsons votre visibilité en ligne avec des stratégies SEO data-driven qui génèrent du trafic qualifié et des conversions mesurables. Notre approche combine expertise technique, contenu optimisé et analyse de données.</p>
@@ -88,32 +129,34 @@
             </div>
         </section>
 
+        <div class="glow-line max-w-4xl mx-auto"></div>
+
         <!-- Features -->
         <section class="py-20">
-            <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6 reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Fonctionnalités clés</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
                         <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Audit technique complet</h3>
                         <p class="text-surface-400 text-sm">Analyse exhaustive de votre site : crawl, indexation, structure, liens internes, vitesse et accessibilité.</p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
                         <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Core Web Vitals</h3>
                         <p class="text-surface-400 text-sm">Optimisation des métriques de performance Google : LCP, FID, CLS pour un meilleur classement.</p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
                         <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Contenu optimisé IA</h3>
                         <p class="text-surface-400 text-sm">Création de contenu stratégique assistée par l'IA, optimisé pour le référencement et votre audience cible.</p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
                         <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Link building</h3>
                         <p class="text-surface-400 text-sm">Stratégie d'acquisition de liens de qualité pour renforcer l'autorité de votre domaine durablement.</p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
                         <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Suivi positions</h3>
                         <p class="text-surface-400 text-sm">Monitoring quotidien de vos positions sur vos mots-clés stratégiques avec alertes de variation.</p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
                         <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Rapports mensuels</h3>
                         <p class="text-surface-400 text-sm">Rapports détaillés avec KPIs, évolutions, actions réalisées et recommandations pour le mois suivant.</p>
                     </div>
@@ -123,31 +166,31 @@
 
         <!-- Process -->
         <section class="py-20 bg-white/[0.02]">
-            <div class="max-w-4xl mx-auto px-6">
+            <div class="max-w-4xl mx-auto px-6 reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Notre méthodologie</h2>
                 <div class="space-y-8">
-                    <div class="flex gap-6 items-start">
+                    <div class="flex gap-6 items-start step-card">
                         <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">1</div>
                         <div>
                             <h3 class="text-lg font-display font-semibold mb-2">Audit & analyse concurrentielle</h3>
                             <p class="text-surface-400">Audit technique complet, analyse des concurrents et identification des opportunités de mots-clés à fort potentiel.</p>
                         </div>
                     </div>
-                    <div class="flex gap-6 items-start">
+                    <div class="flex gap-6 items-start step-card">
                         <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">2</div>
                         <div>
                             <h3 class="text-lg font-display font-semibold mb-2">Optimisation technique</h3>
                             <p class="text-surface-400">Corrections techniques, optimisation de la vitesse, amélioration de l'architecture et du maillage interne.</p>
                         </div>
                     </div>
-                    <div class="flex gap-6 items-start">
+                    <div class="flex gap-6 items-start step-card">
                         <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">3</div>
                         <div>
                             <h3 class="text-lg font-display font-semibold mb-2">Stratégie de contenu</h3>
                             <p class="text-surface-400">Production de contenu optimisé, création de pages piliers et mise en place d'un calendrier éditorial.</p>
                         </div>
                     </div>
-                    <div class="flex gap-6 items-start">
+                    <div class="flex gap-6 items-start step-card">
                         <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">4</div>
                         <div>
                             <h3 class="text-lg font-display font-semibold mb-2">Suivi & itération</h3>
@@ -160,23 +203,25 @@
 
         <!-- Technologies -->
         <section class="py-20">
-            <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Technologies utilisées</h2>
                 <div class="flex flex-wrap justify-center gap-3">
-                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Google Search Console</span>
-                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Ahrefs</span>
-                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Screaming Frog</span>
-                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Schema.org</span>
-                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Core Web Vitals</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Google Search Console</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Ahrefs</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Screaming Frog</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Schema.org</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Core Web Vitals</span>
                 </div>
             </div>
         </section>
 
+        <div class="glow-line max-w-4xl mx-auto"></div>
+
         <!-- Pricing -->
         <section class="py-20 bg-white/[0.02]">
-            <div class="max-w-lg mx-auto px-6 text-center">
+            <div class="max-w-lg mx-auto px-6 text-center reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Tarif</h2>
-                <div class="bg-gradient-to-br from-neon-purple/10 to-neon-blue/10 border border-white/10 rounded-2xl p-8">
+                <div class="bg-gradient-to-br from-neon-purple/10 to-neon-blue/10 border border-white/10 rounded-2xl p-8 price-glow">
                     <p class="text-surface-400 text-sm mb-2">À partir de</p>
                     <p class="text-5xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent mb-4">390€</p>
                     <p class="text-surface-400 text-sm">Audit SEO complet avec plan d'action, optimisations techniques et suivi mensuel des positions.</p>
@@ -186,34 +231,45 @@
 
         <!-- CTA -->
         <section class="py-20">
-            <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Prêt à dominer les résultats de recherche ?</h2>
                 <p class="text-surface-300 mb-8 text-lg">Obtenez votre audit SEO gratuit et découvrez votre potentiel de croissance.</p>
-                <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl text-white font-semibold hover:opacity-90 transition-opacity">Lancez votre projet</a>
+                <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl text-white font-semibold cta-btn">Lancez votre projet</a>
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 py-10">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p class="text-sm text-surface-400">&copy; 2026 FlashAI. Tous droits réservés.</p>
-            <div class="flex items-center gap-6">
-                <a href="/" class="text-sm text-surface-400 hover:text-white transition-colors">Accueil</a>
-                <a href="/#services" class="text-sm text-surface-400 hover:text-white transition-colors">Services</a>
-                <a href="/contact.html" class="text-sm text-surface-400 hover:text-white transition-colors">Contact</a>
+    <footer class="border-t border-white/5 py-8 text-center text-sm text-surface-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 FlashAI &mdash; Made with &#9829; in Israel &#127470;&#127473;</p>
+            <div class="flex justify-center gap-4 mt-3">
+                <a href="/" class="hover:text-neon-blue transition-colors">Accueil</a>
+                <a href="/about.html" class="hover:text-neon-blue transition-colors">A propos</a>
+                <a href="/contact.html" class="hover:text-neon-blue transition-colors">Contact</a>
+                <a href="/mentions-legales.html" class="hover:text-neon-blue transition-colors">Mentions legales</a>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile menu script -->
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
     </script>
 </body>
 </html>
