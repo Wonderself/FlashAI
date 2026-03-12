@@ -1727,7 +1727,8 @@ section { position: relative; }
 
 /* Row 1: badge — fixed height, tight under header */
 .hero-badge-row {
-    padding-top: 70px; /* 64px mobile header + 6px */
+    /* Collé pile sous le header fixe: h-16 (64px) + safe-area (notch iPhone) */
+    padding-top: calc(64px + env(safe-area-inset-top, 0px));
     flex: 0 0 auto;
 }
 .hero-badge-row .inline-flex {
@@ -1772,13 +1773,13 @@ section { position: relative; }
 
 /* Tablet+ */
 @media (min-width: 640px) {
-    .hero-badge-row { padding-top: 84px; }
+    .hero-badge-row { padding-top: calc(64px + env(safe-area-inset-top, 0px)); }
     .hero-badge-row .inline-flex { font-size: 0.7rem; padding: 0.25rem 0.65rem; }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
-    .hero-badge-row { padding-top: 86px; }
+    .hero-badge-row { padding-top: calc(80px + env(safe-area-inset-top, 0px)); }
     .hero-badge-row .inline-flex { font-size: 0.75rem; padding: 0.3rem 0.75rem; }
     #hero h1 { font-size: clamp(3.5rem, 5vw, 6rem); }
 }
