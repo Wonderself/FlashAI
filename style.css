@@ -1140,7 +1140,7 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
     .scroll-top-btn { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
     /* Mobile hero: flex-col, badge top, content center, tickers bottom */
     #hero { min-height: 100svh; }
-    #hero h1 { font-size: 2.75rem; line-height: 1.05; }
+    #hero h1 { font-size: 3.25rem; line-height: 1.02; letter-spacing: -0.02em; }
     #hero .hero-content-block p { font-size: 0.85rem; line-height: 1.5; }
     #hero .hero-content-block .btn-glow-lg { padding: 0.7rem 1.5rem; font-size: 0.85rem; }
     #hero .hero-content-block .btn-outline-lg { padding: 0.65rem 1.2rem; font-size: 0.82rem; }
