@@ -331,13 +331,15 @@ function initScrollReveal() {
 function initHeader() {
     const hdr = document.getElementById('main-header');
     if (!hdr) return;
-    const badge = document.querySelector('.hero-badge-row');
+    var badge = document.getElementById('hero-badge');
+    var hero = document.getElementById('hero');
     function syncBadge() {
-        if (!badge) return;
-        var h = hdr.getBoundingClientRect().height;
-        badge.style.paddingTop = Math.round(h + 5) + 'px';
+        if (!badge || !hero) return;
+        var logo = hdr.querySelector('a');
+        var bot = logo ? logo.getBoundingClientRect().bottom : hdr.getBoundingClientRect().bottom;
+        var heroTop = hero.getBoundingClientRect().top;
+        badge.style.paddingTop = Math.round(bot - heroTop + 10) + 'px';
     }
-    // Run after first paint to ensure safe-area is resolved
     requestAnimationFrame(function() { requestAnimationFrame(syncBadge); });
     window.addEventListener('resize', syncBadge);
     const navLinks = hdr.querySelectorAll('.nav-link');

@@ -331,19 +331,18 @@
 
     <!-- TOP: Badge Paris/TLV — 5px below header -->
     <script>
-    // Sync badge padding to actual header height (runs inline, no wait)
+    // Position badge exactly 10px below the visible header content bottom
     requestAnimationFrame(function(){
-        var h=document.getElementById('main-header'),b=document.getElementById('hero-badge');
-        if(h&&b){
-            var hh=Math.round(h.getBoundingClientRect().height);
-            b.style.paddingTop=(hh+5)+'px';
-            // DEBUG: remove after testing — shows measured heights
-            var dbg=document.createElement('div');
-            dbg.id='dbg-hdr';
-            dbg.style.cssText='position:fixed;top:0;left:0;z-index:99999;background:red;color:white;font-size:10px;padding:2px 6px;pointer-events:none;';
-            dbg.textContent='hdr='+hh+'px → pt='+(hh+5)+'px';
-            document.body.appendChild(dbg);
-        }
+        var hdr=document.getElementById('main-header');
+        var b=document.getElementById('hero-badge');
+        var hero=document.getElementById('hero');
+        if(!hdr||!b||!hero) return;
+        // Find the logo link (first <a> in header) — its bottom = visual bottom of header content
+        var logo=hdr.querySelector('a');
+        var bot=logo?logo.getBoundingClientRect().bottom:hdr.getBoundingClientRect().bottom;
+        var heroTop=hero.getBoundingClientRect().top;
+        // 10px gap between bottom of logo line and top of badge text
+        b.style.paddingTop=Math.round(bot-heroTop+10)+'px';
     });
     </script>
     <div id="hero-badge" class="hero-badge-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -357,7 +356,7 @@
     <div class="hero-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
             <div class="hero-content-block">
-                <h1 class="font-display font-bold leading-[1.05] tracking-tight mb-6 sm:mb-8">
+                <h1 class="font-display font-bold leading-[1.05] tracking-tight mb-4 sm:mb-6">
                     Vos outils digitaux,<br>
                     <span class="gradient-text-hero" id="hero-morph">livrés en jours</span>
                 </h1>
