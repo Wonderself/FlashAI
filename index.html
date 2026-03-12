@@ -310,7 +310,7 @@
 
 <main>
 <!-- ============ HERO ============ -->
-<section id="hero" aria-label="Présentation FlashAI" class="relative min-h-[100svh] flex items-end pb-0 overflow-hidden">
+<section id="hero" aria-label="Présentation FlashAI" class="relative min-h-[100svh] flex flex-col overflow-hidden">
     <canvas id="hero-particles"></canvas>
     <div class="hero-globe-container"><canvas id="hero-globe"></canvas></div>
     <div class="hero-grid-bg"></div>
@@ -328,21 +328,27 @@
         <div class="hero-shape hero-shape-4"></div>
         <div class="hero-shape-ring"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 sm:pt-28 lg:pt-32">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-end">
-            <div class="space-y-6 sm:space-y-8 pb-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neon-blue/30 bg-neon-blue/5 text-neon-blue text-sm font-medium">
-                    <span class="pulse-dot"></span>
-                    <span>Paris 🇫🇷 — Tel Aviv 🇮🇱 | Startup Nation</span>
-                </div>
-                <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight">
+
+    <!-- TOP: Badge Paris/TLV — pushed to top right after header -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 sm:pt-28">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neon-blue/30 bg-neon-blue/5 text-neon-blue text-sm font-medium">
+            <span class="pulse-dot"></span>
+            <span>Paris 🇫🇷 — Tel Aviv 🇮🇱 | Startup Nation</span>
+        </div>
+    </div>
+
+    <!-- CENTER: Main content — grows to fill space, centered vertically -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex-1 flex items-center">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
+            <div class="hero-content-block">
+                <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight mb-6 sm:mb-8">
                     Vos outils digitaux,<br>
                     <span class="gradient-text-hero" id="hero-morph">livrés en jours</span>
                 </h1>
-                <p class="text-base sm:text-lg text-surface-300 max-w-xl leading-relaxed">
+                <p class="text-base sm:text-lg text-surface-300 max-w-xl leading-relaxed mb-6 sm:mb-8">
                     L'IA n'est plus réservée aux grands groupes. <strong class="text-white">Autoentrepreneurs, TPE, PME</strong> : sites web, CRM, chatbots IA, automatisations — <strong class="text-white">sur mesure, 3 à 5× moins cher</strong>.
                 </p>
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 mb-5 sm:mb-6">
                     <a href="#contact" class="btn-glow btn-glow-lg"><span>Lancer mon projet</span></a>
                     <a href="#portfolio" class="btn-outline btn-outline-lg group">
                         <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -370,17 +376,17 @@
             </div>
         </div>
     </div>
-</section>
 
-<!-- ============ TRUST MARQUEE (2 rows, opposite directions) ============ -->
-<div class="trust-tickers" aria-label="Nos clients et technologies">
-    <div id="trust-bar" class="relative overflow-hidden">
-        <div class="trust-marquee" id="trust-marquee"></div>
+    <!-- BOTTOM: Trust tickers — pinned to bottom of hero viewport -->
+    <div class="trust-tickers relative z-10 mt-auto" aria-label="Nos clients et technologies">
+        <div id="trust-bar" class="relative overflow-hidden">
+            <div class="trust-marquee" id="trust-marquee"></div>
+        </div>
+        <div class="relative overflow-hidden">
+            <div class="marquee-row marquee-row-color" id="marquee-row-1"></div>
+        </div>
     </div>
-    <div class="relative overflow-hidden">
-        <div class="marquee-row marquee-row-color" id="marquee-row-1"></div>
-    </div>
-</div>
+</section>
 
 <!-- ============ SERVICES CAROUSEL ============ -->
 <section id="services" aria-label="Nos services digitaux" class="relative py-24 lg:py-32">
