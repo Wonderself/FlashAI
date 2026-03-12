@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatisation de processus — FlashAI</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f0ff',
+                        'neon-purple': '#bf00ff',
+                        'neon-pink': '#ff006e',
+                        'neon-green': '#00ff87',
+                        'surface': {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a', 950: '#020617'
+                        },
+                        primary: {
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+                            400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
+                            800: '#1e40af', 900: '#1e3a8a', 950: '#172554'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#020617] text-white font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-surface-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">FlashAI</a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-sm text-surface-300 hover:text-white transition-colors">Accueil</a>
+                <a href="/#services" class="text-sm text-surface-300 hover:text-white transition-colors">Services</a>
+                <a href="/about.html" class="text-sm text-surface-300 hover:text-white transition-colors">À propos</a>
+                <a href="/contact.html" class="text-sm text-surface-300 hover:text-white transition-colors">Contact</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-white" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-surface-950/95 backdrop-blur-xl border-b border-white/10">
+            <nav class="flex flex-col px-6 py-4 gap-4">
+                <a href="/" class="text-sm text-surface-300 hover:text-white transition-colors">Accueil</a>
+                <a href="/#services" class="text-sm text-surface-300 hover:text-white transition-colors">Services</a>
+                <a href="/about.html" class="text-sm text-surface-300 hover:text-white transition-colors">À propos</a>
+                <a href="/contact.html" class="text-sm text-surface-300 hover:text-white transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-16">
+
+        <!-- Hero -->
+        <section class="relative py-24 md:py-32 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-neon-pink/5 to-transparent"></div>
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+                <span class="text-6xl mb-6 block">⚡</span>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Automatisation de processus</h1>
+                <p class="text-xl md:text-2xl text-surface-300 max-w-2xl mx-auto">Éliminez les tâches répétitives, gagnez des heures chaque semaine</p>
+            </div>
+        </section>
+
+        <!-- What we do -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10 text-center">Ce que nous faisons</h2>
+                <div class="space-y-6 text-surface-300 text-lg leading-relaxed">
+                    <p>Nous identifions et automatisons les tâches répétitives qui ralentissent votre équipe. De la saisie de données aux notifications, en passant par la synchronisation entre outils, nous créons des workflows intelligents qui fonctionnent sans intervention humaine.</p>
+                    <p>Notre approche combine le meilleur des plateformes no-code (Zapier, Make, n8n) avec du développement sur mesure quand la complexité l'exige. Nous construisons des automatisations robustes, fiables et faciles à maintenir.</p>
+                    <p>Chaque automatisation est monitorée 24/7 avec des alertes en cas d'erreur et des tableaux de bord pour suivre les gains de temps et d'efficacité. Vous voyez concrètement le ROI de chaque workflow automatisé.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Fonctionnalités clés</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Workflows sur mesure</h3>
+                        <p class="text-surface-400 text-sm">Des automatisations conçues spécifiquement pour vos processus métier et vos contraintes opérationnelles.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Connexion entre outils</h3>
+                        <p class="text-surface-400 text-sm">Synchronisation automatique entre vos applications : CRM, email, comptabilité, gestion de projet et plus.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Triggers intelligents</h3>
+                        <p class="text-surface-400 text-sm">Déclencheurs conditionnels avancés qui réagissent aux événements en temps réel avec une logique métier précise.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Monitoring 24/7</h3>
+                        <p class="text-surface-400 text-sm">Surveillance continue de vos automatisations avec alertes instantanées et rapports de performance.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Scripts custom</h3>
+                        <p class="text-surface-400 text-sm">Développement de scripts sur mesure en Python ou Node.js pour les cas complexes impossibles en no-code.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">No-code + code</h3>
+                        <p class="text-surface-400 text-sm">Le meilleur des deux mondes : rapidité du no-code pour le simple, puissance du code pour le complexe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Notre méthodologie</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">1</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Cartographie des processus</h3>
+                            <p class="text-surface-400">Identification de toutes les tâches répétitives, estimation du temps perdu et priorisation des automatisations.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">2</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Conception des workflows</h3>
+                            <p class="text-surface-400">Design des flux d'automatisation avec choix des outils et de l'architecture adaptés à chaque cas.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">3</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Implémentation & tests</h3>
+                            <p class="text-surface-400">Développement, tests rigoureux avec données réelles et validation avant mise en production.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">4</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Monitoring & évolution</h3>
+                            <p class="text-surface-400">Suivi des performances, ajustements et ajout de nouvelles automatisations selon vos besoins croissants.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Technologies utilisées</h2>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Zapier</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Make</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">n8n</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Python</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Node.js</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">API REST</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-lg mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Tarif</h2>
+                <div class="bg-gradient-to-br from-neon-purple/10 to-neon-blue/10 border border-white/10 rounded-2xl p-8">
+                    <p class="text-surface-400 text-sm mb-2">À partir de</p>
+                    <p class="text-5xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent mb-4">490€</p>
+                    <p class="text-surface-400 text-sm">Pack d'automatisation incluant audit, conception et déploiement de vos premiers workflows.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Prêt à gagner du temps ?</h2>
+                <p class="text-surface-300 mb-8 text-lg">Identifions ensemble les automatisations qui transformeront votre productivité.</p>
+                <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl text-white font-semibold hover:opacity-90 transition-opacity">Lancez votre projet</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-surface-400">&copy; 2026 FlashAI. Tous droits réservés.</p>
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-sm text-surface-400 hover:text-white transition-colors">Accueil</a>
+                <a href="/#services" class="text-sm text-surface-400 hover:text-white transition-colors">Services</a>
+                <a href="/contact.html" class="text-sm text-surface-400 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu script -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

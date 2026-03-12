@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot IA intelligent — FlashAI</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f0ff',
+                        'neon-purple': '#bf00ff',
+                        'neon-pink': '#ff006e',
+                        'neon-green': '#00ff87',
+                        'surface': {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a', 950: '#020617'
+                        },
+                        primary: {
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+                            400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
+                            800: '#1e40af', 900: '#1e3a8a', 950: '#172554'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#020617] text-white font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-surface-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">FlashAI</a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-sm text-surface-300 hover:text-white transition-colors">Accueil</a>
+                <a href="/#services" class="text-sm text-surface-300 hover:text-white transition-colors">Services</a>
+                <a href="/about.html" class="text-sm text-surface-300 hover:text-white transition-colors">À propos</a>
+                <a href="/contact.html" class="text-sm text-surface-300 hover:text-white transition-colors">Contact</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-white" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-surface-950/95 backdrop-blur-xl border-b border-white/10">
+            <nav class="flex flex-col px-6 py-4 gap-4">
+                <a href="/" class="text-sm text-surface-300 hover:text-white transition-colors">Accueil</a>
+                <a href="/#services" class="text-sm text-surface-300 hover:text-white transition-colors">Services</a>
+                <a href="/about.html" class="text-sm text-surface-300 hover:text-white transition-colors">À propos</a>
+                <a href="/contact.html" class="text-sm text-surface-300 hover:text-white transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-16">
+
+        <!-- Hero -->
+        <section class="relative py-24 md:py-32 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-neon-green/5 to-transparent"></div>
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+                <span class="text-6xl mb-6 block">🤖</span>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Chatbot IA intelligent</h1>
+                <p class="text-xl md:text-2xl text-surface-300 max-w-2xl mx-auto">Assistants virtuels 24/7 basés sur l'IA dernière génération</p>
+            </div>
+        </section>
+
+        <!-- What we do -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10 text-center">Ce que nous faisons</h2>
+                <div class="space-y-6 text-surface-300 text-lg leading-relaxed">
+                    <p>Nous créons des chatbots IA sur mesure qui comprennent véritablement vos clients et votre métier. Alimentés par les modèles les plus avancés comme GPT-4 et Claude, nos assistants virtuels offrent des conversations naturelles et pertinentes.</p>
+                    <p>Grâce à la technologie RAG (Retrieval-Augmented Generation), votre chatbot accède à votre base de connaissances en temps réel. Il répond avec précision aux questions sur vos produits, services, tarifs et procédures, sans jamais inventer d'informations.</p>
+                    <p>Nos chatbots s'intègrent nativement à vos canaux de communication : site web, WhatsApp, Messenger, Slack et bien d'autres. Ils qualifient les leads, répondent aux FAQ, prennent des rendez-vous et escaladent vers un humain quand c'est nécessaire.</p>
+                    <p>Chaque chatbot est doté d'une personnalité alignée sur votre marque et d'analytics détaillés pour mesurer sa performance et l'améliorer continuellement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Fonctionnalités clés</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">GPT-4 / Claude</h3>
+                        <p class="text-surface-400 text-sm">Propulsé par les modèles d'IA les plus performants pour des conversations naturelles et intelligentes.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Multi-canal</h3>
+                        <p class="text-surface-400 text-sm">Déployé sur WhatsApp, Messenger, Slack, votre site web et tout canal de votre choix simultanément.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Base de connaissances</h3>
+                        <p class="text-surface-400 text-sm">Technologie RAG pour des réponses précises basées sur vos documents, FAQ et données métier.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Personnalité customisable</h3>
+                        <p class="text-surface-400 text-sm">Ton, style et personnalité adaptés à votre marque pour une expérience cohérente et engageante.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Analytics conversations</h3>
+                        <p class="text-surface-400 text-sm">Suivi détaillé des conversations, satisfaction utilisateur, sujets fréquents et taux de résolution.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Escalade humaine</h3>
+                        <p class="text-surface-400 text-sm">Transfert intelligent vers un agent humain quand la situation le nécessite, avec tout le contexte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Notre méthodologie</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">1</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Analyse des cas d'usage</h3>
+                            <p class="text-surface-400">Identification des scénarios clés, des questions fréquentes et des objectifs de votre chatbot.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">2</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Entraînement & configuration</h3>
+                            <p class="text-surface-400">Alimentation de la base de connaissances, calibration du modèle et personnalisation de la personnalité.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">3</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Tests & itérations</h3>
+                            <p class="text-surface-400">Phase de test intensive avec scénarios réels, ajustements et validation avant le déploiement.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">4</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Déploiement & optimisation</h3>
+                            <p class="text-surface-400">Mise en production multi-canal et optimisation continue basée sur les analytics de conversation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Technologies utilisées</h2>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">OpenAI GPT-4</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Claude</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">LangChain</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">RAG</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Python</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20">Node.js</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-lg mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Tarif</h2>
+                <div class="bg-gradient-to-br from-neon-purple/10 to-neon-blue/10 border border-white/10 rounded-2xl p-8">
+                    <p class="text-surface-400 text-sm mb-2">À partir de</p>
+                    <p class="text-5xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent mb-4">1,490€</p>
+                    <p class="text-surface-400 text-sm">Chatbot IA complet avec base de connaissances, déploiement multi-canal et analytics inclus.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Prêt à automatiser votre relation client ?</h2>
+                <p class="text-surface-300 mb-8 text-lg">Créons ensemble un assistant IA qui travaille pour vous 24h/24.</p>
+                <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl text-white font-semibold hover:opacity-90 transition-opacity">Lancez votre projet</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-surface-400">&copy; 2026 FlashAI. Tous droits réservés.</p>
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-sm text-surface-400 hover:text-white transition-colors">Accueil</a>
+                <a href="/#services" class="text-sm text-surface-400 hover:text-white transition-colors">Services</a>
+                <a href="/contact.html" class="text-sm text-surface-400 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu script -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
