@@ -331,6 +331,14 @@ function initScrollReveal() {
 function initHeader() {
     const hdr = document.getElementById('main-header');
     if (!hdr) return;
+    // Measure real header height (includes safe-area-inset-top on notched devices)
+    // and pass it to CSS via --header-h so badge row is always 5px below
+    function syncHeaderHeight() {
+        var h = hdr.offsetHeight;
+        document.getElementById('hero')?.style.setProperty('--header-h', h + 'px');
+    }
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
     const navLinks = hdr.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
         hdr.classList.toggle('scrolled', window.scrollY > 50);
