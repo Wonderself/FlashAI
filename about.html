@@ -190,7 +190,111 @@
                 <div class="reveal flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <!-- Image left -->
                     <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=600&h=400&fit=crop" alt="Tel Aviv skyline" class="w-full sm:w-64 lg:w-96 rounded-2xl shadow-2xl shadow-neon-blue/10 border border-white/10">
+                        <svg viewBox="0 0 600 400" class="w-full sm:w-64 lg:w-96 rounded-2xl shadow-2xl shadow-neon-blue/10 border border-white/10" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0a0a1a"/>
+                                    <stop offset="100%" stop-color="#1a0a2e"/>
+                                </linearGradient>
+                                <linearGradient id="bldgGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#bf00ff" stop-opacity="0.3"/>
+                                </linearGradient>
+                                <linearGradient id="bldgGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#bf00ff" stop-opacity="0.7"/>
+                                    <stop offset="100%" stop-color="#ff006e" stop-opacity="0.3"/>
+                                </linearGradient>
+                                <linearGradient id="bldgGrad3" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#00ff87" stop-opacity="0.6"/>
+                                    <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.2"/>
+                                </linearGradient>
+                                <filter id="glow1">
+                                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <filter id="windowGlow">
+                                    <feGaussianBlur stdDeviation="2" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+                            <style>
+                                @keyframes pulse1 { 0%,100%{opacity:0.4}50%{opacity:1} }
+                                @keyframes pulse2 { 0%,100%{opacity:0.6}50%{opacity:0.2} }
+                                @keyframes scanline { 0%{transform:translateY(0)}100%{transform:translateY(400px)} }
+                                .win{animation:pulse1 3s ease-in-out infinite}
+                                .win2{animation:pulse1 4s ease-in-out infinite 1s}
+                                .win3{animation:pulse2 2.5s ease-in-out infinite 0.5s}
+                            </style>
+                            <!-- Sky -->
+                            <rect width="600" height="400" fill="url(#skyGrad)"/>
+                            <!-- Stars -->
+                            <circle cx="50" cy="40" r="1.5" fill="#00f0ff" opacity="0.6" class="win"/>
+                            <circle cx="150" cy="70" r="1" fill="#bf00ff" opacity="0.5" class="win2"/>
+                            <circle cx="300" cy="30" r="1.5" fill="#ff006e" opacity="0.4" class="win3"/>
+                            <circle cx="450" cy="55" r="1" fill="#00ff87" opacity="0.6" class="win"/>
+                            <circle cx="520" cy="25" r="1.5" fill="#00f0ff" opacity="0.5" class="win2"/>
+                            <circle cx="100" cy="100" r="1" fill="#bf00ff" opacity="0.3" class="win3"/>
+                            <circle cx="400" cy="80" r="1" fill="#00f0ff" opacity="0.4" class="win"/>
+                            <!-- Ground / horizon line -->
+                            <line x1="0" y1="320" x2="600" y2="320" stroke="#00f0ff" stroke-opacity="0.15" stroke-width="1"/>
+                            <!-- Reflection surface -->
+                            <rect x="0" y="320" width="600" height="80" fill="#0a0a1a" opacity="0.8"/>
+                            <!-- Buildings - back row -->
+                            <rect x="30" y="180" width="45" height="140" fill="url(#bldgGrad1)" opacity="0.4" rx="2"/>
+                            <rect x="90" y="150" width="35" height="170" fill="url(#bldgGrad2)" opacity="0.35" rx="2"/>
+                            <rect x="480" y="170" width="40" height="150" fill="url(#bldgGrad3)" opacity="0.35" rx="2"/>
+                            <rect x="530" y="190" width="50" height="130" fill="url(#bldgGrad1)" opacity="0.3" rx="2"/>
+                            <!-- Buildings - front row -->
+                            <rect x="140" y="140" width="55" height="180" fill="url(#bldgGrad1)" opacity="0.7" rx="3"/>
+                            <rect x="205" y="110" width="40" height="210" fill="url(#bldgGrad2)" opacity="0.6" rx="2"/>
+                            <rect x="255" y="160" width="60" height="160" fill="url(#bldgGrad3)" opacity="0.65" rx="3"/>
+                            <rect x="325" y="90" width="35" height="230" fill="url(#bldgGrad1)" opacity="0.75" rx="2"/>
+                            <rect x="370" y="130" width="50" height="190" fill="url(#bldgGrad2)" opacity="0.6" rx="3"/>
+                            <rect x="430" y="155" width="40" height="165" fill="url(#bldgGrad3)" opacity="0.55" rx="2"/>
+                            <!-- Tower / antenna -->
+                            <line x1="342" y1="90" x2="342" y2="55" stroke="#00f0ff" stroke-width="2" filter="url(#windowGlow)"/>
+                            <circle cx="342" cy="52" r="3" fill="#ff006e" class="win" filter="url(#glow1)"/>
+                            <!-- Windows -->
+                            <g filter="url(#windowGlow)">
+                                <rect x="150" y="155" width="8" height="5" fill="#00f0ff" class="win" rx="1"/>
+                                <rect x="165" y="155" width="8" height="5" fill="#00f0ff" class="win2" rx="1"/>
+                                <rect x="150" y="175" width="8" height="5" fill="#bf00ff" class="win3" rx="1"/>
+                                <rect x="165" y="195" width="8" height="5" fill="#00f0ff" class="win" rx="1"/>
+                                <rect x="150" y="215" width="8" height="5" fill="#00ff87" class="win2" rx="1"/>
+                                <rect x="165" y="235" width="8" height="5" fill="#00f0ff" class="win3" rx="1"/>
+                                <rect x="215" y="125" width="6" height="5" fill="#bf00ff" class="win" rx="1"/>
+                                <rect x="225" y="145" width="6" height="5" fill="#00f0ff" class="win2" rx="1"/>
+                                <rect x="215" y="165" width="6" height="5" fill="#ff006e" class="win3" rx="1"/>
+                                <rect x="225" y="185" width="6" height="5" fill="#00f0ff" class="win" rx="1"/>
+                                <rect x="215" y="205" width="6" height="5" fill="#00ff87" class="win2" rx="1"/>
+                                <rect x="265" y="175" width="8" height="5" fill="#00f0ff" class="win3" rx="1"/>
+                                <rect x="280" y="195" width="8" height="5" fill="#bf00ff" class="win" rx="1"/>
+                                <rect x="265" y="215" width="8" height="5" fill="#00f0ff" class="win2" rx="1"/>
+                                <rect x="280" y="235" width="8" height="5" fill="#ff006e" class="win3" rx="1"/>
+                                <rect x="335" y="105" width="6" height="5" fill="#00f0ff" class="win" rx="1"/>
+                                <rect x="335" y="125" width="6" height="5" fill="#bf00ff" class="win2" rx="1"/>
+                                <rect x="345" y="145" width="6" height="5" fill="#00f0ff" class="win3" rx="1"/>
+                                <rect x="335" y="165" width="6" height="5" fill="#00ff87" class="win" rx="1"/>
+                                <rect x="345" y="185" width="6" height="5" fill="#00f0ff" class="win2" rx="1"/>
+                                <rect x="380" y="145" width="8" height="5" fill="#bf00ff" class="win3" rx="1"/>
+                                <rect x="395" y="165" width="8" height="5" fill="#00f0ff" class="win" rx="1"/>
+                                <rect x="380" y="185" width="8" height="5" fill="#ff006e" class="win2" rx="1"/>
+                                <rect x="395" y="205" width="8" height="5" fill="#00f0ff" class="win3" rx="1"/>
+                                <rect x="440" y="170" width="6" height="5" fill="#00f0ff" class="win" rx="1"/>
+                                <rect x="450" y="190" width="6" height="5" fill="#bf00ff" class="win2" rx="1"/>
+                                <rect x="440" y="210" width="6" height="5" fill="#00ff87" class="win3" rx="1"/>
+                            </g>
+                            <!-- Reflections in water -->
+                            <g opacity="0.15">
+                                <rect x="140" y="320" width="55" height="60" fill="url(#bldgGrad1)" rx="1"/>
+                                <rect x="205" y="320" width="40" height="60" fill="url(#bldgGrad2)" rx="1"/>
+                                <rect x="255" y="320" width="60" height="50" fill="url(#bldgGrad3)" rx="1"/>
+                                <rect x="325" y="320" width="35" height="70" fill="url(#bldgGrad1)" rx="1"/>
+                                <rect x="370" y="320" width="50" height="55" fill="url(#bldgGrad2)" rx="1"/>
+                            </g>
+                            <!-- Neon horizon glow -->
+                            <ellipse cx="300" cy="320" rx="280" ry="8" fill="#00f0ff" opacity="0.08"/>
+                        </svg>
                     </div>
                     <!-- Content right -->
                     <div class="w-full lg:w-1/2">
@@ -279,7 +383,99 @@
                 <div class="reveal flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
                     <!-- Image right -->
                     <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Team working" class="w-full sm:w-64 lg:w-96 rounded-2xl shadow-2xl shadow-neon-purple/10 border border-white/10">
+                        <svg viewBox="0 0 600 400" class="w-full sm:w-64 lg:w-96 rounded-2xl shadow-2xl shadow-neon-purple/10 border border-white/10" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="netBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0a0a1a"/>
+                                    <stop offset="50%" stop-color="#120a20"/>
+                                    <stop offset="100%" stop-color="#0a0a1a"/>
+                                </linearGradient>
+                                <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#00f0ff"/>
+                                    <stop offset="100%" stop-color="#bf00ff"/>
+                                </linearGradient>
+                                <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#bf00ff"/>
+                                    <stop offset="100%" stop-color="#ff006e"/>
+                                </linearGradient>
+                                <linearGradient id="lineGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#00ff87"/>
+                                    <stop offset="100%" stop-color="#00f0ff"/>
+                                </linearGradient>
+                                <filter id="nodeGlow">
+                                    <feGaussianBlur stdDeviation="6" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <filter id="lineGlow">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+                            <style>
+                                @keyframes nodePulse { 0%,100%{r:8;opacity:0.8}50%{r:11;opacity:1} }
+                                @keyframes nodePulse2 { 0%,100%{r:6;opacity:0.6}50%{r:9;opacity:1} }
+                                @keyframes dashFlow { 0%{stroke-dashoffset:0}100%{stroke-dashoffset:-40} }
+                                @keyframes codeFloat { 0%,100%{opacity:0.15}50%{opacity:0.35} }
+                                .node-lg{animation:nodePulse 3s ease-in-out infinite}
+                                .node-sm{animation:nodePulse2 4s ease-in-out infinite 1s}
+                                .flow-line{stroke-dasharray:12 8;animation:dashFlow 2s linear infinite}
+                                .code-text{animation:codeFloat 5s ease-in-out infinite}
+                            </style>
+                            <!-- Background -->
+                            <rect width="600" height="400" fill="url(#netBg)"/>
+                            <!-- Grid pattern -->
+                            <g opacity="0.04" stroke="#00f0ff" stroke-width="0.5">
+                                <line x1="0" y1="50" x2="600" y2="50"/><line x1="0" y1="100" x2="600" y2="100"/>
+                                <line x1="0" y1="150" x2="600" y2="150"/><line x1="0" y1="200" x2="600" y2="200"/>
+                                <line x1="0" y1="250" x2="600" y2="250"/><line x1="0" y1="300" x2="600" y2="300"/>
+                                <line x1="0" y1="350" x2="600" y2="350"/>
+                                <line x1="75" y1="0" x2="75" y2="400"/><line x1="150" y1="0" x2="150" y2="400"/>
+                                <line x1="225" y1="0" x2="225" y2="400"/><line x1="300" y1="0" x2="300" y2="400"/>
+                                <line x1="375" y1="0" x2="375" y2="400"/><line x1="450" y1="0" x2="450" y2="400"/>
+                                <line x1="525" y1="0" x2="525" y2="400"/>
+                            </g>
+                            <!-- Connection lines -->
+                            <g filter="url(#lineGlow)">
+                                <line x1="120" y1="100" x2="300" y2="200" stroke="url(#lineGrad1)" stroke-width="1.5" class="flow-line"/>
+                                <line x1="300" y1="200" x2="480" y2="120" stroke="url(#lineGrad2)" stroke-width="1.5" class="flow-line"/>
+                                <line x1="300" y1="200" x2="180" y2="300" stroke="url(#lineGrad3)" stroke-width="1.5" class="flow-line"/>
+                                <line x1="300" y1="200" x2="450" y2="300" stroke="url(#lineGrad1)" stroke-width="1.5" class="flow-line"/>
+                                <line x1="120" y1="100" x2="80" y2="220" stroke="url(#lineGrad2)" stroke-width="1" class="flow-line" opacity="0.6"/>
+                                <line x1="480" y1="120" x2="520" y2="250" stroke="url(#lineGrad3)" stroke-width="1" class="flow-line" opacity="0.6"/>
+                                <line x1="180" y1="300" x2="450" y2="300" stroke="url(#lineGrad2)" stroke-width="1" class="flow-line" opacity="0.5"/>
+                                <line x1="80" y1="220" x2="180" y2="300" stroke="url(#lineGrad1)" stroke-width="1" class="flow-line" opacity="0.5"/>
+                                <line x1="520" y1="250" x2="450" y2="300" stroke="url(#lineGrad2)" stroke-width="1" class="flow-line" opacity="0.5"/>
+                            </g>
+                            <!-- Nodes -->
+                            <g filter="url(#nodeGlow)">
+                                <!-- Central hub node -->
+                                <circle cx="300" cy="200" fill="#bf00ff" class="node-lg"/>
+                                <circle cx="300" cy="200" r="4" fill="#fff" opacity="0.9"/>
+                                <!-- Primary nodes -->
+                                <circle cx="120" cy="100" fill="#00f0ff" class="node-sm"/>
+                                <circle cx="120" cy="100" r="3" fill="#fff" opacity="0.8"/>
+                                <circle cx="480" cy="120" fill="#ff006e" class="node-sm" style="animation-delay:0.5s"/>
+                                <circle cx="480" cy="120" r="3" fill="#fff" opacity="0.8"/>
+                                <circle cx="180" cy="300" fill="#00ff87" class="node-sm" style="animation-delay:1s"/>
+                                <circle cx="180" cy="300" r="3" fill="#fff" opacity="0.8"/>
+                                <circle cx="450" cy="300" fill="#00f0ff" class="node-sm" style="animation-delay:1.5s"/>
+                                <circle cx="450" cy="300" r="3" fill="#fff" opacity="0.8"/>
+                                <!-- Secondary nodes -->
+                                <circle cx="80" cy="220" r="5" fill="#bf00ff" opacity="0.5" class="node-sm" style="animation-delay:2s"/>
+                                <circle cx="520" cy="250" r="5" fill="#ff006e" opacity="0.5" class="node-sm" style="animation-delay:2.5s"/>
+                            </g>
+                            <!-- Code snippets floating -->
+                            <g font-family="monospace" font-size="11" class="code-text">
+                                <text x="30" y="60" fill="#00f0ff">const team = [];</text>
+                                <text x="380" y="50" fill="#bf00ff">async deploy()</text>
+                                <text x="40" y="370" fill="#00ff87">export default</text>
+                                <text x="400" y="370" fill="#ff006e">return result;</text>
+                                <text x="200" y="140" fill="#00f0ff" opacity="0.2" style="animation-delay:2s">{...config}</text>
+                                <text x="350" y="260" fill="#bf00ff" opacity="0.2" style="animation-delay:3s">fn(data)</text>
+                            </g>
+                            <!-- Bracket decorations -->
+                            <text x="260" y="195" font-family="monospace" font-size="28" fill="#bf00ff" opacity="0.3" class="code-text">&lt;/&gt;</text>
+                        </svg>
                     </div>
                     <!-- Content left -->
                     <div class="w-full lg:w-1/2">
@@ -340,7 +536,116 @@
                 <div class="reveal flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <!-- Image left -->
                     <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="Startup office" class="w-full sm:w-64 lg:w-96 rounded-2xl shadow-2xl shadow-neon-pink/10 border border-white/10">
+                        <svg viewBox="0 0 600 400" class="w-full sm:w-64 lg:w-96 rounded-2xl shadow-2xl shadow-neon-pink/10 border border-white/10" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="rocketBg" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#0a0a1a"/>
+                                    <stop offset="100%" stop-color="#1a0520"/>
+                                </linearGradient>
+                                <linearGradient id="rocketBody" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                                    <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0.8"/>
+                                </linearGradient>
+                                <linearGradient id="flameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#ff006e"/>
+                                    <stop offset="40%" stop-color="#ff006e" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#bf00ff" stop-opacity="0"/>
+                                </linearGradient>
+                                <linearGradient id="flameGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#00f0ff"/>
+                                    <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+                                </linearGradient>
+                                <linearGradient id="chartGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#00ff87" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#00ff87" stop-opacity="0.3"/>
+                                </linearGradient>
+                                <filter id="rocketGlow">
+                                    <feGaussianBlur stdDeviation="8" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <filter id="flameGlowF">
+                                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                                <filter id="sparkGlow">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+                            <style>
+                                @keyframes rocketHover { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)} }
+                                @keyframes flamePulse { 0%,100%{opacity:0.7;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)} }
+                                @keyframes sparkFly { 0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--sx),var(--sy))} }
+                                @keyframes chartGrow { 0%{opacity:0;transform:scaleY(0)}100%{opacity:1;transform:scaleY(1)} }
+                                @keyframes starTwinkle { 0%,100%{opacity:0.3}50%{opacity:0.8} }
+                                .rocket-group{animation:rocketHover 4s ease-in-out infinite}
+                                .flame{animation:flamePulse 1.5s ease-in-out infinite;transform-origin:center top}
+                                .flame2{animation:flamePulse 1.2s ease-in-out infinite 0.3s;transform-origin:center top}
+                                .spark{animation:starTwinkle 2s ease-in-out infinite}
+                                .spark2{animation:starTwinkle 3s ease-in-out infinite 1s}
+                            </style>
+                            <!-- Background -->
+                            <rect width="600" height="400" fill="url(#rocketBg)"/>
+                            <!-- Stars -->
+                            <circle cx="50" cy="50" r="1.5" fill="#00f0ff" opacity="0.5" class="spark"/>
+                            <circle cx="150" cy="30" r="1" fill="#bf00ff" opacity="0.4" class="spark2"/>
+                            <circle cx="500" cy="60" r="1.5" fill="#ff006e" opacity="0.5" class="spark"/>
+                            <circle cx="550" cy="150" r="1" fill="#00ff87" opacity="0.4" class="spark2"/>
+                            <circle cx="80" cy="200" r="1" fill="#00f0ff" opacity="0.3" class="spark"/>
+                            <circle cx="530" cy="300" r="1.5" fill="#bf00ff" opacity="0.4" class="spark2"/>
+                            <circle cx="400" cy="40" r="1" fill="#00f0ff" opacity="0.5" class="spark"/>
+                            <circle cx="250" cy="20" r="1" fill="#ff006e" opacity="0.3" class="spark2"/>
+                            <!-- Growth chart in background -->
+                            <g opacity="0.25">
+                                <polyline points="50,350 120,330 200,310 280,270 340,220 400,150 470,100 540,50" fill="none" stroke="#00ff87" stroke-width="2" filter="url(#sparkGlow)"/>
+                                <polygon points="50,350 120,330 200,310 280,270 340,220 400,150 470,100 540,50 540,350" fill="url(#chartGrad)"/>
+                            </g>
+                            <!-- Chart grid lines -->
+                            <g opacity="0.05" stroke="#00ff87" stroke-width="0.5">
+                                <line x1="50" y1="350" x2="540" y2="350"/>
+                                <line x1="50" y1="280" x2="540" y2="280"/>
+                                <line x1="50" y1="210" x2="540" y2="210"/>
+                                <line x1="50" y1="140" x2="540" y2="140"/>
+                                <line x1="50" y1="70" x2="540" y2="70"/>
+                            </g>
+                            <!-- Rocket -->
+                            <g class="rocket-group" filter="url(#rocketGlow)">
+                                <!-- Flame -->
+                                <g class="flame" filter="url(#flameGlowF)">
+                                    <ellipse cx="300" cy="280" rx="14" ry="40" fill="url(#flameGrad)"/>
+                                </g>
+                                <g class="flame2" filter="url(#flameGlowF)">
+                                    <ellipse cx="300" cy="275" rx="8" ry="30" fill="url(#flameGrad2)" opacity="0.6"/>
+                                </g>
+                                <!-- Body -->
+                                <path d="M300 100 Q300 100 280 200 L280 250 L320 250 L320 200 Q300 100 300 100Z" fill="url(#rocketBody)"/>
+                                <!-- Nose cone -->
+                                <path d="M300 100 Q290 140 280 200 L320 200 Q310 140 300 100Z" fill="url(#rocketBody)" stroke="#ff006e" stroke-width="0.5" stroke-opacity="0.3"/>
+                                <!-- Window -->
+                                <circle cx="300" cy="180" r="12" fill="#0a0a1a" stroke="#00f0ff" stroke-width="2"/>
+                                <circle cx="300" cy="180" r="7" fill="#00f0ff" opacity="0.15"/>
+                                <circle cx="296" cy="176" r="3" fill="#00f0ff" opacity="0.3"/>
+                                <!-- Fins -->
+                                <path d="M280 230 L258 260 L280 250 Z" fill="#ff006e" opacity="0.8"/>
+                                <path d="M320 230 L342 260 L320 250 Z" fill="#ff006e" opacity="0.8"/>
+                                <!-- Body stripe -->
+                                <rect x="280" y="220" width="40" height="4" fill="#bf00ff" opacity="0.5" rx="2"/>
+                            </g>
+                            <!-- Particle trail -->
+                            <g filter="url(#sparkGlow)">
+                                <circle cx="290" cy="310" r="2" fill="#ff006e" opacity="0.6" class="spark"/>
+                                <circle cx="310" cy="320" r="1.5" fill="#00f0ff" opacity="0.5" class="spark2"/>
+                                <circle cx="295" cy="335" r="2" fill="#bf00ff" opacity="0.4" class="spark"/>
+                                <circle cx="305" cy="350" r="1.5" fill="#ff006e" opacity="0.3" class="spark2"/>
+                                <circle cx="285" cy="340" r="1" fill="#00f0ff" opacity="0.4" class="spark"/>
+                                <circle cx="315" cy="345" r="1" fill="#00ff87" opacity="0.3" class="spark2"/>
+                            </g>
+                            <!-- Growth labels -->
+                            <g font-family="monospace" font-size="10" opacity="0.2">
+                                <text x="460" y="95" fill="#00ff87" class="spark2">+250%</text>
+                                <text x="380" y="145" fill="#00f0ff" class="spark">ROI</text>
+                            </g>
+                        </svg>
                     </div>
                     <!-- Content right -->
                     <div class="w-full lg:w-1/2">
