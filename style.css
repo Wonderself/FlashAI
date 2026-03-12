@@ -1711,9 +1711,9 @@ section { position: relative; }
     flex-direction: column;
     overflow: hidden;
 }
-/* Row 1: badge — 5px below header (JS sets --header-h) */
+/* Row 1: badge — JS sets inline paddingTop = header.offsetHeight + 5 */
 .hero-badge-row {
-    padding-top: calc(var(--header-h, 64px) + 5px);
+    padding-top: 69px; /* fallback if JS hasn't run; overridden by JS inline style */
     flex: 0 0 auto;
 }
 .hero-badge-row .inline-flex {
