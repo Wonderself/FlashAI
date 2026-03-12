@@ -725,14 +725,14 @@ function initDemoChatbot() {
         prix: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">A partir de <strong>890\u20AC</strong> pour un site vitrine.<br>CRM/Dashboard: des <strong>1 990\u20AC</strong><br>Chatbot IA: des <strong>1 490\u20AC</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection devis...\')">Devis gratuit</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Voir tarifs\')">Voir tous les prix</button></div></div>',
         delai: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Delais de livraison</div><div class="chat-rich-body">\u2022 Site vitrine: <strong>5 jours</strong><br>\u2022 CRM/Dashboard: <strong>7-10 jours</strong><br>\u2022 Projet complexe: <strong>10-14 jours</strong></div></div>',
         services: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">\u{1F310} Sites web & landing pages<br>\u{1F4CA} CRM & ERP sur mesure<br>\u{1F916} Chatbots IA (WhatsApp, web)<br>\u26A1 Automatisations<br>\u{1F50D} SEO technique<br>\u{1F6E1}\uFE0F Securite & RGPD</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection services\')">En savoir plus</button></div></div>',
-        contact: 'Contactez-nous a <strong>contact@flashai.dev</strong>. Reponse garantie en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
+        contact: 'Contactez-nous a <strong>flashsiteagency@gmail.com</strong>. Reponse en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
         technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>200+ APIs</strong> connectees.</div></div>',
-        garantie: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F6E1}\uFE0F Garantie 100%</div><div class="chat-rich-body">Satisfait ou <strong>integralement rembourse</strong>. Aucun risque pour vous. Support inclus 12 mois.</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Conditions lues\')">Voir les conditions</button></div></div>',
+        garantie: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F6E1}\uFE0F Support inclus</div><div class="chat-rich-body">Support IA et monitoring automatise <strong>a vie</strong>. Support humain <strong>1 an inclus</strong>.</div></div>',
         portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">+50 projets livres: SaaS, e-commerce, sante, fintech, edtech...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
         ia: 'Nous integrons <strong>GPT-4, LangChain, RAG</strong> et des modeles custom. Nos chatbots resolvent <strong>85%</strong> des demandes sans humain ! \u{1F9E0}',
         default: 'Je suis l\'assistant FlashAI \u{1F916}. Posez vos questions sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>technologies</strong> ou <strong>delais</strong> !'
     };
-    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Garantie ?', 'Portfolio ?', 'IA ?'];
+    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Support ?', 'Portfolio ?', 'IA ?'];
     let messages = [{ from: 'bot', text: 'Bonjour ! Comment puis-je vous aider ?' }];
     function getResp(t) { const l = t.toLowerCase(); for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('bonjour')||l.includes('salut')||l.includes('hello')) return 'Bonjour ! \u{1F44B} Comment puis-je vous aider ?'; if (l.includes('merci')||l.includes('thanks')) return 'Avec plaisir ! N\'hesitez pas si vous avez d\'autres questions. \u{1F60A}'; if (l.includes('site')||l.includes('web')) return responses.services; if (l.includes('cout')||l.includes('tarif')||l.includes('combien')) return responses.prix; if (l.includes('temps')||l.includes('rapide')||l.includes('livr')) return responses.delai; if (l.includes('projet')||l.includes('realisation')||l.includes('exemple')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')) return responses.ia; return responses.default; }
     function render() {
@@ -831,7 +831,7 @@ function initComparison() {
         { label: 'Cout moyen', classic: '15 000 \u2014 50 000\u20AC', flash: '890 \u2014 4 990\u20AC', icon: '\u{1F4B0}' },
         { label: 'Technologies', classic: 'WordPress / Wix', flash: 'React, Next.js, IA', icon: '\u2699\uFE0F' },
         { label: 'Maintenance', classic: '200\u20AC/mois min', flash: 'Incluse 12 mois', icon: '\u{1F527}' },
-        { label: 'Performance', classic: 'Lighthouse ~60', flash: 'Lighthouse 95+', icon: '\u{1F680}' },
+        { label: 'Performance', classic: 'Sites lents', flash: 'Ultra-rapide, optimisé', icon: '\u{1F680}' },
         { label: 'Support', classic: 'Email lent', flash: '< 2h, 24/7', icon: '\u{1F4AC}' },
         { label: 'Personnalisation', classic: 'Templates limites', flash: '100% sur mesure', icon: '\u{1F3A8}' },
         { label: 'SEO', classic: 'Basique', flash: 'Avance, optimise IA', icon: '\u{1F50D}' }
@@ -1102,7 +1102,7 @@ function initFAQ() {
         { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos tarifs commencent a <span class="faq-highlight">890\u20AC</span> pour un site vitrine. Chaque projet est chiffre sur mesure selon vos besoins. Devis gratuit en <strong>24h</strong>.', cat: 'business', icon: '\u{1F4B0}' },
         { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'projet', icon: '\u23F1\uFE0F' },
         { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 247 APIs connectees.', cat: 'technique', icon: '\u2699\uFE0F' },
-        { q: 'Proposez-vous une garantie ?', a: 'Oui ! <span class="faq-highlight">Garantie satisfait ou rembourse a 100%</span>. Si le resultat ne vous convient pas, on vous rembourse integralement.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
+        { q: 'Quel support proposez-vous ?', a: '<span class="faq-highlight">Support IA et monitoring automatise inclus a vie</span>. Support humain prioritaire inclus 1 an. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
         { q: 'Comment fonctionne le support ?', a: 'Support prioritaire avec reponse en <span class="faq-highlight">moins de 2 heures</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
         { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Plus de <span class="faq-highlight">50 projets</span> livres dans des secteurs varies : SaaS, e-commerce, sante, fintech.', cat: 'projet', icon: '\u{1F3A8}' },
         { q: 'Est-ce que le SEO est inclus ?', a: 'Oui, chaque projet inclut une <strong>optimisation SEO technique</strong> : meta tags, structured data, Core Web Vitals, sitemap XML, schema.org.', cat: 'technique', icon: '\u{1F50D}' },
@@ -1122,7 +1122,7 @@ function initFAQ() {
         { q: 'Quel est votre avantage par rapport a une agence classique ?', a: '<span class="faq-highlight">3 a 5x moins cher</span>, livraison en jours au lieu de mois, technologies modernes vs WordPress, support reactif inclus 12 mois.', cat: 'general', icon: '\u{1F680}' },
         { q: 'Faites-vous des applications mobiles ?', a: 'Nous specialisons dans les <strong>Progressive Web Apps (PWA)</strong> qui fonctionnent comme des apps natives. Pour des apps natives, nous recommandons React Native.', cat: 'technique', icon: '\u{1F4F1}' },
         { q: 'Comment demarrer mon projet ?', a: 'Simple : <strong>1)</strong> Remplissez le formulaire ci-dessous, <strong>2)</strong> On vous rappelle en <2h, <strong>3)</strong> Devis gratuit en 24h, <strong>4)</strong> On demarre !', cat: 'projet', icon: '\u{1F3AF}' },
-        { q: 'Puis-je avoir un devis gratuit ?', a: 'Oui, <span class="faq-highlight">100% gratuit et sans engagement</span>. Remplissez le formulaire ou ecrivez-nous a contact@flashai.dev. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F4E9}' },
+        { q: 'Puis-je avoir un devis gratuit ?', a: 'Oui, <span class="faq-highlight">100% gratuit et sans engagement</span>. Remplissez le formulaire ou ecrivez-nous a flashsiteagency@gmail.com. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F4E9}' },
         { q: 'Offrez-vous de la formation ?', a: 'Oui ! Chaque projet inclut une <strong>session de formation</strong> pour votre equipe + documentation complete de 40+ pages.', cat: 'support', icon: '\u{1F393}' },
         { q: 'Comment l\'IA est-elle integree dans vos projets ?', a: 'Chatbots intelligents (GPT-4, Claude, RAG), automatisations IA (classification emails, generation contenu, extraction donnees), <span class="faq-highlight">analytics predictifs</span> (prevision ventes, scoring leads). L\'IA apporte une valeur mesurable a chaque projet.', cat: 'ia', icon: '\u{1F9E0}' },
         { q: 'Comment se deroule un projet typique ?', a: '<strong>4 phases</strong> : 1) Discovery (30 min) — appel pour comprendre vos besoins. 2) Prototype (48h) — maquette interactive. 3) Build (3-10 jours) — developpement agile avec demos quotidiennes. 4) Launch — deploiement, formation, monitoring 24/7.', cat: 'projet', icon: '\u{1F4CB}' },
@@ -1421,7 +1421,7 @@ function initSmartForm() {
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
             '<div class="sf-fields">' + config.fields.map(f => renderField(f, type.color)).join('') + '</div>' +
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
-            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">\u2705 Devis gratuit \u2022 Reponse garantie en moins de 2h \u2022 Sans engagement</p></div>' +
+            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">\u2705 Devis gratuit \u2022 Reponse en moins de 2h \u2022 Sans engagement</p></div>' +
             '</div>';
         // Chips toggle
         container.querySelectorAll('.sf-chips').forEach(group => {
@@ -1665,7 +1665,7 @@ function initSectionFlashReveal() {
 <p><strong>FlashAI</strong> \u2014 Entreprise isra\u00e9lienne<br>
 Fond\u00e9e par <strong>Emmanuel Smadja</strong><br>
 Si\u00e8ge social : Isra\u00ebl<br>
-Email : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a><br>
+Email : <a href="mailto:flashsiteagency@gmail.com" style="color:#00f0ff">flashsiteagency@gmail.com</a><br>
 T\u00e9l\u00e9phone : <a href="tel:+33758787025" style="color:#00f0ff">+33 7 58 78 70 25</a><br>
 Activit\u00e9 : Agence digitale \u2014 cr\u00e9ation de sites web, CRM, chatbots IA, automatisations</p>
 <h3>2. H\u00e9bergement</h3>
@@ -1680,7 +1680,7 @@ Activit\u00e9 : Agence digitale \u2014 cr\u00e9ation de sites web, CRM, chatbots
         'politique-confidentialite': `<h2>Politique de Confidentialit\u00e9</h2>
 <h3>1. Responsable du traitement</h3>
 <p><strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja.<br>
-Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>
+Contact : <a href="mailto:flashsiteagency@gmail.com" style="color:#00f0ff">flashsiteagency@gmail.com</a></p>
 <h3>2. Donn\u00e9es collect\u00e9es</h3>
 <p>Nous collectons les donn\u00e9es suivantes uniquement via le formulaire de contact :</p>
 <ul>
@@ -1703,7 +1703,7 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
 <h3>6. Cookies</h3>
 <p>Ce site utilise uniquement des cookies techniques n\u00e9cessaires au bon fonctionnement du site. Aucun cookie publicitaire ou de tracking n\u2019est utilis\u00e9.</p>
 <h3>7. Vos droits</h3>
-<p>Conform\u00e9ment \u00e0 la loi isra\u00e9lienne sur la protection de la vie priv\u00e9e (Privacy Protection Law, 5741-1981) et au RGPD pour les r\u00e9sidents europ\u00e9ens, vous disposez des droits d\u2019acc\u00e8s, de rectification, de suppression et de portabilit\u00e9 de vos donn\u00e9es. Contactez-nous \u00e0 <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a>.</p>
+<p>Conform\u00e9ment \u00e0 la loi isra\u00e9lienne sur la protection de la vie priv\u00e9e (Privacy Protection Law, 5741-1981) et au RGPD pour les r\u00e9sidents europ\u00e9ens, vous disposez des droits d\u2019acc\u00e8s, de rectification, de suppression et de portabilit\u00e9 de vos donn\u00e9es. Contactez-nous \u00e0 <a href="mailto:flashsiteagency@gmail.com" style="color:#00f0ff">flashsiteagency@gmail.com</a>.</p>
 <h3>8. S\u00e9curit\u00e9</h3>
 <p>Nous mettons en \u0153uvre des mesures de s\u00e9curit\u00e9 techniques et organisationnelles (SSL/TLS, chiffrement AES-256) pour prot\u00e9ger vos donn\u00e9es personnelles.</p>`,
 
@@ -1726,9 +1726,7 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
 <p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Le solde est d\u00fb \u00e0 la livraison du projet.</p>
 <h3>5. D\u00e9lais de livraison</h3>
 <p>Les d\u00e9lais indicatifs sont : site vitrine (5 jours), CRM/dashboard (7-10 jours), projet complexe (10-14 jours). Ces d\u00e9lais courent \u00e0 compter de la validation du cahier des charges et de la r\u00e9ception de l\u2019acompte.</p>
-<h3>6. Garantie satisfait ou rembours\u00e9</h3>
-<p>FlashAI offre une <strong>garantie satisfait ou rembours\u00e9</strong>. Si le Client n\u2019est pas satisfait du r\u00e9sultat apr\u00e8s les r\u00e9visions pr\u00e9vues, l\u2019acompte est int\u00e9gralement rembours\u00e9 dans un d\u00e9lai de 14 jours.</p>
-<h3>7. Propri\u00e9t\u00e9 et livraison</h3>
+<h3>6. Propri\u00e9t\u00e9 et livraison</h3>
 <p>Le transfert de propri\u00e9t\u00e9 du code source et des livrables s\u2019effectue au paiement int\u00e9gral. Le Client re\u00e7oit un acc\u00e8s complet au code source, aux acc\u00e8s h\u00e9bergement et \u00e0 toute la documentation technique.</p>
 <h3>8. Support et maintenance</h3>
 <p>Un support technique est inclus pendant 12 mois apr\u00e8s la livraison. Au-del\u00e0, un contrat de maintenance peut \u00eatre propos\u00e9.</p>
@@ -1737,7 +1735,7 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
 <h3>10. Droit applicable et litiges</h3>
 <p>Les pr\u00e9sentes CGV sont r\u00e9gies par le droit isra\u00e9lien. En cas de litige, les parties s\u2019engagent \u00e0 rechercher une solution amiable. \u00c0 d\u00e9faut, les tribunaux d\u2019Isra\u00ebl seront seuls comp\u00e9tents.</p>
 <h3>11. Contact</h3>
-<p>Pour toute question relative aux pr\u00e9sentes CGV : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>`
+<p>Pour toute question relative aux pr\u00e9sentes CGV : <a href="mailto:flashsiteagency@gmail.com" style="color:#00f0ff">flashsiteagency@gmail.com</a></p>`
     };
 
     function openModal(page) {
@@ -1769,7 +1767,7 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
             color: '#00f0ff',
             intro: 'Un site web professionnel, performant et optimise pour convertir vos visiteurs en clients.',
             sections: [
-                { title: 'Ce que vous obtenez', items: ['Site vitrine, landing page ou e-commerce 100% sur mesure', 'Design responsive adapte mobile, tablette et desktop', 'Score Lighthouse 95+ garanti (performance, SEO, accessibilite)', 'Integration de vos contenus, textes, images, videos', 'Formulaire de contact et/ou prise de RDV integre', 'Hebergement 1 an offert + nom de domaine'] },
+                { title: 'Ce que vous obtenez', items: ['Site vitrine, landing page ou e-commerce 100% sur mesure', 'Design responsive adapte mobile, tablette et desktop', 'Performance optimisee (SEO, accessibilite, vitesse)', 'Integration de vos contenus, textes, images, videos', 'Formulaire de contact et/ou prise de RDV integre', 'Hebergement 1 an offert + nom de domaine'] },
                 { title: 'Technologies utilisees', items: ['React / Next.js pour les performances', 'TailwindCSS pour un design pixel-perfect', 'Deploiement sur Vercel, Netlify ou votre serveur', 'SSL, CDN et optimisations automatiques'] },
                 { title: 'Deroulement typique', items: ['Jour 1 : Appel decouverte 30 min + brief', 'Jour 2-3 : Maquette interactive a valider', 'Jour 3-5 : Developpement et integration', 'Jour 5 : Mise en ligne + formation', 'Suivi et support email inclus'] },
                 { title: 'Tarif indicatif', items: ['A partir de 390\u20AC pour un site vitrine', 'E-commerce : a partir de 790\u20AC', 'Hebergement 1 an inclus dans tous les plans'] }
@@ -1818,7 +1816,7 @@ Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@fla
             intro: 'Soyez visible sur Google. On optimise votre site pour attirer du trafic qualifie.',
             sections: [
                 { title: 'Ce que vous obtenez', items: ['Audit SEO complet de votre site', 'Optimisation Core Web Vitals (vitesse, UX)', 'Strategie de mots-cles adaptee a votre marche', 'Optimisation on-page (titres, meta, structure)', 'Schema.org et donnees structurees', 'Rapport mensuel de performances'] },
-                { title: 'Resultats mesurables', items: ['+200% de trafic organique en moyenne a 3 mois', 'Score Lighthouse 95+ garanti', 'Amelioration des positions Google', 'Plus de leads qualifies via le search'] },
+                { title: 'Resultats mesurables', items: ['+200% de trafic organique en moyenne a 3 mois', 'Performance web optimisee', 'Amelioration des positions Google', 'Plus de leads qualifies via le search'] },
                 { title: 'Notre approche', items: ['Analyse de la concurrence et opportunites', 'Contenu optimise avec l\'aide de l\'IA', 'Suivi et ajustements mensuels', 'Formation pour maintenir les bonnes pratiques'] },
                 { title: 'Tarif indicatif', items: ['Audit SEO ponctuel : a partir de 290\u20AC', 'Optimisation complete : a partir de 590\u20AC', 'Accompagnement mensuel : sur devis'] }
             ]
