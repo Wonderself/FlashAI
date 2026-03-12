@@ -331,13 +331,15 @@
 
     <!-- TOP: Badge Paris/TLV — 5px below header -->
     <script>
-    // Position badge exactly 10px below the visible header content bottom
+    // 1. Set --vh to real 1% of visible viewport (fixes mobile browser chrome)
+    function setVH(){document.documentElement.style.setProperty('--vh',window.innerHeight/100+'px');}
+    setVH(); window.addEventListener('resize',setVH);
+    // 2. Position badge below logo
     requestAnimationFrame(function(){
         var hdr=document.getElementById('main-header');
         var b=document.getElementById('hero-badge');
         var hero=document.getElementById('hero');
         if(!hdr||!b||!hero) return;
-        // Find the logo link (first <a> in header) — its bottom = visual bottom of header content
         var logo=hdr.querySelector('a');
         var bot=logo?logo.getBoundingClientRect().bottom:hdr.getBoundingClientRect().bottom;
         var heroTop=hero.getBoundingClientRect().top;
