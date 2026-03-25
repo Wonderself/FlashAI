@@ -57,7 +57,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <!-- Three.js supprimé : le background utilise Canvas 2D, pas Three.js -->
     <!-- GSAP chargé après le contenu visible (non bloquant) -->
     <link rel="stylesheet" href="style.css">
@@ -154,7 +154,7 @@
         </div>
         <!-- Big animated logo -->
         <div class="loader-logo-epic" id="loader-logo-epic">
-            <img src="assets/logo-flashai-loader.png" alt="FlashAI" width="120" height="120" class="loader-logo-img">
+            <img src="assets/logo-icon.svg" alt="FlashAI" width="120" height="120" class="loader-logo-img">
             <!-- Progress ring -->
             <svg class="loader-ring" width="160" height="160" viewBox="0 0 160 160">
                 <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
@@ -195,7 +195,7 @@
         <div class="flex items-center justify-between h-16 lg:h-20">
             <a href="#" class="flex items-center gap-2 group" aria-label="FlashAI Accueil">
                 <div class="header-logo-icon">
-                    <img src="assets/logo-icon.png" alt="FlashAI" width="40" height="40" class="logo-icon-img">
+                    <img src="assets/logo-icon.svg" alt="FlashAI" width="40" height="40" class="logo-icon-img">
                 </div>
                 <span class="logo-3d-wrap"><span class="logo-3d-letter" style="--i:0">F</span><span class="logo-3d-letter" style="--i:1">l</span><span class="logo-3d-letter" style="--i:2">a</span><span class="logo-3d-letter" style="--i:3">s</span><span class="logo-3d-letter" style="--i:4">h</span><span class="logo-3d-letter logo-3d-ai" style="--i:5">A</span><span class="logo-3d-letter logo-3d-ai" style="--i:6">I</span></span>
             </a>
@@ -238,7 +238,7 @@
 
 <main>
 <!-- ============ HERO ============ -->
-<section id="hero" aria-label="Présentation FlashAI" class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
+<section id="hero" aria-label="Présentation FlashAI" class="relative flex items-center pt-20 pb-8 overflow-hidden hero-viewport">
     <canvas id="hero-particles"></canvas>
     <div class="hero-globe-container"><canvas id="hero-globe"></canvas></div>
     <div class="hero-grid-bg"></div>
@@ -263,7 +263,7 @@
                     <span class="pulse-dot"></span>
                     <span>Paris 🇫🇷 — Tel Aviv 🇮🇱 | Startup Nation</span>
                 </div>
-                <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] hero-title-main">
+                <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] hero-title-main">
                     Vos outils digitaux,<br>
                     <span class="gradient-text-hero" id="hero-morph">livrés en jours</span>
                 </h1>

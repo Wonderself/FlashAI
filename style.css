@@ -79,7 +79,7 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 @keyframes beam-pulse { 0%, 100% { opacity: 0; width: 60px; } 30% { opacity: 0.8; } 50% { opacity: 0.6; width: 300px; } 80% { opacity: 0.2; } }
 
 /* Letter-by-letter text reveal */
-.loader-text-reveal { font-family: "Space Grotesk", sans-serif; font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 2px; letter-spacing: 0.08em; }
+.loader-text-reveal { font-family: "Orbitron", "Space Grotesk", sans-serif; font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 2px; letter-spacing: 0.08em; }
 .loader-letter { display: inline-block; opacity: 0; transform: translateY(30px) scale(0.6) rotateX(40deg); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1), text-shadow 0.5s ease; color: white; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
 .loader-letter.visible { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); text-shadow: 0 0 20px rgba(255,255,255,0.4), 0 4px 8px rgba(0,0,0,0.5); }
 .loader-letter-accent { background: linear-gradient(135deg, #ff00ff, #00f0ff, #ff006e); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: loader-accent-shift 3s ease infinite; }
@@ -118,7 +118,7 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .logo-3d-wrap::before { content: ""; position: absolute; inset: -6px -10px; background: linear-gradient(105deg, transparent 0%, transparent 38%, rgba(255,255,255,0.08) 42%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.08) 58%, transparent 62%, transparent 100%); background-size: 250% 100%; animation: logo-shine-pass 3.5s ease-in-out infinite; pointer-events: none; z-index: 1; border-radius: 4px; }
 @keyframes logo-shine-pass { 0%, 20% { background-position: 200% 0; } 50%, 100% { background-position: -200% 0; } }
 
-.logo-3d-letter { display: inline-block; font-family: "Space Grotesk", sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: 0.04em; color: white; position: relative; transform-style: preserve-3d; animation: logo-letter-wave 4s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 0.12s); text-shadow: 0 1px 0 rgba(255,255,255,0.12), 0 2px 0 rgba(255,0,255,0.08), 0 3px 0 rgba(255,0,255,0.06), 0 4px 0 rgba(191,0,255,0.04), 0 5px 0 rgba(191,0,255,0.03), 0 6px 12px rgba(0,0,0,0.35), 0 12px 24px rgba(0,0,0,0.15), 0 0 8px rgba(255,0,255,0.2); transition: text-shadow 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1); will-change: transform; }
+.logo-3d-letter { display: inline-block; font-family: "Orbitron", "Space Grotesk", sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: 0.04em; color: white; position: relative; transform-style: preserve-3d; animation: logo-letter-wave 4s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 0.12s); text-shadow: 0 1px 0 rgba(255,255,255,0.12), 0 2px 0 rgba(255,0,255,0.08), 0 3px 0 rgba(255,0,255,0.06), 0 4px 0 rgba(191,0,255,0.04), 0 5px 0 rgba(191,0,255,0.03), 0 6px 12px rgba(0,0,0,0.35), 0 12px 24px rgba(0,0,0,0.15), 0 0 8px rgba(255,0,255,0.2); transition: text-shadow 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1); will-change: transform; }
 @keyframes logo-letter-wave { 0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); } 25% { transform: translateY(-2px) rotateX(4deg) rotateY(1deg); } 50% { transform: translateY(-3px) rotateX(0deg) rotateY(0deg); } 75% { transform: translateY(-1px) rotateX(-2deg) rotateY(-1deg); } }
 .logo-3d-letter::before { content: ""; position: absolute; inset: -4px; background: radial-gradient(circle, rgba(0,240,255,0.2), transparent 70%); border-radius: 4px; opacity: 0; animation: logo-letter-flash 6s ease infinite; animation-delay: calc(var(--i, 0) * 0.4s + 2s); pointer-events: none; }
 @keyframes logo-letter-flash { 0%, 92%, 100% { opacity: 0; } 94% { opacity: 0.8; } 96% { opacity: 0; } 97% { opacity: 0.5; } 99% { opacity: 0; } }
@@ -991,30 +991,35 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 /* ================================================================
    SMALL HEIGHT SCREENS (13" laptops, ~768px viewport height)
    ================================================================ */
-@media (max-height: 820px) {
-    #hero { min-height: auto !important; padding-top: 4.5rem; padding-bottom: 1.5rem; }
-    #hero h1 { font-size: 2.8rem !important; line-height: 1.1; }
+@media (max-height: 900px) {
+    .hero-viewport { min-height: calc(100svh - 48px); min-height: calc(100vh - 48px); }
+    #hero { padding-top: 4.5rem; padding-bottom: 1rem; }
+    #hero h1 { font-size: 3rem !important; line-height: 1.08; }
     #hero p.text-lg { font-size: 0.95rem !important; line-height: 1.5; }
     #hero .space-y-8 { gap: 0.75rem; }
     #hero .pt-4 { padding-top: 0.25rem !important; }
     .hero-terminal { max-height: 180px; overflow: hidden; }
     .terminal-body { min-height: 120px; max-height: 160px; }
 }
-@media (max-height: 700px) {
-    #hero { padding-top: 3.5rem; padding-bottom: 1rem; }
-    #hero h1 { font-size: 2.2rem !important; line-height: 1.1; }
+@media (max-height: 750px) {
+    .hero-viewport { min-height: calc(100svh - 44px); min-height: calc(100vh - 44px); }
+    #hero { padding-top: 4rem; padding-bottom: 0.5rem; }
+    #hero h1 { font-size: 2.5rem !important; line-height: 1.08; }
     #hero p.text-lg { font-size: 0.88rem !important; }
     .hero-terminal { max-height: 140px; }
     #hero .flex.flex-wrap.gap-4 { gap: 0.5rem; }
     #hero .btn-glow-lg, #hero .btn-outline-lg { padding: 0.5rem 1rem; font-size: 0.82rem; }
     #hero .space-y-8 { gap: 0.5rem; }
 }
-@media (max-height: 600px) {
-    #hero { padding-top: 3rem; padding-bottom: 0.5rem; }
-    #hero h1 { font-size: 1.8rem !important; }
-    #hero p.text-lg { font-size: 0.82rem !important; }
+@media (max-height: 650px) {
+    .hero-viewport { min-height: calc(100svh - 40px); min-height: calc(100vh - 40px); }
+    #hero { padding-top: 3.5rem; padding-bottom: 0.25rem; }
+    #hero h1 { font-size: 2rem !important; }
+    #hero p.text-lg { font-size: 0.82rem !important; max-height: 3.5em; overflow: hidden; }
     .hero-terminal { display: none; }
     #hero .pt-4 { display: none; }
+    #hero .space-y-8 { gap: 0.4rem; }
+    .marquee-pill-color { padding: 0.2rem 0.5rem !important; font-size: 0.7rem !important; }
 }
 
 /* ================================================================
@@ -1569,7 +1574,7 @@ section h2::after {
 .legal-modal { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; }
 .legal-modal-backdrop { position: absolute; inset: 0; background: rgba(2,6,23,0.92); backdrop-filter: blur(12px); }
 .legal-modal-content { position: relative; width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto; background: rgba(15,23,42,0.95); border: 1px solid rgba(255,255,255,0.08); border-radius: 1.25rem; padding: 2rem; color: #cbd5e1; font-size: 0.85rem; line-height: 1.7; scrollbar-width: thin; scrollbar-color: #ff00ff rgba(15,23,42,0.5); }
-.legal-modal-content h2 { font-family: "Space Grotesk",sans-serif; font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ff00ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.legal-modal-content h2 { font-family: "Orbitron","Space Grotesk",sans-serif; font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ff00ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .legal-modal-content h3 { font-size: 1rem; font-weight: 700; color: white; margin: 1.5rem 0 0.75rem; }
 .legal-modal-content p { margin-bottom: 0.75rem; }
 .legal-modal-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
@@ -1629,19 +1634,10 @@ section { position: relative; }
 /* Scroll progress bar glow */
 .scroll-progress { box-shadow: 0 0 10px rgba(255,0,255,0.4), 0 0 20px rgba(0,240,255,0.2); }
 
-/* Hero h1 subtle text glow + bigger title */
+/* Hero fills viewport, ticker sticks at bottom */
+.hero-viewport { min-height: calc(100svh - 52px); min-height: calc(100vh - 52px); }
 #hero h1 { text-shadow: 0 0 40px rgba(255,255,255,0.08); }
 .hero-title-main { letter-spacing: -0.02em; }
-
-/* Compact marquee on small screens */
-@media (max-height: 820px) {
-    .marquee-row { font-size: 0.75rem; }
-    .marquee-pill-color { padding: 0.25rem 0.6rem !important; font-size: 0.7rem !important; }
-}
-@media (max-height: 600px) {
-    .marquee-row { font-size: 0.65rem; }
-    .marquee-pill-color { padding: 0.2rem 0.5rem !important; font-size: 0.65rem !important; }
-}
 
 /* Terminal glow effect */
 .hero-terminal { animation: terminal-glow 5s ease-in-out infinite; }
