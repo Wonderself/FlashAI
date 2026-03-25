@@ -960,10 +960,6 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .service-detail-list li { padding: 0.4rem 0 0.4rem 1.5rem; position: relative; color: #cbd5e1; font-size: 0.9rem; }
 .service-detail-list li::before { content: "→"; position: absolute; left: 0; color: #00f0ff; }
 
-/* --- LUMIÈRE BROTHERS --- */
-.lumiere-film-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(255,215,0,0.05) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(255,140,0,0.04) 0%, transparent 50%); pointer-events: none; }
-.lumiere-card { border-color: rgba(255,215,0,0.12); }
-.lumiere-card:hover { border-color: rgba(255,215,0,0.3); box-shadow: 0 0 30px rgba(255,215,0,0.08); }
 
 /* --- ÉQUIPE --- */
 .team-card { text-align: center; padding: 2rem 1.5rem; border-radius: 1.25rem; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(99, 102, 241, 0.12); transition: all 0.4s ease; }
@@ -988,6 +984,27 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .toast { padding: 0.75rem 1.5rem; border-radius: 0.75rem; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(99,102,241,0.3); color: white; font-size: 0.85rem; backdrop-filter: blur(10px); animation: toast-in 0.4s ease, toast-out 0.4s ease 2.5s forwards; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 @keyframes toast-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes toast-out { from { opacity: 1; } to { opacity: 0; transform: translateY(-20px); } }
+
+/* ================================================================
+   SMALL HEIGHT SCREENS (13" laptops, ~768px viewport height)
+   ================================================================ */
+@media (max-height: 820px) {
+    #hero { min-height: auto !important; padding-top: 5rem; padding-bottom: 2rem; }
+    #hero h1 { font-size: 2.5rem !important; line-height: 1.15; }
+    #hero p.text-lg { font-size: 0.95rem !important; }
+    #hero .space-y-8 { gap: 1rem; }
+    #hero .pt-4 { padding-top: 0.5rem !important; }
+    .hero-terminal { max-height: 200px; overflow: hidden; }
+    .terminal-body { min-height: 140px; max-height: 180px; }
+    #trust-bar { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+}
+@media (max-height: 700px) {
+    #hero { padding-top: 4rem; padding-bottom: 1.5rem; }
+    #hero h1 { font-size: 2rem !important; }
+    .hero-terminal { max-height: 160px; }
+    #hero .flex.flex-wrap.gap-4 { gap: 0.5rem; }
+    #hero .btn-glow-lg, #hero .btn-outline-lg { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+}
 
 /* ================================================================
    RESPONSIVE / MOBILE

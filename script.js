@@ -3,6 +3,10 @@
  * Rose Sparkle Cursor, Slow Terminal, 3D Pricing, Smart Form, Knowledge Base FAQ
  */
 document.addEventListener('DOMContentLoaded', () => {
+    /* Toujours démarrer en haut de page */
+    window.scrollTo(0, 0);
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
     /* === CRITICAL PATH : loader + above-the-fold === */
     initLoader();
     initScrollProgress();
