@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initCTACanvas();
         initCTATimer();
         initSmartForm();
-        initTrustBar();
+        /* initTrustBar removed */
         initMagneticBtn();
         initScrollTop();
         initSmoothAnchors();
@@ -1436,14 +1436,7 @@ function launchConfetti() {
 }
 
 /* ========== TRUST BAR ========== */
-function initTrustBar() {
-    const marquee = document.getElementById('trust-marquee');
-    if (!marquee) return;
-    const logos = ['TechVision','FoodExpress','MediCare Pro','CryptoTrack','EduSmart','LogiFlow','GreenEnergy','LegalBot','FinanceHub','DataWave','CloudNest','AutoPilot','SmartRetail','DevForge','SkyMetrics','NeoBank'];
-    const colors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87','#ff8c00','#e879f9','#06b6d4','#f472b6','#a78bfa','#34d399','#fb923c','#818cf8','#f87171','#38bdf8','#facc15'];
-    const items = logos.map((name, i) => '<div class="trust-logo" style="--tl-color:' + colors[i % colors.length] + '"><span class="trust-logo-icon" style="color:' + colors[i % colors.length] + '">' + name.charAt(0) + '</span><span class="trust-logo-name">' + name + '</span></div>').join('');
-    marquee.innerHTML = '<div class="trust-track">' + items + items + '</div>';
-}
+/* initTrustBar removed — fake client logos ticker deleted */
 
 /* ========== MAGNETIC BUTTON ========== */
 function initMagneticBtn() {

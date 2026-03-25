@@ -992,21 +992,29 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
    SMALL HEIGHT SCREENS (13" laptops, ~768px viewport height)
    ================================================================ */
 @media (max-height: 820px) {
-    #hero { min-height: auto !important; padding-top: 5rem; padding-bottom: 2rem; }
-    #hero h1 { font-size: 2.5rem !important; line-height: 1.15; }
-    #hero p.text-lg { font-size: 0.95rem !important; }
-    #hero .space-y-8 { gap: 1rem; }
-    #hero .pt-4 { padding-top: 0.5rem !important; }
-    .hero-terminal { max-height: 200px; overflow: hidden; }
-    .terminal-body { min-height: 140px; max-height: 180px; }
-    #trust-bar { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    #hero { min-height: auto !important; padding-top: 4.5rem; padding-bottom: 1.5rem; }
+    #hero h1 { font-size: 2.8rem !important; line-height: 1.1; }
+    #hero p.text-lg { font-size: 0.95rem !important; line-height: 1.5; }
+    #hero .space-y-8 { gap: 0.75rem; }
+    #hero .pt-4 { padding-top: 0.25rem !important; }
+    .hero-terminal { max-height: 180px; overflow: hidden; }
+    .terminal-body { min-height: 120px; max-height: 160px; }
 }
 @media (max-height: 700px) {
-    #hero { padding-top: 4rem; padding-bottom: 1.5rem; }
-    #hero h1 { font-size: 2rem !important; }
-    .hero-terminal { max-height: 160px; }
+    #hero { padding-top: 3.5rem; padding-bottom: 1rem; }
+    #hero h1 { font-size: 2.2rem !important; line-height: 1.1; }
+    #hero p.text-lg { font-size: 0.88rem !important; }
+    .hero-terminal { max-height: 140px; }
     #hero .flex.flex-wrap.gap-4 { gap: 0.5rem; }
-    #hero .btn-glow-lg, #hero .btn-outline-lg { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+    #hero .btn-glow-lg, #hero .btn-outline-lg { padding: 0.5rem 1rem; font-size: 0.82rem; }
+    #hero .space-y-8 { gap: 0.5rem; }
+}
+@media (max-height: 600px) {
+    #hero { padding-top: 3rem; padding-bottom: 0.5rem; }
+    #hero h1 { font-size: 1.8rem !important; }
+    #hero p.text-lg { font-size: 0.82rem !important; }
+    .hero-terminal { display: none; }
+    #hero .pt-4 { display: none; }
 }
 
 /* ================================================================
@@ -1244,12 +1252,7 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 @media (max-width: 639px) { .expertise-carousel { grid-template-columns: 1fr; } }
 .expertise-carousel > .expertise-grid { display: contents; }
 
-/* ========== TRUST BAR ========== */
-.trust-marquee { overflow: hidden; width: 100%; }
-.trust-logo { display: flex; align-items: center; gap: 0.5rem; font-family: "Space Grotesk", sans-serif; font-size: 0.9rem; font-weight: 600; white-space: nowrap; opacity: 0.6; transition: opacity 0.3s; padding: 0.5rem 1rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 0.5rem; background: rgba(15,23,42,0.4); backdrop-filter: blur(4px); }
-.trust-logo:hover { opacity: 1; }
-.trust-logo-icon { font-size: 1.1rem; }
-@keyframes trust-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* trust-bar CSS removed */
 
 /* ========== WHATSAPP FLOAT ========== */
 .whatsapp-float { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 999; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.3s, box-shadow 0.3s; animation: whatsapp-pulse 2s ease infinite; text-decoration: none; }
@@ -1321,9 +1324,7 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .devis-progress-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #00f0ff, #bf00ff); transition: width 0.5s cubic-bezier(0.22,1,0.36,1); }
 .devis-progress-wrap .devis-steps { position: relative; z-index: 1; }
 
-/* ========== TRUST BAR ENHANCED ========== */
-.trust-track { display: flex; gap: 1.5rem; animation: trust-scroll 40s linear infinite; width: max-content; }
-.trust-logo-name { background: linear-gradient(135deg, var(--tl-color, #94a3b8), rgba(255,255,255,0.7)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+/* trust-bar enhanced CSS removed */
 
 /* ========== SMOOTH TILT ON SCROLL FOR SECTIONS ========== */
 @keyframes section-tilt-in { from { transform: perspective(1200px) rotateX(2deg); opacity: 0.8; } to { transform: perspective(1200px) rotateX(0deg); opacity: 1; } }
@@ -1628,8 +1629,19 @@ section { position: relative; }
 /* Scroll progress bar glow */
 .scroll-progress { box-shadow: 0 0 10px rgba(255,0,255,0.4), 0 0 20px rgba(0,240,255,0.2); }
 
-/* Hero h1 subtle text glow */
+/* Hero h1 subtle text glow + bigger title */
 #hero h1 { text-shadow: 0 0 40px rgba(255,255,255,0.08); }
+.hero-title-main { letter-spacing: -0.02em; }
+
+/* Compact marquee on small screens */
+@media (max-height: 820px) {
+    .marquee-row { font-size: 0.75rem; }
+    .marquee-pill-color { padding: 0.25rem 0.6rem !important; font-size: 0.7rem !important; }
+}
+@media (max-height: 600px) {
+    .marquee-row { font-size: 0.65rem; }
+    .marquee-pill-color { padding: 0.2rem 0.5rem !important; font-size: 0.65rem !important; }
+}
 
 /* Terminal glow effect */
 .hero-terminal { animation: terminal-glow 5s ease-in-out infinite; }
