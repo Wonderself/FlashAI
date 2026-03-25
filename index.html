@@ -58,11 +58,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Three.js supprimé : le background utilise Canvas 2D, pas Three.js -->
+    <!-- GSAP chargé après le contenu visible (non bloquant) -->
     <link rel="stylesheet" href="style.css">
+    <script>
+    /* Lazy-load GSAP après le loader */
+    function loadGSAP() {
+        var s1 = document.createElement('script');
+        s1.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+        s1.onload = function() {
+            var s2 = document.createElement('script');
+            s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js';
+            document.head.appendChild(s2);
+        };
+        document.head.appendChild(s1);
+    }
+    </script>
     <noscript><style>.reveal{opacity:1!important;transform:none!important}#page-loader{display:none!important}</style></noscript>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"ProfessionalService","name":"FlashAI","alternateName":"Flash AI","description":"Agence digitale sur mesure spécialisée en création de sites web, CRM, dashboards, chatbots IA et automatisations. Fondée par Emmanuel Smadja, entre Paris et Tel Aviv (Startup Nation), 3 à 5 fois moins cher qu'une agence classique, livraison en 5 jours.","founder":{"@type":"Person","name":"Emmanuel Smadja"},"url":"https://flashai.dev","logo":"https://flashai.dev/og-image.jpg","image":"https://flashai.dev/og-image.jpg","email":"flashsiteagency@gmail.com","telephone":"+33758787025","foundingDate":"2024","numberOfEmployees":{"@type":"QuantitativeValue","minValue":5,"maxValue":15},"slogan":"Vos outils digitaux, livrés en jours","knowsLanguage":["fr","en","he"],"currenciesAccepted":"EUR","paymentAccepted":"Virement bancaire, Carte bancaire, PayPal","address":{"@type":"PostalAddress","streetAddress":"Rothschild Blvd","addressLocality":"Tel Aviv","addressRegion":"Tel Aviv District","postalCode":"6688101","addressCountry":"IL"},"geo":{"@type":"GeoCoordinates","latitude":"32.0853","longitude":"34.7818"},"areaServed":[{"@type":"Country","name":"France"},{"@type":"Country","name":"Belgium"},{"@type":"Country","name":"Switzerland"},{"@type":"Country","name":"Luxembourg"},{"@type":"Country","name":"Canada"},{"@type":"Country","name":"Israel"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services FlashAI","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Création de site web sur mesure","description":"Sites vitrines, landing pages, e-commerce. Design premium, responsive, SEO-optimisé, optimisé pour la performance."},"price":"890","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"CRM et ERP sur mesure","description":"Outils de gestion clients personnalisés avec pipelines commerciaux, automatisations et dashboards analytics."},"price":"1990","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Chatbot IA intelligent","description":"Assistants virtuels basés sur GPT-4, intégrables sur site web, WhatsApp, Messenger et Slack."},"price":"1490","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dashboard et analytics","description":"Tableaux de bord interactifs avec visualisations temps réel, KPIs personnalisés et alertes automatiques."},"price":"1790","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Automatisation de processus","description":"Workflows automatisés entre vos outils via Zapier, Make, n8n et scripts custom."},"price":"890","priceCurrency":"EUR"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"SEO technique et audit","description":"Audit complet, optimisation Core Web Vitals, résultats mesurables en 30 jours."},"price":"390","priceCurrency":"EUR"}]},"priceRange":"€€","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"50","bestRating":"5","worstRating":"1"}}

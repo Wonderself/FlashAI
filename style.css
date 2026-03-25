@@ -3,6 +3,9 @@
    Aurora Hero, 3D Pricing, Smart Form, Knowledge Base
    ============================================ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* Désactiver les animations non-loader pendant le chargement initial */
+body:not(.loaded) section, body:not(.loaded) footer { animation: none !important; transition: none !important; }
+body:not(.loaded) section *, body:not(.loaded) footer * { animation: none !important; transition: none !important; }
 html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #ff00ff #020617; overflow-x: hidden; overscroll-behavior-x: none; touch-action: pan-y; }
 html, body { max-width: 100%; overflow-x: hidden; -webkit-text-size-adjust: 100%; overscroll-behavior-x: none; }
 html::-webkit-scrollbar { width: 6px; }

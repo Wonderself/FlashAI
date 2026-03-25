@@ -3,44 +3,52 @@
  * Rose Sparkle Cursor, Slow Terminal, 3D Pricing, Smart Form, Knowledge Base FAQ
  */
 document.addEventListener('DOMContentLoaded', () => {
+    /* === CRITICAL PATH : loader + above-the-fold === */
     initLoader();
     initScrollProgress();
-    initSparkleCursor();
-    initScrollReveal();
     initHeader();
     initMobileMenu();
-    initCounters();
-    initMarquee();
-    initServices();
-    initHeroTerminal();
-    initHeroParticles();
-    initDemoCRM();
-    initDemoDevis();
-    initDemoChatbot();
-    initDemoDashboard();
-    initDemoTabs();
-    initComparison();
-    initExpertise();
-    initMethodTimeline();
-    initPortfolio();
-    // initTestimonials(); // removed
-    initGalaxy();
-    initToolsMobile();
-    initGalaxyCategories();
-    initPricing();
-    // initROICalculator(); // removed
-    initFAQ();
-    initCTACanvas();
-    initCTATimer();
-    initSmartForm();
-    initTrustBar();
-    initMagneticBtn();
-    initScrollTop();
-    initSmoothAnchors();
-    initThreeBackground();
-    initEasterEggs();
-    initElectricSparks();
-    initSectionFlashReveal();
+    initScrollReveal();
+
+    /* === DEFERRED : chargé après la fin du loader (~2s) === */
+    function initDeferred() {
+        initSparkleCursor();
+        initCounters();
+        initMarquee();
+        initServices();
+        initHeroTerminal();
+        initHeroParticles();
+        initDemoCRM();
+        initDemoDevis();
+        initDemoChatbot();
+        initDemoDashboard();
+        initDemoTabs();
+        initComparison();
+        initExpertise();
+        initMethodTimeline();
+        initPortfolio();
+        initGalaxy();
+        initToolsMobile();
+        initGalaxyCategories();
+        initPricing();
+        initFAQ();
+        initCTACanvas();
+        initCTATimer();
+        initSmartForm();
+        initTrustBar();
+        initMagneticBtn();
+        initScrollTop();
+        initSmoothAnchors();
+        initThreeBackground();
+        initEasterEggs();
+        initElectricSparks();
+        initSectionFlashReveal();
+        /* Charger GSAP maintenant (après contenu visible) */
+        if (typeof loadGSAP === 'function') loadGSAP();
+    }
+    /* Lance le deferred après que le loader disparaisse, ou après 2.5s max */
+    window._onLoaderDone = initDeferred;
+    setTimeout(function() { if (!window._deferredLoaded) { window._deferredLoaded = true; initDeferred(); } }, 2500);
 });
 
 function showToast(msg) {
@@ -117,7 +125,7 @@ function initLoader() {
                 ctx.shadowBlur = 0;
             }
         }
-        for (let i = 0; i < 120; i++) particles.push(new LoaderParticle());
+        for (let i = 0; i < 40; i++) particles.push(new LoaderParticle());
         let animId;
         function animateParticles() {
             ctx.clearRect(0, 0, cw, ch);
@@ -137,15 +145,15 @@ function initLoader() {
     /* --- Letter-by-letter reveal --- */
     const letters = document.querySelectorAll('.loader-letter');
     letters.forEach((letter, i) => {
-        setTimeout(() => letter.classList.add('visible'), 200 + i * 120);
+        setTimeout(() => letter.classList.add('visible'), 100 + i * 60);
     });
 
     /* --- Progress with ring + bar + boot text --- */
     const ringTotal = 452.4; /* 2 * PI * 72 */
-    const lines = ['[INIT] Booting FlashAI neural core...','[OK] 247 APIs connected','[OK] AI engine ready (GPT-4 + Claude)','[OK] Galaxy renderer initialized','[OK] Design system loaded','[OK] Sparkle engine armed','[OK] Security layer active','[LAUNCH] FlashAI v6.0 — Ready to deploy'];
+    const lines = ['[INIT] Booting FlashAI...','[OK] AI engine ready','[OK] Systems loaded','[LAUNCH] Ready to deploy'];
     let progress = 0, lineIdx = 0;
     const interval = setInterval(() => {
-        progress += Math.random() * 12 + 4;
+        progress += Math.random() * 22 + 10;
         if (progress > 100) progress = 100;
         if (bar) bar.style.width = progress + '%';
         if (pct) pct.textContent = Math.floor(progress) + '%';
@@ -179,14 +187,20 @@ function initLoader() {
                 }
                 setTimeout(() => {
                     loader.classList.add('hidden');
+                    document.body.classList.add('loaded');
                     document.body.style.overflow = '';
                     if (loader._particleAnim) cancelAnimationFrame(loader._particleAnim);
-                }, 800);
-            }, 300);
+                    /* Déclencher le chargement des modules différés */
+                    if (window._onLoaderDone && !window._deferredLoaded) {
+                        window._deferredLoaded = true;
+                        window._onLoaderDone();
+                    }
+                }, 500);
+            }, 200);
         }
-    }, 200);
-    /* Safety timeout */
-    setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 6000);
+    }, 120);
+    /* Safety timeout réduit */
+    setTimeout(() => { loader.classList.add('hidden'); document.body.classList.add('loaded'); document.body.style.overflow = ''; }, 3000);
 }
 
 function initScrollProgress() {
@@ -269,10 +283,10 @@ function initSparkleCursor() {
         ctx.clearRect(0, 0, w, h);
         const dx = mx - pmx, dy = my - pmy;
         const speed = Math.sqrt(dx * dx + dy * dy);
-        const spawnCount = Math.min(Math.floor(speed * 0.6) + 1, 10);
+        const spawnCount = Math.min(Math.floor(speed * 0.3) + 1, 5);
 
-        if (speed > 1 && frame % 2 === 0) {
-            for (let i = 0; i < spawnCount + 2; i++) {
+        if (speed > 2 && frame % 3 === 0) {
+            for (let i = 0; i < spawnCount; i++) {
                 particles.push(new Sparkle(mx, my));
             }
         }
@@ -1551,7 +1565,7 @@ function initThreeBackground() {
     function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
     resize();
     window.addEventListener('resize', resize);
-    const dots = Array.from({ length: 60 }, () => ({
+    const dots = Array.from({ length: 30 }, () => ({
         x: Math.random() * 1, y: Math.random() * 1,
         size: Math.random() * 1.5 + 0.5,
         speed: Math.random() * 0.0002 + 0.00005,
