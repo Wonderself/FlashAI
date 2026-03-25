@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://flashai.dev/">
     <meta property="og:title" content="Agence Digitale sur Mesure | FlashAI — Sites Web, CRM, Chatbot IA">
     <meta property="og:description" content="FlashAI : 8 packs digitaux clés en main à partir de 390€. Sites web, chatbots IA, automatisation, WhatsApp Business IA. Hébergement 1 an offert.">
-    <meta property="og:image" content="https://flashai.dev/og-image.jpg">
+    <meta property="og:image" content="https://flashai.dev/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="FlashAI — Agence Digitale Ultra-Premium">
@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FlashAI | Agence Digitale Ultra-Premium — Startup Nation">
     <meta name="twitter:description" content="Sites web, CRM, dashboards, chatbots IA, automatisations — sur mesure, 3-5x moins cher. Livraison en jours.">
-    <meta name="twitter:image" content="https://flashai.dev/og-image.jpg">
+    <meta name="twitter:image" content="https://flashai.dev/assets/og-image.jpg">
     <meta name="twitter:image:alt" content="FlashAI — Agence Digitale Ultra-Premium">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-596949253"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","AW-596949253");</script>
@@ -50,15 +50,14 @@
         }
     }
     </script>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 4L20 4L14 16H22L10 28L14 18H8L8 4Z' fill='%2300f0ff'/%3E%3C/svg%3E">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <!-- Three.js supprimé : le background utilise Canvas 2D, pas Three.js -->
     <!-- GSAP chargé après le contenu visible (non bloquant) -->
     <link rel="stylesheet" href="style.css">
@@ -155,52 +154,7 @@
         </div>
         <!-- Big animated logo -->
         <div class="loader-logo-epic" id="loader-logo-epic">
-            <svg class="logo-bolt-svg logo-bolt-svg-big" width="120" height="120" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="ldr-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#00f0ff"><animate attributeName="stop-color" values="#00f0ff;#bf00ff;#ff006e;#00f0ff" dur="4s" repeatCount="indefinite"/></stop>
-                        <stop offset="50%" stop-color="#bf00ff"><animate attributeName="stop-color" values="#bf00ff;#ff006e;#00f0ff;#bf00ff" dur="4s" repeatCount="indefinite"/></stop>
-                        <stop offset="100%" stop-color="#ff006e"><animate attributeName="stop-color" values="#ff006e;#00f0ff;#bf00ff;#ff006e" dur="4s" repeatCount="indefinite"/></stop>
-                    </linearGradient>
-                    <linearGradient id="ldr-bolt-edge" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
-                        <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
-                    </linearGradient>
-                    <filter id="ldr-bolt-glow">
-                        <feGaussianBlur stdDeviation="1.5" result="blur1"/>
-                        <feGaussianBlur stdDeviation="3.5" result="blur2"/>
-                        <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                    <filter id="ldr-bolt-mega">
-                        <feGaussianBlur stdDeviation="4" result="glow"/>
-                        <feColorMatrix in="glow" type="saturate" values="3" result="saturated"/>
-                        <feMerge><feMergeNode in="saturated"/><feMergeNode in="saturated"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                </defs>
-                <!-- Ultra glow background -->
-                <path class="logo-glow-pulse" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#ldr-bolt-grad)" filter="url(#ldr-bolt-mega)" opacity="0.5"/>
-                <!-- Shadow -->
-                <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,0,0,0.4)" transform="translate(1.5,1.5)"/>
-                <!-- Mid layer -->
-                <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,240,255,0.15)" transform="translate(0.7,0.7)" filter="url(#ldr-bolt-glow)"/>
-                <!-- Main bolt -->
-                <path class="logo-bolt-main" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#ldr-bolt-grad)" filter="url(#ldr-bolt-glow)"/>
-                <!-- Highlight edge -->
-                <path d="M9 5L19 5L13.5 15.5H21L10.5 27L14 17.5H9Z" fill="none" stroke="url(#ldr-bolt-edge)" stroke-width="0.5" opacity="0.8"/>
-                <!-- Inner shine -->
-                <path d="M11 7L17 7L13 14H18L11.5 23L14 16H11Z" fill="rgba(255,255,255,0.18)"/>
-                <!-- Energy lines -->
-                <line x1="20" y1="8" x2="26" y2="5" stroke="#00f0ff" stroke-width="0.5" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="2s" repeatCount="indefinite"/><animate attributeName="x2" values="24;29;24" dur="2s" repeatCount="indefinite"/></line>
-                <line x1="22" y1="14" x2="28" y2="12" stroke="#bf00ff" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.7;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/></line>
-                <line x1="6" y1="20" x2="1" y2="23" stroke="#ff006e" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.6;0" dur="2.2s" repeatCount="indefinite" begin="1s"/></line>
-                <line x1="8" y1="10" x2="3" y2="8" stroke="#ffd700" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite" begin="0.3s"/></line>
-                <!-- Spark particles -->
-                <circle cx="23" cy="5" r="0.7" fill="#00f0ff"><animate attributeName="opacity" values="0;1;0" dur="1.6s" repeatCount="indefinite"/><animate attributeName="cx" values="23;27;23" dur="1.6s" repeatCount="indefinite"/><animate attributeName="cy" values="5;2;5" dur="1.6s" repeatCount="indefinite"/></circle>
-                <circle cx="5" cy="19" r="0.6" fill="#ff006e"><animate attributeName="opacity" values="0;0.9;0" dur="2s" repeatCount="indefinite" begin="0.4s"/><animate attributeName="cx" values="5;2;5" dur="2s" repeatCount="indefinite" begin="0.4s"/></circle>
-                <circle cx="19" cy="27" r="0.5" fill="#bf00ff"><animate attributeName="opacity" values="0;0.8;0" dur="1.8s" repeatCount="indefinite" begin="0.9s"/><animate attributeName="cy" values="27;30;27" dur="1.8s" repeatCount="indefinite" begin="0.9s"/></circle>
-                <circle cx="25" cy="11" r="0.4" fill="#ffd700"><animate attributeName="opacity" values="0;1;0" dur="1.3s" repeatCount="indefinite" begin="0.2s"/><animate attributeName="r" values="0.4;0.9;0.4" dur="1.3s" repeatCount="indefinite" begin="0.2s"/></circle>
-                <circle cx="3" cy="12" r="0.35" fill="#00ff87"><animate attributeName="opacity" values="0;0.7;0" dur="2.4s" repeatCount="indefinite" begin="1.5s"/></circle>
-            </svg>
+            <img src="assets/logo-flashai-loader.png" alt="FlashAI" width="120" height="120" class="loader-logo-img">
             <!-- Progress ring -->
             <svg class="loader-ring" width="160" height="160" viewBox="0 0 160 160">
                 <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
@@ -241,50 +195,7 @@
         <div class="flex items-center justify-between h-16 lg:h-20">
             <a href="#" class="flex items-center gap-2 group" aria-label="FlashAI Accueil">
                 <div class="header-logo-icon">
-                    <svg class="logo-bolt-svg" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="hdr-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00f0ff"><animate attributeName="stop-color" values="#00f0ff;#bf00ff;#ff006e;#00f0ff" dur="4s" repeatCount="indefinite"/></stop>
-                                <stop offset="50%" stop-color="#bf00ff"><animate attributeName="stop-color" values="#bf00ff;#ff006e;#00f0ff;#bf00ff" dur="4s" repeatCount="indefinite"/></stop>
-                                <stop offset="100%" stop-color="#ff006e"><animate attributeName="stop-color" values="#ff006e;#00f0ff;#bf00ff;#ff006e" dur="4s" repeatCount="indefinite"/></stop>
-                            </linearGradient>
-                            <linearGradient id="hdr-bolt-edge" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
-                                <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
-                            </linearGradient>
-                            <filter id="hdr-bolt-glow">
-                                <feGaussianBlur stdDeviation="1.5" result="blur1"/>
-                                <feGaussianBlur stdDeviation="3" result="blur2"/>
-                                <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
-                            </filter>
-                            <filter id="hdr-bolt-soft">
-                                <feGaussianBlur stdDeviation="2.5" result="glow"/>
-                                <feColorMatrix in="glow" type="saturate" values="2" result="saturated"/>
-                                <feMerge><feMergeNode in="saturated"/><feMergeNode in="SourceGraphic"/></feMerge>
-                            </filter>
-                        </defs>
-                        <!-- Outer glow pulse layer -->
-                        <path class="logo-glow-pulse" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#hdr-bolt-grad)" filter="url(#hdr-bolt-soft)" opacity="0.4"/>
-                        <!-- Back shadow for depth -->
-                        <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,0,0,0.3)" transform="translate(1.2,1.2)"/>
-                        <!-- Mid depth layer -->
-                        <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,240,255,0.12)" transform="translate(0.6,0.6)" filter="url(#hdr-bolt-glow)"/>
-                        <!-- Main bolt -->
-                        <path class="logo-bolt-main" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#hdr-bolt-grad)" filter="url(#hdr-bolt-glow)"/>
-                        <!-- Highlight edge -->
-                        <path d="M9 5L19 5L13.5 15.5H21L10.5 27L14 17.5H9Z" fill="none" stroke="url(#hdr-bolt-edge)" stroke-width="0.5" opacity="0.7"/>
-                        <!-- Inner shine -->
-                        <path d="M11 7L17 7L13 14H18L11.5 23L14 16H11Z" fill="rgba(255,255,255,0.15)"/>
-                        <!-- Energy lines -->
-                        <line class="logo-energy-line" x1="20" y1="8" x2="26" y2="5" stroke="#00f0ff" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.7;0" dur="2.5s" repeatCount="indefinite" begin="0s"/><animate attributeName="x2" values="24;28;24" dur="2.5s" repeatCount="indefinite" begin="0s"/></line>
-                        <line class="logo-energy-line" x1="21" y1="14" x2="27" y2="13" stroke="#bf00ff" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.6;0" dur="3s" repeatCount="indefinite" begin="0.8s"/><animate attributeName="x2" values="25;29;25" dur="3s" repeatCount="indefinite" begin="0.8s"/></line>
-                        <line class="logo-energy-line" x1="7" y1="20" x2="3" y2="22" stroke="#ff006e" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.5;0" dur="2.8s" repeatCount="indefinite" begin="1.4s"/><animate attributeName="x2" values="4;1;4" dur="2.8s" repeatCount="indefinite" begin="1.4s"/></line>
-                        <!-- Spark particles -->
-                        <circle class="logo-spark" cx="22" cy="6" r="0.6" fill="#00f0ff"><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="cx" values="22;25;22" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="cy" values="6;3;6" dur="1.8s" repeatCount="indefinite" begin="0s"/></circle>
-                        <circle class="logo-spark" cx="6" cy="18" r="0.5" fill="#ff006e"><animate attributeName="opacity" values="0;0.8;0" dur="2.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="cx" values="6;3;6" dur="2.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="cy" values="18;20;18" dur="2.2s" repeatCount="indefinite" begin="0.6s"/></circle>
-                        <circle class="logo-spark" cx="18" cy="26" r="0.4" fill="#bf00ff"><animate attributeName="opacity" values="0;0.7;0" dur="2s" repeatCount="indefinite" begin="1.2s"/><animate attributeName="cx" values="18;15;18" dur="2s" repeatCount="indefinite" begin="1.2s"/><animate attributeName="cy" values="26;29;26" dur="2s" repeatCount="indefinite" begin="1.2s"/></circle>
-                        <circle class="logo-spark" cx="24" cy="12" r="0.35" fill="#ffd700"><animate attributeName="opacity" values="0;0.9;0" dur="1.5s" repeatCount="indefinite" begin="0.3s"/><animate attributeName="r" values="0.35;0.7;0.35" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></circle>
-                    </svg>
+                    <img src="assets/logo-icon.png" alt="FlashAI" width="40" height="40" class="logo-icon-img">
                 </div>
                 <span class="logo-3d-wrap"><span class="logo-3d-letter" style="--i:0">F</span><span class="logo-3d-letter" style="--i:1">l</span><span class="logo-3d-letter" style="--i:2">a</span><span class="logo-3d-letter" style="--i:3">s</span><span class="logo-3d-letter" style="--i:4">h</span><span class="logo-3d-letter logo-3d-ai" style="--i:5">A</span><span class="logo-3d-letter logo-3d-ai" style="--i:6">I</span></span>
             </a>
