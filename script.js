@@ -412,108 +412,32 @@ function initMarquee() {
 function initServices() {
     const grid = document.getElementById('services-grid');
     if (!grid) return;
-    const svcs = [
-        { icon: '\u{1F310}', title: 'Sites Web', desc: 'Sites vitrines, landing pages, e-commerce. Design premium, SEO-ready, ultra-rapides.', color: '#00f0ff', anim: 'browser' },
-        { icon: '\u{1F4CA}', title: 'CRM & ERP', desc: 'Outils de gestion clients sur mesure. Pipelines, automatisations, dashboards.', color: '#bf00ff', anim: 'dashboard' },
-        { icon: '\u{1F916}', title: 'Chatbot IA', desc: 'Assistants virtuels intelligents. Integration WhatsApp, site, Messenger.', color: '#ff006e', anim: 'chat' },
-        { icon: '\u26A1', title: 'Automatisation', desc: 'Workflows automatises entre vos outils. Zapier, Make, n8n, scripts custom.', color: '#ff8c00', anim: 'flow' },
-        { icon: '\u{1F50D}', title: 'SEO Technique', desc: 'Audit complet, Core Web Vitals. Resultats mesurables en 30 jours.', color: '#00ff87', anim: 'chart' },
-        { icon: '\u{1F6E1}\uFE0F', title: 'Securite', desc: 'SSL, WAF, audit OWASP, RGPD. Protection complete de vos assets.', color: '#ffd700', anim: 'shield' }
+    const packs = [
+        { icon: '🌐', title: 'Mon Site Pro', price: '390', desc: 'Site vitrine ou landing page sur mesure, design responsive, SEO de base, formulaire de contact.', color: '#00f0ff', delay: '5-10j', features: ['Design premium responsive', 'SEO technique inclus', 'Formulaire de contact', 'Hébergement 1 an offert'] },
+        { icon: '🤖', title: 'Mon Assistant Client 24/7', price: '500', desc: 'Chatbot IA entrainé sur vos données. Répond à vos clients jour et nuit sur votre site ou WhatsApp.', color: '#ff006e', delay: '5-7j', features: ['Chatbot IA (GPT-4)', 'Entrainé sur vos données', 'Intégration site + WhatsApp', 'Dashboard conversations'] },
+        { icon: '⚡', title: 'Mon Business Automatisé', price: '1 000', desc: 'Automatisez vos tâches répétitives : emails, CRM, factures, relances. Gagnez des heures chaque semaine.', color: '#ff8c00', delay: '7-10j', features: ['Workflows automatisés', 'Connexion à vos outils', 'CRM intelligent', 'Rapports automatiques'] },
+        { icon: '📞', title: 'Mon Standard Tél. IA', price: '1 000', desc: 'Standard téléphonique intelligent qui répond, qualifie et redirige vos appels automatiquement.', color: '#bf00ff', delay: '7-10j', features: ['Réception appels 24/7', 'Qualification automatique', 'Transfert intelligent', 'Historique & analytics'] },
+        { icon: '🧠', title: 'Mon Agent IA Métier', price: '1 500', desc: 'Un agent IA personnalisé pour votre métier : rédaction, analyse, gestion, support — il travaille pour vous.', color: '#00ff87', delay: '10-15j', features: ['Agent IA sur mesure', 'Adapté à votre métier', 'Automatisation avancée', 'Intégration complète'] },
+        { icon: '💬', title: 'WhatsApp Business IA', price: '800', desc: 'Transformez WhatsApp en machine de vente : catalogue, commandes, support client — tout automatisé.', color: '#25D366', delay: '5-7j', features: ['Catalogue produits', 'Prise de commandes', 'Réponses automatiques', 'Notifications clients'] },
+        { icon: '🎓', title: 'Formation IA Business', price: '200', priceSuffix: '/session', desc: 'Formez votre équipe aux outils IA : ChatGPT, automatisation, productivité. Sessions pratiques et concrètes.', color: '#ffd700', delay: '1 session', features: ['Formation pratique', 'Outils IA concrets', 'Cas d\'usage métier', 'Support post-formation'] },
+        { icon: '🚀', title: 'Mon App / MVP', price: '2 000', desc: 'Votre idée d\'application transformée en produit fonctionnel. Du concept au lancement en quelques semaines.', color: '#6366f1', delay: '15-30j', features: ['Application sur mesure', 'Design UX/UI pro', 'Backend & API', 'Déploiement inclus'] }
     ];
-    grid.innerHTML = svcs.map((s, i) => '<div class="bento-card reveal" style="--card-glow:' + s.color + '30;transition-delay:' + (i*0.1) + 's" data-tilt><div class="bento-card-glow"></div><div class="bento-icon" style="background:' + s.color + '15;color:' + s.color + '">' + s.icon + '</div><h3 class="font-display font-bold text-lg mb-2">' + s.title + '</h3><p class="text-surface-400 text-sm leading-relaxed">' + s.desc + '</p><div class="bento-mini-anim" id="bento-anim-' + s.anim + '"></div></div>').join('');
-    grid.querySelectorAll('[data-tilt]').forEach(card => {
-        card.addEventListener('mousemove', e => { const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; card.style.transform = 'perspective(1000px) rotateY(' + (x*8) + 'deg) rotateX(' + (-y*8) + 'deg) translateY(-4px)'; const g = card.querySelector('.bento-card-glow'); if(g) { g.style.setProperty('--mouse-x', (e.clientX-r.left)+'px'); g.style.setProperty('--mouse-y', (e.clientY-r.top)+'px'); } });
-        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-    });
-    initBentoAnims();
+    grid.innerHTML = packs.map((p, i) => {
+        return '<div class="pack-card reveal" style="--pack-color:' + p.color + ';animation-delay:' + (i * 0.08) + 's">' +
+            '<div class="pack-card-header">' +
+                '<div class="pack-icon" style="background:' + p.color + '18;color:' + p.color + '">' + p.icon + '</div>' +
+                '<div class="pack-price-badge" style="background:' + p.color + '15;border-color:' + p.color + '40;color:' + p.color + '">' + p.price + ' €' + (p.priceSuffix || '') + '</div>' +
+            '</div>' +
+            '<h3 class="pack-title">' + p.title + '</h3>' +
+            '<p class="pack-desc">' + p.desc + '</p>' +
+            '<div class="pack-delay"><span class="pack-delay-icon">⏱</span> Livraison : ' + p.delay + '</div>' +
+            '<ul class="pack-features">' + p.features.map(f => '<li><span class="pack-check" style="color:' + p.color + '">✓</span> ' + f + '</li>').join('') + '</ul>' +
+            '<a href="#contact" class="pack-cta" style="--pack-color:' + p.color + '">Demander un devis</a>' +
+        '</div>';
+    }).join('');
 }
 
-function initBentoAnims() {
-    const anims = {
-        /* ---- SITE WEB: Full mini-browser with nav, hero, cards, footer, cursor ---- */
-        browser: '<div class="ba-browser">' +
-            '<div class="ba-browser-chrome"><div class="ba-dots"><span style="background:#ff5f57"></span><span style="background:#ffbd2e"></span><span style="background:#28c840"></span></div><div class="ba-url-bar"><div class="ba-url-typing"></div></div></div>' +
-            '<div class="ba-browser-body">' +
-            '<div class="ba-s-nav"><div class="ba-s-nav-logo"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-cta"></div></div>' +
-            '<div class="ba-s-hero"><div class="ba-s-hero-bg"><div class="ba-s-h1"></div><div class="ba-s-h2"></div><div class="ba-s-btn"></div></div></div>' +
-            '<div class="ba-s-cards"><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div></div>' +
-            '<div class="ba-s-footer"><div class="ba-s-footer-link"></div><div class="ba-s-footer-link"></div><div class="ba-s-footer-link"></div></div>' +
-            '</div>' +
-            '<div class="ba-build-bar"><div class="ba-build-fill"></div></div>' +
-            '<div class="ba-cursor"><svg viewBox="0 0 12 18"><path d="M1 1l10 7-5 1.5L4 16z" fill="white" stroke="black" stroke-width="1"/></svg></div>' +
-            '</div>',
-
-        /* ---- CRM: Kanban board with sidebar, columns, cards, chart ---- */
-        dashboard: '<div class="ba-crm">' +
-            '<div class="ba-crm-sidebar"><div class="ba-crm-sidebar-item active"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.3s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.6s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.9s"></div><div class="ba-crm-sidebar-item" style="animation-delay:1.2s;width:60%"></div></div>' +
-            '<div class="ba-crm-main">' +
-            '<div class="ba-crm-header"><div class="ba-crm-title">Pipeline</div><div class="ba-crm-add-btn">+</div></div>' +
-            '<div class="ba-crm-kanban">' +
-            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(255,140,0,0.6)"></div>Prospects</div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,140,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name" style="width:55%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
-            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,240,255,0.6)"></div>En cours</div><div class="ba-crm-card" style="border-color:rgba(0,240,255,0.3)"><div class="ba-crm-card-name" style="width:80%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
-            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,255,135,0.6)"></div>Gagn\u00e9</div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:60%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,255,135,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:45%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(191,0,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
-            '</div>' +
-            '<div class="ba-crm-chart">' + Array.from({length:12}, (_,i) => '<div class="ba-crm-chart-bar" style="animation-delay:' + (i*0.15) + 's"></div>').join('') + '</div>' +
-            '</div></div>',
-
-        /* ---- CHATBOT: Rich conversation with cards, quick replies, typing ---- */
-        chat: '<div class="ba-chat">' +
-            '<div class="ba-chat-header"><div class="ba-chat-bot-avatar">\u{1F916}</div><div class="ba-chat-bot-info"><div class="ba-chat-bot-name">FlashAI Bot</div><div class="ba-chat-bot-status">En ligne</div></div></div>' +
-            '<div class="ba-chat-msgs">' +
-            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Bonjour ! Comment puis-je vous aider ?</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Je cherche des infos sur vos prix</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Voici nos formules :</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-rich-card"><div class="ba-chat-rich-img"></div><div class="ba-chat-rich-title"></div><div class="ba-chat-rich-desc"></div><div class="ba-chat-rich-btns"><div class="ba-chat-rich-btn"></div><div class="ba-chat-rich-btn"></div></div></div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Super, merci !</div></div>' +
-            '</div>' +
-            '<div class="ba-chat-quick"><div class="ba-chat-quick-btn">Tarifs</div><div class="ba-chat-quick-btn">D\u00e9lai</div><div class="ba-chat-quick-btn">Contact</div></div>' +
-            '<div class="ba-chat-typing"><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div></div>' +
-            '<div class="ba-chat-input"><div class="ba-chat-input-field"></div><div class="ba-chat-input-send"></div></div>' +
-            '</div>',
-
-        /* ---- AUTOMATION: Node-based workflow pipeline with data packets ---- */
-        flow: '<div class="ba-flow">' +
-            '<div class="ba-flow-label">Workflow actif</div>' +
-            '<div class="ba-flow-canvas"><div class="ba-flow-pipeline">' +
-            '<div class="ba-flow-node active"><span>&#9993;</span><div class="ba-flow-node-label">Email</div></div>' +
-            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet"></div></div>' +
-            '<div class="ba-flow-node"><span>&#9881;</span><div class="ba-flow-node-label">Process</div></div>' +
-            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet" style="animation-delay:0.4s"></div></div>' +
-            '<div class="ba-flow-node active"><span>&#128202;</span><div class="ba-flow-node-label">CRM</div></div>' +
-            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet" style="animation-delay:0.8s"></div></div>' +
-            '<div class="ba-flow-node"><span>&#10003;</span><div class="ba-flow-node-label">Done</div></div>' +
-            '</div></div>' +
-            '<div class="ba-flow-status"><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:#00ff87"></div>3 actifs</div><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:#ff8c00"></div>1 en attente</div><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:rgba(255,255,255,0.2)"></div>0 erreurs</div></div>' +
-            '</div>',
-
-        /* ---- SEO: Lighthouse audit with ring gauge, vitals, chart, keywords ---- */
-        chart: '<div class="ba-seo">' +
-            '<div class="ba-seo-top">' +
-            '<div class="ba-seo-ring"><svg viewBox="0 0 48 48"><defs><linearGradient id="seo-ring-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(0,255,135,0.8)"/><stop offset="100%" stop-color="rgba(0,240,255,0.8)"/></linearGradient></defs><circle class="bg" cx="24" cy="24" r="22"/><circle class="fg" cx="24" cy="24" r="22"/></svg><div class="ba-seo-ring-score">98</div><div class="ba-seo-ring-label">Lighthouse</div></div>' +
-            '<div class="ba-seo-sub">' +
-            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#00ff87"></div><div class="ba-seo-sub-label">Performance</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:96%;background:linear-gradient(90deg,#00ff87,#00f0ff)"></div></div></div>' +
-            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#bf00ff"></div><div class="ba-seo-sub-label">Accessibility</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:92%;background:linear-gradient(90deg,#bf00ff,#ff006e);animation-delay:0.3s"></div></div></div>' +
-            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#00f0ff"></div><div class="ba-seo-sub-label">Best Practices</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:100%;background:linear-gradient(90deg,#00f0ff,#00ff87);animation-delay:0.6s"></div></div></div>' +
-            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#ff8c00"></div><div class="ba-seo-sub-label">SEO</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:98%;background:linear-gradient(90deg,#ff8c00,#ffd700);animation-delay:0.9s"></div></div></div>' +
-            '</div></div>' +
-            '<div class="ba-seo-vitals"><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#00ff87">0.8s</div><div class="ba-seo-vital-label">FCP</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#00f0ff">1.2s</div><div class="ba-seo-vital-label">LCP</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#bf00ff">0.01</div><div class="ba-seo-vital-label">CLS</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#ff8c00">50ms</div><div class="ba-seo-vital-label">TBT</div></div></div>' +
-            '<div class="ba-seo-chart">' + Array.from({length:16}, (_,i) => '<div class="ba-seo-chart-bar" style="--h1:' + (15+Math.random()*25) + '%;--h2:' + (55+Math.random()*40) + '%;background:linear-gradient(180deg,rgba(0,255,135,0.4),rgba(0,240,255,0.15));animation-delay:' + (i*0.12) + 's"></div>').join('') + '</div>' +
-            '<div class="ba-seo-kw"><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>SEO</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Core Vitals</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Schema</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Sitemap</div></div>' +
-            '</div>',
-
-        /* ---- SECURITY: Shield scan with checks, encryption, threat counters ---- */
-        shield: '<div class="ba-sec">' +
-            '<div class="ba-sec-top">' +
-            '<div class="ba-sec-shield"><svg viewBox="0 0 40 46"><path d="M20 2L4 10v14c0 12 16 20 16 20s16-8 16-20V10L20 2z" fill="rgba(255,215,0,0.04)" stroke="rgba(255,215,0,0.25)" stroke-width="1.5"/><path d="M15 24l4 4 7-8" fill="none" stroke="rgba(255,215,0,0.6)" stroke-width="2" stroke-linecap="round" stroke-dasharray="24" stroke-dashoffset="24"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="2s" repeatCount="indefinite"/></path></svg><div class="ba-sec-shield-scan"></div></div>' +
-            '<div class="ba-sec-checks"><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> SSL/TLS 1.3</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> WAF Active</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> OWASP Top 10</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> RGPD OK</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> 2FA Enforced</div></div>' +
-            '</div>' +
-            '<div class="ba-sec-encrypt"><div class="ba-sec-encrypt-label">AES-256</div><div class="ba-sec-encrypt-bar"><div class="ba-sec-encrypt-fill"></div></div></div>' +
-            '<div class="ba-sec-threats"><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#00ff87">0</div><div class="ba-sec-threat-label">Menaces</div></div><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#00f0ff">847</div><div class="ba-sec-threat-label">Bloqu\u00e9es</div></div><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#ffd700">99.9%</div><div class="ba-sec-threat-label">Uptime</div></div></div>' +
-            '</div>'
-    };
-    for (const [k, v] of Object.entries(anims)) { const el = document.getElementById('bento-anim-' + k); if (el) el.innerHTML = v; }
-    if (!document.getElementById('bp-style')) { const s = document.createElement('style'); s.id = 'bp-style'; s.textContent = '@keyframes bp{0%,100%{opacity:.5;transform:scaleX(.8)}50%{opacity:1;transform:scaleX(1)}}'; document.head.appendChild(s); }
-}
+/* initBentoAnims removed — pack cards no longer use mini-animations */
 
 /* ========== HERO TERMINAL — MULTI-DAY PROFESSIONAL PROCESS ========== */
 function initHeroTerminal() {
@@ -1044,34 +968,26 @@ function initGalaxyCategories() {
 /* ========== PRICING ========== */
 function initPricing() {
     const grid = document.getElementById('pricing-grid');
-    const toggle = document.getElementById('pricing-toggle');
     if (!grid) return;
-    let annual = false;
     const plans = [
-        { name: 'Starter', icon: '\u{1F680}', price: 890, priceAnnual: 712, desc: 'Parfait pour demarrer votre presence digitale.', color: '#00f0ff', features: ['Site vitrine responsive','Design premium sur mesure','SEO de base optimise','Hebergement 3 mois inclus','Support email','Livraison en 5 jours'] },
-        { name: 'Business', icon: '\u{1F4BC}', price: 2490, priceAnnual: 1992, desc: 'La solution complete pour scaler votre business.', color: '#bf00ff', featured: true, features: ['Tout Starter +','CRM / Dashboard integre','Chatbot IA basique','API & automatisations','Analytics avance','Support prioritaire 12 mois','Formation equipe incluse'] },
-        { name: 'Enterprise', icon: '\u{1F3AF}', price: 4990, priceAnnual: 3992, desc: 'Infrastructure complete avec IA avancee.', color: '#ffd700', features: ['Tout Business +','IA avancee (GPT-4, RAG)','Infrastructure scalable','Multi-langue / multi-pays','SLA 99.9% garanti','Account manager dedie','Audit securite complet','Maintenance illimitee'] }
+        { name: 'Essentiel', icon: '\u{1F680}', price: '390', desc: 'Lancez votre presence digitale avec un site pro ou un chatbot IA.', color: '#00f0ff', packs: 'Mon Site Pro \u00B7 Mon Assistant Client 24/7', features: ['Site vitrine ou chatbot IA','Design responsive premium','SEO technique inclus','H\u00e9bergement 1 an offert','Support email 12 mois','Livraison en 5-10 jours'] },
+        { name: 'Business', icon: '\u{1F4BC}', price: '800', desc: 'Automatisez et boostez votre activit\u00e9 avec l\'IA.', color: '#bf00ff', featured: true, packs: 'WhatsApp IA \u00B7 Mon Business Automatis\u00e9 \u00B7 Standard T\u00e9l. IA', features: ['Tout Essentiel inclus','Automatisations avanc\u00e9es','Standard t\u00e9l\u00e9phonique IA','WhatsApp Business IA','CRM intelligent int\u00e9gr\u00e9','Support prioritaire 12 mois'] },
+        { name: 'Premium', icon: '\u{1F3AF}', price: '1 500', desc: 'Solutions IA sur mesure et applications compl\u00e8tes.', color: '#ffd700', packs: 'Mon Agent IA M\u00e9tier \u00B7 Mon App/MVP \u00B7 Formation IA', features: ['Tout Business inclus','Agent IA personnalis\u00e9','Application / MVP sur mesure','Formation \u00e9quipe IA','Account manager d\u00e9di\u00e9','Maintenance illimit\u00e9e'] }
     ];
-    function render() {
-        grid.innerHTML = plans.map((p, idx) => {
-            const price = annual ? p.priceAnnual : p.price;
-            const oldPrice = annual ? p.price : null;
-            return '<div class="pricing-card-3d ' + (p.featured ? 'featured' : '') + '" style="--pc:' + p.color + '">' +
-                (p.featured ? '<div class="pricing-popular-badge">\u2B50 Plus populaire</div>' : '') +
-                '<div class="pricing-card-aurora pricing-card-aurora-' + (idx + 1) + '"></div>' +
-                '<div class="pricing-card-inner"><div class="pricing-card-icon" style="background:' + p.color + '15;color:' + p.color + '">' + p.icon + '</div>' +
-                '<div class="pricing-name">' + p.name + '</div>' +
-                '<div class="pricing-desc">' + p.desc + '</div>' +
-                (oldPrice ? '<div class="pricing-old-price">' + oldPrice.toLocaleString('fr') + ' \u20AC</div>' : '') +
-                '<div class="pricing-price"><span class="pricing-amount" style="color:' + p.color + '">' + price.toLocaleString('fr') + '</span><span class="pricing-currency">\u20AC</span></div>' +
-                '<div class="pricing-divider"></div>' +
-                '<ul class="pricing-features">' + p.features.map((f, fi) => '<li style="animation-delay:' + (fi * 0.06) + 's"><span class="pf-check">\u2713</span><span>' + f + '</span></li>').join('') + '</ul>' +
-                '<a href="#contact" class="pricing-cta ' + (p.featured ? 'pricing-cta-featured' : '') + '">' + (p.featured ? 'Choisir Business' : 'Commencer') + '</a>' +
-                '</div></div>';
-        }).join('');
-    }
-    render();
-    if (toggle) toggle.addEventListener('click', () => { annual = !annual; toggle.classList.toggle('active', annual); render(); });
+    grid.innerHTML = plans.map((p, idx) => {
+        return '<div class="pricing-card-3d ' + (p.featured ? 'featured' : '') + '" style="--pc:' + p.color + '">' +
+            (p.featured ? '<div class="pricing-popular-badge">\u2B50 Plus populaire</div>' : '') +
+            '<div class="pricing-card-aurora pricing-card-aurora-' + (idx + 1) + '"></div>' +
+            '<div class="pricing-card-inner"><div class="pricing-card-icon" style="background:' + p.color + '15;color:' + p.color + '">' + p.icon + '</div>' +
+            '<div class="pricing-name">' + p.name + '</div>' +
+            '<div class="pricing-desc">' + p.desc + '</div>' +
+            '<div class="pricing-price">\u00C0 partir de <span class="pricing-amount" style="color:' + p.color + '">' + p.price + '</span><span class="pricing-currency"> \u20AC</span></div>' +
+            '<div class="text-xs text-surface-500 mt-1 mb-3 font-mono">' + p.packs + '</div>' +
+            '<div class="pricing-divider"></div>' +
+            '<ul class="pricing-features">' + p.features.map((f, fi) => '<li style="animation-delay:' + (fi * 0.06) + 's"><span class="pf-check">\u2713</span><span>' + f + '</span></li>').join('') + '</ul>' +
+            '<a href="#contact" class="pricing-cta ' + (p.featured ? 'pricing-cta-featured' : '') + '">Demander un devis gratuit</a>' +
+            '</div></div>';
+    }).join('');
 }
 
 /* ========== ROI CALCULATOR ========== */
@@ -1116,7 +1032,7 @@ function initFAQ() {
     const list = document.getElementById('faq-list');
     if (!list) return;
     const faqs = [
-        { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos tarifs commencent a <span class="faq-highlight">890\u20AC</span> pour un site vitrine. Chaque projet est chiffre sur mesure selon vos besoins. Devis gratuit en <strong>24h</strong>.', cat: 'business', icon: '\u{1F4B0}' },
+        { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos packs demarrent a <span class="faq-highlight">390\u20AC</span> (site vitrine). 8 packs cles en main de 390\u20AC a 2\u202F000\u20AC. Hebergement serveur offert 1 an. Devis gratuit en <strong>24h</strong>.', cat: 'business', icon: '\u{1F4B0}' },
         { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'projet', icon: '\u23F1\uFE0F' },
         { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 247 APIs connectees.', cat: 'technique', icon: '\u2699\uFE0F' },
         { q: 'Quel support proposez-vous ?', a: '<span class="faq-highlight">Support IA et monitoring automatise inclus a vie</span>. Support humain prioritaire inclus 1 an. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
