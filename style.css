@@ -991,35 +991,20 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 /* ================================================================
    SMALL HEIGHT SCREENS (13" laptops, ~768px viewport height)
    ================================================================ */
+/* Small height: reduce spacing but NEVER hide terminal or cut text */
 @media (max-height: 900px) {
-    .hero-viewport { min-height: calc(100svh - 48px); min-height: calc(100vh - 48px); }
     #hero { padding-top: 4.5rem; padding-bottom: 1rem; }
-    #hero h1 { font-size: 3.5rem !important; line-height: 1.05; }
-    #hero p.text-lg { font-size: 0.95rem !important; line-height: 1.5; }
-    #hero .space-y-5 { gap: 0.6rem; }
-    #hero .pt-4 { padding-top: 0.25rem !important; }
-    .hero-terminal { max-height: 220px; overflow: hidden; }
-    .terminal-body { min-height: 120px; max-height: 200px; }
+    #hero .space-y-3 { gap: 0.5rem; }
+    #hero .pt-4 { padding-top: 0.15rem !important; }
+    .hero-terminal { max-height: 240px; overflow: hidden; }
+    .terminal-body { min-height: 140px; max-height: 220px; }
 }
-@media (max-height: 750px) {
-    .hero-viewport { min-height: calc(100svh - 44px); min-height: calc(100vh - 44px); }
+@media (max-height: 700px) {
     #hero { padding-top: 4rem; padding-bottom: 0.5rem; }
-    #hero h1 { font-size: 2.8rem !important; line-height: 1.05; }
-    #hero p.text-lg { font-size: 0.88rem !important; }
-    .hero-terminal { max-height: 160px; }
-    #hero .flex.flex-wrap.gap-4 { gap: 0.5rem; }
-    #hero .btn-glow-lg, #hero .btn-outline-lg { padding: 0.5rem 1rem; font-size: 0.82rem; }
-    #hero .space-y-5 { gap: 0.4rem; }
-}
-@media (max-height: 650px) {
-    .hero-viewport { min-height: calc(100svh - 40px); min-height: calc(100vh - 40px); }
-    #hero { padding-top: 3.5rem; padding-bottom: 0.25rem; }
-    #hero h1 { font-size: 2.2rem !important; }
-    #hero p.text-lg { font-size: 0.82rem !important; max-height: 3.5em; overflow: hidden; }
-    .hero-terminal { display: none; }
+    #hero .space-y-3 { gap: 0.3rem; }
+    .hero-terminal { max-height: 180px; }
+    .terminal-body { min-height: 100px; max-height: 160px; }
     #hero .pt-4 { display: none; }
-    #hero .space-y-5 { gap: 0.3rem; }
-    .marquee-pill-color { padding: 0.2rem 0.5rem !important; font-size: 0.7rem !important; }
 }
 
 /* ================================================================
@@ -1634,10 +1619,10 @@ section { position: relative; }
 /* Scroll progress bar glow */
 .scroll-progress { box-shadow: 0 0 10px rgba(255,0,255,0.4), 0 0 20px rgba(0,240,255,0.2); }
 
-/* Hero fills viewport, ticker sticks at bottom */
-.hero-viewport { min-height: calc(100svh - 52px); min-height: calc(100vh - 52px); }
+/* Hero: generous padding, no viewport constraint */
+.hero-viewport { min-height: auto; }
 #hero h1 { text-shadow: 0 0 40px rgba(255,255,255,0.08); }
-.hero-title-main { letter-spacing: -0.02em; }
+.hero-title-main { letter-spacing: -0.03em; }
 
 /* Terminal glow effect */
 .hero-terminal { animation: terminal-glow 5s ease-in-out infinite; }
