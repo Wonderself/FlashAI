@@ -994,31 +994,31 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 @media (max-height: 900px) {
     .hero-viewport { min-height: calc(100svh - 48px); min-height: calc(100vh - 48px); }
     #hero { padding-top: 4.5rem; padding-bottom: 1rem; }
-    #hero h1 { font-size: 3rem !important; line-height: 1.08; }
+    #hero h1 { font-size: 3.5rem !important; line-height: 1.05; }
     #hero p.text-lg { font-size: 0.95rem !important; line-height: 1.5; }
-    #hero .space-y-8 { gap: 0.75rem; }
+    #hero .space-y-5 { gap: 0.6rem; }
     #hero .pt-4 { padding-top: 0.25rem !important; }
-    .hero-terminal { max-height: 180px; overflow: hidden; }
-    .terminal-body { min-height: 120px; max-height: 160px; }
+    .hero-terminal { max-height: 220px; overflow: hidden; }
+    .terminal-body { min-height: 120px; max-height: 200px; }
 }
 @media (max-height: 750px) {
     .hero-viewport { min-height: calc(100svh - 44px); min-height: calc(100vh - 44px); }
     #hero { padding-top: 4rem; padding-bottom: 0.5rem; }
-    #hero h1 { font-size: 2.5rem !important; line-height: 1.08; }
+    #hero h1 { font-size: 2.8rem !important; line-height: 1.05; }
     #hero p.text-lg { font-size: 0.88rem !important; }
-    .hero-terminal { max-height: 140px; }
+    .hero-terminal { max-height: 160px; }
     #hero .flex.flex-wrap.gap-4 { gap: 0.5rem; }
     #hero .btn-glow-lg, #hero .btn-outline-lg { padding: 0.5rem 1rem; font-size: 0.82rem; }
-    #hero .space-y-8 { gap: 0.5rem; }
+    #hero .space-y-5 { gap: 0.4rem; }
 }
 @media (max-height: 650px) {
     .hero-viewport { min-height: calc(100svh - 40px); min-height: calc(100vh - 40px); }
     #hero { padding-top: 3.5rem; padding-bottom: 0.25rem; }
-    #hero h1 { font-size: 2rem !important; }
+    #hero h1 { font-size: 2.2rem !important; }
     #hero p.text-lg { font-size: 0.82rem !important; max-height: 3.5em; overflow: hidden; }
     .hero-terminal { display: none; }
     #hero .pt-4 { display: none; }
-    #hero .space-y-8 { gap: 0.4rem; }
+    #hero .space-y-5 { gap: 0.3rem; }
     .marquee-pill-color { padding: 0.2rem 0.5rem !important; font-size: 0.7rem !important; }
 }
 
