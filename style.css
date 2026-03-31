@@ -604,9 +604,11 @@ main, footer, header, section { max-width: 100%; overflow-x: hidden; overflow-x:
 .expertise-card { position: relative; border-radius: 1.25rem; overflow: hidden; height: auto; perspective: none; cursor: default; min-width: 0; }
 .expertise-card .expertise-card-front { background: rgba(15,23,42,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 1.25rem; padding: 1.75rem; display: flex; flex-direction: column; height: 100%; transition: all 0.3s ease; }
 .expertise-card:hover .expertise-card-front { border-color: var(--ec, rgba(99,102,241,0.3)); box-shadow: 0 0 30px rgba(99,102,241,0.1); transform: translateY(-4px); }
+.expertise-techs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+.expertise-tech-pill { padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid; font-size: 0.75rem; font-weight: 500; font-family: "JetBrains Mono", monospace; transition: all 0.3s; }
+.expertise-tech-pill:hover { transform: translateY(-2px); filter: brightness(1.3); }
+/* Keep old classes for compat */
 .expertise-bars { width: 100%; margin-top: auto; }
-.expertise-bar-row { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem; min-width: 0; }
-.expertise-bar-row span { white-space: nowrap; font-size: 0.72rem; min-width: 0; }
 .expertise-bar-bg { flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; min-width: 30px; }
 .expertise-bar-fill { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
 .expertise-icon { font-size: 3rem; margin-bottom: 1rem; }

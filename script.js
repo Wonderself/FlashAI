@@ -639,8 +639,8 @@ function initDemoDevis() {
     const ct = document.getElementById('demo-devis');
     if (!ct) return;
     const state = { step: 1, type: null, features: [], total: 0 };
-    const types = [ { id: 'vitrine', name: 'Site Vitrine', icon: '\u{1F310}', price: 990 }, { id: 'ecommerce', name: 'E-Commerce', icon: '\u{1F6D2}', price: 2490 }, { id: 'crm', name: 'CRM / ERP', icon: '\u{1F4CA}', price: 1990 }, { id: 'chatbot', name: 'Chatbot IA', icon: '\u{1F916}', price: 1490 }, { id: 'dashboard', name: 'Dashboard', icon: '\u{1F4C8}', price: 1790 }, { id: 'auto', name: 'Automatisation', icon: '\u26A1', price: 890 } ];
-    const features = [ { name: 'Design premium', price: 490 }, { name: 'SEO avance', price: 390 }, { name: 'Multilingue', price: 290 }, { name: 'Analytics', price: 190 }, { name: 'Chatbot', price: 590 }, { name: 'API custom', price: 490 }, { name: 'Paiement', price: 390 }, { name: 'CRM integre', price: 690 }, { name: 'Automatisations', price: 490 }, { name: 'Support prioritaire', price: 290 } ];
+    const types = [ { id: 'vitrine', name: 'Mon Site Pro', icon: '\u{1F310}', price: 390 }, { id: 'chatbot', name: 'Assistant Client IA', icon: '\u{1F916}', price: 500 }, { id: 'whatsapp', name: 'WhatsApp Business IA', icon: '\u{1F4AC}', price: 800 }, { id: 'auto', name: 'Business Automatis\u00e9', icon: '\u26A1', price: 1000 }, { id: 'standard', name: 'Standard T\u00e9l. IA', icon: '\u{1F4DE}', price: 1000 }, { id: 'agent', name: 'Agent IA M\u00e9tier', icon: '\u{1F9E0}', price: 1500 }, { id: 'app', name: 'Mon App / MVP', icon: '\u{1F4F1}', price: 2000 }, { id: 'formation', name: 'Formation IA', icon: '\u{1F393}', price: 390 } ];
+    const features = [ { name: 'Design premium', price: 200 }, { name: 'SEO avanc\u00e9', price: 150 }, { name: 'Multilingue', price: 200 }, { name: 'Analytics', price: 100 }, { name: 'Int\u00e9gration API', price: 200 }, { name: 'Paiement en ligne', price: 150 }, { name: 'Support prioritaire', price: 100 } ];
     function calc() { const base = state.type ? (types.find(t => t.id === state.type)?.price || 0) : 0; state.total = base + state.features.reduce((s, f) => s + (features.find(x => x.name === f)?.price || 0), 0); }
     function render() {
         calc();
@@ -801,22 +801,22 @@ function initExpertise() {
     const ct = document.getElementById('expertise-carousel');
     if (!ct) return;
     const cards = [
-        { title: 'Frontend', icon: '\u{1F3A8}', color: '#00f0ff', skills: [['React / Next.js', 95], ['Vue / Nuxt', 88], ['TypeScript', 92], ['TailwindCSS', 98], ['Three.js / GSAP', 85]] },
-        { title: 'Backend', icon: '\u2699\uFE0F', color: '#bf00ff', skills: [['Node.js / Express', 94], ['Python / FastAPI', 90], ['PostgreSQL', 92], ['MongoDB / Redis', 88], ['GraphQL / REST', 95]] },
-        { title: 'IA & Data', icon: '\u{1F9E0}', color: '#ff006e', skills: [['OpenAI / GPT', 96], ['LangChain', 88], ['RAG Systems', 85], ['NLP / NLU', 82], ['Data Pipeline', 87]] },
-        { title: 'DevOps', icon: '\u{1F680}', color: '#00ff87', skills: [['Docker / K8s', 90], ['AWS / GCP', 92], ['CI/CD', 95], ['Monitoring', 88], ['Securite', 91]] }
+        { title: 'Frontend', icon: '\u{1F3A8}', color: '#00f0ff', techs: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'TailwindCSS', 'Three.js'] },
+        { title: 'Backend', icon: '\u2699\uFE0F', color: '#bf00ff', techs: ['Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Redis'] },
+        { title: 'IA & Data', icon: '\u{1F9E0}', color: '#ff006e', techs: ['OpenAI GPT', 'Claude', 'LangChain', 'RAG', 'NLP', 'Pinecone'] },
+        { title: 'DevOps', icon: '\u{1F680}', color: '#00ff87', techs: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'CI/CD', 'Cloudflare'] }
     ];
-    ct.innerHTML = '<div class="expertise-grid">' + cards.map((c, i) => '<div class="expertise-card reveal" style="transition-delay:' + (i * 0.15) + 's;--ec:' + c.color + '"><div class="expertise-card-front"><div class="expertise-icon" style="background:' + c.color + '15;color:' + c.color + '">' + c.icon + '</div><h3 class="font-display font-bold text-xl mb-4">' + c.title + '</h3><div class="expertise-bars">' + c.skills.map(s => '<div class="expertise-bar-row"><span class="text-xs text-surface-300">' + s[0] + '</span><div class="expertise-bar-bg"><div class="expertise-bar-fill" style="width:' + s[1] + '%;background:' + c.color + '" data-width="' + s[1] + '"></div></div><span class="text-xs" style="color:' + c.color + '">' + s[1] + '%</span></div>').join('') + '</div></div></div>').join('') + '</div>';
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) {
-            e.target.querySelectorAll('.expertise-bar-fill').forEach(bar => {
-                bar.style.width = '0%';
-                setTimeout(() => { bar.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1)'; bar.style.width = bar.dataset.width + '%'; }, 200);
-            });
-            obs.unobserve(e.target);
-        }});
-    }, { threshold: 0.3 });
-    ct.querySelectorAll('.expertise-card').forEach(c => obs.observe(c));
+    ct.innerHTML = '<div class="expertise-grid">' + cards.map(function(c, i) {
+        var techHtml = c.techs.map(function(t) {
+            return '<div class="expertise-tech-pill" style="border-color:' + c.color + '30;color:' + c.color + ';background:' + c.color + '08">' + t + '</div>';
+        }).join('');
+        return '<div class="expertise-card reveal" style="transition-delay:' + (i * 0.15) + 's;--ec:' + c.color + '">' +
+            '<div class="expertise-card-front">' +
+            '<div class="expertise-icon" style="background:' + c.color + '15;color:' + c.color + '">' + c.icon + '</div>' +
+            '<h3 class="font-display font-bold text-xl mb-4">' + c.title + '</h3>' +
+            '<div class="expertise-techs">' + techHtml + '</div>' +
+            '</div></div>';
+    }).join('') + '</div>';
 }
 
 /* ========== METHOD TIMELINE ========== */

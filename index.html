@@ -735,18 +735,20 @@
         israel: { keywords: ['israel','startup','nation','tel aviv','jerusalem','pourquoi','avantage','localisation'], answer: 'Nous sommes bases en <strong>Israel</strong>, la Startup Nation ! Ecosysteme tech de classe mondiale, acces aux dernieres innovations IA, talent exceptionnel. Prix <strong>3 a 5x inferieurs</strong> a Paris ou Geneve, qualite equivalente voire superieure. Equipe 100% francophone.' },
         contact: { keywords: ['contact','joindre','appeler','telephone','email','mail','whatsapp','rdv','rendez'], answer: 'Contactez-nous :<br>- Email : <strong>contact@flash-ai.pro</strong><br>- WhatsApp : <a href="https://wa.me/33758787025" style="color:#00f0ff">+33 7 58 78 70 25</a> (WhatsApp uniquement)<br>- WhatsApp IL : <a href="https://wa.me/972552418324" style="color:#00f0ff">+972 55 241 83 24</a><br><br>Reponse en moins de 2h !' },
         portfolio: { keywords: ['portfolio','projet','realisation','exemple','reference','client','freenzy','glamhouse','psy','david','levemente','cinegen','afrique','launchpad'], answer: 'Nos realisations clients :<br>- <strong>Freenzy</strong> : SaaS automatise, 30+ APIs<br>- <strong>GlamHouse</strong> : Immobilier Web3<br>- <strong>Psy Daniel</strong> : Posts auto + SEO IA<br>- <strong>David Spectacles</strong> : Dashboard billetterie<br>- <strong>Levemente</strong> : Experience cadeau<br>- <strong>Cinegen</strong> : Streaming cinema<br>- <strong>Afrique Digital</strong> : Portail francophone<br>- <strong>LaunchPad</strong> : MVP en 5 jours' },
-        paiement: { keywords: ['paiement','payer','acompte','facture','virement','carte','stripe','facilite'], answer: '<strong>30%</strong> a la commande, 40% a la validation du prototype, 30% a la livraison. Paiement par virement ou carte bancaire. Facilites de paiement disponibles (2x ou 3x sans frais).' },
+        paiement: { keywords: ['paiement','payer','acompte','facture','virement','carte','stripe','facilite'], answer: '<strong>50%</strong> à la commande, <strong>50%</strong> à la livraison. Paiement par virement ou carte bancaire.' },
         seo: { keywords: ['seo','referencement','google','search','visibilite','trafic','organic'], answer: 'Le <strong>SEO technique</strong> est inclus dans chaque projet : meta tags, structured data Schema.org, Core Web Vitals optimises, sitemap XML, HTML semantique. Nos clients voient des resultats significatifs en quelques mois.' },
         securite: { keywords: ['securite','rgpd','donnee','proteg','ssl','hack','confidentiel','protection'], answer: 'Securite multi-couches : <strong>SSL/TLS, WAF Cloudflare, audit OWASP, conformite RGPD</strong>, chiffrement AES-256, authentification 2FA, monitoring 24/7. Vos donnees sont en securite.' },
         methode: { keywords: ['methode','etape','comment','process','deroule','fonctionn','travail'], answer: 'Notre methode en <strong>4 etapes</strong> :<br>1. <strong>Discovery</strong> (1h) : appel pour comprendre vos besoins<br>2. <strong>Prototype</strong> (48h) : maquette interactive a valider<br>3. <strong>Build</strong> (3-10 jours) : developpement agile avec demos quotidiennes<br>4. <strong>Launch</strong> (J+0) : deploiement, formation, support' }
     };
 
-    var defaultSuggestions = ['Services ?','Prix ?','Delais ?','Portfolio ?','Contact ?','Equipe ?'];
+    var CHATBOT_API = ''; // Set to chatbot API URL when deployed (e.g. https://chatbot.flash-ai.pro/chat)
+    var chatHistory = [];
+    var defaultSuggestions = ['Services ?','Prix ?','Délais ?','Portfolio ?','Contact ?','Équipe ?'];
     var contextSuggestions = {
-        services: ['Prix ?','Delais ?','Technologies ?'],
+        services: ['Prix ?','Délais ?','Technologies ?'],
         prix: ['Services ?','Paiement ?','Contact ?'],
-        delai: ['Services ?','Methode ?','Contact ?'],
-        support: ['Contact ?','Services ?','Equipe ?'],
+        delai: ['Services ?','Méthode ?','Contact ?'],
+        support: ['Contact ?','Services ?','Équipe ?'],
         portfolio: ['Services ?','Prix ?','Contact ?'],
         contact: ['Services ?','Prix ?','WhatsApp ?']
     };
@@ -757,6 +759,8 @@
         div.innerHTML = text;
         msgs.appendChild(div);
         msgs.scrollTop = msgs.scrollHeight;
+        chatHistory.push({ role: from, text: text.replace(/<[^>]+>/g, '') });
+        if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
     }
 
     function setSuggestions(items) {
@@ -766,7 +770,7 @@
         });
     }
 
-    function getResponse(text) {
+    function getLocalResponse(text) {
         var lower = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         var bestMatch = null;
         var bestScore = 0;
@@ -778,28 +782,61 @@
             if (score > bestScore) { bestScore = score; bestMatch = key; }
         }
         if (bestScore > 0) return { key: bestMatch, answer: knowledge[bestMatch].answer };
-        // Greetings
         if (/bonjour|salut|hello|hey|coucou|bonsoir/.test(lower)) return { key: null, answer: 'Bonjour ! Je suis l\'assistant FlashAI. Comment puis-je vous aider ?' };
-        if (/merci|thanks|super|genial|parfait|top/.test(lower)) return { key: null, answer: 'Avec plaisir ! N\'hesitez pas si vous avez d\'autres questions.' };
-        return { key: null, answer: 'Je peux vous renseigner sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>delais</strong>, <strong>technologies</strong>, <strong>portfolio</strong> et plus encore. Que souhaitez-vous savoir ?' };
+        if (/merci|thanks|super|genial|parfait|top/.test(lower)) return { key: null, answer: 'Avec plaisir ! N\'hésitez pas si vous avez d\'autres questions.' };
+        return null; // No local match
     }
 
     function handleInput(text) {
         if (!text.trim()) return;
         addMsg(text, 'user');
         input.value = '';
-        // Typing indicator
         var typing = document.createElement('div');
         typing.className = 'chatbot-msg bot';
         typing.innerHTML = '<span style="opacity:0.5">...</span>';
         msgs.appendChild(typing);
         msgs.scrollTop = msgs.scrollHeight;
-        setTimeout(function() {
-            typing.remove();
-            var resp = getResponse(text);
-            addMsg(resp.answer, 'bot');
-            setSuggestions(resp.key && contextSuggestions[resp.key] ? contextSuggestions[resp.key] : defaultSuggestions);
-        }, 600 + Math.random() * 400);
+
+        // Try Claude API first, fallback to local
+        if (CHATBOT_API) {
+            fetch(CHATBOT_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: text, history: chatHistory.slice(-10) })
+            }).then(function(r) { return r.json(); }).then(function(data) {
+                typing.remove();
+                if (data.reply) {
+                    addMsg(data.reply.replace(/\n/g, '<br>'), 'bot');
+                    setSuggestions(defaultSuggestions);
+                } else {
+                    throw new Error('No reply');
+                }
+            }).catch(function() {
+                // Fallback to local
+                typing.remove();
+                var resp = getLocalResponse(text);
+                if (resp) {
+                    addMsg(resp.answer, 'bot');
+                    setSuggestions(resp.key && contextSuggestions[resp.key] ? contextSuggestions[resp.key] : defaultSuggestions);
+                } else {
+                    addMsg('Je peux vous renseigner sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>délais</strong>, <strong>technologies</strong> et <strong>portfolio</strong>. Que souhaitez-vous savoir ?', 'bot');
+                    setSuggestions(defaultSuggestions);
+                }
+            });
+        } else {
+            // Local only
+            setTimeout(function() {
+                typing.remove();
+                var resp = getLocalResponse(text);
+                if (resp) {
+                    addMsg(resp.answer, 'bot');
+                    setSuggestions(resp.key && contextSuggestions[resp.key] ? contextSuggestions[resp.key] : defaultSuggestions);
+                } else {
+                    addMsg('Je peux vous renseigner sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>délais</strong>, <strong>technologies</strong> et <strong>portfolio</strong>. Que souhaitez-vous savoir ?', 'bot');
+                    setSuggestions(defaultSuggestions);
+                }
+            }, 600 + Math.random() * 400);
+        }
     }
 
     // Toggle
