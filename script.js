@@ -1421,7 +1421,7 @@ function initSmartForm() {
             var submitBtn = container.querySelector('.sf-submit');
             submitBtn.disabled = true;
             submitBtn.querySelector('.sf-submit-text').textContent = 'Envoi en cours...';
-            fetch('https://formsubmit.co/ajax/contact@flash-ai.pro', {
+            fetch('https://formsubmit.co/ajax/smadja99@gmail.com', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify(formData)
