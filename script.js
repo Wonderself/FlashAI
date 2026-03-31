@@ -498,7 +498,7 @@ function initHeroTerminal() {
             { t: '<span class="t-green">\u2713</span> Documentation: 42 pages generated', d: 900 },
             { t: '<span class="t-green">\u2713</span> Team training session scheduled', d: 800 },
             { t: '', d: 500 },
-            { t: '<span class="t-green t-bold">\u2728 PROJECT LIVE \u2014 clientpro.flashai.dev</span>', d: 1000 },
+            { t: '<span class="t-green t-bold">\u2728 PROJECT LIVE \u2014 clientpro.flash-ai.pro</span>', d: 1000 },
             { t: '<span class="t-gray">Response time: 47ms | Uptime: 99.99% | Score: 98/100</span>', d: 800 }
         ]}
     ];
@@ -890,19 +890,7 @@ function initPortfolio() {
     window.addEventListener('resize', () => render());
 }
 
-/* ========== TESTIMONIALS ========== */
-function initTestimonials() {
-    const ct = document.getElementById('testimonials-container');
-    if (!ct) return;
-    const items = [
-        { name: 'Marie Dupont', role: 'CEO, TechVision', text: 'FlashAI a transforme notre vision en realite en seulement 8 jours. Le dashboard est incroyable, nos equipes l\'adorent. Le ROI a ete immediat.', rating: 5, avatar: 'MD', color: '#00f0ff' },
-        { name: 'Thomas Martin', role: 'CTO, FoodExpress', text: 'On a economise 40 000\u20AC par rapport aux devis d\'agences classiques. Et le resultat est meilleur. Qualite exceptionnelle, support reactif.', rating: 5, avatar: 'TM', color: '#bf00ff' },
-        { name: 'Sophie Bernard', role: 'Fondatrice, MediCare', text: 'Le CRM medical est parfait. Conforme RGPD, intuitif, et nos patients adorent le portail en ligne. Support 24/7 vraiment reactif.', rating: 5, avatar: 'SB', color: '#ff006e' },
-        { name: 'Lucas Chen', role: 'PM, CryptoTrack', text: 'L\'integration IA est bluffante. Le chatbot comprend vraiment nos clients. Taux de satisfaction passe de 72% a 96%.', rating: 5, avatar: 'LC', color: '#00ff87' },
-        { name: 'Emma Laurent', role: 'Directrice, EduSmart', text: 'Plateforme livree en 5 jours, alors que d\'autres agences demandaient 3 mois. Qualite irreprochable et prix imbattable.', rating: 5, avatar: 'EL', color: '#ffd700' }
-    ];
-    ct.innerHTML = '<div class="testimonials-track">' + items.map((t, i) => '<div class="testimonial-card reveal" style="transition-delay:' + (i * 0.12) + 's;--tc:' + t.color + '"><div class="testimonial-quote">\u201C</div><p class="text-surface-200 text-sm leading-relaxed mb-6">' + t.text + '</p><div class="testimonial-stars">' + '\u2605'.repeat(t.rating) + '</div><div class="testimonial-author"><div class="testimonial-avatar" style="background:' + t.color + '30;color:' + t.color + '">' + t.avatar + '</div><div><div class="font-bold text-sm">' + t.name + '</div><div class="text-xs text-surface-400">' + t.role + '</div></div></div></div>').join('') + '</div>';
-}
+/* Testimonials removed — only real client feedback */
 
 /* ========== GALAXY VISUALIZATION ========== */
 function initGalaxy() {
@@ -1046,7 +1034,7 @@ function initFAQ() {
         { q: 'Comment fonctionne le support ?', a: 'Support prioritaire avec reponse en <span class="faq-highlight">moins de 2 heures</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
         { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Consultez notre section <strong>Realisations</strong> ci-dessus : Freenzy, GlamHouse, Psy Daniel, David Spectacles, et bien d\'autres.', cat: 'projet', icon: '\u{1F3A8}' },
         { q: 'Est-ce que le SEO est inclus ?', a: 'Oui, chaque projet inclut une <strong>optimisation SEO technique</strong> : meta tags, structured data, Core Web Vitals, sitemap XML, schema.org.', cat: 'technique', icon: '\u{1F50D}' },
-        { q: 'Comment se passe le paiement ?', a: '<strong>30% a la commande</strong>, 40% a la validation du prototype, 30% a la livraison. Paiement par virement ou carte bancaire via <span class="faq-highlight">Stripe</span>.', cat: 'business', icon: '\u{1F4B3}' },
+        { q: 'Comment se passe le paiement ?', a: '<strong>50% a la commande</strong>, 50% a la livraison. Paiement par virement ou carte bancaire.', cat: 'business', icon: '\u{1F4B3}' },
         { q: 'Faites-vous la maintenance ?', a: 'Oui ! <strong>12 mois de maintenance inclus</strong> : mises a jour, corrections, monitoring 24/7. Au-dela, forfaits a partir de 99\u20AC/mois.', cat: 'support', icon: '\u{1F527}' },
         { q: 'Travaillez-vous a l\'international ?', a: 'Absolument. Bases a <strong>Tel Aviv</strong>, nous travaillons avec des clients en France, Suisse, Belgique, Canada et dans le monde entier. Tout se fait a distance.', cat: 'general', icon: '\u{1F30D}' },
         { q: 'Qui est derriere FlashAI ?', a: 'FlashAI a ete fondee par <strong>Emmanuel Smadja</strong>, entrepreneur franco-israelien passionne de tech et d\'IA. L\'equipe reunit des developpeurs seniors, designers UX et experts IA entre Paris et Tel Aviv.', cat: 'general', icon: '\u{1F464}' },
@@ -1381,7 +1369,7 @@ function initSmartForm() {
             });
         });
         // Submit
-        container.querySelector('.sf-submit').addEventListener('click', () => {
+        container.querySelector('.sf-submit').addEventListener('click', function() {
             // Validate required fields
             var requiredOk = true;
             container.querySelectorAll('.sf-input').forEach(function(inp) {
@@ -1399,9 +1387,52 @@ function initSmartForm() {
                 showToast('Veuillez remplir les champs obligatoires (*)');
                 return;
             }
-            launchConfetti();
-            // Replace form with success message
-            container.innerHTML = '<div style="text-align:center;padding:3rem 2rem"><div style="font-size:4rem;margin-bottom:1rem">&#10003;</div><h3 style="font-family:Space Grotesk,sans-serif;font-size:1.75rem;font-weight:700;color:white;margin-bottom:0.75rem">Demande envoyee avec succes !</h3><p style="color:#94a3b8;font-size:1.1rem;margin-bottom:1.5rem">Merci pour votre confiance. Notre equipe vous recontacte en moins de 2h.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="https://wa.me/33758787025" target="_blank" class="btn-glow" style="text-decoration:none"><span>Nous ecrire sur WhatsApp</span></a><button class="btn-outline" onclick="location.reload()" style="cursor:pointer">Nouvelle demande</button></div></div>';
+            // Collect all form data
+            var formData = { _subject: 'Nouvelle demande FlashAI — ' + (selected || 'Autre'), type: selected || 'autre' };
+            container.querySelectorAll('.sf-input').forEach(function(inp) {
+                var label = inp.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
+                if (inp.value.trim()) formData[label] = inp.value.trim();
+            });
+            container.querySelectorAll('.sf-select').forEach(function(sel) {
+                var label = sel.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
+                if (sel.value) formData[label] = sel.value;
+            });
+            if (textarea && textarea.value.trim()) {
+                var tLabel = textarea.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
+                formData[tLabel] = textarea.value.trim();
+            }
+            // Collect chips
+            container.querySelectorAll('.sf-chips').forEach(function(group) {
+                var label = group.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
+                var vals = [];
+                group.querySelectorAll('.sf-chip.active').forEach(function(c) { vals.push(c.textContent); });
+                if (vals.length) formData[label] = vals.join(', ');
+            });
+            // Collect checkboxes
+            container.querySelectorAll('.sf-checks-grid').forEach(function(group) {
+                var label = group.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
+                var vals = [];
+                group.querySelectorAll('.sf-check-input:checked').forEach(function(cb) {
+                    vals.push(cb.closest('.sf-check-item').querySelector('.sf-check-text').textContent);
+                });
+                if (vals.length) formData[label] = vals.join(', ');
+            });
+            // Send via formsubmit.co
+            var submitBtn = container.querySelector('.sf-submit');
+            submitBtn.disabled = true;
+            submitBtn.querySelector('.sf-submit-text').textContent = 'Envoi en cours...';
+            fetch('https://formsubmit.co/ajax/contact@flash-ai.pro', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(function(r) { return r.json(); }).then(function() {
+                launchConfetti();
+                container.innerHTML = '<div style="text-align:center;padding:3rem 2rem"><div style="font-size:4rem;margin-bottom:1rem;color:#00ff87">&#10003;</div><h3 style="font-family:Space Grotesk,sans-serif;font-size:1.75rem;font-weight:700;color:white;margin-bottom:0.75rem">Demande envoyée avec succès !</h3><p style="color:#94a3b8;font-size:1.1rem;margin-bottom:1.5rem">Merci pour votre confiance. Notre équipe vous recontacte en moins de 2h.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="https://wa.me/33758787025" target="_blank" class="btn-glow" style="text-decoration:none"><span>Nous écrire sur WhatsApp</span></a><button class="btn-outline" onclick="location.reload()" style="cursor:pointer">Nouvelle demande</button></div></div>';
+            }).catch(function() {
+                showToast('Erreur réseau. Essayez WhatsApp ou contact@flash-ai.pro');
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.sf-submit-text').textContent = 'Envoyer ma demande \u{1F680}';
+            });
         });
     }
     renderSelector();
@@ -1676,7 +1707,7 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
 <h3>3. Devis et commande</h3>
 <p>Tout projet d\u00e9bute par un devis personnalis\u00e9 gratuit, \u00e9tabli sous 24h. Le devis est valable 30 jours. La commande est confirm\u00e9e \u00e0 r\u00e9ception du devis sign\u00e9 et du versement de l\u2019acompte de 50%.</p>
 <h3>4. Tarifs et paiement</h3>
-<p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Le solde est d\u00fb \u00e0 la livraison du projet.</p>
+<p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Paiement en deux fois : 50% \u00e0 la commande, 50% \u00e0 la livraison.</p>
 <h3>5. D\u00e9lais de livraison</h3>
 <p>Les d\u00e9lais indicatifs sont : site vitrine (5 jours), CRM/dashboard (7-10 jours), projet complexe (10-14 jours). Ces d\u00e9lais courent \u00e0 compter de la validation du cahier des charges et de la r\u00e9ception de l\u2019acompte.</p>
 <h3>6. Propri\u00e9t\u00e9 et livraison</h3>
