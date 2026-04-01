@@ -673,35 +673,9 @@
     </div>
 </div>
 
-<!-- CHATBOT WIDGET -->
-<button class="chatbot-toggle" id="chatbot-toggle" aria-label="Ouvrir le chat">
-    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-</button>
-<div class="chatbot-window" id="chatbot-window">
-    <div class="chatbot-header">
-        <div class="chatbot-header-dot"></div>
-        <div>
-            <div class="chatbot-header-title">FlashAI Assistant</div>
-            <div class="chatbot-header-sub">En ligne - Reponse instantanee</div>
-        </div>
-    </div>
-    <div class="chatbot-messages" id="chatbot-messages"></div>
-    <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
-    <div class="chatbot-input-area">
-        <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Posez votre question..." autocomplete="off">
-        <button class="chatbot-send" id="chatbot-send" aria-label="Envoyer">
-            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-        </button>
-    </div>
-</div>
 <script>
-(function() {
-    var toggle = document.getElementById('chatbot-toggle');
-    var win = document.getElementById('chatbot-window');
-    var msgs = document.getElementById('chatbot-messages');
-    var input = document.getElementById('chatbot-input');
-    var send = document.getElementById('chatbot-send');
-    var sugs = document.getElementById('chatbot-suggestions');
+/* Chatbot removed — WhatsApp only */
+(function() { return;
     if (!toggle || !win) return;
 
     var isOpen = false;

@@ -1,0 +1,185 @@
+═══════════════════════════════════════════
+  CONTENUS RESEAUX SOCIAUX — FlashAI
+  Prets a publier sur Facebook, Instagram, LinkedIn
+═══════════════════════════════════════════
+
+
+─── POST 1 : PRESENTATION GENERALE ───
+Image : banniere-facebook-1200x630.jpg
+
+FlashAI lance ses 8 packs digitaux cles en main.
+
+Sites web, chatbots IA, automatisation, WhatsApp Business, standard telephonique IA, applications... Tout ce qu'il faut pour digitaliser votre activite.
+
+A partir de 390 EUR. Hebergement serveur offert 1 an.
+
+Devis gratuit en 24h sur flashai.dev
+
+#IA #Digital #SiteWeb #ChatbotIA #Automatisation #TPE #PME #StartupNation
+
+
+─── POST 2 : MON SITE PRO (pack 1) ───
+Image : pack-1-mon-site-pro.jpg
+
+Votre site pro, livre en 5-10 jours. A partir de 390 EUR.
+
+Design responsive premium, SEO technique, formulaire de contact, hebergement 1 an offert.
+
+Vous n'avez pas besoin d'un budget de grand groupe pour avoir un site de grand groupe.
+
+Devis gratuit : flashai.dev
+
+#SiteWeb #WebDesign #SEO #PME #Entrepreneur
+
+
+─── POST 3 : ASSISTANT CLIENT IA (pack 2) ───
+Image : pack-2-assistant-client-ia.jpg
+
+Un chatbot qui repond a vos clients 24h/24, meme quand vous dormez. 500 EUR.
+
+Entraine sur VOS donnees, integre sur votre site + WhatsApp.
+Il connait vos produits, vos tarifs, vos FAQ.
+
+Vos clients obtiennent une reponse instantanee. Vous gagnez des heures.
+
+#ChatbotIA #GPT4 #ServiceClient #Automatisation #IA
+
+
+─── POST 4 : WHATSAPP BUSINESS IA (pack 3) ───
+Image : pack-3-whatsapp-business-ia.jpg
+
+Transformez WhatsApp en machine de vente. 800 EUR.
+
+Catalogue produits, prise de commandes, reponses automatiques, notifications clients.
+
+Vos clients commandent directement depuis leur conversation WhatsApp.
+
+#WhatsAppBusiness #ECommerce #IA #Vente #Digital
+
+
+─── POST 5 : BUSINESS AUTOMATISE (pack 4) ───
+Image : pack-4-business-automatise.jpg
+
+Arretez de perdre du temps sur des taches repetitives. 1 000 EUR.
+
+Emails, CRM, factures, relances... tout s'automatise.
+Gagnez des heures chaque semaine.
+
+Workflows connectes a tous vos outils existants.
+
+#Automatisation #CRM #Productivite #TPE #PME
+
+
+─── POST 6 : STANDARD TEL. IA (pack 5) ───
+Image : pack-5-standard-tel.-ia.jpg
+
+Un standard telephonique IA qui repond, qualifie et redirige vos appels. 1 000 EUR.
+
+24h/24, 7j/7. Il ne rate jamais un appel.
+Il pose les bonnes questions et transfre au bon interlocuteur.
+
+#Telephonie #IA #StandardIA #Automatisation #Business
+
+
+─── POST 7 : AGENT IA METIER (pack 6) ───
+Image : pack-6-agent-ia-metier.jpg
+
+Un agent IA personnalise pour VOTRE metier. 1 500 EUR.
+
+Redaction, analyse, gestion, support — il travaille pour vous.
+Adapte a vos processus, integre a vos outils.
+
+L'IA n'est plus un gadget. C'est votre nouveau collaborateur.
+
+#AgentIA #IA #Innovation #Productivite #SurMesure
+
+
+─── POST 8 : MON APP / MVP (pack 7) ───
+Image : pack-7-mon-app---mvp.jpg
+
+Votre idee d'app, transformee en produit fonctionnel. A partir de 2 000 EUR.
+
+Design UX/UI pro, backend, API, deploiement inclus.
+Du concept au lancement en quelques semaines.
+
+Ne laissez plus votre idee dormir dans un tiroir.
+
+#MVP #Application #Startup #Tech #Developpement
+
+
+─── POST 9 : FORMATION IA (pack 8) ───
+Image : pack-8-formation-ia.jpg
+
+Formez votre equipe aux outils IA. 200 EUR / session.
+
+ChatGPT, automatisation, productivite.
+Sessions pratiques de 2h sur VOS cas concrets.
+
+L'IA change tout. Soyez prets.
+
+#FormationIA #ChatGPT #Digital #Transformation #IA
+
+
+─── POST 10 : PORTFOLIO FREENZY ───
+Image : portfolio-freenzyio.jpg
+
+Realisation FlashAI : Freenzy.io
+
+Plateforme SaaS complete avec 30+ modules IA interconnectes.
+
+Prouesse technique : architecture micro-services, WebSockets temps reel, pipeline RAG multi-modeles.
+
+flashai.dev
+
+#SaaS #IA #Portfolio #WebDev
+
+
+─── POST 11 : PORTFOLIO CINEGEN ───
+Image : portfolio-cinegen.jpg
+
+Realisation FlashAI : Cinegen
+
+Plateforme de streaming cinema avec creation et financement de films.
+
+Prouesse technique : streaming adaptatif HLS, moteur de recommandation IA, player video zero-latence.
+
+flashai.dev
+
+#Streaming #Cinema #IA #Portfolio
+
+
+─── POST 12 : PORTFOLIO GLAMHOUSE ───
+Image : portfolio-glamhouse.jpg
+
+Realisation FlashAI : GlamHouse
+
+Site immobilier eco-responsable avec tokenisation blockchain.
+
+Prouesse technique : smart contracts Solidity, Web3 wallet connect, modelisation 3D.
+
+flashai.dev
+
+#Blockchain #Immobilier #Web3 #Portfolio
+
+
+─── POST 13 : PORTFOLIO DR PSY DANIEL ───
+Image : portfolio-dr-psy-daniel.jpg
+
+Realisation FlashAI : Dr Psy Daniel
+
+Site professionnel pour cabinet de psychanalyse avec RDV en ligne.
+
+Prouesse technique : score Lighthouse 98+, Google Calendar API, conformite RGPD sante.
+
+flashai.dev
+
+#SiteWeb #Sante #SEO #Portfolio
+
+
+─── STORY / REEL IDEAS ───
+
+1. "De 0 a un site pro en 5 jours" — timelapse du processus
+2. "Ce chatbot repond a vos clients pendant que vous dormez" — demo live
+3. "390 EUR pour un site pro? Oui, c'est possible." — avant/apres
+4. "8 packs IA pour digitaliser votre business" — carousel des packs
+5. "WhatsApp peut vendre pour vous" — demo commande automatique
