@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conseil & Accompagnement digital | FlashAI — Stratégie IA et transformation digitale</title>
+    <meta name="description" content="Conseil et accompagnement digital par FlashAI : stratégie digitale, formation IA, audit de maturité, roadmap technique. Accompagnement personnalisé pour PME et startups.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flashai.dev/services/conseil.html">
+    <meta property="og:title" content="Conseil & Accompagnement digital — FlashAI | Stratégie IA et transformation digitale">
+    <meta property="og:description" content="Stratégie digitale, formation IA, audit de maturité et roadmap technique. Accompagnement personnalisé sur devis.">
+    <meta property="og:image" content="https://flashai.dev/og-image.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://flashai.dev/services/conseil.html">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {50:"#eef2ff",100:"#e0e7ff",200:"#c7d2fe",300:"#a5b4fc",400:"#818cf8",500:"#6366f1",600:"#4f46e5",700:"#4338ca",800:"#3730a3",900:"#312e81"},
+                        surface: {50:"#f8fafc",100:"#f1f5f9",200:"#e2e8f0",300:"#cbd5e1",400:"#94a3b8",500:"#64748b",600:"#475569",700:"#334155",800:"#1e293b",900:"#0f172a",950:"#020617"},
+                        accent: {400:"#22d3ee",500:"#0ea5e9",600:"#0284c7"},
+                        neon: {blue:"#00f0ff",purple:"#bf00ff",pink:"#ff006e",green:"#00ff87",orange:"#ff8c00",gold:"#ffd700",cyan:"#06b6d4"}
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk","system-ui","sans-serif"],
+                        body: ["Inter","system-ui","sans-serif"],
+                        mono: ["JetBrains Mono","monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .glow-line { height: 2px; background: linear-gradient(90deg, transparent, #00f0ff, #bf00ff, #ff006e, transparent); opacity: 0.4; }
+        .feature-card { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.3s ease, box-shadow 0.3s ease; }
+        .feature-card:hover { transform: translateY(-6px) scale(1.02); border-color: rgba(0,240,255,0.3); box-shadow: 0 12px 40px rgba(0,240,255,0.1); }
+        .step-card { transition: transform 0.3s ease, border-color 0.3s ease; }
+        .step-card:hover { transform: translateX(8px); border-color: rgba(0,240,255,0.3); }
+        .tech-pill { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .tech-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,240,255,0.2); }
+        .price-glow { animation: priceGlow 3s ease-in-out infinite; }
+        @keyframes priceGlow { 0%, 100% { box-shadow: 0 0 20px rgba(0,240,255,0.1); } 50% { box-shadow: 0 0 40px rgba(191,0,255,0.2); } }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .cta-btn { transition: all 0.3s ease; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(191,0,255,0.3); }
+
+        /* Ultra-dynamic animations */
+        @keyframes electric-pulse { 0%,100% { opacity:0.3; filter:blur(20px); } 50% { opacity:0.6; filter:blur(30px); } }
+        @keyframes data-flow { 0% { transform: translateY(100%) scaleY(0); opacity:0; } 50% { transform: translateY(0) scaleY(1); opacity:1; } 100% { transform: translateY(-100%) scaleY(0); opacity:0; } }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .feature-card { position: relative; overflow: hidden; }
+        .feature-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:conic-gradient(from 0deg, transparent, rgba(0,240,255,0.03), transparent, rgba(191,0,255,0.03), transparent); animation: spin-slow 8s linear infinite; }
+        .feature-card::after { content:''; position:absolute; inset:1px; background:rgba(2,6,23,0.95); border-radius:inherit; z-index:0; }
+        .feature-card > * { position:relative; z-index:1; }
+        .price-glow { position:relative; }
+        .price-glow::before { content:''; position:absolute; inset:-2px; background:linear-gradient(45deg,#00f0ff,#bf00ff,#ff006e,#00f0ff); background-size:300% 300%; animation:gradient-rotate 4s ease infinite; border-radius:inherit; z-index:-1; opacity:0.3; }
+        @keyframes gradient-rotate { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+        .step-card { position:relative; }
+        .step-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(180deg, #00f0ff, #bf00ff); opacity:0; transition:opacity 0.3s; }
+        .step-card:hover::before { opacity:0.5; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-[#020617] text-white font-body antialiased">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="/" class="flex items-center gap-2 group" aria-label="FlashAI Accueil">
+                    <div class="header-logo-icon">
+                        <svg class="logo-bolt-svg" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="hdr-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00f0ff"><animate attributeName="stop-color" values="#00f0ff;#bf00ff;#ff006e;#00f0ff" dur="4s" repeatCount="indefinite"/></stop>
+                                    <stop offset="50%" stop-color="#bf00ff"><animate attributeName="stop-color" values="#bf00ff;#ff006e;#00f0ff;#bf00ff" dur="4s" repeatCount="indefinite"/></stop>
+                                    <stop offset="100%" stop-color="#ff006e"><animate attributeName="stop-color" values="#ff006e;#00f0ff;#bf00ff;#ff006e" dur="4s" repeatCount="indefinite"/></stop>
+                                </linearGradient>
+                                <linearGradient id="hdr-bolt-edge" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+                                    <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+                                </linearGradient>
+                                <filter id="hdr-bolt-glow"><feGaussianBlur stdDeviation="1.5" result="blur1"/><feGaussianBlur stdDeviation="3" result="blur2"/><feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                                <filter id="hdr-bolt-soft"><feGaussianBlur stdDeviation="2.5" result="glow"/><feColorMatrix in="glow" type="saturate" values="2" result="saturated"/><feMerge><feMergeNode in="saturated"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                            </defs>
+                            <path class="logo-glow-pulse" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#hdr-bolt-grad)" filter="url(#hdr-bolt-soft)" opacity="0.4"/>
+                            <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,0,0,0.3)" transform="translate(1.2,1.2)"/>
+                            <path d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="rgba(0,240,255,0.12)" transform="translate(0.6,0.6)" filter="url(#hdr-bolt-glow)"/>
+                            <path class="logo-bolt-main" d="M8 4L20 4L14 16H22L10 28L14 18H8Z" fill="url(#hdr-bolt-grad)" filter="url(#hdr-bolt-glow)"/>
+                            <path d="M9 5L19 5L13.5 15.5H21L10.5 27L14 17.5H9Z" fill="none" stroke="url(#hdr-bolt-edge)" stroke-width="0.5" opacity="0.7"/>
+                            <path d="M11 7L17 7L13 14H18L11.5 23L14 16H11Z" fill="rgba(255,255,255,0.15)"/>
+                            <line class="logo-energy-line" x1="20" y1="8" x2="26" y2="5" stroke="#00f0ff" stroke-width="0.4" opacity="0"><animate attributeName="opacity" values="0;0.7;0" dur="2.5s" repeatCount="indefinite" begin="0s"/><animate attributeName="x2" values="24;28;24" dur="2.5s" repeatCount="indefinite" begin="0s"/></line>
+                            <line class="logo-energy-line" x1="21" y1="14" x2="27" y2="13" stroke="#bf00ff" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.6;0" dur="3s" repeatCount="indefinite" begin="0.8s"/><animate attributeName="x2" values="25;29;25" dur="3s" repeatCount="indefinite" begin="0.8s"/></line>
+                            <line class="logo-energy-line" x1="7" y1="20" x2="3" y2="22" stroke="#ff006e" stroke-width="0.3" opacity="0"><animate attributeName="opacity" values="0;0.5;0" dur="2.8s" repeatCount="indefinite" begin="1.4s"/><animate attributeName="x2" values="4;1;4" dur="2.8s" repeatCount="indefinite" begin="1.4s"/></line>
+                            <circle class="logo-spark" cx="22" cy="6" r="0.6" fill="#00f0ff"><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="cx" values="22;25;22" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="cy" values="6;3;6" dur="1.8s" repeatCount="indefinite" begin="0s"/></circle>
+                            <circle class="logo-spark" cx="6" cy="18" r="0.5" fill="#ff006e"><animate attributeName="opacity" values="0;0.8;0" dur="2.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="cx" values="6;3;6" dur="2.2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="cy" values="18;20;18" dur="2.2s" repeatCount="indefinite" begin="0.6s"/></circle>
+                            <circle class="logo-spark" cx="18" cy="26" r="0.4" fill="#bf00ff"><animate attributeName="opacity" values="0;0.7;0" dur="2s" repeatCount="indefinite" begin="1.2s"/><animate attributeName="cx" values="18;15;18" dur="2s" repeatCount="indefinite" begin="1.2s"/><animate attributeName="cy" values="26;29;26" dur="2s" repeatCount="indefinite" begin="1.2s"/></circle>
+                            <circle class="logo-spark" cx="24" cy="12" r="0.35" fill="#ffd700"><animate attributeName="opacity" values="0;0.9;0" dur="1.5s" repeatCount="indefinite" begin="0.3s"/><animate attributeName="r" values="0.35;0.7;0.35" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></circle>
+                        </svg>
+                    </div>
+                    <span class="logo-3d-wrap"><span class="logo-3d-letter" style="--i:0">F</span><span class="logo-3d-letter" style="--i:1">l</span><span class="logo-3d-letter" style="--i:2">a</span><span class="logo-3d-letter" style="--i:3">s</span><span class="logo-3d-letter" style="--i:4">h</span><span class="logo-3d-letter logo-3d-ai" style="--i:5">A</span><span class="logo-3d-letter logo-3d-ai" style="--i:6">I</span></span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-1" id="main-nav" aria-label="Navigation principale">
+                    <div class="relative group">
+                        <a href="/#services" class="nav-link">Services <svg class="inline w-3 h-3 ml-0.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+                        <div class="absolute top-full left-0 mt-1 w-56 py-2 rounded-xl bg-surface-900/95 border border-white/10 backdrop-blur-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                            <a href="/services/sites-web.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Sites Web sur mesure</a>
+                            <a href="/services/crm-erp.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">CRM & ERP</a>
+                            <a href="/services/chatbot-ia.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Chatbot IA</a>
+                            <a href="/services/automatisation.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Automatisation</a>
+                            <a href="/services/seo.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">SEO & Croissance</a>
+                            <a href="/services/conseil.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Conseil</a>
+                        </div>
+                    </div>
+                    <a href="/about.html" class="nav-link">À propos</a>
+                    <a href="/contact.html" class="nav-link">Contact</a>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <a href="/contact.html" class="btn-glow hidden sm:inline-flex text-sm">
+                        <span>Démarrer un projet</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center" aria-label="Menu">
+                        <span class="hamburger-line hamburger-top"></span>
+                        <span class="hamburger-line hamburger-mid"></span>
+                        <span class="hamburger-line hamburger-bot"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="mobile-menu-overlay">
+        <nav class="mobile-menu-content" aria-label="Menu mobile">
+            <a href="/#services" class="mobile-menu-link">Services</a>
+            <div class="pl-4 flex flex-col gap-2 mb-2">
+                <a href="/services/sites-web.html" class="text-sm text-surface-400 hover:text-white transition-colors">Sites Web</a>
+                <a href="/services/crm-erp.html" class="text-sm text-surface-400 hover:text-white transition-colors">CRM & ERP</a>
+                <a href="/services/chatbot-ia.html" class="text-sm text-surface-400 hover:text-white transition-colors">Chatbot IA</a>
+                <a href="/services/automatisation.html" class="text-sm text-surface-400 hover:text-white transition-colors">Automatisation</a>
+                <a href="/services/seo.html" class="text-sm text-surface-400 hover:text-white transition-colors">SEO</a>
+                <a href="/services/conseil.html" class="text-sm text-surface-400 hover:text-white transition-colors">Conseil</a>
+            </div>
+            <a href="/about.html" class="mobile-menu-link">À propos</a>
+            <a href="/contact.html" class="mobile-menu-link">Contact</a>
+            <a href="/contact.html" class="btn-glow mt-6 justify-center">Démarrer un projet</a>
+        </nav>
+    </div>
+
+    <main class="pt-16">
+        <canvas id="page-particles" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.15;"></canvas>
+
+        <!-- Hero -->
+        <section class="relative py-24 md:py-32 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-neon-purple/5 to-transparent"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-neon-blue/10 rounded-full blur-3xl float-anim"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-neon-purple/[0.08] rounded-full blur-3xl float-anim" style="animation-delay: -3s;"></div>
+            <div class="max-w-7xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="mb-6 flex justify-center">
+                    <svg class="w-16 h-16 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">Conseil & Accompagnement</h1>
+                <p class="text-xl md:text-2xl text-surface-300 max-w-2xl mx-auto">Stratégie digitale et formation IA pour votre entreprise</p>
+            </div>
+        </section>
+
+        <!-- What we do -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10 text-center">Ce que nous faisons</h2>
+                <div class="space-y-6 text-surface-300 text-lg leading-relaxed">
+                    <p>Nous accompagnons les entreprises dans leur transformation digitale avec une approche pragmatique et orientée résultats. Notre conseil va au-delà des recommandations : nous vous guidons pas à pas dans la mise en oeuvre.</p>
+                    <p>Notre expertise couvre la stratégie digitale globale, l'adoption de l'intelligence artificielle, le choix des outils technologiques et la formation de vos équipes. Nous traduisons la complexité technique en décisions business claires.</p>
+                    <p>Que vous démarriez votre transformation digitale ou que vous souhaitiez accélérer avec l'IA, nous construisons une roadmap réaliste et priorisée, adaptée à vos ressources et à vos objectifs de croissance.</p>
+                    <p>Nos formations pratiques permettent à vos équipes de maîtriser les outils IA et digitaux pour gagner en autonomie et en productivité au quotidien.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="glow-line max-w-4xl mx-auto"></div>
+
+        <!-- Features -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Fonctionnalités clés</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Audit existant</h3>
+                        <p class="text-surface-400 text-sm">Évaluation complète de votre maturité digitale, de vos outils actuels et de vos processus internes.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Stratégie digitale</h3>
+                        <p class="text-surface-400 text-sm">Définition d'une stratégie digitale alignée sur vos objectifs business avec des actions concrètes et mesurables.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Formation IA</h3>
+                        <p class="text-surface-400 text-sm">Formations pratiques sur l'utilisation de l'IA au quotidien : ChatGPT, Claude, automatisation et productivité.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Choix d'outils</h3>
+                        <p class="text-surface-400 text-sm">Recommandations objectives sur les solutions technologiques adaptées à votre taille et votre secteur.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Roadmap technique</h3>
+                        <p class="text-surface-400 text-sm">Plan de route détaillé avec jalons, priorités et estimations budgétaires pour votre transformation.</p>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 feature-card">
+                        <h3 class="text-lg font-display font-semibold mb-3 text-neon-blue">Accompagnement continu</h3>
+                        <p class="text-surface-400 text-sm">Suivi régulier, ajustements de stratégie et support permanent pour garantir le succès de votre transformation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 text-center">Notre méthodologie</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-start step-card">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">1</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Diagnostic initial</h3>
+                            <p class="text-surface-400">Immersion dans votre entreprise, analyse de l'existant et compréhension de vos enjeux stratégiques.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start step-card">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">2</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Élaboration de la stratégie</h3>
+                            <p class="text-surface-400">Définition des objectifs, choix des leviers prioritaires et construction de la roadmap de transformation.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start step-card">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">3</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Formation & mise en oeuvre</h3>
+                            <p class="text-surface-400">Sessions de formation pratiques, accompagnement dans le déploiement et transfert de compétences.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start step-card">
+                        <div class="w-10 h-10 rounded-full bg-neon-blue/20 text-neon-blue font-bold flex items-center justify-center shrink-0">4</div>
+                        <div>
+                            <h3 class="text-lg font-display font-semibold mb-2">Suivi & ajustements</h3>
+                            <p class="text-surface-400">Points réguliers, mesure des résultats et adaptation de la stratégie selon l'évolution de vos besoins.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Notre approche</h2>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Design Thinking</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Lean Startup</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Agile</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">OKR</span>
+                    <span class="inline-flex px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-sm border border-neon-blue/20 tech-pill">Data-Driven</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="glow-line max-w-4xl mx-auto"></div>
+
+        <!-- Pricing -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-lg mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-10">Tarif</h2>
+                <div class="bg-gradient-to-br from-neon-purple/10 to-neon-blue/10 border border-white/10 rounded-2xl p-8 price-glow">
+                    <p class="text-surface-400 text-sm mb-2">Tarification</p>
+                    <p class="text-5xl font-display font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent mb-4">Sur devis</p>
+                    <p class="text-surface-400 text-sm">Accompagnement personnalisé adapté à la taille de votre entreprise et à la complexité de vos enjeux.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Prêt à accélérer votre transformation ?</h2>
+                <p class="text-surface-300 mb-8 text-lg">Échangeons sur vos enjeux et construisons ensemble votre stratégie digitale.</p>
+                <a href="/contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl text-white font-semibold cta-btn">Lancez votre projet</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative border-t border-white/5 pt-16 pb-8" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="font-display font-bold text-white mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-surface-400">
+                        <li><a href="/services/sites-web.html" class="hover:text-neon-blue transition-colors">Sites Web</a></li>
+                        <li><a href="/services/crm-erp.html" class="hover:text-neon-blue transition-colors">CRM / ERP</a></li>
+                        <li><a href="/services/chatbot-ia.html" class="hover:text-neon-blue transition-colors">Chatbot IA</a></li>
+                        <li><a href="/services/automatisation.html" class="hover:text-neon-blue transition-colors">Automatisation</a></li>
+                        <li><a href="/services/seo.html" class="hover:text-neon-blue transition-colors">SEO</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-white mb-4">Entreprise</h4>
+                    <ul class="space-y-2 text-sm text-surface-400">
+                        <li><a href="/about.html" class="hover:text-neon-blue transition-colors">À propos</a></li>
+                        <li><a href="/#equipe" class="hover:text-neon-blue transition-colors">L'Équipe</a></li>
+                        <li><a href="/#method" class="hover:text-neon-blue transition-colors">Notre Méthode</a></li>
+                        <li><a href="/contact.html" class="hover:text-neon-blue transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-white mb-4">Ressources</h4>
+                    <ul class="space-y-2 text-sm text-surface-400">
+                        <li><a href="/#results" class="hover:text-neon-blue transition-colors">Résultats clients</a></li>
+                        <li><a href="/#portfolio" class="hover:text-neon-blue transition-colors">Réalisations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-white mb-4">Contact</h4>
+                    <address class="space-y-2 text-sm text-surface-400 not-italic">
+                        <li><a href="mailto:contact@flashai.dev" class="hover:text-neon-blue transition-colors">contact@flashai.dev</a></li>
+                        <li><a href="https://wa.me/33758787025" class="hover:text-neon-green transition-colors">+33 7 58 78 70 25</a> <a href="https://wa.me/33758787025" class="text-neon-green text-xs hover:underline">(WhatsApp)</a></li>
+                        <li><a href="https://wa.me/972552418324" class="hover:text-neon-green transition-colors">+972 55 241 83 24</a> <a href="https://wa.me/972552418324" class="text-neon-green text-xs hover:underline">(WhatsApp)</a></li>
+                        <li>Basée en Israël</li>
+                        <li>Opérant entre Paris et TLV</li>
+                    </address>
+                    <div class="flex gap-3 mt-4">
+                        <a href="#" class="social-icon" aria-label="FlashAI sur LinkedIn" rel="noopener noreferrer"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="FlashAI sur X (Twitter)" rel="noopener noreferrer"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="FlashAI sur GitHub" rel="noopener noreferrer"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col items-center text-center gap-3">
+                <div class="text-sm text-surface-400">Fondé par <strong class="text-white">Emmanuel Smadja</strong></div>
+                <div class="flex items-center gap-2 text-sm text-surface-400"><span>Made with</span><span class="text-red-400">♥</span><span>in Israel</span></div>
+                <div class="startup-badge"><span class="startup-badge-text">Startup Nation Certified</span></div>
+                <div class="text-sm text-surface-500">© 2026 FlashAI — Entreprise israélienne. Tous droits réservés.</div>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-4 mt-6 text-xs text-surface-500">
+                <a href="/mentions-legales.html" class="hover:text-neon-blue transition-colors">Mentions légales</a>
+                <span>|</span>
+                <a href="/cgu.html" class="hover:text-neon-blue transition-colors">Politique de confidentialité</a>
+                <span>|</span>
+                <a href="/cgu.html" class="hover:text-neon-blue transition-colors">CGV</a>
+                <span>|</span>
+                <a href="/sitemap.xml" class="hover:text-neon-blue transition-colors">Plan du site</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top-btn" aria-label="Retour en haut">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="../script.js"></script>
+    <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealEls.forEach(el => revealObs.observe(el));
+    </script>
+    <script>
+    // Floating particles
+    (function(){
+        const c=document.getElementById('page-particles');
+        if(!c)return;
+        const ctx=c.getContext('2d');
+        let w,h;
+        function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;}
+        resize();window.addEventListener('resize',resize);
+        const pts=[];
+        for(let i=0;i<35;i++){
+            pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)*0.8,vy:(Math.random()-0.5)*0.8,r:Math.random()*2+0.5,color:['#00f0ff','#bf00ff','#ff006e','#00ff87','#ffd700'][Math.floor(Math.random()*5)],alpha:Math.random()*0.4+0.1});
+        }
+        function draw(){
+            ctx.clearRect(0,0,w,h);
+            pts.forEach(p=>{
+                p.x+=p.vx;p.y+=p.vy;
+                if(p.x<0)p.x=w;if(p.x>w)p.x=0;
+                if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+                ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                ctx.fillStyle=p.color;ctx.globalAlpha=p.alpha;ctx.fill();ctx.globalAlpha=1;
+            });
+            for(let i=0;i<pts.length;i++){
+                for(let j=i+1;j<pts.length;j++){
+                    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+                    if(d<150){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle='rgba(0,240,255,'+(1-d/150)*0.08+')';ctx.stroke();}
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    </script>
+</body>
+</html>

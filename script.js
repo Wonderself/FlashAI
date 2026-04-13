@@ -3,56 +3,46 @@
  * Rose Sparkle Cursor, Slow Terminal, 3D Pricing, Smart Form, Knowledge Base FAQ
  */
 document.addEventListener('DOMContentLoaded', () => {
-    /* Toujours démarrer en haut de page */
-    window.scrollTo(0, 0);
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-    /* === CRITICAL PATH : loader + above-the-fold === */
     initLoader();
     initScrollProgress();
+    initSparkleCursor();
+    initScrollReveal();
     initHeader();
     initMobileMenu();
-    initScrollReveal();
-
-    /* === DEFERRED : chargé après la fin du loader (~2s) === */
-    function initDeferred() {
-        initSparkleCursor();
-        initCounters();
-        initMarquee();
-        initServices();
-        initHeroTerminal();
-        initHeroParticles();
-        initDemoCRM();
-        initDemoDevis();
-        initDemoChatbot();
-        initDemoDashboard();
-        initDemoTabs();
-        initComparison();
-        initExpertise();
-        initMethodTimeline();
-        initPortfolio();
-        initGalaxy();
-        initToolsMobile();
-        initGalaxyCategories();
-        initPricing();
-        initFAQ();
-        initCTACanvas();
-        initCTATimer();
-        initSmartForm();
-        /* initTrustBar removed */
-        initMagneticBtn();
-        initScrollTop();
-        initSmoothAnchors();
-        initThreeBackground();
-        initEasterEggs();
-        initElectricSparks();
-        initSectionFlashReveal();
-        /* Charger GSAP maintenant (après contenu visible) */
-        if (typeof loadGSAP === 'function') loadGSAP();
-    }
-    /* Lance le deferred après que le loader disparaisse, ou après 2.5s max */
-    window._onLoaderDone = initDeferred;
-    setTimeout(function() { if (!window._deferredLoaded) { window._deferredLoaded = true; initDeferred(); } }, 2500);
+    initCounters();
+    initMarquee();
+    initServices();
+    initHeroTerminal();
+    initHeroParticles();
+    initDemoCRM();
+    initDemoDevis();
+    initDemoChatbot();
+    initDemoDashboard();
+    initDemoTabs();
+    initComparison();
+    // initExpertise(); // removed
+    initMethodTimeline();
+    initPortfolio();
+    // initTestimonials(); // removed
+    initGalaxy();
+    initToolsMobile();
+    initGalaxyCategories();
+    initPricing();
+    // initROICalculator(); // removed
+    initFAQ();
+    initCTACanvas();
+    // initCTATimer(); // removed
+    initServicesDots();
+    initAdnDots();
+    initSmartForm();
+    initTrustBar();
+    initMagneticBtn();
+    initScrollTop();
+    initSmoothAnchors();
+    initThreeBackground();
+    initEasterEggs();
+    initElectricSparks();
+    initSectionFlashReveal();
 });
 
 function showToast(msg) {
@@ -129,7 +119,7 @@ function initLoader() {
                 ctx.shadowBlur = 0;
             }
         }
-        for (let i = 0; i < 40; i++) particles.push(new LoaderParticle());
+        for (let i = 0; i < 120; i++) particles.push(new LoaderParticle());
         let animId;
         function animateParticles() {
             ctx.clearRect(0, 0, cw, ch);
@@ -149,15 +139,15 @@ function initLoader() {
     /* --- Letter-by-letter reveal --- */
     const letters = document.querySelectorAll('.loader-letter');
     letters.forEach((letter, i) => {
-        setTimeout(() => letter.classList.add('visible'), 100 + i * 60);
+        setTimeout(() => letter.classList.add('visible'), 200 + i * 120);
     });
 
     /* --- Progress with ring + bar + boot text --- */
     const ringTotal = 452.4; /* 2 * PI * 72 */
-    const lines = ['[INIT] Booting FlashAI...','[OK] AI engine ready','[OK] Systems loaded','[LAUNCH] Ready to deploy'];
+    const lines = ['[INIT] Booting FlashAI neural core...','[OK] 247 APIs connected','[OK] AI engine ready (GPT-4 + Claude)','[OK] Galaxy renderer initialized','[OK] Design system loaded','[OK] Sparkle engine armed','[OK] Security layer active','[LAUNCH] FlashAI v6.0 — Ready to deploy'];
     let progress = 0, lineIdx = 0;
     const interval = setInterval(() => {
-        progress += Math.random() * 22 + 10;
+        progress += Math.random() * 12 + 4;
         if (progress > 100) progress = 100;
         if (bar) bar.style.width = progress + '%';
         if (pct) pct.textContent = Math.floor(progress) + '%';
@@ -191,20 +181,14 @@ function initLoader() {
                 }
                 setTimeout(() => {
                     loader.classList.add('hidden');
-                    document.body.classList.add('loaded');
                     document.body.style.overflow = '';
                     if (loader._particleAnim) cancelAnimationFrame(loader._particleAnim);
-                    /* Déclencher le chargement des modules différés */
-                    if (window._onLoaderDone && !window._deferredLoaded) {
-                        window._deferredLoaded = true;
-                        window._onLoaderDone();
-                    }
-                }, 500);
-            }, 200);
+                }, 800);
+            }, 300);
         }
-    }, 120);
-    /* Safety timeout réduit */
-    setTimeout(() => { loader.classList.add('hidden'); document.body.classList.add('loaded'); document.body.style.overflow = ''; }, 3000);
+    }, 200);
+    /* Safety timeout */
+    setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 6000);
 }
 
 function initScrollProgress() {
@@ -287,10 +271,10 @@ function initSparkleCursor() {
         ctx.clearRect(0, 0, w, h);
         const dx = mx - pmx, dy = my - pmy;
         const speed = Math.sqrt(dx * dx + dy * dy);
-        const spawnCount = Math.min(Math.floor(speed * 0.3) + 1, 5);
+        const spawnCount = Math.min(Math.floor(speed * 0.6) + 1, 10);
 
-        if (speed > 2 && frame % 3 === 0) {
-            for (let i = 0; i < spawnCount; i++) {
+        if (speed > 1 && frame % 2 === 0) {
+            for (let i = 0; i < spawnCount + 2; i++) {
                 particles.push(new Sparkle(mx, my));
             }
         }
@@ -347,6 +331,17 @@ function initScrollReveal() {
 function initHeader() {
     const hdr = document.getElementById('main-header');
     if (!hdr) return;
+    var badge = document.getElementById('hero-badge');
+    var hero = document.getElementById('hero');
+    function syncBadge() {
+        if (!badge || !hero) return;
+        var logo = hdr.querySelector('a');
+        var bot = logo ? logo.getBoundingClientRect().bottom : hdr.getBoundingClientRect().bottom;
+        var heroTop = hero.getBoundingClientRect().top;
+        badge.style.paddingTop = Math.round(bot - heroTop - 25) + 'px';
+    }
+    requestAnimationFrame(function() { requestAnimationFrame(syncBadge); });
+    window.addEventListener('resize', syncBadge);
     const navLinks = hdr.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
         hdr.classList.toggle('scrolled', window.scrollY > 50);
@@ -416,32 +411,108 @@ function initMarquee() {
 function initServices() {
     const grid = document.getElementById('services-grid');
     if (!grid) return;
-    const packs = [
-        { icon: '🌐', title: 'Mon Site Pro', price: '390', desc: 'Site vitrine ou landing page sur mesure, design responsive, SEO de base, formulaire de contact.', color: '#00f0ff', delay: '5-10j', features: ['Design premium responsive', 'SEO technique inclus', 'Formulaire de contact', 'Hébergement 1 an offert'] },
-        { icon: '🤖', title: 'Mon Assistant Client 24/7', price: '500', desc: 'Chatbot IA entrainé sur vos données. Répond à vos clients jour et nuit sur votre site ou WhatsApp.', color: '#ff006e', delay: '5-7j', features: ['Chatbot IA (GPT-4)', 'Entrainé sur vos données', 'Intégration site + WhatsApp', 'Dashboard conversations'] },
-        { icon: '⚡', title: 'Mon Business Automatisé', price: '1 000', desc: 'Automatisez vos tâches répétitives : emails, CRM, factures, relances. Gagnez des heures chaque semaine.', color: '#ff8c00', delay: '7-10j', features: ['Workflows automatisés', 'Connexion à vos outils', 'CRM intelligent', 'Rapports automatiques'] },
-        { icon: '📞', title: 'Mon Standard Tél. IA', price: '1 000', desc: 'Standard téléphonique intelligent qui répond, qualifie et redirige vos appels automatiquement.', color: '#bf00ff', delay: '7-10j', features: ['Réception appels 24/7', 'Qualification automatique', 'Transfert intelligent', 'Historique & analytics'] },
-        { icon: '🧠', title: 'Mon Agent IA Métier', price: '1 500', desc: 'Un agent IA personnalisé pour votre métier : rédaction, analyse, gestion, support — il travaille pour vous.', color: '#00ff87', delay: '10-15j', features: ['Agent IA sur mesure', 'Adapté à votre métier', 'Automatisation avancée', 'Intégration complète'] },
-        { icon: '💬', title: 'WhatsApp Business IA', price: '800', desc: 'Transformez WhatsApp en machine de vente : catalogue, commandes, support client — tout automatisé.', color: '#25D366', delay: '5-7j', features: ['Catalogue produits', 'Prise de commandes', 'Réponses automatiques', 'Notifications clients'] },
-        { icon: '🚀', title: 'Mon App / MVP', price: '2 000', desc: 'Votre idée d\'application transformée en produit fonctionnel. Du concept au lancement en quelques semaines.', color: '#6366f1', delay: '15-30j', features: ['Application sur mesure', 'Design UX/UI pro', 'Backend & API', 'Déploiement inclus'] },
-        { icon: '🎓', title: 'Formation IA Business', price: '200', priceSuffix: '/session', desc: 'Formez votre équipe aux outils IA : ChatGPT, automatisation, productivité. Sessions pratiques sur vos cas concrets.', color: '#ffd700', delay: 'Sur RDV', features: ['Session pratique 2h', 'Outils IA concrets', 'Cas d\'usage métier', 'Support post-formation'] }
+    const svcs = [
+        { icon: '\u{1F310}', title: 'Sites Web', desc: 'Sites vitrines, landing pages, e-commerce. Design premium, SEO-ready, ultra-rapides.', color: '#00f0ff', anim: 'browser' },
+        { icon: '\u{1F4CA}', title: 'CRM & ERP', desc: 'Outils de gestion clients sur mesure. Pipelines, automatisations, dashboards.', color: '#bf00ff', anim: 'dashboard' },
+        { icon: '\u{1F916}', title: 'Chatbot IA', desc: 'Assistants virtuels intelligents. Integration WhatsApp, site, Messenger.', color: '#ff006e', anim: 'chat' },
+        { icon: '\u26A1', title: 'Automatisation', desc: 'Workflows automatises entre vos outils. Zapier, Make, n8n, scripts custom.', color: '#ff8c00', anim: 'flow' },
+        { icon: '\u{1F50D}', title: 'SEO Technique', desc: 'Audit complet, Core Web Vitals. Resultats mesurables en 30 jours.', color: '#00ff87', anim: 'chart' },
+        { icon: '\u{1F6E1}\uFE0F', title: 'Securite', desc: 'SSL, WAF, audit OWASP, RGPD. Protection complete de vos assets.', color: '#ffd700', anim: 'shield' }
     ];
-    grid.innerHTML = packs.map((p, i) => {
-        return '<div class="pack-card reveal" style="--pack-color:' + p.color + ';animation-delay:' + (i * 0.08) + 's">' +
-            '<div class="pack-card-header">' +
-                '<div class="pack-icon" style="background:' + p.color + '18;color:' + p.color + '">' + p.icon + '</div>' +
-                '<div class="pack-price-badge" style="background:' + p.color + '15;border-color:' + p.color + '40;color:' + p.color + '">' + p.price + ' €' + (p.priceSuffix || '') + '</div>' +
-            '</div>' +
-            '<h3 class="pack-title">' + p.title + '</h3>' +
-            '<p class="pack-desc">' + p.desc + '</p>' +
-            '<div class="pack-delay"><span class="pack-delay-icon">⏱</span> Livraison : ' + p.delay + '</div>' +
-            '<ul class="pack-features">' + p.features.map(f => '<li><span class="pack-check" style="color:' + p.color + '">✓</span> ' + f + '</li>').join('') + '</ul>' +
-            '<a href="#contact" class="pack-cta" style="--pack-color:' + p.color + '">Demander un devis</a>' +
-        '</div>';
-    }).join('');
+    grid.innerHTML = svcs.map((s, i) => '<div class="bento-card reveal" style="--card-glow:' + s.color + '30;transition-delay:' + (i*0.1) + 's" data-tilt><div class="bento-card-glow"></div><div class="bento-icon" style="background:' + s.color + '15;color:' + s.color + '">' + s.icon + '</div><h3 class="font-display font-bold text-lg mb-2">' + s.title + '</h3><p class="text-surface-400 text-sm leading-relaxed">' + s.desc + '</p><div class="bento-mini-anim" id="bento-anim-' + s.anim + '"></div></div>').join('');
+    grid.querySelectorAll('[data-tilt]').forEach(card => {
+        card.addEventListener('mousemove', e => { const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; card.style.transform = 'perspective(1000px) rotateY(' + (x*8) + 'deg) rotateX(' + (-y*8) + 'deg) translateY(-4px)'; const g = card.querySelector('.bento-card-glow'); if(g) { g.style.setProperty('--mouse-x', (e.clientX-r.left)+'px'); g.style.setProperty('--mouse-y', (e.clientY-r.top)+'px'); } });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+    initBentoAnims();
 }
 
-/* initBentoAnims removed — pack cards no longer use mini-animations */
+function initBentoAnims() {
+    const anims = {
+        /* ---- SITE WEB: Full mini-browser with nav, hero, cards, footer, cursor ---- */
+        browser: '<div class="ba-browser">' +
+            '<div class="ba-browser-chrome"><div class="ba-dots"><span style="background:#ff5f57"></span><span style="background:#ffbd2e"></span><span style="background:#28c840"></span></div><div class="ba-url-bar"><div class="ba-url-typing"></div></div></div>' +
+            '<div class="ba-browser-body">' +
+            '<div class="ba-s-nav"><div class="ba-s-nav-logo"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-link"></div><div class="ba-s-nav-cta"></div></div>' +
+            '<div class="ba-s-hero"><div class="ba-s-hero-bg"><div class="ba-s-h1"></div><div class="ba-s-h2"></div><div class="ba-s-btn"></div></div></div>' +
+            '<div class="ba-s-cards"><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div><div class="ba-s-card"><div class="ba-s-card-img"></div><div class="ba-s-card-line"></div><div class="ba-s-card-line2"></div></div></div>' +
+            '<div class="ba-s-footer"><div class="ba-s-footer-link"></div><div class="ba-s-footer-link"></div><div class="ba-s-footer-link"></div></div>' +
+            '</div>' +
+            '<div class="ba-build-bar"><div class="ba-build-fill"></div></div>' +
+            '<div class="ba-cursor"><svg viewBox="0 0 12 18"><path d="M1 1l10 7-5 1.5L4 16z" fill="white" stroke="black" stroke-width="1"/></svg></div>' +
+            '</div>',
+
+        /* ---- CRM: Kanban board with sidebar, columns, cards, chart ---- */
+        dashboard: '<div class="ba-crm">' +
+            '<div class="ba-crm-sidebar"><div class="ba-crm-sidebar-item active"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.3s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.6s"></div><div class="ba-crm-sidebar-item" style="animation-delay:0.9s"></div><div class="ba-crm-sidebar-item" style="animation-delay:1.2s;width:60%"></div></div>' +
+            '<div class="ba-crm-main">' +
+            '<div class="ba-crm-header"><div class="ba-crm-title">Pipeline</div><div class="ba-crm-add-btn">+</div></div>' +
+            '<div class="ba-crm-kanban">' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(255,140,0,0.6)"></div>Prospects</div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,140,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name" style="width:55%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,240,255,0.6)"></div>En cours</div><div class="ba-crm-card" style="border-color:rgba(0,240,255,0.3)"><div class="ba-crm-card-name" style="width:80%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,255,135,0.6)"></div>Gagn\u00e9</div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:60%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,255,135,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:45%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(191,0,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '</div>' +
+            '<div class="ba-crm-chart">' + Array.from({length:12}, (_,i) => '<div class="ba-crm-chart-bar" style="animation-delay:' + (i*0.15) + 's"></div>').join('') + '</div>' +
+            '</div></div>',
+
+        /* ---- CHATBOT: Rich conversation with cards, quick replies, typing ---- */
+        chat: '<div class="ba-chat">' +
+            '<div class="ba-chat-header"><div class="ba-chat-bot-avatar">\u{1F916}</div><div class="ba-chat-bot-info"><div class="ba-chat-bot-name">FlashAI Bot</div><div class="ba-chat-bot-status">En ligne</div></div></div>' +
+            '<div class="ba-chat-msgs">' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Bonjour ! Comment puis-je vous aider ?</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Je cherche des infos sur vos prix</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Voici nos formules :</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-rich-card"><div class="ba-chat-rich-img"></div><div class="ba-chat-rich-title"></div><div class="ba-chat-rich-desc"></div><div class="ba-chat-rich-btns"><div class="ba-chat-rich-btn"></div><div class="ba-chat-rich-btn"></div></div></div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Super, merci !</div></div>' +
+            '</div>' +
+            '<div class="ba-chat-quick"><div class="ba-chat-quick-btn">Tarifs</div><div class="ba-chat-quick-btn">D\u00e9lai</div><div class="ba-chat-quick-btn">Contact</div></div>' +
+            '<div class="ba-chat-typing"><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div></div>' +
+            '<div class="ba-chat-input"><div class="ba-chat-input-field"></div><div class="ba-chat-input-send"></div></div>' +
+            '</div>',
+
+        /* ---- AUTOMATION: Node-based workflow pipeline with data packets ---- */
+        flow: '<div class="ba-flow">' +
+            '<div class="ba-flow-label">Workflow actif</div>' +
+            '<div class="ba-flow-canvas"><div class="ba-flow-pipeline">' +
+            '<div class="ba-flow-node active"><span>&#9993;</span><div class="ba-flow-node-label">Email</div></div>' +
+            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet"></div></div>' +
+            '<div class="ba-flow-node"><span>&#9881;</span><div class="ba-flow-node-label">Process</div></div>' +
+            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet" style="animation-delay:0.4s"></div></div>' +
+            '<div class="ba-flow-node active"><span>&#128202;</span><div class="ba-flow-node-label">CRM</div></div>' +
+            '<div class="ba-flow-conn"><div class="ba-flow-conn-line"></div><div class="ba-flow-data-packet" style="animation-delay:0.8s"></div></div>' +
+            '<div class="ba-flow-node"><span>&#10003;</span><div class="ba-flow-node-label">Done</div></div>' +
+            '</div></div>' +
+            '<div class="ba-flow-status"><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:#00ff87"></div>3 actifs</div><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:#ff8c00"></div>1 en attente</div><div class="ba-flow-status-item"><div class="ba-flow-status-dot" style="background:rgba(255,255,255,0.2)"></div>0 erreurs</div></div>' +
+            '</div>',
+
+        /* ---- SEO: Lighthouse audit with ring gauge, vitals, chart, keywords ---- */
+        chart: '<div class="ba-seo">' +
+            '<div class="ba-seo-top">' +
+            '<div class="ba-seo-ring"><svg viewBox="0 0 48 48"><defs><linearGradient id="seo-ring-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(0,255,135,0.8)"/><stop offset="100%" stop-color="rgba(0,240,255,0.8)"/></linearGradient></defs><circle class="bg" cx="24" cy="24" r="22"/><circle class="fg" cx="24" cy="24" r="22"/></svg><div class="ba-seo-ring-score">98</div><div class="ba-seo-ring-label">Lighthouse</div></div>' +
+            '<div class="ba-seo-sub">' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#00ff87"></div><div class="ba-seo-sub-label">Performance</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:96%;background:linear-gradient(90deg,#00ff87,#00f0ff)"></div></div></div>' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#bf00ff"></div><div class="ba-seo-sub-label">Accessibility</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:92%;background:linear-gradient(90deg,#bf00ff,#ff006e);animation-delay:0.3s"></div></div></div>' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#00f0ff"></div><div class="ba-seo-sub-label">Best Practices</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:100%;background:linear-gradient(90deg,#00f0ff,#00ff87);animation-delay:0.6s"></div></div></div>' +
+            '<div class="ba-seo-sub-row"><div class="ba-seo-sub-dot" style="background:#ff8c00"></div><div class="ba-seo-sub-label">SEO</div><div class="ba-seo-sub-bar"><div class="ba-seo-sub-fill" style="--target:98%;background:linear-gradient(90deg,#ff8c00,#ffd700);animation-delay:0.9s"></div></div></div>' +
+            '</div></div>' +
+            '<div class="ba-seo-vitals"><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#00ff87">0.8s</div><div class="ba-seo-vital-label">FCP</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#00f0ff">1.2s</div><div class="ba-seo-vital-label">LCP</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#bf00ff">0.01</div><div class="ba-seo-vital-label">CLS</div></div><div class="ba-seo-vital"><div class="ba-seo-vital-val" style="color:#ff8c00">50ms</div><div class="ba-seo-vital-label">TBT</div></div></div>' +
+            '<div class="ba-seo-chart">' + Array.from({length:16}, (_,i) => '<div class="ba-seo-chart-bar" style="--h1:' + (15+Math.random()*25) + '%;--h2:' + (55+Math.random()*40) + '%;background:linear-gradient(180deg,rgba(0,255,135,0.4),rgba(0,240,255,0.15));animation-delay:' + (i*0.12) + 's"></div>').join('') + '</div>' +
+            '<div class="ba-seo-kw"><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>SEO</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Core Vitals</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Schema</div><div class="ba-seo-kw-tag"><span class="ba-seo-kw-arrow">\u2191</span>Sitemap</div></div>' +
+            '</div>',
+
+        /* ---- SECURITY: Shield scan with checks, encryption, threat counters ---- */
+        shield: '<div class="ba-sec">' +
+            '<div class="ba-sec-top">' +
+            '<div class="ba-sec-shield"><svg viewBox="0 0 40 46"><path d="M20 2L4 10v14c0 12 16 20 16 20s16-8 16-20V10L20 2z" fill="rgba(255,215,0,0.04)" stroke="rgba(255,215,0,0.25)" stroke-width="1.5"/><path d="M15 24l4 4 7-8" fill="none" stroke="rgba(255,215,0,0.6)" stroke-width="2" stroke-linecap="round" stroke-dasharray="24" stroke-dashoffset="24"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="2s" repeatCount="indefinite"/></path></svg><div class="ba-sec-shield-scan"></div></div>' +
+            '<div class="ba-sec-checks"><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> SSL/TLS 1.3</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> WAF Active</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> OWASP Top 10</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> RGPD OK</div><div class="ba-sec-check"><span class="ba-sec-check-icon" style="color:#00ff87">&#10003;</span> 2FA Enforced</div></div>' +
+            '</div>' +
+            '<div class="ba-sec-encrypt"><div class="ba-sec-encrypt-label">AES-256</div><div class="ba-sec-encrypt-bar"><div class="ba-sec-encrypt-fill"></div></div></div>' +
+            '<div class="ba-sec-threats"><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#00ff87">0</div><div class="ba-sec-threat-label">Menaces</div></div><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#00f0ff">847</div><div class="ba-sec-threat-label">Bloqu\u00e9es</div></div><div class="ba-sec-threat"><div class="ba-sec-threat-val" style="color:#ffd700">99.9%</div><div class="ba-sec-threat-label">Uptime</div></div></div>' +
+            '</div>'
+    };
+    for (const [k, v] of Object.entries(anims)) { const el = document.getElementById('bento-anim-' + k); if (el) el.innerHTML = v; }
+    if (!document.getElementById('bp-style')) { const s = document.createElement('style'); s.id = 'bp-style'; s.textContent = '@keyframes bp{0%,100%{opacity:.5;transform:scaleX(.8)}50%{opacity:1;transform:scaleX(1)}}'; document.head.appendChild(s); }
+}
 
 /* ========== HERO TERMINAL — MULTI-DAY PROFESSIONAL PROCESS ========== */
 function initHeroTerminal() {
@@ -498,7 +569,7 @@ function initHeroTerminal() {
             { t: '<span class="t-green">\u2713</span> Documentation: 42 pages generated', d: 900 },
             { t: '<span class="t-green">\u2713</span> Team training session scheduled', d: 800 },
             { t: '', d: 500 },
-            { t: '<span class="t-green t-bold">\u2728 PROJECT LIVE \u2014 clientpro.flash-ai.pro</span>', d: 1000 },
+            { t: '<span class="t-green t-bold">\u2728 PROJECT LIVE \u2014 clientpro.flashai.dev</span>', d: 1000 },
             { t: '<span class="t-gray">Response time: 47ms | Uptime: 99.99% | Score: 98/100</span>', d: 800 }
         ]}
     ];
@@ -639,8 +710,8 @@ function initDemoDevis() {
     const ct = document.getElementById('demo-devis');
     if (!ct) return;
     const state = { step: 1, type: null, features: [], total: 0 };
-    const types = [ { id: 'vitrine', name: 'Mon Site Pro', icon: '\u{1F310}', price: 390 }, { id: 'chatbot', name: 'Assistant Client IA', icon: '\u{1F916}', price: 500 }, { id: 'whatsapp', name: 'WhatsApp Business IA', icon: '\u{1F4AC}', price: 800 }, { id: 'auto', name: 'Business Automatis\u00e9', icon: '\u26A1', price: 1000 }, { id: 'standard', name: 'Standard T\u00e9l. IA', icon: '\u{1F4DE}', price: 1000 }, { id: 'agent', name: 'Agent IA M\u00e9tier', icon: '\u{1F9E0}', price: 1500 }, { id: 'app', name: 'Mon App / MVP', icon: '\u{1F4F1}', price: 2000 }, { id: 'formation', name: 'Formation IA', icon: '\u{1F393}', price: 390 } ];
-    const features = [ { name: 'Design premium', price: 200 }, { name: 'SEO avanc\u00e9', price: 150 }, { name: 'Multilingue', price: 200 }, { name: 'Analytics', price: 100 }, { name: 'Int\u00e9gration API', price: 200 }, { name: 'Paiement en ligne', price: 150 }, { name: 'Support prioritaire', price: 100 } ];
+    const types = [ { id: 'vitrine', name: 'Site Vitrine', icon: '\u{1F310}', price: 990 }, { id: 'ecommerce', name: 'E-Commerce', icon: '\u{1F6D2}', price: 2490 }, { id: 'crm', name: 'CRM / ERP', icon: '\u{1F4CA}', price: 1990 }, { id: 'chatbot', name: 'Chatbot IA', icon: '\u{1F916}', price: 1490 }, { id: 'dashboard', name: 'Dashboard', icon: '\u{1F4C8}', price: 1790 }, { id: 'auto', name: 'Automatisation', icon: '\u26A1', price: 890 } ];
+    const features = [ { name: 'Design premium', price: 490 }, { name: 'SEO avance', price: 390 }, { name: 'Multilingue', price: 290 }, { name: 'Analytics', price: 190 }, { name: 'Chatbot', price: 590 }, { name: 'API custom', price: 490 }, { name: 'Paiement', price: 390 }, { name: 'CRM integre', price: 690 }, { name: 'Automatisations', price: 490 }, { name: 'Support prioritaire', price: 290 } ];
     function calc() { const base = state.type ? (types.find(t => t.id === state.type)?.price || 0) : 0; state.total = base + state.features.reduce((s, f) => s + (features.find(x => x.name === f)?.price || 0), 0); }
     function render() {
         calc();
@@ -667,14 +738,13 @@ function initDemoChatbot() {
         prix: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">A partir de <strong>890\u20AC</strong> pour un site vitrine.<br>CRM/Dashboard: des <strong>1 990\u20AC</strong><br>Chatbot IA: des <strong>1 490\u20AC</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection devis...\')">Devis gratuit</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Voir tarifs\')">Voir tous les prix</button></div></div>',
         delai: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Delais de livraison</div><div class="chat-rich-body">\u2022 Site vitrine: <strong>5 jours</strong><br>\u2022 CRM/Dashboard: <strong>7-10 jours</strong><br>\u2022 Projet complexe: <strong>10-14 jours</strong></div></div>',
         services: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">\u{1F310} Sites web & landing pages<br>\u{1F4CA} CRM & ERP sur mesure<br>\u{1F916} Chatbots IA (WhatsApp, web)<br>\u26A1 Automatisations<br>\u{1F50D} SEO technique<br>\u{1F6E1}\uFE0F Securite & RGPD</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection services\')">En savoir plus</button></div></div>',
-        contact: 'Contactez-nous a <strong>contact@flash-ai.pro</strong> ou par WhatsApp au +33 7 58 78 70 25. Reponse en <strong>moins de 2h</strong> ! \u{1F4E9}',
-        technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>67+ technologies</strong> maitrisees.</div></div>',
-        garantie: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F6E1}\uFE0F Support inclus</div><div class="chat-rich-body">Support IA et monitoring automatise <strong>a vie</strong>. Support humain <strong>1 an inclus</strong>.</div></div>',
-        portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">Freenzy, GlamHouse, Psy Daniel, David Spectacles, Cinegen, LaunchPad...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
+        contact: 'Contactez-nous a <strong>contact@flashai.dev</strong>. Reponse en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
+        technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>200+ APIs</strong> connectees.</div></div>',
+        portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">+50 projets livres: SaaS, e-commerce, sante, fintech, edtech...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
         ia: 'Nous integrons <strong>GPT-4, LangChain, RAG</strong> et des modeles custom. Nos chatbots resolvent <strong>85%</strong> des demandes sans humain ! \u{1F9E0}',
         default: 'Je suis l\'assistant FlashAI \u{1F916}. Posez vos questions sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>technologies</strong> ou <strong>delais</strong> !'
     };
-    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Support ?', 'Portfolio ?', 'IA ?'];
+    const suggestions = ['Quels prix ?', 'Delai ?', 'Services ?', 'Portfolio ?', 'IA ?', 'Contact ?'];
     let messages = [{ from: 'bot', text: 'Bonjour ! Comment puis-je vous aider ?' }];
     function getResp(t) { const l = t.toLowerCase(); for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('bonjour')||l.includes('salut')||l.includes('hello')) return 'Bonjour ! \u{1F44B} Comment puis-je vous aider ?'; if (l.includes('merci')||l.includes('thanks')) return 'Avec plaisir ! N\'hesitez pas si vous avez d\'autres questions. \u{1F60A}'; if (l.includes('site')||l.includes('web')) return responses.services; if (l.includes('cout')||l.includes('tarif')||l.includes('combien')) return responses.prix; if (l.includes('temps')||l.includes('rapide')||l.includes('livr')) return responses.delai; if (l.includes('projet')||l.includes('realisation')||l.includes('exemple')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')) return responses.ia; return responses.default; }
     function render() {
@@ -773,8 +843,8 @@ function initComparison() {
         { label: 'Cout moyen', classic: '15 000 \u2014 50 000\u20AC', flash: '890 \u2014 4 990\u20AC', icon: '\u{1F4B0}' },
         { label: 'Technologies', classic: 'WordPress / Wix', flash: 'React, Next.js, IA', icon: '\u2699\uFE0F' },
         { label: 'Maintenance', classic: '200\u20AC/mois min', flash: 'Incluse 12 mois', icon: '\u{1F527}' },
-        { label: 'Performance', classic: 'Sites lents', flash: 'Ultra-rapide, optimisé', icon: '\u{1F680}' },
-        { label: 'Support', classic: 'Email lent', flash: '< 2h, 24/7', icon: '\u{1F4AC}' },
+        { label: 'Performance', classic: 'Lighthouse ~60', flash: 'Lighthouse 95+', icon: '\u{1F680}' },
+        { label: 'Support', classic: 'Email lent', flash: 'Ultra rapide, 24/7', icon: '\u{1F4AC}' },
         { label: 'Personnalisation', classic: 'Templates limites', flash: '100% sur mesure', icon: '\u{1F3A8}' },
         { label: 'SEO', classic: 'Basique', flash: 'Avance, optimise IA', icon: '\u{1F50D}' }
     ];
@@ -801,22 +871,22 @@ function initExpertise() {
     const ct = document.getElementById('expertise-carousel');
     if (!ct) return;
     const cards = [
-        { title: 'Frontend', icon: '\u{1F3A8}', color: '#00f0ff', techs: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'TailwindCSS', 'Three.js'] },
-        { title: 'Backend', icon: '\u2699\uFE0F', color: '#bf00ff', techs: ['Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Redis'] },
-        { title: 'IA & Data', icon: '\u{1F9E0}', color: '#ff006e', techs: ['OpenAI GPT', 'Claude', 'LangChain', 'RAG', 'NLP', 'Pinecone'] },
-        { title: 'DevOps', icon: '\u{1F680}', color: '#00ff87', techs: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'CI/CD', 'Cloudflare'] }
+        { title: 'Frontend', icon: '\u{1F3A8}', color: '#00f0ff', skills: [['React / Next.js', 95], ['Vue / Nuxt', 88], ['TypeScript', 92], ['TailwindCSS', 98], ['Three.js / GSAP', 85]] },
+        { title: 'Backend', icon: '\u2699\uFE0F', color: '#bf00ff', skills: [['Node.js / Express', 94], ['Python / FastAPI', 90], ['PostgreSQL', 92], ['MongoDB / Redis', 88], ['GraphQL / REST', 95]] },
+        { title: 'IA & Data', icon: '\u{1F9E0}', color: '#ff006e', skills: [['OpenAI / GPT', 96], ['LangChain', 88], ['RAG Systems', 85], ['NLP / NLU', 82], ['Data Pipeline', 87]] },
+        { title: 'DevOps', icon: '\u{1F680}', color: '#00ff87', skills: [['Docker / K8s', 90], ['AWS / GCP', 92], ['CI/CD', 95], ['Monitoring', 88], ['Securite', 91]] }
     ];
-    ct.innerHTML = '<div class="expertise-grid">' + cards.map(function(c, i) {
-        var techHtml = c.techs.map(function(t) {
-            return '<div class="expertise-tech-pill" style="border-color:' + c.color + '30;color:' + c.color + ';background:' + c.color + '08">' + t + '</div>';
-        }).join('');
-        return '<div class="expertise-card reveal" style="transition-delay:' + (i * 0.15) + 's;--ec:' + c.color + '">' +
-            '<div class="expertise-card-front">' +
-            '<div class="expertise-icon" style="background:' + c.color + '15;color:' + c.color + '">' + c.icon + '</div>' +
-            '<h3 class="font-display font-bold text-xl mb-4">' + c.title + '</h3>' +
-            '<div class="expertise-techs">' + techHtml + '</div>' +
-            '</div></div>';
-    }).join('') + '</div>';
+    ct.innerHTML = '<div class="expertise-grid">' + cards.map((c, i) => '<div class="expertise-card reveal" style="transition-delay:' + (i * 0.15) + 's;--ec:' + c.color + '"><div class="expertise-card-front"><div class="expertise-icon" style="background:' + c.color + '15;color:' + c.color + '">' + c.icon + '</div><h3 class="font-display font-bold text-xl mb-4">' + c.title + '</h3><div class="expertise-bars">' + c.skills.map(s => '<div class="expertise-bar-row"><span class="text-xs text-surface-300">' + s[0] + '</span><div class="expertise-bar-bg"><div class="expertise-bar-fill" style="width:' + s[1] + '%;background:' + c.color + '" data-width="' + s[1] + '"></div></div><span class="text-xs" style="color:' + c.color + '">' + s[1] + '%</span></div>').join('') + '</div></div></div>').join('') + '</div>';
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) {
+            e.target.querySelectorAll('.expertise-bar-fill').forEach(bar => {
+                bar.style.width = '0%';
+                setTimeout(() => { bar.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1)'; bar.style.width = bar.dataset.width + '%'; }, 200);
+            });
+            obs.unobserve(e.target);
+        }});
+    }, { threshold: 0.3 });
+    ct.querySelectorAll('.expertise-card').forEach(c => obs.observe(c));
 }
 
 /* ========== METHOD TIMELINE ========== */
@@ -824,7 +894,7 @@ function initMethodTimeline() {
     const ct = document.getElementById('method-timeline');
     if (!ct) return;
     const steps = [
-        { num: '01', title: 'Discovery', desc: 'Appel d\'1h pour comprendre vos besoins, objectifs et contraintes. Analyse de l\'existant et recommandations.', icon: '\u{1F3AF}', color: '#00f0ff', duration: '1h' },
+        { num: '01', title: 'Discovery', desc: 'Appel de 30 min pour comprendre vos besoins, objectifs et contraintes. Analyse de l\'existant et recommandations.', icon: '\u{1F3AF}', color: '#00f0ff', duration: '30 min' },
         { num: '02', title: 'Prototype', desc: 'Maquette interactive livree en 48h. Vous validez le design, l\'UX et les fonctionnalites avant le developpement.', icon: '\u270F\uFE0F', color: '#bf00ff', duration: '48h' },
         { num: '03', title: 'Build', desc: 'Developpement agile avec demos quotidiennes. Stack moderne, code propre, tests automatises.', icon: '\u26A1', color: '#ff006e', duration: '3-10 jours' },
         { num: '04', title: 'Launch', desc: 'Deploiement, formation, documentation. Support prioritaire inclus 12 mois. Monitoring 24/7.', icon: '\u{1F680}', color: '#00ff87', duration: 'J+0' }
@@ -838,23 +908,17 @@ function initPortfolio() {
     const scrollCt = document.getElementById('portfolio-scroll');
     if (!ct && !scrollCt) return;
     const projects = [
-        { title: 'Freenzy', type: 'SaaS IA tout-en-un', desc: 'Plateforme SaaS complete avec 30+ modules IA interconnectes : assistants, studio creatif, email, gestion de taches.', tech: 'Architecture micro-services avec orchestration temps reel de 30+ modules IA, WebSockets pour la collaboration live, et pipeline RAG multi-modeles.', color: '#00f0ff', tags: ['SaaS','IA','Automatisation'], stat: '30+ modules', img: 'assets/portfolio-freenzy.jpg', url: 'https://app.freenzy.io/xxxxx' },
-        { title: 'Cinegen', type: 'Streaming & Cinema IA', desc: 'Plateforme de streaming cinema avec creation, financement participatif et diffusion de films. Interface premium style Netflix.', tech: 'Streaming adaptatif HLS avec CDN, moteur de recommandation IA, systeme de financement participatif integre et player video custom zero-latence.', color: '#ff006e', tags: ['Streaming','Cinema','IA'], stat: 'Netflix-like', img: 'assets/portfolio-cinegen.jpg', url: 'https://cinegen.app/xxxxx' },
-        { title: 'GlamHouse', type: 'Immobilier & Blockchain', desc: 'Site immobilier eco-responsable avec tokenisation blockchain. Investissement fractionne dans des maisons passives high-tech.', tech: 'Smart contracts Solidity pour la tokenisation immobiliere, integration Web3 avec wallet connect, calculateur energetique temps reel et modelisation 3D des biens.', color: '#bf00ff', tags: ['Blockchain','Immobilier','Web3'], stat: 'Tokenise', img: 'assets/portfolio-glamhouse.jpg', url: 'https://glamhouse.io/xxxxx' },
-        { title: 'Dr Psy Daniel', type: 'Site professionnel', desc: 'Site vitrine elegant pour un cabinet de psychanalyse. Prise de RDV en ligne, design sobre et confiance immediate.', tech: 'SEO local optimise (score Lighthouse 98+), systeme de reservation temps reel avec Google Calendar API, conformite RGPD sante renforcee et chiffrement des donnees patient.', color: '#00ff87', tags: ['Sante','SEO','Design'], stat: 'RDV en ligne', img: 'assets/portfolio-psydaniel.jpg', url: 'https://drpsydaniel.com/xxxxx' },
-        { title: 'David Spectacles', type: 'Dashboard', desc: 'Dashboard de gestion de spectacles : planning artistes, annonces, billetterie et suivi complet.', tech: 'Dashboard full-stack avec gestion multi-utilisateurs, calendrier interactif, systeme de billetterie et notifications temps reel.', color: '#ffd700', tags: ['Dashboard','Spectacles','Planning'], stat: 'Live' },
-        { title: 'Levemente', type: 'Experience cadeau', desc: 'Site cadeau d\'anniversaire personnalise avec 3 choix surprises.', tech: 'Experience utilisateur immersive avec animations personnalisees, systeme de choix interactif et design emotionnel.', color: '#ff8c00', tags: ['Design','Cadeau','UX'], stat: '3 choix' },
-        { title: 'Serlevemente', type: 'E-commerce', desc: 'Boutique en ligne elegante avec catalogue produits et paiement securise.', tech: 'E-commerce moderne avec panier dynamique, paiement Stripe, gestion de stock et tableau de bord vendeur.', color: '#06b6d4', tags: ['E-commerce','Design','Paiement'], stat: 'En ligne' },
-        { title: 'Afrique Digital', type: 'Portail web', desc: 'Portail digital pour le marche africain francophone. Optimise mobile-first.', tech: 'Architecture progressive web app optimisee pour connexions lentes, CDN multi-regions et cache agressif pour l\'Afrique francophone.', color: '#22c55e', tags: ['Portail','Mobile-first','Afrique'], stat: 'Multi-pays' },
-        { title: 'LaunchPad', type: 'Mini App', desc: 'MVP fonctionnel livre en 5 jours pour startups. Du concept au produit testable sur le marche.', tech: 'Stack Next.js + Supabase pour un deploiement ultra-rapide, auth sociale integree, analytics temps reel et CI/CD automatise — le tout en 5 jours.', color: '#e879f9', tags: ['MVP','Startup','Rapide'], stat: '5 jours' }
+        { title: 'Freenzy', type: 'SaaS', desc: 'Automatisation totale, audit securite quotidien, +30 APIs connectees.', color: '#00f0ff', tags: ['Automatisation','Securite','APIs'], stat: '30+ APIs' },
+        { title: 'GlamHouse', type: 'Immobilier Web3', desc: 'Transactions immobilieres tokenisees et securisees on-chain.', color: '#bf00ff', tags: ['Blockchain','Smart Contracts','Tokenisation'], stat: 'Web3' },
+        { title: 'Psy Daniel', type: 'Automatisation', desc: 'Posts automatises et SEO optimise par IA pour cabinet psy.', color: '#00ff87', tags: ['SEO IA','Posts auto','Analytics'], stat: 'SEO auto' },
+        { title: 'David Spectacles', type: 'Dashboard', desc: 'Gestion spectacles, artistes, planning et billetterie.', color: '#ffd700', tags: ['Planning','Artistes','Dashboard'], stat: 'Live' },
+        { title: 'Levemente', type: 'Experience cadeau', desc: 'Site cadeau d\'anniversaire personnalise avec 3 choix.', color: '#ff8c00', tags: ['Design','Personnalisation','UX'], stat: '3 choix' },
+        { title: 'Cinegen', type: 'Confidentiel', desc: 'Projet en cours sous accord de confidentialite.', color: '#ff006e', tags: ['Confidentiel'], stat: 'En cours', url: '' },
+        { title: 'Afrique Digital', type: 'Portail web', desc: 'Portail digital pour le marche africain francophone.', color: '#06b6d4', tags: ['Mobile-first','Portail','Afrique'], stat: 'Multi-pays', url: '' },
+        { title: 'LaunchPad', type: 'Mini App', desc: 'MVP fonctionnel livre en 5 jours pour startups.', color: '#e879f9', tags: ['MVP','Startup','Rapide'], stat: '5 jours', url: '' }
     ];
     function cardHTML(p) {
-        var screenContent = p.img
-            ? '<img src="' + p.img + '" alt="' + p.title + '" style="width:100%;height:100%;object-fit:cover;object-position:top" loading="lazy">'
-            : '<div style="padding:12px"><div style="display:flex;gap:6px;margin-bottom:8px"><div style="height:6px;width:40%;background:' + p.color + '30;border-radius:3px"></div><div style="height:6px;width:20%;background:' + p.color + '15;border-radius:3px"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px"><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div></div><div style="height:50px;background:' + p.color + '08;border-radius:4px;border:1px solid ' + p.color + '10"></div></div>';
-        var urlText = p.url ? p.url.replace(/https?:\/\//, '').replace(/\/$/, '') : p.title.toLowerCase().replace(/[\s\.]/g, '') + '.app';
-        var techHtml = p.tech ? '<div class="portfolio-tech"><span class="portfolio-tech-icon">\u2699\uFE0F</span> ' + p.tech + '</div>' : '';
-        return '<div class="portfolio-mockup"><div class="portfolio-mockup-bar"><span class="portfolio-mockup-dot" style="background:#ef4444"></span><span class="portfolio-mockup-dot" style="background:#f59e0b"></span><span class="portfolio-mockup-dot" style="background:#22c55e"></span><span class="portfolio-mockup-url">' + urlText + '</span></div><div class="portfolio-mockup-screen" style="background:linear-gradient(135deg,' + p.color + '20,' + p.color + '05)">' + screenContent + '</div><div class="portfolio-info"><div class="portfolio-info-name">' + p.title + '</div><div class="portfolio-info-sector">' + p.type + '</div><div class="portfolio-metric" style="background:' + p.color + '15;color:' + p.color + '">' + p.stat + '</div>' + techHtml + '<div class="portfolio-tags">' + p.tags.map(t => '<span class="portfolio-tag" style="border-color:' + p.color + '40;color:' + p.color + '">' + t + '</span>').join('') + '</div></div></div>';
+        return '<div class="portfolio-mockup"><div class="portfolio-mockup-bar"><span class="portfolio-mockup-dot" style="background:#ef4444"></span><span class="portfolio-mockup-dot" style="background:#f59e0b"></span><span class="portfolio-mockup-dot" style="background:#22c55e"></span><span class="portfolio-mockup-url">' + p.title.toLowerCase().replace(/\s/g, '') + '.app</span></div><div class="portfolio-mockup-screen" style="background:linear-gradient(135deg,' + p.color + '20,' + p.color + '05)"><div style="padding:12px"><div style="display:flex;gap:6px;margin-bottom:8px"><div style="height:6px;width:40%;background:' + p.color + '30;border-radius:3px"></div><div style="height:6px;width:20%;background:' + p.color + '15;border-radius:3px"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px"><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div></div><div style="height:50px;background:' + p.color + '08;border-radius:4px;border:1px solid ' + p.color + '10"></div></div></div><div class="portfolio-info"><div class="portfolio-info-name">' + p.title + '</div><div class="portfolio-info-sector">' + p.type + '</div><div class="portfolio-metric" style="background:' + p.color + '15;color:' + p.color + '">' + p.stat + '</div><div class="portfolio-tags">' + p.tags.map(t => '<span class="portfolio-tag" style="border-color:' + p.color + '40;color:' + p.color + '">' + t + '</span>').join('') + '</div></div></div>';
     }
     // Mobile: native scroll-snap carousel (no JS touch handling needed)
     if (scrollCt) {
@@ -890,7 +954,19 @@ function initPortfolio() {
     window.addEventListener('resize', () => render());
 }
 
-/* Testimonials removed — only real client feedback */
+/* ========== TESTIMONIALS ========== */
+function initTestimonials() {
+    const ct = document.getElementById('testimonials-container');
+    if (!ct) return;
+    const items = [
+        { name: 'Marie Dupont', role: 'CEO, TechVision', text: 'FlashAI a transforme notre vision en realite en seulement 8 jours. Le dashboard est incroyable, nos equipes l\'adorent. Le ROI a ete immediat.', rating: 5, avatar: 'MD', color: '#00f0ff' },
+        { name: 'Thomas Martin', role: 'CTO, FoodExpress', text: 'On a economise 40 000\u20AC par rapport aux devis d\'agences classiques. Et le resultat est meilleur. Qualite exceptionnelle, support reactif.', rating: 5, avatar: 'TM', color: '#bf00ff' },
+        { name: 'Sophie Bernard', role: 'Fondatrice, MediCare', text: 'Le CRM medical est parfait. Conforme RGPD, intuitif, et nos patients adorent le portail en ligne. Support 24/7 vraiment reactif.', rating: 5, avatar: 'SB', color: '#ff006e' },
+        { name: 'Lucas Chen', role: 'PM, CryptoTrack', text: 'L\'integration IA est bluffante. Le chatbot comprend vraiment nos clients. Taux de satisfaction passe de 72% a 96%.', rating: 5, avatar: 'LC', color: '#00ff87' },
+        { name: 'Emma Laurent', role: 'Directrice, EduSmart', text: 'Plateforme livree en 5 jours, alors que d\'autres agences demandaient 3 mois. Qualite irreprochable et prix imbattable.', rating: 5, avatar: 'EL', color: '#ffd700' }
+    ];
+    ct.innerHTML = '<div class="testimonials-track">' + items.map((t, i) => '<div class="testimonial-card reveal" style="transition-delay:' + (i * 0.12) + 's;--tc:' + t.color + '"><div class="testimonial-quote">\u201C</div><p class="text-surface-200 text-sm leading-relaxed mb-6">' + t.text + '</p><div class="testimonial-stars">' + '\u2605'.repeat(t.rating) + '</div><div class="testimonial-author"><div class="testimonial-avatar" style="background:' + t.color + '30;color:' + t.color + '">' + t.avatar + '</div><div><div class="font-bold text-sm">' + t.name + '</div><div class="text-xs text-surface-400">' + t.role + '</div></div></div></div>').join('') + '</div>';
+}
 
 /* ========== GALAXY VISUALIZATION ========== */
 function initGalaxy() {
@@ -965,24 +1041,29 @@ function initPricing() {
     const grid = document.getElementById('pricing-grid');
     if (!grid) return;
     const plans = [
-        { name: 'Essentiel', icon: '\u{1F680}', price: '390', desc: 'Lancez votre pr\u00e9sence digitale avec un site pro ou un chatbot IA.', color: '#00f0ff', packs: 'Mon Site Pro (390\u20AC) \u00B7 Mon Assistant Client 24/7 (500\u20AC)', features: ['Site vitrine ou chatbot IA','Design responsive premium','SEO technique inclus','H\u00e9bergement 1 an offert','Support email 12 mois','Livraison 5\u201310 jours'] },
-        { name: 'Business', icon: '\u{1F4BC}', price: '800', desc: 'Automatisez et boostez votre activit\u00e9 avec l\u2019IA.', color: '#bf00ff', featured: true, packs: 'WhatsApp Business IA (800\u20AC) \u00B7 Automatisation (1\u202F000\u20AC) \u00B7 Standard T\u00e9l. (1\u202F000\u20AC)', features: ['Tout Essentiel inclus','Automatisations avanc\u00e9es','Standard t\u00e9l\u00e9phonique IA','WhatsApp Business IA','CRM intelligent','Support prioritaire 12 mois'] },
-        { name: 'Premium', icon: '\u{1F3AF}', price: '1 500', desc: 'Solutions IA sur mesure et applications compl\u00e8tes.', color: '#ffd700', packs: 'Agent IA M\u00e9tier (1\u202F500\u20AC) \u00B7 Mon App/MVP (2\u202F000\u20AC)', features: ['Tout Business inclus','Agent IA personnalis\u00e9','Application / MVP sur mesure','Account manager d\u00e9di\u00e9','Maintenance illimit\u00e9e','Formation \u00e9quipe offerte'] }
+        { name: 'Starter', icon: '\u{1F680}', price: 490, priceAnnual: 392, desc: 'Parfait pour demarrer votre presence digitale.', color: '#00f0ff', features: ['Site vitrine responsive','Design premium sur mesure','SEO de base optimise','Hebergement 3 mois inclus','Support email','Livraison en 5 jours'] },
+        { name: 'Business', icon: '\u{1F4BC}', price: 1490, priceAnnual: 1192, desc: 'La solution complete pour scaler votre business.', color: '#bf00ff', featured: true, features: ['Tout Starter +','CRM / Dashboard integre','Chatbot IA basique','API & automatisations','Analytics avance','Support prioritaire 12 mois','Formation equipe incluse'] },
+        { name: 'Enterprise', icon: '\u{1F3AF}', price: 2490, priceAnnual: 1992, desc: 'Infrastructure complete avec outils IA complexes.', color: '#ffd700', features: ['Tout Business +','Outils IA complexes (GPT-4, RAG)','User accounts & permissions','Infrastructure scalable','Multi-langue / multi-pays','SLA 99.9% garanti','Account manager dedie','Audit securite complet'] }
     ];
-    grid.innerHTML = plans.map((p, idx) => {
-        return '<div class="pricing-card-3d ' + (p.featured ? 'featured' : '') + '" style="--pc:' + p.color + '">' +
-            (p.featured ? '<div class="pricing-popular-badge">\u2B50 Plus populaire</div>' : '') +
-            '<div class="pricing-card-aurora pricing-card-aurora-' + (idx + 1) + '"></div>' +
-            '<div class="pricing-card-inner"><div class="pricing-card-icon" style="background:' + p.color + '15;color:' + p.color + '">' + p.icon + '</div>' +
-            '<div class="pricing-name">' + p.name + '</div>' +
-            '<div class="pricing-desc">' + p.desc + '</div>' +
-            '<div class="pricing-price">\u00C0 partir de <span class="pricing-amount" style="color:' + p.color + '">' + p.price + '</span><span class="pricing-currency"> \u20AC</span></div>' +
-            '<div class="text-xs text-surface-500 mt-1 mb-3 font-mono">' + p.packs + '</div>' +
-            '<div class="pricing-divider"></div>' +
-            '<ul class="pricing-features">' + p.features.map((f, fi) => '<li style="animation-delay:' + (fi * 0.06) + 's"><span class="pf-check">\u2713</span><span>' + f + '</span></li>').join('') + '</ul>' +
-            '<a href="#contact" class="pricing-cta ' + (p.featured ? 'pricing-cta-featured' : '') + '">Demander un devis gratuit</a>' +
-            '</div></div>';
-    }).join('');
+    function render() {
+        grid.innerHTML = plans.map((p, idx) => {
+            const price = p.price;
+            const oldPrice = null;
+            return '<div class="pricing-card-3d ' + (p.featured ? 'featured' : '') + '" style="--pc:' + p.color + '">' +
+                (p.featured ? '<div class="pricing-popular-badge">\u2B50 Plus populaire</div>' : '') +
+                '<div class="pricing-card-aurora pricing-card-aurora-' + (idx + 1) + '"></div>' +
+                '<div class="pricing-card-inner"><div class="pricing-card-icon" style="background:' + p.color + '15;color:' + p.color + '">' + p.icon + '</div>' +
+                '<div class="pricing-name">' + p.name + '</div>' +
+                '<div class="pricing-desc">' + p.desc + '</div>' +
+                (oldPrice ? '<div class="pricing-old-price">' + oldPrice.toLocaleString('fr') + ' \u20AC</div>' : '') +
+                '<div class="pricing-price"><span class="pricing-amount" style="color:' + p.color + '">' + price.toLocaleString('fr') + '</span><span class="pricing-currency">\u20AC</span></div>' +
+                '<div class="pricing-divider"></div>' +
+                '<ul class="pricing-features">' + p.features.map((f, fi) => '<li style="animation-delay:' + (fi * 0.06) + 's"><span class="pf-check">\u2713</span><span>' + f + '</span></li>').join('') + '</ul>' +
+                '<a href="#contact" class="pricing-cta ' + (p.featured ? 'pricing-cta-featured' : '') + '">' + (p.featured ? 'Choisir Business' : 'Commencer') + '</a>' +
+                '</div></div>';
+        }).join('');
+    }
+    render();
 }
 
 /* ========== ROI CALCULATOR ========== */
@@ -1027,14 +1108,13 @@ function initFAQ() {
     const list = document.getElementById('faq-list');
     if (!list) return;
     const faqs = [
-        { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos packs demarrent a <span class="faq-highlight">390\u20AC</span> (site vitrine). 8 packs cles en main de 390\u20AC a 2\u202F000\u20AC. Hebergement serveur offert 1 an. Devis gratuit en <strong>24h</strong>.', cat: 'business', icon: '\u{1F4B0}' },
+        { q: 'Combien coute un projet avec FlashAI ?', a: 'Nos tarifs commencent a <span class="faq-highlight">490\u20AC</span> pour un site vitrine. Chaque projet est chiffre sur mesure selon vos besoins. <strong>Devis ultra rapide</strong>.', cat: 'business', icon: '\u{1F4B0}' },
         { q: 'Quel est le delai de livraison ?', a: 'En moyenne <span class="faq-highlight">5 jours ouvres</span> pour un site vitrine, 7-14 jours pour les projets complexes (CRM, dashboard, chatbot IA).', cat: 'projet', icon: '\u23F1\uFE0F' },
-        { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 67 technologies maitrisees.', cat: 'technique', icon: '\u2699\uFE0F' },
-        { q: 'Quel support proposez-vous ?', a: '<span class="faq-highlight">Support IA et monitoring automatise inclus a vie</span>. Support humain prioritaire inclus 1 an. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F6E1}\uFE0F' },
-        { q: 'Comment fonctionne le support ?', a: 'Support prioritaire avec reponse en <span class="faq-highlight">moins de 2 heures</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
-        { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Consultez notre section <strong>Realisations</strong> ci-dessus : Freenzy, GlamHouse, Psy Daniel, David Spectacles, et bien d\'autres.', cat: 'projet', icon: '\u{1F3A8}' },
+        { q: 'Quelles technologies utilisez-vous ?', a: 'Nous utilisons les technologies les plus modernes : <strong>React, Next.js, Node.js, Python, TypeScript, PostgreSQL</strong>. Plus de 247 APIs connectees.', cat: 'technique', icon: '\u2699\uFE0F' },
+        { q: 'Comment fonctionne le support ?', a: 'Support <span class="faq-highlight">ultra rapide</span>, 24/7. Chat, email, visio. Inclus 12 mois avec chaque projet.', cat: 'support', icon: '\u{1F4AC}' },
+        { q: 'Puis-je voir des exemples de projets ?', a: 'Bien sur ! Consultez notre section <strong>Realisations</strong> ci-dessus. Plus de <span class="faq-highlight">50 projets</span> livres dans des secteurs varies : SaaS, e-commerce, sante, fintech.', cat: 'projet', icon: '\u{1F3A8}' },
         { q: 'Est-ce que le SEO est inclus ?', a: 'Oui, chaque projet inclut une <strong>optimisation SEO technique</strong> : meta tags, structured data, Core Web Vitals, sitemap XML, schema.org.', cat: 'technique', icon: '\u{1F50D}' },
-        { q: 'Comment se passe le paiement ?', a: '<strong>50% a la commande</strong>, 50% a la livraison. Paiement par virement ou carte bancaire.', cat: 'business', icon: '\u{1F4B3}' },
+        { q: 'Comment se passe le paiement ?', a: '<strong>30% a la commande</strong>, 40% a la validation du prototype, 30% a la livraison. Paiement par virement ou carte bancaire via <span class="faq-highlight">Stripe</span>.', cat: 'business', icon: '\u{1F4B3}' },
         { q: 'Faites-vous la maintenance ?', a: 'Oui ! <strong>12 mois de maintenance inclus</strong> : mises a jour, corrections, monitoring 24/7. Au-dela, forfaits a partir de 99\u20AC/mois.', cat: 'support', icon: '\u{1F527}' },
         { q: 'Travaillez-vous a l\'international ?', a: 'Absolument. Bases a <strong>Tel Aviv</strong>, nous travaillons avec des clients en France, Suisse, Belgique, Canada et dans le monde entier. Tout se fait a distance.', cat: 'general', icon: '\u{1F30D}' },
         { q: 'Qui est derriere FlashAI ?', a: 'FlashAI a ete fondee par <strong>Emmanuel Smadja</strong>, entrepreneur franco-israelien passionne de tech et d\'IA. L\'equipe reunit des developpeurs seniors, designers UX et experts IA entre Paris et Tel Aviv.', cat: 'general', icon: '\u{1F464}' },
@@ -1049,11 +1129,11 @@ function initFAQ() {
         { q: 'Y a-t-il un engagement ?', a: '<strong>Aucun engagement</strong>. Pas d\'abonnement obligatoire. Vous payez le projet, c\'est tout. Le support 12 mois est inclus.', cat: 'business', icon: '\u2705' },
         { q: 'Quel est votre avantage par rapport a une agence classique ?', a: '<span class="faq-highlight">3 a 5x moins cher</span>, livraison en jours au lieu de mois, technologies modernes vs WordPress, support reactif inclus 12 mois.', cat: 'general', icon: '\u{1F680}' },
         { q: 'Faites-vous des applications mobiles ?', a: 'Nous specialisons dans les <strong>Progressive Web Apps (PWA)</strong> qui fonctionnent comme des apps natives. Pour des apps natives, nous recommandons React Native.', cat: 'technique', icon: '\u{1F4F1}' },
-        { q: 'Comment demarrer mon projet ?', a: 'Simple : <strong>1)</strong> Remplissez le formulaire ci-dessous, <strong>2)</strong> On vous rappelle en <2h, <strong>3)</strong> Devis gratuit en 24h, <strong>4)</strong> On demarre !', cat: 'projet', icon: '\u{1F3AF}' },
-        { q: 'Puis-je avoir un devis gratuit ?', a: 'Oui, <span class="faq-highlight">100% gratuit et sans engagement</span>. Remplissez le formulaire ou ecrivez-nous a contact@flash-ai.pro. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F4E9}' },
+        { q: 'Comment demarrer mon projet ?', a: 'Simple : <strong>1)</strong> Remplissez le formulaire ci-dessous, <strong>2)</strong> On vous rappelle ultra vite, <strong>3)</strong> Devis ultra rapide, <strong>4)</strong> On demarre !', cat: 'projet', icon: '\u{1F3AF}' },
+        { q: 'Puis-je avoir un devis gratuit ?', a: 'Oui, <span class="faq-highlight">100% gratuit et sans engagement</span>. Remplissez le formulaire ou ecrivez-nous a contact@flashai.dev. Reponse en moins de 2h.', cat: 'business', icon: '\u{1F4E9}' },
         { q: 'Offrez-vous de la formation ?', a: 'Oui ! Chaque projet inclut une <strong>session de formation</strong> pour votre equipe + documentation complete de 40+ pages.', cat: 'support', icon: '\u{1F393}' },
         { q: 'Comment l\'IA est-elle integree dans vos projets ?', a: 'Chatbots intelligents (GPT-4, Claude, RAG), automatisations IA (classification emails, generation contenu, extraction donnees), <span class="faq-highlight">analytics predictifs</span> (prevision ventes, scoring leads). L\'IA apporte une valeur mesurable a chaque projet.', cat: 'ia', icon: '\u{1F9E0}' },
-        { q: 'Comment se deroule un projet typique ?', a: '<strong>4 phases</strong> : 1) Discovery (1h) — appel pour comprendre vos besoins. 2) Prototype (48h) — maquette interactive. 3) Build (3-10 jours) — developpement agile avec demos quotidiennes. 4) Launch — deploiement, formation, monitoring 24/7.', cat: 'projet', icon: '\u{1F4CB}' },
+        { q: 'Comment se deroule un projet typique ?', a: '<strong>4 phases</strong> : 1) Discovery (30 min) — appel pour comprendre vos besoins. 2) Prototype (48h) — maquette interactive. 3) Build (3-10 jours) — developpement agile avec demos quotidiennes. 4) Launch — deploiement, formation, monitoring 24/7.', cat: 'projet', icon: '\u{1F4CB}' },
         { q: 'Est-ce que je garde la propriete de mon code ?', a: 'Oui, a <span class="faq-highlight">100%</span>. Vous recevez le code source complet via GitHub, la documentation technique, et tous les droits de propriete intellectuelle. Aucun lock-in.', cat: 'projet', icon: '\u{1F4C4}' }
     ];
     const totalEl = document.getElementById('faq-total-count');
@@ -1369,70 +1449,9 @@ function initSmartForm() {
             });
         });
         // Submit
-        container.querySelector('.sf-submit').addEventListener('click', function() {
-            // Validate required fields
-            var requiredOk = true;
-            container.querySelectorAll('.sf-input').forEach(function(inp) {
-                if (inp.closest('.sf-field').querySelector('.sf-label').textContent.includes('*') && !inp.value.trim()) {
-                    inp.classList.add('invalid');
-                    requiredOk = false;
-                }
-            });
-            var textarea = container.querySelector('.sf-textarea');
-            if (textarea && textarea.closest('.sf-field').querySelector('.sf-label').textContent.includes('*') && !textarea.value.trim()) {
-                textarea.classList.add('invalid');
-                requiredOk = false;
-            }
-            if (!requiredOk) {
-                showToast('Veuillez remplir les champs obligatoires (*)');
-                return;
-            }
-            // Collect all form data
-            var formData = { _subject: 'Nouvelle demande FlashAI — ' + (selected || 'Autre'), type: selected || 'autre' };
-            container.querySelectorAll('.sf-input').forEach(function(inp) {
-                var label = inp.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
-                if (inp.value.trim()) formData[label] = inp.value.trim();
-            });
-            container.querySelectorAll('.sf-select').forEach(function(sel) {
-                var label = sel.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
-                if (sel.value) formData[label] = sel.value;
-            });
-            if (textarea && textarea.value.trim()) {
-                var tLabel = textarea.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
-                formData[tLabel] = textarea.value.trim();
-            }
-            // Collect chips
-            container.querySelectorAll('.sf-chips').forEach(function(group) {
-                var label = group.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
-                var vals = [];
-                group.querySelectorAll('.sf-chip.active').forEach(function(c) { vals.push(c.textContent); });
-                if (vals.length) formData[label] = vals.join(', ');
-            });
-            // Collect checkboxes
-            container.querySelectorAll('.sf-checks-grid').forEach(function(group) {
-                var label = group.closest('.sf-field').querySelector('.sf-label').textContent.replace(' *','').trim();
-                var vals = [];
-                group.querySelectorAll('.sf-check-input:checked').forEach(function(cb) {
-                    vals.push(cb.closest('.sf-check-item').querySelector('.sf-check-text').textContent);
-                });
-                if (vals.length) formData[label] = vals.join(', ');
-            });
-            // Send via formsubmit.co
-            var submitBtn = container.querySelector('.sf-submit');
-            submitBtn.disabled = true;
-            submitBtn.querySelector('.sf-submit-text').textContent = 'Envoi en cours...';
-            fetch('https://formsubmit.co/ajax/smadja99@gmail.com', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(formData)
-            }).then(function(r) { return r.json(); }).then(function() {
-                launchConfetti();
-                container.innerHTML = '<div style="text-align:center;padding:3rem 2rem"><div style="font-size:4rem;margin-bottom:1rem;color:#00ff87">&#10003;</div><h3 style="font-family:Space Grotesk,sans-serif;font-size:1.75rem;font-weight:700;color:white;margin-bottom:0.75rem">Demande envoyée avec succès !</h3><p style="color:#94a3b8;font-size:1.1rem;margin-bottom:1.5rem">Merci pour votre confiance. Notre équipe vous recontacte en moins de 2h.</p><div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="https://wa.me/33758787025" target="_blank" class="btn-glow" style="text-decoration:none"><span>Nous écrire sur WhatsApp</span></a><button class="btn-outline" onclick="location.reload()" style="cursor:pointer">Nouvelle demande</button></div></div>';
-            }).catch(function() {
-                showToast('Erreur réseau. Essayez WhatsApp ou contact@flash-ai.pro');
-                submitBtn.disabled = false;
-                submitBtn.querySelector('.sf-submit-text').textContent = 'Envoyer ma demande \u{1F680}';
-            });
+        container.querySelector('.sf-submit').addEventListener('click', () => {
+            launchConfetti();
+            showToast('\u2705 Demande envoyee ! On vous recontacte en moins de 2h.');
         });
     }
     renderSelector();
@@ -1489,7 +1508,14 @@ function launchConfetti() {
 }
 
 /* ========== TRUST BAR ========== */
-/* initTrustBar removed — fake client logos ticker deleted */
+function initTrustBar() {
+    const marquee = document.getElementById('trust-marquee');
+    if (!marquee) return;
+    const logos = ['TechVision','FoodExpress','MediCare Pro','CryptoTrack','EduSmart','LogiFlow','GreenEnergy','LegalBot','FinanceHub','DataWave','CloudNest','AutoPilot','SmartRetail','DevForge','SkyMetrics','NeoBank'];
+    const colors = ['#00f0ff','#bf00ff','#ff006e','#ffd700','#00ff87','#ff8c00','#e879f9','#06b6d4','#f472b6','#a78bfa','#34d399','#fb923c','#818cf8','#f87171','#38bdf8','#facc15'];
+    const items = logos.map((name, i) => '<div class="trust-logo" style="--tl-color:' + colors[i % colors.length] + '"><span class="trust-logo-icon" style="color:' + colors[i % colors.length] + '">' + name.charAt(0) + '</span><span class="trust-logo-name">' + name + '</span></div>').join('');
+    marquee.innerHTML = '<div class="trust-track">' + items + items + '</div>';
+}
 
 /* ========== MAGNETIC BUTTON ========== */
 function initMagneticBtn() {
@@ -1533,7 +1559,7 @@ function initThreeBackground() {
     function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
     resize();
     window.addEventListener('resize', resize);
-    const dots = Array.from({ length: 30 }, () => ({
+    const dots = Array.from({ length: 60 }, () => ({
         x: Math.random() * 1, y: Math.random() * 1,
         size: Math.random() * 1.5 + 0.5,
         speed: Math.random() * 0.0002 + 0.00005,
@@ -1644,16 +1670,14 @@ function initSectionFlashReveal() {
     const pages = {
         'mentions-legales': `<h2>Mentions L\u00e9gales</h2>
 <h3>1. \u00c9diteur du site</h3>
-<p><strong>FlashAI</strong> \u2014 Osek Patouh (entreprise individuelle isra\u00e9lienne)<br>
-N\u00b0 d'enregistrement : <strong>336519525</strong><br>
+<p><strong>FlashAI</strong> \u2014 Entreprise isra\u00e9lienne<br>
 Fond\u00e9e par <strong>Emmanuel Smadja</strong><br>
 Si\u00e8ge social : Isra\u00ebl<br>
-Email : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@flash-ai.pro</a><br>
-WhatsApp : <a href="https://wa.me/33758787025" style="color:#00f0ff">+33 7 58 78 70 25</a> (WhatsApp uniquement)<br>
-Site web : <a href="https://www.flash-ai.pro" style="color:#00f0ff">www.flash-ai.pro</a><br>
+Email : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a><br>
+T\u00e9l\u00e9phone : <a href="tel:+33758787025" style="color:#00f0ff">+33 7 58 78 70 25</a><br>
 Activit\u00e9 : Agence digitale \u2014 cr\u00e9ation de sites web, CRM, chatbots IA, automatisations</p>
 <h3>2. H\u00e9bergement</h3>
-<p>Ce site est h\u00e9berg\u00e9 par <strong>Hetzner Online GmbH</strong>, Industriestr. 25, 91710 Gunzenhausen, Allemagne, via la plateforme Coolify.</p>
+<p>Ce site est h\u00e9berg\u00e9 par <strong>GitHub Pages</strong> (GitHub, Inc.), 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
 <h3>3. Propri\u00e9t\u00e9 intellectuelle</h3>
 <p>L\u2019ensemble du contenu de ce site (textes, images, logos, code, animations, design) est la propri\u00e9t\u00e9 exclusive de FlashAI et est prot\u00e9g\u00e9 par les lois isra\u00e9liennes et internationales relatives \u00e0 la propri\u00e9t\u00e9 intellectuelle. Toute reproduction, m\u00eame partielle, sans autorisation \u00e9crite pr\u00e9alable est interdite.</p>
 <h3>4. Responsabilit\u00e9</h3>
@@ -1663,8 +1687,8 @@ Activit\u00e9 : Agence digitale \u2014 cr\u00e9ation de sites web, CRM, chatbots
 
         'politique-confidentialite': `<h2>Politique de Confidentialit\u00e9</h2>
 <h3>1. Responsable du traitement</h3>
-<p><strong>FlashAI</strong>, Osek Patouh (entreprise individuelle isra\u00e9lienne) n\u00b0 336519525, fond\u00e9e par Emmanuel Smadja.<br>
-Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@flash-ai.pro</a></p>
+<p><strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja.<br>
+Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>
 <h3>2. Donn\u00e9es collect\u00e9es</h3>
 <p>Nous collectons les donn\u00e9es suivantes uniquement via le formulaire de contact :</p>
 <ul>
@@ -1687,13 +1711,13 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
 <h3>6. Cookies</h3>
 <p>Ce site utilise uniquement des cookies techniques n\u00e9cessaires au bon fonctionnement du site. Aucun cookie publicitaire ou de tracking n\u2019est utilis\u00e9.</p>
 <h3>7. Vos droits</h3>
-<p>Conform\u00e9ment \u00e0 la loi isra\u00e9lienne sur la protection de la vie priv\u00e9e (Privacy Protection Law, 5741-1981) et au RGPD pour les r\u00e9sidents europ\u00e9ens, vous disposez des droits d\u2019acc\u00e8s, de rectification, de suppression et de portabilit\u00e9 de vos donn\u00e9es. Contactez-nous \u00e0 <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@flash-ai.pro</a>.</p>
+<p>Conform\u00e9ment \u00e0 la loi isra\u00e9lienne sur la protection de la vie priv\u00e9e (Privacy Protection Law, 5741-1981) et au RGPD pour les r\u00e9sidents europ\u00e9ens, vous disposez des droits d\u2019acc\u00e8s, de rectification, de suppression et de portabilit\u00e9 de vos donn\u00e9es. Contactez-nous \u00e0 <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a>.</p>
 <h3>8. S\u00e9curit\u00e9</h3>
 <p>Nous mettons en \u0153uvre des mesures de s\u00e9curit\u00e9 techniques et organisationnelles (SSL/TLS, chiffrement AES-256) pour prot\u00e9ger vos donn\u00e9es personnelles.</p>`,
 
         'cgv': `<h2>Conditions G\u00e9n\u00e9rales de Vente</h2>
 <h3>1. Objet</h3>
-<p>Les pr\u00e9sentes CGV r\u00e9gissent les relations entre <strong>FlashAI</strong>, Osek Patouh (entreprise individuelle isra\u00e9lienne) n\u00b0 336519525, fond\u00e9e par Emmanuel Smadja (ci-apr\u00e8s \u00ab le Prestataire \u00bb), et tout client (ci-apr\u00e8s \u00ab le Client \u00bb) pour les prestations de services digitaux.</p>
+<p>Les pr\u00e9sentes CGV r\u00e9gissent les relations entre <strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja (ci-apr\u00e8s \u00ab le Prestataire \u00bb), et tout client (ci-apr\u00e8s \u00ab le Client \u00bb) pour les prestations de services digitaux.</p>
 <h3>2. Services propos\u00e9s</h3>
 <ul>
 <li>Cr\u00e9ation de sites web sur mesure</li>
@@ -1707,7 +1731,7 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
 <h3>3. Devis et commande</h3>
 <p>Tout projet d\u00e9bute par un devis personnalis\u00e9 gratuit, \u00e9tabli sous 24h. Le devis est valable 30 jours. La commande est confirm\u00e9e \u00e0 r\u00e9ception du devis sign\u00e9 et du versement de l\u2019acompte de 50%.</p>
 <h3>4. Tarifs et paiement</h3>
-<p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Paiement en deux fois : 50% \u00e0 la commande, 50% \u00e0 la livraison.</p>
+<p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Le solde est d\u00fb \u00e0 la livraison du projet.</p>
 <h3>5. D\u00e9lais de livraison</h3>
 <p>Les d\u00e9lais indicatifs sont : site vitrine (5 jours), CRM/dashboard (7-10 jours), projet complexe (10-14 jours). Ces d\u00e9lais courent \u00e0 compter de la validation du cahier des charges et de la r\u00e9ception de l\u2019acompte.</p>
 <h3>6. Propri\u00e9t\u00e9 et livraison</h3>
@@ -1719,7 +1743,7 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
 <h3>10. Droit applicable et litiges</h3>
 <p>Les pr\u00e9sentes CGV sont r\u00e9gies par le droit isra\u00e9lien. En cas de litige, les parties s\u2019engagent \u00e0 rechercher une solution amiable. \u00c0 d\u00e9faut, les tribunaux d\u2019Isra\u00ebl seront seuls comp\u00e9tents.</p>
 <h3>11. Contact</h3>
-<p>Pour toute question relative aux pr\u00e9sentes CGV : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@flash-ai.pro</a></p>`
+<p>Pour toute question relative aux pr\u00e9sentes CGV : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>`
     };
 
     function openModal(page) {
@@ -1751,7 +1775,7 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
             color: '#00f0ff',
             intro: 'Un site web professionnel, performant et optimise pour convertir vos visiteurs en clients.',
             sections: [
-                { title: 'Ce que vous obtenez', items: ['Site vitrine, landing page ou e-commerce 100% sur mesure', 'Design responsive adapte mobile, tablette et desktop', 'Performance optimisee (SEO, accessibilite, vitesse)', 'Integration de vos contenus, textes, images, videos', 'Formulaire de contact et/ou prise de RDV integre', 'Hebergement 1 an offert + nom de domaine'] },
+                { title: 'Ce que vous obtenez', items: ['Site vitrine, landing page ou e-commerce 100% sur mesure', 'Design responsive adapte mobile, tablette et desktop', 'Score Lighthouse 95+ garanti (performance, SEO, accessibilite)', 'Integration de vos contenus, textes, images, videos', 'Formulaire de contact et/ou prise de RDV integre', 'Hebergement 1 an offert + nom de domaine'] },
                 { title: 'Technologies utilisees', items: ['React / Next.js pour les performances', 'TailwindCSS pour un design pixel-perfect', 'Deploiement sur Vercel, Netlify ou votre serveur', 'SSL, CDN et optimisations automatiques'] },
                 { title: 'Deroulement typique', items: ['Jour 1 : Appel decouverte 30 min + brief', 'Jour 2-3 : Maquette interactive a valider', 'Jour 3-5 : Developpement et integration', 'Jour 5 : Mise en ligne + formation', 'Suivi et support email inclus'] },
                 { title: 'Tarif indicatif', items: ['A partir de 390\u20AC pour un site vitrine', 'E-commerce : a partir de 790\u20AC', 'Hebergement 1 an inclus dans tous les plans'] }
@@ -1800,7 +1824,7 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
             intro: 'Soyez visible sur Google. On optimise votre site pour attirer du trafic qualifie.',
             sections: [
                 { title: 'Ce que vous obtenez', items: ['Audit SEO complet de votre site', 'Optimisation Core Web Vitals (vitesse, UX)', 'Strategie de mots-cles adaptee a votre marche', 'Optimisation on-page (titres, meta, structure)', 'Schema.org et donnees structurees', 'Rapport mensuel de performances'] },
-                { title: 'Resultats mesurables', items: ['+200% de trafic organique en moyenne a 3 mois', 'Performance web optimisee', 'Amelioration des positions Google', 'Plus de leads qualifies via le search'] },
+                { title: 'Resultats mesurables', items: ['+200% de trafic organique en moyenne a 3 mois', 'Score Lighthouse 95+ garanti', 'Amelioration des positions Google', 'Plus de leads qualifies via le search'] },
                 { title: 'Notre approche', items: ['Analyse de la concurrence et opportunites', 'Contenu optimise avec l\'aide de l\'IA', 'Suivi et ajustements mensuels', 'Formation pour maintenir les bonnes pratiques'] },
                 { title: 'Tarif indicatif', items: ['Audit SEO ponctuel : a partir de 290\u20AC', 'Optimisation complete : a partir de 590\u20AC', 'Accompagnement mensuel : sur devis'] }
             ]
@@ -1847,3 +1871,59 @@ Contact : <a href="mailto:contact@flash-ai.pro" style="color:#00f0ff">contact@fl
     document.getElementById('service-modal-backdrop').addEventListener('click', closeService);
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeService(); });
 })();
+
+/* ========== SERVICES CAROUSEL DOTS ========== */
+function initServicesDots() {
+    const track = document.querySelector('.services-carousel-track');
+    const dotsContainer = document.getElementById('services-dots');
+    if (!track || !dotsContainer) return;
+    const slides = track.querySelectorAll('.services-slide');
+    if (window.innerWidth >= 768) { dotsContainer.innerHTML = ''; return; }
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); });
+        dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('.dot');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const idx = Array.from(slides).indexOf(e.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+        });
+    }, { root: track, threshold: 0.6 });
+    slides.forEach(s => obs.observe(s));
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) dotsContainer.innerHTML = '';
+    });
+}
+
+/* ========== ADN CAROUSEL DOTS ========== */
+function initAdnDots() {
+    const track = document.querySelector('.adn-carousel-track');
+    const dotsContainer = document.getElementById('adn-dots');
+    if (!track || !dotsContainer) return;
+    const slides = track.querySelectorAll('.adn-slide');
+    if (window.innerWidth >= 768) { dotsContainer.innerHTML = ''; return; }
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); });
+        dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('.dot');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const idx = Array.from(slides).indexOf(e.target);
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+        });
+    }, { root: track, threshold: 0.6 });
+    slides.forEach(s => obs.observe(s));
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) dotsContainer.innerHTML = '';
+    });
+}

@@ -55,6 +55,25 @@
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = {
+      theme: {
+          extend: {
+              colors: {
+                  primary: {50:"#eef2ff",100:"#e0e7ff",200:"#c7d2fe",300:"#a5b4fc",400:"#818cf8",500:"#6366f1",600:"#4f46e5",700:"#4338ca",800:"#3730a3",900:"#312e81"},
+                  surface: {50:"#f8fafc",100:"#f1f5f9",200:"#e2e8f0",300:"#cbd5e1",400:"#94a3b8",500:"#64748b",600:"#475569",700:"#334155",800:"#1e293b",900:"#0f172a",950:"#020617"},
+                  accent: {400:"#22d3ee",500:"#0ea5e9",600:"#0284c7"},
+                  neon: {blue:"#00f0ff",purple:"#bf00ff",pink:"#ff006e",green:"#00ff87",orange:"#ff8c00",gold:"#ffd700",cyan:"#06b6d4"}
+              },
+              fontFamily: {
+                  display: ["Space Grotesk","system-ui","sans-serif"],
+                  body: ["Inter","system-ui","sans-serif"],
+                  mono: ["JetBrains Mono","monospace"]
+              }
+          }
+      }
+  }
+  </script>
 
   <!-- === JSON-LD: Organization === -->
   <script type="application/ld+json">
@@ -577,60 +596,47 @@
 <!-- ==========================================================
      HEADER
      ========================================================== -->
-<header role="banner">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-
-    <!-- Logo -->
-    <a href="#" aria-label="FlashIA – Retour à l'accueil">
-      <img src="assets/logo.jpg"
-           alt="FlashIA – Agence IA Israélienne, service en français"
-           class="logo-img"
-           width="220" height="48"
-           loading="eager" fetchpriority="high"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-      <!-- Fallback texte -->
-      <div class="hidden items-center gap-2" aria-hidden="true">
-        <span class="font-display font-bold text-xl text-neon">Flash</span><span class="font-display font-bold text-xl text-white">IA</span>
-        <span class="badge-new ml-1">🇮🇱</span>
-      </div>
-    </a>
-
-    <!-- Nav desktop -->
-    <nav class="hidden lg:flex items-center gap-6" role="navigation" aria-label="Navigation principale">
-      <a href="#services"       class="nav-link">Services</a>
-      <a href="#adn"            class="nav-link">Notre ADN</a>
-      <a href="#lumiere"        class="nav-link">Lumière Brothers</a>
-      <a href="#methode"        class="nav-link">Méthode</a>
-      <a href="#tarifs"         class="nav-link">Tarifs</a>
-      <a href="#equipe"         class="nav-link">Équipe</a>
-      <a href="#faq"            class="nav-link">FAQ</a>
-    </nav>
-
-    <div class="flex items-center gap-3">
-      <a href="#contact" class="hidden lg:inline-flex items-center btn-neon px-5 py-2.5 text-sm">Devis gratuit →</a>
-      <button id="burger-btn"
-              class="lg:hidden flex flex-col gap-1.5 p-2.5 rounded-lg"
-              aria-label="Ouvrir le menu de navigation"
-              aria-expanded="false"
-              aria-controls="mobile-menu">
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
-      </button>
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="backdrop-filter:blur(16px);background:rgba(0,0,0,0.82)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+            <a href="/" class="flex items-center gap-2" aria-label="FlashAI Accueil">
+                <div class="text-xl font-bold font-display"><span class="text-white">Flash</span><span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">AI</span></div>
+            </a>
+            <nav class="hidden lg:flex items-center gap-6">
+                <div class="relative group">
+                    <a href="/#services" class="text-surface-400 hover:text-white transition-colors text-sm cursor-pointer">Services <svg class="inline w-3 h-3 ml-0.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+                    <div class="absolute top-full left-0 mt-1 w-56 py-2 rounded-xl bg-surface-900/95 border border-white/10 backdrop-blur-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 shadow-2xl">
+                        <a href="/services/sites-web.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Sites Web sur mesure</a>
+                        <a href="/services/crm-erp.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">CRM & ERP</a>
+                        <a href="/services/chatbot-ia.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Chatbot IA</a>
+                        <a href="/services/automatisation.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Automatisation</a>
+                        <a href="/services/seo.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">SEO & Croissance</a>
+                        <a href="/services/conseil.html" class="block px-4 py-2 text-sm text-surface-300 hover:text-white hover:bg-white/5 transition-colors">Conseil</a>
+                    </div>
+                </div>
+                <a href="/about.html" class="text-surface-400 hover:text-white transition-colors text-sm">A propos</a>
+                <a href="/contact.html" class="text-surface-400 hover:text-white transition-colors text-sm">Contact</a>
+            </nav>
+            <a href="/contact.html" class="hidden lg:inline-flex px-4 py-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple text-white text-sm font-medium hover:opacity-90 transition-opacity">Demarrer un projet</a>
+            <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
     </div>
-  </div>
 </header>
 
-<!-- Menu mobile -->
-<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navigation mobile">
-  <a href="#services"   class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">Services</a>
-  <a href="#adn"        class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">Notre ADN</a>
-  <a href="#lumiere"    class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">Lumière Brothers</a>
-  <a href="#methode"    class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">Méthode</a>
-  <a href="#tarifs"     class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">Tarifs</a>
-  <a href="#equipe"     class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">Équipe</a>
-  <a href="#faq"        class="nav-link text-lg font-semibold" onclick="closeMobileMenu()">FAQ</a>
-  <a href="#contact"    class="btn-neon px-10 py-3.5 mt-2"    onclick="closeMobileMenu()">Devis gratuit →</a>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(2,6,23,0.97);backdrop-filter:blur(20px);">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+        <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <a href="/" class="text-2xl text-surface-300 hover:text-white transition-colors">Accueil</a>
+        <a href="/#services" class="text-2xl text-surface-300 hover:text-white transition-colors">Services</a>
+        <a href="/about.html" class="text-2xl text-surface-300 hover:text-white transition-colors">A propos</a>
+        <a href="/contact.html" class="text-2xl text-surface-300 hover:text-white transition-colors">Contact</a>
+        <a href="/contact.html" class="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple text-white font-medium">Demarrer un projet</a>
+    </div>
 </div>
 
 
@@ -1528,62 +1534,16 @@
 <!-- ==========================================================
      FOOTER
      ========================================================== -->
-<footer role="contentinfo" class="border-t border-white/10 py-12 px-4 mt-4">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-10 mb-10">
-
-      <!-- Marque -->
-      <div>
-        <div class="mb-3">
-          <img src="assets/logo.jpg"
-               alt="FlashIA – Agence IA Israélienne"
-               width="160" height="44"
-               loading="lazy"
-               class="h-10 w-auto object-contain"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-          <div class="hidden font-display font-bold text-xl">
-            <span class="text-neon">Flash</span><span class="text-white">IA</span>
-          </div>
+<footer class="border-t border-white/5 py-8 text-center text-sm text-surface-500">
+    <div class="max-w-7xl mx-auto px-4">
+        <p>&copy; 2026 FlashAI &mdash; Made with &#9829; in Israel &#127470;&#127473;</p>
+        <div class="flex justify-center gap-4 mt-3">
+            <a href="/" class="hover:text-neon-blue transition-colors">Accueil</a>
+            <a href="/about.html" class="hover:text-neon-blue transition-colors">A propos</a>
+            <a href="/contact.html" class="hover:text-neon-blue transition-colors">Contact</a>
+            <a href="/mentions-legales.html" class="hover:text-neon-blue transition-colors">Mentions legales</a>
         </div>
-        <address class="not-italic text-white/40 text-sm leading-relaxed">
-          Har Hotzvim Tech Park<br/>
-          Jérusalem, Israël 🇮🇱<br/>
-          Service en français pour la France<br/>
-          et les pays francophones
-        </address>
-      </div>
-
-      <!-- Services -->
-      <nav aria-label="Services">
-        <h3 class="font-display font-bold text-sm text-white/60 uppercase tracking-wider mb-4">Nos services</h3>
-        <ul class="space-y-2 text-sm text-white/40" role="list">
-          <li><a href="#services" class="hover:text-white transition-colors">CRM &amp; Logiciels Sur Mesure</a></li>
-          <li><a href="#services" class="hover:text-white transition-colors">Agents IA &amp; Voix Naturelle</a></li>
-          <li><a href="#lumiere"  class="hover:text-white transition-colors">Vidéos IA – Lumière Brothers Pictures</a></li>
-          <li><a href="#services" class="hover:text-white transition-colors">Sites, Apps &amp; WebApp</a></li>
-          <li><a href="#services" class="hover:text-white transition-colors">Automatisation &amp; Sécurité</a></li>
-          <li><a href="#services" class="hover:text-white transition-colors">Formations IA</a></li>
-        </ul>
-      </nav>
-
-      <!-- Légal -->
-      <nav aria-label="Liens légaux et contact">
-        <h3 class="font-display font-bold text-sm text-white/60 uppercase tracking-wider mb-4">Informations</h3>
-        <ul class="space-y-2 text-sm text-white/40" role="list">
-          <li><a href="mentions-legales.html" class="hover:text-white transition-colors">Mentions légales</a></li>
-          <li><a href="cgu.html"              class="hover:text-white transition-colors">CGU / RGPD</a></li>
-          <li><a href="#contact"              class="hover:text-white transition-colors">Nous contacter</a></li>
-          <li><a href="#faq"                  class="hover:text-white transition-colors">FAQ</a></li>
-        </ul>
-      </nav>
-
     </div>
-
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/25">
-      <p>© 2026 FlashIA · Jérusalem, Israël · Tous droits réservés</p>
-      <p>Startup Nation au service de votre croissance · Service 100&nbsp;% en français</p>
-    </div>
-  </div>
 </footer>
 
 <!-- ==========================================================
@@ -1687,24 +1647,14 @@
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
   // ─── MOBILE MENU ──────────────────────────────────────────
-  const burgerBtn  = document.getElementById('burger-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  function closeMobileMenu() {
-    mobileMenu.classList.remove('open');
-    burgerBtn.setAttribute('aria-expanded', 'false');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileOverlay = document.getElementById('mobile-menu-overlay');
+  const menuClose = document.getElementById('mobile-menu-close');
+  if (menuBtn && mobileOverlay) {
+      menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+      menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+      mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
   }
-
-  burgerBtn.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    burgerBtn.setAttribute('aria-expanded', String(open));
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-      closeMobileMenu();
-    }
-  });
 
   // ─── FAQ ACCORDION ────────────────────────────────────────
   function toggleFaq(btn) {
