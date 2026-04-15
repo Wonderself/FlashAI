@@ -224,6 +224,36 @@
 <!-- THREE.JS CANVAS -->
 <canvas id="three-canvas" aria-hidden="true"></canvas>
 
+<!-- PIONEROS BANNER (sticky top) -->
+<div id="pioneros-banner" class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-red-600 via-pink-600 to-red-600 text-white text-xs sm:text-sm font-medium overflow-hidden shadow-[0_2px_20px_rgba(255,0,110,0.4)]" role="region" aria-label="Pioneros LATAM 2026 offer">
+    <div class="absolute inset-0 opacity-30 pointer-events-none" style="background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);background-size:200% 100%;animation:pioneros-shine 6s linear infinite"></div>
+    <div class="relative max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-center gap-2 sm:gap-4 text-center flex-wrap">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-sm font-bold tracking-wider text-[10px] sm:text-xs">🔥 PIONEROS LATAM 2026</span>
+        <span class="hidden sm:inline font-semibold">−40% for the next <span class="font-extrabold text-yellow-300" id="pioneros-slots">3</span> SMBs selected</span>
+        <span class="sm:hidden font-semibold">−40% · <span class="font-extrabold text-yellow-300">3</span> slots left</span>
+        <span class="hidden md:inline opacity-90">·</span>
+        <span class="hidden md:inline italic opacity-90">Sprint 14 days · from <s class="opacity-60">$6,500</s> <span class="font-extrabold text-yellow-300">$3,900</span></span>
+        <a href="#contact" class="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white text-red-700 font-bold hover:bg-yellow-300 transition-colors text-[11px] sm:text-xs shadow">Reservá tu slot →</a>
+        <button id="pioneros-close" aria-label="Close banner" class="ml-1 w-5 h-5 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors text-white/80 hover:text-white text-sm leading-none">×</button>
+    </div>
+</div>
+<style>
+    @keyframes pioneros-shine { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+    body.pioneros-visible #main-header { top: 36px }
+    @media (min-width: 640px) { body.pioneros-visible #main-header { top: 40px } }
+    body.pioneros-visible main, body.pioneros-visible #hero { padding-top: 36px }
+    @media (min-width: 640px) { body.pioneros-visible main, body.pioneros-visible #hero { padding-top: 40px } }
+</style>
+<script>
+    (function(){
+        var b=document.getElementById('pioneros-banner');
+        var c=document.getElementById('pioneros-close');
+        if(sessionStorage.getItem('pioneros-closed')==='1'){ b.style.display='none'; }
+        else { document.body.classList.add('pioneros-visible'); }
+        if(c) c.addEventListener('click',function(){ b.style.display='none'; document.body.classList.remove('pioneros-visible'); sessionStorage.setItem('pioneros-closed','1'); });
+    })();
+</script>
+
 <!-- HEADER -->
 <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
