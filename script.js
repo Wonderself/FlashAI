@@ -1402,7 +1402,7 @@ function initSmartForm() {
             return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><input type="' + f.type + '" class="sf-input" placeholder="' + f.placeholder + '"></div>';
         }
         if (f.type === 'select') {
-            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><select class="sf-select"><option value="">Selectionnez</option>' + f.options.map(o => '<option>' + o + '</option>').join('') + '</select></div>';
+            return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><select class="sf-select"><option value="">Select...</option>' + f.options.map(o => '<option>' + o + '</option>').join('') + '</select></div>';
         }
         if (f.type === 'textarea') {
             return '<div class="' + cls + '"><label class="sf-label">' + f.label + '</label><textarea class="sf-textarea" placeholder="' + f.placeholder + '" rows="4"></textarea></div>';
@@ -1437,7 +1437,7 @@ function initSmartForm() {
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
             '<div class="sf-fields">' + config.fields.map(f => renderField(f, type.color)).join('') + '</div>' +
             '<div class="sf-divider" style="background:linear-gradient(90deg,transparent,' + type.color + '30,transparent)"></div>' +
-            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,' + type.color + ',' + type.color + 'cc)" type="button"><span class="sf-submit-text">Envoyer ma demande \u{1F680}</span></button><p class="sf-submit-note">\u2705 Devis gratuit \u2022 Reponse en moins de 2h \u2022 Sans engagement</p></div>' +
+            '<div class="sf-submit-wrap"><button class="sf-submit" style="background:linear-gradient(135deg,\u002325D366,\u002320BA5A)" type="button"><span class="sf-submit-text">\u{1F4AC} Enviar via WhatsApp \u2022 Send via WhatsApp</span></button><p class="sf-submit-note">\u2705 Free diagnostic \u2022 Response &lt; 24h \u2022 ES / EN / FR \u2022 No commitment</p></div>' +
             '</div>';
         // Chips toggle
         container.querySelectorAll('.sf-chips').forEach(group => {
@@ -1456,10 +1456,46 @@ function initSmartForm() {
                 else { input.classList.toggle('valid', input.value.trim().length > 0); input.classList.remove('invalid'); }
             });
         });
-        // Submit
+        // Submit -> WhatsApp deeplink with recap
         container.querySelector('.sf-submit').addEventListener('click', () => {
+            const formEl = container.querySelector('.smart-form');
+            const values = [];
+            let missingRequired = false;
+            formEl.querySelectorAll('.sf-field').forEach(fieldEl => {
+                const labelEl = fieldEl.querySelector('.sf-label');
+                if (!labelEl) return;
+                const label = labelEl.textContent.trim();
+                const isRequired = label.includes('*');
+                let value = '';
+                const input = fieldEl.querySelector('.sf-input, .sf-textarea, .sf-select');
+                if (input) {
+                    value = (input.value || '').trim();
+                } else {
+                    const chipsWrap = fieldEl.querySelector('.sf-chips');
+                    const checksWrap = fieldEl.querySelector('.sf-checks');
+                    if (chipsWrap) {
+                        value = Array.from(chipsWrap.querySelectorAll('.sf-chip.active')).map(c => c.textContent.trim()).join(', ');
+                    } else if (checksWrap) {
+                        value = Array.from(checksWrap.querySelectorAll('.sf-check-input:checked')).map(cb => (cb.closest('.sf-check-item').textContent || '').trim()).join(', ');
+                    }
+                }
+                if (isRequired && !value) missingRequired = true;
+                if (value) values.push({ label: label.replace(/\s*\*$/, ''), value });
+            });
+            if (missingRequired) {
+                showToast('\u26A0\uFE0F Please fill all required fields (*) \u2022 Completa los campos obligatorios');
+                const firstBad = formEl.querySelector('.sf-input[required]:invalid, .sf-select[required]:invalid');
+                if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            const type = types.find(t => t.id === selected);
+            let msg = 'Hola Emmanuel, soy un prospecto LATAM. Tipo: ' + type.name + '.\n\n';
+            values.forEach(v => { msg += '\u2022 ' + v.label + ': ' + v.value + '\n'; });
+            msg += '\nQuiero reservar un slot (ideally Pioneros \u221240%). Gracias!';
+            const waUrl = 'https://wa.me/972552418324?text=' + encodeURIComponent(msg);
             launchConfetti();
-            showToast('\u2705 Demande envoyee ! On vous recontacte en moins de 2h.');
+            showToast('\u2705 Opening WhatsApp... \u2022 Abriendo WhatsApp...');
+            setTimeout(() => { window.open(waUrl, '_blank', 'noopener'); }, 350);
         });
     }
     renderSelector();
