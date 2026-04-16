@@ -1277,113 +1277,110 @@ function initSmartForm() {
     const container = document.getElementById('smart-form-container');
     if (!selector || !container) return;
     const types = [
-        { id: 'site', name: 'Site Web', icon: '\u{1F310}', color: '#00f0ff', desc: 'Vitrine, e-commerce' },
-        { id: 'crm', name: 'CRM / ERP', icon: '\u{1F4CA}', color: '#bf00ff', desc: 'Gestion clients' },
-        { id: 'chatbot', name: 'Chatbot IA', icon: '\u{1F916}', color: '#ff006e', desc: 'Assistant virtuel' },
-        { id: 'auto', name: 'Automatisation', icon: '\u26A1', color: '#ff8c00', desc: 'Workflows' },
-        { id: 'autre', name: 'Autre', icon: '\u{1F4AC}', color: '#00ff87', desc: 'Projet sur mesure' },
-        { id: 'partenaire', name: 'Partenaire', icon: '\u{1F91D}', color: '#a78bfa', desc: 'Collaboration' }
+        { id: 'sprint', name: 'Sprint IA · 14 Days', icon: '\u{1F680}', color: '#ffd700', desc: 'Ship in 14 days · from $990' },
+        { id: 'automation', name: 'Automation', icon: '\u26A1', color: '#bf00ff', desc: 'Sales · Finance · Support · from $4,900' },
+        { id: 'fractional', name: 'Fractional CTO AI', icon: '\u{1F3AF}', color: '#ff8c00', desc: 'Monthly retainer · from $2,500/mo' },
+        { id: 'brain', name: 'Private Brain · LLM', icon: '\u{1F9E0}', color: '#ff006e', desc: 'Mistral / DeepSeek · from $9,900' },
+        { id: 'other', name: 'Other project', icon: '\u{1F4AC}', color: '#00ff87', desc: 'Custom AI initiative' },
+        { id: 'partner', name: 'Partnership', icon: '\u{1F91D}', color: '#a78bfa', desc: 'White-label · reseller · intro' }
+    ];
+    const LATAM_COUNTRIES = ['\u{1F1E6}\u{1F1F7} Argentina','\u{1F1E7}\u{1F1F7} Brazil','\u{1F1FA}\u{1F1FE} Uruguay','\u{1F1F5}\u{1F1FE} Paraguay','\u{1F1E8}\u{1F1F1} Chile','\u{1F1F2}\u{1F1FD} Mexico','\u{1F1E8}\u{1F1F4} Colombia','\u{1F1F5}\u{1F1EA} Peru','\u{1F1F5}\u{1F1E6} Panama','\u{1F1E8}\u{1F1F7} Costa Rica','\u{1F1E9}\u{1F1F4} Dominican Republic','\u{1F1FA}\u{1F1F8} USA','\u{1F1E8}\u{1F1E6} Canada','\u{1F1EA}\u{1F1F8} Spain','\u{1F1EB}\u{1F1F7} France','\u{1F1EE}\u{1F1F1} Israel','Other'];
+    const INDUSTRIES = ['Agro / Food','Manufacturing','Retail / E-commerce','SaaS / Tech','Fintech / Banking','Health / Biotech','Legal / Compliance','Logistics / Transport','Real Estate','Energy / Utilities','Education','Media / Marketing','Other'];
+    const COMPANY_SIZE = ['1-10 employees','11-50 employees','51-200 employees','201-500 employees','500+ employees'];
+    const BUDGET_USD = ['< $1,000','$1,000 - $5,000','$5,000 - $15,000','$15,000 - $50,000','$50,000+','Tell me what makes sense'];
+    const URGENCY = ['\u{1F525} Urgent (this month)','\u26A1 Fast (next 30-60 days)','\u{1F4C5} Normal (Q2/Q3 2026)','\u{1F50D} Exploring'];
+    const CONTACT_CORE = [
+        { label: 'Full name *', type: 'text', placeholder: 'Juan Perez', half: true },
+        { label: 'Email *', type: 'email', placeholder: 'juan@empresa.com', half: true },
+        { label: 'WhatsApp *', type: 'tel', placeholder: '+54 9 11 0000 0000', half: true },
+        { label: 'Company *', type: 'text', placeholder: 'Acme S.A.', half: true },
+        { label: 'Website', type: 'text', placeholder: 'https://acme.com', half: true },
+        { label: 'Role', type: 'text', placeholder: 'CEO / CFO / COO / IT', half: true }
     ];
     const formFields = {
-        site: {
-            subtitle: 'Dites-nous tout sur le site web de vos reves',
+        sprint: {
+            subtitle: 'Ship your first AI workflow in 14 days · pick a tier',
             fields: [
-                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
-                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
-                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
-                { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
-                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
-                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
-                { label: 'Type de site *', type: 'chips', options: ['Site vitrine','Landing page','E-commerce','Blog / Media','Portfolio','Application web'], full: true },
-                { label: 'Nombre de pages estimees', type: 'chips', options: ['1-5 pages','6-15 pages','16-30 pages','30+ pages'], full: true },
-                { label: 'Fonctionnalites souhaitees', type: 'checks', options: ['Formulaire de contact','Paiement en ligne','Espace membre','Blog integre','Multi-langue','Chat en direct','Booking / RDV','SEO avance'], full: true },
-                { label: 'Avez-vous deja un design / maquette ?', type: 'chips', options: ['Oui, pret','Quelques idees','Non, je pars de zero'], full: true },
-                { label: 'Budget', type: 'select', options: ['< 1 000\u20AC','1 000 - 3 000\u20AC','3 000 - 5 000\u20AC','5 000 - 10 000\u20AC','> 10 000\u20AC'], half: true },
-                { label: 'Delai souhaite', type: 'select', options: ['Urgent (< 1 semaine)','Normal (2-3 semaines)','Flexible (1 mois+)','Pas de deadline'], half: true },
-                { label: 'Description du projet *', type: 'textarea', placeholder: 'Decrivez votre site ideal, votre cible, vos objectifs business...', full: true }
+                ...CONTACT_CORE,
+                { label: 'Country *', type: 'select', options: LATAM_COUNTRIES, half: true },
+                { label: 'Company size *', type: 'select', options: COMPANY_SIZE, half: true },
+                { label: 'Industry *', type: 'chips', options: INDUSTRIES, full: true },
+                { label: 'Sprint tier *', type: 'chips', options: ['Diagnostic · $990','14 Days · $3,900','Transformation · $9,900','Not sure yet'], full: true },
+                { label: 'Pack focus *', type: 'chips', options: ['Sales (lead qualifier · HubSpot sync)','Finance (invoice reconciliation · Odoo)','Support (WhatsApp bot · RAG FAQ)','Ops (document classifier · OCR)','Other'], full: true },
+                { label: 'Main pain point *', type: 'textarea', placeholder: 'Describe in 1-2 paragraphs: what process is burning your team\'s time? What data/tools are involved? Metrics you\'d like to move.', full: true },
+                { label: 'Budget (USD)', type: 'select', options: BUDGET_USD, half: true },
+                { label: 'Urgency', type: 'select', options: URGENCY, half: true },
+                { label: 'Interested in Pioneros \u221240%?', type: 'chips', options: ['\u{1F525} Yes — claim a slot','Yes if it fits my timeline','Just exploring'], full: true }
             ]
         },
-        crm: {
-            subtitle: 'Concevons ensemble votre outil de gestion parfait',
+        automation: {
+            subtitle: 'Automation Intelligence packs · Sales · Finance · Support · Ops',
             fields: [
-                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
-                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
-                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
-                { label: 'Entreprise *', type: 'text', placeholder: 'Nom de votre societe', half: true },
-                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
-                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
-                { label: 'Type d\'outil *', type: 'chips', options: ['CRM commercial','ERP complet','Dashboard analytics','Gestion de projet','Facturation','Sur mesure'], full: true },
-                { label: 'Nombre d\'utilisateurs', type: 'chips', options: ['1-5','6-20','21-50','50+'], full: true },
-                { label: 'Fonctionnalites cles', type: 'checks', options: ['Pipeline commercial','Gestion contacts','Facturation auto','Rapports / KPIs','Notifications email','Import/Export CSV','API tierce','Roles & permissions'], full: true },
-                { label: 'Outils actuels a remplacer', type: 'text', placeholder: 'Excel, HubSpot, Salesforce, aucun...', full: true },
-                { label: 'Budget', type: 'select', options: ['< 2 000\u20AC','2 000 - 5 000\u20AC','5 000 - 10 000\u20AC','> 10 000\u20AC'], half: true },
-                { label: 'Delai souhaite', type: 'select', options: ['Urgent (< 2 semaines)','Normal (1 mois)','Flexible (2 mois+)'], half: true },
-                { label: 'Decrivez vos processus actuels *', type: 'textarea', placeholder: 'Comment gerez-vous vos clients/donnees aujourd\'hui ? Quels sont les points de friction ?', full: true }
+                ...CONTACT_CORE,
+                { label: 'Country *', type: 'select', options: LATAM_COUNTRIES, half: true },
+                { label: 'Company size *', type: 'select', options: COMPANY_SIZE, half: true },
+                { label: 'Industry *', type: 'chips', options: INDUSTRIES, full: true },
+                { label: 'Pack(s) of interest *', type: 'checks', options: ['Sales pack (HubSpot · Salesforce · WhatsApp)','Finance pack (Odoo · QuickBooks · SAP)','Support pack (WhatsApp bot · Zendesk · RAG)','Ops pack (OCR · classifier · workflow)','Custom'], full: true },
+                { label: 'Current stack *', type: 'checks', options: ['HubSpot','Salesforce','Odoo','QuickBooks','SAP','WhatsApp Business','Notion','Google Workspace','Microsoft 365','Slack','Zapier / Make / n8n','Other'], full: true },
+                { label: 'How many repetitive tasks/day are you trying to eliminate?', type: 'chips', options: ['< 10','10 - 30','30 - 100','100+'], full: true },
+                { label: 'Budget (USD)', type: 'select', options: BUDGET_USD, half: true },
+                { label: 'Urgency', type: 'select', options: URGENCY, half: true },
+                { label: 'Describe the workflow to automate *', type: 'textarea', placeholder: 'What does the process look like today? Who does what, in which tool, with what bottleneck?', full: true }
             ]
         },
-        chatbot: {
-            subtitle: 'Creez un assistant IA qui comprend vraiment vos clients',
+        fractional: {
+            subtitle: 'Fractional CTO AI · monthly retainer · 2 days/week strategy',
             fields: [
-                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
-                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
-                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
-                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
-                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
-                { label: 'Ou deployer le chatbot ? *', type: 'chips', options: ['Site web','WhatsApp','Messenger','Slack','Instagram','Plusieurs canaux'], full: true },
-                { label: 'Objectif principal *', type: 'chips', options: ['Support client','Generation de leads','FAQ automatisee','Prise de RDV','Recommandations produits','Assistant interne'], full: true },
-                { label: 'Capacites souhaitees', type: 'checks', options: ['Reponses en temps reel','Transfert agent humain','Base de connaissances','Multi-langue','Analyse de sentiment','Integration CRM','Collecte de donnees','Personnalisation contextuelle'], full: true },
-                { label: 'Volume de conversations / mois', type: 'chips', options: ['< 100','100 - 500','500 - 2000','2000+'], full: true },
-                { label: 'Budget', type: 'select', options: ['< 2 000\u20AC','2 000 - 5 000\u20AC','5 000 - 10 000\u20AC','> 10 000\u20AC'], half: true },
-                { label: 'Delai souhaite', type: 'select', options: ['Urgent','Normal (2-3 semaines)','Flexible'], half: true },
-                { label: 'Decrivez votre besoin *', type: 'textarea', placeholder: 'Quel type de questions posent vos clients ? Quelles donnees le chatbot doit connaitre ?', full: true }
+                ...CONTACT_CORE,
+                { label: 'Country *', type: 'select', options: LATAM_COUNTRIES, half: true },
+                { label: 'Company size *', type: 'select', options: COMPANY_SIZE, half: true },
+                { label: 'Industry *', type: 'chips', options: INDUSTRIES, full: true },
+                { label: 'Do you already have an AI roadmap? *', type: 'chips', options: ['No — starting from zero','Partial / ideas','Yes, need execution','Yes, need to rethink it'], full: true },
+                { label: 'Primary need *', type: 'checks', options: ['AI strategy & roadmap','Vendor selection (build vs buy)','Architecture review','Team hiring (AI engineers)','POC \u2192 production transition','Governance / compliance','Board/CEO education'], full: true },
+                { label: 'Engagement length', type: 'chips', options: ['3 months','6 months','12 months','Rolling (cancel 30d notice)'], full: true },
+                { label: 'Monthly budget (USD)', type: 'select', options: ['$2,500 - $5,000','$5,000 - $10,000','$10,000 - $20,000','$20,000+','Flexible'], half: true },
+                { label: 'Urgency', type: 'select', options: URGENCY, half: true },
+                { label: 'Company context *', type: 'textarea', placeholder: 'What is your business, your growth stage, your current team structure, and what triggered the need for a Fractional CTO?', full: true }
             ]
         },
-        auto: {
-            subtitle: 'Automatisez vos processus et gagnez des heures chaque semaine',
+        brain: {
+            subtitle: 'Private Brain · Sovereign LLM · Mistral / DeepSeek on Hetzner DE or your infra',
             fields: [
-                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
-                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
-                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
-                { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
-                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
-                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
-                { label: 'Outils que vous utilisez *', type: 'checks', options: ['Gmail / Outlook','Slack / Teams','Google Sheets','HubSpot / Salesforce','Stripe / PayPal','Shopify / WooCommerce','Notion / Trello','Zapier / Make','Autre'], full: true },
-                { label: 'Type d\'automatisation *', type: 'chips', options: ['Email marketing','Facturation auto','Sync donnees','Notifications','Rapports auto','Scraping / Data','Onboarding client','Workflow interne'], full: true },
-                { label: 'Combien de taches manuelles repetitives par jour ?', type: 'chips', options: ['< 5','5 - 15','15 - 30','30+'], full: true },
-                { label: 'Budget', type: 'select', options: ['< 1 000\u20AC','1 000 - 3 000\u20AC','3 000 - 5 000\u20AC','> 5 000\u20AC'], half: true },
-                { label: 'Delai souhaite', type: 'select', options: ['Urgent','Normal (2-3 semaines)','Flexible'], half: true },
-                { label: 'Decrivez les taches a automatiser *', type: 'textarea', placeholder: 'Quelles taches repetitives vous prennent le plus de temps ? Quels outils doivent communiquer entre eux ?', full: true }
+                ...CONTACT_CORE,
+                { label: 'Country *', type: 'select', options: LATAM_COUNTRIES, half: true },
+                { label: 'Company size *', type: 'select', options: COMPANY_SIZE, half: true },
+                { label: 'Industry *', type: 'chips', options: INDUSTRIES, full: true },
+                { label: 'Why sovereign? *', type: 'checks', options: ['Regulatory (GDPR · Ley 25.326 · HDS · DORA · NIS2)','Competitive sensitivity (IP protection)','Data residency requirement','Cost predictability vs API metering','Air-gapped deployment','Other'], full: true },
+                { label: 'Preferred model family', type: 'chips', options: ['Mistral Large','DeepSeek V3','Qwen 2.5 72B','Llama 4','Help me choose'], full: true },
+                { label: 'Hosting preference *', type: 'chips', options: ['Hetzner DE (managed)','Your own data center','European sovereign cloud','Hybrid (sensitive on-prem, rest API)','Open to advice'], full: true },
+                { label: 'Fine-tuning / RAG on your data?', type: 'chips', options: ['Yes — both','RAG only','Fine-tune only','Not yet decided'], full: true },
+                { label: 'Budget (USD)', type: 'select', options: ['$9,900 - $25,000','$25,000 - $75,000','$75,000+','TCO over 3 years'], half: true },
+                { label: 'Urgency', type: 'select', options: URGENCY, half: true },
+                { label: 'Use cases & compliance context *', type: 'textarea', placeholder: 'Primary use cases (internal chat? RAG on contracts? code assistant?), compliance regime, team size who will use it.', full: true }
             ]
         },
-        autre: {
-            subtitle: 'Un projet unique ? On adore les defis',
+        other: {
+            subtitle: 'A unique AI project? We love the unusual.',
             fields: [
-                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
-                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
-                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
-                { label: 'Entreprise', type: 'text', placeholder: 'Nom de votre societe', half: true },
-                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
-                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
-                { label: 'Type de projet *', type: 'chips', options: ['Application mobile','SaaS / Plateforme','API / Backend','Data / Analytics','Design / UX','Consulting tech','Autre'], full: true },
-                { label: 'Budget estime', type: 'select', options: ['< 1 000\u20AC','1 000 - 5 000\u20AC','5 000 - 10 000\u20AC','10 000 - 20 000\u20AC','> 20 000\u20AC'], half: true },
-                { label: 'Delai souhaite', type: 'select', options: ['Urgent','1-2 semaines','1 mois','Flexible'], half: true },
-                { label: 'Description detaillee du projet *', type: 'textarea', placeholder: 'Decrivez votre idee, vos objectifs, votre cible, vos contraintes techniques...', full: true }
+                ...CONTACT_CORE,
+                { label: 'Country *', type: 'select', options: LATAM_COUNTRIES, half: true },
+                { label: 'Company size', type: 'select', options: COMPANY_SIZE, half: true },
+                { label: 'Project type *', type: 'chips', options: ['Custom AI product','Data platform','AI agent / multi-agent','Research / POC','AI-powered SaaS','Mobile app w/ AI','Consulting tech','Other'], full: true },
+                { label: 'Budget (USD)', type: 'select', options: BUDGET_USD, half: true },
+                { label: 'Urgency', type: 'select', options: URGENCY, half: true },
+                { label: 'Project description *', type: 'textarea', placeholder: 'Tell us the idea, the business goal, the target users, and the technical constraints you see.', full: true }
             ]
         },
-        partenaire: {
-            subtitle: 'Collaborons ensemble pour creer quelque chose d\'exceptionnel',
+        partner: {
+            subtitle: 'Partnership · white-label · reseller · strategic intro',
             fields: [
-                { label: 'Nom complet *', type: 'text', placeholder: 'Jean Dupont', half: true },
-                { label: 'Email *', type: 'email', placeholder: 'jean@entreprise.com', half: true },
-                { label: 'Telephone', type: 'tel', placeholder: '+33 6 00 00 00 00', half: true },
-                { label: 'Entreprise *', type: 'text', placeholder: 'Nom de votre societe', half: true },
-                { label: 'Site web actuel', type: 'text', placeholder: 'https://monsite.com', half: true },
-                { label: 'Reseaux sociaux', type: 'text', placeholder: 'Instagram, LinkedIn, Facebook...', half: true },
-                { label: 'Type de partenariat *', type: 'chips', options: ['White-label','Affiliation','Technique','Long terme','Consulting','Apporteur d\'affaires','Co-developpement','Autre'], full: true },
-                { label: 'Votre domaine d\'expertise *', type: 'chips', options: ['Marketing digital','Developpement web','Design / UX','Data / IA','E-commerce','Conseil / Strategie','Finance / Compta','Autre'], full: true },
-                { label: 'Taille de votre equipe', type: 'select', options: ['Freelance','2-5 personnes','6-20 personnes','20+'], half: true },
-                { label: 'Depuis combien de temps ?', type: 'select', options: ['< 1 an','1-3 ans','3-5 ans','5+ ans'], half: true },
-                { label: 'Decrivez votre proposition de partenariat *', type: 'textarea', placeholder: 'Quel type de collaboration envisagez-vous ? Quelles synergies voyez-vous entre nos activites ? Avez-vous des clients ou projets concrets en tete ?', full: true }
+                ...CONTACT_CORE,
+                { label: 'Country *', type: 'select', options: LATAM_COUNTRIES, half: true },
+                { label: 'Partnership type *', type: 'chips', options: ['White-label resale','Referral / intro (commission)','Co-delivery (tech + business)','Local implementation partner','Press / community','Other'], full: true },
+                { label: 'Your expertise *', type: 'chips', options: ['Sales / Business Dev','Tax / Legal consulting','Local tech integrator','Marketing / PR','Industry-specific vertical','Accelerator / VC','Other'], full: true },
+                { label: 'Your team size', type: 'select', options: ['Solo','2-10 people','11-50 people','50+'], half: true },
+                { label: 'Years in business', type: 'select', options: ['< 1','1-3','3-10','10+'], half: true },
+                { label: 'Partnership proposal *', type: 'textarea', placeholder: 'What collaboration do you envision? What synergies? Specific clients or pipeline in mind?', full: true }
             ]
         }
     };
@@ -1419,15 +1416,15 @@ function initSmartForm() {
         return '';
     }
     const tips = {
-        site: { tip: 'Astuce : Un site bien pense convertit 3x plus de visiteurs en clients.', stat: '5 jours', statLabel: 'Delai moyen', examples: 'Sites vitrine, e-commerce Shopify, landing page, portfolio, blog' },
-        crm: { tip: 'Astuce : Un CRM sur mesure elimine 80% des taches manuelles de votre equipe.', stat: '10 jours', statLabel: 'Delai moyen', examples: 'CRM commercial, ERP, dashboard KPI, gestion stock, facturation' },
-        chatbot: { tip: 'Astuce : Nos chatbots resolvent 85% des demandes sans intervention humaine.', stat: '7 jours', statLabel: 'Delai moyen', examples: 'Support client, qualification leads, FAQ, prise de RDV, recommandations' },
-        auto: { tip: 'Astuce : En moyenne, nos clients economisent 15h/semaine grace a l\'automatisation.', stat: '3 jours', statLabel: 'Delai moyen', examples: 'Sync CRM-email, factures auto, rapports PDF, alertes Slack, scraping' },
-        autre: { tip: 'Astuce : On a deja realise des projets allant de l\'app mobile au SaaS complet.', stat: 'Sur mesure', statLabel: 'Delai', examples: 'App mobile, SaaS, API, marketplace, plateforme, outil interne' },
-        partenaire: { tip: 'Astuce : Nos partenaires generent en moyenne 30% de revenus supplementaires grace a notre collaboration.', stat: 'Win-win', statLabel: 'Modele', examples: 'White-label, affiliation, co-dev, apport d\'affaires, consulting conjoint' }
+        sprint: { tip: 'Tip: 14-day sprints ship a real workflow in production — no slides, no pilots forever.', stat: '14 days', statLabel: 'Time to live', examples: 'Lead qualifier, invoice reconciliation, WhatsApp support bot, OCR classifier' },
+        automation: { tip: 'Tip: Our SMB clients typically cut 20h+/week of repetitive tasks in month 1.', stat: '4-8 wks', statLabel: 'Typical rollout', examples: 'HubSpot enrichment, Odoo sync, Stripe reconciliation, document classifier, Slack alerts' },
+        fractional: { tip: 'Tip: Hiring a full-time AI CTO costs $200k+/yr. Fractional gives you 80% of the value from $2,500/mo.', stat: '$2.5k+', statLabel: 'Monthly', examples: 'Strategy, roadmap, hiring, vendor selection, architecture reviews, board education' },
+        brain: { tip: 'Tip: Zero data sent to OpenAI. Your IP stays yours — Mistral / DeepSeek on Hetzner DE.', stat: 'Zero leak', statLabel: 'Data to US', examples: 'Internal chat, contract RAG, code assistant, regulated industry LLM, air-gapped deploy' },
+        other: { tip: 'Tip: From AI products to data platforms — we\'ve shipped across most verticals.', stat: 'Custom', statLabel: 'Scope', examples: 'Agentic products, SaaS, mobile w/ AI, R&D POC, marketplace, internal tools' },
+        partner: { tip: 'Tip: Our partners typically generate 20-30% added revenue via joint delivery or intro fees.', stat: 'Win-win', statLabel: 'Model', examples: 'White-label, referrals, co-delivery, local integration, press & community' }
     };
     function renderForm() {
-        if (!selected) { container.innerHTML = '<div class="sf-empty-state"><div class="sf-empty-icon">\u{1F446}</div><p>Selectionnez un type de projet ci-dessus</p></div>'; return; }
+        if (!selected) { container.innerHTML = '<div class="sf-empty-state"><div class="sf-empty-icon">\u{1F446}</div><p>Select a project type above to get a tailored form</p></div>'; return; }
         const type = types.find(t => t.id === selected);
         const config = formFields[selected];
         const tip = tips[selected];
