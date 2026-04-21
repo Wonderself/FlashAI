@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Smadja — IA Soberana para la Empresa Argentina</title>
+    <meta name="description" content="Consultoría en inteligencia artificial soberana para PyMEs argentinas. Auditoría IA, automatización de workflows, LLM privado. Reduzca costos SaaS y proteja sus datos. Programa Pioneros -40%.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Emmanuel Smadja — IA Soberana para la Empresa Argentina">
+    <meta property="og:description" content="Consultoría en IA soberana para PyMEs argentinas. Auditoría, automatización, LLM privado. Programa Pioneros -40%.">
+    <meta property="og:locale" content="es_AR">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .service-card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,31,68,0.15)}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="#" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#servicios" class="text-sm text-white/70 hover:text-or transition-colors">Servicios</a>
+                    <a href="#pioneros" class="text-sm text-white/70 hover:text-or transition-colors">Pioneros</a>
+                    <a href="#conformidad" class="text-sm text-white/70 hover:text-or transition-colors">Conformidad</a>
+                    <a href="#contacto" class="text-sm text-white/70 hover:text-or transition-colors">Contacto</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="text-or font-medium">ES</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <a href="#contacto" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Agendar Visio</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="#servicios" class="text-xl text-white/80 hover:text-or transition-colors font-display">Servicios</a>
+            <a href="#pioneros" class="text-xl text-white/80 hover:text-or transition-colors font-display">Pioneros</a>
+            <a href="#conformidad" class="text-xl text-white/80 hover:text-or transition-colors font-display">Conformidad</a>
+            <a href="#contacto" class="text-xl text-white/80 hover:text-or transition-colors font-display">Contacto</a>
+            <div class="flex items-center gap-4 mt-4 text-sm text-white/40">
+                <span class="text-or font-medium">ES</span><span>FR</span><span>EN</span>
+            </div>
+            <a href="#contacto" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Agendar Visio</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative bg-marine pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/4 right-0 w-96 h-96 bg-or/[0.04] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="gold-line max-w-32 mx-auto mb-10"></div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-white leading-tight mb-8">Inteligencia Artificial Soberana<br class="hidden sm:block"> para la Empresa Argentina</h1>
+                <p class="text-base sm:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">Reduzca su dependencia de proveedores SaaS extranjeros, proteja la soberanía de sus datos y transforme cada dólar ahorrado en OPEX en valor empresarial duradero. El EBITDA &mdash; Beneficio antes de Intereses, Impuestos, Depreciación y Amortización &mdash; mide la rentabilidad operativa pura de su empresa. Cada dólar que usted deja de transferir a proveedores externos, aplicando los múltiplos de valorización habituales (x20 a x25), se convierte en veinte a veinticinco dólares de valor empresarial.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                    <a href="#contacto" class="px-7 py-3.5 rounded bg-or text-marine font-medium text-sm cta-gold">Solicitar Auditoría de Elegibilidad Gratuita</a>
+                    <a href="#contacto" class="px-7 py-3.5 rounded border border-or/40 text-or text-sm font-medium hover:border-or hover:bg-or/5 transition-all">Agendar una Visio Introductoria</a>
+                </div>
+                <p class="text-xs text-white/35 italic">Disponible por videoconferencia desde hoy. Presencia en Buenos Aires a partir de junio 2026.</p>
+            </div>
+        </section>
+
+        <!-- ACUERDOS DE ISAAC -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4 text-center">19 de abril de 2026 &mdash; Jerusalén</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine text-center mb-10">Los Acuerdos de Isaac</h2>
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>El 19 de abril de 2026, en Jerusalén, los presidentes Milei y Netanyahu firmaron un memorando de entendimiento en materia de inteligencia artificial que inaugura un eje de cooperación tecnológica sin precedentes entre Argentina e Israel. Los Acuerdos de Isaac &mdash; así denominados en referencia al patriarca común a ambas tradiciones culturales &mdash; establecen el marco bilateral conocido como Pax Silica: una alianza centrada en la soberanía del dato, la transferencia de know-how en IA y la construcción de capacidades tecnológicas propias.</p>
+                    <p>Para la empresa argentina, este acuerdo no es un gesto diplomático abstracto. Significa el acceso directo a un ecosistema de innovación que produce más startups per cápita que cualquier otro país del mundo. Significa, concretamente, la posibilidad de repatriar sus datos, reducir su exposición a proveedores extranjeros y desplegar modelos de lenguaje privados sobre infraestructura soberana. Con la apertura de vuelos directos Tel Aviv&ndash;Buenos Aires prevista para finales de 2026, la proximidad operativa entre ambos ecosistemas dejará de ser una metáfora.</p>
+                    <p>Emmanuel Smadja, franco-israelí radicado en Argentina, articula esta transferencia de expertise. Su rol no es vender tecnología israelí: es traducir dos décadas de metodología en innovación, R&D y optimización financiera al contexto operativo de la PyME argentina.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOUD COST SQUEEZE -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-center mb-4">El Costo Silencioso de la Dependencia SaaS</h2>
+                <p class="text-center text-white/40 text-sm mb-12">Inflación SaaS global: +11,4% en 2025 (Zylo SaaS Management Index)</p>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed mb-14">
+                    <p>Cada mes, su empresa transfiere miles de dólares a proveedores de software que alojan sus datos en servidores ajenos, bajo jurisdicciones extranjeras, con licencias cuyo precio aumenta a un ritmo dos veces superior al de la inflación global. No se trata de un problema técnico. Se trata de una erosión silenciosa de su EBITDA &mdash; y, por extensión, de la valorización de su empresa.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+                    <div class="bg-white/[0.04] border border-or/10 rounded-lg p-6 text-center service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">5 a 20 empleados</p>
+                        <p class="text-2xl font-display font-semibold text-white mb-2">2.000 &ndash; 6.000 <span class="text-sm text-white/40">USD/mes</span></p>
+                        <p class="text-sm text-white/40 mb-4">Gasto SaaS mensual estimado</p>
+                        <div class="gold-line mb-4"></div>
+                        <p class="text-sm text-white/50">Potencial de reducción: 30 a 50%. Un ahorro de 2.000 USD/mes equivale, con un múltiplo x20, a 480.000 USD de valorización adicional.</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/10 rounded-lg p-6 text-center service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">20 a 100 empleados</p>
+                        <p class="text-2xl font-display font-semibold text-white mb-2">8.000 &ndash; 35.000 <span class="text-sm text-white/40">USD/mes</span></p>
+                        <p class="text-sm text-white/40 mb-4">Gasto SaaS mensual estimado</p>
+                        <div class="gold-line mb-4"></div>
+                        <p class="text-sm text-white/50">Potencial de reducción: 25 a 45%. Un ahorro de 10.000 USD/mes se traduce en hasta 3.000.000 USD de valorización al aplicar múltiplos x25.</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/10 rounded-lg p-6 text-center service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">100 a 500 empleados</p>
+                        <p class="text-2xl font-display font-semibold text-white mb-2">40.000 &ndash; 150.000 <span class="text-sm text-white/40">USD/mes</span></p>
+                        <p class="text-sm text-white/40 mb-4">Gasto SaaS mensual estimado</p>
+                        <div class="gold-line mb-4"></div>
+                        <p class="text-sm text-white/50">Potencial de reducción: 20 a 40%. Aquí, cada punto porcentual de ahorro recurrente puede representar millones en valorización empresarial.</p>
+                    </div>
+                </div>
+                <p class="text-white/50 text-base leading-relaxed text-center max-w-3xl mx-auto">Estas cifras no son proyecciones optimistas. Son el resultado de la sustitución progresiva de licencias SaaS por infraestructura propia, modelos de lenguaje privados y workflows automatizados. El impacto sobre el EBITDA es directo, recurrente y acumulativo.</p>
+            </div>
+        </section>
+
+        <!-- BIO EMMANUEL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-10 md:gap-14 items-center">
+                    <div class="w-48 h-48 md:w-56 md:h-56 rounded-lg bg-gradient-to-br from-marine to-marine-light flex items-center justify-center shrink-0">
+                        <span class="text-5xl font-display font-semibold text-or/80">ES</span>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-display font-semibold text-marine mb-2">Emmanuel Smadja</h2>
+                        <p class="text-or text-sm font-medium tracking-wider uppercase mb-6">Consultor en IA Soberana</p>
+                        <div class="space-y-4 text-ardoise text-base leading-relaxed">
+                            <p>Franco-israelí con veinte años de trayectoria entre París, Tel Aviv y Buenos Aires. Ex CEO, formado en comptabilité et gestion y diplomado del DECF (Bac+4, ICS Bégué Paris), Emmanuel combina una visión financiera rigurosa con una comprensión profunda de los ecosistemas tecnológicos israelíes.</p>
+                            <p>Su experiencia abarca la dirección de empresas en medios, eventos y tecnología. Hoy, desde su Ltd israelí, acompaña a PyMEs argentinas en la transición hacia una inteligencia artificial soberana: aquella que funciona sobre su propia infraestructura, con sus propios datos, bajo su propio control.</p>
+                            <p>Emmanuel moviliza a distancia un réseau de expertos israelíes especializados en IA, ciberseguridad e infraestructura cloud &mdash; el mismo ecosistema que posiciona a Israel como referencia mundial en innovación tecnológica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESCALIER DE SERVICES -->
+        <section id="servicios" class="py-20 md:py-28 bg-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine text-center mb-4">Un Camino Progresivo, a la Medida de su Empresa</h2>
+                <p class="text-center text-ardoise-light text-base mb-14 max-w-2xl mx-auto">Cada etapa se justifica por sí misma. Usted avanza cuando los resultados de la anterior lo ameritan, sin compromiso a largo plazo ni inversión desproporcionada.</p>
+
+                <div class="space-y-6">
+                    <!-- Etapa 0 -->
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Etapa 0</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">Auditoría de Elegibilidad</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Un formulario estructurado seguido de una hora de videoconferencia. Evaluamos juntos si su empresa reúne las condiciones para beneficiarse de una transición hacia la IA soberana: volumen de datos, stack tecnológico actual, estructura de costos SaaS y objetivos de negocio. Sin costo, sin compromiso.</p>
+                        <p class="font-display font-semibold text-or text-lg">Gratuita</p>
+                    </div>
+
+                    <!-- Service 1 -->
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Servicio 1</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">Auditoría IA Completa &mdash; 3 días</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Tres jornadas de inmersión en su operación. Cartografiamos sus procesos, identificamos los flujos automatizables, evaluamos la calidad de sus datos y le entregamos un informe ejecutivo con prioridades claras, estimaciones de ahorro en OPEX y una roadmap de implementación. Este documento se convierte en la hoja de ruta de toda intervención posterior.</p>
+                        <p class="font-display font-semibold text-or text-lg">500 EUR</p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Servicio 2</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">Workflows de Automatización</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Diseñamos e implementamos workflows que eliminan tareas repetitivas, conectan sus herramientas entre sí y liberan horas productivas cada semana. Desde la automatización de un proceso crítico hasta la orquestación completa de sus flujos de trabajo, cada workflow se construye sobre las prioridades identificadas en la auditoría.</p>
+                        <p class="font-display font-semibold text-or text-lg">Desde 1.680 EUR <span class="text-ardoise-light text-sm font-body font-normal">(1 workflow) &mdash; 2.700 EUR (3 workflows) &mdash; complejos sobre presupuesto</span></p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Servicio 3</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">LLM Soberano Privado</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Su propio modelo de lenguaje, entrenado con sus datos, alojado en infraestructura que usted controla. Dos modalidades: cloud administrado sobre servidores Hetzner en Europa (sin pasar por hyperscalers estadounidenses) u on-premise sobre hardware dedicado como el Mac Mini M4 Pro. Sus datos no salen de su perímetro. Su IA no depende de ningún proveedor externo.</p>
+                        <p class="font-display font-semibold text-or text-lg">Desde 2.100 USD setup + 270 USD/mes <span class="text-ardoise-light text-sm font-body font-normal">(cloud administrado) &mdash; on-prem sobre presupuesto</span></p>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-ardoise/10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-creme rounded-lg p-6">
+                            <h3 class="text-lg font-display font-semibold text-marine mb-3">Formaciones</h3>
+                            <p class="text-ardoise text-sm leading-relaxed">Tres programas adaptados a tres perfiles: empleados operativos (adopción de herramientas IA en su trabajo diario), dirigentes (comprensión estratégica y toma de decisión) y sucesores (preparación de la próxima generación de liderazgo tecnológico). Formatos en videoconferencia o presenciales a partir de junio 2026.</p>
+                        </div>
+                        <div class="bg-creme rounded-lg p-6">
+                            <h3 class="text-lg font-display font-semibold text-marine mb-3">Diagnóstico de Elegibilidad LEC</h3>
+                            <p class="text-ardoise text-sm leading-relaxed">Para las empresas que deseen evaluar su posición frente a la Ley de Economía del Conocimiento argentina, realizamos un diagnóstico completo de elegibilidad con identificación de beneficios fiscales aplicables y plan de acción para la certificación.</p>
+                            <p class="font-display font-semibold text-or text-base mt-3">800 a 3.000 USD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRAMA PIONEROS -->
+        <section id="pioneros" class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4 text-center">Creado el 19 de abril de 2026</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-center mb-4">Programa Pioneros</h2>
+                <p class="text-center text-white/40 text-sm mb-12">El día de la firma de los Acuerdos de Isaac</p>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed mb-14">
+                    <p>El Programa Pioneros nació el mismo día que los Acuerdos de Isaac, como un compromiso hacia las primeras empresas argentinas que elijan recorrer este camino. No se trata de una promoción comercial. Es un reconocimiento: las empresas que adoptan primero asumen un riesgo mayor y, por ello, merecen condiciones que reflejen esa convicción.</p>
+                    <p>Los Pioneros obtienen una reducción del cuarenta por ciento garantizada de por vida sobre el conjunto de nuestros servicios. Esta tarifa preferencial no tiene fecha de vencimiento ni condición de renovación. Acompaña a la empresa mientras exista la relación profesional.</p>
+                    <p>La selección es cualitativa y se organiza por ciudad. Buscamos empresas con una dirección comprometida, un volumen de datos que justifique la transición y una visión de largo plazo sobre la soberanía de sus activos digitales.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Buenos Aires</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Plazas abiertas</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Córdoba</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Plazas abiertas</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Rosario</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Plazas abiertas</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Mendoza</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Plazas abiertas</p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-white/30 text-sm italic">La reducción del 40% aplica sobre la tarifa estándar de todos los servicios, sin excepción.</p>
+            </div>
+        </section>
+
+        <!-- CONFORMIDAD REGULATORIA -->
+        <section id="conformidad" class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine text-center mb-4">Conformidad Regulatoria</h2>
+                <p class="text-center text-ardoise-light text-base mb-14 max-w-2xl mx-auto">La soberanía de sus datos no es solo una ventaja competitiva. Es una obligación legal creciente, tanto en Argentina como en los mercados con los que usted opera.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Ley 25.326</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">La Ley de Protección de Datos Personales argentina establece el marco de tratamiento, almacenamiento y transferencia de datos personales. Toda empresa que procese datos de clientes, empleados o proveedores argentinos debe asegurar su cumplimiento. Nuestras soluciones se diseñan desde el origen para respetar esta normativa.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">RGPD &mdash; Adecuación Argentina</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">Argentina es uno de los pocos países latinoamericanos reconocidos por la Unión Europea como ofreciendo un nivel de protección de datos adecuado. Esta adecuación facilita las transferencias de datos con Europa, pero exige mantener estándares equivalentes al RGPD en todo su ecosistema digital.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">EU AI Act</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">El Reglamento Europeo sobre Inteligencia Artificial, vigente desde 2024, clasifica los sistemas de IA por niveles de riesgo e impone obligaciones de transparencia, documentación y gobernanza. Si su empresa opera con clientes o socios europeos, anticipar esta normativa es una decisión estratégica, no una opción.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Directiva NIS2</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">La directiva europea sobre ciberseguridad NIS2 amplía las exigencias de seguridad a las cadenas de suministro digitales. Las empresas argentinas que integran cadenas de valor europeas deben demostrar que sus sistemas, incluidos los basados en IA, cumplen con estos estándares de resiliencia y protección.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section id="contacto" class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-6">El Primer Paso No Tiene Costo</h2>
+                <p class="text-white/50 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">La auditoría de elegibilidad es gratuita, confidencial y no genera ningún compromiso. En una hora de videoconferencia, evaluamos juntos si su empresa puede beneficiarse de la transición hacia una IA soberana. Si la respuesta es afirmativa, le entregamos un diagnóstico preliminar y las opciones que se abren ante usted. Si no es el momento adecuado, se lo decimos con la misma franqueza.</p>
+                <a href="#" class="inline-flex px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Solicitar mi Auditoría de Elegibilidad Gratuita</a>
+                <p class="text-white/25 text-xs mt-6 italic">Respuesta en menos de 48 horas. Videoconferencia disponible en español, francés e inglés.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Consultoría en IA Soberana &mdash; Ltd israelí</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="#servicios" class="hover:text-or/60 transition-colors">Servicios</a>
+                    <a href="#pioneros" class="hover:text-or/60 transition-colors">Pioneros</a>
+                    <a href="#conformidad" class="hover:text-or/60 transition-colors">Conformidad</a>
+                    <a href="#contacto" class="hover:text-or/60 transition-colors">Contacto</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="text-or/50">ES</span><span class="hover:text-white/50 cursor-pointer transition-colors">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>
