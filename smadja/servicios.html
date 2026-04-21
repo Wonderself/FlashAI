@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios — Emmanuel Smadja | Auditoría IA, Automatización, LLM Soberano para PyMEs Argentinas</title>
+    <meta name="description" content="Servicios de IA soberana para PyMEs argentinas: auditoría de elegibilidad gratuita, auditoría IA completa, workflows de automatización, LLM privado soberano. Programa Pioneros -40%. Desde 500€.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Servicios — Emmanuel Smadja | IA Soberana para la Empresa Argentina">
+    <meta property="og:description" content="Auditoría IA, automatización de workflows, LLM soberano privado. Programa Pioneros -40% de por vida.">
+    <meta property="og:locale" content="es_AR">
+    <link rel="canonical" href="https://smadja.ai/servicios.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .service-card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,31,68,0.15)}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+        .price-tag{border-left:2px solid #C9A66B;padding-left:1rem}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="text-sm text-white/70 hover:text-or transition-colors">Inicio</a>
+                    <a href="#etapa-0" class="text-sm text-white/70 hover:text-or transition-colors">Elegibilidad</a>
+                    <a href="#audit" class="text-sm text-white/70 hover:text-or transition-colors">Auditoría</a>
+                    <a href="#workflows" class="text-sm text-white/70 hover:text-or transition-colors">Workflows</a>
+                    <a href="#llm" class="text-sm text-or font-medium transition-colors">LLM Soberano</a>
+                    <a href="#formaciones" class="text-sm text-white/70 hover:text-or transition-colors">Formaciones</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="text-or font-medium">ES</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <a href="index.html#contacto" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Agendar Visio</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="index.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Inicio</a>
+            <a href="#etapa-0" class="text-xl text-white/80 hover:text-or transition-colors font-display">Elegibilidad</a>
+            <a href="#audit" class="text-xl text-white/80 hover:text-or transition-colors font-display">Auditoría</a>
+            <a href="#workflows" class="text-xl text-white/80 hover:text-or transition-colors font-display">Workflows</a>
+            <a href="#llm" class="text-xl text-or hover:text-or-light transition-colors font-display font-semibold">LLM Soberano</a>
+            <a href="#formaciones" class="text-xl text-white/80 hover:text-or transition-colors font-display">Formaciones</a>
+            <a href="index.html#contacto" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Agendar Visio</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO SERVICIOS -->
+        <section class="relative bg-marine pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/3 right-0 w-80 h-80 bg-or/[0.03] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white leading-tight mb-6">Nuestros Servicios</h1>
+                <p class="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed mb-8">Un recorrido progresivo, calibrado sobre el retorno financiero de cada etapa. Usted avanza cuando los números lo justifican, no antes. Cada servicio se sostiene por sí mismo y prepara el terreno para el siguiente.</p>
+                <p class="text-sm text-or/70 max-w-xl mx-auto">Los precios Pioneros (-40%) figuran junto al tarif estándar en cada servicio. El Programa Pioneros es vitalicio, sin fecha de expiración.</p>
+            </div>
+        </section>
+
+        <!-- ETAPA 0 — AUDIT ÉLIGIBILITÉ -->
+        <section id="etapa-0" class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Etapa 0</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">Auditoría de Elegibilidad</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>Todo comienza por un formulario inteligente disponible en este sitio. No se trata de un cuestionario genérico: cada pregunta está diseñada para que Emmanuel pueda evaluar, antes de la primera conversación, la estructura de costos de su empresa, su stack tecnológico actual y la naturaleza de los datos que usted maneja.</p>
+                    <p>Una vez completado el formulario, Emmanuel le propone una videoconferencia de una hora, sin costo y sin compromiso. A esa reunión, él llega con un análisis preliminar ya preparado. Se evalúan juntos tres dimensiones: la elegibilidad de su empresa a los programas LEC (Ley de Economía del Conocimiento), RIMI e IA-Pyme; la identificación de los procesos con mayor potencial de automatización; y una primera estimación del retorno sobre inversión esperado.</p>
+                    <p>Esta etapa no es una formalidad comercial. Es un filtro de calidad mutuo. Si su empresa no presenta las condiciones para beneficiarse de una transición hacia la IA soberana, Emmanuel se lo comunica con la misma franqueza con la que le recomendaría avanzar. Solo se trabaja donde los números tienen sentido.</p>
+                </div>
+                <div class="mt-10 bg-white border border-or/15 rounded-lg p-6 inline-block">
+                    <p class="font-display font-semibold text-marine text-xl">Gratuita</p>
+                    <p class="text-ardoise-light text-sm mt-1">Formulario + 1 hora de videoconferencia con análisis preliminar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 1 — AUDIT IA -->
+        <section id="audit" class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Servicio 1</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-8">Auditoría IA Completa</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                    <p>Tres jornadas de inmersión en su operación. Emmanuel cartografía el conjunto de sus procesos, identifica los gisements de automatización por orden de impacto financiero y analiza la sensibilidad de sus datos en el marco de la Ley 25.326 de Protección de Datos Personales.</p>
+                    <p>El entregable es un informe de veinte a treinta páginas, redactado en lenguaje de dirección, no de ingeniería. Contiene cinco oportunidades de optimización clasificadas por retorno sobre inversión, con estimaciones de ahorro en OPEX, impacto proyectado sobre el EBITDA y una feuille de route operativa a noventa días.</p>
+                    <p>Este documento se convierte en la referencia de toda intervención posterior. Cada workflow, cada modelo de lenguaje, cada formación que se implemente partirá de las prioridades que este informe establece. No se automatiza lo que suena bien: se automatiza lo que genera retorno medible.</p>
+                </div>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                    <div class="bg-white/[0.05] border border-or/15 rounded-lg p-5">
+                        <p class="text-xs text-or tracking-wider uppercase mb-2">Pioneros (-40%)</p>
+                        <p class="font-display font-semibold text-white text-2xl">300 EUR</p>
+                        <p class="text-white/30 text-sm mt-1">3 jornadas, informe ejecutivo completo</p>
+                    </div>
+                    <div class="bg-white/[0.03] border border-white/10 rounded-lg p-5">
+                        <p class="text-xs text-white/30 tracking-wider uppercase mb-2">Estándar</p>
+                        <p class="font-display font-semibold text-white/60 text-2xl">500 EUR</p>
+                        <p class="text-white/20 text-sm mt-1">3 jornadas, informe ejecutivo completo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 2 — WORKFLOWS -->
+        <section id="workflows" class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Servicio 2</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">Workflows de Automatización IA</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed mb-14">
+                    <p>Un workflow de automatización no es un gadget tecnológico. Es la eliminación permanente de una tâche répétitive que consume horas productivas cada semana, con un impacto directo y recurrente sobre su EBITDA. Cada workflow parte de las prioridades establecidas en la auditoría: se automatiza en función del retorno financiero, no de la complejidad técnica.</p>
+                    <p>Los workflows simples abarcan operaciones que toda empresa realiza cotidianamente: la clasificación de correos electrónicos por nivel de urgencia, la extracción automática de datos desde facturas PDF hacia sus planillas de cálculo, la generación de respuestas automatizadas para preguntas frecuentes, la activación de alertas cuando ciertos umbrales financieros se alcanzan, o la clasificación inteligente de documentos entrantes. Son intervenciones precisas, de implementación rápida y retorno inmediato.</p>
+                    <p>Los workflows complejos abordan procesos que atraviesan varios departamentos o requieren razonamiento avanzado: la conciliación bancaria multinivel con matching inteligente, la construcción de pipelines de prospección B2B con calificación automatizada de leads, el despliegue de asistentes multilingües con acceso a su base de conocimientos privada mediante tecnología RAG, o la generación de reportes CFO automatizados con consolidación de datos financieros en tiempo real. Estos se presupuestan sobre medida, porque cada implementación depende de la arquitectura de datos existente.</p>
+                </div>
+
+                <!-- Paliers -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+                    <div class="bg-white border border-or/15 rounded-lg p-6 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Palier 1</p>
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Auditoría + 1 workflow simple</h3>
+                        <p class="text-ardoise text-sm leading-relaxed mb-4">Incluye la auditoría IA completa y la implementación de un primer workflow automatizado, seleccionado por su impacto inmediato sobre la operación.</p>
+                        <div class="price-tag mb-2">
+                            <p class="text-xs text-or tracking-wider uppercase">Pioneros</p>
+                            <p class="font-display font-semibold text-marine text-xl">1.680 EUR</p>
+                        </div>
+                        <div class="price-tag opacity-50">
+                            <p class="text-xs text-ardoise-light tracking-wider uppercase">Estándar</p>
+                            <p class="font-display font-semibold text-ardoise text-xl">~2.800 EUR</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-or/15 rounded-lg p-6 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Palier 2</p>
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Auditoría + 3 workflows simples</h3>
+                        <p class="text-ardoise text-sm leading-relaxed mb-4">El paquete que genera el punto de inflexión. Tres automatizaciones coordinadas que transforman un departamento entero o un proceso transversal.</p>
+                        <div class="price-tag mb-2">
+                            <p class="text-xs text-or tracking-wider uppercase">Pioneros</p>
+                            <p class="font-display font-semibold text-marine text-xl">2.700 EUR</p>
+                        </div>
+                        <div class="price-tag opacity-50">
+                            <p class="text-xs text-ardoise-light tracking-wider uppercase">Estándar</p>
+                            <p class="font-display font-semibold text-ardoise text-xl">~4.500 EUR</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-or/15 rounded-lg p-6 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Palier 3</p>
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Workflows complejos</h3>
+                        <p class="text-ardoise text-sm leading-relaxed mb-4">Conciliación bancaria, pipelines B2B, assistants RAG multilingües, reporting financiero automatizado. Presupuesto según arquitectura existente.</p>
+                        <div class="price-tag">
+                            <p class="text-xs text-or tracking-wider uppercase">Pioneros y Estándar</p>
+                            <p class="font-display font-semibold text-marine text-xl">Sobre presupuesto</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fourchettes taille -->
+                <div class="bg-marine/[0.03] border border-marine/10 rounded-lg p-6 mb-10">
+                    <h3 class="font-display font-semibold text-marine text-lg mb-4">Inversión según tamaño de empresa</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <p class="text-xs text-or tracking-wider uppercase mb-1">5–20 empleados</p>
+                            <p class="font-display font-semibold text-marine">1.680–5.000 EUR</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-or tracking-wider uppercase mb-1">20–100 empleados</p>
+                            <p class="font-display font-semibold text-marine">3.000–15.000 EUR</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-or tracking-wider uppercase mb-1">100–500 empleados</p>
+                            <p class="font-display font-semibold text-marine">8.000–50.000 EUR</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-or tracking-wider uppercase mb-1">500+ empleados</p>
+                            <p class="font-display font-semibold text-marine">Sobre presupuesto</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maintenance -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-5 flex-1">
+                        <p class="text-xs text-or tracking-wider uppercase mb-2">Mantenimiento Básico</p>
+                        <p class="font-display font-semibold text-marine text-lg">Desde 200 EUR/mes</p>
+                        <p class="text-ardoise text-sm mt-1">Monitoreo, correcciones, actualizaciones menores</p>
+                    </div>
+                    <div class="bg-white border border-or/15 rounded-lg p-5 flex-1">
+                        <p class="text-xs text-or tracking-wider uppercase mb-2">Mantenimiento Premium</p>
+                        <p class="font-display font-semibold text-marine text-lg">Desde 500 EUR/mes</p>
+                        <p class="text-ardoise text-sm mt-1">Soporte prioritario, optimización continua, evoluciones trimestrales</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 3 — LLM SOUVERAIN -->
+        <section id="llm" class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Servicio 3 &mdash; Piedra angular</p>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-display font-semibold mb-4">LLM Soberano Privado</h2>
+                <p class="text-white/40 text-base sm:text-lg mb-8">Su propia inteligencia artificial. Sus datos. Su infraestructura. Su control.</p>
+                <div class="gold-line max-w-24 mb-12"></div>
+
+                <!-- Pourquoi maintenant -->
+                <div class="mb-16">
+                    <h3 class="text-xl sm:text-2xl font-display font-semibold text-or mb-6">Por qué ahora, y no antes</h3>
+                    <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                        <p>Hace dieciocho meses, desplegar un modelo de lenguaje privado con capacidades comparables a GPT-4 requería una inversión mínima de cincuenta mil dólares, infraestructura especializada y un equipo de ingenieros dedicado. Esa realidad ya no existe.</p>
+                        <p>En 2026, los modelos open-source han alcanzado un nivel de rendimiento equivalente a los modelos comerciales que dominaban el mercado hace apenas un año. Mistral Small 3.2, con 24 mil millones de parámetros, sale de los laboratorios de París bajo licencia Apache 2.0. Gemma 4, la arquitectura Mixture-of-Experts de 26 mil millones de parámetros, ofrece razonamiento avanzado con una eficiencia de cómputo sin precedentes. DeepSeek R1, con 14 mil millones de parámetros, aporta capacidades de cadena de pensamiento que rivalizan con modelos diez veces más grandes. Todos bajo licencias abiertas. Todos ejecutables sobre hardware accesible.</p>
+                        <p>Simultáneamente, el costo del hosting GPU ha caído un ochenta por ciento en dieciocho meses. Una RTX 4000 SFF Ada con 20 GB de VRAM dedicada, 64 GB de RAM y alojamiento en data centers alemanes con conformidad RGPD nativa cuesta hoy una fracción de lo que costaba un servidor comparable en 2024.</p>
+                        <p>El resultado de esta convergencia es simple: lo que ayer era privilegio de grandes corporaciones con presupuestos de R&D millonarios es hoy accesible para una PyME argentina de veinte empleados. Setup desde 2.100 dólares, operación mensual desde 270 dólares. Esa es la ventana que se abre ahora, y no permanecerá abierta en estas condiciones indefinidamente.</p>
+                    </div>
+                </div>
+
+                <!-- Les avantages -->
+                <div class="mb-16">
+                    <h3 class="text-xl sm:text-2xl font-display font-semibold text-or mb-6">Lo que cambia cuando su IA le pertenece</h3>
+                    <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                        <p><span class="text-white font-medium">Soberanía total bajo la Ley 25.326.</span> Sus datos nunca salen de su perímetro. No transitan por servidores de terceros, no alimentan modelos ajenos, no son accesibles por jurisdicciones extranjeras. Usted cumple con la legislación argentina de protección de datos no como un ejercicio de compliance, sino como una consecuencia natural de su arquitectura.</p>
+                        <p><span class="text-white font-medium">Fin de la taxe à l'innovation SaaS.</span> Cada vez que usted paga una suscripción a un servicio de IA en la nube, está financiando la innovación de otro. Con un LLM privado, ese flujo se detiene. El costo de operación es fijo, predecible y decrece con el tiempo a medida que el hardware se amortiza y los modelos open-source mejoran sin costo adicional.</p>
+                        <p><span class="text-white font-medium">Impacto directo sobre el EBITDA: de OPEX a CAPEX.</span> La suscripción SaaS es un gasto operativo recurrente que erosiona su margen cada mes. La inversión en infraestructura propia es un activo capitalizable que aparece en su balance, se amortiza fiscalmente y desaparece de su estructura de costos operativos. Para un CFO, la diferencia es sustancial: cada dólar que migra de OPEX a CAPEX mejora el EBITDA, y cada punto de mejora en el EBITDA se multiplica por veinte a veinticinco en valorización empresarial.</p>
+                        <p><span class="text-white font-medium">Elegibilidad LEC y RIMI.</span> La inversión en infraestructura de IA propia posiciona a su empresa como candidata a los beneficios fiscales de la Ley de Economía del Conocimiento y del Régimen de Incentivo para Manufactureros e Innovadores. Estos programas pueden significar reducciones significativas en cotizaciones patronales y otros beneficios que aceleran el retorno sobre la inversión.</p>
+                        <p><span class="text-white font-medium">Modelos actualizados, sin costos adicionales.</span> Los modelos open-source evolucionan continuamente. Cuando una nueva versión de Mistral, Gemma o DeepSeek se publica, usted la despliega sobre su infraestructura existente sin pagar una licencia adicional. Las actualizaciones están incluidas en el servicio de mantenimiento, no en una factura sorpresa de su proveedor SaaS.</p>
+                        <p><span class="text-white font-medium">Conformidad EU AI Act y NIS2 por diseño.</span> Un LLM soberano, alojado sobre infraestructura que usted controla, con trazabilidad completa de los datos de entrenamiento y de las interacciones, cumple de manera nativa con las exigencias del Reglamento Europeo sobre IA y de la directiva de ciberseguridad NIS2. Si opera con clientes o socios europeos, esta conformidad no es opcional.</p>
+                        <p><span class="text-white font-medium">RAG sobre su base de conocimientos privada.</span> La tecnología Retrieval-Augmented Generation permite a su LLM acceder en tiempo real a sus documentos internos, procedimientos, históricos de clientes y bases de datos propietarias. Su IA no responde con generalidades: responde con la información específica de su empresa, sin que esos datos sean jamás expuestos a un servicio externo.</p>
+                    </div>
+                </div>
+
+                <!-- Options A et B -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14">
+                    <!-- Option A -->
+                    <div class="bg-white/[0.05] border border-or/20 rounded-lg p-8">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Opción A</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">Cloud Administrado &mdash; Hetzner</h3>
+                        <div class="space-y-4 text-white/50 text-sm leading-relaxed mb-6">
+                            <p>Servidor dedicado en data center alemán. RTX 4000 SFF Ada con 20 GB de VRAM, 64 GB de RAM. Conformidad RGPD nativa por localización europea. Tres modelos preinstalados: Mistral Small 3.2 24B (París, Apache 2.0), Gemma 4 26B MoE y DeepSeek R1 14B.</p>
+                            <p>Capacidad para tres a ocho usuarios simultáneos. Actualizaciones de modelos incluidas en el mantenimiento. Monitoreo 24/7 por el equipo de Emmanuel.</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="price-tag">
+                                <p class="text-xs text-or tracking-wider uppercase">Setup Pioneros</p>
+                                <p class="font-display font-semibold text-white text-2xl">2.100 USD</p>
+                            </div>
+                            <div class="price-tag opacity-50">
+                                <p class="text-xs text-white/30 tracking-wider uppercase">Setup Estándar</p>
+                                <p class="font-display font-semibold text-white/50 text-2xl">3.500 USD</p>
+                            </div>
+                            <div class="price-tag mt-4">
+                                <p class="text-xs text-or tracking-wider uppercase">Mensual</p>
+                                <p class="font-display font-semibold text-white text-2xl">270 USD/mes</p>
+                                <p class="text-white/30 text-xs mt-1">Hosting + mantenimiento + actualizaciones de modelos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Option B -->
+                    <div class="bg-white/[0.05] border border-white/10 rounded-lg p-8">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Opción B</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">On-Premise &mdash; Mac Mini M4 Pro</h3>
+                        <div class="space-y-4 text-white/50 text-sm leading-relaxed mb-6">
+                            <p>Hardware dedicado instalado en sus oficinas. Mac Mini M4 Pro con 64 GB de memoria unificada, ejecutando los mismos tres modelos que la opción cloud. Soberanía absoluta: sus datos no salen de su edificio, punto.</p>
+                            <p>El hardware (2.199 USD) es adquirido directamente por su empresa y aparece como activo en su balance. Se amortiza fiscalmente. El setup cubre la configuración completa, la instalación de modelos, la integración con sus sistemas existentes y la formación de su equipo técnico.</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="price-tag">
+                                <p class="text-xs text-or tracking-wider uppercase">Setup Pioneros</p>
+                                <p class="font-display font-semibold text-white text-2xl">3.300 USD</p>
+                                <p class="text-white/30 text-xs mt-1">+ hardware 2.199 USD (adquirido por el cliente)</p>
+                            </div>
+                            <div class="price-tag opacity-50">
+                                <p class="text-xs text-white/30 tracking-wider uppercase">Setup Estándar</p>
+                                <p class="font-display font-semibold text-white/50 text-2xl">5.500 USD</p>
+                                <p class="text-white/20 text-xs mt-1">+ hardware 2.199 USD</p>
+                            </div>
+                            <div class="price-tag mt-4">
+                                <p class="text-xs text-or tracking-wider uppercase">Mantenimiento opcional</p>
+                                <p class="font-display font-semibold text-white text-2xl">150 USD/mes</p>
+                                <p class="text-white/30 text-xs mt-1">Actualizaciones de modelos, soporte remoto, monitoreo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phrase choc -->
+                <div class="bg-or/[0.08] border border-or/20 rounded-lg p-8 text-center">
+                    <p class="font-display text-xl sm:text-2xl font-semibold text-white leading-relaxed">Hace dieciocho meses: 50.000 dólares mínimo.<br>Hoy: 2.100 dólares de setup + 270 dólares al mes.</p>
+                    <p class="text-or/70 text-sm mt-4">La misma capacidad. Modelos equivalentes a GPT-4. Sobre infraestructura que usted controla.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMACIONES -->
+        <section id="formaciones" class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Add-on disponible para cada servicio</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">Formaciones</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed mb-14">
+                    <p>La tecnología que nadie utiliza es una inversión perdida. Cada servicio puede complementarse con formaciones adaptadas al perfil de los usuarios, porque la adopción efectiva de la IA dentro de la empresa es lo que transforma una implementación técnica en un retorno financiero medible.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Empleados Operativos</h3>
+                        <p class="text-ardoise text-sm leading-relaxed mb-4">Adopción práctica de las herramientas de IA en el trabajo diario. Sesiones en grupo de cinco a quince personas, orientadas a la productividad inmediata: prompting eficaz, automatizaciones básicas, mejores prácticas de seguridad de datos.</p>
+                        <div class="price-tag">
+                            <p class="text-xs text-or tracking-wider uppercase">Por sesión</p>
+                            <p class="font-display font-semibold text-marine text-lg">300 &ndash; 1.200 EUR</p>
+                            <p class="text-ardoise-light text-xs mt-1">Según duración y tamaño del grupo</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-or/15 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Dirigentes CEO / CFO</h3>
+                        <p class="text-ardoise text-sm leading-relaxed mb-4">Comprensión estratégica de la IA para la toma de decisión. Tres horas de sesión ejecutiva: impacto financiero, marcos regulatorios, evaluación de proveedores, lectura crítica de propuestas técnicas. El objetivo es que usted sepa qué preguntar, a quién y por qué.</p>
+                        <div class="price-tag">
+                            <p class="text-xs text-or tracking-wider uppercase">Sesión 3 horas</p>
+                            <p class="font-display font-semibold text-marine text-lg">800 &ndash; 2.000 EUR</p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-or/15 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Relevo Dirigente / Sucesores</h3>
+                        <p class="text-ardoise text-sm leading-relaxed mb-4">Preparación de la próxima generación de liderazgo tecnológico. Programa de seis sesiones de tres horas, distribuidas en seis semanas. Cubre estrategia digital, gobernanza de datos, gestión de proyectos IA y negociación con proveedores técnicos.</p>
+                        <div class="price-tag">
+                            <p class="text-xs text-or tracking-wider uppercase">Programa 6 &times; 3h</p>
+                            <p class="font-display font-semibold text-marine text-lg">3.000 &ndash; 6.000 EUR</p>
+                            <p class="text-ardoise-light text-xs mt-1">6 semanas, seguimiento personalizado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIAGNOSTIC LEC + CLAUSE HUMAINE -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Diagnostic LEC -->
+                    <div>
+                        <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Servicio complementario</p>
+                        <h3 class="text-xl sm:text-2xl font-display font-semibold mb-6">Diagnóstico de Elegibilidad LEC</h3>
+                        <div class="space-y-4 text-white/55 text-base leading-relaxed">
+                            <p>La Ley de Economía del Conocimiento ofrece beneficios fiscales significativos a las empresas argentinas que califican: reducción de hasta el ochenta por ciento en contribuciones patronales, estabilidad fiscal y crédito fiscal transferible. Pero la elegibilidad no es automática ni evidente.</p>
+                            <p>Este diagnóstico evalúa en profundidad la posición de su empresa frente a los criterios de la LEC, identifica los beneficios fiscales aplicables a su caso específico y establece un plan de acción para obtener la certificación. Si la certificación se concreta, Emmanuel se posiciona como su prestataire IA désigné en el marco del programa, cerrando el círculo entre el beneficio fiscal y la inversión tecnológica.</p>
+                        </div>
+                        <div class="mt-6 price-tag">
+                            <p class="text-xs text-or tracking-wider uppercase">Inversión</p>
+                            <p class="font-display font-semibold text-white text-xl">800 &ndash; 3.000 USD</p>
+                            <p class="text-white/30 text-xs mt-1">Según la taille y complejidad de la empresa</p>
+                        </div>
+                    </div>
+
+                    <!-- Clause Humaine -->
+                    <div>
+                        <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Compromiso diferenciador</p>
+                        <h3 class="text-xl sm:text-2xl font-display font-semibold mb-6">La Cláusula Humana</h3>
+                        <div class="space-y-4 text-white/55 text-base leading-relaxed">
+                            <p>La automatización no tiene por qué significar reducción de plantilla. Emmanuel propone a cada cliente que se comprometa, durante los primeros doce meses de implementación, a no realizar despidos vinculados a la introducción de la IA. A cambio, los empleados impactados reciben formación para evolucionar hacia roles de mayor valor agregado dentro de la organización.</p>
+                            <p>Este compromiso no es solo ético. Es estratégico. Las empresas que suscriben la Cláusula Humana fortalecen su posición frente a la certificación LEC, que bonifica con hasta un ochenta por ciento de reducción en cotizaciones patronales a las organizaciones que demuestran un compromiso verificable con la formación y la retención del capital humano.</p>
+                        </div>
+                        <div class="mt-6 bg-or/[0.08] border border-or/15 rounded-lg p-4">
+                            <p class="text-or text-sm font-medium">Compromiso simbólico de 12 meses + formación IA para empleados impactados = elegibilidad al bonus LEC de 80% sobre cotizaciones patronales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-6">Comience por donde tiene sentido</h2>
+                <p class="text-ardoise text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">La auditoría de elegibilidad es gratuita y no genera compromiso. En una hora de videoconferencia, Emmanuel evalúa si su empresa puede beneficiarse de estos servicios, y se lo dice con franqueza. Si los números tienen sentido, avanzamos. Si no es el momento, también se lo comunicamos.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="index.html#contacto" class="px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Solicitar mi Auditoría de Elegibilidad Gratuita</a>
+                    <a href="index.html#contacto" class="px-8 py-4 rounded border border-marine/20 text-marine text-base font-medium hover:bg-marine/5 transition-all">Agendar una Visio Introductoria</a>
+                </div>
+                <p class="text-ardoise-light text-xs mt-8 italic">Respuesta en menos de 48 horas. Disponible en español, francés e inglés.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Consultoría en IA Soberana &mdash; Ltd israelí</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="index.html" class="hover:text-or/60 transition-colors">Inicio</a>
+                    <a href="#etapa-0" class="hover:text-or/60 transition-colors">Servicios</a>
+                    <a href="index.html#pioneros" class="hover:text-or/60 transition-colors">Pioneros</a>
+                    <a href="index.html#contacto" class="hover:text-or/60 transition-colors">Contacto</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="text-or/50">ES</span><span class="hover:text-white/50 cursor-pointer transition-colors">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>
