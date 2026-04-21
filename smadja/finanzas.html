@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzas & EBITDA — Emmanuel Smadja | Impacto financiero de la IA soberana para PyMEs argentinas</title>
+    <meta name="description" content="Análisis financiero de la IA soberana para CFOs argentinos. Impacto EBITDA, transición OPEX a CAPEX, beneficios fiscales LEC/RIMI, valorización empresarial. Consulta gratuita.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Finanzas & EBITDA — Emmanuel Smadja | IA Soberana para la Empresa Argentina">
+    <meta property="og:description" content="El caso financiero de la IA soberana: EBITDA, valorización, beneficios fiscales LEC/RIMI. Para CFOs de PyMEs argentinas.">
+    <meta property="og:locale" content="es_AR">
+    <link rel="canonical" href="https://smadja.ai/finanzas.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .service-card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,31,68,0.15)}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+        .fin-table{width:100%;border-collapse:collapse}
+        .fin-table th{text-align:left;padding:0.75rem 1rem;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:#C9A66B;border-bottom:1px solid rgba(201,166,107,0.2)}
+        .fin-table td{padding:0.75rem 1rem;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .fin-table-light th{color:#0A1F44;border-bottom-color:rgba(10,31,68,0.15)}
+        .fin-table-light td{border-bottom-color:rgba(10,31,68,0.08)}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="text-sm text-white/70 hover:text-or transition-colors">Inicio</a>
+                    <a href="servicios.html" class="text-sm text-white/70 hover:text-or transition-colors">Servicios</a>
+                    <a href="#" class="text-sm text-or font-medium transition-colors">Finanzas & EBITDA</a>
+                    <a href="index.html#pioneros" class="text-sm text-white/70 hover:text-or transition-colors">Pioneros</a>
+                    <a href="index.html#contacto" class="text-sm text-white/70 hover:text-or transition-colors">Contacto</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="text-or font-medium">ES</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <a href="index.html#contacto" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Agendar Visio</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="index.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Inicio</a>
+            <a href="servicios.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Servicios</a>
+            <a href="#" class="text-xl text-or font-display font-semibold">Finanzas & EBITDA</a>
+            <a href="index.html#pioneros" class="text-xl text-white/80 hover:text-or transition-colors font-display">Pioneros</a>
+            <a href="index.html#contacto" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Agendar Visio</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative bg-marine pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/3 right-0 w-80 h-80 bg-or/[0.03] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-6">Para el CFO que exige números</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white leading-tight mb-6">Finanzas & EBITDA</h1>
+                <p class="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">El caso financiero de la inteligencia artificial soberana. No se trata de tecnología. Se trata de lo que su balance, su cuenta de resultados y su valorización dicen al final del ejercicio.</p>
+            </div>
+        </section>
+
+        <!-- 1. LA TESIS -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">La tesis</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>La inteligencia artificial soberana no es un gasto de tecnología. Es un activo financiero que protege y multiplica la valorización de su empresa. Cada dólar que usted deja de transferir a un proveedor SaaS extranjero no desaparece: se transforma en margen operativo, en capacidad de inversión, en valor empresarial medible.</p>
+                    <p>Esta página no contiene argumentos técnicos. Contiene números. Los mismos números que usted presenta a su directorio, a sus banqueros, a sus potenciales inversores o adquirentes. Porque la decisión de adoptar una IA soberana no se toma en el departamento de IT. Se toma en la dirección financiera.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DEFINICIÓN EBITDA -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-8">EBITDA: la métrica que gobierna las decisiones</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                    <p>El EBITDA &mdash; Beneficio Antes de Intereses, Impuestos, Depreciación y Amortización &mdash; mide la rentabilidad operativa pura de su empresa. Elimina las distorsiones contables, las decisiones de financiamiento y las políticas de amortización para revelar una sola cosa: cuánto dinero genera su operación, antes de todo lo demás.</p>
+                    <p>Es la primera cifra que mira un inversor. Es la primera cifra que analiza un banco antes de otorgar crédito. Es la cifra sobre la cual se negocia el precio de adquisición de una empresa. No el resultado neto. No la facturación. El EBITDA.</p>
+                    <p>Para las PyMEs del sector tecnológico y de servicios, los múltiplos de valorización habituales oscilan entre x20 y x25 sobre el EBITDA anual. Esto significa que cada dólar que usted logra sumar al EBITDA de forma recurrente no vale un dólar: vale entre veinte y veinticinco dólares en valorización empresarial. Inversamente, cada dólar de gasto operativo que erosiona su EBITDA destruye entre veinte y veinticinco dólares de valor.</p>
+                    <p>La aritmética es implacable. Y es exactamente en esta aritmética donde la transición hacia una IA soberana produce su efecto más significativo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CLOUD COST SQUEEZE -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">El Cloud Cost Squeeze</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed mb-14">
+                    <p>En 2025, la inflación de licencias SaaS alcanzó el 11,4% anual (Zylo SaaS Management Index), cuatro veces la tasa de inflación promedio del G7. No se trata de un ajuste puntual: es una tendencia estructural impulsada por la integración forzada de funcionalidades de IA en productos que usted ya pagaba, a precios que usted no negoció.</p>
+                    <p>El ochenta y nueve por ciento de los CFO encuestados reportan que la impredecibilidad de los costos cloud erosiona la rentabilidad de sus proyecciones financieras. El gasto en SaaS y servicios cloud se ha convertido en el segundo poste de gasto operativo después de los salarios, superando en muchos casos al costo inmobiliario.</p>
+                    <p>Este fenómeno tiene un nombre que conviene retener: el impuesto invisible a la innovación. Cada vez que un proveedor SaaS añade una funcionalidad de IA a su plataforma &mdash; una funcionalidad que usted no pidió y que quizás no necesita &mdash;, el costo se refleja en su próxima factura. Usted financia la investigación y desarrollo de un tercero, sin participar en la propiedad intelectual resultante, sin controlar sus datos y sin posibilidad de capitalizar esa inversión en su propio balance.</p>
+                    <p>Para un CFO, la pregunta deja de ser técnica y se vuelve estrictamente financiera: si existe una alternativa que elimina este gasto recurrente, lo transforma en un activo capitalizable y mejora simultáneamente el EBITDA, la conformidad regulatoria y la soberanía de los datos, la carga de la prueba recae sobre quien decide no explorarla.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TABLEAU EXEMPLES CHIFFRÉS -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-4">Impacto estimado por perfil de empresa</h2>
+                <p class="text-white/40 text-sm mb-10">Estimaciones basadas en reducciones observadas del 30 al 70% en gastos SaaS/cloud tras migración a infraestructura soberana. Los resultados varían en función del perfil y la estructura de costos de cada empresa.</p>
+                <div class="overflow-x-auto rounded-lg border border-or/15">
+                    <table class="fin-table">
+                        <thead>
+                            <tr class="bg-white/[0.03]">
+                                <th>Perfil PyME</th>
+                                <th>Gastos Cloud Actuales</th>
+                                <th>Ganancia EBITDA Anual Estimada</th>
+                                <th>Valorización Adicional Potencial (x25)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-white font-medium">20 empleados</td>
+                                <td class="text-white/60">500 &ndash; 1.500 USD/mes</td>
+                                <td class="text-or font-medium">4.000 &ndash; 12.000 USD</td>
+                                <td class="text-white/50">100.000 &ndash; 300.000 USD</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-medium">50 empleados</td>
+                                <td class="text-white/60">1.500 &ndash; 4.000 USD/mes</td>
+                                <td class="text-or font-medium">12.000 &ndash; 35.000 USD</td>
+                                <td class="text-white/50">300.000 &ndash; 875.000 USD</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-medium">100 empleados</td>
+                                <td class="text-white/60">3.000 &ndash; 10.000 USD/mes</td>
+                                <td class="text-or font-medium">25.000 &ndash; 90.000 USD</td>
+                                <td class="text-white/50">625.000 &ndash; 2.250.000 USD</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-medium">200&ndash;500 empleados</td>
+                                <td class="text-white/60">8.000 &ndash; 30.000 USD/mes</td>
+                                <td class="text-or font-medium">60.000 &ndash; 250.000 USD</td>
+                                <td class="text-white/50">1.500.000 &ndash; 6.250.000 USD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-white/25 text-xs mt-4 italic">Estas cifras representan potenciales estimados. El impacto real depende de la estructura de costos, el sector y el grado de dependencia SaaS de cada organización.</p>
+            </div>
+        </section>
+
+        <!-- 5. OPEX → CAPEX -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">De OPEX a CAPEX: la mecánica contable que transforma su balance</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>Cuando su empresa paga una suscripción mensual a un servicio de IA en la nube, ese gasto se registra como OPEX &mdash; gasto operativo. Reduce directamente su EBITDA, mes tras mes, sin generar ningún activo en su balance. El dinero sale y no deja rastro contable más allá de la línea de gasto.</p>
+                    <p>Cuando su empresa invierte en su propia infraestructura de IA &mdash; un servidor dedicado, un modelo de lenguaje privado, hardware on-premise &mdash;, esa inversión se registra como CAPEX &mdash; gasto de capital. Aparece en su balance como un activo, se amortiza sobre tres a cinco años y no impacta su EBITDA durante el período de amortización. La diferencia para un CFO es sustancial: el mismo flujo de caja produce resultados contables radicalmente distintos.</p>
+                    <p>La actualización contable ASU 2025-06, adoptada progresivamente en mercados que siguen los estándares FASB e IFRS, refuerza esta lógica al permitir la capitalización de los costos de desarrollo de IA interna. Esto incluye el entrenamiento de modelos sobre datos propietarios, la configuración de infraestructura y el despliegue de soluciones RAG. Lo que antes era exclusivamente un gasto se convierte, bajo esta normativa, en un activo reconocido.</p>
+                    <p>En términos prácticos: una empresa que paga 10.000 dólares mensuales en suscripciones SaaS de IA reduce su EBITDA en 120.000 dólares anuales. La misma empresa, migrando a un LLM soberano con un setup de 5.000 dólares y un mantenimiento de 270 dólares mensuales, registra un activo capitalizable, reduce su OPEX a 3.240 dólares anuales y recupera la casi totalidad de esos 120.000 dólares en su EBITDA. Aplicando un múltiplo x25, esa decisión contable representa hasta 3.000.000 de dólares de valorización adicional potencial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. LOS 4 PALANCAS FISCALES ARGENTINAS -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-4">Las cuatro palancas fiscales argentinas</h2>
+                <p class="text-white/40 text-sm mb-12">Argentina ofrece hoy uno de los marcos de incentivos más favorables del continente para la inversión en inteligencia artificial. Estos cuatro mecanismos, combinados con una estrategia de IA soberana, pueden transformar significativamente la ecuación financiera de su empresa.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <!-- LEC -->
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Ley 27.506</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">LEC &mdash; Ley de Economía del Conocimiento</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Crédito fiscal del 70 al 80% sobre contribuciones patronales, aplicable directamente al pago de impuestos nacionales. Reducción del impuesto a las ganancias de hasta el 60%. Estabilidad fiscal garantizada durante diez años a partir de la inscripción. Alícuota del 0% en retenciones sobre exportaciones de servicios tecnológicos.</p>
+                            <p>La LEC es el pilar. Una empresa inscrita que invierte en IA soberana y suscribe la Cláusula Humana (compromiso de no despido y formación) accede al bonus máximo del 80% en contribuciones patronales. Para una empresa de cien empleados, esto puede representar un ahorro anual estimado de 45.000 dólares o más, según la estructura salarial.</p>
+                        </div>
+                    </div>
+
+                    <!-- RIMI -->
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Decreto marzo 2026</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">RIMI &mdash; Régimen de Incentivo para Manufactureros e Innovadores</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Amortización acelerada del hardware de IA: lo que normalmente se deprecia en cinco años se amortiza en uno o dos ejercicios fiscales. Reintegro anticipado del IVA sobre inversiones en equipamiento tecnológico. Reducción del impuesto a las ganancias de hasta el 60% para actividades calificadas de innovación.</p>
+                            <p>El RIMI complementa la LEC en el plano de la inversión física. Un Mac Mini M4 Pro adquirido como servidor de IA on-premise se amortiza aceleradamente, generando un escudo fiscal inmediato que reduce la carga impositiva del ejercicio en curso.</p>
+                        </div>
+                    </div>
+
+                    <!-- IA-Pyme -->
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Aportes No Reembolsables</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">IA-Pyme</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Aportes no reembolsables (ANR) de hasta 500.000 dólares, cubriendo potencialmente hasta el 80% de un proyecto de implementación de IA. El programa ha financiado auditorías, despliegues de infraestructura y formaciones en ciclos anteriores.</p>
+                            <p>A la fecha de publicación de esta página, el programa se encuentra en período de consulta presupuestaria para su próxima convocatoria. Nuestros Pioneros serán los primeros posicionados cuando se confirme la apertura, con los expedientes preparados y la documentación lista para la presentación.</p>
+                        </div>
+                    </div>
+
+                    <!-- BICE -->
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Financiamiento</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">BICE &mdash; Banco de Inversión y Comercio Exterior</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Líneas de crédito a tasas bonificadas para proyectos de innovación tecnológica y transformación digital. El BICE opera como brazo financiero del Estado para la inversión productiva, con condiciones que típicamente resultan más favorables que las del mercado bancario privado.</p>
+                            <p>Un proyecto de LLM soberano, documentado con la auditoría de Emmanuel y enmarcado en los objetivos de los Acuerdos de Isaac, reúne las condiciones para acceder a estas líneas. El costo del capital se reduce, el apalancamiento mejora y la decisión de inversión se acelera.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. TABLEAU SYNTHÈSE PME 100 EMPLOYÉS -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-4">Caso de estudio: PyME de 100 empleados</h2>
+                <p class="text-ardoise-light text-sm mb-10">Estimación comparativa entre un modelo cloud (OPEX puro) y un modelo soberano (CAPEX). Cifras indicativas basadas en perfiles observados; el impacto real varía según la estructura específica de cada empresa.</p>
+                <div class="overflow-x-auto rounded-lg border border-marine/15">
+                    <table class="fin-table fin-table-light">
+                        <thead>
+                            <tr class="bg-marine/[0.03]">
+                                <th>Poste</th>
+                                <th>Modelo Cloud (OPEX)</th>
+                                <th>Modelo Soberano (CAPEX)</th>
+                                <th>Ganancia Neta Estimada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-marine font-medium">Suscripciones SaaS IA</td>
+                                <td class="text-ardoise">120.000 USD/año</td>
+                                <td class="text-ardoise">0 (modelos locales)</td>
+                                <td class="text-or font-semibold">+120.000 USD</td>
+                            </tr>
+                            <tr>
+                                <td class="text-marine font-medium">Créditos LEC cargas patronales</td>
+                                <td class="text-ardoise">Reducción estándar</td>
+                                <td class="text-ardoise">Bonus 80% (Cláusula Humana)</td>
+                                <td class="text-or font-semibold">+45.000 USD</td>
+                            </tr>
+                            <tr>
+                                <td class="text-marine font-medium">Impuesto ganancias RIMI</td>
+                                <td class="text-ardoise">Tasa estándar 25&ndash;35%</td>
+                                <td class="text-ardoise">Reducción 60% + amort. acelerada</td>
+                                <td class="text-or font-semibold">+85.000 USD</td>
+                            </tr>
+                            <tr class="bg-marine/[0.03]">
+                                <td class="text-marine font-semibold">Total impacto EBITDA estimado</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-or font-bold text-lg">+250.000 USD</td>
+                            </tr>
+                            <tr class="bg-or/[0.05]">
+                                <td class="text-marine font-semibold">Valorización potencial (x25)</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-or font-bold text-lg">+6.250.000 USD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-ardoise-light text-xs mt-4 italic">Estimaciones a título indicativo. Los beneficios fiscales dependen de la elegibilidad verificada de cada empresa a los programas LEC y RIMI. Consulte a su asesor contable para una proyección adaptada a su situación.</p>
+            </div>
+        </section>
+
+        <!-- 8. CLAUSE HUMAINE -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Compromiso diferenciador</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-8">La Cláusula Humana: Pacto de Excelencia Social</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                    <p>La Cláusula Humana es un compromiso simbólico que Emmanuel propone a cada cliente: durante los doce primeros meses de implementación de IA, la empresa se compromete a no realizar despidos vinculados a la automatización. Los empleados cuyos roles se ven transformados reciben formación para evolucionar hacia funciones de mayor valor agregado dentro de la organización.</p>
+                    <p>Este compromiso no es solo una declaración ética. Es un instrumento financiero. Las empresas que suscriben la Cláusula Humana y demuestran un esfuerzo verificable en formación y retención del capital humano acceden al bonus máximo de la LEC: 80% de reducción en cotizaciones patronales, frente al 70% estándar. Sobre una plantilla de cien empleados, esa diferencia de diez puntos porcentuales puede representar decenas de miles de dólares anuales.</p>
+                    <p>El círculo es virtuoso. La estabilidad social mejora la marca empleadora y reduce los costos de rotación. El bonus fiscal mejora el EBITDA. La mejora del EBITDA se multiplica por veinte a veinticinco en valorización. Y la formación de los empleados en herramientas de IA genera, a su vez, ganancias de productividad que alimentan un nuevo ciclo de mejora operativa.</p>
+                    <p>Lo que un observador externo podría percibir como un gesto altruista es, en realidad, la decisión financiera más rentable del paquete.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-6">Evaluar mi potencial de optimización</h2>
+                <p class="text-ardoise text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">La consulta inicial es gratuita y confidencial. En una hora de videoconferencia, Emmanuel analiza su estructura de costos SaaS, estima el impacto potencial sobre su EBITDA y evalúa su elegibilidad a los programas fiscales argentinos. Los números hablan por sí solos.</p>
+                <a href="index.html#contacto" class="inline-flex px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Consulta gratuita &mdash; Evaluar mi potencial</a>
+                <p class="text-ardoise-light text-xs mt-6 italic">Respuesta en menos de 48 horas. Disponible en español, francés e inglés.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Consultoría en IA Soberana &mdash; Ltd israelí</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="index.html" class="hover:text-or/60 transition-colors">Inicio</a>
+                    <a href="servicios.html" class="hover:text-or/60 transition-colors">Servicios</a>
+                    <a href="index.html#pioneros" class="hover:text-or/60 transition-colors">Pioneros</a>
+                    <a href="index.html#contacto" class="hover:text-or/60 transition-colors">Contacto</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="text-or/50">ES</span><span class="hover:text-white/50 cursor-pointer transition-colors">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>
