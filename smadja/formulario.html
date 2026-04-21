@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Preliminar — Emmanuel Smadja | Consultoría IA Soberana para PyMEs Argentinas</title>
+    <meta name="description" content="Complete el formulario de evaluación preliminar para que Emmanuel Smadja prepare un análisis personalizado de IA soberana para su empresa. Consulta estratégica gratuita de 1h.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Evaluación Preliminar — Emmanuel Smadja">
+    <meta property="og:description" content="Formulario inteligente de calificación para PyMEs argentinas. Descubra sus oportunidades fiscales y de optimización IA en tiempo real.">
+    <meta property="og:locale" content="es_AR">
+    <link rel="canonical" href="https://smadja.ai/formulario.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+        .field-input{width:100%;padding:0.75rem 1rem;border:1px solid #e2e0dc;border-radius:0.5rem;background:#fff;color:#3E4E5E;font-size:0.95rem;transition:border-color 0.3s,box-shadow 0.3s}
+        .field-input:focus{outline:none;border-color:#C9A66B;box-shadow:0 0 0 3px rgba(201,166,107,0.1)}
+        .field-input::placeholder{color:#9ca3af}
+        .field-label{display:block;font-weight:500;color:#0A1F44;margin-bottom:0.375rem;font-size:0.95rem}
+        .field-help{font-size:0.8rem;color:#536370;margin-top:0.25rem}
+        .field-group{margin-bottom:1.75rem}
+        .radio-option{display:flex;align-items:center;gap:0.5rem;cursor:pointer;padding:0.5rem 0.75rem;border:1px solid #e2e0dc;border-radius:0.5rem;transition:all 0.2s;background:#fff}
+        .radio-option:hover{border-color:#C9A66B}
+        .radio-option.selected{border-color:#C9A66B;background:rgba(201,166,107,0.04)}
+        .radio-option input[type="radio"]{accent-color:#C9A66B;width:1rem;height:1rem}
+        .notif{max-height:0;opacity:0;overflow:hidden;transition:max-height 0.6s ease,opacity 0.6s ease,margin-top 0.6s ease,padding 0.6s ease;margin-top:0;border-radius:0.5rem;padding:0 1rem}
+        .notif.active{max-height:300px;opacity:1;margin-top:0.75rem;padding:1rem}
+        .notif-gold{background:linear-gradient(135deg,rgba(201,166,107,0.1),rgba(201,166,107,0.03));border:1px solid rgba(201,166,107,0.3);border-left:3px solid #C9A66B}
+        .notif-info{background:rgba(10,31,68,0.03);border:1px solid rgba(10,31,68,0.08);border-left:3px solid #C9A66B}
+        .notif-alert{background:rgba(10,31,68,0.04);border:1px solid rgba(10,31,68,0.1);border-left:3px solid #0A1F44}
+        .section-title{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600;color:#0A1F44;margin-bottom:0.5rem}
+        .slider-track{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:linear-gradient(90deg,#e2e0dc,#C9A66B);outline:none;cursor:pointer}
+        .slider-track::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:#C9A66B;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer}
+        .slider-track::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#C9A66B;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.15);cursor:pointer}
+        #form-confirm{display:none}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="text-sm text-white/70 hover:text-or transition-colors">Inicio</a>
+                    <a href="servicios.html" class="text-sm text-white/70 hover:text-or transition-colors">Servicios</a>
+                    <a href="finanzas.html" class="text-sm text-white/70 hover:text-or transition-colors">Finanzas & EBITDA</a>
+                    <a href="sobre.html" class="text-sm text-white/70 hover:text-or transition-colors">Sobre</a>
+                    <a href="#" class="text-sm text-or font-medium transition-colors">Contacto</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="text-or font-medium">ES</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="index.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Inicio</a>
+            <a href="servicios.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Servicios</a>
+            <a href="finanzas.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Finanzas & EBITDA</a>
+            <a href="sobre.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Sobre</a>
+            <a href="#" class="text-xl text-or font-display font-semibold">Contacto</a>
+            <a href="#formulario" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Completar Evaluación</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative bg-marine pt-28 pb-14 md:pt-36 md:pb-20 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/3 right-0 w-80 h-80 bg-or/[0.03] rounded-full blur-3xl"></div>
+            <div class="max-w-3xl mx-auto px-6 relative z-10 reveal">
+                <div class="gold-line max-w-16 mb-8"></div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white leading-tight mb-4">Evaluación Preliminar</h1>
+                <p class="text-white/50 text-base sm:text-lg leading-relaxed mb-3">Complete este formulario para que Emmanuel pueda preparar un análisis personalizado antes de su consulta estratégica gratuita de una hora.</p>
+                <p class="text-or/60 text-sm">Todos los datos son confidenciales. Tiempo estimado: 4 minutos.</p>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section id="formulario" class="py-16 md:py-24 bg-creme">
+            <div class="max-w-2xl mx-auto px-6">
+
+                <form id="smart-form" novalidate>
+
+                    <!-- SECTION 1: SU EMPRESA -->
+                    <div class="mb-12 reveal">
+                        <p class="section-title">Su empresa</p>
+                        <div class="gold-line max-w-12 mb-8"></div>
+
+                        <!-- 1. CUIT -->
+                        <div class="field-group">
+                            <label class="field-label" for="cuit">CUIT de la empresa</label>
+                            <input type="text" id="cuit" class="field-input" placeholder="30-12345678-9" maxlength="13" autocomplete="off">
+                            <p class="field-help">Clave Única de Identificación Tributaria — formato XX-XXXXXXXX-X</p>
+                            <p id="cuit-error" class="text-red-500 text-xs mt-1 hidden">Formato inválido. Ingrese el CUIT con el formato XX-XXXXXXXX-X</p>
+                        </div>
+
+                        <!-- 2. Empleados (slider) -->
+                        <div class="field-group">
+                            <label class="field-label">Cantidad de empleados</label>
+                            <div class="flex items-center gap-4 mt-2">
+                                <span class="text-xs text-ardoise-light w-6 text-right">5</span>
+                                <input type="range" id="empleados" class="slider-track flex-1" min="5" max="500" step="5" value="25">
+                                <span class="text-xs text-ardoise-light w-10">500+</span>
+                            </div>
+                            <div class="text-center mt-2">
+                                <span id="empleados-value" class="inline-block px-3 py-1 rounded-full bg-marine/5 text-marine font-medium text-sm">25 empleados</span>
+                            </div>
+                            <p class="field-help">Incluya personal en relación de dependencia y contratados regulares</p>
+                        </div>
+
+                        <!-- 3. Sector -->
+                        <div class="field-group">
+                            <label class="field-label" for="sector">Sector de actividad</label>
+                            <select id="sector" class="field-input">
+                                <option value="" disabled selected>Seleccione su sector principal</option>
+                                <option value="fintech">Fintech</option>
+                                <option value="servicios">Servicios profesionales (contables / jurídicos)</option>
+                                <option value="agroindustria">Agroindustria</option>
+                                <option value="ecommerce">E-commerce / Retail</option>
+                                <option value="salud">Salud privada</option>
+                                <option value="educacion">Educación</option>
+                                <option value="energia">Energía</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="industria">Industria</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <p class="field-help">Seleccione el que mejor describa su actividad principal</p>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: PERFIL FINANCIERO -->
+                    <div class="mb-12 reveal">
+                        <p class="section-title">Perfil financiero</p>
+                        <div class="gold-line max-w-12 mb-8"></div>
+
+                        <!-- 4. Gasto cloud/SaaS -->
+                        <div class="field-group">
+                            <label class="field-label" for="cloud">Gasto mensual en cloud y SaaS (USD)</label>
+                            <select id="cloud" class="field-input">
+                                <option value="" disabled selected>Seleccione un rango</option>
+                                <option value="lt500">Menos de 500 USD</option>
+                                <option value="500-2000">500 – 2.000 USD</option>
+                                <option value="2000-5000">2.000 – 5.000 USD</option>
+                                <option value="5000-15000">5.000 – 15.000 USD</option>
+                                <option value="gt15000">Más de 15.000 USD</option>
+                            </select>
+                            <p class="field-help">Incluya todas las suscripciones: CRM, ERP, almacenamiento, herramientas de productividad</p>
+                            <!-- Notification: Cloud > 2000 -->
+                            <div id="notif-cloud" class="notif notif-info">
+                                <p class="text-sm text-marine font-medium mb-1">Potencial de optimización identificado</p>
+                                <p class="text-xs text-ardoise leading-relaxed">Con un gasto cloud superior a 2.000&nbsp;USD mensuales, existe un potencial significativo de optimización del EBITDA mediante la migración hacia infraestructura soberana. Emmanuel cuantificará el impacto exacto en función de su estructura de costos.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. Exportation UE/USA -->
+                        <div class="field-group">
+                            <label class="field-label">¿Exporta bienes o servicios a la Unión Europea o Estados Unidos?</label>
+                            <div class="flex gap-3 mt-2">
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="export" value="si"> <span class="text-sm">Sí</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="export" value="no"> <span class="text-sm">No</span>
+                                </label>
+                            </div>
+                            <p class="field-help">Incluye exportación de software, servicios profesionales y datos</p>
+                            <!-- Notification: Export EU -->
+                            <div id="notif-export" class="notif notif-alert">
+                                <p class="text-sm text-marine font-medium mb-1">EU AI Act — fecha límite: 2 de agosto de 2026</p>
+                                <p class="text-xs text-ardoise leading-relaxed">El EU AI Act entra en plena aplicación el 2 de agosto de 2026. Si su empresa exporta hacia la Unión Europea, la conformidad regulatoria no es opcional. Emmanuel evaluará su nivel de preparación y las acciones prioritarias.</p>
+                            </div>
+                        </div>
+
+                        <!-- 6. Datos sensibles -->
+                        <div class="field-group">
+                            <label class="field-label">¿Su empresa trata datos sensibles?</label>
+                            <div class="flex gap-3 mt-2">
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="datos" value="si"> <span class="text-sm">Sí</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="datos" value="no"> <span class="text-sm">No</span>
+                                </label>
+                            </div>
+                            <p class="field-help">Salud, finanzas, datos jurídicos, datos personales de clientes o empleados</p>
+                            <!-- Notification: Données sensibles -->
+                            <div id="notif-datos" class="notif notif-alert">
+                                <p class="text-sm text-marine font-medium mb-1">Soberanía de datos — Ley 25.326</p>
+                                <p class="text-xs text-ardoise leading-relaxed">El tratamiento de datos sensibles en territorio argentino está regulado por la Ley 25.326 de Protección de Datos Personales. Una infraestructura de IA soberana elimina la transferencia de datos a servidores extranjeros y fortalece su posición de conformidad. Emmanuel detallará las opciones disponibles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: OBJETIVOS Y CONTEXTO -->
+                    <div class="mb-12 reveal">
+                        <p class="section-title">Objetivos y contexto</p>
+                        <div class="gold-line max-w-12 mb-8"></div>
+
+                        <!-- 7. Objetivo prioritario -->
+                        <div class="field-group">
+                            <label class="field-label" for="objetivo">Objetivo prioritario</label>
+                            <select id="objetivo" class="field-input">
+                                <option value="" disabled selected>¿Cuál es su prioridad?</option>
+                                <option value="costos">Reducir costos operativos</option>
+                                <option value="ronda">Preparar una ronda o cesión</option>
+                                <option value="normativas">Cumplir normativas de exportación</option>
+                                <option value="autonomia">Ganar autonomía tecnológica</option>
+                                <option value="automatizar">Automatizar tareas repetitivas</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <p class="field-help">¿Cuál es la razón principal por la que considera la inteligencia artificial?</p>
+                        </div>
+
+                        <!-- 8. LEC -->
+                        <div class="field-group">
+                            <label class="field-label">¿Está inscripta en el Registro de Economía del Conocimiento (LEC)?</label>
+                            <div class="flex gap-3 mt-2">
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="lec" value="si"> <span class="text-sm">Sí</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="lec" value="no"> <span class="text-sm">No</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="lec" value="nosabe"> <span class="text-sm">No lo sé</span>
+                                </label>
+                            </div>
+                            <p class="field-help">Ley 27.506 — Régimen de Promoción de la Economía del Conocimiento</p>
+                            <!-- Notification: LEC inscrit (golden reinforced) -->
+                            <div id="notif-lec-yes" class="notif notif-gold">
+                                <p class="text-sm font-medium mb-1" style="color:#0A1F44">Perfil privilegiado — Registro LEC activo</p>
+                                <p class="text-xs text-ardoise leading-relaxed">Su inscripción en el Registro de Economía del Conocimiento posiciona a su empresa entre las más preparadas del país para integrar IA soberana. Como empresa registrada, usted accede a un crédito fiscal del 70&nbsp;al&nbsp;80&nbsp;% sobre contribuciones patronales y a una reducción de hasta el 60&nbsp;% en el Impuesto a las Sociedades. Emmanuel optimizará cada punto de estos beneficios en su evaluación personalizada.</p>
+                            </div>
+                            <!-- Notification: LEC eligible -->
+                            <div id="notif-lec-eligible" class="notif notif-info">
+                                <p class="text-sm text-marine font-medium mb-1">Oportunidad detectada</p>
+                                <p class="text-xs text-ardoise leading-relaxed">Según el perfil de su empresa, podría ser elegible al Registro de Economía del Conocimiento (Ley 27.506), lo que desbloquearía créditos fiscales significativos: hasta el 80&nbsp;% sobre cargas patronales y el 60&nbsp;% sobre el Impuesto a las Sociedades. Emmanuel evaluará su elegibilidad durante la primera sesión.</p>
+                            </div>
+                        </div>
+
+                        <!-- 9. Ronda de inversión -->
+                        <div class="field-group">
+                            <label class="field-label">¿Realizó una ronda de inversión superior a 500.000&nbsp;USD en los últimos 18 meses?</label>
+                            <div class="flex gap-3 mt-2">
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="ronda" value="si"> <span class="text-sm">Sí</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="ronda" value="no"> <span class="text-sm">No</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="ronda" value="prefiero"> <span class="text-sm text-xs">Prefiero no responder</span>
+                                </label>
+                            </div>
+                            <p class="field-help">Esta información permite evaluar oportunidades de valorización</p>
+                            <!-- Notification: Levée récente -->
+                            <div id="notif-ronda" class="notif notif-gold">
+                                <p class="text-sm font-medium mb-1" style="color:#0A1F44">Perfil de alto crecimiento identificado</p>
+                                <p class="text-xs text-ardoise leading-relaxed">Una ronda de inversión reciente señala un perfil de alto crecimiento. Emmanuel preparará un análisis específico sobre cómo la IA soberana puede fortalecer su EBITDA y su posición de valorización antes del próximo tour.</p>
+                            </div>
+                        </div>
+
+                        <!-- 12. Proyecto IA existente -->
+                        <div class="field-group">
+                            <label class="field-label">¿Tiene un proyecto de IA en curso con otro proveedor?</label>
+                            <div class="flex gap-3 mt-2">
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="proyecto" value="si"> <span class="text-sm">Sí</span>
+                                </label>
+                                <label class="radio-option flex-1 justify-center">
+                                    <input type="radio" name="proyecto" value="no"> <span class="text-sm">No</span>
+                                </label>
+                            </div>
+                            <p class="field-help">No hay conflicto — una mirada externa aporta perspectiva</p>
+                            <!-- Notification: Projet existant -->
+                            <div id="notif-proyecto" class="notif notif-info">
+                                <p class="text-sm text-marine font-medium mb-1">Segunda mirada independiente</p>
+                                <p class="text-xs text-ardoise leading-relaxed">Una segunda mirada independiente es siempre valiosa. Emmanuel analizará su proyecto actual con total objetividad y le proporcionará recomendaciones concretas — ya sea para optimizar lo que ya tiene o para identificar oportunidades que no fueron contempladas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: DATOS DE CONTACTO -->
+                    <div class="mb-12 reveal">
+                        <p class="section-title">Datos de contacto</p>
+                        <div class="gold-line max-w-12 mb-8"></div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- 10a. Nombre -->
+                            <div class="field-group">
+                                <label class="field-label" for="nombre">Nombre</label>
+                                <input type="text" id="nombre" class="field-input" placeholder="Juan" required>
+                            </div>
+                            <!-- 10b. Apellido -->
+                            <div class="field-group">
+                                <label class="field-label" for="apellido">Apellido</label>
+                                <input type="text" id="apellido" class="field-input" placeholder="García" required>
+                            </div>
+                        </div>
+
+                        <!-- 10c. Cargo -->
+                        <div class="field-group">
+                            <label class="field-label" for="cargo">Cargo</label>
+                            <input type="text" id="cargo" class="field-input" placeholder="CEO, CFO, CTO, Director de Operaciones...">
+                        </div>
+
+                        <!-- 10d. Email -->
+                        <div class="field-group">
+                            <label class="field-label" for="email">Email profesional</label>
+                            <input type="email" id="email" class="field-input" placeholder="juan.garcia@empresa.com.ar" required>
+                            <p id="email-error" class="text-red-500 text-xs mt-1 hidden">Ingrese un email profesional válido</p>
+                        </div>
+
+                        <!-- 10e. Teléfono -->
+                        <div class="field-group">
+                            <label class="field-label" for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" class="field-input" placeholder="+54 9 11 1234-5678">
+                            <p class="field-help">WhatsApp preferido — para coordinar la videoconferencia</p>
+                        </div>
+
+                        <!-- 11. ¿Cómo nos conoció? -->
+                        <div class="field-group">
+                            <label class="field-label" for="fuente">¿Cómo nos conoció?</label>
+                            <select id="fuente" class="field-input">
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="ccai">CCAI (Cámara de Comercio Argentino-Israelí)</option>
+                                <option value="ccifa">CCIFA (Cámara de Comercio e Industria Franco-Argentina)</option>
+                                <option value="recomendacion">Recomendación</option>
+                                <option value="google">Búsqueda Google</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <div class="text-center reveal">
+                        <button type="submit" class="inline-flex px-10 py-4 rounded bg-or text-marine font-semibold text-base cta-gold cursor-pointer">Enviar evaluación y agendar visio</button>
+                        <p class="text-ardoise-light text-xs mt-4">Al enviar, acepta que sus datos sean analizados exclusivamente por Emmanuel Smadja para preparar su consulta estratégica.</p>
+                    </div>
+
+                </form>
+
+                <!-- CONFIRMATION -->
+                <div id="form-confirm" class="text-center py-8">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-or/10 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-display font-semibold text-marine mb-4">Formulario recibido</h2>
+                    <div class="gold-line max-w-16 mx-auto mb-6"></div>
+                    <p class="text-ardoise text-base sm:text-lg leading-relaxed mb-4 max-w-lg mx-auto">Emmanuel va a analizar personalmente sus datos y preparar una evaluación a medida para su empresa.</p>
+                    <p class="text-ardoise text-base sm:text-lg leading-relaxed mb-4 max-w-lg mx-auto">En un plazo de <strong class="text-marine">48&nbsp;horas</strong> recibirá una propuesta de horario para una videoconferencia de una hora — <strong class="text-marine">enteramente gratuita, sin compromiso alguno</strong>.</p>
+                    <p class="text-ardoise-light text-sm leading-relaxed max-w-lg mx-auto">Este encuentro es una verdadera consulta estratégica. Emmanuel llegará preparado con un diagnóstico preliminar basado en la información que acaba de proporcionar. No es un discurso comercial: es una conversación entre profesionales.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Consultoría en IA Soberana &mdash; Ltd israelí</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="index.html" class="hover:text-or/60 transition-colors">Inicio</a>
+                    <a href="servicios.html" class="hover:text-or/60 transition-colors">Servicios</a>
+                    <a href="finanzas.html" class="hover:text-or/60 transition-colors">Finanzas</a>
+                    <a href="sobre.html" class="hover:text-or/60 transition-colors">Sobre</a>
+                    <a href="index.html#pioneros" class="hover:text-or/60 transition-colors">Pioneros</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="text-or/50">ES</span><span class="hover:text-white/50 cursor-pointer transition-colors">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// Slider value display
+const slider = document.getElementById('empleados');
+const sliderVal = document.getElementById('empleados-value');
+slider.addEventListener('input', () => {
+    const v = parseInt(slider.value);
+    sliderVal.textContent = v >= 500 ? '500+ empleados' : v + ' empleados';
+    checkLecEligibility();
+});
+
+// CUIT formatting
+const cuitInput = document.getElementById('cuit');
+cuitInput.addEventListener('input', () => {
+    let v = cuitInput.value.replace(/[^0-9-]/g, '');
+    if (v.length > 13) v = v.slice(0, 13);
+    cuitInput.value = v;
+});
+cuitInput.addEventListener('blur', () => {
+    const valid = /^\d{2}-\d{8}-\d{1}$/.test(cuitInput.value);
+    document.getElementById('cuit-error').classList.toggle('hidden', valid || !cuitInput.value);
+});
+
+// Radio selection styling
+document.querySelectorAll('.radio-option input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+        const name = radio.name;
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            r.closest('.radio-option').classList.toggle('selected', r.checked);
+        });
+    });
+});
+
+// Notification logic
+function toggleNotif(id, show) {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('active', show);
+}
+
+// Cloud spend notification
+document.getElementById('cloud').addEventListener('change', function() {
+    const high = ['2000-5000','5000-15000','gt15000'].includes(this.value);
+    toggleNotif('notif-cloud', high);
+});
+
+// Export EU notification
+document.querySelectorAll('input[name="export"]').forEach(r => {
+    r.addEventListener('change', () => {
+        toggleNotif('notif-export', document.querySelector('input[name="export"]:checked')?.value === 'si');
+    });
+});
+
+// Sensitive data notification
+document.querySelectorAll('input[name="datos"]').forEach(r => {
+    r.addEventListener('change', () => {
+        toggleNotif('notif-datos', document.querySelector('input[name="datos"]:checked')?.value === 'si');
+    });
+});
+
+// LEC notifications
+const lecEligibleSectors = ['fintech','servicios','ecommerce','tecnologia','educacion'];
+function checkLecEligibility() {
+    const lecVal = document.querySelector('input[name="lec"]:checked')?.value;
+    const sector = document.getElementById('sector').value;
+    toggleNotif('notif-lec-yes', lecVal === 'si');
+    toggleNotif('notif-lec-eligible', (lecVal === 'no' || lecVal === 'nosabe') && lecEligibleSectors.includes(sector));
+}
+document.querySelectorAll('input[name="lec"]').forEach(r => r.addEventListener('change', checkLecEligibility));
+document.getElementById('sector').addEventListener('change', checkLecEligibility);
+
+// Fundraising notification
+document.querySelectorAll('input[name="ronda"]').forEach(r => {
+    r.addEventListener('change', () => {
+        toggleNotif('notif-ronda', document.querySelector('input[name="ronda"]:checked')?.value === 'si');
+    });
+});
+
+// Existing project notification
+document.querySelectorAll('input[name="proyecto"]').forEach(r => {
+    r.addEventListener('change', () => {
+        toggleNotif('notif-proyecto', document.querySelector('input[name="proyecto"]:checked')?.value === 'si');
+    });
+});
+
+// Form submission
+document.getElementById('smart-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email');
+    const emailErr = document.getElementById('email-error');
+    const cuit = document.getElementById('cuit');
+    const cuitErr = document.getElementById('cuit-error');
+    let valid = true;
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailErr.classList.remove('hidden'); valid = false;
+    } else { emailErr.classList.add('hidden'); }
+
+    if (cuit.value && !/^\d{2}-\d{8}-\d{1}$/.test(cuit.value)) {
+        cuitErr.classList.remove('hidden'); valid = false;
+    } else { cuitErr.classList.add('hidden'); }
+
+    const required = ['nombre','apellido','email','sector','cloud','objetivo','fuente'];
+    required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value) { el.style.borderColor = '#ef4444'; valid = false; }
+        else { el.style.borderColor = ''; }
+    });
+
+    const radioGroups = ['export','datos','lec','ronda','proyecto'];
+    radioGroups.forEach(name => {
+        if (!document.querySelector(`input[name="${name}"]:checked`)) {
+            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                r.closest('.radio-option').style.borderColor = '#ef4444';
+            });
+            valid = false;
+        } else {
+            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                r.closest('.radio-option').style.borderColor = '';
+            });
+        }
+    });
+
+    if (!valid) {
+        const firstErr = document.querySelector('[style*="border-color: rgb(239, 68, 68)"], .text-red-500:not(.hidden)');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+
+    this.style.display = 'none';
+    document.getElementById('form-confirm').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('form-confirm').offsetTop - 120, behavior: 'smooth' });
+});
+    </script>
+
+</body>
+</html>
