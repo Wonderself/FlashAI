@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos d'Emmanuel Smadja — Consultant en IA Souveraine | Formation financière, 20 ans CEO, réseau israélien</title>
+    <meta name="description" content="Emmanuel Smadja, consultant franco-israélien en IA souveraine. DECF (Bac+4 finances, ICS Bégué Paris), 20 ans CEO, réseau d'experts israéliens. Au service des PME françaises.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="À propos d'Emmanuel Smadja — IA Souveraine pour l'Entreprise Française">
+    <meta property="og:description" content="Formation financière française, 20 ans CEO, réseau d'excellence technologique israélien. Conseil en IA souveraine pour PME françaises.">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://smadja.ai/a-propos-fr.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index-fr.html" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Accueil</a>
+                    <a href="services-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Services</a>
+                    <a href="finances-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Finances & EBITDA</a>
+                    <a href="#" class="text-sm text-or font-medium transition-colors">À propos</a>
+                    <a href="formulaire-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Contact</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">ES</span>
+                        <span class="text-or font-medium">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <a href="formulaire-fr.html" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Réserver une Visio</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="index-fr.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Accueil</a>
+            <a href="services-fr.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Services</a>
+            <a href="finances-fr.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Finances & EBITDA</a>
+            <a href="#" class="text-xl text-or font-display font-semibold">À propos</a>
+            <a href="formulaire-fr.html" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Réserver une Visio</a>
+        </div>
+    </div>
+
+    <main>
+
+        <section class="relative bg-marine pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/4 left-0 w-72 h-72 bg-or/[0.03] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
+                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-14">
+                    <div class="w-44 h-44 md:w-52 md:h-52 rounded-lg bg-gradient-to-br from-marine-light to-marine-dark border border-or/15 flex items-center justify-center shrink-0">
+                        <span class="text-5xl md:text-6xl font-display font-semibold text-or/60">ES</span>
+                    </div>
+                    <div>
+                        <div class="gold-line max-w-16 mb-6"></div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white leading-tight mb-3">Emmanuel Smadja</h1>
+                        <p class="text-or text-sm font-medium tracking-wider uppercase mb-4">Consultant en IA Souveraine</p>
+                        <p class="text-white/45 text-base sm:text-lg leading-relaxed">Franco-israélien. Formation financière française. Vingt ans de direction exécutive. Réseau d'excellence technologique israélien. Au service de l'entreprise française.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl font-display font-semibold text-marine mb-8">Trajectoire</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>Emmanuel Smadja s'est formé aux finances avant de diriger des entreprises. Son parcours académique a débuté par un BTS Comptabilité et Gestion &mdash; le Brevet de Technicien Supérieur, formation technique supérieure en comptabilité &mdash; et s'est conclu par le DECF, Diplôme d'Études Comptables et Financières, un titre de niveau Bac+4 délivré par l'ICS Bégué de Paris, l'une des écoles de référence en formation comptable et financière en France. Cette base n'est pas anecdotique : c'est la raison pour laquelle chaque conversation avec Emmanuel commence par l'EBITDA, pas par la technologie.</p>
+                    <p>Pendant vingt ans, Emmanuel a construit, dirigé et transformé des entreprises dans trois secteurs convergents : médias, événementiel et technologie. En tant que CEO et producteur exécutif, il a géré des budgets supérieurs à 1,5 million d'euros, pris la direction de salles de spectacle dont il a doublé le chiffre d'affaires en deux mois, et conçu des festivals internationaux réunissant public, artistes et sponsors dans des productions d'envergure continentale. Chacune de ces expériences a exigé la même discipline : maîtriser les coûts, maximiser le retour et prendre des décisions sous pression avec une information incomplète.</p>
+                    <p>Parallèlement, le consulting digital l'a conduit à travailler avec des entreprises de toutes tailles, de la startup en phase de validation à l'organisation établie en quête de transformation. Cette exposition à la diversité des modèles économiques, des structures de coûts et des cultures d'entreprise est ce qui nourrit aujourd'hui sa capacité à diagnostiquer rapidement où l'intelligence artificielle génère un retour réel, et où elle constituerait un investissement prématuré.</p>
+                    <p>Emmanuel opère depuis une Ltd israélienne &mdash; une structure agile, opérationnelle et adaptée à la facturation internationale en dollars et en euros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl font-display font-semibold mb-8">La double culture</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                    <p>La rigueur méthodologique française et l'esprit d'innovation israélien ne sont pas des qualités abstraites. Ce sont deux modes opératoires concrets qu'Emmanuel applique simultanément à chaque projet.</p>
+                    <p>De la France, il retient la discipline comptable, l'exigence de documentation, le respect des processus et la capacité à traduire la complexité technique en langage de direction financière. Un rapport d'audit rédigé par Emmanuel se lit comme un document de comité de direction, pas comme une spécification technique.</p>
+                    <p>D'Israël, il retient la vitesse d'exécution, la tolérance au risque calibré, la capacité d'itérer rapidement et la conviction profonde que l'innovation technologique n'est pas un luxe mais une nécessité compétitive. L'écosystème israélien produit plus de startups par habitant que tout autre pays au monde, et Emmanuel a absorbé pendant des années cette culture de l'excellence pragmatique qui caractérise la Startup Nation.</p>
+                    <p>Cette double grille de lecture est ce qui permet à Emmanuel d'évaluer un projet d'IA non seulement par sa faisabilité technique, mais par son impact sur l'EBITDA, sa conformité réglementaire, son éligibilité fiscale et sa contribution à la valorisation de long terme de l'entreprise.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl font-display font-semibold text-marine mb-8">Réseau d'excellence</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>Pour les projets qui requièrent une expertise de pointe dans des domaines spécifiques &mdash; architecture de modèles de langage, cybersécurité, infrastructure cloud souveraine, compliance réglementaire avancée &mdash;, Emmanuel mobilise un cercle restreint d'experts associés basés en Israël.</p>
+                    <p>Il s'agit de professionnels reconnus dans leurs domaines respectifs, avec des parcours dans les institutions de recherche, les entreprises technologiques et les organismes de défense qui ont positionné Israël comme référence mondiale en innovation. Leurs interventions se font à distance, sous accords de confidentialité stricts, et s'intègrent de manière transparente dans le cadre de chaque projet.</p>
+                    <p>Ce réseau n'est pas une promesse de catalogue. C'est un actif opérationnel qu'Emmanuel active lorsque le projet le justifie, avec la même discrétion et la même rigueur qu'il applique au reste de la relation professionnelle. Le client n'est jamais exposé à des intermédiaires inutiles : Emmanuel demeure l'interlocuteur unique, responsable de chaque livrable et de chaque résultat.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl font-display font-semibold mb-8">Philosophie</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-lg font-display font-semibold text-or mb-3">Diplomatie technologique</h3>
+                        <p class="text-white/55 text-base sm:text-lg leading-relaxed">La technologie est un instrument de précision, pas une force brute. Chaque déploiement est calibré en fonction du contexte opérationnel du client, de sa maturité digitale et de sa capacité d'absorption. On n'impose pas de solutions : on construit, en dialogue avec la direction, les interventions que l'entreprise peut effectivement intégrer et rentabiliser.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-semibold text-or mb-3">Finances d'abord</h3>
+                        <p class="text-white/55 text-base sm:text-lg leading-relaxed">Chaque décision technique est évaluée par son impact sur l'EBITDA. Si un projet d'automatisation ne peut démontrer un retour mesurable dans un horizon raisonnable, Emmanuel le dit et recommande de ne pas avancer. La crédibilité à long terme vaut plus qu'une facture à court terme.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-semibold text-or mb-3">Excellence discrète</h3>
+                        <p class="text-white/55 text-base sm:text-lg leading-relaxed">Pas de communiqués de presse, pas de témoignages fabriqués, pas d'urgence artificielle. Les résultats parlent. Les clients qui continuent parlent. Le reste est du bruit, et Emmanuel n'y participe pas.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-display font-semibold text-or mb-3">Éthique toujours</h3>
+                        <p class="text-white/55 text-base sm:text-lg leading-relaxed">La Clause Humaine n'est pas un accessoire marketing. C'est une conviction. Emmanuel propose à chaque client un engagement de douze mois de non-licenciement lié à l'automatisation, accompagné d'une formation pour les collaborateurs impactés. L'automatisation doit élever les personnes, pas les remplacer. Quand c'est bien fait, le résultat est un cercle vertueux : stabilité sociale, avantage fiscal, meilleure marque employeur, et une entreprise plus forte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <div class="bg-white border border-or/15 rounded-lg p-8 md:p-10">
+                    <div class="gold-line max-w-16 mb-8"></div>
+                    <p class="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-marine leading-snug mb-6">Le seul consultant qui combine formation d'expert-comptable français, vingt ans d'expérience de dirigeant multisectoriel, et un réseau d'excellence technologique israélien, au service des PME françaises et de leurs ambitions internationales.</p>
+                    <p class="text-ardoise-light text-base leading-relaxed">Cette convergence n'est pas fréquente. La formation financière permet de parler le langage du DAF. L'expérience de direction permet de comprendre les contraintes du CEO. Le réseau israélien apporte la capacité technique de premier plan. Un pont entre l'innovation israélienne et l'excellence française.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-6">Rencontrer Emmanuel</h2>
+                <p class="text-white/50 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">Une conversation d'une heure, sans frais et sans engagement, pour évaluer ensemble si votre entreprise peut bénéficier de la transition vers l'IA souveraine. Emmanuel arrive préparé. Vous décidez si nous avançons.</p>
+                <a href="formulaire-fr.html" class="inline-flex px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Consultation stratégique gratuite</a>
+                <p class="text-white/25 text-xs mt-6 italic">Disponible par visioconférence en français, anglais et espagnol.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Conseil en IA Souveraine &mdash; Ltd israélienne</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="index-fr.html" class="hover:text-or/60 transition-colors">Accueil</a>
+                    <a href="services-fr.html" class="hover:text-or/60 transition-colors">Services</a>
+                    <a href="finances-fr.html" class="hover:text-or/60 transition-colors">Finances</a>
+                    <a href="index-fr.html#pionniers" class="hover:text-or/60 transition-colors">Pionniers</a>
+                    <a href="formulaire-fr.html" class="hover:text-or/60 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="hover:text-white/50 cursor-pointer transition-colors">ES</span><span class="text-or/50">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+
+</body>
+</html>

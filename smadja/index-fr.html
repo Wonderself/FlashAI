@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Smadja — IA Souveraine pour l'Entreprise Française</title>
+    <meta name="description" content="Conseil en intelligence artificielle souveraine pour PME françaises. Audit IA, automatisation de workflows, LLM privé. Réduisez vos coûts SaaS et protégez vos données. Programme Pionniers -40%.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Emmanuel Smadja — IA Souveraine pour l'Entreprise Française">
+    <meta property="og:description" content="Conseil en IA souveraine pour PME françaises. Audit, automatisation, LLM privé. Programme Pionniers -40%.">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://smadja.ai/index-fr.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .service-card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,31,68,0.15)}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="#" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#services" class="text-sm text-white/70 hover:text-or transition-colors">Services</a>
+                    <a href="#pionniers" class="text-sm text-white/70 hover:text-or transition-colors">Pionniers</a>
+                    <a href="#conformite" class="text-sm text-white/70 hover:text-or transition-colors">Conformité</a>
+                    <a href="#contact" class="text-sm text-white/70 hover:text-or transition-colors">Contact</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">ES</span>
+                        <span class="text-or font-medium">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <a href="#contact" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Réserver une Visio</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="#services" class="text-xl text-white/80 hover:text-or transition-colors font-display">Services</a>
+            <a href="#pionniers" class="text-xl text-white/80 hover:text-or transition-colors font-display">Pionniers</a>
+            <a href="#conformite" class="text-xl text-white/80 hover:text-or transition-colors font-display">Conformité</a>
+            <a href="#contact" class="text-xl text-white/80 hover:text-or transition-colors font-display">Contact</a>
+            <div class="flex items-center gap-4 mt-4 text-sm text-white/40">
+                <span>ES</span><span class="text-or font-medium">FR</span><span>EN</span>
+            </div>
+            <a href="#contact" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Réserver une Visio</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative bg-marine pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/4 right-0 w-96 h-96 bg-or/[0.04] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="gold-line max-w-32 mx-auto mb-10"></div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-white leading-tight mb-8">Intelligence Artificielle Souveraine<br class="hidden sm:block"> pour l'Entreprise Française</h1>
+                <p class="text-base sm:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">Réduisez votre dépendance aux fournisseurs SaaS étrangers, protégez la souveraineté de vos données et transformez chaque euro économisé en OPEX en valeur d'entreprise durable. L'EBITDA &mdash; Bénéfice avant Intérêts, Impôts, Dépréciation et Amortissement &mdash; mesure la rentabilité opérationnelle pure de votre entreprise. Chaque euro que vous cessez de transférer à des fournisseurs externes, en appliquant les multiples de valorisation habituels (x20 à x25), se transforme en vingt à vingt-cinq euros de valeur d'entreprise.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                    <a href="#contact" class="px-7 py-3.5 rounded bg-or text-marine font-medium text-sm cta-gold">Demander un Audit d'Éligibilité Gratuit</a>
+                    <a href="#contact" class="px-7 py-3.5 rounded border border-or/40 text-or text-sm font-medium hover:border-or hover:bg-or/5 transition-all">Réserver une Visio Introductive</a>
+                </div>
+                <p class="text-xs text-white/35 italic">Disponible par visioconférence dès aujourd'hui.</p>
+            </div>
+        </section>
+
+        <!-- LE PONT FRANCE-ISRAËL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4 text-center">19 avril 2026 &mdash; Jérusalem</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine text-center mb-10">Les Accords d'Isaac</h2>
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>Le 19 avril 2026, à Jérusalem, les présidents Milei et Netanyahu ont signé un mémorandum d'entente en matière d'intelligence artificielle qui inaugure un axe de coopération technologique sans précédent entre l'Argentine et Israël. Les Accords d'Isaac &mdash; ainsi nommés en référence au patriarche commun aux deux traditions culturelles &mdash; établissent le cadre bilatéral connu sous le nom de Pax Silica : une alliance centrée sur la souveraineté des données, le transfert de savoir-faire en IA et la construction de capacités technologiques propres.</p>
+                    <p>Pour l'entreprise française, cet accord ouvre une fenêtre stratégique. Il consolide l'écosystème d'innovation israélien &mdash; celui qui produit plus de startups par habitant que tout autre pays au monde &mdash; comme partenaire privilégié pour la souveraineté numérique. La France, avec Mistral, France 2030 et une ambition claire en IA souveraine, partage cette vision. Emmanuel Smadja se positionne au carrefour de ces deux écosystèmes : l'excellence technologique israélienne et la rigueur méthodologique française, au service de vos ambitions internationales.</p>
+                    <p>Emmanuel Smadja, franco-israélien, articule cette convergence. Son rôle n'est pas de vendre de la technologie israélienne : c'est de traduire deux décennies de méthodologie en innovation, R&D et optimisation financière dans le contexte opérationnel de la PME française.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOUD COST SQUEEZE -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-center mb-4">Le Coût Silencieux de la Dépendance SaaS</h2>
+                <p class="text-center text-white/40 text-sm mb-12">Inflation SaaS mondiale : +11,4 % en 2025 (Zylo SaaS Management Index)</p>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed mb-14">
+                    <p>Chaque mois, votre entreprise transfère des milliers d'euros à des fournisseurs de logiciels qui hébergent vos données sur des serveurs tiers, sous des juridictions étrangères, avec des licences dont le prix augmente à un rythme deux fois supérieur à celui de l'inflation générale. Il ne s'agit pas d'un problème technique. Il s'agit d'une érosion silencieuse de votre EBITDA &mdash; et, par extension, de la valorisation de votre entreprise.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+                    <div class="bg-white/[0.04] border border-or/10 rounded-lg p-6 text-center service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">5 à 20 collaborateurs</p>
+                        <p class="text-2xl font-display font-semibold text-white mb-2">2 000 &ndash; 6 000 <span class="text-sm text-white/40">EUR/mois</span></p>
+                        <p class="text-sm text-white/40 mb-4">Dépense SaaS mensuelle estimée</p>
+                        <div class="gold-line mb-4"></div>
+                        <p class="text-sm text-white/50">Potentiel de réduction : 30 à 50 %. Une économie de 2 000 EUR/mois équivaut, avec un multiple x20, à 480 000 EUR de valorisation supplémentaire.</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/10 rounded-lg p-6 text-center service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">20 à 100 collaborateurs</p>
+                        <p class="text-2xl font-display font-semibold text-white mb-2">8 000 &ndash; 35 000 <span class="text-sm text-white/40">EUR/mois</span></p>
+                        <p class="text-sm text-white/40 mb-4">Dépense SaaS mensuelle estimée</p>
+                        <div class="gold-line mb-4"></div>
+                        <p class="text-sm text-white/50">Potentiel de réduction : 25 à 45 %. Une économie de 10 000 EUR/mois se traduit par jusqu'à 3 000 000 EUR de valorisation en appliquant un multiple x25.</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/10 rounded-lg p-6 text-center service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">100 à 500 collaborateurs</p>
+                        <p class="text-2xl font-display font-semibold text-white mb-2">40 000 &ndash; 150 000 <span class="text-sm text-white/40">EUR/mois</span></p>
+                        <p class="text-sm text-white/40 mb-4">Dépense SaaS mensuelle estimée</p>
+                        <div class="gold-line mb-4"></div>
+                        <p class="text-sm text-white/50">Potentiel de réduction : 20 à 40 %. Ici, chaque point de pourcentage d'économie récurrente peut représenter des millions en valorisation d'entreprise.</p>
+                    </div>
+                </div>
+                <p class="text-white/50 text-base leading-relaxed text-center max-w-3xl mx-auto">Ces chiffres ne sont pas des projections optimistes. Ils résultent de la substitution progressive de licences SaaS par une infrastructure propre, des modèles de langage privés et des workflows automatisés. L'impact sur l'EBITDA est direct, récurrent et cumulatif.</p>
+            </div>
+        </section>
+
+        <!-- BIO EMMANUEL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-10 md:gap-14 items-center">
+                    <div class="w-48 h-48 md:w-56 md:h-56 rounded-lg bg-gradient-to-br from-marine to-marine-light flex items-center justify-center shrink-0">
+                        <span class="text-5xl font-display font-semibold text-or/80">ES</span>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-display font-semibold text-marine mb-2">Emmanuel Smadja</h2>
+                        <p class="text-or text-sm font-medium tracking-wider uppercase mb-6">Consultant en IA Souveraine</p>
+                        <div class="space-y-4 text-ardoise text-base leading-relaxed">
+                            <p>Franco-israélien, vingt ans de parcours entre Paris, Tel Aviv et Buenos Aires. Ancien CEO, formé en comptabilité et gestion et diplômé du DECF (Bac+4, ICS Bégué Paris), Emmanuel combine une vision financière rigoureuse avec une compréhension profonde des écosystèmes technologiques israéliens.</p>
+                            <p>Son expérience couvre la direction d'entreprises dans les médias, l'événementiel et la technologie. Aujourd'hui, depuis sa Ltd israélienne, il accompagne les PME françaises dans la transition vers une intelligence artificielle souveraine : celle qui fonctionne sur votre propre infrastructure, avec vos propres données, sous votre propre contrôle.</p>
+                            <p>Emmanuel mobilise à distance un réseau d'experts israéliens spécialisés en IA, cybersécurité et infrastructure cloud &mdash; le même écosystème qui positionne Israël comme référence mondiale en innovation technologique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESCALIER DE SERVICES -->
+        <section id="services" class="py-20 md:py-28 bg-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine text-center mb-4">Un Parcours Progressif, Calibré sur Votre Entreprise</h2>
+                <p class="text-center text-ardoise-light text-base mb-14 max-w-2xl mx-auto">Chaque étape se justifie par elle-même. Vous avancez lorsque les résultats de la précédente le méritent, sans engagement de long terme ni investissement disproportionné.</p>
+
+                <div class="space-y-6">
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Étape 0</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">Audit d'Éligibilité</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Un formulaire structuré suivi d'une heure de visioconférence. Nous évaluons ensemble si votre entreprise réunit les conditions pour bénéficier d'une transition vers l'IA souveraine : volume de données, stack technologique actuel, structure de coûts SaaS et objectifs métier. Sans frais, sans engagement.</p>
+                        <p class="font-display font-semibold text-or text-lg">Gratuit</p>
+                    </div>
+
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Service 1</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">Audit IA Complet &mdash; 3 jours</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Trois journées d'immersion dans votre fonctionnement. Nous cartographions vos processus, identifions les flux automatisables, évaluons la qualité de vos données et vous remettons un rapport exécutif avec des priorités claires, des estimations d'économies en OPEX et une feuille de route de mise en œuvre.</p>
+                        <p class="font-display font-semibold text-or text-lg">500 EUR</p>
+                    </div>
+
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Service 2</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">Workflows d'Automatisation</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Nous concevons et déployons des workflows qui éliminent les tâches répétitives, connectent vos outils entre eux et libèrent des heures productives chaque semaine. Du premier processus automatisé à l'orchestration complète de vos flux de travail, chaque workflow est construit sur les priorités identifiées lors de l'audit.</p>
+                        <p class="font-display font-semibold text-or text-lg">À partir de 1 680 EUR <span class="text-ardoise-light text-sm font-body font-normal">(1 workflow) &mdash; 2 700 EUR (3 workflows) &mdash; complexes sur devis</span></p>
+                    </div>
+
+                    <div class="border-l-2 border-or/30 pl-6 md:pl-8 py-4 service-card rounded-r-lg bg-creme/50">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-2">Service 3</p>
+                        <h3 class="text-xl font-display font-semibold text-marine mb-3">LLM Souverain Privé</h3>
+                        <p class="text-ardoise leading-relaxed mb-3">Votre propre modèle de langage, entraîné sur vos données, hébergé sur une infrastructure que vous contrôlez. Deux modalités : cloud administré sur serveurs Hetzner en Allemagne (infrastructure européenne, conformité RGPD native) ou on-premise sur hardware dédié type Mac Mini M4 Pro. Vos données ne sortent pas de votre périmètre.</p>
+                        <p class="font-display font-semibold text-or text-lg">À partir de 2 100 USD setup + 270 USD/mois <span class="text-ardoise-light text-sm font-body font-normal">(cloud administré) &mdash; on-prem sur devis</span></p>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-ardoise/10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-creme rounded-lg p-6">
+                            <h3 class="text-lg font-display font-semibold text-marine mb-3">Formations</h3>
+                            <p class="text-ardoise text-sm leading-relaxed">Trois programmes adaptés à trois profils : collaborateurs opérationnels (adoption des outils IA au quotidien), dirigeants (compréhension stratégique et prise de décision) et relève dirigeante (préparation de la prochaine génération de leadership technologique). En visioconférence ou en présentiel.</p>
+                        </div>
+                        <div class="bg-creme rounded-lg p-6">
+                            <h3 class="text-lg font-display font-semibold text-marine mb-3">Diagnostic Éligibilité CIR / CII / JEI</h3>
+                            <p class="text-ardoise text-sm leading-relaxed">Pour les entreprises souhaitant évaluer leur position vis-à-vis du Crédit d'Impôt Recherche (30&nbsp;%), du Crédit d'Impôt Innovation (20&nbsp;%) ou du statut Jeune Entreprise Innovante, nous réalisons un diagnostic complet d'éligibilité avec identification des leviers fiscaux applicables.</p>
+                            <p class="font-display font-semibold text-or text-base mt-3">800 à 3 000 EUR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRAMME PIONNIERS -->
+        <section id="pionniers" class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4 text-center">Créé le 19 avril 2026</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-center mb-4">Programme Pionniers</h2>
+                <p class="text-center text-white/40 text-sm mb-12">Le jour de la signature des Accords d'Isaac</p>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed mb-14">
+                    <p>Le Programme Pionniers est né le jour même des Accords d'Isaac, comme un engagement envers les premières entreprises qui choisissent d'emprunter ce chemin. Il ne s'agit pas d'une promotion commerciale. C'est une reconnaissance : les entreprises qui adoptent en premier assument un risque plus important et méritent, à ce titre, des conditions qui reflètent cette conviction.</p>
+                    <p>Les Pionniers bénéficient d'une réduction de quarante pour cent garantie à vie sur l'ensemble de nos services. Ce tarif préférentiel n'a ni date d'expiration ni condition de renouvellement. Il accompagne l'entreprise aussi longtemps que dure la relation professionnelle.</p>
+                    <p>La sélection est qualitative et s'organise par ville. Nous recherchons des entreprises dont la direction est engagée, dont le volume de données justifie la transition et qui portent une vision de long terme sur la souveraineté de leurs actifs numériques.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Paris</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Places ouvertes</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Lyon</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Places ouvertes</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Genève</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Places ouvertes</p>
+                    </div>
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-5 text-center">
+                        <p class="font-display font-semibold text-white text-lg mb-1">Bruxelles</p>
+                        <p class="text-or text-xs tracking-wider uppercase">Places ouvertes</p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-white/30 text-sm italic">La réduction de 40 % s'applique sur le tarif standard de tous les services, sans exception.</p>
+            </div>
+        </section>
+
+        <!-- CONFORMITÉ RÉGLEMENTAIRE -->
+        <section id="conformite" class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine text-center mb-4">Conformité Réglementaire</h2>
+                <p class="text-center text-ardoise-light text-base mb-14 max-w-2xl mx-auto">La souveraineté de vos données n'est pas seulement un avantage concurrentiel. C'est une obligation légale croissante, en France comme sur les marchés avec lesquels vous opérez.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">RGPD</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">Le Règlement Général sur la Protection des Données encadre strictement le traitement, le stockage et le transfert des données personnelles au sein de l'Union Européenne. Toute entreprise traitant des données de clients, collaborateurs ou partenaires européens doit en assurer le respect. Nos solutions sont conçues dès l'origine pour garantir cette conformité, sous la supervision de la CNIL.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">EU AI Act</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">Le Règlement Européen sur l'Intelligence Artificielle, en vigueur depuis 2024, classe les systèmes d'IA par niveaux de risque et impose des obligations de transparence, de documentation et de gouvernance. Pour toute entreprise opérant sur le marché européen, anticiper cette réglementation est une décision stratégique, pas une option.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Directive NIS2</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">La directive européenne sur la cybersécurité NIS2 élargit les exigences de sécurité aux chaînes d'approvisionnement numériques. Les entreprises françaises doivent démontrer que leurs systèmes, y compris ceux basés sur l'IA, respectent ces standards de résilience et de protection des données.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <h3 class="font-display font-semibold text-marine text-lg mb-3">Loi Informatique et Libertés</h3>
+                        <p class="text-ardoise text-sm leading-relaxed">La loi française du 6 janvier 1978 modifiée, complément national du RGPD, confère à la CNIL des pouvoirs de contrôle et de sanction renforcés. Une infrastructure d'IA souveraine, hébergée en Europe sur des serveurs que vous contrôlez, constitue la réponse la plus robuste aux exigences combinées du RGPD et de la législation française.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section id="contact" class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-6">La Première Étape Ne Coûte Rien</h2>
+                <p class="text-white/50 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">L'audit d'éligibilité est gratuit, confidentiel et n'engage à rien. En une heure de visioconférence, nous évaluons ensemble si votre entreprise peut bénéficier de la transition vers une IA souveraine. Si la réponse est positive, nous vous remettons un diagnostic préliminaire et les options qui s'offrent à vous. Si ce n'est pas le bon moment, nous vous le disons avec la même franchise.</p>
+                <a href="#" class="inline-flex px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Demander mon Audit d'Éligibilité Gratuit</a>
+                <p class="text-white/25 text-xs mt-6 italic">Réponse sous 48 heures. Visioconférence disponible en français, anglais et espagnol.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Conseil en IA Souveraine &mdash; Ltd israélienne</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="#services" class="hover:text-or/60 transition-colors">Services</a>
+                    <a href="#pionniers" class="hover:text-or/60 transition-colors">Pionniers</a>
+                    <a href="#conformite" class="hover:text-or/60 transition-colors">Conformité</a>
+                    <a href="#contact" class="hover:text-or/60 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="hover:text-white/50 cursor-pointer transition-colors">ES</span><span class="text-or/50">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>
