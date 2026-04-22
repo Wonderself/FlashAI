@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finances & EBITDA — Emmanuel Smadja | Impact financier de l'IA souveraine pour PME françaises</title>
+    <meta name="description" content="Analyse financière de l'IA souveraine pour DAF français. Impact EBITDA, transition OPEX vers CAPEX, crédits d'impôt CIR/CII, valorisation d'entreprise. Consultation gratuite.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Finances & EBITDA — Emmanuel Smadja | IA Souveraine pour l'Entreprise Française">
+    <meta property="og:description" content="Le cas financier de l'IA souveraine : EBITDA, valorisation, crédits d'impôt CIR/CII. Pour les DAF de PME françaises.">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://smadja.ai/finances-fr.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .service-card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,31,68,0.15)}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+        .fin-table{width:100%;border-collapse:collapse}
+        .fin-table th{text-align:left;padding:0.75rem 1rem;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:#C9A66B;border-bottom:1px solid rgba(201,166,107,0.2)}
+        .fin-table td{padding:0.75rem 1rem;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .fin-table-light th{color:#0A1F44;border-bottom-color:rgba(10,31,68,0.15)}
+        .fin-table-light td{border-bottom-color:rgba(10,31,68,0.08)}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index-fr.html" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Accueil</a>
+                    <a href="services-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Services</a>
+                    <a href="#" class="text-sm text-or font-medium transition-colors">Finances & EBITDA</a>
+                    <a href="a-propos-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">À propos</a>
+                    <a href="formulaire-fr.html" class="text-sm text-white/70 hover:text-or transition-colors">Contact</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">ES</span>
+                        <span class="text-or font-medium">FR</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">EN</span>
+                    </div>
+                </nav>
+                <a href="formulaire-fr.html" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Réserver une Visio</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="index-fr.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Accueil</a>
+            <a href="services-fr.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Services</a>
+            <a href="#" class="text-xl text-or font-display font-semibold">Finances & EBITDA</a>
+            <a href="a-propos-fr.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">À propos</a>
+            <a href="formulaire-fr.html" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Réserver une Visio</a>
+        </div>
+    </div>
+
+    <main>
+
+        <section class="relative bg-marine pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/3 right-0 w-80 h-80 bg-or/[0.03] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-6">Pour le DAF qui exige des chiffres</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white leading-tight mb-6">Finances & EBITDA</h1>
+                <p class="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">Le cas financier de l'intelligence artificielle souveraine. Il ne s'agit pas de technologie. Il s'agit de ce que votre bilan, votre compte de résultat et votre valorisation disent en fin d'exercice.</p>
+            </div>
+        </section>
+
+        <!-- LA THÈSE -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">La thèse</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>L'intelligence artificielle souveraine n'est pas une dépense technologique. C'est un actif financier qui protège et multiplie la valorisation de votre entreprise. Chaque euro que vous cessez de transférer à un fournisseur SaaS étranger ne disparaît pas : il se transforme en marge opérationnelle, en capacité d'investissement, en valeur d'entreprise mesurable.</p>
+                    <p>Cette page ne contient pas d'arguments techniques. Elle contient des chiffres. Les mêmes chiffres que vous présentez à votre conseil d'administration, à vos banquiers, à vos investisseurs ou acquéreurs potentiels. Parce que la décision d'adopter une IA souveraine ne se prend pas au département IT. Elle se prend à la direction financière.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DÉFINITION EBITDA -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-8">EBITDA : la métrique qui gouverne les décisions</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                    <p>L'EBITDA &mdash; Bénéfice Avant Intérêts, Impôts, Dépréciation et Amortissement &mdash; mesure la rentabilité opérationnelle pure de votre entreprise. Il élimine les distorsions comptables, les choix de financement et les politiques d'amortissement pour révéler une seule chose : combien d'argent votre exploitation génère, avant tout le reste.</p>
+                    <p>C'est le premier chiffre qu'examine un investisseur. C'est le premier chiffre qu'analyse une banque avant d'accorder un crédit. C'est le chiffre sur lequel se négocie le prix d'acquisition d'une entreprise. Pas le résultat net. Pas le chiffre d'affaires. L'EBITDA.</p>
+                    <p>Pour les PME du secteur technologique et des services, les multiples de valorisation habituels oscillent entre x20 et x25 sur l'EBITDA annuel. Cela signifie que chaque euro que vous parvenez à ajouter à l'EBITDA de manière récurrente ne vaut pas un euro : il vaut entre vingt et vingt-cinq euros en valorisation d'entreprise. Inversement, chaque euro de charge opérationnelle qui érode votre EBITDA détruit entre vingt et vingt-cinq euros de valeur.</p>
+                    <p>L'arithmétique est implacable. Et c'est exactement dans cette arithmétique que la transition vers une IA souveraine produit son effet le plus significatif.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOUD COST SQUEEZE -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">Le Cloud Cost Squeeze</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed mb-14">
+                    <p>En 2025, l'inflation des licences SaaS a atteint 11,4 % annuels (Zylo SaaS Management Index), quatre fois le taux d'inflation moyen du G7. Il ne s'agit pas d'un ajustement ponctuel : c'est une tendance structurelle portée par l'intégration forcée de fonctionnalités d'IA dans des produits que vous payiez déjà, à des prix que vous n'avez pas négociés.</p>
+                    <p>Quatre-vingt-neuf pour cent des DAF interrogés rapportent que l'imprévisibilité des coûts cloud érode la fiabilité de leurs projections financières. La dépense en SaaS et services cloud est devenue le deuxième poste de charge opérationnelle après les salaires, dépassant dans de nombreux cas le coût immobilier.</p>
+                    <p>Ce phénomène porte un nom qu'il convient de retenir : la taxe invisible à l'innovation. Chaque fois qu'un fournisseur SaaS ajoute une fonctionnalité d'IA à sa plateforme &mdash; une fonctionnalité que vous n'avez pas demandée et dont vous n'avez peut-être pas besoin &mdash;, le coût se reflète dans votre prochaine facture. Vous financez la R&D d'un tiers, sans participer à la propriété intellectuelle résultante, sans contrôler vos données et sans possibilité de capitaliser cet investissement à votre propre bilan.</p>
+                    <p>Pour un DAF, la question cesse d'être technique et devient strictement financière : s'il existe une alternative qui élimine cette charge récurrente, la transforme en actif capitalisable et améliore simultanément l'EBITDA, la conformité réglementaire et la souveraineté des données, la charge de la preuve incombe à celui qui décide de ne pas l'explorer.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABLEAU IMPACT -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-4">Impact estimé par profil d'entreprise</h2>
+                <p class="text-white/40 text-sm mb-10">Estimations basées sur des réductions observées de 30 à 70 % des dépenses SaaS/cloud après migration vers une infrastructure souveraine. Les résultats varient selon le profil et la structure de coûts de chaque entreprise.</p>
+                <div class="overflow-x-auto rounded-lg border border-or/15">
+                    <table class="fin-table">
+                        <thead>
+                            <tr class="bg-white/[0.03]">
+                                <th>Profil PME</th>
+                                <th>Dépenses Cloud Actuelles</th>
+                                <th>Gain EBITDA Annuel Estimé</th>
+                                <th>Valorisation Additionnelle Potentielle (x25)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-white font-medium">20 collaborateurs</td>
+                                <td class="text-white/60">500 &ndash; 1 500 EUR/mois</td>
+                                <td class="text-or font-medium">4 000 &ndash; 12 000 EUR</td>
+                                <td class="text-white/50">100 000 &ndash; 300 000 EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-medium">50 collaborateurs</td>
+                                <td class="text-white/60">1 500 &ndash; 4 000 EUR/mois</td>
+                                <td class="text-or font-medium">12 000 &ndash; 35 000 EUR</td>
+                                <td class="text-white/50">300 000 &ndash; 875 000 EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-medium">100 collaborateurs</td>
+                                <td class="text-white/60">3 000 &ndash; 10 000 EUR/mois</td>
+                                <td class="text-or font-medium">25 000 &ndash; 90 000 EUR</td>
+                                <td class="text-white/50">625 000 &ndash; 2 250 000 EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-medium">200&ndash;500 collaborateurs</td>
+                                <td class="text-white/60">8 000 &ndash; 30 000 EUR/mois</td>
+                                <td class="text-or font-medium">60 000 &ndash; 250 000 EUR</td>
+                                <td class="text-white/50">1 500 000 &ndash; 6 250 000 EUR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-white/25 text-xs mt-4 italic">Ces chiffres représentent des potentiels estimés. L'impact réel dépend de la structure de coûts, du secteur et du degré de dépendance SaaS de chaque organisation.</p>
+            </div>
+        </section>
+
+        <!-- OPEX → CAPEX -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-8">D'OPEX à CAPEX : la mécanique comptable qui transforme votre bilan</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-ardoise text-base sm:text-lg leading-relaxed">
+                    <p>Quand votre entreprise paie un abonnement mensuel à un service d'IA dans le cloud, cette dépense est enregistrée comme OPEX &mdash; charge opérationnelle. Elle réduit directement votre EBITDA, mois après mois, sans générer le moindre actif à votre bilan. L'argent sort et ne laisse aucune trace comptable au-delà de la ligne de charge.</p>
+                    <p>Quand votre entreprise investit dans sa propre infrastructure d'IA &mdash; un serveur dédié, un modèle de langage privé, du matériel on-premise &mdash;, cet investissement est enregistré comme CAPEX &mdash; dépense d'investissement. Il apparaît à votre bilan comme un actif, s'amortit sur trois à cinq ans et n'impacte pas votre EBITDA pendant la période d'amortissement. La différence pour un DAF est considérable : le même flux de trésorerie produit des résultats comptables radicalement distincts.</p>
+                    <p>La mise à jour comptable ASU 2025-06, adoptée progressivement dans les marchés suivant les normes FASB et IFRS, renforce cette logique en permettant la capitalisation des coûts de développement d'IA interne. Cela inclut l'entraînement de modèles sur des données propriétaires, la configuration d'infrastructure et le déploiement de solutions RAG. Ce qui était exclusivement une charge devient, sous cette norme, un actif reconnu.</p>
+                    <p>En termes concrets : une entreprise qui paie 10 000 euros mensuels en abonnements SaaS d'IA réduit son EBITDA de 120 000 euros par an. La même entreprise, migrant vers un LLM souverain avec un setup de 5 000 euros et une maintenance de 270 euros mensuels, enregistre un actif capitalisable, réduit son OPEX à 3 240 euros annuels et récupère la quasi-totalité de ces 120 000 euros dans son EBITDA. En appliquant un multiple x25, cette décision comptable représente jusqu'à 3 000 000 d'euros de valorisation additionnelle potentielle.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LES 4 LEVIERS FISCAUX FRANÇAIS -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-4">Les quatre leviers fiscaux français</h2>
+                <p class="text-white/40 text-sm mb-12">La France offre aujourd'hui l'un des cadres d'incitation les plus favorables d'Europe pour l'investissement en intelligence artificielle. Ces quatre mécanismes, combinés à une stratégie d'IA souveraine, peuvent transformer significativement l'équation financière de votre entreprise.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Crédit d'impôt</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">CIR &mdash; Crédit d'Impôt Recherche</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Crédit d'impôt de 30 % sur les dépenses de R&D éligibles (premiers 100 M€), directement imputable sur l'impôt sur les sociétés ou remboursable pour les PME. L'entraînement de modèles de langage sur des données propriétaires, le développement de solutions RAG et la configuration d'infrastructure d'IA souveraine constituent des dépenses de R&D éligibles.</p>
+                            <p>Le CIR est le pilier. Pour une PME de cent collaborateurs investissant dans l'IA souveraine, le crédit d'impôt peut représenter 30 % de l'ensemble des dépenses de R&D qualifiantes — un retour direct et substantiel sur l'investissement technologique.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Crédit d'impôt</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">CII &mdash; Crédit d'Impôt Innovation</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Crédit d'impôt de 20 % sur les dépenses d'innovation pour les PME de moins de 250 salariés. Couvre le prototypage, les tests de solutions IA, le développement de processus innovants. Cumulable avec le CIR sous certaines conditions.</p>
+                            <p>Le CII complète le CIR sur le plan de l'innovation appliquée. Un workflow d'automatisation développé sur mesure pour votre entreprise, intégrant un modèle de langage privé, peut constituer une dépense d'innovation éligible au CII.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Programmes Bpifrance</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">IA Booster / Diag Data IA</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Programmes Bpifrance couvrant jusqu'à 80 % des coûts de diagnostic et de mise en œuvre IA. IA Booster finance l'accompagnement au déploiement de l'intelligence artificielle. Diag Data IA couvre l'évaluation de la stratégie données. Les deux programmes sont activement financés.</p>
+                            <p>Un projet d'IA souveraine documenté avec l'audit d'Emmanuel répond aux critères de ces programmes. Le coût résiduel après prise en charge Bpifrance réduit considérablement la barrière à l'entrée.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/[0.04] border border-or/15 rounded-lg p-7 service-card">
+                        <p class="text-xs text-or tracking-wider uppercase mb-3">Financement</p>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">France 2030 / Bpifrance</h3>
+                        <div class="space-y-3 text-white/50 text-sm leading-relaxed">
+                            <p>Le plan France 2030 consacre des enveloppes spécifiques à l'intelligence artificielle. Bpifrance propose des lignes de crédit à taux préférentiels pour les projets de transformation digitale et d'innovation technologique, avec des conditions plus favorables que le marché bancaire privé.</p>
+                            <p>Un projet de LLM souverain, documenté par l'audit d'Emmanuel et inscrit dans une démarche de souveraineté numérique, réunit les conditions pour accéder à ces financements. Le coût du capital se réduit, le levier financier s'améliore et la décision d'investissement s'accélère.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAS D'ÉTUDE -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-4">Cas d'étude : PME de 100 collaborateurs</h2>
+                <p class="text-ardoise-light text-sm mb-10">Estimation comparative entre un modèle cloud (OPEX pur) et un modèle souverain (CAPEX). Chiffres indicatifs basés sur des profils observés ; l'impact réel varie selon la structure spécifique de chaque entreprise.</p>
+                <div class="overflow-x-auto rounded-lg border border-marine/15">
+                    <table class="fin-table fin-table-light">
+                        <thead>
+                            <tr class="bg-marine/[0.03]">
+                                <th>Poste</th>
+                                <th>Modèle Cloud (OPEX)</th>
+                                <th>Modèle Souverain (CAPEX)</th>
+                                <th>Gain Net Estimé</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-marine font-medium">Abonnements SaaS IA</td>
+                                <td class="text-ardoise">120 000 EUR/an</td>
+                                <td class="text-ardoise">0 (modèles locaux)</td>
+                                <td class="text-or font-semibold">+120 000 EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="text-marine font-medium">Crédits CIR (30 % R&D IA)</td>
+                                <td class="text-ardoise">Non applicable</td>
+                                <td class="text-ardoise">30 % des dépenses R&D éligibles</td>
+                                <td class="text-or font-semibold">+45 000 EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="text-marine font-medium">CII + amortissement accéléré</td>
+                                <td class="text-ardoise">Taux standard</td>
+                                <td class="text-ardoise">CII 20 % + amort. infrastructure</td>
+                                <td class="text-or font-semibold">+85 000 EUR</td>
+                            </tr>
+                            <tr class="bg-marine/[0.03]">
+                                <td class="text-marine font-semibold">Total impact EBITDA estimé</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-or font-bold text-lg">+250 000 EUR</td>
+                            </tr>
+                            <tr class="bg-or/[0.05]">
+                                <td class="text-marine font-semibold">Valorisation potentielle (x25)</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-or font-bold text-lg">+6 250 000 EUR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-ardoise-light text-xs mt-4 italic">Estimations à titre indicatif. Les crédits d'impôt dépendent de l'éligibilité vérifiée de chaque entreprise aux dispositifs CIR et CII. Consultez votre expert-comptable pour une projection adaptée à votre situation.</p>
+            </div>
+        </section>
+
+        <!-- CLAUSE HUMAINE -->
+        <section class="py-20 md:py-28 bg-marine text-white">
+            <div class="max-w-3xl mx-auto px-6 reveal">
+                <p class="text-xs font-medium tracking-[0.2em] text-or uppercase mb-4">Engagement différenciateur</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-8">La Clause Humaine : Pacte d'Excellence Sociale</h2>
+                <div class="gold-line max-w-16 mb-10"></div>
+                <div class="space-y-6 text-white/60 text-base sm:text-lg leading-relaxed">
+                    <p>La Clause Humaine est un engagement symbolique qu'Emmanuel propose à chaque client : pendant les douze premiers mois de déploiement d'IA, l'entreprise s'engage à ne procéder à aucun licenciement lié à l'automatisation. Les collaborateurs dont les rôles sont transformés bénéficient d'une formation pour évoluer vers des fonctions à plus forte valeur ajoutée au sein de l'organisation.</p>
+                    <p>Cet engagement n'est pas seulement une déclaration éthique. C'est un instrument financier. Les entreprises qui souscrivent la Clause Humaine renforcent leur dossier CIR en démontrant un investissement responsable en innovation, consolident leur positionnement RSE et répondent aux obligations de GPEC (Gestion Prévisionnelle des Emplois et Compétences). La stabilité sociale améliore la marque employeur et réduit les coûts de turnover.</p>
+                    <p>Le cercle est vertueux. La stabilité sociale améliore la marque employeur et réduit les coûts de rotation. Le crédit d'impôt améliore l'EBITDA. L'amélioration de l'EBITDA se multiplie par vingt à vingt-cinq en valorisation. Et la formation des collaborateurs aux outils d'IA génère, à son tour, des gains de productivité qui alimentent un nouveau cycle d'amélioration opérationnelle.</p>
+                    <p>Ce qu'un observateur externe pourrait percevoir comme un geste altruiste est, en réalité, la décision financière la plus rentable du dispositif.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-6">Évaluer mon potentiel d'optimisation</h2>
+                <p class="text-ardoise text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">La consultation initiale est gratuite et confidentielle. En une heure de visioconférence, Emmanuel analyse votre structure de coûts SaaS, estime l'impact potentiel sur votre EBITDA et évalue votre éligibilité aux dispositifs fiscaux français. Les chiffres parlent d'eux-mêmes.</p>
+                <a href="formulaire-fr.html" class="inline-flex px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Consultation gratuite &mdash; Évaluer mon potentiel</a>
+                <p class="text-ardoise-light text-xs mt-6 italic">Réponse sous 48 heures. Disponible en français, anglais et espagnol.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Conseil en IA Souveraine &mdash; Ltd israélienne</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="index-fr.html" class="hover:text-or/60 transition-colors">Accueil</a>
+                    <a href="services-fr.html" class="hover:text-or/60 transition-colors">Services</a>
+                    <a href="index-fr.html#pionniers" class="hover:text-or/60 transition-colors">Pionniers</a>
+                    <a href="formulaire-fr.html" class="hover:text-or/60 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="hover:text-white/50 cursor-pointer transition-colors">ES</span><span class="text-or/50">FR</span><span class="hover:text-white/50 cursor-pointer transition-colors">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+
+</body>
+</html>
