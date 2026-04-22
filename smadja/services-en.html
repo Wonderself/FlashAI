@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — Emmanuel Smadja | Sovereign AI Consulting</title>
+    <meta name="description" content="Sovereign AI services: eligibility audit, AI audit, automation workflows, private LLM, training programs. Progressive engagement model for growth companies.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Services — Emmanuel Smadja | Sovereign AI">
+    <meta property="og:description" content="From eligibility audit to private LLM deployment. A progressive path tailored to your business.">
+    <meta property="og:locale" content="en">
+    <link rel="canonical" href="https://smadja.ai/services-en.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marine: { DEFAULT:'#0A1F44', light:'#112B52', dark:'#061530' },
+                        ardoise: { DEFAULT:'#3E4E5E', light:'#536370', dark:'#2D3A47' },
+                        or: { DEFAULT:'#C9A66B', light:'#D4B87A', dark:'#B8935A' },
+                        creme: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display','Georgia','serif'],
+                        body: ['Inter','system-ui','sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .gold-line{height:1px;background:linear-gradient(90deg,transparent,#C9A66B,transparent);opacity:0.5}
+        .service-card{transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(10,31,68,0.15)}
+        .cta-gold{transition:all 0.3s ease}
+        .cta-gold:hover{background-color:#B8935A;box-shadow:0 6px 24px rgba(201,166,107,0.3)}
+        .price-tag{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:#C9A66B}
+    </style>
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="bg-creme text-ardoise font-body antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-marine/95 backdrop-blur-md border-b border-or/10">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index-en.html" class="font-display text-lg sm:text-xl font-semibold text-white tracking-wide">Emmanuel <span class="text-or">Smadja</span></a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index-en.html" class="text-sm text-white/70 hover:text-or transition-colors">Home</a>
+                    <a href="#" class="text-sm text-or font-medium transition-colors">Services</a>
+                    <a href="finances-en.html" class="text-sm text-white/70 hover:text-or transition-colors">Finance & EBITDA</a>
+                    <a href="about-en.html" class="text-sm text-white/70 hover:text-or transition-colors">About</a>
+                    <a href="contact-en.html" class="text-sm text-white/70 hover:text-or transition-colors">Contact</a>
+                    <div class="flex items-center gap-2 ml-4 text-xs text-white/40 border-l border-white/10 pl-4">
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">ES</span>
+                        <span class="hover:text-white/70 cursor-pointer transition-colors">FR</span>
+                        <span class="text-or font-medium">EN</span>
+                    </div>
+                </nav>
+                <a href="contact-en.html" class="hidden lg:inline-flex px-5 py-2 rounded bg-or text-marine text-sm font-medium cta-gold">Book a Call</a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,31,68,0.97);backdrop-filter:blur(20px);">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:2rem;">
+            <button id="mobile-menu-close" style="position:absolute;top:1.25rem;right:1.25rem;" class="text-white/70">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <a href="index-en.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Home</a>
+            <a href="#" class="text-xl text-or font-display font-semibold">Services</a>
+            <a href="finances-en.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">Finance & EBITDA</a>
+            <a href="about-en.html" class="text-xl text-white/80 hover:text-or transition-colors font-display">About</a>
+            <a href="contact-en.html" class="mt-4 px-6 py-3 rounded bg-or text-marine font-medium cta-gold">Book a Call</a>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="relative bg-marine pt-28 pb-14 md:pt-36 md:pb-20 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-marine-dark/50 to-marine"></div>
+            <div class="absolute top-1/3 right-0 w-80 h-80 bg-or/[0.03] rounded-full blur-3xl"></div>
+            <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
+                <div class="gold-line max-w-16 mb-8"></div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white leading-tight mb-4">Services</h1>
+                <p class="text-white/50 text-base sm:text-lg leading-relaxed max-w-3xl">A progressive engagement model. Each stage justifies itself by its results. You advance when the outcomes warrant it &mdash; no lock-in, no disproportionate upfront investment.</p>
+            </div>
+        </section>
+
+        <!-- STAGE 0: ELIGIBILITY AUDIT -->
+        <section class="py-16 md:py-24 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                    <div class="md:w-1/3">
+                        <p class="text-xs text-or font-medium tracking-[0.2em] uppercase mb-2">Stage 0</p>
+                        <h2 class="text-2xl font-display font-semibold text-marine mb-3">Eligibility Audit</h2>
+                        <p class="price-tag text-xl">Free</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="space-y-4 text-ardoise text-base leading-relaxed">
+                            <p>A structured questionnaire followed by a one-hour video conference. Together, we assess whether your company meets the conditions to benefit from a transition to sovereign AI.</p>
+                            <p>We evaluate: data volume and quality, current technology stack, SaaS cost structure, regulatory exposure, and business objectives. The result is a clear go/no-go recommendation with a preliminary diagnostic.</p>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-4">
+                                <p class="text-sm font-medium text-marine mb-1">Deliverables</p>
+                                <p class="text-sm text-ardoise-light">Preliminary diagnostic, eligibility assessment, tax incentive identification, next steps roadmap</p>
+                            </div>
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-4">
+                                <p class="text-sm font-medium text-marine mb-1">Duration</p>
+                                <p class="text-sm text-ardoise-light">Online questionnaire + 1-hour video conference. No cost, no commitment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="gold-line max-w-4xl mx-auto"></div>
+
+        <!-- SERVICE 1: AI AUDIT -->
+        <section class="py-16 md:py-24 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                    <div class="md:w-1/3">
+                        <p class="text-xs text-or font-medium tracking-[0.2em] uppercase mb-2">Service 1</p>
+                        <h2 class="text-2xl font-display font-semibold text-marine mb-3">Full AI Audit</h2>
+                        <p class="price-tag text-xl">500 EUR</p>
+                        <p class="text-xs text-ardoise-light mt-1">3 days of immersion</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="space-y-4 text-ardoise text-base leading-relaxed">
+                            <p>Three days of deep-dive into your operations. We map your processes, identify automatable workflows, evaluate data quality, and deliver an executive report with clear priorities, OPEX savings estimates, and an implementation roadmap.</p>
+                            <p>This document becomes the blueprint for every subsequent engagement. It is designed to be read by your CFO, your CTO, and your board &mdash; each finding the information relevant to their decision-making level.</p>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-4">
+                                <p class="text-sm font-medium text-marine mb-1">Process Mapping</p>
+                                <p class="text-sm text-ardoise-light">Complete cartography of automatable flows</p>
+                            </div>
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-4">
+                                <p class="text-sm font-medium text-marine mb-1">OPEX Analysis</p>
+                                <p class="text-sm text-ardoise-light">Quantified savings projections per workflow</p>
+                            </div>
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-4">
+                                <p class="text-sm font-medium text-marine mb-1">Executive Report</p>
+                                <p class="text-sm text-ardoise-light">Board-ready document with implementation roadmap</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="gold-line max-w-4xl mx-auto"></div>
+
+        <!-- SERVICE 2: AUTOMATION WORKFLOWS -->
+        <section class="py-16 md:py-24 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                    <div class="md:w-1/3">
+                        <p class="text-xs text-or font-medium tracking-[0.2em] uppercase mb-2">Service 2</p>
+                        <h2 class="text-2xl font-display font-semibold text-marine mb-3">Automation Workflows</h2>
+                        <p class="price-tag text-xl">From 1,680 EUR</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="space-y-4 text-ardoise text-base leading-relaxed">
+                            <p>We design and deploy workflows that eliminate repetitive tasks, connect your tools, and free up productive hours every week. Each workflow builds on the priorities identified in the AI Audit.</p>
+                        </div>
+                        <div class="mt-6 space-y-3">
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-5 service-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-sm font-medium text-marine">Tier 1 &mdash; Single Workflow</p>
+                                        <p class="text-sm text-ardoise-light mt-1">One critical process automated end-to-end</p>
+                                    </div>
+                                    <p class="price-tag text-base">1,680 EUR</p>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-5 service-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-sm font-medium text-marine">Tier 2 &mdash; Three Workflows</p>
+                                        <p class="text-sm text-ardoise-light mt-1">Three interconnected processes with shared data layer</p>
+                                    </div>
+                                    <p class="price-tag text-base">2,700 EUR</p>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-5 service-card">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-sm font-medium text-marine">Tier 3 &mdash; Full Orchestration</p>
+                                        <p class="text-sm text-ardoise-light mt-1">Complete workflow architecture with monitoring and alerts</p>
+                                    </div>
+                                    <p class="price-tag text-base">Custom quote</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="gold-line max-w-4xl mx-auto"></div>
+
+        <!-- SERVICE 3: PRIVATE SOVEREIGN LLM -->
+        <section class="py-16 md:py-24 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                    <div class="md:w-1/3">
+                        <p class="text-xs text-or font-medium tracking-[0.2em] uppercase mb-2">Service 3</p>
+                        <h2 class="text-2xl font-display font-semibold text-marine mb-3">Private Sovereign LLM</h2>
+                        <p class="price-tag text-xl">From 2,100 USD setup</p>
+                        <p class="text-xs text-ardoise-light mt-1">+ 270 USD/mo (managed cloud)</p>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="space-y-4 text-ardoise text-base leading-relaxed">
+                            <p>Your own language model, trained on your data, hosted on infrastructure you control. Your data never leaves your perimeter. Your AI depends on no external vendor.</p>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-5 service-card">
+                                <p class="text-sm font-medium text-marine mb-2">Managed Cloud</p>
+                                <p class="text-sm text-ardoise-light leading-relaxed">European Hetzner infrastructure (Germany). No US hyperscaler dependency. Full data sovereignty within EU jurisdiction.</p>
+                                <p class="price-tag text-sm mt-3">2,100 USD setup + 270 USD/mo</p>
+                            </div>
+                            <div class="bg-white border border-ardoise/10 rounded-lg p-5 service-card">
+                                <p class="text-sm font-medium text-marine mb-2">On-Premise</p>
+                                <p class="text-sm text-ardoise-light leading-relaxed">Dedicated hardware (Mac Mini M4 Pro or equivalent) installed at your location. Zero external data transfer. Maximum sovereignty.</p>
+                                <p class="price-tag text-sm mt-3">Custom quote</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="gold-line max-w-4xl mx-auto"></div>
+
+        <!-- TRAINING PROGRAMS -->
+        <section class="py-16 md:py-24 bg-creme">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <h2 class="text-2xl sm:text-3xl font-display font-semibold text-marine mb-4">Training Programs</h2>
+                <p class="text-ardoise-light text-base mb-10">Three programs tailored to three profiles. Video conference or on-site from June 2026.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-3">Operational</p>
+                        <h3 class="text-lg font-display font-semibold text-marine mb-3">Staff Training</h3>
+                        <p class="text-sm text-ardoise leading-relaxed">AI tool adoption in daily workflows. Practical, hands-on sessions designed to make teams productive with new tools from day one.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-3">Strategic</p>
+                        <h3 class="text-lg font-display font-semibold text-marine mb-3">Executive Training</h3>
+                        <p class="text-sm text-ardoise leading-relaxed">Strategic understanding of AI for decision-makers. ROI frameworks, risk assessment, and governance principles for the C-suite.</p>
+                    </div>
+                    <div class="bg-white border border-ardoise/10 rounded-lg p-6 service-card">
+                        <p class="text-xs text-or font-medium tracking-wider uppercase mb-3">Next-Gen</p>
+                        <h3 class="text-lg font-display font-semibold text-marine mb-3">Successor Training</h3>
+                        <p class="text-sm text-ardoise leading-relaxed">Preparing the next generation of technology leadership. For family businesses and companies planning succession with AI literacy as a core competency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE HUMAN CLAUSE -->
+        <section class="py-16 md:py-24 bg-marine text-white">
+            <div class="max-w-4xl mx-auto px-6 reveal">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                    <div class="md:w-1/3">
+                        <p class="text-xs text-or font-medium tracking-[0.2em] uppercase mb-2">Ethical Framework</p>
+                        <h2 class="text-2xl font-display font-semibold mb-3">The Human Clause</h2>
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="space-y-4 text-white/60 text-base leading-relaxed">
+                            <p>Emmanuel proposes to every client a twelve-month commitment of no layoffs linked to automation, accompanied by training programs for impacted employees. This is not a marketing gesture. It is a structural conviction.</p>
+                            <p>Companies that adopt the Human Clause benefit from a virtuous cycle: social stability reduces turnover costs, employee training strengthens the organization's AI adoption capacity, and the commitment to responsible automation enhances employer branding and ESG positioning.</p>
+                            <p>In jurisdictions with applicable tax incentives (CIR in France, LEC in Argentina), the Human Clause strengthens the compliance dossier and can unlock additional fiscal benefits tied to workforce development and responsible innovation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="py-20 md:py-28 bg-creme">
+            <div class="max-w-3xl mx-auto px-6 text-center reveal">
+                <div class="gold-line max-w-24 mx-auto mb-10"></div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-marine mb-6">Start With a Conversation</h2>
+                <p class="text-ardoise-light text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">The eligibility audit is free, confidential, and creates no obligation. In one hour, we jointly assess your potential for sovereign AI adoption and identify the quickest path to measurable EBITDA impact.</p>
+                <a href="contact-en.html" class="inline-flex px-8 py-4 rounded bg-or text-marine font-medium text-base cta-gold">Request My Free Eligibility Audit</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-marine-dark border-t border-white/5 py-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <p class="font-display text-white/60 text-sm">Emmanuel <span class="text-or/70">Smadja</span></p>
+                    <p class="text-white/25 text-xs mt-1">Sovereign AI Consulting &mdash; Israeli Ltd</p>
+                </div>
+                <div class="flex items-center gap-6 text-xs text-white/30">
+                    <a href="index-en.html" class="hover:text-or/60 transition-colors">Home</a>
+                    <a href="finances-en.html" class="hover:text-or/60 transition-colors">Finance</a>
+                    <a href="about-en.html" class="hover:text-or/60 transition-colors">About</a>
+                    <a href="contact-en.html" class="hover:text-or/60 transition-colors">Contact</a>
+                    <a href="index-en.html#pioneers" class="hover:text-or/60 transition-colors">Pioneers</a>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-white/25">
+                    <span class="hover:text-white/50 cursor-pointer transition-colors">ES</span><span class="hover:text-white/50 cursor-pointer transition-colors">FR</span><span class="text-or/50">EN</span>
+                </div>
+            </div>
+            <div class="gold-line mt-8 mb-6"></div>
+            <p class="text-center text-white/20 text-xs">&copy; 2026 Emmanuel Smadja. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+// Mobile menu
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+const menuClose = document.getElementById('mobile-menu-close');
+if (menuBtn && mobileOverlay) {
+    menuBtn.addEventListener('click', () => { mobileOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; });
+    mobileOverlay.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileOverlay.style.display = 'none'; document.body.style.overflow = ''; }));
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+    </script>
+</body>
+</html>
