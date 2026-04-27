@@ -738,7 +738,7 @@ function initDemoChatbot() {
         prix: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">A partir de <strong>890\u20AC</strong> pour un site vitrine.<br>CRM/Dashboard: des <strong>1 990\u20AC</strong><br>Chatbot IA: des <strong>1 490\u20AC</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection devis...\')">Devis gratuit</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Voir tarifs\')">Voir tous les prix</button></div></div>',
         delai: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Delais de livraison</div><div class="chat-rich-body">\u2022 Site vitrine: <strong>5 jours</strong><br>\u2022 CRM/Dashboard: <strong>7-10 jours</strong><br>\u2022 Projet complexe: <strong>10-14 jours</strong></div></div>',
         services: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">\u{1F310} Sites web & landing pages<br>\u{1F4CA} CRM & ERP sur mesure<br>\u{1F916} Chatbots IA (WhatsApp, web)<br>\u26A1 Automatisations<br>\u{1F50D} SEO technique<br>\u{1F6E1}\uFE0F Securite & RGPD</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection services\')">En savoir plus</button></div></div>',
-        contact: 'Contactez-nous a <strong>contact@flashai.dev</strong>. Reponse en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
+        contact: 'Contactez-nous a <strong>emmanuel@flashai.dev</strong>. Reponse en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
         technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>200+ APIs</strong> connectees.</div></div>',
         portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">+50 projets livres: SaaS, e-commerce, sante, fintech, edtech...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
         ia: 'Nous integrons <strong>GPT-4, LangChain, RAG</strong> et des modeles custom. Nos chatbots resolvent <strong>85%</strong> des demandes sans humain ! \u{1F9E0}',
@@ -1712,82 +1712,112 @@ function initSectionFlashReveal() {
     if (!modal || !body) return;
 
     const pages = {
-        'mentions-legales': `<h2>Mentions L\u00e9gales</h2>
-<h3>1. \u00c9diteur du site</h3>
-<p><strong>FlashAI</strong> \u2014 Entreprise isra\u00e9lienne<br>
-Fond\u00e9e par <strong>Emmanuel Smadja</strong><br>
-Si\u00e8ge social : Isra\u00ebl<br>
-Email : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a><br>
-T\u00e9l\u00e9phone : <a href="tel:+33758787025" style="color:#00f0ff">+33 7 58 78 70 25</a><br>
-Activit\u00e9 : Agence digitale \u2014 cr\u00e9ation de sites web, CRM, chatbots IA, automatisations</p>
-<h3>2. H\u00e9bergement</h3>
-<p>Ce site est h\u00e9berg\u00e9 par <strong>GitHub Pages</strong> (GitHub, Inc.), 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
-<h3>3. Propri\u00e9t\u00e9 intellectuelle</h3>
-<p>L\u2019ensemble du contenu de ce site (textes, images, logos, code, animations, design) est la propri\u00e9t\u00e9 exclusive de FlashAI et est prot\u00e9g\u00e9 par les lois isra\u00e9liennes et internationales relatives \u00e0 la propri\u00e9t\u00e9 intellectuelle. Toute reproduction, m\u00eame partielle, sans autorisation \u00e9crite pr\u00e9alable est interdite.</p>
-<h3>4. Responsabilit\u00e9</h3>
-<p>FlashAI s\u2019efforce de fournir des informations exactes et \u00e0 jour. Toutefois, FlashAI ne saurait \u00eatre tenu responsable des erreurs, omissions ou r\u00e9sultats obtenus suite \u00e0 l\u2019utilisation de ces informations.</p>
-<h3>5. Droit applicable</h3>
-<p>Les pr\u00e9sentes mentions l\u00e9gales sont r\u00e9gies par le droit isra\u00e9lien. Tout litige sera soumis \u00e0 la comp\u00e9tence exclusive des tribunaux d\u2019Isra\u00ebl.</p>`,
+        'mentions-legales': `<h2>Menciones Legales</h2>
+<h3>Marco de actividad</h3>
+<p>Actividad ejercida en el marco de los <strong>Acuerdos de Isaac</strong> (19 de abril de 2026 \u2014 Memor\u00e1ndum de Entendimiento sobre cooperaci\u00f3n en inteligencia artificial firmado entre la Rep\u00fablica Argentina y el Estado de Israel).</p>
+<h3>Estructuras jur\u00eddicas</h3>
+<p>Estructuras jur\u00eddicas en proceso de validaci\u00f3n:</p>
+<ul>
+<li>Ossek Moursh\u00e9 Israel \u2014 transformaci\u00f3n en curso desde Ossek Patouh validado</li>
+<li>LLC Wyoming USA \u2014 constituci\u00f3n en curso</li>
+</ul>
+<p>Actualizaci\u00f3n con datos completos al cierre de la finalizaci\u00f3n.</p>
+<h3>Contacto</h3>
+<p>Contacto pre-oficial: <a href="mailto:emmanuel@flashai.dev" style="color:#00f0ff">emmanuel@flashai.dev</a> \u2014 <a href="https://wa.me/972552418324" style="color:#00f0ff">WhatsApp +972 55 241 83 24</a></p>
+<h3>Alojamiento</h3>
+<p>Este sitio est\u00e1 alojado en <strong>GitHub Pages</strong> (GitHub, Inc.), 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
+<h3>Propiedad intelectual</h3>
+<p>Todo el contenido de este sitio (textos, im\u00e1genes, logos, c\u00f3digo, animaciones, dise\u00f1o) es propiedad exclusiva de FlashAI y est\u00e1 protegido por las leyes israel\u00edes e internacionales de propiedad intelectual. Toda reproducci\u00f3n, incluso parcial, sin autorizaci\u00f3n escrita previa est\u00e1 prohibida.</p>
+<h3>Derecho aplicable</h3>
+<p>Estas menciones legales se rigen por el derecho israel\u00ed. Cualquier litigio ser\u00e1 sometido a la competencia exclusiva de los tribunales de Israel.</p>
 
-        'politique-confidentialite': `<h2>Politique de Confidentialit\u00e9</h2>
-<h3>1. Responsable du traitement</h3>
-<p><strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja.<br>
-Contact : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>
-<h3>2. Donn\u00e9es collect\u00e9es</h3>
-<p>Nous collectons les donn\u00e9es suivantes uniquement via le formulaire de contact :</p>
+<hr style="border-color:rgba(255,255,255,0.1);margin:2rem 0">
+
+<h2>Dispositivos Fiscales \u2014 Transparencia Obligatoria</h2>
+<p>Los dispositivos fiscales argentinos mencionados en este sitio (<strong>Ley 27.506 LEC</strong>, <strong>Cr\u00e9dito Fiscal Capacitaci\u00f3n PyME Ley 22.317</strong>, <strong>INPI Resoluci\u00f3n 38/2026</strong> de transferencia de tecnolog\u00eda, <strong>RIMI Decreto 242/2026</strong>) son indicativos. La elegibilidad, los plazos y el monto efectivo de cualquier reembolso o ventaja fiscal dependen exclusivamente de la decisi\u00f3n de los organismos competentes (SePyME, ARCA-AFIP, INPI, Ministerio de Econom\u00eda).</p>
+<p><strong>Emmanuel Smadja no es mandatario p\u00fablico y no garantiza ni la obtenci\u00f3n ni el monto de las ayudas.</strong> La obtenci\u00f3n de cualquier subvenci\u00f3n o cr\u00e9dito fiscal es responsabilidad exclusiva del Cliente.</p>
+<p>No existe convenci\u00f3n fiscal general entre Argentina e Israel a la fecha (salvo acuerdo limitado al transporte a\u00e9reo y mar\u00edtimo). La retenci\u00f3n del impuesto a las ganancias del 31,5% sobre pagos a no residentes se aplica salvo registro INPI como asistencia t\u00e9cnica (que reduce la retenci\u00f3n al 21%).</p>
+
+<hr style="border-color:rgba(255,255,255,0.1);margin:2rem 0">
+
+<h2>Programa Pioneros</h2>
+<p>Descuento del 40% aplicable durante toda la vigencia del contrato, sujeto a:</p>
 <ul>
-<li>Nom et pr\u00e9nom</li>
-<li>Adresse email</li>
-<li>Nom de l\u2019entreprise (facultatif)</li>
-<li>Message / description du projet</li>
+<li>(i) renovaci\u00f3n anual del cliente</li>
+<li>(ii) actividad continua del consultor</li>
+<li>(iii) no aplicaci\u00f3n de cambios sustanciales del marco legal o fiscal</li>
 </ul>
-<h3>3. Finalit\u00e9 du traitement</h3>
-<p>Ces donn\u00e9es sont utilis\u00e9es exclusivement pour :</p>
+<p>No transferible, personal, extinguido con la relaci\u00f3n contractual. Preaviso de 90 d\u00edas en caso de discontinuaci\u00f3n del programa.</p>
+
+<hr style="border-color:rgba(255,255,255,0.1);margin:2rem 0">
+
+<h2>LLM Isaac</h2>
+<p>Producto comercial privado de Emmanuel Smadja. La denominaci\u00f3n \u00ab&nbsp;LLM Isaac&nbsp;\u00bb se utiliza exclusivamente en homenaje a los Acuerdos de Isaac firmados en abril de 2026. <strong>NO</strong> constituye un producto oficial, <strong>NO</strong> est\u00e1 patrocinado por el Estado argentino, israel\u00ed ni por ning\u00fan organismo gubernamental vinculado al acuerdo bilateral. <strong>NO</strong> est\u00e1 vinculado al Memor\u00e1ndum de IA suscrito por la Direcci\u00f3n Nacional de IA de Israel y la Secretar\u00eda de Innovaci\u00f3n argentina.</p>
+
+<hr style="border-color:rgba(255,255,255,0.1);margin:2rem 0">
+
+<h2>ASHRA</h2>
+<p>La Israeli Foreign Trade Risks Insurance Corporation es una agencia p\u00fablica israel\u00ed de seguro-cr\u00e9dito a la exportaci\u00f3n. <strong>NO</strong> interviene como garant\u00eda sobre prestaciones individuales de consulting, <strong>NI</strong> cubre el riesgo del cliente final. No la mencionamos como cobertura comercial.</p>`,
+
+        'politique-confidentialite': `<h2>Pol\u00edtica de Privacidad</h2>
+<h3>1. Responsable del tratamiento</h3>
+<p><strong>FlashAI</strong>, empresa israel\u00ed fundada por Emmanuel Smadja.<br>
+Contacto: <a href="mailto:emmanuel@flashai.dev" style="color:#00f0ff">emmanuel@flashai.dev</a></p>
+<h3>2. Datos recolectados</h3>
+<p>Recolectamos los siguientes datos \u00fanicamente a trav\u00e9s del formulario de contacto y WhatsApp:</p>
 <ul>
-<li>R\u00e9pondre \u00e0 vos demandes de devis et de contact</li>
-<li>\u00c9tablir et g\u00e9rer la relation commerciale</li>
-<li>Am\u00e9liorer nos services</li>
+<li>Nombre y apellido</li>
+<li>Direcci\u00f3n de email</li>
+<li>Nombre de la empresa (opcional)</li>
+<li>Mensaje / descripci\u00f3n del proyecto</li>
 </ul>
-<h3>4. Dur\u00e9e de conservation</h3>
-<p>Les donn\u00e9es sont conserv\u00e9es pendant une dur\u00e9e maximale de 3 ans apr\u00e8s le dernier contact, sauf obligation l\u00e9gale contraire.</p>
-<h3>5. Partage des donn\u00e9es</h3>
-<p>Vos donn\u00e9es ne sont jamais vendues, lou\u00e9es ou partag\u00e9es avec des tiers \u00e0 des fins commerciales. Elles peuvent \u00eatre transmises \u00e0 des sous-traitants techniques (h\u00e9bergement, email) uniquement dans le cadre strict de la prestation.</p>
+<h3>3. Finalidad del tratamiento</h3>
+<p>Estos datos se utilizan exclusivamente para:</p>
+<ul>
+<li>Responder a sus solicitudes de presupuesto y contacto</li>
+<li>Establecer y gestionar la relaci\u00f3n comercial</li>
+<li>Mejorar nuestros servicios</li>
+</ul>
+<h3>4. Duraci\u00f3n de conservaci\u00f3n</h3>
+<p>Los datos se conservan durante un m\u00e1ximo de 3 a\u00f1os despu\u00e9s del \u00faltimo contacto, salvo obligaci\u00f3n legal contraria.</p>
+<h3>5. Compartici\u00f3n de datos</h3>
+<p>Sus datos nunca se venden, alquilan ni comparten con terceros con fines comerciales. Pueden ser transmitidos a subcontratistas t\u00e9cnicos (alojamiento, email) \u00fanicamente en el marco estricto de la prestaci\u00f3n.</p>
 <h3>6. Cookies</h3>
-<p>Ce site utilise uniquement des cookies techniques n\u00e9cessaires au bon fonctionnement du site. Aucun cookie publicitaire ou de tracking n\u2019est utilis\u00e9.</p>
-<h3>7. Vos droits</h3>
-<p>Conform\u00e9ment \u00e0 la loi isra\u00e9lienne sur la protection de la vie priv\u00e9e (Privacy Protection Law, 5741-1981) et au RGPD pour les r\u00e9sidents europ\u00e9ens, vous disposez des droits d\u2019acc\u00e8s, de rectification, de suppression et de portabilit\u00e9 de vos donn\u00e9es. Contactez-nous \u00e0 <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a>.</p>
-<h3>8. S\u00e9curit\u00e9</h3>
-<p>Nous mettons en \u0153uvre des mesures de s\u00e9curit\u00e9 techniques et organisationnelles (SSL/TLS, chiffrement AES-256) pour prot\u00e9ger vos donn\u00e9es personnelles.</p>`,
+<p>Este sitio utiliza \u00fanicamente cookies t\u00e9cnicas necesarias para el buen funcionamiento del sitio. No se utiliza ninguna cookie publicitaria o de tracking.</p>
+<h3>7. Sus derechos</h3>
+<p>Conforme a la <strong>Ley 25.326</strong> de Protecci\u00f3n de Datos Personales (Argentina), la ley israel\u00ed de protecci\u00f3n de la privacidad (Privacy Protection Law, 5741-1981) y el <strong>RGPD</strong> para residentes europeos, usted dispone de los derechos de acceso, rectificaci\u00f3n, supresi\u00f3n y portabilidad de sus datos. Cont\u00e1ctenos en <a href="mailto:emmanuel@flashai.dev" style="color:#00f0ff">emmanuel@flashai.dev</a>.</p>
+<h3>8. Seguridad</h3>
+<p>Implementamos medidas de seguridad t\u00e9cnicas y organizacionales (SSL/TLS, cifrado AES-256) para proteger sus datos personales.</p>`,
 
-        'cgv': `<h2>Conditions G\u00e9n\u00e9rales de Vente</h2>
-<h3>1. Objet</h3>
-<p>Les pr\u00e9sentes CGV r\u00e9gissent les relations entre <strong>FlashAI</strong>, entreprise isra\u00e9lienne fond\u00e9e par Emmanuel Smadja (ci-apr\u00e8s \u00ab le Prestataire \u00bb), et tout client (ci-apr\u00e8s \u00ab le Client \u00bb) pour les prestations de services digitaux.</p>
-<h3>2. Services propos\u00e9s</h3>
+        'cgv': `<h2>Condiciones Generales de Servicio</h2>
+<h3>1. Objeto</h3>
+<p>Las presentes condiciones rigen las relaciones entre <strong>FlashAI</strong>, empresa israel\u00ed fundada por Emmanuel Smadja (en adelante \u00ab&nbsp;el Prestador&nbsp;\u00bb), y todo cliente (en adelante \u00ab&nbsp;el Cliente&nbsp;\u00bb) para las prestaciones de servicios digitales e IA.</p>
+<h3>2. Servicios ofrecidos</h3>
 <ul>
-<li>Cr\u00e9ation de sites web sur mesure</li>
-<li>D\u00e9veloppement de CRM / ERP personnalis\u00e9s</li>
-<li>Int\u00e9gration de chatbots IA</li>
-<li>Tableaux de bord et analytics</li>
-<li>Automatisation de processus</li>
-<li>SEO technique et audit</li>
-<li>S\u00e9curit\u00e9 web et conformit\u00e9 RGPD</li>
+<li>Sprint IA 14 d\u00edas \u2014 implementaci\u00f3n r\u00e1pida</li>
+<li>Automatizaci\u00f3n de procesos con IA</li>
+<li>Private Brain \u2014 base de conocimiento IA</li>
+<li>Fractional CTO \u2014 direcci\u00f3n t\u00e9cnica externa</li>
+<li>LLM Isaac \u2014 asistente IA personalizado</li>
 </ul>
-<h3>3. Devis et commande</h3>
-<p>Tout projet d\u00e9bute par un devis personnalis\u00e9 gratuit, \u00e9tabli sous 24h. Le devis est valable 30 jours. La commande est confirm\u00e9e \u00e0 r\u00e9ception du devis sign\u00e9 et du versement de l\u2019acompte de 50%.</p>
-<h3>4. Tarifs et paiement</h3>
-<p>Les prix sont indiqu\u00e9s en euros (EUR), hors taxes. En tant qu\u2019entreprise isra\u00e9lienne, la TVA fran\u00e7aise ne s\u2019applique pas (autoliquidation pour les clients europ\u00e9ens). Le solde est d\u00fb \u00e0 la livraison du projet.</p>
-<h3>5. D\u00e9lais de livraison</h3>
-<p>Les d\u00e9lais indicatifs sont : site vitrine (5 jours), CRM/dashboard (7-10 jours), projet complexe (10-14 jours). Ces d\u00e9lais courent \u00e0 compter de la validation du cahier des charges et de la r\u00e9ception de l\u2019acompte.</p>
-<h3>6. Propri\u00e9t\u00e9 et livraison</h3>
-<p>Le transfert de propri\u00e9t\u00e9 du code source et des livrables s\u2019effectue au paiement int\u00e9gral. Le Client re\u00e7oit un acc\u00e8s complet au code source, aux acc\u00e8s h\u00e9bergement et \u00e0 toute la documentation technique.</p>
-<h3>8. Support et maintenance</h3>
-<p>Un support technique est inclus pendant 12 mois apr\u00e8s la livraison. Au-del\u00e0, un contrat de maintenance peut \u00eatre propos\u00e9.</p>
-<h3>9. R\u00e9siliation</h3>
-<p>Chaque partie peut r\u00e9silier le contrat en cas de manquement grave de l\u2019autre partie, apr\u00e8s mise en demeure rest\u00e9e sans effet pendant 15 jours.</p>
-<h3>10. Droit applicable et litiges</h3>
-<p>Les pr\u00e9sentes CGV sont r\u00e9gies par le droit isra\u00e9lien. En cas de litige, les parties s\u2019engagent \u00e0 rechercher une solution amiable. \u00c0 d\u00e9faut, les tribunaux d\u2019Isra\u00ebl seront seuls comp\u00e9tents.</p>
-<h3>11. Contact</h3>
-<p>Pour toute question relative aux pr\u00e9sentes CGV : <a href="mailto:contact@flashai.dev" style="color:#00f0ff">contact@flashai.dev</a></p>`
+<h3>3. Presupuesto y pedido</h3>
+<p>Todo proyecto comienza con un presupuesto personalizado gratuito, establecido en 24h. El presupuesto es v\u00e1lido por 30 d\u00edas. El pedido se confirma con la recepci\u00f3n del presupuesto firmado y el pago del anticipo del 50%.</p>
+<h3>4. Tarifas y pago</h3>
+<p>Los precios se indican en USD, libres de impuestos. Para clientes argentinos: la retenci\u00f3n del 31,5% sobre pagos a no residentes se aplica salvo registro INPI (que reduce a 21%). Moneda de facturaci\u00f3n: USD. El saldo se debe a la entrega del proyecto.</p>
+<h3>5. Plazos de entrega</h3>
+<p>Los plazos indicativos son: Sprint IA (14 d\u00edas), automatizaci\u00f3n (7-10 d\u00edas), proyecto complejo (10-21 d\u00edas). Estos plazos corren desde la validaci\u00f3n del alcance y la recepci\u00f3n del anticipo.</p>
+<h3>6. Propiedad y entrega</h3>
+<p>La transferencia de propiedad del c\u00f3digo fuente y los entregables se efect\u00faa al pago total. El Cliente recibe acceso completo al c\u00f3digo fuente, accesos de alojamiento y toda la documentaci\u00f3n t\u00e9cnica.</p>
+<h3>7. Soporte y mantenimiento</h3>
+<p>Se incluye soporte t\u00e9cnico durante 12 meses despu\u00e9s de la entrega. M\u00e1s all\u00e1, se puede proponer un contrato de mantenimiento.</p>
+<h3>8. Programa Pioneros</h3>
+<p>El descuento Pioneros (-40%) est\u00e1 sujeto a las condiciones detalladas en las Menciones Legales. No transferible, personal, extinguido con la relaci\u00f3n contractual.</p>
+<h3>9. Resoluci\u00f3n</h3>
+<p>Cada parte puede resolver el contrato en caso de incumplimiento grave de la otra parte, previo requerimiento sin efecto durante 15 d\u00edas.</p>
+<h3>10. Derecho aplicable y litigios</h3>
+<p>Las presentes condiciones se rigen por el derecho israel\u00ed. En caso de litigio, las partes se comprometen a buscar una soluci\u00f3n amistosa. En su defecto, los tribunales de Israel ser\u00e1n los \u00fanicos competentes.</p>
+<h3>11. Contacto</h3>
+<p>Para cualquier consulta sobre las presentes condiciones: <a href="mailto:emmanuel@flashai.dev" style="color:#00f0ff">emmanuel@flashai.dev</a></p>`
     };
 
     function openModal(page) {
