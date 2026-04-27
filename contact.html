@@ -108,7 +108,143 @@
             </div>
         </section>
 
-        <!-- PLACEHOLDER G4 -->
+        <!-- QUICK FORM -->
+        <section class="py-20 bg-white/[0.02]">
+            <div class="max-w-2xl mx-auto px-6 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4 text-center">Prefer a form? No problem.</h2>
+                <p class="text-surface-400 text-center mb-10">Fill this out and we'll reach you via WhatsApp or email within 2 hours.</p>
+                <form id="contact-form" class="space-y-5" onsubmit="return false;">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm text-surface-300 mb-1.5">Name *</label>
+                            <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-surface-500 focus:border-neon-blue/50 focus:outline-none transition-colors" placeholder="Juan Pérez">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-surface-300 mb-1.5">Company *</label>
+                            <input type="text" name="company" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-surface-500 focus:border-neon-blue/50 focus:outline-none transition-colors" placeholder="Acme Corp">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm text-surface-300 mb-1.5">WhatsApp or Email *</label>
+                            <input type="text" name="contact" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-surface-500 focus:border-neon-blue/50 focus:outline-none transition-colors" placeholder="+54 11 1234 5678">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-surface-300 mb-1.5">Country</label>
+                            <select name="country" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-blue/50 focus:outline-none transition-colors">
+                                <option value="">Select...</option>
+                                <option>🇦🇷 Argentina</option>
+                                <option>🇧🇷 Brazil</option>
+                                <option>🇲🇽 Mexico</option>
+                                <option>🇨🇴 Colombia</option>
+                                <option>🇨🇱 Chile</option>
+                                <option>🇵🇪 Peru</option>
+                                <option>🇺🇾 Uruguay</option>
+                                <option>🇵🇦 Panama</option>
+                                <option>🇨🇷 Costa Rica</option>
+                                <option>🇪🇨 Ecuador</option>
+                                <option>🇩🇴 Dominican Republic</option>
+                                <option>🇬🇹 Guatemala</option>
+                                <option>🇧🇴 Bolivia</option>
+                                <option>🇺🇸 USA</option>
+                                <option>🇨🇦 Canada</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-surface-300 mb-1.5">Service interest</label>
+                        <select name="service" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-blue/50 focus:outline-none transition-colors">
+                            <option value="">Select...</option>
+                            <option>🚀 Sprint IA · 14 Days (from $990)</option>
+                            <option>⚙️ Automation Intelligence (from $4,900)</option>
+                            <option>🎯 Fractional CTO AI (from $2,500/mo)</option>
+                            <option>🧠 Private Brain · Sovereign LLM (from $9,900)</option>
+                            <option>💬 Not sure yet — need guidance</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-surface-300 mb-1.5">Tell us about your project *</label>
+                        <textarea name="message" required rows="4" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-surface-500 focus:border-neon-blue/50 focus:outline-none transition-colors resize-none" placeholder="What's the challenge? What would success look like?"></textarea>
+                    </div>
+                    <button type="submit" id="contact-submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#20BA5A] text-white font-semibold text-lg cta-btn">💬 Send via WhatsApp</button>
+                    <p class="text-xs text-surface-500 text-center">Your message opens WhatsApp with a pre-filled recap. Nothing is stored on our servers.</p>
+                </form>
+            </div>
+        </section>
+
+        <script>
+        document.getElementById('contact-submit').addEventListener('click', function() {
+            const form = document.getElementById('contact-form');
+            const name = form.querySelector('[name="name"]').value.trim();
+            const company = form.querySelector('[name="company"]').value.trim();
+            const contact = form.querySelector('[name="contact"]').value.trim();
+            const country = form.querySelector('[name="country"]').value;
+            const service = form.querySelector('[name="service"]').value;
+            const message = form.querySelector('[name="message"]').value.trim();
+            if (!name || !company || !contact || !message) {
+                alert('Please fill in all required fields / Completá todos los campos obligatorios');
+                return;
+            }
+            let msg = `Hola Emmanuel, soy un prospecto desde la página Contact.\n\n`;
+            msg += `• Nombre: ${name}\n`;
+            msg += `• Empresa: ${company}\n`;
+            msg += `• Contacto: ${contact}\n`;
+            if (country) msg += `• País: ${country}\n`;
+            if (service) msg += `• Servicio: ${service}\n`;
+            msg += `\n• Proyecto:\n${message}`;
+            window.open(`https://wa.me/972552418324?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+        </script>
+
+        <!-- FINAL CTA -->
+        <section class="py-24 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#25D366]/5 to-transparent"></div>
+            <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Don't wait — your competitors aren't</h2>
+                <p class="text-xl text-surface-300 mb-8">El primer paso es un WhatsApp. Respondemos en menos de 2 horas.</p>
+                <a href="https://wa.me/972552418324?text=Hola%2C%20quiero%20empezar%20un%20proyecto%20AI" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#25D366] to-[#20BA5A] rounded-xl text-white font-semibold cta-btn">💬 WhatsApp directo · Empezá ahora</a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-white/10 bg-surface-950 py-16">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                    <div>
+                        <span class="text-xl font-display font-bold bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">FlashAI</span>
+                        <p class="text-surface-400 text-sm mt-3 leading-relaxed">AI consulting for LATAM SMBs.<br>Israeli entity · Franco-Israeli founder.<br>Ship AI in 14 days, not 6 months.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-semibold text-white mb-4">4 Pillars</h4>
+                        <ul class="space-y-2 text-sm text-surface-400">
+                            <li><a href="/services/sprint.html" class="hover:text-neon-gold transition-colors">🚀 Sprint IA · 14 Days</a></li>
+                            <li><a href="/services/automation.html" class="hover:text-neon-purple transition-colors">⚙️ Automation Intelligence</a></li>
+                            <li><a href="/services/fractional-cto.html" class="hover:text-neon-orange transition-colors">🎯 Fractional CTO AI</a></li>
+                            <li><a href="/services/private-brain.html" class="hover:text-neon-pink transition-colors">🧠 Private Brain · Sovereign LLM</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-semibold text-white mb-4">LATAM Markets</h4>
+                        <p class="text-sm text-surface-400 leading-relaxed">🇦🇷 🇧🇷 🇲🇽 🇨🇴 🇨🇱 🇵🇪 🇺🇾 🇵🇾 🇵🇦 🇨🇷 🇪🇨 🇩🇴 🇬🇹 🇭🇳 🇸🇻 🇧🇴 🇳🇮</p>
+                        <p class="text-xs text-surface-500 mt-2">WhatsApp-first · &lt; 2h response</p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-semibold text-white mb-4">Contact</h4>
+                        <ul class="space-y-2 text-sm text-surface-400">
+                            <li><a href="https://wa.me/972552418324" target="_blank" rel="noopener" class="hover:text-[#25D366] transition-colors">💬 WhatsApp IL +972</a></li>
+                            <li><a href="https://wa.me/33752648854" target="_blank" rel="noopener" class="hover:text-[#25D366] transition-colors">💬 WhatsApp FR +33</a></li>
+                            <li><a href="mailto:emmanuel@flashai.dev" class="hover:text-neon-blue transition-colors">✉️ emmanuel@flashai.dev</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="glow-line mb-6"></div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-surface-500">
+                    <p>&copy; 2026 FlashAI — AI Consulting · Israel 🇮🇱</p>
+                    <p>WhatsApp-first. No chatbots — you talk to Emmanuel directly.</p>
+                </div>
+            </div>
+        </footer>
 
     </main>
 
