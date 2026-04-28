@@ -675,12 +675,14 @@ function initDemoCRM() {
     const ct = document.getElementById('demo-crm');
     if (!ct) return;
     const contacts = [
-        { name: 'Marie Dupont', email: 'marie@acme.fr', value: '4 200 \u20AC', status: 'prospect', avatar: 'MD' },
-        { name: 'Jean Martin', email: 'jean@startup.io', value: '8 500 \u20AC', status: 'prospect', avatar: 'JM' },
-        { name: 'Sophie Bernard', email: 'sophie@tech.com', value: '12 000 \u20AC', status: 'encours', avatar: 'SB' },
-        { name: 'Lucas Petit', email: 'lucas@digital.fr', value: '3 800 \u20AC', status: 'encours', avatar: 'LP' },
-        { name: 'Emma Leroy', email: 'emma@design.co', value: '6 500 \u20AC', status: 'client', avatar: 'EL' },
-        { name: 'Thomas Moreau', email: 'thomas@web.fr', value: '15 000 \u20AC', status: 'client', avatar: 'TM' }
+        { name: 'Ana Garc\u00eda', email: 'ana@fintech.ar', value: 'USD 6.500', status: 'client', avatar: 'AG' },
+        { name: 'Carlos Rodr\u00edguez', email: 'carlos@ecom.mx', value: 'USD 4.900', status: 'encours', avatar: 'CR' },
+        { name: 'Valentina Torres', email: 'val@health.co', value: 'USD 9.900', status: 'prospect', avatar: 'VT' },
+        { name: 'Mateo Silva', email: 'mateo@agri.cl', value: 'USD 2.500', status: 'client', avatar: 'MS' },
+        { name: 'Luciana Ferreira', email: 'lu@saas.uy', value: 'USD 3.900', status: 'encours', avatar: 'LF' },
+        { name: 'Santiago Morales', email: 'santi@legal.pe', value: 'USD 9.900', status: 'prospect', avatar: 'SM' },
+        { name: 'Camila Herrera', email: 'cami@realestate.pa', value: 'USD 4.900', status: 'client', avatar: 'CH' },
+        { name: 'Diego Mart\u00ednez', email: 'diego@logist.br', value: 'USD 15.000', status: 'client', avatar: 'DM' }
     ];
     const columns = { prospect: 'Prospectos', encours: 'En curso', client: 'Clientes' };
     function render(filter='') {
@@ -734,30 +736,90 @@ function initDemoDevis() {
 function initDemoChatbot() {
     const ct = document.getElementById('demo-chatbot');
     if (!ct) return;
-    const responses = {
-        precio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nuestros precios</div><div class="chat-rich-body">Sprint Diagnóstico (3 días): <strong>USD 990</strong><br>Sprint 14 días: <strong>USD 3.900</strong> (Pioneros: USD 2.340)<br>Automatización: desde <strong>USD 4.900</strong><br>Fractional CTO: <strong>USD 2.500/mes</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirigiendo...\')">Presupuesto gratis</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Ver precios\')">Ver todos los precios</button></div></div>',
-        plazo: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Plazos de entrega</div><div class="chat-rich-body">\u2022 Sprint Diagnóstico: <strong>3 días</strong><br>\u2022 Sprint 14 días: <strong>14 días</strong><br>\u2022 Automatización: <strong>7-10 días</strong><br>\u2022 Proyecto complejo: <strong>10-21 días</strong></div></div>',
-        servicio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nuestros servicios</div><div class="chat-rich-body">\u26A1 Sprint IA 14 días<br>\u{1F916} Automatización inteligente<br>\u{1F9E0} Private Brain — IA soberana<br>\u{1F4CA} Fractional CTO<br>\u{1F50D} LLM Isaac — asistente IA<br>\u{1F6E1}\uFE0F Compliance (GDPR, Ley 25.326)</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirigiendo...\')">Conocer más</button></div></div>',
-        contacto: 'Escribinos a <strong>emmanuel@flashai.dev</strong> o por WhatsApp. Respuesta en <strong>menos de 2h</strong>, 24/7. \u{1F4E9}',
-        tecnologia: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Nuestro stack tech</div><div class="chat-rich-body">Claude, GPT-4, Mistral, LangChain, RAG, Python, Node.js, TypeScript, PostgreSQL, Docker, Hetzner... <strong>200+ APIs</strong> conectadas.</div></div>',
-        portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nuestros casos</div><div class="chat-rich-body">+50 proyectos entregados: SaaS, e-commerce, fintech, salud, agroindustria...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Ver casos\')">Ver casos de estudio</button></div></div>',
-        ia: 'Integramos <strong>Claude, GPT-4, LangChain, RAG</strong> y modelos custom. Nuestros chatbots resuelven <strong>85%</strong> de las consultas sin humano. \u{1F9E0}',
-        audit: 'El Pre-Diagnóstico IA es <strong>gratuito</strong> (30 min en videollamada después del formulario). El Audit RAG completo es de <strong>EUR 500</strong> (3 días). Para Pioneros: <strong>EUR 300</strong>. ¿Querés reservar tu Pre-Diagnóstico?',
-        subvencion: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4CB} Dispositivos fiscales argentinos</div><div class="chat-rich-body">Tres dispositivos pueden ayudar según tu situación:<br>• <strong>Régimen LEC</strong>: reduce tu impuesto a las ganancias entre 10 y 20%<br>• <strong>Crédito Fiscal Capacitación</strong>: reembolsa hasta 100% de las formaciones<br>• <strong>Resolución INPI 38/2026</strong>: reduce la retención del 31,5% al 21%<br><br>Lo discutimos en el Pre-Diagnóstico.</div></div>',
-        isaac: 'No. El <strong>LLM Isaac</strong> es un producto comercial privado de Emmanuel Smadja. El nombre es un homenaje a los Acuerdos de Isaac firmados en abril 2026. <strong>No es un producto oficial</strong> ni está vinculado a ningún gobierno.',
-        default: 'Soy el asistente FlashAI \u{1F916}. Preguntame sobre nuestros <strong>servicios</strong>, <strong>precios</strong>, <strong>audit</strong>, <strong>subvenciones</strong> o <strong>LLM Isaac</strong>!'
+
+    const i18n = {
+        es: {
+            precio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nuestros precios</div><div class="chat-rich-body">Sprint Diagnóstico (3 días): <strong>USD 990</strong><br>Sprint 14 días: <strong>USD 3.900</strong> (Pioneros: USD 2.340)<br>Automatización: desde <strong>USD 4.900</strong><br>Fractional CTO: <strong>USD 2.500/mes</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirigiendo...\')">Presupuesto gratis</button></div></div>',
+            plazo: '<div class="chat-rich-card"><div class="chat-rich-title">⏱️ Plazos de entrega</div><div class="chat-rich-body">• Sprint Diagnóstico: <strong>3 días</strong><br>• Sprint 14 días: <strong>14 días</strong><br>• Automatización: <strong>7-10 días</strong><br>• Proyecto complejo: <strong>10-21 días</strong></div></div>',
+            servicio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nuestros servicios</div><div class="chat-rich-body">⚡ Sprint IA 14 días<br>\u{1F916} Automatización inteligente<br>\u{1F9E0} Private Brain — IA soberana<br>\u{1F4CA} Fractional CTO<br>\u{1F50D} LLM Isaac</div></div>',
+            contacto: 'Escribinos a <strong>emmanuel@flashai.dev</strong> o por WhatsApp. Respuesta en <strong>menos de 2h</strong>, 24/7. \u{1F4E9}',
+            audit: 'El Pre-Diagnóstico IA es <strong>gratuito</strong> (30 min en videollamada). El Audit RAG completo: <strong>EUR 500</strong> (3 días). Pioneros: <strong>EUR 300</strong>.',
+            subvencion: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4CB} Dispositivos fiscales argentinos</div><div class="chat-rich-body">• <strong>Régimen LEC</strong>: reduce impuesto a las ganancias 10-20%<br>• <strong>Crédito Fiscal Capacitación</strong>: reembolsa hasta 100%<br>• <strong>INPI Resolución 38/2026</strong>: retención 31,5% → 21%</div></div>',
+            isaac: 'El <strong>LLM Isaac</strong> es un producto comercial privado de Emmanuel Smadja. El nombre es un homenaje a los Acuerdos de Isaac (abril 2026). <strong>No es un producto oficial</strong>.',
+            fallback: 'Soy el asistente FlashAI \u{1F916}. Preguntame sobre <strong>servicios</strong>, <strong>precios</strong>, <strong>audit</strong>, <strong>subvenciones</strong> o <strong>LLM Isaac</strong>.',
+            suggestions: ['¿Precios?', '¿Audit IA?', 'Subvenciones', 'LLM Isaac', 'Servicios', 'Contacto'],
+            placeholder: 'Tu mensaje...',
+            send: 'Enviar',
+            greeting: '¡Hola! \u{1F44B} ¿En qué puedo ayudarte?',
+            thanks: '¡Con mucho gusto! No dudes en preguntar más. \u{1F60A}'
+        },
+        en: {
+            precio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Our pricing</div><div class="chat-rich-body">Sprint Diagnostic (3 days): <strong>USD 990</strong><br>Sprint 14 Days: <strong>USD 3,900</strong> (Pioneros: USD 2,340)<br>Automation: from <strong>USD 4,900</strong><br>Fractional CTO: <strong>USD 2,500/mo</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirecting...\')">Free quote</button></div></div>',
+            plazo: '<div class="chat-rich-card"><div class="chat-rich-title">⏱️ Delivery timelines</div><div class="chat-rich-body">• Sprint Diagnostic: <strong>3 days</strong><br>• Sprint 14 Days: <strong>14 days</strong><br>• Automation: <strong>7-10 days</strong><br>• Complex project: <strong>10-21 days</strong></div></div>',
+            servicio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Our services</div><div class="chat-rich-body">⚡ Sprint IA 14 Days<br>\u{1F916} Intelligent Automation<br>\u{1F9E0} Private Brain — Sovereign AI<br>\u{1F4CA} Fractional CTO<br>\u{1F50D} LLM Isaac</div></div>',
+            contacto: 'Email us at <strong>emmanuel@flashai.dev</strong> or WhatsApp. Response in <strong>under 2h</strong>, 24/7. \u{1F4E9}',
+            audit: 'The AI Pre-Diagnostic is <strong>free</strong> (30 min video call). Full RAG Audit: <strong>EUR 500</strong> (3 days). Pioneros: <strong>EUR 300</strong>.',
+            subvencion: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4CB} Argentine tax incentives</div><div class="chat-rich-body">• <strong>LEC regime</strong>: reduces income tax 10-20%<br>• <strong>Training Tax Credit</strong>: reimburses up to 100%<br>• <strong>INPI Resolution 38/2026</strong>: withholding 31.5% → 21%</div></div>',
+            isaac: '<strong>LLM Isaac</strong> is a private commercial product by Emmanuel Smadja. Named in tribute to the Isaac Accords (April 2026). <strong>Not an official government product</strong>.',
+            fallback: 'I\'m the FlashAI assistant \u{1F916}. Ask me about <strong>services</strong>, <strong>pricing</strong>, <strong>audit</strong>, <strong>subsidies</strong>, or <strong>LLM Isaac</strong>.',
+            suggestions: ['Pricing?', 'AI Audit?', 'Subsidies', 'LLM Isaac', 'Services', 'Contact'],
+            placeholder: 'Your message...',
+            send: 'Send',
+            greeting: 'Hi! \u{1F44B} How can I help you?',
+            thanks: 'You\'re welcome! Feel free to ask more. \u{1F60A}'
+        },
+        fr: {
+            precio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">Sprint Diagnostic (3 jours) : <strong>USD 990</strong><br>Sprint 14 jours : <strong>USD 3 900</strong> (Pioneros : USD 2 340)<br>Automatisation : dès <strong>USD 4 900</strong><br>Fractional CTO : <strong>USD 2 500/mois</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection...\')">Devis gratuit</button></div></div>',
+            plazo: '<div class="chat-rich-card"><div class="chat-rich-title">⏱️ Délais de livraison</div><div class="chat-rich-body">• Sprint Diagnostic : <strong>3 jours</strong><br>• Sprint 14 jours : <strong>14 jours</strong><br>• Automatisation : <strong>7-10 jours</strong><br>• Projet complexe : <strong>10-21 jours</strong></div></div>',
+            servicio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">⚡ Sprint IA 14 jours<br>\u{1F916} Automatisation intelligente<br>\u{1F9E0} Private Brain — IA souveraine<br>\u{1F4CA} Fractional CTO<br>\u{1F50D} LLM Isaac</div></div>',
+            contacto: 'Écrivez-nous à <strong>emmanuel@flashai.dev</strong> ou par WhatsApp. Réponse en <strong>moins de 2h</strong>, 24/7. \u{1F4E9}',
+            audit: 'Le Pré-Diagnostic IA est <strong>gratuit</strong> (30 min en visio). Audit RAG complet : <strong>EUR 500</strong> (3 jours). Pioneros : <strong>EUR 300</strong>.',
+            subvencion: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4CB} Dispositifs fiscaux argentins</div><div class="chat-rich-body">• <strong>Régime LEC</strong> : réduction impôt 10-20%<br>• <strong>Crédit Fiscal Formation</strong> : remboursement jusqu\'à 100%<br>• <strong>INPI Résolution 38/2026</strong> : retenue 31,5% → 21%</div></div>',
+            isaac: '<strong>LLM Isaac</strong> est un produit commercial privé d\'Emmanuel Smadja. Nommé en hommage aux Accords d\'Isaac (avril 2026). <strong>Pas un produit officiel</strong>.',
+            fallback: 'Je suis l\'assistant FlashAI \u{1F916}. Posez-moi des questions sur nos <strong>services</strong>, <strong>tarifs</strong>, <strong>audit</strong>, <strong>subventions</strong> ou <strong>LLM Isaac</strong>.',
+            suggestions: ['Tarifs ?', 'Audit IA ?', 'Subventions', 'LLM Isaac', 'Services', 'Contact'],
+            placeholder: 'Votre message...',
+            send: 'Envoyer',
+            greeting: 'Bonjour ! \u{1F44B} Comment puis-je vous aider ?',
+            thanks: 'Avec plaisir ! N\'hésitez pas. \u{1F60A}'
+        }
     };
-    const suggestions = ['¿Precios?', '¿Audit IA?', 'Subvenciones', 'LLM Isaac', 'Servicios', 'Contacto'];
-    let messages = [{ from: 'bot', text: '¡Hola! Soy el asistente FlashAI. ¿En qué puedo ayudarte?' }];
-    function getResp(t) { const l = t.toLowerCase(); if (l.includes('audit')||l.includes('diagnostico')||l.includes('diagnóstico')||l.includes('cuanto cuesta')||l.includes('cuánto cuesta')) return responses.audit; if (l.includes('subvencion')||l.includes('subvención')||l.includes('ayuda fiscal')||l.includes('credito fiscal')||l.includes('crédito fiscal')||l.includes('lec')||l.includes('retencion')||l.includes('retención')) return responses.subvencion; if (l.includes('isaac')||l.includes('llm')) return responses.isaac; for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('hola')||l.includes('buenas')||l.includes('bonjour')||l.includes('hello')) return '¡Hola! \u{1F44B} ¿En qué puedo ayudarte?'; if (l.includes('gracias')||l.includes('merci')||l.includes('thanks')) return '¡Con mucho gusto! No dudes en preguntar más. \u{1F60A}'; if (l.includes('site')||l.includes('web')||l.includes('servicio')) return responses.servicio; if (l.includes('precio')||l.includes('tarif')||l.includes('combien')||l.includes('costo')) return responses.precio; if (l.includes('tiempo')||l.includes('rapido')||l.includes('plazo')||l.includes('livr')) return responses.plazo; if (l.includes('proyecto')||l.includes('caso')||l.includes('ejemplo')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')||l.includes('inteligencia')) return responses.ia; if (l.includes('contact')||l.includes('email')||l.includes('mail')) return responses.contacto; if (l.includes('tech')||l.includes('stack')) return responses.tecnologia; return responses.default; }
+
+    let lang = null;
+    let messages = [{ from: 'bot', text: '\u{1F30E} <strong>Choose your language / Elegí tu idioma / Choisissez votre langue</strong>' }];
+    let suggestions = ['\u{1F1E6}\u{1F1F7} Español', '\u{1F1FA}\u{1F1F8} English', '\u{1F1EB}\u{1F1F7} Français'];
+
+    function getResp(t) {
+        var l = t.toLowerCase();
+        if (!lang) {
+            if (l.includes('espa') || l.includes('castellano') || l.includes('argentina')) { lang = 'es'; suggestions = i18n.es.suggestions; return i18n.es.greeting; }
+            if (l.includes('english') || l.includes('eng') || l.includes('us') || l.includes('uk')) { lang = 'en'; suggestions = i18n.en.suggestions; return i18n.en.greeting; }
+            if (l.includes('fran') || l.includes('france')) { lang = 'fr'; suggestions = i18n.fr.suggestions; return i18n.fr.greeting; }
+            lang = 'es'; suggestions = i18n.es.suggestions; return i18n.es.greeting;
+        }
+        var r = i18n[lang];
+        if (l.includes('audit')||l.includes('diagnostico')||l.includes('diagnostic')||l.includes('cuanto')||l.includes('how much')||l.includes('combien')) return r.audit;
+        if (l.includes('subven')||l.includes('ayuda fiscal')||l.includes('subsid')||l.includes('credito fiscal')||l.includes('lec')||l.includes('retencion')||l.includes('retención')||l.includes('withhold')) return r.subvencion;
+        if (l.includes('isaac')||l.includes('llm')) return r.isaac;
+        if (l.includes('precio')||l.includes('price')||l.includes('pricing')||l.includes('tarif')||l.includes('costo')||l.includes('cost')||l.includes('combien')) return r.precio;
+        if (l.includes('plazo')||l.includes('tiempo')||l.includes('timeline')||l.includes('delivery')||l.includes('delai')||l.includes('délai')||l.includes('when')) return r.plazo;
+        if (l.includes('servicio')||l.includes('service')||l.includes('what do you')) return r.servicio;
+        if (l.includes('contact')||l.includes('email')||l.includes('whatsapp')) return r.contacto;
+        if (l.includes('hola')||l.includes('hello')||l.includes('hi ')||l.includes('bonjour')||l.includes('buenas')) return r.greeting;
+        if (l.includes('gracias')||l.includes('thanks')||l.includes('merci')) return r.thanks;
+        return r.fallback;
+    }
+
     function render() {
-        ct.innerHTML = '<div class="chatbot-container"><div class="chatbot-messages" id="cm">' + messages.map(m => '<div class="chat-msg ' + m.from + '"><div class="chat-avatar">' + (m.from==='bot'?'\u{1F916}':'\u{1F464}') + '</div><div class="chat-bubble">' + m.text + '</div></div>').join('') + '</div><div class="chat-suggestions">' + suggestions.map(s => '<button class="chat-suggestion">' + s + '</button>').join('') + '</div><div class="chat-input-wrap"><input type="text" class="chat-input" id="ci" placeholder="Tu mensaje..."><button class="chat-send" id="cs">Enviar</button></div></div>';
-        const mc = document.getElementById('cm'); if (mc) mc.scrollTop = mc.scrollHeight;
-        function send(text) { if (!text.trim()) return; messages.push({ from: 'user', text }); render(); setTimeout(() => { const mc2 = document.getElementById('cm'); if(mc2) { const t = document.createElement('div'); t.className='chat-msg bot'; t.id='ct'; t.innerHTML='<div class="chat-avatar">\u{1F916}</div><div class="chat-bubble"><div class="chat-typing-realistic"><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span></div></div>'; mc2.appendChild(t); mc2.scrollTop=mc2.scrollHeight; } const delay = 800 + Math.random() * 1000; setTimeout(() => { const te = document.getElementById('ct'); if(te) te.remove(); messages.push({from:'bot',text:getResp(text)}); render(); }, delay); }, 300); }
-        const cs = document.getElementById('cs'), ci = document.getElementById('ci');
-        if (cs) cs.addEventListener('click', () => send(ci?.value||''));
-        if (ci) ci.addEventListener('keydown', e => { if(e.key==='Enter') send(ci.value); });
-        ct.querySelectorAll('.chat-suggestion').forEach(b => b.addEventListener('click', () => send(b.textContent)));
+        var ph = lang ? i18n[lang].placeholder : 'Type here...';
+        var sendTxt = lang ? i18n[lang].send : 'OK';
+        ct.innerHTML = '<div class="chatbot-container"><div class="chatbot-messages" id="cm">' + messages.map(function(m) { return '<div class="chat-msg ' + m.from + '"><div class="chat-avatar">' + (m.from==='bot'?'\u{1F916}':'\u{1F464}') + '</div><div class="chat-bubble">' + m.text + '</div></div>'; }).join('') + '</div><div class="chat-suggestions">' + suggestions.map(function(s) { return '<button class="chat-suggestion">' + s + '</button>'; }).join('') + '</div><div class="chat-input-wrap"><input type="text" class="chat-input" id="ci" placeholder="' + ph + '"><button class="chat-send" id="cs">' + sendTxt + '</button></div></div>';
+        var mc = document.getElementById('cm'); if (mc) mc.scrollTop = mc.scrollHeight;
+        function send(text) { if (!text.trim()) return; messages.push({ from: 'user', text: text }); render(); setTimeout(function() { var mc2 = document.getElementById('cm'); if(mc2) { var t = document.createElement('div'); t.className='chat-msg bot'; t.id='ct'; t.innerHTML='<div class="chat-avatar">\u{1F916}</div><div class="chat-bubble"><div class="chat-typing-realistic"><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span></div></div>'; mc2.appendChild(t); mc2.scrollTop=mc2.scrollHeight; } var delay = 800 + Math.random() * 1000; setTimeout(function() { var te = document.getElementById('ct'); if(te) te.remove(); messages.push({from:'bot',text:getResp(text)}); render(); }, delay); }, 300); }
+        var cs = document.getElementById('cs'), ci = document.getElementById('ci');
+        if (cs) cs.addEventListener('click', function() { send(ci ? ci.value : ''); });
+        if (ci) ci.addEventListener('keydown', function(e) { if(e.key==='Enter') send(ci.value); });
+        ct.querySelectorAll('.chat-suggestion').forEach(function(b) { b.addEventListener('click', function() { send(b.textContent); }); });
     }
     render();
 }
@@ -911,14 +973,14 @@ function initPortfolio() {
     const scrollCt = document.getElementById('portfolio-scroll');
     if (!ct && !scrollCt) return;
     const projects = [
-        { title: 'Freenzy', type: 'SaaS', desc: 'Automatización total, auditoría de seguridad diaria, +30 APIs conectadas.', color: '#00f0ff', tags: ['Automatización','Seguridad','APIs'], stat: '30+ APIs' },
-        { title: 'GlamHouse', type: 'Inmobiliario Web3', desc: 'Transacciones inmobiliarias tokenizadas y aseguradas on-chain.', color: '#bf00ff', tags: ['Blockchain','Smart Contracts','Tokenización'], stat: 'Web3' },
-        { title: 'Psy Daniel', type: 'Automatización', desc: 'Posts automatizados y SEO optimizado por IA para consultorio psicológico.', color: '#00ff87', tags: ['SEO IA','Posts auto','Analytics'], stat: 'SEO auto' },
-        { title: 'David Spectacles', type: 'Dashboard', desc: 'Gestión de espectáculos, artistas, planning y boletería.', color: '#ffd700', tags: ['Planning','Artistas','Dashboard'], stat: 'Live' },
-        { title: 'Levemente', type: 'Experiencia regalo', desc: 'Sitio de regalo de cumpleaños personalizado con 3 opciones.', color: '#ff8c00', tags: ['Diseño','Personalización','UX'], stat: '3 choix' },
-        { title: 'Cinegen', type: 'Confidencial', desc: 'Proyecto en curso bajo acuerdo de confidencialidad.', color: '#ff006e', tags: ['Confidencial'], stat: 'En curso', url: '' },
-        { title: 'Afrique Digital', type: 'Portal web', desc: 'Portal digital para el mercado africano francófono.', color: '#06b6d4', tags: ['Mobile-first','Portal','África'], stat: 'Multi-país', url: '' },
-        { title: 'LaunchPad', type: 'Mini App', desc: 'MVP funcional entregado en 5 días para startups.', color: '#e879f9', tags: ['MVP','Startup','Rápido'], stat: '5 días', url: '' }
+        { title: 'Fintech BA', type: 'Sprint IA', desc: 'Onboarding KYC automatizado con IA. Reducción del 70% en tiempo de verificación.', color: '#ffd700', tags: ['KYC','Automatización','Buenos Aires'], stat: '-70% tiempo' },
+        { title: 'E-commerce MX', type: 'Automation', desc: 'Pipeline de ventas IA con lead scoring predictivo. +45% conversión en 90 días.', color: '#bf00ff', tags: ['Lead Scoring','CRM','México'], stat: '+45% conv.' },
+        { title: 'Healthcare CO', type: 'Private Brain', desc: 'LLM soberano para historias clínicas. Datos nunca salen de la jurisdicción.', color: '#ff006e', tags: ['LLM','HIPAA','Bogotá'], stat: 'Soberano' },
+        { title: 'Logistics BR', type: 'Sprint IA', desc: 'Optimización de rutas con IA. -30% costos logísticos en el primer mes.', color: '#00f0ff', tags: ['Rutas IA','São Paulo','OCR'], stat: '-30% costos' },
+        { title: 'AgriTech CL', type: 'Fractional CTO', desc: 'Roadmap IA para agroindustria. Selección de stack y hiring del equipo tech.', color: '#ff8c00', tags: ['Agro','Santiago','Roadmap'], stat: 'CTO IA' },
+        { title: 'Legal PE', type: 'Private Brain', desc: 'RAG jurídico sobre legislación peruana. Búsqueda de jurisprudencia en segundos.', color: '#06b6d4', tags: ['RAG','Legal','Lima'], stat: '10x rápido' },
+        { title: 'SaaS UY', type: 'Automation', desc: 'Facturación electrónica + CRM automatizado. -60% carga administrativa.', color: '#00ff87', tags: ['SaaS','Montevideo','Invoice'], stat: '-60% admin' },
+        { title: 'Real Estate PA', type: 'Sprint IA', desc: 'Chatbot WhatsApp IA para leads inmobiliarios. Respuesta automática 24/7.', color: '#e879f9', tags: ['WhatsApp','Panamá','Chatbot'], stat: '24/7 auto' }
     ];
     function cardHTML(p) {
         return '<div class="portfolio-mockup"><div class="portfolio-mockup-bar"><span class="portfolio-mockup-dot" style="background:#ef4444"></span><span class="portfolio-mockup-dot" style="background:#f59e0b"></span><span class="portfolio-mockup-dot" style="background:#22c55e"></span><span class="portfolio-mockup-url">' + p.title.toLowerCase().replace(/\s/g, '') + '.app</span></div><div class="portfolio-mockup-screen" style="background:linear-gradient(135deg,' + p.color + '20,' + p.color + '05)"><div style="padding:12px"><div style="display:flex;gap:6px;margin-bottom:8px"><div style="height:6px;width:40%;background:' + p.color + '30;border-radius:3px"></div><div style="height:6px;width:20%;background:' + p.color + '15;border-radius:3px"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px"><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div></div><div style="height:50px;background:' + p.color + '08;border-radius:4px;border:1px solid ' + p.color + '10"></div></div></div><div class="portfolio-info"><div class="portfolio-info-name">' + p.title + '</div><div class="portfolio-info-sector">' + p.type + '</div><div class="portfolio-metric" style="background:' + p.color + '15;color:' + p.color + '">' + p.stat + '</div><div class="portfolio-tags">' + p.tags.map(t => '<span class="portfolio-tag" style="border-color:' + p.color + '40;color:' + p.color + '">' + t + '</span>').join('') + '</div></div></div>';
@@ -962,11 +1024,11 @@ function initTestimonials() {
     const ct = document.getElementById('testimonials-container');
     if (!ct) return;
     const items = [
-        { name: 'Marie Dupont', role: 'CEO, TechVision', text: 'FlashAI transform\u00f3 nuestra visi\u00f3n en realidad en solo 8 d\u00edas. El dashboard es incre\u00edble, nuestros equipos lo adoran. El ROI fue inmediato.', rating: 5, avatar: 'MD', color: '#00f0ff' },
-        { name: 'Thomas Martin', role: 'CTO, FoodExpress', text: 'Ahorramos USD 40.000 comparado con presupuestos de agencias cl\u00e1sicas. Y el resultado es mejor. Calidad excepcional, soporte reactivo.', rating: 5, avatar: 'TM', color: '#bf00ff' },
-        { name: 'Sophie Bernard', role: 'Fundadora, MediCare', text: 'El CRM m\u00e9dico es perfecto. Conforme RGPD, intuitivo, y nuestros pacientes adoran el portal online. Soporte 24/7 realmente reactivo.', rating: 5, avatar: 'SB', color: '#ff006e' },
-        { name: 'Lucas Chen', role: 'PM, CryptoTrack', text: 'La integraci\u00f3n IA es impresionante. El chatbot entiende realmente a nuestros clientes. Tasa de satisfacci\u00f3n pas\u00f3 del 72% al 96%.', rating: 5, avatar: 'LC', color: '#00ff87' },
-        { name: 'Emma Laurent', role: 'Directora, EduSmart', text: 'Plataforma entregada en 5 d\u00edas, cuando otras agencias ped\u00edan 3 meses. Calidad impecable y precio inmejorable.', rating: 5, avatar: 'EL', color: '#ffd700' }
+        { name: 'CEO, Fintech', role: 'Buenos Aires, Argentina', text: 'FlashAI transformó nuestra visión en realidad en solo 14 días. El workflow de onboarding KYC redujo nuestro tiempo de verificación un 70%.', rating: 5, avatar: 'FB', color: '#ffd700' },
+        { name: 'CTO, E-commerce', role: 'Ciudad de México', text: 'Ahorramos USD 40.000 comparado con agencias locales. Lead scoring predictivo que realmente funciona. +45% conversión.', rating: 5, avatar: 'EM', color: '#bf00ff' },
+        { name: 'Directora, Healthcare', role: 'Bogotá, Colombia', text: 'El Private Brain es perfecto. Datos soberanos, conforme HIPAA y Ley 25.326. Nuestros pacientes confían en la seguridad.', rating: 5, avatar: 'HC', color: '#ff006e' },
+        { name: 'PM, SaaS B2B', role: 'Montevideo, Uruguay', text: 'La integración IA es impresionante. El chatbot entiende realmente a nuestros clientes. Satisfacción pasó del 72% al 96%.', rating: 5, avatar: 'SU', color: '#00ff87' },
+        { name: 'Fundadora, AgriTech', role: 'Santiago, Chile', text: 'Como Fractional CTO, Emmanuel nos armó el roadmap IA completo y contrató al equipo tech en 3 meses. Excepcional.', rating: 5, avatar: 'AC', color: '#ff8c00' }
     ];
     ct.innerHTML = '<div class="testimonials-track">' + items.map((t, i) => '<div class="testimonial-card reveal" style="transition-delay:' + (i * 0.12) + 's;--tc:' + t.color + '"><div class="testimonial-quote">\u201C</div><p class="text-surface-200 text-sm leading-relaxed mb-6">' + t.text + '</p><div class="testimonial-stars">' + '\u2605'.repeat(t.rating) + '</div><div class="testimonial-author"><div class="testimonial-avatar" style="background:' + t.color + '30;color:' + t.color + '">' + t.avatar + '</div><div><div class="font-bold text-sm">' + t.name + '</div><div class="text-xs text-surface-400">' + t.role + '</div></div></div></div>').join('') + '</div>';
 }
