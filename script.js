@@ -448,24 +448,24 @@ function initBentoAnims() {
             '<div class="ba-crm-main">' +
             '<div class="ba-crm-header"><div class="ba-crm-title">Pipeline</div><div class="ba-crm-add-btn">+</div></div>' +
             '<div class="ba-crm-kanban">' +
-            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(255,140,0,0.6)"></div>Prospects</div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,140,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name" style="width:55%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
-            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,240,255,0.6)"></div>En cours</div><div class="ba-crm-card" style="border-color:rgba(0,240,255,0.3)"><div class="ba-crm-card-name" style="width:80%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
-            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,255,135,0.6)"></div>Gagn\u00e9</div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:60%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,255,135,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:45%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(191,0,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(255,140,0,0.6)"></div>Prospectos</div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,140,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(255,140,0,0.3)"><div class="ba-crm-card-name" style="width:55%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(255,215,0,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,240,255,0.6)"></div>En curso</div><div class="ba-crm-card" style="border-color:rgba(0,240,255,0.3)"><div class="ba-crm-card-name" style="width:80%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,240,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
+            '<div class="ba-crm-col"><div class="ba-crm-col-label"><div class="ba-crm-col-dot" style="background:rgba(0,255,135,0.6)"></div>Ganado</div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:60%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(0,255,135,0.25)"></div><div class="ba-crm-card-val"></div></div></div><div class="ba-crm-card" style="border-color:rgba(0,255,135,0.3)"><div class="ba-crm-card-name" style="width:45%"></div><div class="ba-crm-card-meta"><div class="ba-crm-card-avatar" style="background:rgba(191,0,255,0.25)"></div><div class="ba-crm-card-val"></div></div></div></div>' +
             '</div>' +
             '<div class="ba-crm-chart">' + Array.from({length:12}, (_,i) => '<div class="ba-crm-chart-bar" style="animation-delay:' + (i*0.15) + 's"></div>').join('') + '</div>' +
             '</div></div>',
 
         /* ---- CHATBOT: Rich conversation with cards, quick replies, typing ---- */
         chat: '<div class="ba-chat">' +
-            '<div class="ba-chat-header"><div class="ba-chat-bot-avatar">\u{1F916}</div><div class="ba-chat-bot-info"><div class="ba-chat-bot-name">FlashAI Bot</div><div class="ba-chat-bot-status">En ligne</div></div></div>' +
+            '<div class="ba-chat-header"><div class="ba-chat-bot-avatar">\u{1F916}</div><div class="ba-chat-bot-info"><div class="ba-chat-bot-name">FlashAI Bot</div><div class="ba-chat-bot-status">En l\u00ednea</div></div></div>' +
             '<div class="ba-chat-msgs">' +
-            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Bonjour ! Comment puis-je vous aider ?</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Je cherche des infos sur vos prix</div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Voici nos formules :</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">\u00a1Hola! \u00bfEn qu\u00e9 puedo ayudarte?</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Quiero info sobre los precios</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-bubble">Ac\u00e1 ten\u00e9s nuestras opciones:</div></div>' +
             '<div class="ba-chat-msg ba-chat-msg-bot"><div class="ba-chat-rich-card"><div class="ba-chat-rich-img"></div><div class="ba-chat-rich-title"></div><div class="ba-chat-rich-desc"></div><div class="ba-chat-rich-btns"><div class="ba-chat-rich-btn"></div><div class="ba-chat-rich-btn"></div></div></div></div>' +
-            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">Super, merci !</div></div>' +
+            '<div class="ba-chat-msg ba-chat-msg-user"><div class="ba-chat-bubble">\u00a1Genial, gracias!</div></div>' +
             '</div>' +
-            '<div class="ba-chat-quick"><div class="ba-chat-quick-btn">Tarifs</div><div class="ba-chat-quick-btn">D\u00e9lai</div><div class="ba-chat-quick-btn">Contact</div></div>' +
+            '<div class="ba-chat-quick"><div class="ba-chat-quick-btn">Precios</div><div class="ba-chat-quick-btn">Plazos</div><div class="ba-chat-quick-btn">Contacto</div></div>' +
             '<div class="ba-chat-typing"><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div><div class="ba-chat-typing-dot"></div></div>' +
             '<div class="ba-chat-input"><div class="ba-chat-input-field"></div><div class="ba-chat-input-send"></div></div>' +
             '</div>',
@@ -682,14 +682,14 @@ function initDemoCRM() {
         { name: 'Emma Leroy', email: 'emma@design.co', value: '6 500 \u20AC', status: 'client', avatar: 'EL' },
         { name: 'Thomas Moreau', email: 'thomas@web.fr', value: '15 000 \u20AC', status: 'client', avatar: 'TM' }
     ];
-    const columns = { prospect: 'Prospects', encours: 'En cours', client: 'Clients' };
+    const columns = { prospect: 'Prospectos', encours: 'En curso', client: 'Clientes' };
     function render(filter='') {
         const filtered = contacts.filter(c => c.name.toLowerCase().includes(filter) || c.email.toLowerCase().includes(filter));
         const totalContacts = filtered.length;
         const totalValue = filtered.reduce((s, c) => s + parseInt(c.value.replace(/[^\d]/g, '')), 0);
         const clientCount = filtered.filter(c => c.status === 'client').length;
         const convRate = totalContacts > 0 ? Math.round((clientCount / totalContacts) * 100) : 0;
-        ct.innerHTML = '<div class="crm-header"><h3 class="font-display font-bold text-lg">Mini CRM</h3><input type="text" class="crm-search" placeholder="Rechercher..." id="crm-si" value="' + filter + '"></div>' +
+        ct.innerHTML = '<div class="crm-header"><h3 class="font-display font-bold text-lg">Mini CRM</h3><input type="text" class="crm-search" placeholder="Buscar..." id="crm-si" value="' + filter + '"></div>' +
         '<div class="crm-stats-bar"><div class="crm-stat-kpi"><div class="crm-stat-kpi-value" style="color:#00f0ff">' + totalContacts + '</div><div class="crm-stat-kpi-label">Contacts</div></div><div class="crm-stat-kpi"><div class="crm-stat-kpi-value" style="color:#00ff87">' + totalValue.toLocaleString('fr') + ' \u20AC</div><div class="crm-stat-kpi-label">Pipeline</div></div><div class="crm-stat-kpi"><div class="crm-stat-kpi-value" style="color:#bf00ff">' + convRate + '%</div><div class="crm-stat-kpi-label">Conversion</div></div></div>' +
         '<div class="crm-columns">' + Object.entries(columns).map(([key, label]) => { const items = filtered.filter(c => c.status === key); return '<div class="crm-column" data-col="' + key + '"><div class="crm-col-header"><span style="color:' + (key === 'prospect' ? '#ff8c00' : key === 'encours' ? '#00f0ff' : '#00ff87') + '">' + label + '</span><span class="crm-col-count">' + items.length + '</span></div>' + items.map(c => '<div class="crm-card" draggable="true" data-name="' + c.name + '"><div class="crm-card-name">' + c.name + '</div><div class="crm-card-email">' + c.email + '</div><div class="crm-card-value">' + c.value + '</div><div class="crm-card-actions"><button class="crm-action-btn" onclick="showToast(\'Appel ' + c.name + '...\')">📞</button><button class="crm-action-btn" onclick="showToast(\'Email envoye\')">✉️</button></div></div>').join('') + '</div>'; }).join('') + '</div>';
         const si = document.getElementById('crm-si');
@@ -735,13 +735,13 @@ function initDemoChatbot() {
     const ct = document.getElementById('demo-chatbot');
     if (!ct) return;
     const responses = {
-        prix: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nos tarifs</div><div class="chat-rich-body">A partir de <strong>890\u20AC</strong> pour un site vitrine.<br>CRM/Dashboard: des <strong>1 990\u20AC</strong><br>Chatbot IA: des <strong>1 490\u20AC</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection devis...\')">Devis gratuit</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Voir tarifs\')">Voir tous les prix</button></div></div>',
-        delai: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Delais de livraison</div><div class="chat-rich-body">\u2022 Site vitrine: <strong>5 jours</strong><br>\u2022 CRM/Dashboard: <strong>7-10 jours</strong><br>\u2022 Projet complexe: <strong>10-14 jours</strong></div></div>',
-        services: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nos services</div><div class="chat-rich-body">\u{1F310} Sites web & landing pages<br>\u{1F4CA} CRM & ERP sur mesure<br>\u{1F916} Chatbots IA (WhatsApp, web)<br>\u26A1 Automatisations<br>\u{1F50D} SEO technique<br>\u{1F6E1}\uFE0F Securite & RGPD</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirection services\')">En savoir plus</button></div></div>',
-        contact: 'Contactez-nous a <strong>emmanuel@flashai.dev</strong>. Reponse en <strong>moins de 2h</strong>, 24/7 ! \u{1F4E9}',
-        technologie: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Notre stack tech</div><div class="chat-rich-body">React, Next.js, Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, Docker, AWS... <strong>200+ APIs</strong> connectees.</div></div>',
-        portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nos realisations</div><div class="chat-rich-body">+50 projets livres: SaaS, e-commerce, sante, fintech, edtech...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Voir portfolio\')">Voir le portfolio</button></div></div>',
-        ia: 'Nous integrons <strong>GPT-4, LangChain, RAG</strong> et des modeles custom. Nos chatbots resolvent <strong>85%</strong> des demandes sans humain ! \u{1F9E0}',
+        precio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4B0} Nuestros precios</div><div class="chat-rich-body">Sprint Diagnóstico (3 días): <strong>USD 990</strong><br>Sprint 14 días: <strong>USD 3.900</strong> (Pioneros: USD 2.340)<br>Automatización: desde <strong>USD 4.900</strong><br>Fractional CTO: <strong>USD 2.500/mes</strong></div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirigiendo...\')">Presupuesto gratis</button><button class="chat-rich-btn chat-rich-btn-outline" onclick="showToast(\'Ver precios\')">Ver todos los precios</button></div></div>',
+        plazo: '<div class="chat-rich-card"><div class="chat-rich-title">\u23F1\uFE0F Plazos de entrega</div><div class="chat-rich-body">\u2022 Sprint Diagnóstico: <strong>3 días</strong><br>\u2022 Sprint 14 días: <strong>14 días</strong><br>\u2022 Automatización: <strong>7-10 días</strong><br>\u2022 Proyecto complejo: <strong>10-21 días</strong></div></div>',
+        servicio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F680} Nuestros servicios</div><div class="chat-rich-body">\u26A1 Sprint IA 14 días<br>\u{1F916} Automatización inteligente<br>\u{1F9E0} Private Brain — IA soberana<br>\u{1F4CA} Fractional CTO<br>\u{1F50D} LLM Isaac — asistente IA<br>\u{1F6E1}\uFE0F Compliance (GDPR, Ley 25.326)</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Redirigiendo...\')">Conocer más</button></div></div>',
+        contacto: 'Escribinos a <strong>emmanuel@flashai.dev</strong> o por WhatsApp. Respuesta en <strong>menos de 2h</strong>, 24/7. \u{1F4E9}',
+        tecnologia: '<div class="chat-rich-card"><div class="chat-rich-title">\u2699\uFE0F Nuestro stack tech</div><div class="chat-rich-body">Claude, GPT-4, Mistral, LangChain, RAG, Python, Node.js, TypeScript, PostgreSQL, Docker, Hetzner... <strong>200+ APIs</strong> conectadas.</div></div>',
+        portfolio: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F3A8} Nuestros casos</div><div class="chat-rich-body">+50 proyectos entregados: SaaS, e-commerce, fintech, salud, agroindustria...</div><div class="chat-rich-actions"><button class="chat-rich-btn" onclick="showToast(\'Ver casos\')">Ver casos de estudio</button></div></div>',
+        ia: 'Integramos <strong>Claude, GPT-4, LangChain, RAG</strong> y modelos custom. Nuestros chatbots resuelven <strong>85%</strong> de las consultas sin humano. \u{1F9E0}',
         audit: 'El Pre-Diagnóstico IA es <strong>gratuito</strong> (30 min en videollamada después del formulario). El Audit RAG completo es de <strong>EUR 500</strong> (3 días). Para Pioneros: <strong>EUR 300</strong>. ¿Querés reservar tu Pre-Diagnóstico?',
         subvencion: '<div class="chat-rich-card"><div class="chat-rich-title">\u{1F4CB} Dispositivos fiscales argentinos</div><div class="chat-rich-body">Tres dispositivos pueden ayudar según tu situación:<br>• <strong>Régimen LEC</strong>: reduce tu impuesto a las ganancias entre 10 y 20%<br>• <strong>Crédito Fiscal Capacitación</strong>: reembolsa hasta 100% de las formaciones<br>• <strong>Resolución INPI 38/2026</strong>: reduce la retención del 31,5% al 21%<br><br>Lo discutimos en el Pre-Diagnóstico.</div></div>',
         isaac: 'No. El <strong>LLM Isaac</strong> es un producto comercial privado de Emmanuel Smadja. El nombre es un homenaje a los Acuerdos de Isaac firmados en abril 2026. <strong>No es un producto oficial</strong> ni está vinculado a ningún gobierno.',
@@ -749,9 +749,9 @@ function initDemoChatbot() {
     };
     const suggestions = ['¿Precios?', '¿Audit IA?', 'Subvenciones', 'LLM Isaac', 'Servicios', 'Contacto'];
     let messages = [{ from: 'bot', text: '¡Hola! Soy el asistente FlashAI. ¿En qué puedo ayudarte?' }];
-    function getResp(t) { const l = t.toLowerCase(); if (l.includes('audit')||l.includes('diagnostico')||l.includes('diagnóstico')||l.includes('cuanto cuesta')||l.includes('cuánto cuesta')) return responses.audit; if (l.includes('subvencion')||l.includes('subvención')||l.includes('ayuda fiscal')||l.includes('credito fiscal')||l.includes('crédito fiscal')||l.includes('lec')||l.includes('retencion')||l.includes('retención')) return responses.subvencion; if (l.includes('isaac')||l.includes('llm')) return responses.isaac; for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('hola')||l.includes('buenas')||l.includes('bonjour')||l.includes('hello')) return '¡Hola! \u{1F44B} ¿En qué puedo ayudarte?'; if (l.includes('gracias')||l.includes('merci')||l.includes('thanks')) return '¡Con mucho gusto! No dudes en preguntar más. \u{1F60A}'; if (l.includes('site')||l.includes('web')||l.includes('servicio')) return responses.services; if (l.includes('precio')||l.includes('tarif')||l.includes('combien')||l.includes('costo')) return responses.prix; if (l.includes('tiempo')||l.includes('rapido')||l.includes('plazo')||l.includes('livr')) return responses.delai; if (l.includes('proyecto')||l.includes('caso')||l.includes('ejemplo')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')||l.includes('inteligencia')) return responses.ia; return responses.default; }
+    function getResp(t) { const l = t.toLowerCase(); if (l.includes('audit')||l.includes('diagnostico')||l.includes('diagnóstico')||l.includes('cuanto cuesta')||l.includes('cuánto cuesta')) return responses.audit; if (l.includes('subvencion')||l.includes('subvención')||l.includes('ayuda fiscal')||l.includes('credito fiscal')||l.includes('crédito fiscal')||l.includes('lec')||l.includes('retencion')||l.includes('retención')) return responses.subvencion; if (l.includes('isaac')||l.includes('llm')) return responses.isaac; for (const [k, v] of Object.entries(responses)) { if (k !== 'default' && l.includes(k)) return v; } if (l.includes('hola')||l.includes('buenas')||l.includes('bonjour')||l.includes('hello')) return '¡Hola! \u{1F44B} ¿En qué puedo ayudarte?'; if (l.includes('gracias')||l.includes('merci')||l.includes('thanks')) return '¡Con mucho gusto! No dudes en preguntar más. \u{1F60A}'; if (l.includes('site')||l.includes('web')||l.includes('servicio')) return responses.servicio; if (l.includes('precio')||l.includes('tarif')||l.includes('combien')||l.includes('costo')) return responses.precio; if (l.includes('tiempo')||l.includes('rapido')||l.includes('plazo')||l.includes('livr')) return responses.plazo; if (l.includes('proyecto')||l.includes('caso')||l.includes('ejemplo')) return responses.portfolio; if (l.includes('chatbot')||l.includes('intelligence')||l.includes('inteligencia')) return responses.ia; if (l.includes('contact')||l.includes('email')||l.includes('mail')) return responses.contacto; if (l.includes('tech')||l.includes('stack')) return responses.tecnologia; return responses.default; }
     function render() {
-        ct.innerHTML = '<div class="chatbot-container"><div class="chatbot-messages" id="cm">' + messages.map(m => '<div class="chat-msg ' + m.from + '"><div class="chat-avatar">' + (m.from==='bot'?'\u{1F916}':'\u{1F464}') + '</div><div class="chat-bubble">' + m.text + '</div></div>').join('') + '</div><div class="chat-suggestions">' + suggestions.map(s => '<button class="chat-suggestion">' + s + '</button>').join('') + '</div><div class="chat-input-wrap"><input type="text" class="chat-input" id="ci" placeholder="Votre message..."><button class="chat-send" id="cs">Envoyer</button></div></div>';
+        ct.innerHTML = '<div class="chatbot-container"><div class="chatbot-messages" id="cm">' + messages.map(m => '<div class="chat-msg ' + m.from + '"><div class="chat-avatar">' + (m.from==='bot'?'\u{1F916}':'\u{1F464}') + '</div><div class="chat-bubble">' + m.text + '</div></div>').join('') + '</div><div class="chat-suggestions">' + suggestions.map(s => '<button class="chat-suggestion">' + s + '</button>').join('') + '</div><div class="chat-input-wrap"><input type="text" class="chat-input" id="ci" placeholder="Tu mensaje..."><button class="chat-send" id="cs">Enviar</button></div></div>';
         const mc = document.getElementById('cm'); if (mc) mc.scrollTop = mc.scrollHeight;
         function send(text) { if (!text.trim()) return; messages.push({ from: 'user', text }); render(); setTimeout(() => { const mc2 = document.getElementById('cm'); if(mc2) { const t = document.createElement('div'); t.className='chat-msg bot'; t.id='ct'; t.innerHTML='<div class="chat-avatar">\u{1F916}</div><div class="chat-bubble"><div class="chat-typing-realistic"><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span><span class="chat-typing-dot"></span></div></div>'; mc2.appendChild(t); mc2.scrollTop=mc2.scrollHeight; } const delay = 800 + Math.random() * 1000; setTimeout(() => { const te = document.getElementById('ct'); if(te) te.remove(); messages.push({from:'bot',text:getResp(text)}); render(); }, delay); }, 300); }
         const cs = document.getElementById('cs'), ci = document.getElementById('ci');
@@ -877,7 +877,7 @@ function initExpertise() {
         { title: 'Frontend', icon: '\u{1F3A8}', color: '#00f0ff', skills: [['React / Next.js', 95], ['Vue / Nuxt', 88], ['TypeScript', 92], ['TailwindCSS', 98], ['Three.js / GSAP', 85]] },
         { title: 'Backend', icon: '\u2699\uFE0F', color: '#bf00ff', skills: [['Node.js / Express', 94], ['Python / FastAPI', 90], ['PostgreSQL', 92], ['MongoDB / Redis', 88], ['GraphQL / REST', 95]] },
         { title: 'IA & Data', icon: '\u{1F9E0}', color: '#ff006e', skills: [['OpenAI / GPT', 96], ['LangChain', 88], ['RAG Systems', 85], ['NLP / NLU', 82], ['Data Pipeline', 87]] },
-        { title: 'DevOps', icon: '\u{1F680}', color: '#00ff87', skills: [['Docker / K8s', 90], ['AWS / GCP', 92], ['CI/CD', 95], ['Monitoring', 88], ['Securite', 91]] }
+        { title: 'DevOps', icon: '\u{1F680}', color: '#00ff87', skills: [['Docker / K8s', 90], ['AWS / GCP', 92], ['CI/CD', 95], ['Monitoring', 88], ['Seguridad', 91]] }
     ];
     ct.innerHTML = '<div class="expertise-grid">' + cards.map((c, i) => '<div class="expertise-card reveal" style="transition-delay:' + (i * 0.15) + 's;--ec:' + c.color + '"><div class="expertise-card-front"><div class="expertise-icon" style="background:' + c.color + '15;color:' + c.color + '">' + c.icon + '</div><h3 class="font-display font-bold text-xl mb-4">' + c.title + '</h3><div class="expertise-bars">' + c.skills.map(s => '<div class="expertise-bar-row"><span class="text-xs text-surface-300">' + s[0] + '</span><div class="expertise-bar-bg"><div class="expertise-bar-fill" style="width:' + s[1] + '%;background:' + c.color + '" data-width="' + s[1] + '"></div></div><span class="text-xs" style="color:' + c.color + '">' + s[1] + '%</span></div>').join('') + '</div></div></div>').join('') + '</div>';
     const obs = new IntersectionObserver(entries => {
@@ -897,10 +897,10 @@ function initMethodTimeline() {
     const ct = document.getElementById('method-timeline');
     if (!ct) return;
     const steps = [
-        { num: '01', title: 'Discovery', desc: 'Appel de 30 min pour comprendre vos besoins, objectifs et contraintes. Analyse de l\'existant et recommandations.', icon: '\u{1F3AF}', color: '#00f0ff', duration: '30 min' },
-        { num: '02', title: 'Prototype', desc: 'Maquette interactive livree en 48h. Vous validez le design, l\'UX et les fonctionnalites avant le developpement.', icon: '\u270F\uFE0F', color: '#bf00ff', duration: '48h' },
+        { num: '01', title: 'Discovery', desc: 'Llamada de 30 min para entender tus necesidades, objetivos y restricciones. An\u00e1lisis de lo existente y recomendaciones.', icon: '\u{1F3AF}', color: '#00f0ff', duration: '30 min' },
+        { num: '02', title: 'Prototype', desc: 'Maqueta interactiva entregada en 48h. Valid\u00e1s el dise\u00f1o, la UX y las funcionalidades antes del desarrollo.', icon: '\u270F\uFE0F', color: '#bf00ff', duration: '48h' },
         { num: '03', title: 'Build', desc: 'Developpement agile avec demos quotidiennes. Stack moderne, code propre, tests automatises.', icon: '\u26A1', color: '#ff006e', duration: '3-10 jours' },
-        { num: '04', title: 'Launch', desc: 'Deploiement, formation, documentation. Support prioritaire inclus 12 mois. Monitoring 24/7.', icon: '\u{1F680}', color: '#00ff87', duration: 'J+0' }
+        { num: '04', title: 'Launch', desc: 'Despliegue, formaci\u00f3n, documentaci\u00f3n. Soporte prioritario incluido 12 meses. Monitoring 24/7.', icon: '\u{1F680}', color: '#00ff87', duration: 'J+0' }
     ];
     ct.innerHTML = '<div class="method-steps">' + steps.map((s, i) => '<div class="method-step reveal" style="transition-delay:' + (i * 0.2) + 's"><div class="method-step-line" style="background:' + s.color + '"></div><div class="method-step-dot" style="background:' + s.color + ';box-shadow:0 0 20px ' + s.color + '60"><span>' + s.icon + '</span></div><div class="method-step-content"><div class="method-step-num" style="color:' + s.color + '">' + s.num + '</div><h3 class="font-display font-bold text-xl mb-2">' + s.title + '</h3><p class="text-surface-400 text-sm leading-relaxed mb-3">' + s.desc + '</p><span class="method-step-duration" style="color:' + s.color + '">' + s.duration + '</span></div></div>').join('') + '</div>';
 }
@@ -911,14 +911,14 @@ function initPortfolio() {
     const scrollCt = document.getElementById('portfolio-scroll');
     if (!ct && !scrollCt) return;
     const projects = [
-        { title: 'Freenzy', type: 'SaaS', desc: 'Automatisation totale, audit securite quotidien, +30 APIs connectees.', color: '#00f0ff', tags: ['Automatisation','Securite','APIs'], stat: '30+ APIs' },
-        { title: 'GlamHouse', type: 'Immobilier Web3', desc: 'Transactions immobilieres tokenisees et securisees on-chain.', color: '#bf00ff', tags: ['Blockchain','Smart Contracts','Tokenisation'], stat: 'Web3' },
-        { title: 'Psy Daniel', type: 'Automatisation', desc: 'Posts automatises et SEO optimise par IA pour cabinet psy.', color: '#00ff87', tags: ['SEO IA','Posts auto','Analytics'], stat: 'SEO auto' },
-        { title: 'David Spectacles', type: 'Dashboard', desc: 'Gestion spectacles, artistes, planning et billetterie.', color: '#ffd700', tags: ['Planning','Artistes','Dashboard'], stat: 'Live' },
-        { title: 'Levemente', type: 'Experience cadeau', desc: 'Site cadeau d\'anniversaire personnalise avec 3 choix.', color: '#ff8c00', tags: ['Design','Personnalisation','UX'], stat: '3 choix' },
-        { title: 'Cinegen', type: 'Confidentiel', desc: 'Projet en cours sous accord de confidentialite.', color: '#ff006e', tags: ['Confidentiel'], stat: 'En cours', url: '' },
-        { title: 'Afrique Digital', type: 'Portail web', desc: 'Portail digital pour le marche africain francophone.', color: '#06b6d4', tags: ['Mobile-first','Portail','Afrique'], stat: 'Multi-pays', url: '' },
-        { title: 'LaunchPad', type: 'Mini App', desc: 'MVP fonctionnel livre en 5 jours pour startups.', color: '#e879f9', tags: ['MVP','Startup','Rapide'], stat: '5 jours', url: '' }
+        { title: 'Freenzy', type: 'SaaS', desc: 'Automatización total, auditoría de seguridad diaria, +30 APIs conectadas.', color: '#00f0ff', tags: ['Automatización','Seguridad','APIs'], stat: '30+ APIs' },
+        { title: 'GlamHouse', type: 'Inmobiliario Web3', desc: 'Transacciones inmobiliarias tokenizadas y aseguradas on-chain.', color: '#bf00ff', tags: ['Blockchain','Smart Contracts','Tokenización'], stat: 'Web3' },
+        { title: 'Psy Daniel', type: 'Automatización', desc: 'Posts automatizados y SEO optimizado por IA para consultorio psicológico.', color: '#00ff87', tags: ['SEO IA','Posts auto','Analytics'], stat: 'SEO auto' },
+        { title: 'David Spectacles', type: 'Dashboard', desc: 'Gestión de espectáculos, artistas, planning y boletería.', color: '#ffd700', tags: ['Planning','Artistas','Dashboard'], stat: 'Live' },
+        { title: 'Levemente', type: 'Experiencia regalo', desc: 'Sitio de regalo de cumpleaños personalizado con 3 opciones.', color: '#ff8c00', tags: ['Diseño','Personalización','UX'], stat: '3 choix' },
+        { title: 'Cinegen', type: 'Confidencial', desc: 'Proyecto en curso bajo acuerdo de confidencialidad.', color: '#ff006e', tags: ['Confidencial'], stat: 'En curso', url: '' },
+        { title: 'Afrique Digital', type: 'Portal web', desc: 'Portal digital para el mercado africano francófono.', color: '#06b6d4', tags: ['Mobile-first','Portal','África'], stat: 'Multi-país', url: '' },
+        { title: 'LaunchPad', type: 'Mini App', desc: 'MVP funcional entregado en 5 días para startups.', color: '#e879f9', tags: ['MVP','Startup','Rápido'], stat: '5 días', url: '' }
     ];
     function cardHTML(p) {
         return '<div class="portfolio-mockup"><div class="portfolio-mockup-bar"><span class="portfolio-mockup-dot" style="background:#ef4444"></span><span class="portfolio-mockup-dot" style="background:#f59e0b"></span><span class="portfolio-mockup-dot" style="background:#22c55e"></span><span class="portfolio-mockup-url">' + p.title.toLowerCase().replace(/\s/g, '') + '.app</span></div><div class="portfolio-mockup-screen" style="background:linear-gradient(135deg,' + p.color + '20,' + p.color + '05)"><div style="padding:12px"><div style="display:flex;gap:6px;margin-bottom:8px"><div style="height:6px;width:40%;background:' + p.color + '30;border-radius:3px"></div><div style="height:6px;width:20%;background:' + p.color + '15;border-radius:3px"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px"><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div><div style="height:40px;background:' + p.color + '10;border-radius:4px;border:1px solid ' + p.color + '15"></div></div><div style="height:50px;background:' + p.color + '08;border-radius:4px;border:1px solid ' + p.color + '10"></div></div></div><div class="portfolio-info"><div class="portfolio-info-name">' + p.title + '</div><div class="portfolio-info-sector">' + p.type + '</div><div class="portfolio-metric" style="background:' + p.color + '15;color:' + p.color + '">' + p.stat + '</div><div class="portfolio-tags">' + p.tags.map(t => '<span class="portfolio-tag" style="border-color:' + p.color + '40;color:' + p.color + '">' + t + '</span>').join('') + '</div></div></div>';
@@ -962,11 +962,11 @@ function initTestimonials() {
     const ct = document.getElementById('testimonials-container');
     if (!ct) return;
     const items = [
-        { name: 'Marie Dupont', role: 'CEO, TechVision', text: 'FlashAI a transforme notre vision en realite en seulement 8 jours. Le dashboard est incroyable, nos equipes l\'adorent. Le ROI a ete immediat.', rating: 5, avatar: 'MD', color: '#00f0ff' },
-        { name: 'Thomas Martin', role: 'CTO, FoodExpress', text: 'On a economise 40 000\u20AC par rapport aux devis d\'agences classiques. Et le resultat est meilleur. Qualite exceptionnelle, support reactif.', rating: 5, avatar: 'TM', color: '#bf00ff' },
-        { name: 'Sophie Bernard', role: 'Fondatrice, MediCare', text: 'Le CRM medical est parfait. Conforme RGPD, intuitif, et nos patients adorent le portail en ligne. Support 24/7 vraiment reactif.', rating: 5, avatar: 'SB', color: '#ff006e' },
-        { name: 'Lucas Chen', role: 'PM, CryptoTrack', text: 'L\'integration IA est bluffante. Le chatbot comprend vraiment nos clients. Taux de satisfaction passe de 72% a 96%.', rating: 5, avatar: 'LC', color: '#00ff87' },
-        { name: 'Emma Laurent', role: 'Directrice, EduSmart', text: 'Plateforme livree en 5 jours, alors que d\'autres agences demandaient 3 mois. Qualite irreprochable et prix imbattable.', rating: 5, avatar: 'EL', color: '#ffd700' }
+        { name: 'Marie Dupont', role: 'CEO, TechVision', text: 'FlashAI transform\u00f3 nuestra visi\u00f3n en realidad en solo 8 d\u00edas. El dashboard es incre\u00edble, nuestros equipos lo adoran. El ROI fue inmediato.', rating: 5, avatar: 'MD', color: '#00f0ff' },
+        { name: 'Thomas Martin', role: 'CTO, FoodExpress', text: 'Ahorramos USD 40.000 comparado con presupuestos de agencias cl\u00e1sicas. Y el resultado es mejor. Calidad excepcional, soporte reactivo.', rating: 5, avatar: 'TM', color: '#bf00ff' },
+        { name: 'Sophie Bernard', role: 'Fundadora, MediCare', text: 'El CRM m\u00e9dico es perfecto. Conforme RGPD, intuitivo, y nuestros pacientes adoran el portal online. Soporte 24/7 realmente reactivo.', rating: 5, avatar: 'SB', color: '#ff006e' },
+        { name: 'Lucas Chen', role: 'PM, CryptoTrack', text: 'La integraci\u00f3n IA es impresionante. El chatbot entiende realmente a nuestros clientes. Tasa de satisfacci\u00f3n pas\u00f3 del 72% al 96%.', rating: 5, avatar: 'LC', color: '#00ff87' },
+        { name: 'Emma Laurent', role: 'Directora, EduSmart', text: 'Plataforma entregada en 5 d\u00edas, cuando otras agencias ped\u00edan 3 meses. Calidad impecable y precio inmejorable.', rating: 5, avatar: 'EL', color: '#ffd700' }
     ];
     ct.innerHTML = '<div class="testimonials-track">' + items.map((t, i) => '<div class="testimonial-card reveal" style="transition-delay:' + (i * 0.12) + 's;--tc:' + t.color + '"><div class="testimonial-quote">\u201C</div><p class="text-surface-200 text-sm leading-relaxed mb-6">' + t.text + '</p><div class="testimonial-stars">' + '\u2605'.repeat(t.rating) + '</div><div class="testimonial-author"><div class="testimonial-avatar" style="background:' + t.color + '30;color:' + t.color + '">' + t.avatar + '</div><div><div class="font-bold text-sm">' + t.name + '</div><div class="text-xs text-surface-400">' + t.role + '</div></div></div></div>').join('') + '</div>';
 }
@@ -1639,7 +1639,7 @@ function initEasterEggs() {
         konamiCode += e.key;
         if (konamiCode.length > konamiSeq.length) konamiCode = konamiCode.slice(-konamiSeq.length);
         if (konamiCode === konamiSeq) {
-            showToast('\u{1F389} Mode secret active ! Vous etes un vrai geek !');
+            showToast('\u{1F389} Modo secreto activado! Sos un verdadero geek!');
             document.body.style.filter = 'hue-rotate(180deg)';
             setTimeout(() => { document.body.style.filter = ''; }, 3000);
         }
@@ -1846,76 +1846,44 @@ Contacto: <a href="mailto:emmanuel@flashai.dev" style="color:#00f0ff">emmanuel@f
 // === SERVICE DETAIL MODAL ===
 (function() {
     const serviceData = {
-        'sites-web': {
-            title: 'Sites Web sur mesure',
-            icon: '🌐',
+        'sprint': {
+            title: 'Sprint IA 14 d\u00edas',
+            icon: '\u26A1',
             color: '#00f0ff',
-            intro: 'Un site web professionnel, performant et optimise pour convertir vos visiteurs en clients.',
+            intro: 'Tu primer workflow de IA en producci\u00f3n en 14 d\u00edas. De la idea al ROI medible.',
             sections: [
-                { title: 'Ce que vous obtenez', items: ['Site vitrine, landing page ou e-commerce 100% sur mesure', 'Design responsive adapte mobile, tablette et desktop', 'Score Lighthouse 95+ garanti (performance, SEO, accessibilite)', 'Integration de vos contenus, textes, images, videos', 'Formulaire de contact et/ou prise de RDV integre', 'Hebergement 1 an offert + nom de domaine'] },
-                { title: 'Technologies utilisees', items: ['React / Next.js pour les performances', 'TailwindCSS pour un design pixel-perfect', 'Deploiement sur Vercel, Netlify ou votre serveur', 'SSL, CDN et optimisations automatiques'] },
-                { title: 'Deroulement typique', items: ['Jour 1 : Appel decouverte 30 min + brief', 'Jour 2-3 : Maquette interactive a valider', 'Jour 3-5 : Developpement et integration', 'Jour 5 : Mise en ligne + formation', 'Suivi et support email inclus'] },
-                { title: 'Tarif indicatif', items: ['A partir de 390\u20AC pour un site vitrine', 'E-commerce : a partir de 790\u20AC', 'Hebergement 1 an inclus dans tous les plans'] }
+                { title: 'Lo que obten\u00e9s', items: ['1 workflow IA en producci\u00f3n (lead capture, email triage, soporte, facturaci\u00f3n...)', 'Pre-Diagn\u00f3stico gratuito de 30 min', 'Prototipo funcional en 48h', 'Formaci\u00f3n del equipo + documentaci\u00f3n completa', 'Soporte t\u00e9cnico 12 meses incluido'] },
+                { title: 'Plazos y precios', items: ['Diagn\u00f3stico: 3 d\u00edas (USD 990)', 'Sprint 14 d\u00edas: USD 3.900 (Pioneros: USD 2.340)', 'Transformaci\u00f3n 30 d\u00edas: USD 9.900 (3 workflows)'] }
             ]
         },
-        'crm-erp': {
-            title: 'CRM & ERP personnalises',
-            icon: '📊',
+        'automation': {
+            title: 'Automatizaci\u00f3n inteligente',
+            icon: '\u{1F916}',
             color: '#bf00ff',
-            intro: 'Un outil de gestion sur mesure qui s\'adapte a votre facon de travailler, pas l\'inverse.',
+            intro: 'Automatiz\u00e1 lo que te frena. Elimin\u00e1 tareas manuales con IA.',
             sections: [
-                { title: 'Ce que vous obtenez', items: ['CRM adapte a votre metier (contacts, pipeline, relances)', 'Dashboard avec vos KPIs en temps reel', 'Automatisations : emails, relances, notifications', 'Export CSV/PDF, rapports automatiques', 'Multi-utilisateurs avec gestion des droits'] },
-                { title: 'Cas d\'usage', items: ['Gestion de clientele pour professions liberales', 'Suivi commercial et pipeline de ventes', 'Gestion de stock et commandes pour commercants', 'Facturation et devis automatises'] },
-                { title: 'Deroulement', items: ['Audit de vos besoins et processus actuels', 'Prototype interactif en 48h', 'Developpement iteratif avec vos retours', 'Formation de votre equipe + documentation'] },
-                { title: 'Tarif indicatif', items: ['A partir de 990\u20AC', 'Complement a un outil existant : a partir de 490\u20AC', 'Hebergement 1 an inclus'] }
+                { title: 'Packs disponibles', items: ['Sales Pack \u2014 lead scoring, CRM auto-enrichment, pipeline forecasting', 'Finance Pack \u2014 Invoice OCR, cash-flow forecasting, anomaly detection', 'Support Pack \u2014 WhatsApp chatbot, ticket routing, sentiment monitoring'] },
+                { title: 'Precio', items: ['USD 4.900 por pack', 'Entrega: 7-10 d\u00edas', 'Integraci\u00f3n con tus herramientas existentes'] }
             ]
         },
-        'chatbot-ia': {
-            title: 'Chatbot IA intelligent',
-            icon: '🤖',
-            color: '#ff006e',
-            intro: 'Un assistant virtuel qui repond a vos clients 24/7, base sur vos donnees et votre ton.',
-            sections: [
-                { title: 'Ce que vous obtenez', items: ['Chatbot entraine sur vos donnees (FAQ, catalogue, site)', 'Integration site web, WhatsApp, Messenger, Slack', 'Reponses naturelles et contextuelles', 'Tableau de bord pour suivre les conversations', 'Escalade automatique vers un humain si necessaire'] },
-                { title: 'Technologies', items: ['GPT-4 / Claude pour la comprehension', 'Architecture RAG pour des reponses fiables', 'Base de connaissances vectorisee (vos docs)', 'API securisee et hebergee'] },
-                { title: 'Resultats attendus', items: ['85% des questions resolues automatiquement', '-60% de charge sur votre support', 'Disponible 24h/24, 7j/7', 'Amelioration continue avec les retours'] },
-                { title: 'Tarif indicatif', items: ['A partir de 790\u20AC pour un chatbot de base', 'Chatbot avance avec RAG : a partir de 1 490\u20AC', 'Hebergement 1 an inclus'] }
-            ]
-        },
-        'automatisation': {
-            title: 'Automatisation de processus',
-            icon: '⚡',
+        'fractional-cto': {
+            title: 'Fractional CTO AI',
+            icon: '\u{1F4CA}',
             color: '#ff8c00',
-            intro: 'Automatisez vos taches repetitives pour gagner du temps et reduire les erreurs.',
+            intro: 'Tu CTO de IA, sin contratar a tiempo completo. Liderazgo t\u00e9cnico externo.',
             sections: [
-                { title: 'Ce que vous obtenez', items: ['Audit de vos processus manuels actuels', 'Workflows automatises entre vos outils', 'Connexion de vos apps (CRM, email, agenda, comptabilite...)', 'Alertes et notifications automatiques', 'Rapports generes automatiquement'] },
-                { title: 'Outils utilises', items: ['Zapier, Make (Integromat), n8n', 'Scripts custom Python / Node.js', 'API et webhooks sur mesure', 'Connexion a plus de 200 applications'] },
-                { title: 'Exemples concrets', items: ['Nouveau lead → email de bienvenue + ajout CRM + notification Slack', 'Facture payee → mise a jour comptabilite + email client', 'Post reseaux sociaux → planification automatique multi-plateformes', 'Audit SEO quotidien automatise + rapport email'] },
-                { title: 'Tarif indicatif', items: ['A partir de 390\u20AC pour un workflow simple', 'Pack 5 automatisations : a partir de 890\u20AC', 'Maintenance et monitoring inclus 6 mois'] }
+                { title: 'Lo que incluye', items: ['Direcci\u00f3n t\u00e9cnica IA estrat\u00e9gica', 'Negociaci\u00f3n con proveedores tech', 'Roadmap tecnol\u00f3gico + hiring', 'Reporting para directorio / board', '2-4 d\u00edas por mes'] },
+                { title: 'Precio', items: ['USD 2.500/mes (retainer)', 'Sin compromiso de permanencia', 'Escalable seg\u00fan necesidades'] }
             ]
         },
-        'seo': {
-            title: 'SEO & Croissance digitale',
-            icon: '📈',
+        'private-brain': {
+            title: 'Private Brain \u2014 IA Soberana',
+            icon: '\u{1F9E0}',
             color: '#00ff87',
-            intro: 'Soyez visible sur Google. On optimise votre site pour attirer du trafic qualifie.',
+            intro: 'Tu cerebro de IA, en tus servidores. Cero datos en la nube de EEUU.',
             sections: [
-                { title: 'Ce que vous obtenez', items: ['Audit SEO complet de votre site', 'Optimisation Core Web Vitals (vitesse, UX)', 'Strategie de mots-cles adaptee a votre marche', 'Optimisation on-page (titres, meta, structure)', 'Schema.org et donnees structurees', 'Rapport mensuel de performances'] },
-                { title: 'Resultats mesurables', items: ['+200% de trafic organique en moyenne a 3 mois', 'Score Lighthouse 95+ garanti', 'Amelioration des positions Google', 'Plus de leads qualifies via le search'] },
-                { title: 'Notre approche', items: ['Analyse de la concurrence et opportunites', 'Contenu optimise avec l\'aide de l\'IA', 'Suivi et ajustements mensuels', 'Formation pour maintenir les bonnes pratiques'] },
-                { title: 'Tarif indicatif', items: ['Audit SEO ponctuel : a partir de 290\u20AC', 'Optimisation complete : a partir de 590\u20AC', 'Accompagnement mensuel : sur devis'] }
-            ]
-        },
-        'conseil': {
-            title: 'Conseil & Accompagnement',
-            icon: '💡',
-            color: '#ffd700',
-            intro: 'Pas sur de ce dont vous avez besoin ? On vous aide a y voir clair et a faire les bons choix.',
-            sections: [
-                { title: 'Ce que vous obtenez', items: ['Audit de votre situation digitale actuelle', 'Recommandations strategiques personnalisees', 'Choix d\'outils adaptes a votre budget', 'Plan d\'action concret et priorise', 'Formation a l\'utilisation de l\'IA pour votre metier'] },
-                { title: 'Pour qui ?', items: ['Vous demarrez et ne savez pas par ou commencer', 'Vous avez un site mais il ne performe pas', 'Vous voulez integrer l\'IA sans tout refaire', 'Vous cherchez un avis expert avant d\'investir'] },
-                { title: 'Formats possibles', items: ['Consultation ponctuelle (1h-2h)', 'Audit complet avec livrable ecrit', 'Accompagnement mensuel', 'Formation equipe (IA, outils digitaux, SEO)'] },
-                { title: 'Tarif indicatif', items: ['Consultation 1h : 90\u20AC', 'Audit complet : a partir de 290\u20AC', 'Accompagnement mensuel : sur devis'] }
+                { title: 'Lo que obten\u00e9s', items: ['LLM desplegado en Hetzner DE o on-premise', 'Mistral, DeepSeek o Llama seg\u00fan tu caso', 'Tus datos nunca tocan OpenAI/Google', 'GDPR + Ley 25.326 + EU AI Act compliant'] },
+                { title: 'Precio', items: ['Desde USD 9.900', 'Entrega: 4-8 semanas', 'Mantenimiento y evoluciones opcionales'] }
             ]
         }
     };
@@ -1931,7 +1899,7 @@ Contacto: <a href="mailto:emmanuel@flashai.dev" style="color:#00f0ff">emmanuel@f
             s.sections.map(function(sec) {
                 return '<div class="service-detail-section"><h4 style="color:' + s.color + '">' + sec.title + '</h4><ul class="service-detail-list">' + sec.items.map(function(it) { return '<li>' + it + '</li>'; }).join('') + '</ul></div>';
             }).join('') +
-            '<div style="text-align:center;margin-top:2rem"><a href="#contact" class="btn-glow" onclick="document.getElementById(\'service-modal\').classList.remove(\'active\')"><span>Demander un devis</span></a></div>';
+            '<div style="text-align:center;margin-top:2rem"><a href="#contact" class="btn-glow" onclick="document.getElementById(\'service-modal\').classList.remove(\'active\')"><span>Pedir presupuesto</span></a></div>';
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
