@@ -78,3 +78,47 @@ Static marketing website for FlashAI (Emmanuel Smadja), an AI consultancy target
 - Visa nómada digital removed
 - Estructuras jurídicas en proceso removed from legal modals
 - Footers updated: "Established in Argentina & Brazil — June 2026"
+
+---
+
+## TODO — Improvements to validate together (V4)
+
+### P0 — Critical (bugs / broken things)
+- [ ] **Social links are dead** — Footer LinkedIn, X (Twitter), GitHub all point to `href="#"`. Either add real URLs or remove the icons entirely
+- [ ] **Old portfolio images still in `/assets/`** — `portfolio-cinegen.jpg`, `portfolio-freenzy.jpg`, `portfolio-levemente.jpg` are orphaned files (no longer referenced). Delete them to save repo size
+- [ ] **aria-labels still in French** — `"FlashAI sur LinkedIn"`, `"FlashAI sur X (Twitter)"`, `"FlashAI sur GitHub"` in `index.html` footer. Should be Spanish or English
+
+### P1 — Language & content coherence
+- [ ] **Blog articles are 100% in French** — 6 blog posts (`/blog/*.html`) all in `lang="fr"`. Decision needed: translate to ES, rewrite for LATAM audience, or remove from sitemap?
+- [ ] **Articles are 100% in French** — 8 articles (`/articles/*.html`) same issue
+- [ ] **`case-study.html`** — Page exists and is indexed (`robots: index, follow`) but may contain old/stale content. Audit needed
+- [ ] **`compliance.html`** — Same: exists and indexed. Verify content is up-to-date and aligned with LATAM positioning
+- [ ] **`contact.html`** — Separate contact page exists. Verify it uses current contact info (emmanuel@flashai.dev, WhatsApp numbers) and no Calendly
+- [ ] **`pioneros.html`** — Verify content is current and coherent with index.html Pioneros section
+
+### P2 — SEO & performance
+- [ ] **OG image** — `og-image.jpg` exists but verify it reflects current LATAM branding (not old French branding)
+- [ ] **Structured data (JSON-LD)** — No schema.org markup. Add Organization, Service, FAQ schemas for better Google rich results
+- [ ] **Sitemap audit** — `sitemap.xml` may reference old pages or miss new ones. Regenerate
+- [ ] **robots.txt audit** — Verify crawl directives match current site structure
+- [ ] **Blog SEO** — If blog stays, each post needs canonical URLs, hreflang tags, proper OG tags
+
+### P3 — UX & conversion
+- [ ] **Contact form** — Currently WhatsApp/email only. Consider adding a lead capture form (name, email, company, service interest) that sends to emmanuel@flashai.dev or a webhook
+- [ ] **Chatbot improvements** — Add more response patterns: "how long", "guarantee", "refund", "portfolio", "case study". Currently ~10 keyword patterns
+- [ ] **CTA consistency** — Audit all CTA buttons across pages: ensure they all point to WhatsApp or email (no Calendly, no broken links)
+- [ ] **Loading performance** — TailwindCSS full CDN (~300kb). Consider switching to pre-built CSS or purged Tailwind for production
+- [ ] **Mobile hamburger menu** — Verify all navigation links work on mobile, especially service sub-pages
+
+### P4 — Technical debt
+- [ ] **script.js is 2000+ lines** — Consider splitting into modules (chatbot.js, portfolio.js, animations.js) for maintainability. Low priority since it works
+- [ ] **Duplicate Tailwind config** — Every HTML page has an inline `tailwind.config` script block. If config changes, must update all files
+- [ ] **CSS unused rules** — `style.css` at 1790 lines likely has orphaned rules from old French site. Audit and trim
+- [ ] **Images optimization** — Convert PNG logos to WebP, add `loading="lazy"` to below-fold images, add explicit `width`/`height` to prevent CLS
+
+### P5 — Content expansion (future)
+- [ ] **Case studies** — Write 2-3 detailed LATAM case studies with real metrics (anonymized). Currently portfolio is placeholder data
+- [ ] **Blog in Spanish** — Create 3-5 Spanish blog posts targeting LATAM AI keywords (SEO play)
+- [ ] **Testimonials with real quotes** — Current testimonials are generated placeholders. Replace with real client quotes when available
+- [ ] **WhatsApp Business API** — Integrate chatbot with WhatsApp Business for automated lead qualification
+- [ ] **Multi-currency display** — Show ARS/BRL/MXN equivalents alongside USD for local market feel
